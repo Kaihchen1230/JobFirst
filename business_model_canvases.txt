@@ -8,6 +8,7 @@ Offer employer comments on your work during the trial period
 Customer Relationships:
 Self-service through a job posting web page
 Intermediate communicator between new immigrants and employers
+Personal Assistance:One-to-One mentoring new immigrant in job searching and language training
 
 Customer Segments:
 New Immigrants with high education background or rich work experience, but couldn¡¯t find a suitable job due to language or cultural difficulties.
@@ -15,3 +16,6 @@ New Immigrants with high education background or rich work experience, but could
 Revenue Streams:
 Advertisement from language schools
 Advertisement from legal assistant firms
+fee from employees and employers, when the matching successfully
+training tuition
+
