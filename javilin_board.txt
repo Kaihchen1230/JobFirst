@@ -11,5 +11,17 @@ Potential legal issues
 There is no market for workers that doesn't speak English
 New immigrants are not willing to do trial period or take a pay cut
 
-2) sadasdasd
-3） asdasdas
+2) A possible customer:
+A group of people who are creating startup for visual room design web/mobile application.
+
+A possible problem that some other customer may have that you will be solving:
+Startups don't have enough of funds to post jobs on indeed/glassdoor/linkedIn
+
+List 5 possible risks regarding your assumptions that might make the project unsucessful:
+    a) Language/cultural barrier between employers and employees
+    b) Not able to vertify the educational background on the job candidates
+    c) Not enough of job candidates or employeers
+    d) An algorithm to recommand potential candidates for the employers
+    e) Not able to vertify the credibility on the startup companies
+
+
