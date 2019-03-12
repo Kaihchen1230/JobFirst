@@ -24,7 +24,7 @@ Startups don't have enough of funds to post jobs on indeed/glassdoor/linkedIn
 
 ## 3) JieLan
 ### A possible customer
-A new Chinese immigrant, who work as an electrical  engineer at China for several years, but can��t find a job here.
+A new Chinese immigrant, who work as an electrical  engineer at China for several years, but can't find a job here.
 ### A possible problem that or some other customer may have that you will be solving.
 Startup company need to pay a lot to hire employees with rich experience.
 ### List 5 possible risks regarding your assumptions that might make the project unsuccessful.
@@ -46,7 +46,7 @@ One problem this customer may have is that he or she may be unable to understand
 1. Although employers are using this product, they may still prefer those who are citizens over new immigrants.
 1. Customers that use the site and are able to find a job but don't have a good experience may leave bad reviews, which lead to bad publicity. 
 
-## 4) Alan
+## 5) Alan
 ### A possible customer:
 A possible customer can be a company that wants to expand its market to target customer with various diversities, therefore the company need talented employee from different background as well.
 ### A possible problem that or some other customer may have that you will be solving.
