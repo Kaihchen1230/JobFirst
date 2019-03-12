@@ -31,7 +31,7 @@ Startup company need to pay a lot to hire employees with rich experience.
 1. Employees leave the local company after they learn enough language skill
 2. Our employees candidates group is too small.
 3. Not enough revenue source, because new immigrants will afraid of fraud
-4. Employers don��t want to hire some employees don��t English well
+4. Employers don't want to hire some employees don't English well
 5. How to provide a high quality language or job -searching training course is a problem
 
 ## 4) Siddharth
@@ -45,3 +45,15 @@ One problem this customer may have is that he or she may be unable to understand
 1. Employers that use the site may only offer seasonal jobs, while the customers are looking for long-term jobs.
 1. Although employers are using this product, they may still prefer those who are citizens over new immigrants.
 1. Customers that use the site and are able to find a job but don't have a good experience may leave bad reviews, which lead to bad publicity. 
+
+## 4) Alan
+### A possible customer:
+A possible customer can be a company that wants to expand its market to target customer with various diversities, therefore the company need talented employee from different background as well.
+### A possible problem that or some other customer may have that you will be solving.
+New York is one of the city with the most diverse community. The problem that I will solve is that the companies will be able to find skilled employees that are better fit at their companies.
+### List 5 possible risks regarding your assumptions that might make the project unsucessful:
+1. There might not be enough of the demand in the market.
+1. Might lead to bias toward certain group of employee.
+1. The skilled employee might not possess the "correct" skill that he/she declared.
+1. The hiring company might lose their resources to train the employee that they don't end up hiring.
+1. The employee might not be able to fit in eventually.
