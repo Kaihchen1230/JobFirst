@@ -1,3 +1,4 @@
+Gong:
 1) A possible customer
 An early 20 years old Chinese immigrant with a computer sicence bacholar degree, but doesn't speak fluent English
 
@@ -26,6 +27,22 @@ List 5 possible risks regarding your assumptions that might make the project uns
     e) Not able to vertify the credibility on the startup companies
 
 
+JieLan
+HW3
+A possible customer
+A new Chinese immigrant, who work as an electrical  engineer at China for several years, but can��t find a job here.
+
+A possible problem that or some other customer may have that you will be solving.
+Startup company need to pay a lot to hire employees with rich experience.
+
+
+List 5 possible risks regarding your assumptions that might make the project unsuccessful.
+1.	Employees leave the local company after they learn enough language skill
+2.	 Our employees candidates group is too small.
+3.	Not enough revenue source, because new immigrants will afraid of fraud
+4.	Employers don��t want to hire some employees don��t English well
+5.	How to provide a high quality language or job -searching training course is a problem
+
 3) A possible customer:
 A possible customer is a newly arrived immigrant from India who has an Associates Degree in a technical field like IT.
 
@@ -37,6 +54,7 @@ List 5 possible risks regarding your assumptions that might make the project uns
     c) Employers that use the site may only offer seasonal jobs, while the customers are looking for long-term jobs.
     d) Although employers are using this product, they may still prefer those who are citizens over new immigrants.
     e) Customers that use the site and are able to find a job but don't have a good experience may leave bad reviews, which lead to bad publicity. 
+
 
 
 
