@@ -2,6 +2,7 @@ Value Propositions:
 What? 
 We will build a web app that helps to make connection between employer and skilled worker who are trying to find a job but couldn't do so due to language and cultural barriers.
 The interface will be in bilingual(English & Mandarin), allowing the user easier to use.
+On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
 
 For?
 The employers that are willing to take new immigrants with language difficulty.
@@ -24,10 +25,11 @@ In order to grow, we can provide more services instead of just focusing on helpi
 
 Customer Segments:
 New Immigrants with high education background or rich work experience, but couldn't find a suitable job due to language or cultural difficulties.
+Customers who would like to see an equivalent version of their degree on the job posting.
 
 Revenue Streams:
 Advertisement from language schools
 Advertisement from legal assistant firms
 fee from employees and employers, when the matching successfully
 training tuition
-
+The fee may also be a subscription plan?
