@@ -38,7 +38,10 @@ As an applicant, I want to filter the job based on specific language requirement
 As an applicant, I can submit multiple resumes as part of my personal profiles. For different companies, I can submit different resumes.
 
 
-As an applicatn, I can follow some employers so I can get the latest job posts immediately.
+As an applicant, I can follow some employers so I can get the latest job posts immediately.
+
+
+As an applicant, I can write some comments about the hiring process about a specific company so more applicants can know more about this company.
 
 
 As an new immigrant, I want to get some training materials or courses online to help learn more English and American culture.
@@ -65,7 +68,6 @@ As an admin, I can send emails to specific group of people, based on their profi
 As an employer, I can generate a unique form for each job, so applicant can fill out some specific information they need.
 
 
-As an employer, I can check applicants's perosonal profiles so I can know more about those applicant.
 
 
 
