@@ -1,1 +1,28 @@
 As a new immigrant, I will like to have my website bilingual, so that I can understand what is the website about.
+
+
+
+Gong Qi Chen:
+
+As a new immigrant I want to have my website bilingual so that I can understand what is the website about.
+
+As a job applicant I want to have a list of the jobs that I applied for so that I can track which job I have applied for.
+
+As a job applicant I want to filter the job list by their industry so that I don't have to spend time on the jobs that doesn't meet my profession.
+
+As a job applicant I want to filter the job list by the experience requirement so that I don't have to spend time on the jobs that I am not qualify for.
+
+As a job applicant I want to filter the job list by the education requirement so that I don't have to spend time on the jobs that I am not qualify for.
+
+As a job applicant I want to see the employer profile page so that I will know if this employer is someone I want to work for.
+
+As an employer I want to see the job applicant's profile page so that I will know if this applicant meets my hiring requirement.
+
+As an employer I want to have a list of the jobs that I posted so that I can keep track of hiring record.
+
+As an employer I want to have a list of the job applicants that applied for the jobs I posted so I can keep track of the applicant that is interesting in the position.
+
+As an employer I want to group my job applicant list by the jobs they applied to so that I will keep a record for who is applying for which job.
+
+
+Jie Lan:
