@@ -28,16 +28,45 @@ As an employer I want to group my job applicant list by the jobs they applied to
 
 
 Jie Lan:
+
+As a guest, I can only see job tilte and brief description, but can't apply for it or see more details, so that I need to submit a form to become a member
+
+
 As an applicant, I want to filter the job based on specific language requirement so that he know what to apply.
 
 
 As an applicant, I can submit multiple resumes as part of my personal profiles. For different companies, I can submit different resumes.
 
 
+As an applicatn, I can follow some employers so I can get the latest job posts immediately.
+
+
 As an new immigrant, I want to get some training materials or courses online to help learn more English and American culture.
 
+
+As an new immigrant, I want to find some local English lecture course(non online) information so that I can learn more English. 
+
  
-As an new immigrant, I want to get some one-one help in labor law issues so that he can protect his own right when signing a contract. 
+As an new immigrant, I want to get some one-one help in labor law issues(for example, a real time website chat window) so that he can protect his own right when signing a contract. 
 
 
 As an admin, I want to able to approve guests' request to become our customers. This can block those applicant that now satisfy our requirement.
+
+
+As an admin, I can block some applicants or employers for certain amount of time. This can stop some unqualified continuing our website.
+
+
+As an admin, I can check all users information in order to manage the website.
+
+
+As an admin, I can send emails to specific group of people, based on their profiles, then I can keep in contact with users.
+
+
+As an employer, I can generate a unique form for each job, so applicant can fill out some specific information they need.
+
+
+As an employer, I can check applicants's perosonal profiles so I can know more about those applicant.
+
+
+
+ 
