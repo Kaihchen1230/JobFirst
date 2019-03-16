@@ -16,6 +16,7 @@ As a job applicant I want to filter the job list by the education requirement so
 
 As a job applicant I want to see the employer profile page so that I will know if this employer is someone I want to work for.
 
+
 As an employer I want to see the job applicant's profile page so that I will know if this applicant meets my hiring requirement.
 
 As an employer I want to have a list of the jobs that I posted so that I can keep track of hiring record.
@@ -25,4 +26,18 @@ As an employer I want to have a list of the job applicants that applied for the 
 As an employer I want to group my job applicant list by the jobs they applied to so that I will keep a record for who is applying for which job.
 
 
+
 Jie Lan:
+As an applicant, I want to filter the job based on specific language requirement so that he know what to apply.
+
+
+As an applicant, I can submit multiple resumes as part of my personal profiles. For different companies, I can submit different resumes.
+
+
+As an new immigrant, I want to get some training materials or courses online to help learn more English and American culture.
+
+ 
+As an new immigrant, I want to get some one-one help in labor law issues so that he can protect his own right when signing a contract. 
+
+
+As an admin, I want to able to approve guests' request to become our customers. This can block those applicant that now satisfy our requirement.
