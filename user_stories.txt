@@ -64,9 +64,14 @@ As an employer, I can generate a unique form for each job, so applicant can fill
 
 
 
+Alan Lau:
 
+As an international company, I want to hire employees from various background to better understand my customers.
 
- 
+As an international company, I want to be able to hire employees without spending too much money on employees that I don't have deep understanding.
 
+As a recent immigrant, I want to find a job that relate to my skill ASAP so I can provide support for my family.
 
+As a user, I want to find a job that locate near my location, so I don't have to travel far away from my family.
 
+As a user, I want 
