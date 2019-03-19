@@ -64,9 +64,24 @@ As an employer, I can generate a unique form for each job, so that applicant can
 
 
 
+Alan Lau:
 
+As a HR from international company, I want to hire employees from various background to better understand my customers.
 
- 
+As a HR from international company, I want to be able to hire employees without spending too much money on employees that I don't have deep understanding.
 
+As a HR manager, I want to be able to see what my employees' best skillset based on the endorsement, so I know I can trust them on their skill.
 
+As a HR manager, I want the website that sort the users based on their endorsement, so I know which one is more trustworthy.
 
+As a HR manager, I want the users on the website to be a real person and provide accurate information regarding themselves, so I don't waste my time.
+
+As a recent immigrant, I want to find a job that relate to my skill ASAP so I can provide support for my family.
+
+As a recent immigrant, I want to find a job that is near my location, so I don't have to travel far away from my family.
+
+As a recent immigrant, I want people to be able to endorse my skills, so the company can trust me on my skills.
+
+As a recent immigrant, I want to see what kind of technologies that the companies use and what specific skillsets that the companies require so I don't have to waste my time on the companies that don't need my skills.
+
+As a recent immigrant, I want to be able to see the most recent news or policies about the immigrant, so I know what my rights are.
