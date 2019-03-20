@@ -55,5 +55,5 @@
 
 ## Siddharth Rajan:
 
-1. As a user of this website, I would like to get directions from within the site to the company's headquarters/address after I am called for an interview.
+1. As a user of this website, I would like to get directions from within the site to the company's headquarters/address after I am called for an interview, so that I can just focus on preparing for my interview if I hear a response.
 2. As a user of this website, I would like to see general statistics on the other applicants for a particular position, so that I have a better sense of what positions better suit me.
