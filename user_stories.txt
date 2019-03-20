@@ -20,8 +20,6 @@ As an employer I want to have a list of the job applicants that applied for the 
 
 As an employer I want to group my job applicant list by the jobs they applied to so that I will keep a record for who is applying for which job.
 
-
-
 Jie Lan:
 
 As a guest, I can only see job tilte and brief description, but can't apply for it or see more details, so that I need to submit a form to become a member
