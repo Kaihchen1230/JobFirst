@@ -13,21 +13,19 @@
 
 ## Jie Lan:
 
-1. As a guest, I can only see job tilte and brief description, but can't apply for it or see more details, so that I need to submit a form to become a member
-2. As an applicant, I want to filter the job based on specific language requirement so that he know what to apply.
+1. As a guest, I can only see job title and brief description, but can't apply for it or see more details, so that I need to submit a form to become a member
+2. As an applicant, I want to filter the job based on specific language requirements so that I know what to apply for.
 3. As an applicant, I can submit multiple resumes as part of my personal profiles so that for different companies, I can submit different resumes.
 4. As an applicant, I can follow some employers so that I can get the latest job posts immediately.
 5. As an applicant, I can write some comments about the hiring process about a specific company so that more applicants can know more about this company.
 6. As an new immigrant, I want to get some training materials or courses online so that I can learn more English and American culture.
-7. As an new immigrant, I want to find some local English lecture course(non online) information so that I can learn more English. 
-8. As an new immigrant, I want to get some one-one help in labor law issues(for example, a real time website chat window) so that he can protect his own right when signing a contract. 
-9.  As an admin, I want to able to approve guests' request to become our customers, so that this can block those applicant that now satisfy our requirement.
+7. As an new immigrant, I want to find some local English lecture course (non online) information so that I can learn more English. 
+8. As an new immigrant, I want to get some one-on-one help in labor law issues (for example, a real time website chat window) so that I can protect my own right when signing a contract. 
+9. As an admin, I want to able to approve guests' request to become our customers, so that this can block those applicant that now satisfy our requirement.
 10. As an admin, I can block some applicants or employers for certain amount of time so that this can stop some unqualified continuing our website.
 11. As an admin, I can check all users information so that to manage the website.
 12. As an admin, I can send emails to specific group of people, based on their profiles, so that I can keep in contact with users.
 13. As an employer, I can generate a unique form for each job, so that applicant can fill out some specific information they need.
-
-
 
 ## Alan Lau:
 
@@ -42,11 +40,11 @@
 9. As a recent immigrant, I want to see what kind of technologies that the companies use and what specific skillsets that the companies require so I don't have to waste my time on the companies that don't need my skills.
 10. As a recent immigrant, I want to be able to see the most recent news or policies about the immigrant, so I know what my rights are.
 
-## Kai Hang Chen
+## Kai Hang Chen:
 
 1. As a user of this website, I would like to login through my gmail account, instead of creating a new account.
-2. As a job seeker, I would like to know the internal enviroment of the company through a brief summary that campany provided.
-3. As a job seeker, I would like to know if there's any successful candidates applied to each company through this website. So, I can contact him/her for more advice.
+2. As a job seeker, I would like to know the internal enviroment of the company through a brief summary that company provided.
+3. As a job seeker, I would like to know if there's any successful candidates that applied to each company through this website. So, I can contact him/her for more advice.
 4. As an user in this website, I would like to share the job post to someone that I think would be a good fit through a share button.
 5. As a job seeker, I will like to rate each interview that I received from the website.
 6. As a job seeker, I will like to search jobs through a company keyword or industry keyword.
@@ -54,3 +52,7 @@
 8. As a job seeker, I would like to receive notification to my email when there's new job post that fits my interests.
 9. As a recent immgrant, I would like to see free interview prep/guildine on the website or in my local area.
 10. As a startup employer, I would like the website to make the selection a handful of canidiates for me based on the job description that I posted.
+
+## Siddharth Rajan:
+
+1. 
