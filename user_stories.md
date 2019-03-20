@@ -1,4 +1,4 @@
-##Gong Qi Chen:
+## Gong Qi Chen:
 
 1. As a new immigrant I want to have my website bilingual so that I can understand what is the website about.
 
@@ -20,7 +20,7 @@
 
 10. As an employer I want to group my job applicant list by the jobs they applied to so that I will keep a record for who is applying for which job.
 
-##Jie Lan:
+## Jie Lan:
 
 1. As a guest, I can only see job tilte and brief description, but can't apply for it or see more details, so that I need to submit a form to become a member
 
@@ -62,7 +62,7 @@
 
 
 
-##Alan Lau:
+## Alan Lau:
 
 1. As a HR from international company, I want to hire employees from various background to better understand my customers.
 
