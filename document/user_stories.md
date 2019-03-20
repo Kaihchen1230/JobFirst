@@ -8,7 +8,7 @@
 6. As a job applicant I want to see the employer profile page so that I will know if this employer is someone I want to work for.
 7. As an employer I want to see the job applicant's profile page so that I will know if this applicant meets my hiring requirement.
 8. As an employer I want to have a list of the jobs that I posted so that I can keep track of hiring record.
-9. As an employer I want to have a list of the job applicants that applied for the jobs I posted so I can keep track of the applicant that is interesting in the position.
+9. As an employer I want to have a list of the job applicants that applied for the jobs I posted so I can keep track of the applicant that is interested in the position.
 10. As an employer I want to group my job applicant list by the jobs they applied to so that I will keep a record for who is applying for which job.
 
 ## Jie Lan:
@@ -59,4 +59,4 @@
 2. As a user of this website, I would like to see general statistics on the other applicants for a particular position, so that I have a better sense of what positions better suit me.
 3. As a recent immigrant, I would like to hide or remove specific information from my profile, so that I can only present what is relavant to others.
 4. As an applicant, I can have the ability to upload a resume from my computer to my application, so that if I have modified it just a little, I don't have to go through the trouble of putting it on my profile first.
-5. 
+5. As an employer, I want to see geographical information on the candidates, so that I can see from which areas candidates are from and adjust my requirement needs accordingly.
