@@ -58,3 +58,5 @@
 1. As a user of this website, I would like to get directions from within the site to the company's headquarters/address after I am called for an interview, so that I can just focus on preparing for my interview if I hear a response.
 2. As a user of this website, I would like to see general statistics on the other applicants for a particular position, so that I have a better sense of what positions better suit me.
 3. As a recent immigrant, I would like to hide or remove specific information from my profile, so that I can only present what is relavant to others.
+4. As an applicant, I can have the ability to upload a resume from my computer to my application, so that if I have modified it just a little, I don't have to go through the trouble of putting it on my profile first.
+5. 
