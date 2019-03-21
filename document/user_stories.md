@@ -62,3 +62,5 @@
 5. As an employer, I want to see geographical information on the candidates, so that I can see from which areas candidates are from and adjust my requirement needs accordingly.
 6. As a recent immigrant, I want to see the companies' legal requirements for the applicants, so that I can work there knowing that my job is secure and I am under no obligation to leave.
 7. As an employer, I want the job posting to be available as plain/raw text for those with a poor Internet connection, so that my job posting reaches as many people as possible.
+8. As a user of this website, I want the website to sign me out automatically if I close the tab so that my information is secure.
+9. 
