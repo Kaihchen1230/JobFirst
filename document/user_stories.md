@@ -64,3 +64,4 @@
 7. As an employer, I want the job posting to be available as plain/raw text for those with a poor Internet connection, so that my job posting reaches as many people as possible.
 8. As a user of this website, I want the website to sign me out automatically if I close the tab so that my information is secure.
 9. As a recent immigrant, I can choose whether to release my photo to the employer, so that I can protect my privacy.
+10. As an applicant, I can choose whether to receive text alerts about my application, so that I can stay informed through multiple mediums.
