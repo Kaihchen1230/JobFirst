@@ -61,3 +61,4 @@
 4. As an applicant, I can have the ability to upload a resume from my computer to my application, so that if I have modified it just a little, I don't have to go through the trouble of putting it on my profile first.
 5. As an employer, I want to see geographical information on the candidates, so that I can see from which areas candidates are from and adjust my requirement needs accordingly.
 6. As a recent immigrant, I want to see the companies' legal requirements for the applicants, so that I can work there knowing that my job is secure and I am under no obligation to leave.
+7. As an employer, I want the job posting to be available as plain/raw text for those with a poor Internet connection, so that my job posting reaches as many people as possible.
