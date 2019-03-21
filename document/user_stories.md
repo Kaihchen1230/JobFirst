@@ -60,3 +60,4 @@
 3. As a recent immigrant, I would like to hide or remove specific information from my profile, so that I can only present what is relavant to others.
 4. As an applicant, I can have the ability to upload a resume from my computer to my application, so that if I have modified it just a little, I don't have to go through the trouble of putting it on my profile first.
 5. As an employer, I want to see geographical information on the candidates, so that I can see from which areas candidates are from and adjust my requirement needs accordingly.
+6. As a recent immigrant, I want to see the companies' legal requirements for the applicants, so that I can work there knowing that my job is secure and I am under no obligation to leave.
