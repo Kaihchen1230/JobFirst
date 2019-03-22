@@ -24,6 +24,3 @@
 ![Imgur](https://i.imgur.com/29GdZ7T.png)
 *The story doesn't reflect on the person that appear on the image. The image is origally found in Humans of New York Facebook page.*
 
-<p>
-
-<sup>Disclaimer: We do not own the copyright of the image and the story doesn't reflect on the person that appear on the image.</sup>
