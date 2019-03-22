@@ -1,4 +1,4 @@
-#Persona -Jie Lan
+# Persona -Jie Lan
 
  ![Image of xinyan Liu](https://i.imgur.com/raYLPpc.jpg?1)
 ## Basic information:
@@ -20,7 +20,7 @@ She need to work 5 days a week. During her weekday, she needs to get up at 8:00 
 3. Have a master degree at America helps, but it takes a lot of time to prepare language test and gre or gmat. It also cost a lot of money. So this is not her first option now.
 
 
-Persona - Siddharth Rajan
+# Persona - Siddharth Rajan
 
 ![Image of Sunny Zhang](https://i.imgur.com/4c0V0xO.jpg?1)
 ## Basic information
