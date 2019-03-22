@@ -1,4 +1,5 @@
-Persona -Jie Lan
+#Persona -Jie Lan
+
  ![Image of xinyan Liu](https://i.imgur.com/raYLPpc.jpg?1)
 ## Basic information:
 1. Name: xiyan Liu
@@ -20,6 +21,7 @@ She need to work 5 days a week. During her weekday, she needs to get up at 8:00 
 
 
 Persona - Siddharth Rajan
+
 ![Image of Sunny Zhang](https://i.imgur.com/4c0V0xO.jpg?1)
 ## Basic information
 1. Name: Sunny Zhang
