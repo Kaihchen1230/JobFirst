@@ -10,6 +10,11 @@
 8. As an employer I want to have a list of the jobs that I posted so that I can keep track of hiring record.
 9. As an employer I want to have a list of the job applicants that applied for the jobs I posted so I can keep track of the applicant that is interested in the position.
 10. As an employer I want to group my job applicant list by the jobs they applied to so that I will keep a record for who is applying for which job.
+11. As an employer I want to be notify by email whenever a applicant has applied for our job post so that I don't have to constantly check if there is a new applicant.
+12. As an employer I want to message the applicants for their application acceptance directly through the website so that I don't have open my email or other application to notify the applicants.
+13. As a website user I want to be able to report a questionable user so that I can prevent that user from creating more problems.
+14. As a website user I want to have calendar for my interview appointment so that I keep track and confrim of my schedule.
+15. As an employer I want to set a duration on my job post and will be deleted by the website after it got expire so that I don't have to delete them manually.
 
 ## Jie Lan:
 
