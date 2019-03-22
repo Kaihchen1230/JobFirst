@@ -1,23 +1,11 @@
-Persona -Jie Lan
- ![Image of xinyan Liu](https://i.imgur.com/raYLPpc.jpg?1)
-## Basic information
-1. Name: xiyan Liu
-2. Age:32
-3. Job: Popeye's cashier at Flushing, her salary is 15$/hour. Totally 525 $ per week.
-4. Live in Brooklyn 
-5. Single
-6. Family: live with parents and cousin in a public department. All of them came to America at 2016.
-7. Education: She has a bachelor degree in art design from Guangzhou University at China
-8. Background: She had 5 years of fashion design experience in China. She was a team leader of ten people in her pre-company.
 
-## Typical day
-She need to work 5 days a week. During her weekday, she needs to get up at 8:00 am. After breakfast and makeup, she needs to take N train to Flushing, which takes her more than 3 hours on the train. Once she arrives the store, she need to order food for customers without stop. Only when there is less customer around 2 pm, she can have half hour break to eat some food. She is a pre-fashion designer at China. She is not happy with this job. She cannot discuss fashion design with her colleagues. Around 4 pm, she will finish her one day work and go home. During the weekend, she will attend an English ESL free workshops at Chinatown. But that is not a good organized class, she cannot learn too much from that. At nighttime, when she arrive home, she will spend some time on English and also watch some fashion design news.
+## Persona -Jie Lan
+ <img align='left' src="https://i.imgur.com/raYLPpc.jpg?1">
+<p> xiyan Liu is a 32 years old new immigrant from China. She work as Popeye¡¯s cashier at Flushing, her salary is 15$/hour. Totally 525 $ per week. She lives in Brooklyn with parents and cousin in a public department. All of them came to America at 2016. She is still single now. She has a bachelor degree in art design from Guangzhou University at China.She had 5 years of fashion design experience in China. She was a team leader of ten people in her pre-company.
 
-## Needs:
-1. She want to learn more English in an organized way, instead of from some small non-organized workshop.
-2. She want to continue her career in fashion design, even a startup is ok for her.
-3. Have a master degree at America helps, but it takes a lot of time to prepare language test and gre or gmat. It also cost a lot of money. So this is not her first option now.
+<p> She need to work 5 days a week. During her weekday, she needs to get up at 8:00 am. After breakfast and makeup, she needs to take N train to Flushing, which takes her more than 3 hours on the train. Once she arrives the store, she need to order food for customers without stop. Only when there is less customer around 2 pm, she can have half hour break to eat some food. She is a pre-fashion designer at China. She is not happy with this job. She can¡¯t discuss fashion design with her colleagues. Around 4 pm, she will finish her one day work and go home. During the weekend, she will attend an English ESL free workshops at Chinatown. But that is not a good organized class, she can¡¯t learn too much from that. At nighttime, when she arrive home, she will spend some time on English and also watch some fashion design news.
 
+<p> She want to learn more English in an organized way, instead of from some small non-organized workshop. Also she want to continue her career in fashion design, even a startup is ok for her. Have a master degree at America helps, but it takes a lot of time to prepare language test and gre or gmat. It also cost a lot of money. So this is not her first option now.
 
 # Shawn Huang
 ### by Alan Lau
