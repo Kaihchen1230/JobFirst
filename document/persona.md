@@ -3,7 +3,7 @@ Persona -Jie Lan
 ## Basic information
 1. Name: xiyan Liu
 2. Age:32
-3. Job: Popeye��s cashier at Flushing, her salary is 15$/hour. Totally 525 $ per week.
+3. Job: Popeye's cashier at Flushing, her salary is 15$/hour. Totally 525 $ per week.
 4. Live in Brooklyn 
 5. Single
 6. Family: live with parents and cousin in a public department. All of them came to America at 2016.
@@ -11,7 +11,7 @@ Persona -Jie Lan
 8. Background: She had 5 years of fashion design experience in China. She was a team leader of ten people in her pre-company.
 
 ## Typical day
-She need to work 5 days a week. During her weekday, she needs to get up at 8:00 am. After breakfast and makeup, she needs to take N train to Flushing, which takes her more than 3 hours on the train. Once she arrives the store, she need to order food for customers without stop. Only when there is less customer around 2 pm, she can have half hour break to eat some food. She is a pre-fashion designer at China. She is not happy with this job. She can��t discuss fashion design with her colleagues. Around 4 pm, she will finish her one day work and go home. During the weekend, she will attend an English ESL free workshops at Chinatown. But that is not a good organized class, she can��t learn too much from that. At nighttime, when she arrive home, she will spend some time on English and also watch some fashion design news.
+She need to work 5 days a week. During her weekday, she needs to get up at 8:00 am. After breakfast and makeup, she needs to take N train to Flushing, which takes her more than 3 hours on the train. Once she arrives the store, she need to order food for customers without stop. Only when there is less customer around 2 pm, she can have half hour break to eat some food. She is a pre-fashion designer at China. She is not happy with this job. She cannot discuss fashion design with her colleagues. Around 4 pm, she will finish her one day work and go home. During the weekend, she will attend an English ESL free workshops at Chinatown. But that is not a good organized class, she cannot learn too much from that. At nighttime, when she arrive home, she will spend some time on English and also watch some fashion design news.
 
 ## Needs:
 1. She want to learn more English in an organized way, instead of from some small non-organized workshop.
