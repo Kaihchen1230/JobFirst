@@ -32,3 +32,6 @@ Persona - Siddharth Rajan
 8. Background: Has 3 years of experience being a business analyst at a bank.
 
 ## Typical Day:
+As a recent immigrant, most of his day is spent searching both online and outside for a highly skilled job as an analyst. In the meantime, he is frequently outside looking for a temporary job just to make ends meet. In addition, his host family is trying to help him find a suitable position, but to little avail. He wakes up early every morning to do this, and in the day works in a small position at a family member’s business. He does not have flexible hours, and frequently comes home very late. It is difficult to support his wife and child.
+
+## Needs:
