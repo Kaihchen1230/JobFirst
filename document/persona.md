@@ -18,6 +18,7 @@ She need to work 5 days a week. During her weekday, she needs to get up at 8:00 
 2. She want to continue her career in fashion design, even a startup is ok for her.
 3. Have a master degree at America helps, but it takes a lot of time to prepare language test and gre or gmat. It also cost a lot of money. So this is not her first option now.
 
+
 Persona - Siddharth Rajan
 
 ## Basic information
@@ -26,3 +27,8 @@ Persona - Siddharth Rajan
 3. Job: Assistant at family member’s business with little pay
 4. Lives in Brooklyn
 5. Married
+6. Family: Lives with parents in apartment in Williamsburg, Brooklyn. He does not meet immigration requirements for many jobs.
+7. Education: Obtained a bachelor’s degree in business before moving to US.
+8. Background: Has 3 years of experience being a business analyst at a bank.
+
+## Typical Day:
