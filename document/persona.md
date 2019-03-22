@@ -1,4 +1,4 @@
-# Persona -Jie Lan
+# Persona - Jie Lan
 
  ![Image of xinyan Liu](https://i.imgur.com/raYLPpc.jpg?1)
 ## Basic information:
@@ -23,7 +23,7 @@ She need to work 5 days a week. During her weekday, she needs to get up at 8:00 
 # Persona - Siddharth Rajan
 
 ![Image of Sunny Zhang](https://i.imgur.com/4c0V0xO.jpg?1)
-## Basic information
+## Basic information:
 1. Name: Sunny Zhang
 2. Age: 27
 3. Job: Assistant at family member’s business with little pay
@@ -37,7 +37,7 @@ She need to work 5 days a week. During her weekday, she needs to get up at 8:00 
 As a recent immigrant, most of his day is spent searching both online and outside for a highly skilled job as an analyst. In the meantime, he is frequently outside looking for a temporary job just to make ends meet. In addition, his host family is trying to help him find a suitable position, but to little avail. He wakes up early every morning to do this, and in the day works in a small position at a family member’s business. He does not have flexible hours, and frequently comes home very late. It is difficult to support his wife and child.
 
 ## Needs:
-1.	Needs an informational source that can help find the best opportunity based on the skills that have been obtained
-2.	Needs a tool that can help break barriers such as language and lack of knowledge on legal immigration laws
-3.	Quickly find a suitable job or at least know what the options are in order to begin settling in to the new country
-4.	Need to assimilate soon because of the urge to support family that are overseas, as well as his immediate family
+1.	Need an informational source that can help find the best opportunity based on the skills that have been obtained.
+2.	Need a tool that can help break barriers such as language and lack of knowledge on legal immigration laws.
+3.	Quickly find a suitable job or at least know what the options are in order to begin settling in to the new country.
+4.	Need to assimilate soon because of the urge to support family that are overseas, as well as his immediate family.
