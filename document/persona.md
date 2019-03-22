@@ -29,3 +29,11 @@ She need to work 5 days a week. During her weekday, she needs to get up at 8:00 
 
 
 <sup>Disclaimer: We do not own the copyright of the image and the story doesn't reflect on the person that appear on the image.</sup>
+
+# Li Wang
+### by Kai Hang Chen
+![Imgur](https://i.imgur.com/29GdZ7T.png)
+*The story doesn't reflect on the person that appear on the image. The image is origally found in Humans of New York Facebook page.*
+
+<p>
+
