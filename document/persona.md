@@ -1,4 +1,4 @@
-Persona -Jie Lan
+##Persona -Jie Lan
  ![Image of xinyan Liu](https://i.imgur.com/raYLPpc.jpg?1)
 
 ##xiyan Liu is a 32 years old new immigrant from China. She work as Popeye¡¯s cashier at Flushing, her salary is 15$/hour. Totally 525 $ per week. She lives in Brooklyn with parents and cousin in a public department. All of them came to America at 2016. She is still single now. She has a bachelor degree in art design from Guangzhou University at China.She had 5 years of fashion design experience in China. She was a team leader of ten people in her pre-company.
