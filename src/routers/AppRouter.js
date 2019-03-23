@@ -1,7 +1,7 @@
 import React from 'react';
-import Home from '../client/Home'
+import Home from '../components/Home'
 import { BrowserRouter, Route,Switch , Link} from 'react-router-dom';
-import Login from '../client/login.js'
+import Login from '../components/login.js'
 import createHistory from 'history/createBrowserHistory';
 
 const NotFoundPage = () => (
