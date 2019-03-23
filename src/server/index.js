@@ -27,6 +27,7 @@ sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
+    console.log(publicPath);
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
@@ -34,6 +35,8 @@ sequelize
 
 //all routers
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+
+//send back index.html for all the rest request
 app.get('*', (req, res) => {                       
     res.sendFile(path.join(publicPath, 'index.html'));                            
   });
