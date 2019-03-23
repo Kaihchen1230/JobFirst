@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/app.css';
+import '../style/app.scss';
 
 export default class Login extends Component {
   state = { username: null };
