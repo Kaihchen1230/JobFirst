@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './app.css';
-import ReactImage from './react.png';
+import '../style/app.scss';
 
 export default class Login extends Component {
   state = { username: null };
@@ -14,9 +13,9 @@ export default class Login extends Component {
   render() {
     const { username } = this.state;
     return (
-      <div>
+      <div className={"header"}>
         {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+        <img src={"/public/images/react.png"} alt="react" />
       </div>
     );
   }
