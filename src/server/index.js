@@ -10,7 +10,7 @@ const express = require('express'),
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());    
-app.use(express.static('dist'));
+app.use(express.static(publicPath));
 
 //Tutorial
 //1.You need to excute the init_database.sql locally everytime the db file change
