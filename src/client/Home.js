@@ -7,6 +7,7 @@ class Home extends Component {
     return (
     <div className="App">
       <h1>Project Home</h1>
+      Home pagegfg
     </div>
     );
   }
