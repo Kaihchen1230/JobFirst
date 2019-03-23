@@ -117,12 +117,6 @@ VALUES
         '254 Avenue A. NY. ny. 11226'
     );
 
-
-
-
-
-
-
 CREATE TABLE Jobs (
     job_ID INTEGER UNSIGNED,
     poster_ID INTEGER UNSIGNED NOT NULL ,
