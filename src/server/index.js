@@ -1,12 +1,10 @@
 const express = require('express'),
       os = require('os'),
       path = require("path"),
-      fs = require('fs'),
-      publicPath = path.join(__dirname, '../..', 'public'),
+      publicPath =  path.join(__dirname, '../..', 'public');//this public path didnt work, need help
       app = express(),
       bodyParser = require('body-parser'),
-      Sequelize = require('sequelize');
-      
+      Sequelize = require('sequelize');  
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());    

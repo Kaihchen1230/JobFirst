@@ -9,17 +9,17 @@ const NotFoundPage = () => (
         404!Page not found <Link to="/"> go to home</Link>
     </div>
 );
-console.log('come to router');
-export const history = createHistory();
+
+const history = createHistory();
 const AppRouter = () => (
     <BrowserRouter history={history}>
-    <div>
-      <Switch>   
-        <Route path='/' component={Login} exact={true} />
-        <Route path='/home' component={Home} exact={true}/>
-        <Route component={NotFoundPage} exact={true}/>
-      </Switch>
-    </div>
+      <div>
+        <Switch>   
+          <Route path='/' component={Login} exact={true} />
+          <Route path='/home' component={Home} exact={true}/>
+          <Route component={NotFoundPage} exact={true}/>
+        </Switch>
+      </div>
     </BrowserRouter>
 );
 

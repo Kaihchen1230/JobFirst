@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../style/app.css';
-import ReactImage from './react.png';
 
 export default class Login extends Component {
   state = { username: null };
@@ -16,7 +15,7 @@ export default class Login extends Component {
     return (
       <div>
         {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+        <img src={"/public/images/react.png"} alt="react" />
       </div>
     );
   }
