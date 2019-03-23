@@ -1,7 +1,7 @@
 const express = require('express'),
       os = require('os'),
       path = require("path"),
-      publicPath = path.join(__dirname, '../..', 'public');
+      publicPath = path.join(__dirname, '../../public');
       app = express(),
       bodyParser = require('body-parser'),
       Sequelize = require('sequelize');  
@@ -27,7 +27,6 @@ sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
-    console.log(publicPath);
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
