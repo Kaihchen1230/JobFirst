@@ -1,7 +1,7 @@
 const express = require('express'),
       os = require('os'),
       path = require("path"),
-      publicPath =  path.join(__dirname, '../..', 'public');//this public path didnt work, need help
+      publicPath = path.join(__dirname, '../..', 'public');
       app = express(),
       bodyParser = require('body-parser'),
       Sequelize = require('sequelize');  
@@ -9,6 +9,7 @@ const express = require('express'),
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());    
 app.use(express.static(publicPath));
+
 
 //Tutorial
 //1.You need to excute the init_database.sql locally everytime the db file change
