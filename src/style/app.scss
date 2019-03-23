@@ -1,10 +1,4 @@
+@import './base/settings';
+@import './base/base';
+@import './components/header';
 
-$brand-color:red ; 
-h1 {
-  color:$brand-color;
-}
-
-body {
-  text-align: center;
-  margin: auto;
-}
