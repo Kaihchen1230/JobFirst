@@ -1,7 +1,7 @@
 const express = require('express'),
       os = require('os'),
       path = require("path"),
-      publicPath = path.join(__dirname, '../..', 'public');
+      publicPath = path.join(__dirname, '../../public');
       app = express(),
       bodyParser = require('body-parser'),
       Sequelize = require('sequelize');  
@@ -34,6 +34,8 @@ sequelize
 
 //all routers
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+
+//send back index.html for all the rest request
 app.get('*', (req, res) => {                       
     res.sendFile(path.join(publicPath, 'index.html'));                            
   });
