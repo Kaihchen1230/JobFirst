@@ -19,6 +19,7 @@ module.exports = (sequelize) => {
             business_location:{
                 type: Sequelize.STRING
             },
-        })
+        });
+    
     }
 }

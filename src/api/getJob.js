@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = (connection) => {
+module.exports = (sequelize) => {
     return (req, res) => {
         // setup model for job
         const Job =  sequelize.define('job', {
