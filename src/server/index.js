@@ -33,7 +33,16 @@ sequelize
 });
 
 //all routers
+//Gong comment: What is this for?
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+
+//calling api and pass database
+app.get('/api/getUser', require('../api/getUser.js')(sequelize));
+app.get('/api/getjob', require('../api/getjob.js')(sequelize));
+app.get('/api/getBusiness', require('../api/getBusiness.js')(sequelize));
+
+//calling 
+app.get()
 
 //send back index.html for all the rest request
 app.get('*', (req, res) => {                       
