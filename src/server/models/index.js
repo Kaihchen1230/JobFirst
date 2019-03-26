@@ -31,5 +31,22 @@ Object.keys(db).forEach(function(modelName) {
  
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+function connect() {
+    return new Promise((resolve, reject) => {
+        sequelize.sync({
+            logging: false,
+            //force: true, // will deletes all data and replace them
+            //alter: true // will delete data only neccessary
+        }).then(() => {
+            console.info('- DB server connection started');
+            return resolve(sequelize);
+        }).catch((err) => {
+            console.error('Error setting up tables');
+            console.error(err);
+            process.exit(1);
+        });
+    });
+}
  
 module.exports = db;
