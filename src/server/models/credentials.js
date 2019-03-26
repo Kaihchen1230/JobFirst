@@ -1,5 +1,5 @@
 module.exports = function (sequelize, Sequelize) {
-    const credential = sequelize.define('credential', {
+    const credentials = sequelize.define('credentials', {
         id: {
             type : Sequelize.UUID,
             defaultValue : Sequelize.UUIDV4,
@@ -19,5 +19,5 @@ module.exports = function (sequelize, Sequelize) {
         },
     });
 
-    return credential;
+    return credentials;
 }
