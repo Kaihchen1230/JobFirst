@@ -6,7 +6,7 @@ const app         = express();
 const bodyParser  = require('body-parser');
 const Sequelize   = require('sequelize');
 const env         = require('dotenv').config();
-const models      = require('./models');
+let models        = require('./models');
 
 
 
@@ -46,3 +46,10 @@ app.get('*', (req, res) => {
 
 //Listen for incoming requests
 // app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
+if (!process.env.TESTING) {
+  models.connect().then(() => {
+    app.listen(process.env.PORT || 8080, () => {
+      console.log(`Listening on port ${process.env.PORT || 8080}!`);
+    })
+  });
+}

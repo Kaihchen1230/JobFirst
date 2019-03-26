@@ -39,7 +39,7 @@ function connect() {
             //force: true, // will deletes all data and replace them
             //alter: true // will delete data only neccessary
         }).then(() => {
-            console.info('- DB server connection started');
+            console.info('DB server connection started');
             return resolve(sequelize);
         }).catch((err) => {
             console.error('Error setting up tables');
