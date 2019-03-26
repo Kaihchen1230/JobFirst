@@ -44,12 +44,17 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));                            
   });
 
+// connect DB
+models.sequelize.sync().then(function() {
+ 
+  console.log('Nice! Database looks fine')
+
+
+}).catch(function(err) {
+
+  console.log(err, "Something went wrong with the Database Update!")
+
+});
+
 //Listen for incoming requests
-// app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
-if (!process.env.TESTING) {
-  models.connect().then(() => {
-    app.listen(process.env.PORT || 8080, () => {
-      console.log(`Listening on port ${process.env.PORT || 8080}!`);
-    })
-  });
-}
+app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
