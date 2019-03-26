@@ -7,12 +7,24 @@ const bodyParser  = require('body-parser');
 const Sequelize   = require('sequelize');
 const env         = require('dotenv').config();
 let models        = require('./models');
+const passport    = require('passport')
+const session     = require('express-session');
 
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());    
 app.use(express.static(publicPath));
+
+
+// For Passport
+app.use(session({
+  secret: process.env.SECRET,
+  resave: true,
+  saveUninitialized: true
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 
 //Tutorial
@@ -38,6 +50,12 @@ app.use(express.static(publicPath));
 
 //all routers
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
+
+// sign in, sign up, log out
+const authAPI = require('./api/api.js')(app, passport);
+
+// load passport strategies
+require('./middleware/passport.js')(passport, models.credentials);
 
 //send back index.html for all the rest request
 app.get('*', (req, res) => {                       
