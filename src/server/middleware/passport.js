@@ -18,4 +18,39 @@ module.exports = function (passport, credentials) {
         });
     });
 
+    passport.use('local-signup', new LocalStrategy(
+        {
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true
+        },
+
+        function (req, email, password, done) {
+            const passwordHashing = function (password) {
+                return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+            };
+
+            Credentials.findOne({ where: { email: email } }).then((user) => {
+                if (user) {
+                    return done(null, false, { message: 'That email is already taken' });
+                } else {
+                    let userPassword = passwordHashing(password);
+                    let data = 
+                    {
+                        email: email,
+                        password: userPassword
+                    };
+                    Credentials.create(data).then((newUser, created) => {
+                        if (!newUser) {
+                            return done(null, false);
+                        }
+                        if (newUser) {
+                            return done(null, newUser);
+                        }
+                    });
+                }
+            });
+        }
+    ));
+
 }
