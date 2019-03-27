@@ -26,28 +26,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-
-//Tutorial
-//1.You need to excute the init_database.sql locally everytime the db file change
-//  Here is tutorial for setup mysql https://mariadb.com/resources/blog/installing-mariadb-10-1-16-on-mac-os-x-with-homebrew/
-//2.change the username and password inside the new Sequelize('database', 'username','password'...)
-//3.npm install  npm run dev
-//4.open http://localhost:3000
-//4.You should only change code inside src folder;If you want to change some setting, plz be careful
-// const sequelize = new Sequelize('job_first', 'root', 'lanmao8888', {
-//   host: '127.0.0.1',
-//   dialect: 'mysql'
-// });
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-// });
-
 //all routers
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
 
