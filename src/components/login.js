@@ -7,16 +7,16 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 export default class Login extends Component {
-  state = { 
+  state = {
     showLoginCard: true,
     showUserSignUpCard: false,
     showBusinessSignUpCard: false
-   };
+  };
 
   componentDidMount() {
-//    fetch('/api/getUsername')
-//      .then(res => res.json())
-//      .then(user => this.setState({ username: user.username }));
+    //    fetch('/api/getUsername')
+    //      .then(res => res.json())
+    //      .then(user => this.setState({ username: user.username }));
   }
 
   loginCardHandler = () => {
@@ -80,37 +80,37 @@ export default class Login extends Component {
     return (
       <div>
         <Card className="*">
-            <CardContent>
-              <h1>Sign Up As a New User</h1>
-              <form className="*" noValidate autoComplete="off">
-                <TextField
-                  id="standard-name"
-                  label="Username"
-                  className="*"
-                  placeholder="Enter Email"
-                  onChange="*"
-                  margin="normal"
-                />
-                <br />
-                <TextField
-                  id="standard-password-input"
-                  label="Password"
-                  className="*"
-                  placeholder="Enter Password"
-                  onChange="*"
-                  type="password"
-                  margin="normal"
-                />
-                <br />
-                <br />
-                <Button variant="contained" color="primary">Submit</Button>
-              </form>
-            </CardContent>
-          </Card>
-          <br />
-          <Button variant="contained" color="primary" onClick={this.loginCardHandler}>Log In to My Account</Button>
-          <br />
-          <Button variant="contained" color="primary" onClick={this.businessSignUpCardHandler}>Create a New Business Account</Button>
+          <CardContent>
+            <h1>Sign Up As a New User</h1>
+            <form className="*" noValidate autoComplete="off">
+              <TextField
+                id="standard-name"
+                label="Username"
+                className="*"
+                placeholder="Enter Email"
+                onChange="*"
+                margin="normal"
+              />
+              <br />
+              <TextField
+                id="standard-password-input"
+                label="Password"
+                className="*"
+                placeholder="Enter Password"
+                onChange="*"
+                type="password"
+                margin="normal"
+              />
+              <br />
+              <br />
+              <Button variant="contained" color="primary">Submit</Button>
+            </form>
+          </CardContent>
+        </Card>
+        <br />
+        <Button variant="contained" color="primary" onClick={this.loginCardHandler}>Log In to My Account</Button>
+        <br />
+        <Button variant="contained" color="primary" onClick={this.businessSignUpCardHandler}>Create a New Business Account</Button>
       </div>
     );
   }
@@ -119,37 +119,37 @@ export default class Login extends Component {
     return (
       <div>
         <Card className="*">
-            <CardContent>
-              <h1>Sign Up As a New Business</h1>
-              <form className="*" noValidate autoComplete="off">
-                <TextField
-                  id="standard-name"
-                  label="Username"
-                  className="*"
-                  placeholder="Enter Email"
-                  onChange="*"
-                  margin="normal"
-                />
-                <br />
-                <TextField
-                  id="standard-password-input"
-                  label="Password"
-                  className="*"
-                  placeholder="Enter Password"
-                  onChange="*"
-                  type="password"
-                  margin="normal"
-                />
-                <br />
-                <br />
-                <Button variant="contained" color="primary">Submit</Button>
-              </form>
-            </CardContent>
-          </Card>
-          <br />
-          <Button variant="contained" color="primary" onClick={this.loginCardHandler}>Log In to My Account</Button>
-          <br />
-          <Button variant="contained" color="primary" onClick={this.userSignUpCardHandler}>Create a New User Account</Button>
+          <CardContent>
+            <h1>Sign Up As a New Business</h1>
+            <form className="*" noValidate autoComplete="off">
+              <TextField
+                id="standard-name"
+                label="Username"
+                className="*"
+                placeholder="Enter Email"
+                onChange="*"
+                margin="normal"
+              />
+              <br />
+              <TextField
+                id="standard-password-input"
+                label="Password"
+                className="*"
+                placeholder="Enter Password"
+                onChange="*"
+                type="password"
+                margin="normal"
+              />
+              <br />
+              <br />
+              <Button variant="contained" color="primary">Submit</Button>
+            </form>
+          </CardContent>
+        </Card>
+        <br />
+        <Button variant="contained" color="primary" onClick={this.loginCardHandler}>Log In to My Account</Button>
+        <br />
+        <Button variant="contained" color="primary" onClick={this.userSignUpCardHandler}>Create a New User Account</Button>
       </div>
     );
   }
@@ -159,7 +159,7 @@ export default class Login extends Component {
       return (
         <div className="Login">
           <header className="Login-header">
-          {this.loginCard()}
+            {this.loginCard()}
           </header>
         </div>
       );
