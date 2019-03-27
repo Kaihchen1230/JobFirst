@@ -18,7 +18,7 @@ app.use(express.static(publicPath));
 //3.npm install  npm run dev
 //4.open http://localhost:3000
 //4.You should only change code inside src folder;If you want to change some setting, plz be careful
-/*const sequelize = new Sequelize('job_first', 'root', 'lanmao8888', {
+const sequelize = new Sequelize('job_first', 'root', 'lanmao8888', {
   host: '127.0.0.1',
   dialect: 'mysql'
 });
@@ -30,7 +30,7 @@ sequelize
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
-});*/
+});
 
 //all routers
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
