@@ -25,9 +25,33 @@ export default class Login extends Component {
     this.setState({ showBusinessSignUpCard: false });
   }
 
+  userSignUpCardHandler = () => {
+    this.setState({ showLoginCard: false });
+    this.setState({ showUserSignUpCard: true });
+    this.setState({ showBusinessSignUpCard: false });
+  }
+
+  businessSignUpCardHandler = () => {
+    this.setState({ showLoginCard: false });
+    this.setState({ showUserSignUpCard: false });
+    this.setState({ showBusinessSignUpCard: true });
+  }
+
   render() {
     return (
       <div>
+        <Card className="*">
+          <CardContent>
+            <h1>Already a User? Log in Below</h1>
+            <form className="*"></form>
+          </CardContent>
+        </Card>
+        <Card className="*">
+          <CardContent>
+            <h1>Sign Up As a New Business</h1>
+            <form className="*"></form>
+          </CardContent>
+        </Card>
         <Card className="*">
           <CardContent>
             <h1>Sign Up As a New User</h1>
