@@ -46,7 +46,7 @@ export default class Login extends Component {
               <TextField
                 id="standard-name"
                 label="Username"
-                className="*"
+                className="text"
                 placeholder="Enter Email"
                 onChange="*"
                 margin="normal"
@@ -55,7 +55,7 @@ export default class Login extends Component {
               <TextField
                 id="standard-password-input"
                 label="Password"
-                className="*"
+                className="text"
                 placeholder="Enter Password"
                 onChange="*"
                 type="password"
@@ -85,7 +85,7 @@ export default class Login extends Component {
               <TextField
                 id="standard-name"
                 label="Username"
-                className="*"
+                className="text"
                 placeholder="Enter Email"
                 onChange="*"
                 margin="normal"
@@ -94,7 +94,7 @@ export default class Login extends Component {
               <TextField
                 id="standard-password-input"
                 label="Password"
-                className="*"
+                className="text"
                 placeholder="Enter Password"
                 onChange="*"
                 type="password"
@@ -124,7 +124,7 @@ export default class Login extends Component {
               <TextField
                 id="standard-name"
                 label="Username"
-                className="*"
+                className="text"
                 placeholder="Enter Email"
                 onChange="*"
                 margin="normal"
@@ -133,7 +133,7 @@ export default class Login extends Component {
               <TextField
                 id="standard-password-input"
                 label="Password"
-                className="*"
+                className="text"
                 placeholder="Enter Password"
                 onChange="*"
                 type="password"
