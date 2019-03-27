@@ -3,7 +3,6 @@ import '../style/components/login.scss';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 export default class Login extends Component {
@@ -40,10 +39,10 @@ export default class Login extends Component {
   loginCard = () => {
     return (
       <div>
-        <Card className="*">
+        <Card className="body-card">
           <CardContent>
-            <h1>Already a User? Log in Below</h1>
-            <form className="*" noValidate autoComplete="off">
+            <h1>Log in To Your Account</h1>
+            <form className="account-form" noValidate autoComplete="off">
               <TextField
                 id="standard-name"
                 label="Username"
@@ -79,10 +78,10 @@ export default class Login extends Component {
   userSignUpCard = () => {
     return (
       <div>
-        <Card className="*">
+        <Card className="body-card">
           <CardContent>
             <h1>Sign Up As a New User</h1>
-            <form className="*" noValidate autoComplete="off">
+            <form className="account-form" noValidate autoComplete="off">
               <TextField
                 id="standard-name"
                 label="Username"
@@ -118,10 +117,10 @@ export default class Login extends Component {
   businessSignUpCard = () => {
     return (
       <div>
-        <Card className="*">
+        <Card className="body-card">
           <CardContent>
             <h1>Sign Up As a New Business</h1>
-            <form className="*" noValidate autoComplete="off">
+            <form className="account-form" noValidate autoComplete="off">
               <TextField
                 id="standard-name"
                 label="Username"
