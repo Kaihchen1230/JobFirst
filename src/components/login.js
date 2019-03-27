@@ -155,20 +155,32 @@ export default class Login extends Component {
   }
 
   render() {
-    return (
-      <div className="Login">
-        <header className="Login-header">
-          
-        </header>
-        <header className="Login-header">
-          
-        </header>
-
-
-        <header className="Login-header">
-          
-        </header>
-      </div>
-    );
+    if (this.state.showLoginCard) {
+      return (
+        <div className="Login">
+          <header className="Login-header">
+          {this.loginCard()}
+          </header>
+        </div>
+      );
+    }
+    else if (this.state.showUserSignUpCard) {
+      return (
+        <div className="Login">
+          <header className="Login-header">
+            {this.userSignUpCard()}
+          </header>
+        </div>
+      );
+    }
+    else if (this.state.showBusinessSignUpCard) {
+      return (
+        <div className="Login">
+          <header className="Login-header">
+            {this.businessSignUpCard()}
+          </header>
+        </div>
+      );
+    }
   }
 }
