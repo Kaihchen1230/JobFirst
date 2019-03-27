@@ -37,7 +37,7 @@ export default class Login extends Component {
     this.setState({ showBusinessSignUpCard: true });
   }
 
-  loginCard() {
+  loginCard = () => {
     return (
       <div>
         <Card className="*">
@@ -76,7 +76,7 @@ export default class Login extends Component {
     );
   }
 
-  userSignUpCard() {
+  userSignUpCard = () => {
     return (
       <div>
         <Card className="*">
@@ -115,7 +115,7 @@ export default class Login extends Component {
     );
   }
 
-  businessSignUpCard() {
+  businessSignUpCard = () => {
     return (
       <div>
         <Card className="*">
