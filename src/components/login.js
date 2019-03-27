@@ -37,6 +37,18 @@ export default class Login extends Component {
     this.setState({ showBusinessSignUpCard: true });
   }
 
+  loginCard() {
+
+  }
+
+  userSignUpCard() {
+
+  }
+
+  businessSignUpCard() {
+
+  }
+
   render() {
     return (
       <div className="Login">
@@ -69,6 +81,10 @@ export default class Login extends Component {
               </form>
             </CardContent>
           </Card>
+          <br />
+          <Button variant="contained" color="primary" onClick={}>Create a New User Account</Button>
+          <br />
+          <Button variant="contained" color="primary" onClick={}>Create a New Business Account</Button>
         </header>
         <header className="Login-header">
           <Card className="*">
@@ -99,6 +115,10 @@ export default class Login extends Component {
               </form>
             </CardContent>
           </Card>
+          <br />
+          <Button variant="contained" color="primary" onClick={}>Create a New User Account</Button>
+          <br />
+          <Button variant="contained" color="primary" onClick={}>Create a New Business Account</Button>
         </header>
         <header className="Login-header">
           <Card className="*">
@@ -129,6 +149,10 @@ export default class Login extends Component {
               </form>
             </CardContent>
           </Card>
+          <br />
+          <Button variant="contained" color="primary" onClick={}>Create a New User Account</Button>
+          <br />
+          <Button variant="contained" color="primary" onClick={}>Create a New Business Account</Button>
         </header>
       </div>
     );
