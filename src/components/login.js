@@ -69,19 +69,66 @@ export default class Login extends Component {
               </form>
             </CardContent>
           </Card>
+        </header>
+        <header className="Login-header">
           <Card className="*">
             <CardContent>
               <h1>Sign Up As a New Business</h1>
-              <form className="*"></form>
+              <form className="*" noValidate autoComplete="off">
+                <TextField
+                  id="standard-name"
+                  label="Username"
+                  className="*"
+                  placeholder="Enter Email"
+                  onChange="*"
+                  margin="normal"
+                />
+                <br />
+                <TextField
+                  id="standard-password-input"
+                  label="Password"
+                  className="*"
+                  placeholder="Enter Password"
+                  onChange="*"
+                  type="password"
+                  margin="normal"
+                />
+                <br />
+                <br />
+                <Button variant="contained" color="primary">Submit</Button>
+              </form>
             </CardContent>
           </Card>
+        </header>
+        <header className="Login-header">
           <Card className="*">
             <CardContent>
               <h1>Sign Up As a New User</h1>
-              <form className="*"></form>
+              <form className="*" noValidate autoComplete="off">
+                <TextField
+                  id="standard-name"
+                  label="Username"
+                  className="*"
+                  placeholder="Enter Email"
+                  onChange="*"
+                  margin="normal"
+                />
+                <br />
+                <TextField
+                  id="standard-password-input"
+                  label="Password"
+                  className="*"
+                  placeholder="Enter Password"
+                  onChange="*"
+                  type="password"
+                  margin="normal"
+                />
+                <br />
+                <br />
+                <Button variant="contained" color="primary">Submit</Button>
+              </form>
             </CardContent>
           </Card>
-
         </header>
       </div>
     );
