@@ -33,14 +33,8 @@ app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().use
 // sign in, sign up, log out
 const authAPI = require('./api/api.js')(app, passport);
 
-// get user
-const getUser = require('./api/getUser.js')(app, models);
-
-// get business
-const getBusiness = require('./api/getBusiness.js')(app, models);
-
-// get job
-const getJob = require('./api/getJob.js')(app, models);
+// get information from db (using businesses for testing)
+const getBusiness = require('./api/getTable.js')(app, models.Businesses);
 
 // load passport strategies
 require('./middleware/passport.js')(passport, models.credentials);
