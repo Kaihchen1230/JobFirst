@@ -19,3 +19,14 @@
 - then create a file named 'config.json'
 
 - need to create a file named '.env' in the project folder. it will contain the sensitive data. ex: secret key to create session
+
+## Testing Tools:
+- Jest: created by Facebook and pre-installed in every create-react-app command
+- Enzyme: created by Airbnb, recommanded by Facebook
+    * require to install Enzyme and enzyme-adapter-react-16
+    * use command: `npm i --save-dev enzyme enzyme-adapter-react-16`
+
+## Naming your testing files as either of the following:
+- xxx.test.js, you can put it anywhere. For this project, we will put all of the testing files, inside of src/testing directory and use this method for the naming.
+- spec.js, if you use this method, please put it in your directory
+
