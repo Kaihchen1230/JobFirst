@@ -27,6 +27,6 @@
     * use command: `npm i --save-dev enzyme enzyme-adapter-react-16`
 
 ## Naming your testing files as either of the following:
-- xxx.test.js, you can put it anywhere. For this project, we will put all of the testing files, inside of src/testing directory and use this method for the naming.
+- xxx.test.js, you can put it anywhere. For this project, we will put all of the testing files, inside of *src/testing directory* and use this method for the naming.
 - spec.js, if you use this method, please put it in your directory
 
