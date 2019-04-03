@@ -38,23 +38,3 @@ const postJob = () => (
 )
 
 export default postJob
-
-// for later
-
-/*
-<p>
-            {isLoggedIn() ? (
-                <>
-                    You are logged in, so check your{" "}
-                    <Link to="/app/profile">profile</Link>
-                </>
-            ) : (
-                <>
-                    You should <Link to="/app/login">log in</Link> to see restricted
-                    content
-                </>
-            )}
-        </p>
-
-
-*/
