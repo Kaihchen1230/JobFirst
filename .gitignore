@@ -1,2 +1,9 @@
 # Don't track content of these folders
 node_modules/
+.vscode
+node_modules
+dist
+*.log
+config/config.json
+.env
+.DS_Store
