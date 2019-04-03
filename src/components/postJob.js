@@ -6,6 +6,15 @@ import React from "react"
 const postJob = () => (
     <>
     <h1>Post a New Job</h1>
+    <form
+      method="post"
+      onSubmit="*"
+    >
+    <label>Employer:
+        <input type="text" name="employer-name" onChange="*"/>
+    </label>
+    
+    </form>
     </>
 
 )
