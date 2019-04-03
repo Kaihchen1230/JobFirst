@@ -1,6 +1,2 @@
-.vscode
-node_modules
-dist
-*.log
-config/config.json
-.env
+# Don't track content of these folders
+node_modules/
