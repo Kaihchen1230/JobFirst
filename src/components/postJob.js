@@ -14,17 +14,23 @@ const postJob = () => (
         <input type="text" name="employer-name" onChange="*"/>
     </label>
 
-    <label>
+    <label>Date Posted:
         <input type="date" name="job-post-date" />
     </label>
 
-    <label>
+    <label>Job Type:
         <input type="text" name="job-type" />
     </label>
 
-    <label>
+    <label>Job Description:
         <input type="text" name="job-description" />
     </label>
+
+    <label>Contact Information:
+        <input type="text" name="job-contact" />
+    </label>
+
+    <input type="submit" value="Log In" />
 
     </form>
     </>
