@@ -13,7 +13,19 @@ const postJob = () => (
     <label>Employer:
         <input type="text" name="employer-name" onChange="*"/>
     </label>
-    
+
+    <label>
+        <input type="date" name="job-post-date" />
+    </label>
+
+    <label>
+        <input type="text" name="job-type" />
+    </label>
+
+    <label>
+        <input type="text" name="job-description" />
+    </label>
+
     </form>
     </>
 
