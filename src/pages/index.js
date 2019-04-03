@@ -20,5 +20,6 @@ export default () => (
         </>
       )}
     </p>
+    <p><Link to="/app/postJob">Click here</Link> to post a new job.</p>
   </Layout>
 )
