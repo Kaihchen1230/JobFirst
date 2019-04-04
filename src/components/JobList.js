@@ -3,6 +3,7 @@ import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 
+const Search = Input.Search;
 const {
     Header, Footer, Sider, Content,
 } = Layout;
@@ -73,6 +74,11 @@ class JobList extends React.Component {
                     </Header>
                     <Layout>
                         <Sider>
+                            <Search
+                            placeholder="input search text"
+                            onSearch={value => console.log(value)}
+                            enterButton
+                            />
                             <Menu
                                 mode="inline"
                                 defaultSelectedKeys={['1']}
