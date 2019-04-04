@@ -1,6 +1,6 @@
 import React from 'react';
 import {generate} from 'randomstring';
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Button } from 'antd';
 
 class JobList extends React.Component{
 
@@ -9,49 +9,62 @@ class JobList extends React.Component{
             {
                 id: generate(10),
                 campanyName: 'Alibaba',
-                description: 'looking for software intern'
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             }, 
             {
                 id: generate(10),
                 campanyName: 'Alibaba',
-                description: 'looking for software intern'
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             },
             {
                 id: generate(10),
                 campanyName: 'Tencent',
-                description: 'looking for software intern'
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             },
             {
                 id: generate(10),
                 campanyName: 'Baidu',
-                description: 'looking for software intern'
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             },
             {
                 id: generate(10),
                 campanyName: 'Ant Fnancial',
-                description: 'looking for software intern'
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             },
             {
                 id: generate(10),
                 campanyName: 'Xiaomi',
-                description: 'looking for software intern'
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             }
             
-
         ]
     }
 
     
 
     render(){
-        return(
-            <div style={{ background: '#ECECEC', padding: '30px' }}>
-    
-            <Col span={8}>
-                <Card title="Card title" bordered={false}>Card content</Card>
+        let jobItem = this.state.jobList.map((item, index) => 
+            <Col span = {8} style = {{margin: '10px 0'}}>
+                <Card title = {item.campanyName} bordered = {true}>
+                    <p>{item.description}</p>
+                    <div align = "center">
+                        <Button type="primary" ghost>Apply</Button>
+                    </div>
+                </Card>
             </Col>
-     
-            </div>
+        );
+        return(
+            <container>
+                
+                <div style={{ background: '#ECECEC', padding: '30px', height: '1000px'}}>
+                <h1 align = "center">Welcome to Our Job Pool</h1>
+                    <Row gutter={16}>
+                    {jobItem}
+                    </Row>
+                    
+                </div>
+            </container>
+            
         );
     }
 }
