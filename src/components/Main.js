@@ -5,15 +5,9 @@ const SubMenu = Menu.SubMenu;
 
 class Main extends React.Component {
     state = {
-        collapsed: false,
+      
       }
-    
-      toggleCollapsed = () => {
-        this.setState({
-          collapsed: !this.state.collapsed,
-        });
-      }
-    
+  
       render() {
         return (
           <div class="container">

@@ -7,6 +7,7 @@ import Login from "../components/login"
 import postJob from "../components/postJob";
 import businessProfile from "../components/businessProfile"
 import JobList from '../components/jobList';
+import Main from '../components/Main'
 import "antd/dist/antd.css";
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <PrivateRoute path="/app/businessProfile" component={businessProfile} />
       <Login path="/app/login" />
       <JobList path="/app/job-list" component={JobList}/>
+      <Main path="/main" component={Main}/>
       <PrivateRoute path="/app/postJob" component={postJob} />
     </Router>
   </Layout>
