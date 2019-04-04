@@ -16,6 +16,7 @@
     "antd": "^3.16.1",
     "gatsby": "^2.3.5",
     "rc-tween-one": "^2.3.4",
+    "randomstring": "^1.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
