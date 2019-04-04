@@ -23,6 +23,7 @@ export default () => {
         <Link to="/">Home</Link>
         {` `}
         <Link to="/app/profile">Profile</Link> 
+        <Link to="/app/businessProfile">businessProfile</Link> 
         {` `}
         {isLoggedIn() ? (
           <a
