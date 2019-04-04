@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "@reach/router"
+import JobDescription from '../components/jobDescription';
 import {generate} from 'randomstring';
 import { Card, Col, Row, Button } from 'antd';
 
@@ -48,7 +50,11 @@ class JobList extends React.Component{
                 <Card title = {item.campanyName} bordered = {true}>
                     <p>{item.description}</p>
                     <div align = "center">
-                        <Button type="primary" ghost>Apply</Button>
+                        <Button type="primary" ghost >
+                            <Link to="/app/job-detail">
+                                apply
+                            </Link>
+                        </Button>
                     </div>
                 </Card>
             </Col>
