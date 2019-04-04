@@ -1,125 +1,72 @@
-import React from "react"
-import { Menu, Icon, Button, Card, Layout, Row, Col, Input, Tabs } from 'antd';
+import React from 'react';
+import {generate} from 'randomstring';
+import { Card, Col, Row, Button } from 'antd';
 
-const SubMenu = Menu.SubMenu;
-const Search = Input.Search;
-const TabPane = Tabs.TabPane;
+class JobList extends React.Component{
 
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+    state = {
+        jobList: [
+            {
+                id: generate(10),
+                campanyName: 'Alibaba',
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
+            }, 
+            {
+                id: generate(10),
+                campanyName: 'Alibaba',
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
+            },
+            {
+                id: generate(10),
+                campanyName: 'Tencent',
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
+            },
+            {
+                id: generate(10),
+                campanyName: 'Baidu',
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
+            },
+            {
+                id: generate(10),
+                campanyName: 'Ant Fnancial',
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
+            },
+            {
+                id: generate(10),
+                campanyName: 'Xiaomi',
+                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
+            }
+            
+        ]
+    }
 
-class JobList extends React.Component {
-  state = {
-    collapsed: false,
-  }
+    
 
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <Layout>
-          <Header>
-            <Row>
-              <Col span={12}>
-              <Tabs defaultActiveKey="1">
-              <TabPane tab="Main Page" key="1">Main Page</TabPane>
-              <TabPane tab="Profile" key="2">Profile</TabPane>
-              <TabPane tab="Login" key="3">Login</TabPane>
-            </Tabs>
-              </Col>
-              <Col span={12}>
-              <Search
-              placeholder="input search text"
-              enterButton="Search"
-              size="large"
-              onSearch={value => console.log(value)}
-            />
-              </Col>
-            </Row>
-          </Header>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Layout>
-              <Sider>
-                <div style={{ width: 256 }}>
-                  <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-                    <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-                  </Button>
-                  <Menu
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    mode="inline"
-                    theme="dark"
-                  >
-                    <Menu.Item key="1">
-
-                      <span>Option 1</span>
-                    </Menu.Item>
-                    <Menu.Item key="2">
-
-                      <span>Option 2</span>
-                    </Menu.Item>
-                    <Menu.Item key="3">
-
-                      <span>Option 3</span>
-                    </Menu.Item>
-                    <SubMenu key="sub1" title={<span>Navigation One</span>}>
-                      <Menu.Item key="5">Option 5</Menu.Item>
-                      <Menu.Item key="6">Option 5</Menu.Item>
-                      <Menu.Item key="7">Option 5</Menu.Item>
-                    </SubMenu>
-                  </Menu>
+    render(){
+        let jobItem = this.state.jobList.map((item, index) => 
+            <Col span = {8} style = {{margin: '10px 0'}}>
+                <Card title = {item.campanyName} bordered = {true}>
+                    <p>{item.description}</p>
+                    <div align = "center">
+                        <Button type="primary" ghost>Apply</Button>
+                    </div>
+                </Card>
+            </Col>
+        );
+        return(
+            <container>
+                
+                <div style={{ background: '#ECECEC', padding: '30px', height: '1000px'}}>
+                <h1 align = "center">Welcome to Our Job Pool</h1>
+                    <Row gutter={16}>
+                    {jobItem}
+                    </Row>
+                    
                 </div>
-              </Sider>
-              <Content style={{ padding: '20px 60px', minHeight: 280 }}>
-                <div>
-                  <Card title="Job title">
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                  </Card>
-                  <Card title="Job title">
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                  </Card>
-                  <Card title="Job title">
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                  </Card>
-                  <Card title="Job title">
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                  </Card>
-                  <Card title="Job title">
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                  </Card>
-                  <Card title="Job title">
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                    <p>Job Content</p>
-                  </Card>
-                </div>
-              </Content>
-            </Layout>
-
-            <Footer>
-
-            </Footer>
-          </Layout>
-        </Layout>
-      </div>
-
-    );
-  }
+            </container>
+            
+        );
+    }
 }
+
 export default JobList;
