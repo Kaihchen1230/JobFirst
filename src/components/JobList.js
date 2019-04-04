@@ -62,16 +62,6 @@ class JobList extends React.Component {
         );
         return (
             <container>
-                <Layout>
-                    <Header>
-                        <Menu
-                            mode="horizontal"
-                            defaultSelectedKeys={['Home']}
-                        >
-                            <Menu.Item key='Home'>Home</Menu.Item>
-                            <Menu.Item key='Login'>Login</Menu.Item>
-                        </Menu>
-                    </Header>
                     <Layout>
                         <Sider>
                             <Search
@@ -99,7 +89,6 @@ class JobList extends React.Component {
                             </div>
                         </Content>
                     </Layout>
-                </Layout>
 
             </container>
 
