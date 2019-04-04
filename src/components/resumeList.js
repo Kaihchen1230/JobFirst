@@ -4,11 +4,11 @@ import { List } from 'antd';
 const MyList = (props) => {
 
     const data = [
-        'Racing car sprays burning fuel into crowd.',
-        'Japanese princess to wed commoner.',
-        'Australian walks 100km after outback crash.',
-        'Man charged over missing wedding girl.',
-        'Los Angeles battles huge wildfires.',
+        'Education: 清华大学',
+        'Highest Degree Obtain: Phd 数学博士学位',
+        'Certificates: ',
+        'Skills: ',
+        'What else: '
     ];
     return (
         <div>
