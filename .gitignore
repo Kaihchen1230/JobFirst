@@ -1,10 +1,6 @@
 packages/*/yarn.lock
 packages/*/package-lock.json
 
-
-#system variable
-.env
-
 # Logs
 logs
 *.log
