@@ -19,7 +19,21 @@ const application = () => (
     </label>
     <br />
     <br />
-    
+    <label htmlFor="">
+        DOB: <input type="Date"/>    
+    </label>
+    <br/>
+    <br/>
+    <label htmlFor="">
+        Gender:
+        <select name="" id="">
+            <option value="Male"Male></option>
+            <option value="Female">Female</option>
+        </select>
+    </label>
+    <br/>
+    <br/>
+
     <label>Email:
         <input type="email" name="job-type" />
     </label>
@@ -30,12 +44,13 @@ const application = () => (
     </label>
     <br />
     <br />
-    <label htmlFor="">
-        
-    </label>
-    <br />
-    <br />
-    <input type="submit" value="Add Job" />
+    <label htmlFor="">self Descriptions</label>
+    <br/>
+    <textarea name="" id="" cols="30" rows="10">
+    </textarea>
+    <br/>
+    <br/>
+    <input type="submit" value="Submit" />
     <br />
     </form>
     </>
