@@ -17,15 +17,21 @@ class Main extends React.Component {
 
   }
 
-
   render() {
     return (
       <container>
+        <Menu
+          mode="horizontal"
+          defaultSelectedKeys={['Jobs']}
+        >
+          <Menu.Item key='Jobs'>Jobs</Menu.Item>
+          <Menu.Item key='Login'>Login</Menu.Item>
+        </Menu>
         <Carousel autoplay>
-          <div><h1 style={bodyStyle}>1</h1></div>
-          <div><h1 style={bodyStyle}>2</h1></div>
-          <div><h1 style={bodyStyle}>3</h1></div>
-          <div><h1 style={bodyStyle}>4</h1></div>
+          <div><h1 style={bodyStyle}>Welcome to JobFirst</h1></div>
+          <div><h1 style={bodyStyle}>Rapid Growth of Chinese Entrepreneurship</h1></div>
+          <div><h1 style={bodyStyle}>Looking for Talents that Speak Chinese</h1></div>
+          <div><h1 style={bodyStyle}>Find the Job that Matches Your Talent</h1></div>
         </Carousel>,
       </container>
     );
