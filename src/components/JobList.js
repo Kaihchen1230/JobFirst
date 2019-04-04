@@ -1,14 +1,14 @@
 import React from 'react';
-import {generate} from 'randomstring';
+import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 
 const {
     Header, Footer, Sider, Content,
-  } = Layout;
-  
+} = Layout;
 
-class JobList extends React.Component{
+
+class JobList extends React.Component {
 
     state = {
         jobList: [
@@ -16,7 +16,7 @@ class JobList extends React.Component{
                 id: generate(10),
                 campanyName: 'Alibaba',
                 description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            }, 
+            },
             {
                 id: generate(10),
                 campanyName: 'Alibaba',
@@ -42,48 +42,61 @@ class JobList extends React.Component{
                 campanyName: 'Xiaomi',
                 description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
             }
-            
+
         ]
     }
 
-    
 
-    render(){
-        let jobItem = this.state.jobList.map((item, index) => 
-            <Col span = {8} style = {{margin: '10px 0'}}>
-                <Card title = {item.campanyName} bordered = {true}>
+
+    render() {
+        let jobItem = this.state.jobList.map((item, index) =>
+            <Col span={8} style={{ margin: '10px 0' }}>
+                <Card title={item.campanyName} bordered={true}>
                     <p>{item.description}</p>
-                    <div align = "center">
+                    <div align="center">
                         <Button type="primary" ghost>Apply</Button>
                     </div>
                 </Card>
             </Col>
         );
-        return(
+        return (
             <container>
                 <Layout>
                     <Header>
                         <Menu
                             mode="horizontal"
-                            defaultSelectedKeys={['2']}
+                            defaultSelectedKeys={['Home']}
                         >
                             <Menu.Item key='Home'>Home</Menu.Item>
                             <Menu.Item key='Login'>Login</Menu.Item>
                         </Menu>
                     </Header>
                     <Layout>
-                        
+                        <Sider>
+                            <Menu
+                                mode="inline"
+                                defaultSelectedKeys={['1']}
+                            >
+                                <Menu.Item key='1'>15 days</Menu.Item>
+                                <Menu.Item key='2'>One month</Menu.Item>
+                                <Menu.Item key='3'>Three month</Menu.Item>
+                                <Menu.Item key='4'>All</Menu.Item>
+                            </Menu>
+                        </Sider>
+                        <Content>
+                            <div style={{ background: '#ECECEC', padding: '30px', height: '1000px' }}>
+                                <h1 align="center">Welcome to Our Job Pool</h1>
+                                <Row gutter={16}>
+                                    {jobItem}
+                                </Row>
+
+                            </div>
+                        </Content>
                     </Layout>
                 </Layout>
-                <div style={{ background: '#ECECEC', padding: '30px', height: '1000px'}}>
-                <h1 align = "center">Welcome to Our Job Pool</h1>
-                    <Row gutter={16}>
-                    {jobItem}
-                    </Row>
-                    
-                </div>
+
             </container>
-            
+
         );
     }
 }
