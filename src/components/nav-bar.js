@@ -24,6 +24,10 @@ export default () => {
         {` `}
         <Link to="/app/profile">Profile</Link> 
         {` `}
+        <Link to="/app/businessProfile">businessProfile</Link> 
+        {` `}
+        <Link to="/app/job-list">Job List</Link>
+        {` `}
         {isLoggedIn() ? (
           <a
             href="/"
