@@ -17,7 +17,7 @@ const App = () => (
       <PrivateRoute path="/app/businessProfile" component={businessProfile} />
       <Login path="/app/login" />
       <JobList path="/app/job-list" component={JobList}/>
-      <Main path="/main" component={Main}/>
+      <Main path="/app/main" component={Main}/>
       <PrivateRoute path="/app/postJob" component={postJob} />
     </Router>
   </Layout>
