@@ -15,7 +15,15 @@ class JobDescription extends React.Component{
                     'Familiarity with working using Machine Learning techniques.',
                     'Naturally curious, detail oriented, passionate about data quality and statistical methods, ability to drive a project to completion.',
                     'Availability full-time June - August 2019 in NYC'
-                ]
+                ], 
+                company: {
+                    name: 'Alibaba',
+                    headquarter: 'Hanzhou, China',
+                    founded: '1923',
+                    industry: 'Enterprise Software & Network',
+                    revenue: '$5 to $10 billion(USD)',
+                    size: '10000+ Employees'
+                }
             }
             
         ]
@@ -29,9 +37,10 @@ class JobDescription extends React.Component{
         return(
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
+                <h5>{this.state.jobDetail[0].company.name}</h5>
                 <Button type="primary" ghost >
-                            <Link to="/app/job-detail">
-                                apply
+                            <Link to="/app/application">
+                                Apply Now
                             </Link>
                 </Button>
                 <Tabs defaultActiveKey="1" stlye = {{display: 'flex !important', width: '30%'}}> 
@@ -56,20 +65,19 @@ class JobDescription extends React.Component{
                     <TabPane tab="Company" key="2">
                     <div>
                             <h2>OverView</h2>
-                            <h3>Description: 
-                                <p> 
-                                    {this.state.jobDetail[0].description}
-                                </p>
-                            </h3>
-                            <h3>
-                                Responsibilities:
-                                <ul>
-                                   {listItems}
-                                </ul>
-                            </h3>
+                            <ul>
+                                <li>Name: {this.state.jobDetail[0].company.name}</li>
+                                <li>headquarter: {this.state.jobDetail[0].company.headquarter}</li>
+                                <li>Founded: {this.state.jobDetail[0].company.founded}</li>
+                                <li>Industry: {this.state.jobDetail[0].company.industry}</li>
+                                <li>revenue: {this.state.jobDetail[0].company.revenue}</li>
+                                <li>Size: {this.state.jobDetail[0].company.size}</li>
+                            </ul>
                         </div>
                     </TabPane>
-                    <TabPane tab="Location" key="3">Content of Tab Pane 3</TabPane>
+                    <TabPane tab="Location" key="3">
+                    85 Broad Street New York, NY 10004
+                    </TabPane>
                 </Tabs>
             </div>
         )

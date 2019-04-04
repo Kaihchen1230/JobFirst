@@ -9,6 +9,7 @@ import businessProfile from "../components/businessProfile"
 import Profile from "./profile";
 import JobList from '../components/jobList';
 import JobDescription from '../components/jobDescription';
+import Application from '../components/application';
 import "antd/dist/antd.css";
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
       <JobDescription path="/app/job-detail"></JobDescription>
       <PrivateRoute path="/app/postJob" component={postJob} />
       <PrivateRoute path="/app/profile" component={Profile} />
+      <PrivateRoute path="/app/application" component={Application} />
     </Router>
   </Layout>
 )
