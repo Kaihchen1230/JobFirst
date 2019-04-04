@@ -1,6 +1,12 @@
 import React from 'react';
 import {generate} from 'randomstring';
-import { Card, Col, Row, Button } from 'antd';
+import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
+import MenuItem from 'antd/lib/menu/MenuItem';
+
+const {
+    Header, Footer, Sider, Content,
+  } = Layout;
+  
 
 class JobList extends React.Component{
 
@@ -55,7 +61,20 @@ class JobList extends React.Component{
         );
         return(
             <container>
-                
+                <Layout>
+                    <Header>
+                        <Menu
+                            mode="horizontal"
+                            defaultSelectedKeys={['2']}
+                        >
+                            <Menu.Item key='Home'>Home</Menu.Item>
+                            <Menu.Item key='Login'>Login</Menu.Item>
+                        </Menu>
+                    </Header>
+                    <Layout>
+                        
+                    </Layout>
+                </Layout>
                 <div style={{ background: '#ECECEC', padding: '30px', height: '1000px'}}>
                 <h1 align = "center">Welcome to Our Job Pool</h1>
                     <Row gutter={16}>
