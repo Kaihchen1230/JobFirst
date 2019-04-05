@@ -5,7 +5,7 @@
  */
 
 import Auth from '@aws-amplify/auth'
-import { setUser } from './src/utils/auth'
+import { setUser } from './src/services/auth'
 
 export const onRouteUpdate = (state, page, pages) => {
   Auth.currentAuthenticatedUser()
