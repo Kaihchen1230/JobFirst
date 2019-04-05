@@ -22,9 +22,9 @@ export default () => {
       <nav>
         <Link to="/">Home</Link>
         {` `}
-        <Link to="/app/profile">Profile</Link> 
+        <Link to="/app/user-profile">Profile</Link> 
         {` `}
-        <Link to="/app/businessProfile">businessProfile</Link> 
+        <Link to="/app/business-profile">businessProfile</Link> 
         {` `}
         <Link to="/app/job-list">Job List</Link>
         {` `}

@@ -11,7 +11,7 @@ export default () => (
       {isLoggedIn() ? (
         <>
           You are logged in, so check your{" "}
-          <Link to="/app/profile">profile</Link>
+          <Link to="/app/user-profile">profile</Link>
         </>
       ) : (
         <>

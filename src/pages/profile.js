@@ -1,6 +1,6 @@
 import React from 'react';
-import MyCard from '../components/card';
-import MyList from '../components/resumeList';
+import MyCard from '../components/user_profile/card';
+import MyList from '../components/user_profile/resumeList';
 
 class Profile extends React.Component{
     render() {
