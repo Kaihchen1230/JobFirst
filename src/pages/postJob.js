@@ -49,6 +49,9 @@ class postJob extends React.Component {
                                 </Tooltip>}
                         />
                     </Form.Item>
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit">Submit Job</Button>
+                    </Form.Item>
                 </Form>
             </div>
         )
