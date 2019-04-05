@@ -5,10 +5,10 @@ export const getUser = () =>
     ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
     : {}
 
-const setUser = user =>
+export const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
-export const handleLogin = ({ username, password }) => {
+export const fakehandleLogin = ({ username, password }) => {
   if (username === `admin` && password === `pass`) {
     return setUser({
       username: `admin`,
@@ -21,12 +21,15 @@ export const handleLogin = ({ username, password }) => {
 }
 
 export const isLoggedIn = () => {
+  // to safeguard the localstorage called in the getuser fucntion
+  if (!isBrowser) return false 
   const user = getUser()
 
-  return !!user.username
+  if (user) return !!user.username
 }
 
 export const logout = callback => {
+  if (!isBrowser) return
   setUser({})
   callback()
 }
