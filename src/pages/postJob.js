@@ -29,14 +29,11 @@ class postJob extends React.Component {
             },
         };
         return (
-            <div>
+            <div className="form">
                 <h1>Post a New Job</h1>
                 <Form {...formItemLayout} onSubmit="*">
-                    <Form.Item
-                        label="E-mail"
-                    >
+                    <Form.Item label="E-mail">
                             <Input />
-                        
                     </Form.Item>
                 </Form>
 
