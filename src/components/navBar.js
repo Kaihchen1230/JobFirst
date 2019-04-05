@@ -28,8 +28,6 @@ const navBar = (props) => {
 
   return (
     <Menu
-      //onClick={this.handleClick}
-      //selectedKeys={[this.state.current]}
       mode="horizontal"
       theme="dark"
     >
