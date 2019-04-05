@@ -1,6 +1,6 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { fakehandleLogin, isLoggedIn } from "../services/auth"
+import { fakehandleLogin, isLoggedIn, setUser } from "../services/auth"
 import { Auth } from "aws-amplify"
 
 class Login extends React.Component {
