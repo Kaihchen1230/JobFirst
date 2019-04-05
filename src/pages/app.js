@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import PrivateRoute from "../components/privateRoute"
 //import Welcome from "../components/welcome"
 import Login from "../components/login"
-import postJob from "../components/postJob";
+import postJob from "../pages/postJob";
 import businessProfile from "../components/businessProfile"
 import Main from '../components/Main'
 import Profile from "./profile";

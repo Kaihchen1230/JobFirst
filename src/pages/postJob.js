@@ -42,7 +42,7 @@ class postJob extends React.Component {
             </form>
             </div>
         )
-}
+    }
 }
 
 export default postJob;
