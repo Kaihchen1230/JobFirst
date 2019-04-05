@@ -28,6 +28,8 @@ export default () => {
         {` `}
         <Link to="/app/job-list">Job List</Link>
         {` `}
+        <Link to="/app/postJob">Post a New Job</Link>
+        {` `}
         {isLoggedIn() ? (
           <a
             href="/"
