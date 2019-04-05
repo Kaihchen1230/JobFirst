@@ -15,7 +15,10 @@
   "dependencies": {
     "antd": "^3.16.1",
     "aws-amplify": "^1.1.24",
+<<<<<<< HEAD
     "aws-amplify-react": "^2.3.4",
+=======
+>>>>>>> 9203fe8592c5dbfb71a2100742f52a4f72b9c65c
     "gatsby": "^2.3.5",
     "randomstring": "^1.1.5",
     "rc-tween-one": "^2.3.4",
