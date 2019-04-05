@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, navigate } from "gatsby"
 import { getUser, isLoggedIn, logout } from "../services/auth"
+import { Auth } from "aws-amplify";
 
 export default () => {
   const content = { message: "", login: true }
@@ -33,7 +34,9 @@ export default () => {
             href="/"
             onClick={event => {
               event.preventDefault()
-              logout(() => navigate(`/app/login`))
+              Auth.signOut()
+              .then(logout(() => navigate(`/app/login`)))
+              .catch(err => console.log('error: ', err ))
             }}
           >
             Logout
