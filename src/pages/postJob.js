@@ -2,7 +2,7 @@ import React from "react"
 //import { navigate } from "gatsby"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
-import { Form, Icon, Input, Button, Tooltip } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, DatePicker } from 'antd';
 import "../style/postJob.css";
 
 class postJob extends React.Component {
@@ -17,7 +17,11 @@ class postJob extends React.Component {
                             suffix={
                                 <Tooltip title="Extra information">
                                     <Icon type="info-circle" />
-                                </Tooltip>} />
+                                </Tooltip>} 
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <DatePicker placeholder="Date Posted On"/>
                     </Form.Item>
                 </Form>
 
@@ -25,14 +29,7 @@ class postJob extends React.Component {
                     method="post"
                     onSubmit="*"
                 >
-                    <label>Employer:
-                    <input type="text" name="employer-name" onChange="*" />
-                    </label>
-                    <br />
-                    <br />
-                    <label>Date Posted:
-                    <input type="date" name="job-post-date" />
-                    </label>
+                    
                     <br />
                     <br />
                     <label>Job Type:
