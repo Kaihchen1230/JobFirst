@@ -2,10 +2,13 @@ import React from "react"
 //import { navigate } from "gatsby"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
-import { Form, Icon, Input, Button, Tooltip, DatePicker } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import "../style/postJob.css";
 
+const Option = Select.Option;
+
 class postJob extends React.Component {
+
     render() {
         return (
             <div className="form">
@@ -15,13 +18,21 @@ class postJob extends React.Component {
                         <Input placeholder="Enter Employer Name"
                             prefix={<Icon type="user" />}
                             suffix={
-                                <Tooltip title="Extra information">
+                                <Tooltip title="Name of the Employer">
                                     <Icon type="info-circle" />
-                                </Tooltip>} 
+                                </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
-                        <DatePicker placeholder="Date Posted On"/>
+                        <DatePicker placeholder="Date Posted On" />
+                    </Form.Item>
+                    <Form.Item>
+                        <Select placeholder="Job Type">
+                            <Option value="Full Time">Full Time</Option>
+                            <Option value="Part Time">Part Time</Option>
+                            <Option value="Internship">Internship</Option>
+                            <Option value="Temporary">Temporary</Option>
+                        </Select>
                     </Form.Item>
                 </Form>
 
@@ -29,7 +40,7 @@ class postJob extends React.Component {
                     method="post"
                     onSubmit="*"
                 >
-                    
+
                     <br />
                     <br />
                     <label>Job Type:
