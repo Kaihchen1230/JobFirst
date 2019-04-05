@@ -4,6 +4,10 @@ import { getUser, isLoggedIn } from "../services/auth"
 
 import Layout from "../components/layout"
 
+import Amplify from 'aws-amplify'
+import config from '../aws-exports'
+Amplify.configure(config)
+
 export default () => (
   <Layout>
     <h1> {isLoggedIn() ? "Hello " + getUser().name : "Please Login"}!</h1>
