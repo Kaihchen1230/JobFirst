@@ -2,6 +2,7 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import { Auth } from 'aws-amplify';
 import Error from './Error'
+import { isLoggedIn } from '../../services/auth';
 
 class Signup extends React.Component {
     state = {
@@ -60,7 +61,6 @@ class Signup extends React.Component {
                                 placeholder='Username'
                                 name='username'
                                 value={this.state.username}
-                                style={styles.input}
                             />
                             <input
                                 onChange={this.handleUpdate}
@@ -68,21 +68,18 @@ class Signup extends React.Component {
                                 name='password'
                                 value={this.state.password}
                                 type='password'
-                                style={styles.input}
                             />
                             <input
                                 onChange={this.handleUpdate}
                                 placeholder='Email'
                                 name='email'
                                 value={this.state.email}
-                                style={styles.input}
                             />
                             <input
                                 onChange={this.handleUpdate}
                                 placeholder='Phone Number'
                                 name='phone_number'
                                 value={this.state.phone_number}
-                                style={styles.input}
                             />
                             <div onClick={this.signUp}>
                                 <span>Sign Up</span>
@@ -99,7 +96,6 @@ class Signup extends React.Component {
                                 placeholder='Authorization Code'
                                 name='authCode'
                                 value={this.state.authCode}
-                                style={styles.input}
                             />
                             <div onClick={this.confirmSignUp}>
                                 <span>Confirm Sign Up</span>

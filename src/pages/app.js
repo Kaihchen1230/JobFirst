@@ -10,6 +10,7 @@ import Profile from "./profile";
 import JobList from '../components/jobList';
 import JobDescription from '../components/jobDescription';
 import Application from '../components/form/application';
+import SignUp from '../components/authentication/signup';
 import "antd/dist/antd.css";
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
       <PrivateRoute path="/app/user-profile"     component={Profile} />
       <PrivateRoute path="/app/application"      component={Application} />
       <Login        path="/app/login" />
+      <SignUp       path="/app/signup" />
       <JobList      path="/app/job-list" />
       <Main         path="/app/main" />
       <JobDescription path="/app/job-detail" />

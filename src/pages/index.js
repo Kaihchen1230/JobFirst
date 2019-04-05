@@ -10,7 +10,7 @@ Amplify.configure(config)
 
 export default () => (
   <Layout>
-    <h1> {isLoggedIn() ? "Hello " + getUser().name : "Please Login"}!</h1>
+    <h1> {isLoggedIn() ? "Hello " + getUser().username : "Please Login"}!</h1>
     <p>
       {isLoggedIn() ? (
         <>

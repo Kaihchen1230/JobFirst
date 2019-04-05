@@ -18,7 +18,8 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    fakehandleLogin(this.state)
+    //fakehandleLogin(this.state)
+    this.handleLogin()
   }
 
   handleLogin = async() => {

@@ -5,7 +5,7 @@ export const getUser = () =>
     ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
     : {}
 
-const setUser = user =>
+export const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
 export const fakehandleLogin = ({ username, password }) => {
@@ -25,7 +25,7 @@ export const isLoggedIn = () => {
   if (!isBrowser) return false 
   const user = getUser()
 
-  return !!user.username
+  if (user) return !!user.username
 }
 
 export const logout = callback => {
