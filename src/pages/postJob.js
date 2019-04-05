@@ -2,38 +2,22 @@ import React from "react"
 //import { navigate } from "gatsby"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Tooltip } from 'antd';
+import "../style/postJob.css";
 
 class postJob extends React.Component {
     render() {
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 16 },
-            },
-        };
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
         return (
             <div className="form">
                 <h1>Post a New Job</h1>
-                <Form {...formItemLayout} onSubmit="*">
-                    <Form.Item label="E-mail">
-                            <Input />
+                <Form onSubmit="*" className="main-form">
+                    <Form.Item>
+                        <Input placeholder="Enter Employer Name"
+                            prefix={<Icon type="user" />}
+                            suffix={
+                                <Tooltip title="Extra information">
+                                    <Icon type="info-circle" />
+                                </Tooltip>} />
                     </Form.Item>
                 </Form>
 
