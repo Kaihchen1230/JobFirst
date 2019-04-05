@@ -36,29 +36,20 @@ class postJob extends React.Component {
                         </Select>
                     </Form.Item>
                     <Form.Item>
-                        <TextArea placeholder="Autosize height with minimum and maximum number of lines" autosize={{ minRows: 2, maxRows: 6 }} />
+                        <TextArea
+                            placeholder="Enter Job Description" autosize={{ minRows: 2, maxRows: 6 }}
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <Input placeholder="(###) ###-####"
+                            prefix={<Icon type="contacts" />}
+                            suffix={
+                                <Tooltip title="Enter the contact number of the employer.">
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
                     </Form.Item>
                 </Form>
-
-                <form
-                    method="post"
-                    onSubmit="*"
-                >
-                    <br />
-                    <br />
-                    <label>Job Description:
-                    <input type="text" name="job-description" />
-                    </label>
-                    <br />
-                    <br />
-                    <label>Contact Information:
-                    <input type="text" name="job-contact" />
-                    </label>
-                    <br />
-                    <br />
-                    <input type="submit" value="Add Job" />
-                    <br />
-                </form>
             </div>
         )
     }
