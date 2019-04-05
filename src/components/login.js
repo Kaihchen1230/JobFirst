@@ -1,11 +1,13 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { handleLogin, isLoggedIn } from "../services/auth"
+import { fakehandleLogin, isLoggedIn } from "../services/auth"
+import { Auth } from "aws-amplify"
 
 class Login extends React.Component {
   state = {
     username: ``,
     password: ``,
+    error: ``
   }
 
   handleUpdate = event => {
@@ -16,7 +18,24 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    handleLogin(this.state)
+    fakehandleLogin(this.state)
+  }
+
+  handleLogin = async() => {
+    const { username, password } = this.state;
+    try {
+      await Auth.signIn(username, password)
+      const user = await Auth.currentAuthenticatedUser()
+      const userInfo = {
+        ...user.attribtues,
+        username: user.username
+      }
+      setUser(userInfo)
+      navigate("/app/user-profile")
+    } catch (err) {
+      this.setState({ error: err })
+      console.log('error....: ', err)
+    }
   }
 
   render() {
@@ -31,7 +50,6 @@ class Login extends React.Component {
           method="post"
           onSubmit={event => {
             this.handleSubmit(event)
-            navigate(`/app/user-profile`)
           }}
         >
           <label>
