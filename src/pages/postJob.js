@@ -6,6 +6,7 @@ import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import "../style/postJob.css";
 
 const Option = Select.Option;
+const { TextArea } = Input;
 
 class postJob extends React.Component {
 
@@ -18,7 +19,7 @@ class postJob extends React.Component {
                         <Input placeholder="Enter Employer Name"
                             prefix={<Icon type="user" />}
                             suffix={
-                                <Tooltip title="Name of the Employer">
+                                <Tooltip title="Enter the name of the employer.">
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
@@ -34,18 +35,15 @@ class postJob extends React.Component {
                             <Option value="Temporary">Temporary</Option>
                         </Select>
                     </Form.Item>
+                    <Form.Item>
+                        <TextArea placeholder="Autosize height with minimum and maximum number of lines" autosize={{ minRows: 2, maxRows: 6 }} />
+                    </Form.Item>
                 </Form>
 
                 <form
                     method="post"
                     onSubmit="*"
                 >
-
-                    <br />
-                    <br />
-                    <label>Job Type:
-                    <input type="text" name="job-type" />
-                    </label>
                     <br />
                     <br />
                     <label>Job Description:
