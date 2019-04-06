@@ -1,5 +1,5 @@
 import React from "react"
-import { getUser } from "../services/auth"
+// import { getUser } from "../../services/auth"
 import {
      Select,Timeline, Row, Col, Button, Card
   } from 'antd';

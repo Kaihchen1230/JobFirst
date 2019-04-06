@@ -1,17 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
 import { getUser, isLoggedIn } from "../services/auth"
-
 import Layout from "../components/layout"
+import Amplify from 'aws-amplify'
+import config from '../aws-exports'
+Amplify.configure(config)
 
 export default () => (
   <Layout>
-    <h1> {isLoggedIn() ? "Hello " + getUser().name : "Please Login"}!</h1>
+    <h1> {isLoggedIn() ? "Hello " + getUser().username : "Please Login"}!</h1>
     <p>
       {isLoggedIn() ? (
         <>
           You are logged in, so check your{" "}
-          <Link to="/app/profile">profile</Link>
+          <Link to="/app/user-profile">profile</Link>
         </>
       ) : (
         <>
