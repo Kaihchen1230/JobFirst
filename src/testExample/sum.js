@@ -1,5 +1,5 @@
-//for test
-function sum(a, b) {
+// @flow
+function sum(a: number, b: number) {
     return a + b;
   }
   module.exports = sum;
