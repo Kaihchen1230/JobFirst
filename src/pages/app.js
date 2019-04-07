@@ -3,7 +3,7 @@ import { Router } from "@reach/router"
 import Layout from "../components/layout"
 import PrivateRoute from "../components/authentication/privateRoute"
 import Login from "../components/authentication/login"
-import businessProfile from "../components/business_profile/businessProfile"
+import businessProfile from "./businessProfile"
 import postJob from "./postJob";
 import Main from '../components/Main'
 import Profile from "./profile";
