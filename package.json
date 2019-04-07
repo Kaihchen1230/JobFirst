@@ -10,7 +10,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "jest"
   },
   "dependencies": {
     "antd": "^3.16.1",
@@ -23,7 +23,9 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "prettier": "^1.16.4"
+    "jest": "^24.7.1",
+    "prettier": "^1.16.4",
+    "react-test-renderer": "^16.8.6"
   },
   "repository": {
     "type": "git",
