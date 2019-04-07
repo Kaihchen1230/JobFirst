@@ -11,21 +11,20 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "jest",
-    "flow":"flow"
+    "flow": "flow"
   },
   "dependencies": {
     "antd": "^3.16.1",
     "aws-amplify": "^1.1.24",
     "aws-amplify-react": "^2.3.4",
-    "flow-bin": "^0.96.0",
     "gatsby": "^2.3.5",
     "randomstring": "^1.1.5",
     "rc-tween-one": "^2.3.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
-    
   },
   "devDependencies": {
+    "flow-bin": "^0.96.0",
     "jest": "^24.7.1",
     "prettier": "^1.16.4",
     "react-test-renderer": "^16.8.6"
