@@ -139,7 +139,11 @@
 							"Arn"
 						]
 					},
+<<<<<<< HEAD
+					"env": "sidenv"
+=======
 					"env": "kappaen"
+>>>>>>> origin/frontend-branch
 				}
 			}
 		}

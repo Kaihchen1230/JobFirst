@@ -56,6 +56,7 @@ class JobList extends React.Component {
                 <Card title={item.campanyName} bordered={true}>
                     <p>{item.description}</p>
                     <div align="center">
+                        <Button type="primary" ghost>Apply</Button>
                         <Button type="primary" ghost>
                         <Link to="/app/job-detail">Learn More</Link>
                         </Button>
