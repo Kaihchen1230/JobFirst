@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "@reach/router"
 import { Tabs, Button } from 'antd';
 import JobDetails from './job_description/jobDetails';
+import Location from './job_description/location';
 import CompanyDetail from './job_description/companyDetail';
 const TabPane = Tabs.TabPane;
 
@@ -69,7 +70,7 @@ class JobDescription extends React.Component{
                         </div>
                     </TabPane>
                     <TabPane tab="Location" key="3">
-                     
+                        <Location locationInfo = {this.state.location}></Location>
                     </TabPane>
                 </Tabs>
             </div>
