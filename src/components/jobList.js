@@ -56,6 +56,12 @@ class JobList extends React.Component {
                     <p>{item.description}</p>
                     <div align="center">
                         <Button type="primary" ghost>Apply</Button>
+<<<<<<< HEAD
+=======
+                        <Button type="primary" ghost>
+                        <Link to="/app/job-detail">Learn More</Link>
+                        </Button>
+>>>>>>> e682742edcd4d9558fe751a1d8ed1130f6fc6760
                     </div>
                 </Card>
             </Col>
