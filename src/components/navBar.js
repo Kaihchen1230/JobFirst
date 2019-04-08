@@ -57,7 +57,6 @@ const navBar = (props) => {
             <Icon type="close-circle" theme="twoTone" />Logout
           </Menu.Item>
       ) : null}
-
     </Menu>
   );
 }

@@ -14,3 +14,6 @@ Run Once to setup the aws:
 ### sign up:
 the format for phone number __has to be__: +11234567890
 password __must include__: Uppercase, lowercase, number and symbol
+
+### test:
+Run npm test or npm test -- -- watch
