@@ -20,6 +20,7 @@ const jobDetails = (props) => {
             </ul>
         </div>
     )
+    console.log('1111 ' + jobInfo);
     
 
     return(
@@ -31,16 +32,3 @@ const jobDetails = (props) => {
 }
 
 export default jobDetails;
-
-{/* <h2>{this.state.jobDetail.title}, New York</h2>
-<h3>Description: 
-    <p> 
-        {this.state.jobDetail.description}
-    </p>
-</h3>
-<h3>
-    Responsibilities:
-    <ul>
-       {listItems}
-    </ul>
-</h3> */}

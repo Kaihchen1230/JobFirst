@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "@reach/router"
 import { Tabs, Button } from 'antd';
 import JobDetails from './job_description/jobDetails';
-import Company from './job_description/companyDetail';
+import CompanyDetail from './job_description/companyDetail';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -22,39 +22,40 @@ class JobDescription extends React.Component{
             }
                 
         ], 
-        company: [{
-                    name: 'Alibaba',
-                    headquarter: 'Hanzhou, China',
-                    founded: '1923',
-                    industry: 'Enterprise Software & Network',
-                    revenue: '$5 to $10 billion(USD)',
-                    size: '10000+ Employees'
-                }],
-        location: [{
-            street1: '85 Broad Street',
-            city: 'New York',
-            state: 'NY',
-            zipCode: 11225
-        }]
+        'company':[
+            {
+                name: 'Alibaba',
+                headquarter: 'Hanzhou, China',
+                founded: '1923',
+                industry: 'Enterprise Software & Network',
+                revenue: '$5 to $10 billion(USD)',
+                size: '10000+ Employees'
+            }
+        ],
+        'location': [
+            {
+                street1: '85 Broad Street',
+                city: 'New York',
+                state: 'NY',
+                zipCode: 11225
+            }
+        ]
     }
             
-    
-       
-
     render(){
 
         
         
         return(
             <div>
-                <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail.title}</h2>
-                <h5>{this.state.company.name}</h5>
+                <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
+                <h4>{this.state['company'][0].name}</h4>
                 <Button type="primary" ghost >
                             <Link to="/app/application">
                                 Apply No
                             </Link>
                 </Button>
-                <Tabs defaultActiveKey="1" stlye = {{display: 'flex !important', width: '30%'}}> 
+                <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>
                             <JobDetails jobInfo = {this.state.jobDetail}></JobDetails>
@@ -64,16 +65,7 @@ class JobDescription extends React.Component{
                     </TabPane>
                     <TabPane tab="Company" key="2">
                     <div>
-                            {/* <h2>OverView</h2>
-                            <ul>
-                                <li>Name: {this.state.company.name}</li>
-                                <li>headquarter: {this.state.company.headquarter}</li>
-                                <li>Founded: {this.state.company.founded}</li>
-                                <li>Industry: {this.state.company.industry}</li>
-                                <li>revenue: {this.state.company.revenue}</li>
-                                <li>Size: {this.state.company.size}</li>
-                            </ul> */}
-                            <companyDetail companyInfo = {this.state.Company}></companyDetail>
+                        <CompanyDetail companyInfo = {this.state['company']}></CompanyDetail>
                         </div>
                     </TabPane>
                     <TabPane tab="Location" key="3">
