@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "@reach/router"
 import { Tabs, Button } from 'antd';
-import JobDetails from './job_description/jobDetails';
-import Location from './job_description/location';
-import CompanyDetail from './job_description/companyDetail';
+import JobDetails from '../components/job_description/jobDetails';
+import Location from '../components/job_description/location';
+import CompanyDetail from '../components/job_description/companyDetail';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -45,15 +45,13 @@ class JobDescription extends React.Component{
             
     render(){
 
-        
-        
         return(
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
                 <h4>{this.state['company'][0].name}</h4>
                 <Button type="primary" ghost >
                             <Link to="/app/application">
-                                Apply No
+                                Apply Now
                             </Link>
                 </Button>
                 <Tabs defaultActiveKey="1" > 
@@ -61,14 +59,14 @@ class JobDescription extends React.Component{
                         <div>
                             <JobDetails jobInfo = {this.state.jobDetail}></JobDetails>
                         </div>
-                        
-                    
+            
                     </TabPane>
                     <TabPane tab="Company" key="2">
                     <div>
                         <CompanyDetail companyInfo = {this.state['company']}></CompanyDetail>
                         </div>
                     </TabPane>
+
                     <TabPane tab="Location" key="3">
                         <Location locationInfo = {this.state.location}></Location>
                     </TabPane>
