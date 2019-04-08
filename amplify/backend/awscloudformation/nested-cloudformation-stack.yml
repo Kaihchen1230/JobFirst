@@ -81,7 +81,7 @@
 		"authcognitoce7d2c6b": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/jobfirst-20190406112010-deployment/amplify-cfn-templates/auth/cognitoce7d2c6b-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/jobfirst-20190405233703-deployment/amplify-cfn-templates/auth/cognitoce7d2c6b-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognitoce7d2c6b_identitypool_ce7d2c6b",
 					"allowUnauthenticatedIdentities": false,
@@ -139,7 +139,11 @@
 							"Arn"
 						]
 					},
+<<<<<<< HEAD
 					"env": "sidenv"
+=======
+					"env": "kappaen"
+>>>>>>> origin/frontend-branch
 				}
 			}
 		}
