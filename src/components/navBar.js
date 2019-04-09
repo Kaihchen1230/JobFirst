@@ -1,6 +1,6 @@
 import React from "react"
-import { Link, navigate } from "gatsby"
-import { getUser, isLoggedIn, logout } from "../services/auth"
+import { Link, navigate } from "gatsby";
+import { getUser, isLoggedIn, logout } from '../services/auth';
 import { Auth } from "aws-amplify";
 import { Menu, Icon, Avatar } from 'antd';
 
@@ -33,9 +33,11 @@ const navBar = (props) => {
     >
       <Menu.Item key="home">
         <Icon type="home" theme="twoTone" />Home
+        <Link to="/app/main"></Link> 
         </Menu.Item>
       <Menu.Item key="about">
-        <Icon type="profile" theme="twoTone" />About us
+        <Icon type="profile" theme="twoTone" />View Job
+        <Link to="/app/job-list"></Link>
         </Menu.Item>
       <Menu.Item key="contact">
         <Icon type="mail" theme="twoTone" />Contact us

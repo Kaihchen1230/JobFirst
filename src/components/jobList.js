@@ -2,6 +2,7 @@ import React from 'react';
 import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
+import { Link, navigate } from "gatsby";
 
 const Search = Input.Search;
 const {
@@ -55,7 +56,6 @@ class JobList extends React.Component {
                 <Card title={item.campanyName} bordered={true}>
                     <p>{item.description}</p>
                     <div align="center">
-                        <Button type="primary" ghost>Apply</Button>
                         <Button type="primary" ghost>
                         <Link to="/app/job-detail">Learn More</Link>
                         </Button>

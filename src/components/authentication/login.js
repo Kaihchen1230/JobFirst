@@ -3,8 +3,9 @@ import { navigate } from "gatsby"
 import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
 import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
+import { withAuthenticator } from 'aws-amplify-react'
 import dict from '../dictionary/dictionary'
-I18n.putVocabularies(dict);
+
 
 class Login extends React.Component {
   state = {
@@ -88,4 +89,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default Login;
