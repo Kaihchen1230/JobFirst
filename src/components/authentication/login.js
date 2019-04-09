@@ -89,4 +89,4 @@ class Login extends React.Component {
   }
 }
 
-export default withAuthenticator(Login, true);
+export default Login;
