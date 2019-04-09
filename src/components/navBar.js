@@ -41,7 +41,6 @@ const navBar = (props) => {
         </Menu.Item>
       <Menu.Item key="contact">
         <Icon type="mail" theme="twoTone" />Contact us
-        <Link to="app/job-detail"></Link>
         </Menu.Item>
       <Menu.Item key="register">
         <Icon type="mail" theme="twoTone" />Register
