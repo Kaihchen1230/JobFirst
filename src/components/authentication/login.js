@@ -1,13 +1,17 @@
 import React from "react"
 import { navigate } from "gatsby"
 import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
+import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
+import dict from '../dictionary/dictionary'
+I18n.putVocabularies(dict);
 
 class Login extends React.Component {
   state = {
     username: ``,
     password: ``,
-    error: ``
+    error: ``,
+    language:'ch'
   }
 
   handleUpdate = event => {
@@ -43,10 +47,22 @@ class Login extends React.Component {
     if (isLoggedIn()) {
       navigate(`/app/user-profile`)
     }
-
+    I18n.setLanguage(this.state.language);
     return (
       <>
         <h1>Log in</h1>
+        <div>
+          <button onClick={()=>{
+            this.setState({language:'es'});       
+          }}> 
+            ENGLISH
+          </button> 
+          <button onClick={()=>{
+            this.setState({language:'ch'});
+          }}> 
+           中文
+          </button> 
+       </div>
         <form
           method="post"
           onSubmit={event => {
@@ -54,11 +70,11 @@ class Login extends React.Component {
           }}
         >
           <label>
-            Username
+          {I18n.get('username')}
             <input type="text" name="username" onChange={this.handleUpdate} />
           </label>
           <label>
-            Password
+          {I18n.get('password')}
             <input
               type="password"
               name="password"
