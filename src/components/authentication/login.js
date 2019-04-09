@@ -1,7 +1,13 @@
 import React from "react"
 import { navigate } from "gatsby"
 import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
+import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
+import dict from '../dictionary/dictionary'
+
+I18n.putVocabularies(dict);
+I18n.setLanguage('ch');
+
 
 class Login extends React.Component {
   state = {
@@ -54,11 +60,11 @@ class Login extends React.Component {
           }}
         >
           <label>
-            Username
+          {I18n.get('username')}
             <input type="text" name="username" onChange={this.handleUpdate} />
           </label>
           <label>
-            Password
+          {I18n.get('password')}
             <input
               type="password"
               name="password"

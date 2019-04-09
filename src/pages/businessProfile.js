@@ -6,9 +6,7 @@ import { I18n } from 'aws-amplify';
 import dict from '../components/dictionary/dictionary'
 
 I18n.putVocabularies(dict);
-I18n.setLanguage('fr');
-
-
+I18n.setLanguage('ch');
 
 let bodyStyle={
   justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
@@ -21,7 +19,7 @@ class businessProfile extends React.Component {
 
     return (
       <div style={bodyStyle}>
-      <h1>Company: aplipapa{I18n.get('Sign In')};</h1>
+      <h1>Company: aplipap;</h1>
       <Card/>
       <h2>Location:NY USA</h2>
       <h1>About us</h1>
