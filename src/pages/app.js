@@ -8,7 +8,7 @@ import postJob from "./postJob";
 import Main from '../components/Main'
 import Profile from "./profile";
 import JobList from '../components/jobList';
-import JobDescription from '../components/jobDescription';
+import JobDescription from './jobDescription';
 import Application from '../components/form/application';
 import SignUp from '../components/authentication/signup';
 import "antd/dist/antd.css";
@@ -27,6 +27,6 @@ const App = () => (
       <JobDescription path="/app/job-detail" />
     </Router>
   </Layout>
-)
+);
 
-export default App
+export default App;

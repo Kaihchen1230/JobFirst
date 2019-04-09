@@ -2,6 +2,7 @@ import React from "react"
 import { navigate } from "gatsby"
 import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
 import { Auth } from "aws-amplify"
+import { withAuthenticator } from 'aws-amplify-react'
 
 class Login extends React.Component {
   state = {
@@ -72,4 +73,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default withAuthenticator(Login, true);
