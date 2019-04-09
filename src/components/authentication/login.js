@@ -52,7 +52,6 @@ class Login extends React.Component {
       <>
         <h1>Log in</h1>
         <div>
-            {I18n.get('Sign In')}
           <button onClick={()=>{
             this.setState({language:'es'});       
           }}> 
