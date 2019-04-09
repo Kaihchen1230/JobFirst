@@ -2,7 +2,7 @@ import React from 'react';
 import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
-
+import { Link, navigate } from "gatsby";
 
 const Search = Input.Search;
 const {
