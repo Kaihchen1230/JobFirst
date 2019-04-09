@@ -8,7 +8,7 @@ import postJob from "./postJob";
 import Main from '../components/Main'
 import Profile from "./profile";
 import JobList from '../components/jobList';
-import JobDescription from '../pages/jobDescription';
+import JobDescription from './jobDescription';
 import Application from '../components/form/application';
 import SignUp from '../components/authentication/signup';
 import "antd/dist/antd.css";
@@ -23,10 +23,10 @@ const App = () => (
       <Login        path="/app/login" />
       <SignUp       path="/app/signup" />
       <JobList      path="/app/job-list" />
-      <Main         path="/app/main" />
-      <JobDescription path="/app/job-detail" />
+      <Main         path="/app/main" component={Main}/>
+      <JobDescription path="/app/job-detail"/>
     </Router>
   </Layout>
-)
+);
 
-export default App
+export default App;
