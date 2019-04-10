@@ -13,13 +13,19 @@ exports[`snapshot test should render Header correctly 1`] = `
       type="home"
     />
     Home
+    <ForwardRef
+      to="/app/main"
+    />
   </MenuItem>
   <MenuItem>
     <Icon
       theme="twoTone"
       type="profile"
     />
-    About us
+    View Job
+    <ForwardRef
+      to="/app/job-list"
+    />
   </MenuItem>
   <MenuItem>
     <Icon
@@ -34,6 +40,16 @@ exports[`snapshot test should render Header correctly 1`] = `
       type="mail"
     />
     Register
+  </MenuItem>
+  <MenuItem>
+    <Icon
+      theme="twoTone"
+      type="profile"
+    />
+    Post a New Job
+    <ForwardRef
+      to="/app/postJob"
+    />
   </MenuItem>
   <MenuItem>
     <ForwardRef
