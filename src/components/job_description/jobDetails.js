@@ -1,5 +1,5 @@
 import React from 'react';
-
+import jobDetail from '../../pages/jobDescription';
 const jobDetails = (props) => {
 
     let jobInfo = [...props.jobInfo];
@@ -20,7 +20,7 @@ const jobDetails = (props) => {
             </ul>
         </div>
     )
-    console.log('1111 ' + jobInfo);
+    console.log({jobDetail});
     
 
     return(
