@@ -12,7 +12,8 @@ class PostJob extends React.Component {
 
     render() {
         return (
-            <div className="form">
+            <div align="center">
+                <br />
                 <h1>Post a New Job</h1>
                 <Form onSubmit="*" className="main-form">
                     <Form.Item>
