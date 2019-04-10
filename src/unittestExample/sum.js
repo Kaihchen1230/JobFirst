@@ -1,6 +1,6 @@
 //@flow
-function sum(a: number, b: number) {
-    return a + b;
-}gfg
+function sum(a, b) {
+  return a + b;
+}
 
 export default sum;

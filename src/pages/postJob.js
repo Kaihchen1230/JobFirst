@@ -3,16 +3,17 @@ import React from "react"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
-import "../style/postJob.css";
+//import "../style/postJob.css";
 
 const Option = Select.Option;
 const { TextArea } = Input;
 
-class postJob extends React.Component {
+class PostJob extends React.Component {
 
     render() {
         return (
-            <div className="form">
+            <div align="center">
+                <br />
                 <h1>Post a New Job</h1>
                 <Form onSubmit="*" className="main-form">
                     <Form.Item>
@@ -58,4 +59,4 @@ class postJob extends React.Component {
     }
 }
 
-export default postJob;
+export default PostJob;
