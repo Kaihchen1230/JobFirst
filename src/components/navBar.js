@@ -34,17 +34,21 @@ const navBar = (props) => {
       <Menu.Item key="home">
         <Icon type="home" theme="twoTone" />Home
         <Link to="/app/main"></Link> 
-        </Menu.Item>
+      </Menu.Item>
       <Menu.Item key="about">
         <Icon type="profile" theme="twoTone" />View Job
         <Link to="/app/job-list"></Link>
-        </Menu.Item>
+      </Menu.Item>
       <Menu.Item key="contact">
         <Icon type="mail" theme="twoTone" />Contact us
-        </Menu.Item>
+      </Menu.Item>
       <Menu.Item key="register">
         <Icon type="mail" theme="twoTone" />Register
-        </Menu.Item>
+      </Menu.Item>
+      <Menu.Item>
+        <Icon type="profile" theme="twoTone" />Post a New Job
+        <Link to="/app/postJob"></Link>
+      </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/user-profile">{state.login}</Link>
       </Menu.Item>
