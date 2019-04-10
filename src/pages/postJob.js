@@ -8,7 +8,7 @@ import "../style/postJob.css";
 const Option = Select.Option;
 const { TextArea } = Input;
 
-class postJob extends React.Component {
+class PostJob extends React.Component {
 
     render() {
         return (
@@ -58,4 +58,4 @@ class postJob extends React.Component {
     }
 }
 
-export default postJob;
+export default PostJob;
