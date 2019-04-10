@@ -3,7 +3,7 @@ import React from "react"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
-import "../style/postJob.css";
+//import "../style/postJob.css";
 
 const Option = Select.Option;
 const { TextArea } = Input;
