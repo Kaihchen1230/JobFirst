@@ -3,6 +3,7 @@ import { navigate } from "gatsby"
 import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
 import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
+import LanguageButton from "./languageButton";
 import { withAuthenticator } from 'aws-amplify-react'
 
 class Login extends React.Component {
@@ -10,10 +11,11 @@ class Login extends React.Component {
     username: ``,
     password: ``,
     error: ``,
-    language:'es'
+    language:'ch'
   }
 
   handleUpdate = event => {
+    console.log("update happen",event.target.name,event.target.value);
     this.setState({
       [event.target.name]: event.target.value,
     })
@@ -52,7 +54,7 @@ class Login extends React.Component {
     return (
       <>
         <h1>Log in</h1>
-        <div>
+        {/* <div>
           <button onClick={()=>{
             this.setState({language:'es'});       
           }}> 
@@ -63,7 +65,9 @@ class Login extends React.Component {
           }}> 
            中文
           </button> 
-       </div>
+       </div> */}
+       <LanguageButton changed={(event)=>{this.handleUpdate(event)}}/>
+
         <form
           method="post"
           onSubmit={event => {
