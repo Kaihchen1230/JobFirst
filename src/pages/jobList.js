@@ -1,7 +1,7 @@
 import React from 'react';
 import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
-import jobItem from '../components/jobList/jobItem';
+import JobItem from '../components/jobList/jobItem';
 
 const Search = Input.Search;
 const {
@@ -85,7 +85,7 @@ class JobList extends React.Component {
                         </Menu>
                     </Sider>
                     <Content>
-                        <jobItem jobs={this.state.jobList} />
+                        <JobItem jobs={this.state.jobList} />
                     </Content>
                 </Layout>
 

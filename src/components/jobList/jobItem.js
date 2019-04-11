@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Col, Button } from 'antd';
-
+import { Card, Row, Col, Button } from 'antd';
+import { Link, navigate } from "gatsby"
 const jobItem = (props) => {
     let jobItem = props.jobs.map((item, index) =>
         <Col span={8} style={{ margin: '10px 0' }}>
