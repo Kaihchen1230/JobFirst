@@ -12,19 +12,21 @@ class Signup extends React.Component {
         phone_number: '',
         authCode: '',
         stage: 0,
-        error: ''
+        error: '',
+        userType:''
     }
 
     handleUpdate = event => {
+        console.log(event.target.value);
         this.setState({
             [event.target.name]: event.target.value,
         })
     }
 
     signUp = async () => {
-        const { username, password, email, phone_number } = this.state
+        const { username, password, email, phone_number,userType } = this.state
         try {
-            await Auth.signUp({ username, password, attributes: { email, phone_number } })
+            await Auth.signUp({ username, password, attributes: { email, phone_number, userType } })
             this.setState({ stage: 1 })
         } catch (err) {
             this.setState({ error: err })
@@ -81,6 +83,10 @@ class Signup extends React.Component {
                                 name='phone_number'
                                 value={this.state.phone_number}
                             />
+                            <select name='userType' onChange={this.handleUpdate}>
+                                <option value="applicant">applicant</option>
+                                <option value="employer">employer</option>
+                            </select>
                             <div onClick={this.signUp}>
                                 <span>Sign Up</span>
                             </div>
