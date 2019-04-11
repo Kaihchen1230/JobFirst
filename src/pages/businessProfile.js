@@ -1,7 +1,7 @@
 import React from "react"
 import {Select } from 'antd';
-import Card from '../components/business_profile/card';
-import Timeline from '../components/business_profile/timeline'; 
+import Card from '../components/business_profile/Card';
+import Timeline from '../components/business_profile/Timeline'; 
 import { I18n } from 'aws-amplify';
 import dict from '../components/dictionary/dictionary'
 
