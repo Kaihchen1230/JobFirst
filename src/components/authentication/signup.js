@@ -26,7 +26,6 @@ class Signup extends React.Component {
     signUp = async () => {
         const { username, password, email, phone_number,userType } = this.state;
 
-        console.log({ username, password, attributes: { email, phone_number, 'custom:userType':userType } });
         try {
             await Auth.signUp({ username, password, attributes: { email, phone_number, 'custom:userType':userType } })
             this.setState({ stage: 1 })

@@ -30,7 +30,7 @@ class Login extends React.Component {
     try {
       await Auth.signIn(username, password)
       const user = await Auth.currentAuthenticatedUser();
-      console.log(user);
+      console.log("user data is", user);
       const userInfo = {
         ...user.attribtues,
         username: user.username,
