@@ -13,7 +13,7 @@ class Signup extends React.Component {
         authCode: '',
         stage: 0,
         error: '',
-        userType:''
+        userType:'applicant'
     }
 
     handleUpdate = event => {
