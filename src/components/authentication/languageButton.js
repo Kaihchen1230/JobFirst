@@ -5,12 +5,12 @@ let languageButton = (props)=>{
     return(
       <span>
         <div>
-          <button name = "language" value = "es " onClick={
+          <button name = "language" value = "es" onClick={
             props.changed  
           }> 
             ENGLISH
           </button> 
-          <button name = "language" value = "ch " onClick={
+          <button name = "language" value = "ch" onClick={
             props.changed
           }> 
            中文
