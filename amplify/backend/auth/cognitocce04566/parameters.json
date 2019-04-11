@@ -34,7 +34,8 @@
         "family_name",
         "name",
         "phone_number",
-        "preferred_username"
+        "preferred_username",
+        "userType"
     ],
     "userpoolClientName": "cognitocce04566_app_client",
     "userpoolClientGenerateSecret": true,

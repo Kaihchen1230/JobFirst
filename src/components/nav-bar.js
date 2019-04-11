@@ -20,7 +20,7 @@ export default () => {
     >
       <span>{content.message}</span> 
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/app/main">Home</Link>
         {` `}
         <Link to="/app/profile">Profile</Link> 
         {` `}

@@ -4,15 +4,13 @@ import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
 import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
 import { withAuthenticator } from 'aws-amplify-react'
-import dict from '../dictionary/dictionary'
-
 
 class Login extends React.Component {
   state = {
     username: ``,
     password: ``,
     error: ``,
-    language:'ch'
+    language:'es'
   }
 
   handleUpdate = event => {
@@ -31,10 +29,12 @@ class Login extends React.Component {
     const { username, password } = this.state;
     try {
       await Auth.signIn(username, password)
-      const user = await Auth.currentAuthenticatedUser()
+      const user = await Auth.currentAuthenticatedUser();
+      console.log("user data is", user);
       const userInfo = {
         ...user.attribtues,
-        username: user.username
+        username: user.username,
+        language:"es"
       }
       setUser(userInfo)
       navigate("/app/user-profile")
