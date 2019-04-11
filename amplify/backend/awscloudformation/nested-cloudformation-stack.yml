@@ -81,7 +81,7 @@
 		"authcognitocce04566": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190411001117-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190411002342-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognitocce04566_identitypool_cce04566",
 					"allowUnauthenticatedIdentities": false,
@@ -139,7 +139,27 @@
 						]
 					},
 					"useDefault": "default",
-					"env": "deploy"
+					"env": "testtwo"
+				}
+			}
+		},
+		"apitesttwo": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190411002342-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"AppSyncApiName": "testtwo",
+					"AuthCognitoUserPoolId": {
+						"Fn::GetAtt": [
+							"authcognitocce04566",
+							"Outputs.UserPoolId"
+						]
+					},
+					"schemaGraphql": "s3://csc47300project-20190411002342-deployment/amplify-appsync-files/schema.graphql.1554956803909",
+					"ResolverBucket": "csc47300project-20190411002342-deployment",
+					"ResolverRootKey": "amplify-appsync-files",
+					"DeploymentTimestamp": "1554956803909",
+					"env": "testtwo"
 				}
 			}
 		}
