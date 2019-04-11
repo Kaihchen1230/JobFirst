@@ -2,6 +2,7 @@ import React from 'react';
 import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 import JobItem from '../components/jobList/jobItem';
+import SideBar from '../components/jobList/sideBar';
 
 const Search = Input.Search;
 const {
@@ -50,26 +51,12 @@ class JobList extends React.Component {
 
 
     render() {
-        // let jobItem = this.state.jobList.map((item, index) =>
-        //     <Col span={8} style={{ margin: '10px 0' }}>
-        //         <Card title={item.campanyName} bordered={true}>
-        //             <p>{item.description}</p>
-        //             <div align="center">
-        //                 <Button type="primary" ghost>Apply</Button>
-        //                 <Button type="primary" ghost>
-        //                     <Link to="/app/job-detail">Learn More</Link>
-        //                 </Button>
-        //             </div>
-        //         </Card>
-        //     </Col>
-        // );
         return (
-
             <container>
-                
                 <Layout>
                     <Sider>
-                        <Search
+                        <SideBar />
+                        {/* <Search
                             placeholder="input search text"
                             onSearch={value => console.log(value)}
                             enterButton
@@ -82,7 +69,7 @@ class JobList extends React.Component {
                             <Menu.Item key='2'>One month</Menu.Item>
                             <Menu.Item key='3'>Three month</Menu.Item>
                             <Menu.Item key='4'>All</Menu.Item>
-                        </Menu>
+                        </Menu> */}
                     </Sider>
                     <Content>
                         <JobItem jobs={this.state.jobList} />
