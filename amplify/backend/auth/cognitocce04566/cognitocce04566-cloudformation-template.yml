@@ -195,7 +195,10 @@ Resources:
           Name: preferred_username
           Required: true
           Mutable: true
-        
+        -
+          Name: userType
+          Required: true
+          Mutable: true        
       
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes
       
