@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "testingapi",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitocce04566",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "schemaGraphql": "s3://csc47300project-20190410230730-deployment/amplify-appsync-files/schema.graphql.1554952175070",
+    "ResolverBucket": "csc47300project-20190410230730-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1554952175070"
+}
