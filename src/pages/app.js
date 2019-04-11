@@ -5,7 +5,7 @@ import PrivateRoute from "../components/authentication/privateRoute"
 import Login from "../components/authentication/login"
 import businessProfile from "./businessProfile"
 import PostJob from "./postJob";
-import Main from '../components/Main'
+import Main from './Main'
 import Profile from "./profile";
 import JobList from './jobList';
 import JobDescription from './jobDescription';

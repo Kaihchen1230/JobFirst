@@ -3,6 +3,7 @@ import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 
 const sideBar = (props) => {
+    const Search = Input.Search;
     return (
         <div>
             <Search
@@ -24,4 +25,4 @@ const sideBar = (props) => {
     );
 }
 
-export default siderBar;
+export default sideBar;
