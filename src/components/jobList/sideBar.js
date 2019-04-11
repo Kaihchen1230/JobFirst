@@ -23,3 +23,5 @@ const sideBar = (props) => {
 
     );
 }
+
+export default siderBar;

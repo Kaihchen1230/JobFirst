@@ -7,7 +7,7 @@ import businessProfile from "./businessProfile"
 import PostJob from "./postJob";
 import Main from '../components/Main'
 import Profile from "./profile";
-import JobList from '../components/jobList';
+import JobList from './jobList';
 import JobDescription from './jobDescription';
 import Application from '../components/form/application';
 import SignUp from '../components/authentication/signup';
