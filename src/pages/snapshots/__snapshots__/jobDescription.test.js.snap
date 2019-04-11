@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job Description screenshot test Job Description page should render correctly 1`] = `
+<div>
+  <h2
+    style={
+      Object {
+        "margin": "10px 0",
+      }
+    }
+  >
+    Software Engineer Intern
+  </h2>
+  <h4>
+    Alibaba
+  </h4>
+  <Button
+    block={false}
+    ghost={true}
+    htmlType="button"
+    loading={false}
+    type="primary"
+  >
+    <ForwardRef
+      to="/app/application"
+    >
+      Apply Now
+    </ForwardRef>
+  </Button>
+  <Tabs
+    defaultActiveKey="1"
+    hideAdd={false}
+    tabPosition="top"
+  >
+    <TabPane
+      placeholder={null}
+      tab="Job"
+    >
+      <div>
+        <jobDetails
+          jobInfo={
+            Array [
+              Object {
+                "description": "Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.",
+                "location": "New York",
+                "responsibilities": Array [
+                  "Proficient in Python and SQL",
+                  "Familiarity with working using Machine Learning techniques.",
+                  "Naturally curious, detail oriented, passionate about data quality and statistical methods, ability to drive a project to completion.",
+                  "Availability full-time June - August 2019 in NYC",
+                ],
+                "title": "Software Engineer Intern",
+              },
+            ]
+          }
+        />
+      </div>
+    </TabPane>
+    <TabPane
+      placeholder={null}
+      tab="Company"
+    >
+      <div>
+        <companyDetail
+          companyInfo={
+            Array [
+              Object {
+                "founded": "1923",
+                "headquarter": "Hanzhou, China",
+                "industry": "Enterprise Software & Network",
+                "name": "Alibaba",
+                "revenue": "$5 to $10 billion(USD)",
+                "size": "10000+ Employees",
+              },
+            ]
+          }
+        />
+      </div>
+    </TabPane>
+    <TabPane
+      placeholder={null}
+      tab="Location"
+    >
+      <location
+        locationInfo={
+          Array [
+            Object {
+              "city": "New York",
+              "state": "NY",
+              "street1": "85 Broad Street",
+              "zipCode": 11225,
+            },
+          ]
+        }
+      />
+    </TabPane>
+  </Tabs>
+</div>
+`;

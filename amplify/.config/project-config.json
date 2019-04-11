@@ -1,6 +1,6 @@
 {
-    "projectName": "JobFirst",
-    "version": "1.0",
+    "projectName": "csc47300Project",
+    "version": "2.0",
     "frontend": "javascript",
     "javascript": {
         "framework": "react",
