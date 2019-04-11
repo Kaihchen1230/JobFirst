@@ -49,5 +49,22 @@
                 "cognitocce04566": {}
             }
         }
+    },
+    "testtwo": {
+        "awscloudformation": {
+            "AuthRoleName": "csc47300project-20190411002342-authRole",
+            "UnauthRoleArn": "arn:aws:iam::163683266096:role/csc47300project-20190411002342-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::163683266096:role/csc47300project-20190411002342-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "csc47300project-20190411002342-deployment",
+            "UnauthRoleName": "csc47300project-20190411002342-unauthRole",
+            "StackName": "csc47300project-20190411002342",
+            "StackId": "arn:aws:cloudformation:us-east-1:163683266096:stack/csc47300project-20190411002342/9737b280-5c11-11e9-8eea-12d607a4fd1c"
+        },
+        "categories": {
+            "auth": {
+                "cognitocce04566": {}
+            }
+        }
     }
 }
