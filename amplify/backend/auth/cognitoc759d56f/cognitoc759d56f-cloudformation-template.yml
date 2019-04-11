@@ -126,7 +126,10 @@ Parameters:
                                                     
   useDefault:
     Type: String
-          
+                  
+  usernameAttributes:
+    Type: CommaDelimitedList
+    
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
 
@@ -177,11 +180,6 @@ Resources:
           Mutable: true
         
         -
-          Name: family_name
-          Required: true
-          Mutable: true
-        
-        -
           Name: name
           Required: true
           Mutable: true
@@ -191,14 +189,6 @@ Resources:
           Required: true
           Mutable: true
         
-        -
-          Name: preferred_username
-          Required: true
-          Mutable: true
-        -
-          Name: userType
-          Required: true
-          Mutable: true        
       
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes
       
@@ -213,6 +203,8 @@ Resources:
           RequireNumbers: true
           RequireSymbols: true
           RequireUppercase: true
+      
+      UsernameAttributes: !Ref usernameAttributes
           
       MfaConfiguration: !Ref mfaConfiguration
       SmsVerificationMessage: !Ref smsVerificationMessage
@@ -225,7 +217,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: cognitocce04566_app_clientWeb
+      ClientName: cognitoc759d56f_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -357,7 +349,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'cognitocce04566_identitypool_cce04566', !Join ['',['cognitocce04566_identitypool_cce04566', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'cognitoc759d56f_identitypool_c759d56f', !Join ['',['cognitoc759d56f_identitypool_c759d56f', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient
