@@ -3,9 +3,6 @@ import { navigate } from 'gatsby';
 import { Auth } from 'aws-amplify';
 import Error from './Error'
 import { isLoggedIn } from '../../services/auth';
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
-
-const { Option } = Select;
 
 class Signup extends React.Component {
     state = {
@@ -19,23 +16,6 @@ class Signup extends React.Component {
         authCode: '',
         stage: 0,
         error: '',
-    }
-
-    compareToFirstPassword = (rule, value, callback) => {
-        const form = this.props.form;
-        if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
-        } else {
-            callback();
-        }
-    }
-
-    validateToNextPassword = (rule, value, callback) => {
-        const form = this.props.form;
-        if (value && this.state.confirmDirty) {
-            form.validateFields(['confirm'], { force: true });
-        }
-        callback();
     }
 
     handleUpdate = event => {
