@@ -21,8 +21,19 @@ class PostJob extends React.Component {
 
     render() {
 
+        I18n.setLanguage(this.state.language);
+
         return (
             <div align="center">
+                <br />
+                <button onClick={() => {
+                    this.setState({language: 'es'});
+                }}>ENGLISH
+                </button>
+                <button onClick={() => {
+                    this.setState({language: 'ch'});
+                }}>中文
+                </button>
                 <br />
                 <h1>Post a New Job</h1>
                 <Form onSubmit={this.submitData} className="main-form" style={{"width": "80%"}}>
