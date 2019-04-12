@@ -3,7 +3,9 @@ import { navigate } from 'gatsby';
 import { Auth } from 'aws-amplify';
 import Error from './Error'
 import { isLoggedIn } from '../../services/auth';
+import { Radio } from 'antd';
 
+const RadioGroup = Radio.Group;
 class Signup extends React.Component {
     state = {
         username: '',
@@ -23,6 +25,13 @@ class Signup extends React.Component {
         this.setState({
             [event.target.name]: event.target.value,
         })
+    }
+
+    handleRadio = (e) => {
+        console.log('radio checked', e.target.value);
+        this.setState({
+            isEmployer: e.target.value,
+        });
     }
 
     signUp = async () => {
@@ -101,23 +110,10 @@ class Signup extends React.Component {
                                 />
                             </div>
                             <div>
-                                <input
-                                    type='radio'
-                                    id='no'
-                                    name='isEmployer'
-                                    value={this.state.isEmployer}
-                                    onChange={this.handleUpdate}
-                                    checked
-                                />
-                                <label> Employee </label>
-                                <input
-                                    type='radio'
-                                    id='yes'
-                                    name='isEmployer'
-                                    value={this.state.isEmployer}
-                                    onChange={this.handleUpdate}
-                                />
-                                <label> Employer </label>
+                                <RadioGroup onChange={this.handleRadio} value={this.state.isEmployer}>
+                                    <Radio value={'no'}>Employee</Radio>
+                                    <Radio value={'yes'}>Employer</Radio>
+                                </RadioGroup>
                             </div>
                             <div onClick={this.signUp}>
                                 <span>Sign Up</span>
