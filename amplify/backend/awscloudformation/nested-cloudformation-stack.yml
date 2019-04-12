@@ -81,7 +81,7 @@
 		"authcognitoc759d56f": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190411132439-deployment/amplify-cfn-templates/auth/cognitoc759d56f-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190411220531-deployment/amplify-cfn-templates/auth/cognitoc759d56f-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognitoc759d56f_identitypool_c759d56f",
 					"allowUnauthenticatedIdentities": false,
@@ -140,7 +140,7 @@
 					},
 					"useDefault": "default",
 					"usernameAttributes": "email",
-					"env": "depployenv"
+					"env": "alanenv"
 				}
 			}
 		}
