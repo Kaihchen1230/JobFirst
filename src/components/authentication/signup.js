@@ -6,14 +6,15 @@ import { isLoggedIn } from '../../services/auth';
 
 class Signup extends React.Component {
     state = {
-        username: '',
+        name: '',
         password: '',
         email: '',
         phone_number: '',
         authCode: '',
         stage: 0,
         error: '',
-        userType:'applicant'
+        isEmployer: '',
+        isProfile: 'no'
     }
 
     handleUpdate = event => {
@@ -24,10 +25,10 @@ class Signup extends React.Component {
     }
 
     signUp = async () => {
-        const { username, password, email, phone_number,userType } = this.state;
-
+        const { name, password, email, phone_number, isEmployer, isProfile } = this.state;
+        const username = email;
         try {
-            await Auth.signUp({ username, password, attributes: { email, phone_number, 'custom:userType':userType } })
+            await Auth.signUp({ username, password, attributes: { email, phone_number, name, 'custom:isEmployer':isEmployer, 'custom:isProfile':isProfile } })
             this.setState({ stage: 1 })
         } catch (err) {
             this.setState({ error: err })
@@ -36,9 +37,9 @@ class Signup extends React.Component {
     }
 
     confirmSignUp = async () => {
-        const { username, authCode } = this.state
+        const { email, authCode } = this.state
         try {
-            await Auth.confirmSignUp(username, authCode)
+            await Auth.confirmSignUp(email, authCode)
             alert('Successfully signed up!')
             navigate("/app/login")
         } catch (err) {
@@ -59,35 +60,45 @@ class Signup extends React.Component {
                     this.state.stage === 0 && (
                         <div>
                             {this.state.error && <Error errorMessage={this.state.error} />}
-                            <input
-                                onChange={this.handleUpdate}
-                                placeholder='Username'
-                                name='username'
-                                value={this.state.username}
-                            />
-                            <input
-                                onChange={this.handleUpdate}
-                                placeholder='Password'
-                                name='password'
-                                value={this.state.password}
-                                type='password'
-                            />
-                            <input
-                                onChange={this.handleUpdate}
-                                placeholder='Email'
-                                name='email'
-                                value={this.state.email}
-                            />
-                            <input
-                                onChange={this.handleUpdate}
-                                placeholder='Phone Number'
-                                name='phone_number'
-                                value={this.state.phone_number}
-                            />
-                            <select name='userType' onChange={this.handleUpdate}>
-                                <option value="applicant">applicant</option>
-                                <option value="employer">employer</option>
-                            </select>
+                            <div>
+                                <input
+                                    onChange={this.handleUpdate}
+                                    placeholder='Name'
+                                    name='name'
+                                    value={this.state.username}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    onChange={this.handleUpdate}
+                                    placeholder='Password'
+                                    name='password'
+                                    value={this.state.password}
+                                    type='password'
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    onChange={this.handleUpdate}
+                                    placeholder='Email'
+                                    name='email'
+                                    value={this.state.email}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    onChange={this.handleUpdate}
+                                    placeholder='Phone Number'
+                                    name='phone_number'
+                                    value={this.state.phone_number}
+                                />
+                            </div>
+                            <div>
+                                <select name='isEmployer' onChange={this.handleUpdate}>
+                                    <option value="no">Employee</option>
+                                    <option value="yes">Employer</option>
+                                </select>
+                            </div>
                             <div onClick={this.signUp}>
                                 <span>Sign Up</span>
                             </div>
