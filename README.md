@@ -40,6 +40,7 @@ ___
 ### Adding new Amplify service:
 - In this example I will be adding an API
 1. ```git pull upstream whateverbranchweuse``` Get the latest update from upstream. We probably use the _newFrontend_ branch. So all of our pull requeast will go to _newFrontend_.
+1. ```npm install``` run this after every pull from the upstream
 1. ```amplify init``` to sync with the backend from upstream because someone else might add something to the backend already.
 </br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
 </br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
