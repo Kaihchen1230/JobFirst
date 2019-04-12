@@ -3,6 +3,9 @@ import { navigate } from 'gatsby';
 import { Auth } from 'aws-amplify';
 import Error from './Error'
 import { isLoggedIn } from '../../services/auth';
+import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+
+const { Option } = Select;
 
 class Signup extends React.Component {
     state = {
@@ -11,11 +14,28 @@ class Signup extends React.Component {
         email: '',
         name: '',
         phone_number: '',
-        isEmployer: '',
+        isEmployer: 'no',
         isProfile: 'no',
         authCode: '',
         stage: 0,
         error: '',
+    }
+
+    compareToFirstPassword = (rule, value, callback) => {
+        const form = this.props.form;
+        if (value && value !== form.getFieldValue('password')) {
+            callback('Two passwords that you enter is inconsistent!');
+        } else {
+            callback();
+        }
+    }
+
+    validateToNextPassword = (rule, value, callback) => {
+        const form = this.props.form;
+        if (value && this.state.confirmDirty) {
+            form.validateFields(['confirm'], { force: true });
+        }
+        callback();
     }
 
     handleUpdate = event => {
@@ -52,7 +72,6 @@ class Signup extends React.Component {
         if (isLoggedIn()) {
             navigate(`/app/user-profile`)
         }
-
         return (
             <div>
                 <h1>Sign up</h1>
@@ -102,10 +121,23 @@ class Signup extends React.Component {
                                 />
                             </div>
                             <div>
-                                <select name='isEmployer' onChange={this.handleUpdate}>
-                                    <option value="no">Employee</option>
-                                    <option value="yes">Employer</option>
-                                </select>
+                                <input
+                                    type='radio'
+                                    id='no'
+                                    name='isEmployer'
+                                    value={this.state.isEmployer}
+                                    onChange={this.handleUpdate}
+                                    checked
+                                />
+                                <label> Employee </label>
+                                <input
+                                    type='radio'
+                                    id='yes'
+                                    name='isEmployer'
+                                    value={this.state.isEmployer}
+                                    onChange={this.handleUpdate}
+                                />
+                                <label> Employer </label>
                             </div>
                             <div onClick={this.signUp}>
                                 <span>Sign Up</span>
