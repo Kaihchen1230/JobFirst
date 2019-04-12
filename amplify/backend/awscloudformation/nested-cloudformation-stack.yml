@@ -78,48 +78,59 @@
 				}
 			}
 		},
-		"authcognitocce04566": {
+		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
+<<<<<<< HEAD
 				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412132316-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
+=======
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412181322-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+>>>>>>> origin/dev
 				"Parameters": {
-					"identityPoolName": "cognitocce04566_identitypool_cce04566",
+					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": false,
-					"lambdaLogPolicy": "cognitocce04566_lambda_log_policy",
-					"openIdLambdaRoleName": "cognitocce04566_openid_lambda_role",
-					"openIdRolePolicy": "cognitocce04566_openid_pass_role_policy",
-					"openIdLambdaIAMPolicy": "cognitocce04566_openid_lambda_iam_policy",
-					"openIdLogPolicy": "cognitocce04566_openid_lambda_log_policy",
-					"userPoolName": "cognitocce04566_userpool_cce04566",
+					"thirdPartyAuth": false,
+					"lambdaLogPolicy": "cognitoed11de21_lambda_log_policy",
+					"openIdLambdaRoleName": "cognitoed11de21_openid_lambda_role",
+					"openIdRolePolicy": "cognitoed11de21_openid_pass_role_policy",
+					"openIdLambdaIAMPolicy": "cognitoed11de21_openid_lambda_iam_policy",
+					"openIdLogPolicy": "cognitoed11de21_openid_lambda_log_policy",
+					"userPoolName": "csc47300projected11de21_userpool_ed11de21",
 					"autoVerifiedAttributes": "email",
 					"mfaConfiguration": "OFF",
 					"mfaTypes": "SMS Text Message",
-					"roleName": "cognitocce04566_sns-role",
-					"roleExternalId": "cognitocce04566_role_external_id",
-					"policyName": "cognitocce04566-sns-policy",
+					"roleName": "cognitoed11de21_sns-role",
+					"roleExternalId": "cognitoed11de21_role_external_id",
+					"policyName": "cognitoed11de21-sns-policy",
 					"smsAuthenticationMessage": "Your authentication code is {####}",
 					"smsVerificationMessage": "Your verification code is {####}",
 					"emailVerificationSubject": "Your verification code",
 					"emailVerificationMessage": "Your verification code is {####}",
-					"defaultPasswordPolicy": false,
+					"defaultPasswordPolicy": true,
 					"passwordPolicyMinLength": 8,
+<<<<<<< HEAD
 					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
 					"requiredAttributes": "email,family_name,name,phone_number,preferred_username,userType",
 					"userpoolClientName": "cognitocce04566_app_client",
+=======
+					"passwordPolicyCharacters": "Requires Lowercase",
+					"requiredAttributes": "name,phone_number,email",
+					"userpoolClientName": "cognitoed11de21_app_client",
+>>>>>>> origin/dev
 					"userpoolClientGenerateSecret": true,
 					"userpoolClientRefreshTokenValidity": 30,
-					"userpoolClientWriteAttributes": "email",
 					"userpoolClientReadAttributes": "email",
-					"mfaLambdaRole": "cognitocce04566_totp_lambda_role",
-					"mfaLambdaLogPolicy": "cognitocce04566_totp_lambda_log_policy",
-					"mfaPassRolePolicy": "cognitocce04566_totp_pass_role_policy",
-					"mfaLambdaIAMPolicy": "cognitocce04566_totp_lambda_iam_policy",
-					"userpoolClientLambdaRole": "cognitocce04566_userpoolclient_lambda_role",
-					"userpoolClientLogPolicy": "cognitocce04566_userpoolclient_lambda_log_policy",
-					"userpoolClientLambdaPolicy": "cognitocce04566_userpoolclient_lambda_iam_policy",
+					"mfaLambdaRole": "cognitoed11de21_totp_lambda_role",
+					"mfaLambdaLogPolicy": "cognitoed11de21_totp_lambda_log_policy",
+					"mfaPassRolePolicy": "cognitoed11de21_totp_pass_role_policy",
+					"mfaLambdaIAMPolicy": "cognitoed11de21_totp_lambda_iam_policy",
+					"userpoolClientLambdaRole": "cognitoed11de21_userpoolclient_lambda_role",
+					"userpoolClientLogPolicy": "cognitoed11de21_userpoolclient_lambda_log_policy",
+					"userpoolClientLambdaPolicy": "cognitoed11de21_userpoolclient_lambda_iam_policy",
 					"userpoolClientSetAttributes": false,
-					"resourceName": "cognitocce04566",
+					"useDefault": "manual",
 					"authSelections": "identityPoolAndUserPool",
+					"resourceName": "cognitoed11de21",
 					"authRoleName": {
 						"Ref": "AuthRoleName"
 					},
@@ -138,8 +149,12 @@
 							"Arn"
 						]
 					},
+<<<<<<< HEAD
 					"useDefault": "default",
 					"env": "develop"
+=======
+					"env": "product"
+>>>>>>> origin/dev
 				}
 			}
 		}
