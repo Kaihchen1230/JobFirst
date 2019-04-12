@@ -12,8 +12,8 @@ class Signup extends React.Component {
         phone_number: '',
         authCode: '',
         stage: 0,
-        error: '',
-        userType:'applicant'
+        error: ''
+        // userType:'applicant'
     }
 
     handleUpdate = event => {
@@ -27,7 +27,7 @@ class Signup extends React.Component {
         const { username, password, email, phone_number,userType } = this.state;
 
         try {
-            await Auth.signUp({ username, password, attributes: { email, phone_number, 'custom:userType':userType } })
+            await Auth.signUp({ username, password, attributes: { email, phone_number} })
             this.setState({ stage: 1 })
         } catch (err) {
             this.setState({ error: err })
@@ -84,10 +84,10 @@ class Signup extends React.Component {
                                 name='phone_number'
                                 value={this.state.phone_number}
                             />
-                            <select name='userType' onChange={this.handleUpdate}>
+                            {/* <select name='userType' onChange={this.handleUpdate}>
                                 <option value="applicant">applicant</option>
                                 <option value="employer">employer</option>
-                            </select>
+                            </select> */}
                             <div onClick={this.signUp}>
                                 <span>Sign Up</span>
                             </div>
