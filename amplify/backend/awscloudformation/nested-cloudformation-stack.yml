@@ -78,25 +78,25 @@
 				}
 			}
 		},
-		"authcognitocce04566": {
+		"authcognito5481b45d": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190409232110-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412124323-deployment/amplify-cfn-templates/auth/cognito5481b45d-cloudformation-template.yml",
 				"Parameters": {
-					"identityPoolName": "cognitocce04566_identitypool_cce04566",
+					"identityPoolName": "cognito5481b45d_identitypool_5481b45d",
 					"allowUnauthenticatedIdentities": false,
-					"lambdaLogPolicy": "cognitocce04566_lambda_log_policy",
-					"openIdLambdaRoleName": "cognitocce04566_openid_lambda_role",
-					"openIdRolePolicy": "cognitocce04566_openid_pass_role_policy",
-					"openIdLambdaIAMPolicy": "cognitocce04566_openid_lambda_iam_policy",
-					"openIdLogPolicy": "cognitocce04566_openid_lambda_log_policy",
-					"userPoolName": "cognitocce04566_userpool_cce04566",
+					"lambdaLogPolicy": "cognito5481b45d_lambda_log_policy",
+					"openIdLambdaRoleName": "cognito5481b45d_openid_lambda_role",
+					"openIdRolePolicy": "cognito5481b45d_openid_pass_role_policy",
+					"openIdLambdaIAMPolicy": "cognito5481b45d_openid_lambda_iam_policy",
+					"openIdLogPolicy": "cognito5481b45d_openid_lambda_log_policy",
+					"userPoolName": "cognito5481b45d_userpool_5481b45d",
 					"autoVerifiedAttributes": "email",
 					"mfaConfiguration": "OFF",
 					"mfaTypes": "SMS Text Message",
-					"roleName": "cognitocce04566_sns-role",
-					"roleExternalId": "cognitocce04566_role_external_id",
-					"policyName": "cognitocce04566-sns-policy",
+					"roleName": "cognito5481b45d_sns-role",
+					"roleExternalId": "cognito5481b45d_role_external_id",
+					"policyName": "cognito5481b45d-sns-policy",
 					"smsAuthenticationMessage": "Your authentication code is {####}",
 					"smsVerificationMessage": "Your verification code is {####}",
 					"emailVerificationSubject": "Your verification code",
@@ -104,21 +104,21 @@
 					"defaultPasswordPolicy": false,
 					"passwordPolicyMinLength": 8,
 					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
-					"requiredAttributes": "email,family_name,name,phone_number,preferred_username",
-					"userpoolClientName": "cognitocce04566_app_client",
+					"requiredAttributes": "email,name,phone_number",
+					"userpoolClientName": "cognito5481b45d_app_client",
 					"userpoolClientGenerateSecret": true,
 					"userpoolClientRefreshTokenValidity": 30,
 					"userpoolClientWriteAttributes": "email",
 					"userpoolClientReadAttributes": "email",
-					"mfaLambdaRole": "cognitocce04566_totp_lambda_role",
-					"mfaLambdaLogPolicy": "cognitocce04566_totp_lambda_log_policy",
-					"mfaPassRolePolicy": "cognitocce04566_totp_pass_role_policy",
-					"mfaLambdaIAMPolicy": "cognitocce04566_totp_lambda_iam_policy",
-					"userpoolClientLambdaRole": "cognitocce04566_userpoolclient_lambda_role",
-					"userpoolClientLogPolicy": "cognitocce04566_userpoolclient_lambda_log_policy",
-					"userpoolClientLambdaPolicy": "cognitocce04566_userpoolclient_lambda_iam_policy",
+					"mfaLambdaRole": "cognito5481b45d_totp_lambda_role",
+					"mfaLambdaLogPolicy": "cognito5481b45d_totp_lambda_log_policy",
+					"mfaPassRolePolicy": "cognito5481b45d_totp_pass_role_policy",
+					"mfaLambdaIAMPolicy": "cognito5481b45d_totp_lambda_iam_policy",
+					"userpoolClientLambdaRole": "cognito5481b45d_userpoolclient_lambda_role",
+					"userpoolClientLogPolicy": "cognito5481b45d_userpoolclient_lambda_log_policy",
+					"userpoolClientLambdaPolicy": "cognito5481b45d_userpoolclient_lambda_iam_policy",
 					"userpoolClientSetAttributes": false,
-					"resourceName": "cognitocce04566",
+					"resourceName": "cognito5481b45d",
 					"authSelections": "identityPoolAndUserPool",
 					"authRoleName": {
 						"Ref": "AuthRoleName"
@@ -139,7 +139,7 @@
 						]
 					},
 					"useDefault": "default",
-					"env": "deployenv"
+					"env": "kaimaster"
 				}
 			}
 		}
