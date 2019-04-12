@@ -35,7 +35,7 @@ class PostJob extends React.Component {
                 }}>中文
                 </button>
                 <br />
-                <h1>Post a New Job</h1>
+                <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.submitData} className="main-form" style={{"width": "80%"}}>
                     <Form.Item>
                         <Input placeholder="Enter Employer Name"
