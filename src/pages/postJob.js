@@ -3,23 +3,29 @@ import React from "react"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
+import { I18n } from 'aws-amplify';
 //import "../style/postJob.css";
 
 const Option = Select.Option;
 const { TextArea } = Input;
 
 class PostJob extends React.Component {
+    state = {
+        error: ``,
+        language: 'es'
+    }
 
     submitData = () => {
 
     }
 
     render() {
+
         return (
             <div align="center">
                 <br />
                 <h1>Post a New Job</h1>
-                <Form onSubmit={this.submitData} className="main-form">
+                <Form onSubmit={this.submitData} className="main-form" style={{"width": "80%"}}>
                     <Form.Item>
                         <Input placeholder="Enter Employer Name"
                             prefix={<Icon type="user" />}
