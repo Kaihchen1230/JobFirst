@@ -10,12 +10,16 @@ const { TextArea } = Input;
 
 class PostJob extends React.Component {
 
+    submitData = () => {
+
+    }
+
     render() {
         return (
             <div align="center">
                 <br />
                 <h1>Post a New Job</h1>
-                <Form onSubmit="*" className="main-form">
+                <Form onSubmit={this.submitData} className="main-form">
                     <Form.Item>
                         <Input placeholder="Enter Employer Name"
                             prefix={<Icon type="user" />}
