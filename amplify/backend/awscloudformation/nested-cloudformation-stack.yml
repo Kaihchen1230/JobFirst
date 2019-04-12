@@ -81,7 +81,7 @@
 		"authcognitocce04566": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190409232110-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412132316-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognitocce04566_identitypool_cce04566",
 					"allowUnauthenticatedIdentities": false,
@@ -104,7 +104,7 @@
 					"defaultPasswordPolicy": false,
 					"passwordPolicyMinLength": 8,
 					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
-					"requiredAttributes": "email,family_name,name,phone_number,preferred_username",
+					"requiredAttributes": "email,family_name,name,phone_number,preferred_username,userType",
 					"userpoolClientName": "cognitocce04566_app_client",
 					"userpoolClientGenerateSecret": true,
 					"userpoolClientRefreshTokenValidity": 30,
@@ -139,7 +139,7 @@
 						]
 					},
 					"useDefault": "default",
-					"env": "deployenv"
+					"env": "develop"
 				}
 			}
 		}
