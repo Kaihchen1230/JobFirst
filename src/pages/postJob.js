@@ -51,10 +51,10 @@ class PostJob extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <Select placeholder={I18n.get('Job Type')}>
-                            <Option value="Full Time">Full Time</Option>
-                            <Option value="Part Time">Part Time</Option>
-                            <Option value="Internship">Internship</Option>
-                            <Option value="Temporary">Temporary</Option>
+                            <Option value="Full Time">{I18n.get('Full Time')}</Option>
+                            <Option value="Part Time">{I18n.get('Part Time')}</Option>
+                            <Option value="Internship">{I18n.get('Internship')}</Option>
+                            <Option value="Temporary">{I18n.get('Temporary')}</Option>
                         </Select>
                     </Form.Item>
                     <Form.Item>
@@ -72,7 +72,7 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">Submit Job</Button>
+                        <Button type="primary" htmlType="submit">{I18n.get('Submit Job')}</Button>
                     </Form.Item>
                 </Form>
             </div>

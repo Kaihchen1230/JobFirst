@@ -10,7 +10,12 @@ let dict = {
         'Job Type': "工作類型",
         'Enter Job Description': "輸入職位描述",
         'Enter the name of the employer.': "輸入雇主的姓名。",
-        'Enter the contact number of the employer.': "輸入雇主的聯繫電話。"
+        'Enter the contact number of the employer.': "輸入雇主的聯繫電話。",
+        'Full Time': "全職",
+        'Part Time': "兼職",
+        'Internship': "實習",
+        'Temporary': "臨時",
+        'Submit Job': "提交工作"
     },
     'es': {
         'Sign In': "Register",
@@ -23,7 +28,12 @@ let dict = {
         'Job Type': "Job Type",
         'Enter Job Description': "Enter Job Description",
         'Enter the name of the employer.': "Enter the name of the employer.",
-        'Enter the contact number of the employer.': "Enter the contact number of the employer."
+        'Enter the contact number of the employer.': "Enter the contact number of the employer.",
+        'Full Time': "Full Time",
+        'Part Time': "Part Time",
+        'Internship': "Internship",
+        'Temporary': "Temporary",
+        'Submit Job': "Submit Job"
     }
 };
 export default dict;
