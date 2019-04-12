@@ -1,6 +1,6 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { fakehandleLogin, isLoggedIn, setUser } from "../../services/auth"
+import { isLoggedIn, setUser } from "../../services/auth"
 import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
 import { withAuthenticator } from 'aws-amplify-react'
@@ -21,7 +21,6 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    //fakehandleLogin(this.state)
     this.handleLogin()
   }
 
@@ -30,12 +29,15 @@ class Login extends React.Component {
     try {
       await Auth.signIn(username, password)
       const user = await Auth.currentAuthenticatedUser();
-      console.log("user data is", user);
+      // console.log("user data is", user);
       const userInfo = {
-        ...user.attribtues,
+        ...user.attributes,
         username: user.username,
-        language:"es"
+        language: "es"
       }
+      const test = await Auth.userAttributes(user);
+      console.log(test)
+      // console.log(userInfo);
       setUser(userInfo)
       navigate("/app/user-profile")
     } catch (err) {
