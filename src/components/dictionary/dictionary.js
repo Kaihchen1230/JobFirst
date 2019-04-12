@@ -8,7 +8,9 @@ let dict = {
         'Enter Employer Name': "輸入雇主姓名",
         'Date Posted On': "發布日期",
         'Job Type': "工作類型",
-        'Enter Job Description': "輸入職位描述"
+        'Enter Job Description': "輸入職位描述",
+        'Enter the name of the employer.': "輸入雇主的姓名。",
+        'Enter the contact number of the employer.': "輸入雇主的聯繫電話。"
     },
     'es': {
         'Sign In': "Register",
@@ -19,7 +21,9 @@ let dict = {
         'Enter Employer Name': "Enter Employer Name",
         'Date Posted On': "Date Posted On",
         'Job Type': "Job Type",
-        'Enter Job Description': "Enter Job Description"
+        'Enter Job Description': "Enter Job Description",
+        'Enter the name of the employer.': "Enter the name of the employer.",
+        'Enter the contact number of the employer.': "Enter the contact number of the employer."
     }
 };
 export default dict;

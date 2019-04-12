@@ -38,19 +38,19 @@ class PostJob extends React.Component {
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.submitData} className="main-form" style={{"width": "80%"}}>
                     <Form.Item>
-                        <Input placeholder="Enter Employer Name"
+                        <Input placeholder={I18n.get('Enter Employer Name')}
                             prefix={<Icon type="user" />}
                             suffix={
-                                <Tooltip title="Enter the name of the employer.">
+                                <Tooltip title={I18n.get('Enter the name of the employer.')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
-                        <DatePicker placeholder="Date Posted On" />
+                        <DatePicker placeholder={I18n.get('Date Posted On')} />
                     </Form.Item>
                     <Form.Item>
-                        <Select placeholder="Job Type">
+                        <Select placeholder={I18n.get('Job Type')}>
                             <Option value="Full Time">Full Time</Option>
                             <Option value="Part Time">Part Time</Option>
                             <Option value="Internship">Internship</Option>
@@ -59,14 +59,14 @@ class PostJob extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <TextArea
-                            placeholder="Enter Job Description" autosize={{ minRows: 2, maxRows: 6 }}
+                            placeholder={I18n.get('Enter Job Description')} autosize={{ minRows: 2, maxRows: 6 }}
                         />
                     </Form.Item>
                     <Form.Item>
                         <Input placeholder="(###) ###-####"
                             prefix={<Icon type="contacts" />}
                             suffix={
-                                <Tooltip title="Enter the contact number of the employer.">
+                                <Tooltip title={I18n.get('Enter the contact number of the employer.')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
