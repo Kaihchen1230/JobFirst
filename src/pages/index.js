@@ -18,7 +18,7 @@ export default () => (
       ) : (
         <>
           You should <Link to="/app/login">log in</Link> to see restricted
-          content
+          content. If you don't have an account with us, please <Link to="/app/signup">Sign Up</Link>
         </>
       )}
     </p>
