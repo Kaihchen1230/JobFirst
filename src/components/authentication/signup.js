@@ -6,15 +6,16 @@ import { isLoggedIn } from '../../services/auth';
 
 class Signup extends React.Component {
     state = {
-        name: '',
+        username: '',
         password: '',
         email: '',
+        name: '',
         phone_number: '',
+        isEmployer: '',
+        isProfile: 'no',
         authCode: '',
         stage: 0,
         error: '',
-        isEmployer: '',
-        isProfile: 'no'
     }
 
     handleUpdate = event => {
@@ -25,10 +26,9 @@ class Signup extends React.Component {
     }
 
     signUp = async () => {
-        const { name, password, email, phone_number, isEmployer, isProfile } = this.state;
-        const username = email;
+        const { username, password, email, name, phone_number, isEmployer, isProfile } = this.state;
         try {
-            await Auth.signUp({ username, password, attributes: { email, phone_number, name, 'custom:isEmployer':isEmployer, 'custom:isProfile':isProfile } })
+            await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer':isEmployer, 'custom:isProfile':isProfile } })
             this.setState({ stage: 1 })
         } catch (err) {
             this.setState({ error: err })
@@ -37,9 +37,9 @@ class Signup extends React.Component {
     }
 
     confirmSignUp = async () => {
-        const { email, authCode } = this.state
+        const { username, authCode } = this.state
         try {
-            await Auth.confirmSignUp(email, authCode)
+            await Auth.confirmSignUp(username, authCode)
             alert('Successfully signed up!')
             navigate("/app/login")
         } catch (err) {
@@ -63,8 +63,8 @@ class Signup extends React.Component {
                             <div>
                                 <input
                                     onChange={this.handleUpdate}
-                                    placeholder='Name'
-                                    name='name'
+                                    placeholder='Username'
+                                    name='username'
                                     value={this.state.username}
                                 />
                             </div>
@@ -83,6 +83,14 @@ class Signup extends React.Component {
                                     placeholder='Email'
                                     name='email'
                                     value={this.state.email}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    onChange={this.handleUpdate}
+                                    placeholder='Name'
+                                    name='name'
+                                    value={this.state.name}
                                 />
                             </div>
                             <div>
