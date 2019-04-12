@@ -14,6 +14,11 @@ exports[`postJob snapshot test postJob render should match snapshot 1`] = `
     hideRequiredMark={false}
     layout="horizontal"
     onSubmit={[Function]}
+    style={
+      Object {
+        "width": "80%",
+      }
+    }
   >
     <FormItem
       hasFeedback={false}
@@ -144,5 +149,26 @@ exports[`postJob snapshot test postJob render should match snapshot 1`] = `
       </Button>
     </FormItem>
   </Form>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="submit"
+    loading={false}
+    onClick={[Function]}
+    type="primary"
+  >
+    ENGLISH
+  </Button>
+     
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="submit"
+    loading={false}
+    onClick={[Function]}
+    type="primary"
+  >
+    中文
+  </Button>
 </div>
 `;
