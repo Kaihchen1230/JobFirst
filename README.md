@@ -10,7 +10,8 @@ __Alan Lau__ _(developer)_
 </br>
 ## About:
 JobFirst is a web app which utilizes _Gatsby_ to serve the frontend and _AWS Amplify_ to serve the backend. And blah blah blah....
-
+## [Refer here for our weekly meeting status](https://github.com/Kaihchen1230/csc47300Project/wiki/Weekly-Status-Meeting-PPT)
+___
 ## For the developers:
 - __READ FIRST__
 ### Fresh start: (RECOMMENDED)
