@@ -1,0 +1,10 @@
+type businessProfile @model {
+  id: ID!
+  business_name: String!
+  description: String
+  business_picture: String
+  business_email : String
+  business_phone_number: String
+  Business_location: String
+  timeline:[String]
+}
