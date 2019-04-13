@@ -81,7 +81,7 @@
 		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413180223-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": false,
@@ -139,7 +139,7 @@
 							"Arn"
 						]
 					},
-					"env": "jie"
+					"env": "jielan"
 				}
 			}
 		}
