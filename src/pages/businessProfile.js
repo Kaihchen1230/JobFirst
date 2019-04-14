@@ -2,6 +2,7 @@ import React from "react"
 import {Select,Modal, Button } from 'antd';
 import Card from '../components/business_profile/Card';
 import Timeline from '../components/business_profile/Timeline'; 
+import EditProfileForm from '../components/business_profile/EditProfileForm'; 
 import { I18n } from 'aws-amplify';
 import dict from '../components/dictionary/dictionary';
 import { API, graphqlOperation } from 'aws-amplify';
@@ -64,14 +65,12 @@ class businessProfile extends React.Component {
             Edit Profile
           </Button>
           <Modal
-            title="Basic Modal"
+            title="Edit Company Information"
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
           >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <EditProfileForm/>
           </Modal>
         </div>
         <h1>Company: aplipap</h1>
