@@ -3,6 +3,7 @@ import React from "react"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
+import { I18n } from 'aws-amplify';
 //import "../style/postJob.css";
 
 const Option = Select.Option;
@@ -10,57 +11,63 @@ const { TextArea } = Input;
 
 class PostJob extends React.Component {
 
-    submitData = () => {
+    state = {
+        lan: localStorage.getItem('lan')
+    }
+    
+    handleSubmit = () => {
 
     }
 
     render() {
+        I18n.setLanguage(this.state.lan);
         return (
             <div align="center">
                 <br />
-                <h1>Post a New Job</h1>
-                <Form onSubmit={this.submitData} className="main-form">
+                <h1>{I18n.get('Post a New Job')}</h1>
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }}>
                     <Form.Item>
-                        <Input placeholder="Enter Employer Name"
+                        <Input placeholder={I18n.get('Enter Employer Name')}
                             prefix={<Icon type="user" />}
                             suffix={
-                                <Tooltip title="Enter the name of the employer.">
+                                <Tooltip title={I18n.get('Enter the name of the employer.')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
-                        <DatePicker placeholder="Date Posted On" />
+                        <DatePicker placeholder={I18n.get('Date Posted On')} />
                     </Form.Item>
                     <Form.Item>
-                        <Select placeholder="Job Type">
-                            <Option value="Full Time">Full Time</Option>
-                            <Option value="Part Time">Part Time</Option>
-                            <Option value="Internship">Internship</Option>
-                            <Option value="Temporary">Temporary</Option>
+                        <Select placeholder={I18n.get('Job Type')}>
+                            <Option value="Full Time">{I18n.get('Full Time')}</Option>
+                            <Option value="Part Time">{I18n.get('Part Time')}</Option>
+                            <Option value="Internship">{I18n.get('Internship')}</Option>
+                            <Option value="Temporary">{I18n.get('Temporary')}</Option>
                         </Select>
                     </Form.Item>
                     <Form.Item>
                         <TextArea
-                            placeholder="Enter Job Description" autosize={{ minRows: 2, maxRows: 6 }}
+                            placeholder={I18n.get('Enter Job Description')} autosize={{ minRows: 2, maxRows: 6 }}
                         />
                     </Form.Item>
                     <Form.Item>
                         <Input placeholder="(###) ###-####"
                             prefix={<Icon type="contacts" />}
                             suffix={
-                                <Tooltip title="Enter the contact number of the employer.">
+                                <Tooltip title={I18n.get('Enter the contact number of the employer.')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">Submit Job</Button>
+                        <Button type="primary" htmlType="submit">{I18n.get('Submit Job')}</Button>
                     </Form.Item>
                 </Form>
             </div>
         )
     }
 }
+
 
 export default PostJob;
