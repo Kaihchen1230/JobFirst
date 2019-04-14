@@ -5,8 +5,8 @@ import PrivateRoute from "../components/authentication/privateRoute"
 import Login from "../components/authentication/login"
 import businessProfile from "./businessProfile"
 import PostJob from "../components/form/postJob";
-import Main from './Main'
-import Profile from "./profile";
+import Home from '../components/Home/home';
+import Profile from "./userProfile";
 import JobList from './jobList';
 import JobDescription from './jobDescription';
 import Application from '../components/form/application';
@@ -17,13 +17,13 @@ const App = () => (
   <Layout>
     <Router>
       <PrivateRoute path="/app/business-profile" component={businessProfile} />
-      <PrivateRoute path="/app/user-profile"     component={Profile} />
+      <PrivateRoute path="/app/user-profile/:username"     component={Profile} /> 
       <PrivateRoute path="/app/application"      component={Application} />
       <PostJob      path="/app/postJob" />
       <Login        path="/app/login" />
       <SignUp       path="/app/signup" />
       <JobList      path="/app/job-list" />
-      <Main         path="/app/main" component={Main}/>
+      <Home         path="/" />
       <JobDescription path="/app/job-detail"/>
     </Router>
   </Layout>
