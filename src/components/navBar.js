@@ -48,11 +48,15 @@ const navBar = (props) => {
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />Post a New Job
-        <Link to="/app/postJob"></Link>
+        <Link to="/app/postJob/es"></Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Icon type="profile" theme="twoTone" />ENGLISH
+        <Link to={window.location.pathname}></Link>
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />中文
-        <Link to="/app/postJob/ch"></Link>
+        <Link to={window.location.pathname.slice(0, window.location.pathname.length - 3) + "/ch"}></Link>
       </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/user-profile">{state.login}</Link>

@@ -56,9 +56,6 @@ const PostJob = props => {
                     <Button type="primary" htmlType="submit">{I18n.get('Submit Job')}</Button>
                 </Form.Item>
             </Form>
-            <Button type="primary" htmlType="submit" onClick={() => { this.setState({ language: 'es' }); }}>ENGLISH</Button>
-            &nbsp;&nbsp;&nbsp;
-                <Button type="primary" htmlType="submit" onClick={() => { this.setState({ language: 'ch' }); }}>中文</Button>
         </div>
     )
 }
