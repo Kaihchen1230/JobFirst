@@ -90,9 +90,10 @@ class PersonalInfo extends React.Component{
                         
                         rules: [{required: true, message: 'Please select your zip code!' }],
                     })(
-                        <Input type = "number" style={{width: "50%"}} required/>
+                        <Input style={{width: "50%"}} required/>
                     )}
                 </FormItem>
+                <h2 style={{marginLeft: "20%"}}>Contact Information</h2>
                 <FormItem
                     {...formItemLayout}
                     label="E-mail"
@@ -106,7 +107,18 @@ class PersonalInfo extends React.Component{
                         <Input type = "email" style = {{width: "50%"}}/>
                     )}
                 </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="Phone Number"
+                    >
+                    {getFieldDecorator('phone', {
+                        rules: [{ required: true, message: 'Please input your phone number!' }],
+                    })(
+                        <Input style={{ width: '50%' }} />
+                    )}
+                </FormItem>
             </Form>
+            
         );
     }
     
