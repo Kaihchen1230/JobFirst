@@ -2,7 +2,7 @@ import React from "react"
 import { Link, navigate } from "gatsby";
 import { getUser, isLoggedIn, logout } from '../services/auth';
 import { Auth } from "aws-amplify";
-import { Menu, Icon, Avatar } from 'antd';
+import { Menu, Icon, Avatar, Button } from 'antd';
 
 const navBar = (props) => {
   const state = {
@@ -25,7 +25,8 @@ const navBar = (props) => {
         <span> Log in </span>
       </span>
   }
-
+  //localStorage.setItem('lan', 'es');
+//<Link to={window.location.pathname.slice(0, window.location.pathname.length - 3) + "/ch"}></Link>
   return (
     <Menu
       mode="horizontal"
@@ -49,6 +50,18 @@ const navBar = (props) => {
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />Post a New Job
         <Link to="/app/postJob"></Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          localStorage.setItem('lan', 'ch');
+          window.location.reload();
+        }}>ENGLISH</Button>
+      </Menu.Item>
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          localStorage.setItem('lan', 'ch');
+          window.location.reload();
+        }}>中文</Button>
       </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/user-profile">{state.login}</Link>

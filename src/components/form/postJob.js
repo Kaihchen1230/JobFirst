@@ -10,24 +10,27 @@ const Option = Select.Option;
 const { TextArea } = Input;
 
 class PostJob extends React.Component {
+
     state = {
-        error: ``,
-        language: 'es'
+        lan: localStorage.getItem('lan')
     }
 
-    submitData = () => {
+    componentDidMount = () => {
+        //this.setState({lan: localStorage.getItem('lan')});
+    }
+
+    handleSubmit = () => {
 
     }
 
     render() {
-
-        I18n.setLanguage(this.state.language);
-
+        //I18n.setLanguage(localStorage.getItem('lan'));
+        I18n.setLanguage(this.state.lan);
         return (
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
-                <Form onSubmit={this.submitData} className="main-form" style={{"width": "80%"}}>
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }}>
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter Employer Name')}
                             prefix={<Icon type="user" />}
@@ -66,12 +69,10 @@ class PostJob extends React.Component {
                         <Button type="primary" htmlType="submit">{I18n.get('Submit Job')}</Button>
                     </Form.Item>
                 </Form>
-                <Button type="primary" htmlType="submit" onClick={() => {this.setState({language: 'es'});}}>ENGLISH</Button>
-                &nbsp;&nbsp;&nbsp;
-                <Button type="primary" htmlType="submit" onClick={() => {this.setState({language: 'ch'});}}>中文</Button>
             </div>
         )
     }
 }
+
 
 export default PostJob;
