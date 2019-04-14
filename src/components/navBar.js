@@ -57,7 +57,6 @@ const navBar = (props) => {
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />中文
-        
         <Button ghost="true" onClick={() => localStorage.setItem('lan', 'ch')}>h</Button>
       </Menu.Item>
       <Menu.Item key="login">
