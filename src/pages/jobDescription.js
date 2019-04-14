@@ -4,6 +4,7 @@ import { Tabs, Button } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
+import ApplicantList from '../components/job_description/applicantList';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -62,13 +63,20 @@ class JobDescription extends React.Component{
             
                     </TabPane>
                     <TabPane tab="Company" key="2">
-                    <div>
+                        <div>
                         <CompanyDetail companyInfo = {this.state['company']}></CompanyDetail>
                         </div>
                     </TabPane>
 
                     <TabPane tab="Location" key="3">
-                        <Location locationInfo = {this.state.location}></Location>
+                         <div><Location locationInfo = {this.state.location}></Location></div>
+                        
+                    </TabPane>
+
+                    <TabPane tab="Applicant List" key="4">
+                        <div>
+                             <ApplicantList></ApplicantList>
+                        </div>
                     </TabPane>
                 </Tabs>
             </div>
