@@ -47,6 +47,10 @@ const navBar = (props) => {
         <Icon type="profile" theme="twoTone" />Business Profile
         <Link to="/app/business-profile"></Link>
       </Menu.Item>   
+      <Menu.Item>
+        <Icon type="profile" theme="twoTone" />User Profile
+        <Link to="/app/user-profile"></Link>
+      </Menu.Item>   
       {!isLoggedIn() ? (
       <Menu.Item key="register">
         <Icon type="mail" theme="twoTone" />Register

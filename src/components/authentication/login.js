@@ -38,7 +38,7 @@ class Login extends React.Component {
       console.log(test)
       // console.log(userInfo);
       setUser(userInfo)
-      navigate("/app/user-profile")
+      navigate("/app/main")
     } catch (err) {
       this.setState({ error: err })
       console.log('error....: ', err)
@@ -50,7 +50,7 @@ class Login extends React.Component {
     I18n.setLanguage(localStorage.getItem('lan'));
 
     if (isLoggedIn()) {
-      navigate(`/app/user-profile`)
+      navigate(`/app/main`)
     }
     return (
       <>
