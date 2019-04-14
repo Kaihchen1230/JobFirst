@@ -51,17 +51,8 @@ const navBar = (props) => {
         <Link to="/app/postJob"></Link>
       </Menu.Item>
       <Menu.Item>
-        <Icon type="profile" theme="twoTone" />ENGLISH
-        <Link to={{
-          pathname: this.props.location.pathname,
-          state: {
-            language: 'es'
-          }
-        }}></Link>
-      </Menu.Item>
-      <Menu.Item>
         <Icon type="profile" theme="twoTone" />中文
-        <Link to="*"></Link>
+        <Link to="/app/postJob/ch"></Link>
       </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/user-profile">{state.login}</Link>
