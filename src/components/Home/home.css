@@ -1,5 +1,9 @@
+.full {
+  display: grid;
+  height: 100%;
+}
 .banner-user{
-    height: 220px;
+    height: 100%;
   }
   .banner-user-elem{
     text-align: center;
@@ -23,7 +27,8 @@
     overflow: hidden;
   }
 .custom-arrow-thumb{
-    height: 220px;
+    height: 100vh; /*220px*/
+
 }
 .custom-arrow-thumb .user-arrow {
     top: 50%;

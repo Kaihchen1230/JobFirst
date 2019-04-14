@@ -1,6 +1,6 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { isLoggedIn, setUser } from "../../services/auth"
+import { isLoggedIn, setUser, getUser } from "../../services/auth"
 import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
 import { withAuthenticator } from 'aws-amplify-react'
@@ -29,17 +29,16 @@ class Login extends React.Component {
     try {
       await Auth.signIn(username, password)
       const user = await Auth.currentAuthenticatedUser();
-      // console.log("user data is", user);
+      //console.log("user data is", user);
       const userInfo = {
         ...user.attributes,
         username: user.username,
         language: "es"
       }
-      const test = await Auth.userAttributes(user);
-      console.log(test)
-      // console.log(userInfo);
+      // const test = await Auth.userAttributes(user);
+      //console.log(test)
       setUser(userInfo)
-      navigate("/app/user-profile")
+      (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile") : navigate("/app/business-profile")
     } catch (err) {
       this.setState({ error: err })
       console.log('error....: ', err)
@@ -48,7 +47,10 @@ class Login extends React.Component {
 
   render() {
     if (isLoggedIn()) {
-      navigate(`/app/user-profile`)
+      const userInfo = getUser();
+      // TODO if user has no profile, ask them to fill up basic info after sign in
+      //(userInfo['custom:isProfile']) === 'no') ? 
+      (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile") : navigate("/app/business-profile")
     }
     I18n.setLanguage(this.state.language);
     return (

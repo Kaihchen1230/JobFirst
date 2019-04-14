@@ -97,6 +97,7 @@ class Home extends React.Component {
             <span key={i}><i style={{ backgroundImage: `url(${img})` }} /></span>
         );
         return (
+            <div className="full">
             <BannerAnim
                 onChange={this.onChange}
                 onMouseEnter={this.onMouseEnter}
@@ -172,7 +173,7 @@ class Home extends React.Component {
                         The Fast Way Use Animation In React
                     </TweenOne>
                 </Element>
-                <Arrow arrowType="prev" key="prev" prefixCls="user-arrow" component={TweenOne}
+                <Arrow arrowType="prev" key="prev" prefixCls="user-arrow prev" component={TweenOne}
                     onMouseEnter={this.prevEnter}
                     onMouseLeave={this.prevLeave}
                     animation={{ left: this.state.prevEnter ? 0 : -120 }}
@@ -188,7 +189,7 @@ class Home extends React.Component {
                         <li style={{ backgroundImage: `url(${this.imgArray[intArray[0]]})` }} key={intArray[0]} />
                     </TweenOneGroup>
                 </Arrow>
-                <Arrow arrowType="next" key="next" prefixCls="user-arrow" component={TweenOne}
+                <Arrow arrowType="next" key="next" prefixCls="user-arrow next" component={TweenOne}
                     onMouseEnter={this.nextEnter}
                     onMouseLeave={this.nextLeave}
                     animation={{ right: this.state.nextEnter ? 0 : -120 }}
@@ -210,6 +211,7 @@ class Home extends React.Component {
                     {thumbChildren}
                 </Thumb>
             </BannerAnim>
+            </div>
         );
     }
 }

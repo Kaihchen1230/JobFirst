@@ -33,7 +33,7 @@ const navBar = (props) => {
     >
       <Menu.Item key="home">
         <Icon type="home" theme="twoTone" />Home
-        <Link to="/app/main"></Link> 
+        <Link to="/"></Link> 
       </Menu.Item>
       <Menu.Item key="about">
         <Icon type="profile" theme="twoTone" />View Job
