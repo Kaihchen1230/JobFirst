@@ -142,20 +142,6 @@
 					"env": "alanenv"
 				}
 			}
-		},
-		"apibusinessProfile": {
-			"Type": "AWS::CloudFormation::Stack",
-			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412031500-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-				"Parameters": {
-					"AppSyncApiName": "businessProfile",
-					"schemaGraphql": "s3://csc47300project-20190412031500-deployment/amplify-appsync-files/schema.graphql.1555213061310",
-					"ResolverBucket": "csc47300project-20190412031500-deployment",
-					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1555213061310",
-					"env": "alanenv"
-				}
-			}
 		}
 	},
 	"Outputs": {

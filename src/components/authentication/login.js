@@ -38,7 +38,7 @@ class Login extends React.Component {
       // const test = await Auth.userAttributes(user);
       //console.log(test)
       setUser(userInfo)
-      (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile") : navigate("/app/business-profile")
+      (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/" + userInfo.username) : navigate("/app/business-profile")
     } catch (err) {
       this.setState({ error: err })
       console.log('error....: ', err)
@@ -50,7 +50,7 @@ class Login extends React.Component {
       const userInfo = getUser();
       // TODO if user has no profile, ask them to fill up basic info after sign in
       //(userInfo['custom:isProfile']) === 'no') ? 
-      (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile") : navigate("/app/business-profile")
+      (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/"  + userInfo.username) : navigate("/app/business-profile")
     }
     I18n.setLanguage(this.state.language);
     return (

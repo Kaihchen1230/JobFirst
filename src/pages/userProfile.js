@@ -16,7 +16,7 @@ class Profile extends React.Component{
     render() {
         const username = this.state.username;
         // some more data about the user such as link for the profile pic.
-        let pro = 
+        let pro = (
             <div>
                 <div>
                     <MyCard/>
@@ -25,9 +25,10 @@ class Profile extends React.Component{
                     <MyList/>
                 </div>
             </div>
+        );
         if(isLoggedIn() && getUser().username === username) {
             // logged in and viewing own profile, then should render edit button
-            pro = 
+            pro = (
             <div>
                 <div>
                     <MyCard/>
@@ -36,6 +37,7 @@ class Profile extends React.Component{
                     <MyList/>
                 </div>    
             </div>
+            );
         }
         return pro;
     }

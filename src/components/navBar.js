@@ -63,7 +63,7 @@ const navBar = (props) => {
         }}>中文</Button>
       </Menu.Item>
       <Menu.Item key="login">
-        <Link to="/app/user-profile">{state.login}</Link>
+        <Link to="/app/login">{state.login}</Link>
       </Menu.Item>
       {isLoggedIn() ? (
           <Menu.Item 
