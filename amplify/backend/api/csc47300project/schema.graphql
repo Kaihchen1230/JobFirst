@@ -1,0 +1,128 @@
+# type Blog @model {
+#   id: ID!
+#   name: String!
+#   posts: [Post] @connection(name: "BlogPosts")
+# }
+# type Post @model {
+#   id: ID!
+#   title: String!
+#   blog: Blog @connection(name: "BlogPosts")
+#   comments: [Comment] @connection(name: "PostComments")
+# }
+# type Comment @model {
+#   id: ID!
+#   content: String
+#   post: Post @connection(name: "PostComments")
+# }
+
+type EmplyeeInfo @model {
+  employee_id: ID! 
+  first_name: String!
+  middle_name: String
+  last_name: String!
+  age: Int
+  email: String!
+  phone: String
+  website: String
+  pic: String
+  address: Address
+  applied_job: [AppliedJob]
+}
+
+type Address @model {
+  address_id: ID!
+  person_id: ID!
+  line1: String!
+  line2: String
+  postal_code: String # or Int
+  state: State!
+}
+
+type AppliedJob @model {
+  job_id: ID!
+  owner_id: ID! # the person who applied to this job
+  address: Address!
+  date_applied: String!
+}
+
+type EmployerInfo @model {
+  employer_id: ID!
+  company_name: String!
+  company_email: String!
+  company_phone: String!
+  company_address: Address!
+  company_website: String
+  timeline: [Timeline!]
+  company_pic: String
+  description: String
+}
+
+type PostedJob @model {
+  job_id: ID!
+  company_id: ID!
+  job_title: String
+  requirements: [String!]
+  date_posted: String!
+  location: Address!
+  clicked_counts: Int
+}
+
+type Timeline @model {
+  timeline_id: ID!
+  company_id: ID!
+  date: String!
+  info: String!
+}
+
+enum State {
+  AL
+  AK
+  AZ
+  AR
+  CA
+  CO
+  CT
+  DE
+  FL
+  GA
+  HI
+  ID
+  IL
+  IN
+  IA
+  KS
+  KY
+  LA
+  ME
+  MD
+  MA
+  MI
+  MN
+  MS
+  MO
+  MT
+  NE
+  NV
+  NH
+  NJ
+  NM
+  NY
+  NC
+  ND
+  OH
+  OK
+  OR
+  PA
+  RI
+  SC
+  SD
+  TN
+  TX
+  UT
+  VT
+  VA
+  WA
+  WV
+  WI
+  WY
+}

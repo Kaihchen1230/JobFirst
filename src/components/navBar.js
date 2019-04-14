@@ -33,7 +33,7 @@ const navBar = (props) => {
     >
       <Menu.Item key="home">
         <Icon type="home" theme="twoTone" />Home
-        <Link to="/app/main"></Link> 
+        <Link to="/"></Link> 
       </Menu.Item>
       <Menu.Item key="about">
         <Icon type="profile" theme="twoTone" />View Job
@@ -63,7 +63,7 @@ const navBar = (props) => {
         }}>中文</Button>
       </Menu.Item>
       <Menu.Item key="login">
-        <Link to="/app/user-profile">{state.login}</Link>
+        <Link to="/app/login">{state.login}</Link>
       </Menu.Item>
       {isLoggedIn() ? (
           <Menu.Item 
