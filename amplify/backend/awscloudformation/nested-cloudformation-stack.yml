@@ -81,11 +81,7 @@
 		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-<<<<<<< HEAD
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412132316-deployment/amplify-cfn-templates/auth/cognitocce04566-cloudformation-template.yml",
-=======
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412181322-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
->>>>>>> origin/dev
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": false,
@@ -108,15 +104,9 @@
 					"emailVerificationMessage": "Your verification code is {####}",
 					"defaultPasswordPolicy": true,
 					"passwordPolicyMinLength": 8,
-<<<<<<< HEAD
-					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
-					"requiredAttributes": "email,family_name,name,phone_number,preferred_username,userType",
-					"userpoolClientName": "cognitocce04566_app_client",
-=======
 					"passwordPolicyCharacters": "Requires Lowercase",
 					"requiredAttributes": "name,phone_number,email",
 					"userpoolClientName": "cognitoed11de21_app_client",
->>>>>>> origin/dev
 					"userpoolClientGenerateSecret": true,
 					"userpoolClientRefreshTokenValidity": 30,
 					"userpoolClientReadAttributes": "email",
@@ -149,12 +139,20 @@
 							"Arn"
 						]
 					},
-<<<<<<< HEAD
-					"useDefault": "default",
-					"env": "develop"
-=======
-					"env": "product"
->>>>>>> origin/dev
+					"env": "jielan"
+				}
+			}
+		},
+		"apibusinessProfile": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"AppSyncApiName": "businessProfile",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
+					"S3DeploymentBucket": "csc47300project-20190413183412-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/dda313cfda0880835f821f81f72f990ea4f19a98",
+					"env": "jielan"
 				}
 			}
 		}

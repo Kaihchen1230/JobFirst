@@ -66,5 +66,56 @@
                 "cognitocce04566": {}
             }
         }
+    },
+    "jie": {
+        "awscloudformation": {
+            "AuthRoleName": "csc47300project-20190413180223-authRole",
+            "UnauthRoleArn": "arn:aws:iam::241849618799:role/csc47300project-20190413180223-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::241849618799:role/csc47300project-20190413180223-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "csc47300project-20190413180223-deployment",
+            "UnauthRoleName": "csc47300project-20190413180223-unauthRole",
+            "StackName": "csc47300project-20190413180223",
+            "StackId": "arn:aws:cloudformation:us-east-1:241849618799:stack/csc47300project-20190413180223/d25a8270-5e37-11e9-bd08-0a743b4c9590"
+        },
+        "categories": {
+            "auth": {
+                "cognitoed11de21": {}
+            }
+        }
+    },
+    "jieenv": {
+        "awscloudformation": {
+            "AuthRoleName": "csc47300project-20190413182733-authRole",
+            "UnauthRoleArn": "arn:aws:iam::241849618799:role/csc47300project-20190413182733-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::241849618799:role/csc47300project-20190413182733-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "csc47300project-20190413182733-deployment",
+            "UnauthRoleName": "csc47300project-20190413182733-unauthRole",
+            "StackName": "csc47300project-20190413182733",
+            "StackId": "arn:aws:cloudformation:us-east-1:241849618799:stack/csc47300project-20190413182733/55b138f0-5e3b-11e9-a558-12a9adafee72"
+        },
+        "categories": {
+            "auth": {
+                "cognitoed11de21": {}
+            }
+        }
+    },
+    "jielan": {
+        "awscloudformation": {
+            "AuthRoleName": "csc47300project-20190413183412-authRole",
+            "UnauthRoleArn": "arn:aws:iam::241849618799:role/csc47300project-20190413183412-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::241849618799:role/csc47300project-20190413183412-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "csc47300project-20190413183412-deployment",
+            "UnauthRoleName": "csc47300project-20190413183412-unauthRole",
+            "StackName": "csc47300project-20190413183412",
+            "StackId": "arn:aws:cloudformation:us-east-1:241849618799:stack/csc47300project-20190413183412/438a8130-5e3c-11e9-b660-1235152b041e"
+        },
+        "categories": {
+            "auth": {
+                "cognitoed11de21": {}
+            }
+        }
     }
 }
