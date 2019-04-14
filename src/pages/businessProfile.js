@@ -3,7 +3,8 @@ import {Select } from 'antd';
 import Card from '../components/business_profile/Card';
 import Timeline from '../components/business_profile/Timeline'; 
 import { I18n } from 'aws-amplify';
-import dict from '../components/dictionary/dictionary'
+import dict from '../components/dictionary/dictionary';
+import { API, graphqlOperation } from 'aws-amplify';
 
 I18n.putVocabularies(dict);
 I18n.setLanguage('ch');
@@ -13,8 +14,29 @@ let bodyStyle={
 
 }
 
+
+const query = `
+  query {
+  GetBusinessProfile {
+    business_name
+    description
+    business_picture
+    business_email 
+    business_phone_number
+    Business_location
+    timeline
+      }
+    }
+  `
+
+
+
 class businessProfile extends React.Component {
 
+  async componentDidMount(){
+    const data =  await API.graphql(graphqlOperation(query))
+    console.log("load data",data);
+  }
   render() {
 
     return (
