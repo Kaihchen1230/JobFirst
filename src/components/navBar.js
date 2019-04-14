@@ -25,8 +25,7 @@ const navBar = (props) => {
         <span> Log in </span>
       </span>
   }
-  //localStorage.setItem('lan', 'es');
-//<Link to={window.location.pathname.slice(0, window.location.pathname.length - 3) + "/ch"}></Link>
+  
   return (
     <Menu
       mode="horizontal"
@@ -53,7 +52,7 @@ const navBar = (props) => {
       </Menu.Item>
       <Menu.Item>
         <Button ghost="true" onClick={() => {
-          localStorage.setItem('lan', 'ch');
+          localStorage.setItem('lan', 'es');
           window.location.reload();
         }}>ENGLISH</Button>
       </Menu.Item>
