@@ -1,6 +1,6 @@
 import React from "react"
 import {Select,Modal, Button } from 'antd';
-import Card from '../components/business_profile/Card';
+import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline'; 
 import EditProfileForm from '../components/business_profile/EditProfileForm'; 
 import { I18n } from 'aws-amplify';
@@ -69,7 +69,7 @@ class businessProfile extends React.Component {
           </Modal>
         </div>
         <h1>Company: aplipapa</h1>
-        <Card/>
+        <BusinessPicture/>
         <h2>Location:NY USA</h2>
         <h1>About us</h1>
         <div>At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off. 
