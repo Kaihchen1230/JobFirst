@@ -52,7 +52,12 @@ const navBar = (props) => {
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />ENGLISH
-        <Link to="*"></Link>
+        <Link to={{
+          pathname: this.props.location.pathname,
+          state: {
+            language: 'es'
+          }
+        }}></Link>
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />中文
