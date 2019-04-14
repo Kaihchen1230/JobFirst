@@ -52,7 +52,7 @@ const navBar = (props) => {
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />ENGLISH
-        <Link to={window.location.pathname}></Link>
+        <Link to={window.location.pathname.slice(0, window.location.pathname.length - 3) + "/es"}></Link>
       </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />中文
