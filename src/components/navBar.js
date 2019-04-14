@@ -25,7 +25,7 @@ const navBar = (props) => {
         <span> Log in </span>
       </span>
   }
-  localStorage.setItem('lan', 'es');
+  //localStorage.setItem('lan', 'es');
 //<Link to={window.location.pathname.slice(0, window.location.pathname.length - 3) + "/ch"}></Link>
   return (
     <Menu
@@ -52,15 +52,16 @@ const navBar = (props) => {
         <Link to="/app/postJob"></Link>
       </Menu.Item>
       <Menu.Item>
-        <Icon type="profile" theme="twoTone" />ENGLISH
-        <Link to={window.location.pathname.slice(0, window.location.pathname.length - 3) + "/es"}></Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Icon type="profile" theme="twoTone" />中文
         <Button ghost="true" onClick={() => {
           localStorage.setItem('lan', 'ch');
           window.location.reload();
-        }}>h</Button>
+        }}>ENGLISH</Button>
+      </Menu.Item>
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          localStorage.setItem('lan', 'ch');
+          window.location.reload();
+        }}>中文</Button>
       </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/user-profile">{state.login}</Link>
