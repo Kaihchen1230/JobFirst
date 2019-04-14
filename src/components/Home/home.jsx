@@ -118,13 +118,13 @@ class Home extends React.Component {
                         }}
                     />
                     <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
-                        Ant Motion Banner
+                        JobFirst
                     </TweenOne>
                     <TweenOne
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        The Fast Way Use Animation In React
+                        Where immigrants with degree find their jobs.
                     </TweenOne>
                 </Element>
                 <Element 
@@ -141,13 +141,13 @@ class Home extends React.Component {
                         }}
                     />
                     <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
-                        Ant Motion Banner
+                        JobFirst
                     </TweenOne>
                     <TweenOne
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        The Fast Way Use Animation In React
+                        Where company find talents.
                     </TweenOne>
                 </Element>
                 <Element 
@@ -164,13 +164,13 @@ class Home extends React.Component {
                         }}
                     />
                     <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
-                        Ant Motion Banner
+                        JobFirst
                     </TweenOne>
                     <TweenOne
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        The Fast Way Use Animation In React
+                        JobFirst
                     </TweenOne>
                 </Element>
                 <Arrow arrowType="prev" key="prev" prefixCls="user-arrow prev" component={TweenOne}
