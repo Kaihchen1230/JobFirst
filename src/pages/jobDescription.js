@@ -41,6 +41,70 @@ class JobDescription extends React.Component{
                 state: 'NY',
                 zipCode: 11225
             }
+        ],
+        'applicant': [{
+            key: '1',
+            name: 'John Brown',
+            degree: "Associate degree in computer science",
+            address: 'New York No. 1 Lake Park',
+          }, {
+            key: '2',
+            name: 'Joe Black',
+            degree: "Associate degree in computer science",
+            address: 'London No. 2 Lake Park',
+          }, {
+            key: '3',
+            name: 'Jim Green',
+            degree: "Associate degree in computer information system",
+            address: 'Sidney No. 3 Lake Park',
+          }, {
+            key: '4',
+            name: 'Jim Red',
+            degree: "Associate degree in computer information system",
+            address: 'London No. 4 Lake Park',
+          },
+          {
+            key: '1',
+            name: 'John Brown',
+            degree: "Associate degree in computer information system",
+            address: 'New York No. 5 Lake Park',
+          }, {
+            key: '2',
+            name: 'Joe Black',
+            degree: "Associate degree in computer information system",
+            address: 'London No. 6 Lake Park',
+          }, {
+            key: '3',
+            name: 'Jim Green',
+            degree: "Associate degree in computer information system",
+            address: 'Sidney No. 7 Lake Park',
+          }, {
+            key: '4',
+            name: 'Jim Red',
+            degree: "Associate degree in computer information system",
+            address: 'London No. 8 Lake Park',
+          },
+          {
+            key: '1',
+            name: 'John Brown',
+            degree: "Associate degree in computer information system",
+            address: 'New York No. 9 Lake Park',
+          }, {
+            key: '2',
+            name: 'Joe Black',
+            degree: "Associate degree in math education",
+            address: 'London No. 10 Lake Park',
+          }, {
+            key: '3',
+            name: 'Jim Green',
+            degree: "Associate degree in math",
+            address: 'Sidney No. 11 Lake Park',
+          }, {
+            key: '4',
+            name: 'Jim Red',
+            degree: "Associate degree in computer information system",
+            address: 'London No. 12 Lake Park',
+          }
         ]
     }
             
@@ -75,7 +139,7 @@ class JobDescription extends React.Component{
 
                     <TabPane tab="Applicant List" key="4">
                         <div>
-                             <ApplicantList></ApplicantList>
+                             <ApplicantList applicant={this.state.applicant}></ApplicantList>
                         </div>
                     </TabPane>
                 </Tabs>
