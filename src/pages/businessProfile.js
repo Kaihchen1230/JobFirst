@@ -1,5 +1,5 @@
 import React from "react"
-import {Select } from 'antd';
+import {Select,Modal, Button } from 'antd';
 import Card from '../components/business_profile/Card';
 import Timeline from '../components/business_profile/Timeline'; 
 import { I18n } from 'aws-amplify';
@@ -20,7 +20,7 @@ let bodyStyle={
 
 
 class businessProfile extends React.Component {
-
+  state = { visible: false }
   async componentDidMount(){
     // const data =  await API.graphql(graphqlOperation(queries.createBusinessProfile,
     //            { input:{
@@ -34,21 +34,57 @@ class businessProfile extends React.Component {
     //       timeline:["fdf","gfg"]}}))
     // console.log("load data",data);
   }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
   render() {
 
     return (
-      <div style={bodyStyle}>
-      <h1>Company: aplipap;</h1>
-      <Card/>
-      <h2>Location:NY USA</h2>
-      <h1>About us</h1>
-      <div>At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off. 
-          We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact
-          on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love
-          to hear from you.
-      </div>
-      <h2>TimeLine</h2>
-      <Timeline/>  
+        <div style={bodyStyle}>
+              <div>
+          <Button type="primary" onClick={this.showModal}>
+            Edit Profile
+          </Button>
+          <Modal
+            title="Basic Modal"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </Modal>
+        </div>
+        <h1>Company: aplipap</h1>
+        <Card/>
+        <h2>Location:NY USA</h2>
+        <h1>About us</h1>
+        <div>At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off. 
+            We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact
+            on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love
+            to hear from you.
+        </div>
+        <h2>TimeLine</h2>
+        <Timeline/>  
     </div>
     );
   }
