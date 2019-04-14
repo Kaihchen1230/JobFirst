@@ -1,0 +1,6 @@
+{
+    "AppSyncApiName": "businessProfile",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "S3DeploymentBucket": "csc47300project-20190413183412-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/dda313cfda0880835f821f81f72f990ea4f19a98"
+}
