@@ -4,11 +4,12 @@ import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline'; 
 import EditProfileForm from '../components/business_profile/EditProfileForm'; 
 import { I18n } from 'aws-amplify';
-import dict from '../components/dictionary/dictionary';
+import PostJob from '../components/business_profile/postJob'; 
+import { generate } from 'randomstring';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
 
-I18n.putVocabularies(dict);
+
 I18n.setLanguage(localStorage.getItem('lan'));
 
 let bodyStyle={
@@ -27,7 +28,40 @@ class businessProfile extends React.Component {
     applicant:[{applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},
                 {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},
                 {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-                {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},]
+                {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},],
+    jobList: [
+              {
+                  id: generate(10),
+                  campanyName: 'Front-end developer',
+                  description: 'Requirement:Know CSS and HTML.'
+              },
+              {
+                  id: generate(10),
+                  campanyName: 'Front-end developer',
+                  description: 'Requirement:Know CSS and HTML.'
+              },
+              {
+                  id: generate(10),
+                  campanyName: 'Front-end developer',
+                  description: 'Requirement:Know CSS and HTML.'
+              },
+              {
+                  id: generate(10),
+                  campanyName: 'Front-end developer',
+                  description: 'Requirement:Know CSS and HTML.'
+              },
+              {
+                  id: generate(10),
+                  campanyName: 'Front-end developer',
+                  description: 'Requirement:Know CSS and HTML.'
+              },
+              {
+                  id: generate(10),
+                  campanyName: 'Front-end developer',
+                  description: 'Requirement:Know CSS and HTML.'
+              }
+          
+          ]
    }
 
   showModal = () => {
@@ -51,7 +85,6 @@ class businessProfile extends React.Component {
   }
   render() {
    
-    // console.log("language",this.state.lan)
     return (
         <div style={bodyStyle}>
               <div>
@@ -79,6 +112,7 @@ class businessProfile extends React.Component {
         </div>
         <h2>TimeLine</h2>
         <Timeline/>  
+        <PostJob jobList={this.state.jobList}/>
     </div>
     );
   }
