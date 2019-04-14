@@ -1,8 +1,9 @@
 import React from 'react';
-import { Form, Input, DatePicker, Col, TimePicker, Select, Cascader, InputNumber, title, PageHeader } from 'antd';
+import { Form, Input, Button, Col, DatePicker, Select, Cascader, title, PageHeader } from 'antd';
 import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 const states = [
     {
         value: 'New York',
@@ -35,11 +36,32 @@ class PersonalInfo extends React.Component{
             }
           };
 
+        const tailFormItemLayout = {
+            wrapperCol: {
+              xs: {
+                span: 24,
+                offset: 0,
+              },
+              sm: {
+                span: 14,
+                offset: 6,
+              },
+            },
+          };
+
+        const prefixSelector = getFieldDecorator('prefix', {
+            initialValue: '86',
+          })(
+            <Select style={{ width: 60 }}>
+              <Option value="86">+86</Option>
+              <Option value="1">+1</Option>
+            </Select>
+          );
         return(
             <Form>
-                 <h1 align="center">My Information</h1>
+                 <h1 align="center">Job Application</h1>
                 <br/>
-                <h2 style={{marginLeft: "20%"}}>Name:</h2>
+                <h2 style={{marginLeft: "20%"}}>Base Information:</h2>
                 <FormItem
                     {...formItemLayout}
                     label="First Name"
@@ -84,16 +106,17 @@ class PersonalInfo extends React.Component{
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
-                    label="Zip COde"
+                    label="Zip Code"
                     >
                     {getFieldDecorator('Zip Code', {
                         
                         rules: [{required: true, message: 'Please select your zip code!' }],
                     })(
-                        <Input style={{width: "50%"}} required/>
+                        <Input type = "number" style={{width: "50%"}} required/>
                     )}
                 </FormItem>
-                <h2 style={{marginLeft: "20%"}}>Contact Information</h2>
+
+                <h2 style={{marginLeft: "20%"}}>Contact Information:</h2>
                 <FormItem
                     {...formItemLayout}
                     label="E-mail"
@@ -101,12 +124,15 @@ class PersonalInfo extends React.Component{
                     >
                     {getFieldDecorator('email', {
                         rules: [{
+                        type: 'email', message: 'The input is not valid E-mail!',
+                        }, {
                         required: true, message: 'Please input your E-mail!',
                         }],
                     })(
-                        <Input type = "email" style = {{width: "50%"}}/>
+                        <Input style = {{width: "50%"}}/>
                     )}
                 </FormItem>
+
                 <FormItem
                     {...formItemLayout}
                     label="Phone Number"
@@ -114,11 +140,137 @@ class PersonalInfo extends React.Component{
                     {getFieldDecorator('phone', {
                         rules: [{ required: true, message: 'Please input your phone number!' }],
                     })(
+                        <Input addonBefore={prefixSelector} style={{ width: '50%' }} />
+                    )}
+                </FormItem>
+                <div style={{marginLeft: "20%"}}>
+                    <h2 >Work Experience</h2>
+                    <p>Please enter the most recent job that you have held</p>
+                </div>
+                
+                <FormItem
+                    {...formItemLayout}
+                    label="Job Title"
+                    >
+                    {getFieldDecorator('title', {
+                        rules: [{ required: true, message: 'Please enter the title' }],
+                    })(
                         <Input style={{ width: '50%' }} />
                     )}
                 </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="Company"
+                    >
+                    {getFieldDecorator('campany', {
+                        rules: [{ required: true, message: 'Please the name of the camany' }],
+                    })(
+                        <Input style={{ width: '50%' }} />
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="Location"
+                    >
+                    {getFieldDecorator('campany')(
+                        <Input style={{ width: '50%' }} />
+                    )}
+                </FormItem>
+                <div style = {{display: "flex", justifyContent: "center"}}>
+                    <FormItem 
+                        {...formItemLayout}
+                        label="From"
+                        >
+                        {getFieldDecorator('From', {
+                            rules: [{ required: true, message: 'Please enter a date' }],
+                        })(
+                            <DatePicker />
+                        )}
+                    </FormItem>
+                    <FormItem 
+                        {...formItemLayout}
+                        label="To"
+                        >
+                        {getFieldDecorator('To', {
+                            rules: [{ required: true, message: 'Please enter a date' }],
+                        })(
+                            <DatePicker />
+                        )}
+                    </FormItem>
+                </div>
+
+                <h2 style={{marginLeft: "20%"}}>Education</h2>
+                
+                
+                <FormItem
+                    {...formItemLayout}
+                    label="School or University"
+                    >
+                    {getFieldDecorator('school', {
+                        rules: [{ required: true, message: 'Please enter the name of school' }],
+                    })(
+                        <Input style={{ width: '50%' }} />
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="Degree"
+                    >
+                    {getFieldDecorator('degree', {
+                        rules: [{ required: true, message: 'Please the name of the camany' }],
+                    })(
+                        <Select
+                            showSearch
+                            style={{ width: 200 }}
+                            placeholder="Select a person"
+                            optionFilterProp="children"
+                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                        >
+                            <Option value="Associate of Arts">Associate of Arts"</Option>
+                            <Option value="Bachelor of Science">Bachelor of Science</Option>
+                            <Option value="Bachelor of Engineer">Bachelor of Engineer</Option>
+                        </Select>
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="Location"
+                    >
+                    {getFieldDecorator('campany')(
+                        <Input style={{ width: '50%' }} />
+                    )}
+                </FormItem>
+                <div style = {{display: "flex", justifyContent: "center"}}>
+                    <FormItem 
+                        {...formItemLayout}
+                        label="From"
+                        >
+                        {getFieldDecorator('From', {
+                            rules: [{ required: true, message: 'Please enter a date' }],
+                        })(
+                            <DatePicker />
+                        )}
+                    </FormItem>
+                    <FormItem 
+                        {...formItemLayout}
+                        label="To"
+                        >
+                        {getFieldDecorator('To', {
+                            rules: [{ required: true, message: 'Please enter a date' }],
+                        })(
+                            <DatePicker />
+                        )}
+                    </FormItem>
+                </div>
+
+                <h2 style={{marginLeft: "20%"}}>Skill</h2>
+                
+                <FormItem>
+                    <div align="center">
+                    <Button type="primary" htmlType="submit" style = {{width: "33%"}}>Submit</Button>
+                    </div>
+                </FormItem>
             </Form>
-            
         );
     }
     
