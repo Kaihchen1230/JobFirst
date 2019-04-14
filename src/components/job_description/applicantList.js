@@ -1,86 +1,159 @@
 import React from 'react';
-import { Table } from 'antd';
+import {  Table, Input, Button, Icon, } from 'antd';
+import Highlighter from 'react-highlight-words';
 
 
-
-const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    filters: [{
-      text: 'Joe',
-      value: 'Joe',
-    }, {
-      text: 'Jim',
-      value: 'Jim',
-    }, {
-      text: 'Submenu',
-      value: 'Submenu',
-      children: [{
-        text: 'Green',
-        value: 'Green',
-      }, {
-        text: 'Black',
-        value: 'Black',
-      }],
-    }],
-
-    onFilter: (value, record) => record.name.indexOf(value) === 0,
-    sorter: (a, b) => a.name.length - b.name.length,
-    sortDirections: ['descend'],
-  }, {
-    title: 'Age',
-    dataIndex: 'age',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
-  }, {
-    title: 'Address',
-    dataIndex: 'address',
-    filters: [{
-      text: 'London',
-      value: 'London',
-    }, {
-      text: 'New York',
-      value: 'New York',
-    }],
-    filterMultiple: false,
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
-    sorter: (a, b) => a.address.length - b.address.length,
-    sortDirections: ['descend', 'ascend'],
-  }];
-  
-  const data = [{
+const data = [{
     key: '1',
     name: 'John Brown',
-    age: 32,
+    degree: "Associal degree in computer science",
     address: 'New York No. 1 Lake Park',
   }, {
     key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
+    name: 'Joe Black',
+    degree: "Associal degree in computer science",
+    address: 'London No. 2 Lake Park',
   }, {
     key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
+    name: 'Jim Green',
+    degree: "Associal degree in computer information system",
+    address: 'Sidney No. 3 Lake Park',
   }, {
     key: '4',
     name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
-  }];
+    degree: "Associal degree in computer information system",
+    address: 'London No. 4 Lake Park',
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    degree: "Associal degree in computer information system",
+    address: 'New York No. 5 Lake Park',
+  }, {
+    key: '2',
+    name: 'Joe Black',
+    degree: "Associal degree in computer information system",
+    address: 'London No. 6 Lake Park',
+  }, {
+    key: '3',
+    name: 'Jim Green',
+    degree: "Associal degree in computer information system",
+    address: 'Sidney No. 7 Lake Park',
+  }, {
+    key: '4',
+    name: 'Jim Red',
+    degree: "Associal degree in computer information system",
+    address: 'London No. 8 Lake Park',
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    degree: "Associal degree in computer information system",
+    address: 'New York No. 9 Lake Park',
+  }, {
+    key: '2',
+    name: 'Joe Black',
+    degree: "Associal degree in math education",
+    address: 'London No. 10 Lake Park',
+  }, {
+    key: '3',
+    name: 'Jim Green',
+    degree: "Associal degree in math",
+    address: 'Sidney No. 11 Lake Park',
+  }, {
+    key: '4',
+    name: 'Jim Red',
+    degree: "Associal degree in computer information system",
+    address: 'London No. 12 Lake Park',
+  }
+];
+
   
-  function onChange(pagination, filters, sorter) {
-    console.log('params', pagination, filters, sorter);
+  class applicantList extends React.Component {
+    state = {
+      searchText: '',
+    };
+  
+    getColumnSearchProps = (dataIndex) => ({
+      filterDropdown: ({
+        setSelectedKeys, selectedKeys, confirm, clearFilters,
+      }) => (
+        <div style={{ padding: 8 }}>
+          <Input
+            ref={node => { this.searchInput = node; }}
+            placeholder={`Search ${dataIndex}`}
+            value={selectedKeys[0]}
+            onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+            onPressEnter={() => this.handleSearch(selectedKeys, confirm)}
+            style={{ width: 188, marginBottom: 8, display: 'block' }}
+          />
+          <Button
+            type="primary"
+            onClick={() => this.handleSearch(selectedKeys, confirm)}
+            icon="search"
+            size="small"
+            style={{ width: 90, marginRight: 8 }}
+          >
+            Search
+          </Button>
+          <Button
+            onClick={() => this.handleReset(clearFilters)}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Reset
+          </Button>
+        </div>
+      ),
+      filterIcon: filtered => <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />,
+      onFilter: (value, record) => record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+      onFilterDropdownVisibleChange: (visible) => {
+        if (visible) {
+          setTimeout(() => this.searchInput.select());
+        }
+      },
+      render: (text) => (
+        <Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[this.state.searchText]}
+          autoEscape
+          textToHighlight={text.toString()}
+        />
+      ),
+    })
+  
+    handleSearch = (selectedKeys, confirm) => {
+      confirm();
+      this.setState({ searchText: selectedKeys[0] });
+    }
+  
+    handleReset = (clearFilters) => {
+      clearFilters();
+      this.setState({ searchText: '' });
+    }
+  
+    render() {
+      const columns = [{
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        width: '30%',
+        ...this.getColumnSearchProps('name'),
+      }, {
+        title: 'Degree',
+        dataIndex: 'degree',
+        key: 'degree',
+        width: '20%',
+        ...this.getColumnSearchProps('degree'),
+      }, {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+        ...this.getColumnSearchProps('address'),
+      }];
+      return <Table columns={columns} dataSource={data} />;
+    }
   }
   
-const applicantList= (props) => {
-    
-    return(
-        <div>
-        <Table columns={columns} dataSource={data} onChange={onChange} />
-        </div>
-    )
-}
 
 export default applicantList;
