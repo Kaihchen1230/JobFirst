@@ -263,10 +263,12 @@ class PersonalInfo extends React.Component{
                 </div>
 
                 <h2 style={{marginLeft: "20%"}}>Skills</h2>
-                <p style={{marginLeft: "20%"}}></p>
-                <FormItem
+                <p style={{marginLeft: "20%"}}>Please rate your comfort level of speaking English</p>
+
+                <div>
+                <FormItem 
                     {...formItemLayout}
-                    label="Please enter your comfort level of speaking English"
+                    label="Comfort Level"
                     >
                     {getFieldDecorator('english', {
                         rules: [{ required: true, message: 'Please select one of the following' }],
@@ -285,7 +287,7 @@ class PersonalInfo extends React.Component{
                         </Select>
                     )}
                 </FormItem>
-                
+                </div>
                 <FormItem>
                     <div align="center">
                     <Button type="primary" htmlType="submit" style = {{width: "33%"}}>Submit</Button>
