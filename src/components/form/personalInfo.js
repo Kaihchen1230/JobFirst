@@ -201,7 +201,6 @@ class PersonalInfo extends React.Component{
 
                 <h2 style={{marginLeft: "20%"}}>Education</h2>
                 
-                
                 <FormItem
                     {...formItemLayout}
                     label="School or University"
@@ -217,7 +216,7 @@ class PersonalInfo extends React.Component{
                     label="Degree"
                     >
                     {getFieldDecorator('degree', {
-                        rules: [{ required: true, message: 'Please the name of the camany' }],
+                        rules: [{ required: true, message: 'Please select one of the following' }],
                     })(
                         <Select
                             showSearch
@@ -226,7 +225,7 @@ class PersonalInfo extends React.Component{
                             optionFilterProp="children"
                             filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                         >
-                            <Option value="Associate of Arts">Associate of Arts"</Option>
+                            <Option value="Associate of Arts">Associate of Arts</Option>
                             <Option value="Bachelor of Science">Bachelor of Science</Option>
                             <Option value="Bachelor of Engineer">Bachelor of Engineer</Option>
                         </Select>
@@ -263,7 +262,29 @@ class PersonalInfo extends React.Component{
                     </FormItem>
                 </div>
 
-                <h2 style={{marginLeft: "20%"}}>Skill</h2>
+                <h2 style={{marginLeft: "20%"}}>Skills</h2>
+                <p style={{marginLeft: "20%"}}></p>
+                <FormItem
+                    {...formItemLayout}
+                    label="Please enter your comfort level of speaking English"
+                    >
+                    {getFieldDecorator('english', {
+                        rules: [{ required: true, message: 'Please select one of the following' }],
+                    })(
+                        <Select
+                            showSearch
+                            style={{ width: 200 }}
+                            placeholder="Please select one"
+                            optionFilterProp="children"
+                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                        >
+                            <Option value="Not at all">Associate of Arts</Option>
+                            <Option value="A little confortable">A little confortable</Option>
+                            <Option value="Confortable">Confortable</Option>
+                            <Option value="Very confortable">Very confortable</Option>
+                        </Select>
+                    )}
+                </FormItem>
                 
                 <FormItem>
                     <div align="center">
