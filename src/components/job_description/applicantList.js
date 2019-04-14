@@ -85,7 +85,7 @@ const data = [{
             value={selectedKeys[0]}
             onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
             onPressEnter={() => this.handleSearch(selectedKeys, confirm)}
-            style={{ width: 188, marginBottom: 8, display: 'block' }}
+            style={{ width: 90, marginBottom: 8, display: 'block' }}
           />
           <Button
             type="primary"
@@ -137,7 +137,7 @@ const data = [{
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
-        width: '30%',
+        width: '20%',
         ...this.getColumnSearchProps('name'),
       }, {
         title: 'Degree',
@@ -149,11 +149,11 @@ const data = [{
         title: 'Address',
         dataIndex: 'address',
         key: 'address',
+        width: '20%',
         ...this.getColumnSearchProps('address'),
       }];
       return <Table columns={columns} dataSource={data} />;
     }
   }
-  
 
 export default applicantList;
