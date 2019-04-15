@@ -9,8 +9,7 @@ import { generate } from 'randomstring';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
 import dict from "../components/dictionary/dictionary";
-I18n.putVocabularies(dict);
-I18n.setLanguage(localStorage.getItem('lan'));
+
 
 let bodyStyle={
   justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
@@ -85,6 +84,7 @@ class businessProfile extends React.Component {
     });
   }
   render() {
+    I18n.putVocabularies(dict);
     I18n.setLanguage(this.state.lan);
     return (
         <div style={bodyStyle}>
