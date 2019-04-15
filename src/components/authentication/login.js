@@ -33,7 +33,6 @@ class Login extends React.Component {
       const userInfo = {
         ...user.attributes,
         username: user.username,
-        language: "es"
       }
       // const test = await Auth.userAttributes(user);
       //console.log(test)
@@ -46,28 +45,18 @@ class Login extends React.Component {
   }
 
   render() {
+    //set up the language
+    I18n.setLanguage(localStorage.getItem('lan'));
+
     if (isLoggedIn()) {
       const userInfo = getUser();
       // TODO if user has no profile, ask them to fill up basic info after sign in
       //(userInfo['custom:isProfile']) === 'no') ? 
       (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/"  + userInfo.username) : navigate("/app/business-profile")
     }
-    I18n.setLanguage(this.state.language);
     return (
       <>
         <h1>Log in</h1>
-        <div>
-          <button onClick={()=>{
-            this.setState({language:'es'});       
-          }}> 
-            ENGLISH
-          </button> 
-          <button onClick={()=>{
-            this.setState({language:'ch'});
-          }}> 
-           中文
-          </button> 
-       </div>
         <form
           method="post"
           onSubmit={event => {

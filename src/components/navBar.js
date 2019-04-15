@@ -16,7 +16,7 @@ const navBar = (props) => {
     state.login =
         <span>
           <Avatar shape="square" size="large" icon="user" />
-          <span>{getUser().username}</span>
+          <span>{"   " + getUser().username}</span>
         </span>
   } else {
     state.login =
@@ -39,17 +39,23 @@ const navBar = (props) => {
         <Icon type="profile" theme="twoTone" />View Job
         <Link to="/app/job-list"></Link>
       </Menu.Item>
-      <Menu.Item key="contact">
-        <Icon type="mail" theme="twoTone" />Contact us
-      </Menu.Item>
-      <Menu.Item key="register">
-        <Icon type="mail" theme="twoTone" />Register
-        <Link to="/app/signup"></Link>
-      </Menu.Item>
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />Post a New Job
         <Link to="/app/postJob"></Link>
       </Menu.Item>
+      <Menu.Item>
+        <Icon type="profile" theme="twoTone" />Business Profile
+        <Link to="/app/business-profile"></Link>
+      </Menu.Item>   
+      <Menu.Item>
+        <Icon type="profile" theme="twoTone" />User Profile
+        <Link to="/app/user-profile"></Link>
+      </Menu.Item>   
+      {!isLoggedIn() ? (
+      <Menu.Item key="register">
+        <Icon type="mail" theme="twoTone" />Register
+        <Link to="/app/signup"></Link>
+      </Menu.Item>):null}
       <Menu.Item>
         <Button ghost="true" onClick={() => {
           localStorage.setItem('lan', 'es');
