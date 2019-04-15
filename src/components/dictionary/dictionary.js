@@ -15,7 +15,9 @@ let dict = {
         'Part Time': "兼職",
         'Internship': "實習",
         'Temporary': "臨時",
-        'Submit Job': "提交工作"
+        'Submit Job': "提交工作",
+        'Edit Profile':"修改资料",
+        'save':"保存"
     },
     'es': {
         'Sign In': "Register",
@@ -33,7 +35,9 @@ let dict = {
         'Part Time': "Part Time",
         'Internship': "Internship",
         'Temporary': "Temporary",
-        'Submit Job': "Submit Job"
+        'Submit Job': "Submit Job",
+        'Edit Profile':"Edit Profile",
+        'save':'save'
     }
 };
 export default dict;
