@@ -9,8 +9,8 @@ projects:
       amplify:
         codeGenTarget: javascript
         generatedFileName: ''
-        docsFilePath: src\graphql
-        graphQLApiId: q46xlk7hzjdoli5zyqtrnipcva
+        docsFilePath: src/graphql
+        graphQLApiId: p2z25n2wmja2daj7tsv3xvajby
       endpoints:
         prod: >-
-          https://pglubggo3fbrbjemwfx67ocemy.appsync-api.us-east-1.amazonaws.com/graphql
+          https://oyzmirk4nvbe3cue2vb3njqupi.appsync-api.us-east-1.amazonaws.com/graphql
