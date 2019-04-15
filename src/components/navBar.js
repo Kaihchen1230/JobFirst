@@ -3,6 +3,8 @@ import { Link, navigate } from "gatsby";
 import { getUser, isLoggedIn, logout } from '../services/auth';
 import { Auth } from "aws-amplify";
 import { Menu, Icon, Avatar, Button } from 'antd';
+import { I18n } from 'aws-amplify';
+import dict from "./dictionary/dictionary";
 
 const navBar = (props) => {
   const state = {
@@ -58,13 +60,15 @@ const navBar = (props) => {
       </Menu.Item>):null}
       <Menu.Item>
         <Button ghost="true" onClick={() => {
-          localStorage.setItem('lan', 'es');
+          I18n.putVocabularies(dict);
+          window.localStorage.setItem('lan', 'es');
           window.location.reload();
         }}>ENGLISH</Button>
       </Menu.Item>
       <Menu.Item>
         <Button ghost="true" onClick={() => {
-          localStorage.setItem('lan', 'ch');
+          I18n.putVocabularies(dict);
+          window.localStorage.setItem('lan', 'ch');
           window.location.reload();
         }}>中文</Button>
       </Menu.Item>
