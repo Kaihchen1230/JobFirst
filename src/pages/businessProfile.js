@@ -2,14 +2,14 @@ import React from "react"
 import {Select,Modal, Button } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline'; 
-import EditProfileForm from '../components/business_profile/EditProfileForm'; 
+import EditProfileForm from '../components/form/EditBusinessProfileForm'; 
 import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob'; 
 import { generate } from 'randomstring';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
-
-
+import dict from "../components/dictionary/dictionary";
+I18n.putVocabularies(dict);
 I18n.setLanguage(localStorage.getItem('lan'));
 
 let bodyStyle={
@@ -84,7 +84,7 @@ class businessProfile extends React.Component {
     });
   }
   render() {
-   
+    console.log(localStorage.getItem('lan'))
     return (
         <div style={bodyStyle}>
               <div>
