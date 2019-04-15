@@ -10,6 +10,10 @@ import { generate } from 'randomstring';
 // import * as queries from '../graphql/queries'
 
 
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 I18n.setLanguage(localStorage.getItem('lan'));
 
 let bodyStyle={
