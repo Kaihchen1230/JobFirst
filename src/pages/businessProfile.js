@@ -10,11 +10,10 @@ import { generate } from 'randomstring';
 // import * as queries from '../graphql/queries'
 
 
-if (typeof localStorage === "undefined" || localStorage === null) {
+/*if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
-}
-I18n.setLanguage(localStorage.getItem('lan'));
+}*/
 
 let bodyStyle={
   justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
@@ -22,7 +21,8 @@ let bodyStyle={
 }
 
 class businessProfile extends React.Component {
-  state = { 
+  state = {
+    lan: window.localStorage.getItem('lan'), 
     visible: false,
     postJob:[{jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
               {jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
@@ -88,7 +88,7 @@ class businessProfile extends React.Component {
     });
   }
   render() {
-   
+    I18n.setLanguage(this.state.lan);
     return (
         <div style={bodyStyle}>
               <div>
