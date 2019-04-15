@@ -10,7 +10,7 @@ import { generate } from 'randomstring';
 // import * as queries from '../graphql/queries'
 
 
-I18n.setLanguage(localStorage.getItem('lan'));
+I18n.setLanguage(window.localStorage.getItem('lan'));
 
 let bodyStyle={
   justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
