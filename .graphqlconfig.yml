@@ -1,8 +1,8 @@
 projects:
   csc47300project:
-    schemaPath: src\graphql\schema.json
+    schemaPath: src/graphql/schema.json
     includes:
-      - src\graphql\**\*.js
+      - src/graphql/**/*.js
     excludes:
       - ./amplify/**
     extensions:
@@ -10,7 +10,7 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
-        graphQLApiId: p2z25n2wmja2daj7tsv3xvajby
+        graphQLApiId: rqcqoiugtfc4rojzbb3qat4i5i
       endpoints:
         prod: >-
-          https://oyzmirk4nvbe3cue2vb3njqupi.appsync-api.us-east-1.amazonaws.com/graphql
+          https://edppfkslznbufp4xnm5wzhqic4.appsync-api.us-east-1.amazonaws.com/graphql
