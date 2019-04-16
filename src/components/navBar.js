@@ -4,6 +4,7 @@ import { getUser, isLoggedIn, logout } from '../services/auth';
 import { Auth } from "aws-amplify";
 import { Menu, Icon, Avatar, Button } from 'antd';
 import { I18n } from 'aws-amplify';
+import dict from "./dictionary/dictionary";
 
 const navBar = (props) => {
   const state = {
@@ -49,6 +50,7 @@ const navBar = (props) => {
         <Link to="/app/business-profile"></Link>
       </Menu.Item>   
       <Menu.Item>
+
         <Icon type="user" theme="outlined" />User Profile
         <Link to="/app/user-profile/userID"></Link>
       </Menu.Item>   
@@ -57,6 +59,20 @@ const navBar = (props) => {
         <Icon type="form" theme="outlined" />Register
         <Link to="/app/signup"></Link>
       </Menu.Item>):null}
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          I18n.putVocabularies(dict);
+          window.localStorage.setItem('lan', 'es');
+          window.location.reload();
+        }}>ENGLISH</Button>
+      </Menu.Item>
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          I18n.putVocabularies(dict);
+          window.localStorage.setItem('lan', 'ch');
+          window.location.reload();
+        }}>中文</Button>
+      </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/login">{state.login}</Link>
       </Menu.Item>
