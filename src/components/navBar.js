@@ -10,7 +10,7 @@ const navBar = (props) => {
   const state = {
     login:
       <span>
-        <Avatar shape="square" size="large" icon="user" />
+        <Icon type="login" theme="outlined" />
         <span> Log in </span>
       </span>
   }
@@ -23,7 +23,7 @@ const navBar = (props) => {
   } else {
     state.login =
       <span>
-        <Avatar shape="square" size="large" icon="user" />
+        <Icon type="login" theme="outlined" />
         <span> Log in </span>
       </span>
   }
@@ -34,28 +34,29 @@ const navBar = (props) => {
       theme="dark"
     >
       <Menu.Item key="home">
-        <Icon type="home" theme="twoTone" />Home
+        <Icon type="home" theme="outlined" />Home
         <Link to="/"></Link> 
       </Menu.Item>
       <Menu.Item key="about">
-        <Icon type="profile" theme="twoTone" />View Job
+        <Icon type="solution" theme="outlined" />View Job
         <Link to="/app/job-list"></Link>
       </Menu.Item>
       <Menu.Item>
-        <Icon type="profile" theme="twoTone" />Post a New Job
+        <Icon type="file-add" theme="outlined" />Post a New Job
         <Link to="/app/postJob"></Link>
       </Menu.Item>
       <Menu.Item>
-        <Icon type="profile" theme="twoTone" />Business Profile
+        <Icon type="bar-chart" theme="outlined" />Business Profile
         <Link to="/app/business-profile"></Link>
       </Menu.Item>   
       <Menu.Item>
-        <Icon type="profile" theme="twoTone" />User Profile
-        <Link to="/app/user-profile"></Link>
+
+        <Icon type="user" theme="outlined" />User Profile
+        <Link to="/app/user-profile/userID"></Link>
       </Menu.Item>   
       {!isLoggedIn() ? (
       <Menu.Item key="register">
-        <Icon type="mail" theme="twoTone" />Register
+        <Icon type="form" theme="outlined" />Register
         <Link to="/app/signup"></Link>
       </Menu.Item>):null}
       <Menu.Item>
@@ -83,9 +84,21 @@ const navBar = (props) => {
                 .then(logout(() => navigate(`/app/login`)))
                 .catch(err => console.log('error: ', err))
             }}>
-            <Icon type="close-circle" theme="twoTone" />Logout
+            <Icon type="logout" theme="outlined" />Logout
           </Menu.Item>
       ) : null}
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          window.localStorage.setItem('lan', 'es');
+          window.location.reload();
+        }}>ENGLISH</Button>
+      </Menu.Item>
+      <Menu.Item>
+        <Button ghost="true" onClick={() => {
+          window.localStorage.setItem('lan', 'ch');
+          window.location.reload();
+        }}>中文</Button>
+      </Menu.Item>
     </Menu>
   );
 }
