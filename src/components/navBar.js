@@ -4,7 +4,6 @@ import { getUser, isLoggedIn, logout } from '../services/auth';
 import { Auth } from "aws-amplify";
 import { Menu, Icon, Avatar, Button } from 'antd';
 import { I18n } from 'aws-amplify';
-import dict from "./dictionary/dictionary";
 
 const navBar = (props) => {
   const state = {
@@ -51,7 +50,7 @@ const navBar = (props) => {
       </Menu.Item>   
       <Menu.Item>
         <Icon type="profile" theme="twoTone" />User Profile
-        <Link to="/app/user-profile"></Link>
+        <Link to="/app/user-profile/userID"></Link>
       </Menu.Item>   
       {!isLoggedIn() ? (
       <Menu.Item key="register">
@@ -60,14 +59,12 @@ const navBar = (props) => {
       </Menu.Item>):null}
       <Menu.Item>
         <Button ghost="true" onClick={() => {
-          I18n.putVocabularies(dict);
           window.localStorage.setItem('lan', 'es');
           window.location.reload();
         }}>ENGLISH</Button>
       </Menu.Item>
       <Menu.Item>
         <Button ghost="true" onClick={() => {
-          I18n.putVocabularies(dict);
           window.localStorage.setItem('lan', 'ch');
           window.location.reload();
         }}>中文</Button>
