@@ -2,13 +2,13 @@ import React from "react"
 import {Select,Modal, Button } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline'; 
-import EditProfileForm from '../components/form/EditBusinessProfileForm'; 
+import EditProfileForm from '../components/business_profile/EditProfileForm'; 
 import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob'; 
 import { generate } from 'randomstring';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
-import dict from "../components/dictionary/dictionary";
+
 
 
 let bodyStyle={
@@ -18,7 +18,7 @@ let bodyStyle={
 
 class businessProfile extends React.Component {
   state = {
-    lan: window.localStorage.getItem('lan'), 
+//     lan: localStorage.getItem('lan'), 
     visible: false,
     postJob:[{jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
               {jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
@@ -84,8 +84,10 @@ class businessProfile extends React.Component {
     });
   }
   render() {
+
     I18n.putVocabularies(dict);
-    I18n.setLanguage(this.state.lan);
+//     I18n.setLanguage(this.state.lan);
+
     return (
         <div style={bodyStyle}>
               <div>
