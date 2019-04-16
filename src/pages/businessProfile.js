@@ -85,7 +85,7 @@ class businessProfile extends React.Component {
   }
   render() {
 
-    I18n.putVocabularies(dict);
+//     I18n.putVocabularies(dict);
 //     I18n.setLanguage(this.state.lan);
 
     return (
