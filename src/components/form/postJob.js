@@ -12,9 +12,10 @@ const { TextArea } = Input;
 class PostJob extends React.Component {
 
     state = {
-        lan: window.localStorage.getItem('lan')
-    }
-    
+
+        lan: localStorage.getItem('lan')
+    } 
+
     handleSubmit = () => {
 
     }
