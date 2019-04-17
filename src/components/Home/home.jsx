@@ -6,6 +6,8 @@ import image3 from '../../../static/3.jpg';
 import image4 from '../../../static/4.jpg';
 import 'rc-banner-anim/assets/index.css';
 import './home.css';
+import dict from "../dictionary/dictionary"
+import { I18n } from 'aws-amplify';
 
 
 const { Element, Arrow, Thumb } = BannerAnim;
@@ -22,6 +24,7 @@ class Home extends React.Component {
             prevEnter: false,
             nextEnter: false,
             thumbEnter: false,
+            lan: window.localStorage.getItem('lan')
         };
         [
             'onChange', //
@@ -92,6 +95,9 @@ class Home extends React.Component {
     }
 
     render() {
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
+
         const intArray = this.getNextPrevNumber();
         const thumbChildren = this.imgArray.map((img, i) =>
             <span key={i}><i style={{ backgroundImage: `url(${img})` }} /></span>
@@ -118,13 +124,13 @@ class Home extends React.Component {
                         }}
                     />
                     <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
-                        JobFirst
+                        {I18n.get('JobFirst')}
                     </TweenOne>
                     <TweenOne
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        Where immigrants with degrees find their jobs.
+                        {I18n.get('Where immigrants with degrees find their jobs.')}
                     </TweenOne>
                 </Element>
                 <Element 
