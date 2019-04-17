@@ -124,7 +124,7 @@ class Home extends React.Component {
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        Where immigrants with degree find their jobs.
+                        Where immigrants with degrees find their jobs.
                     </TweenOne>
                 </Element>
                 <Element 
@@ -147,7 +147,7 @@ class Home extends React.Component {
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        Where company find talents.
+                        Where companies find talents.
                     </TweenOne>
                 </Element>
                 <Element 
@@ -170,7 +170,7 @@ class Home extends React.Component {
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        JobFirst
+                        Get Started Today.
                     </TweenOne>
                 </Element>
                 <Arrow arrowType="prev" key="prev" prefixCls="user-arrow prev" component={TweenOne}

@@ -50,7 +50,6 @@ const navBar = (props) => {
         <Link to="/app/business-profile"></Link>
       </Menu.Item>   
       <Menu.Item>
-
         <Icon type="user" theme="outlined" />User Profile
         <Link to="/app/user-profile/userID"></Link>
       </Menu.Item>   
@@ -59,7 +58,6 @@ const navBar = (props) => {
         <Icon type="form" theme="outlined" />Register
         <Link to="/app/signup"></Link>
       </Menu.Item>):null}
-      </Menu.Item>
       <Menu.Item key="login">
         <Link to="/app/login">{state.login}</Link>
       </Menu.Item>
