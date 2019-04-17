@@ -17,7 +17,11 @@ let dict = {
         'Temporary': "臨時",
         'Submit Job': "提交工作",
         'Edit Profile':"修改资料",
-        'save':"保存"
+        'save':"保存",
+        'JobFirst': "工作第一",
+        'Where immigrants with degrees find their jobs.': "有学位的移民找到工作的地方。",
+        'Where companies find talents.': "公司找人才的地方。",
+        'Get Started Today.': "立即开始。"
     },
     'es': {
         'Sign In': "Register",
@@ -37,7 +41,11 @@ let dict = {
         'Temporary': "Temporary",
         'Submit Job': "Submit Job",
         'Edit Profile':"Edit Profile",
-        'save':'save'
+        'save':'save',
+        'JobFirst': "JobFirst",
+        'Where immigrants with degrees find their jobs.': "Where immigrants with degrees find their jobs.",
+        'Where companies find talents.': "Where companies find talents.",
+        'Get Started Today.': "Get Started Today."
     }
 };
 export default dict;
