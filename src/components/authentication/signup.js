@@ -116,7 +116,7 @@ class Signup extends React.Component {
                                 </RadioGroup>
                             </div>
                             <div onClick={this.signUp}>
-                                <span>Sign Up</span>
+                                <span id="sign-up">Sign Up</span>
                             </div>
                         </div>
                     )
