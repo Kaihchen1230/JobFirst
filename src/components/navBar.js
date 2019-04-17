@@ -59,6 +59,10 @@ const navBar = (props) => {
         <Icon type="form" theme="outlined" />Register
         <Link to="/app/signup"></Link>
       </Menu.Item>):null}
+      </Menu.Item>
+      <Menu.Item key="login">
+        <Link to="/app/login">{state.login}</Link>
+      </Menu.Item>
       {isLoggedIn() ? (
           <Menu.Item 
             key="logout"
