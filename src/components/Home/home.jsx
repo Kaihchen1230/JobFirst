@@ -147,13 +147,13 @@ class Home extends React.Component {
                         }}
                     />
                     <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
-                        JobFirst
+                        {I18n.get('JobFirst')}
                     </TweenOne>
                     <TweenOne
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        Where companies find talents.
+                        {I18n.get('Where companies find talents.')}
                     </TweenOne>
                 </Element>
                 <Element 
@@ -170,13 +170,13 @@ class Home extends React.Component {
                         }}
                     />
                     <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
-                        JobFirst
+                        {I18n.get('JobFirst')}
                     </TweenOne>
                     <TweenOne
                         className="banner-user-text"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
-                        Get Started Today.
+                        {I18n.get('Get Started Today.')}
                     </TweenOne>
                 </Element>
                 <Arrow arrowType="prev" key="prev" prefixCls="user-arrow prev" component={TweenOne}
