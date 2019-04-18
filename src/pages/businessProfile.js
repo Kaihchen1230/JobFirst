@@ -6,10 +6,9 @@ import EditProfileForm from '../components/business_profile/EditProfileForm';
 import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob'; 
 import { generate } from 'randomstring';
+import dict from "../components/dictionary/dictionary"
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
-
-
 
 let bodyStyle={
   justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
@@ -84,7 +83,10 @@ class businessProfile extends React.Component {
     });
   }
   render() {
+
+    I18n.putVocabularies(dict);
     I18n.setLanguage(this.state.lan);
+
     return (
         <div style={bodyStyle}>
               <div>
