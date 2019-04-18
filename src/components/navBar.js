@@ -50,7 +50,6 @@ const navBar = (props) => {
         <Link to="/app/business-profile"></Link>
       </Menu.Item>   
       <Menu.Item>
-
         <Icon type="user" theme="outlined" />User Profile
         <Link to="/app/user-profile/userID"></Link>
       </Menu.Item>   

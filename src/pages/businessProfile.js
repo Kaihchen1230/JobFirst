@@ -6,10 +6,9 @@ import EditProfileForm from '../components/business_profile/EditProfileForm';
 import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob'; 
 import { generate } from 'randomstring';
+import dict from "../components/dictionary/dictionary"
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
-
-
 
 let bodyStyle={
   justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
@@ -18,7 +17,7 @@ let bodyStyle={
 
 class businessProfile extends React.Component {
   state = {
-//     lan: localStorage.getItem('lan'), 
+    lan: window.localStorage.getItem('lan'), 
     visible: false,
     postJob:[{jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
               {jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
