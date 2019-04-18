@@ -1,113 +1,65 @@
-mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
+mutation CreatePostedJob {
+  createPostedJob(input: {
     job_id: 001
     company_id: 001
     job_title: "Programmer"
     requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
     date_posted: "2016-01-01"
-    location {
-      address_id: 001
-      person_id: 001
-      line1: "168 Trout Court"
-      line2: "West Fargo"
-      postal_code: "58078"
-      state: "ND"
-    }
     clicked_counts: 0
-  }
+  })
 }
 
-mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
-    job_id: 002
-    company_id: 002
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 2
+    company_id: 2
     job_title: "Data Scientist"
     requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
     date_posted: "2017-01-01"
-    location {
-      address_id: 002
-      person_id: 002
-      line1: "8867 Ridgewood Ave."
-      line2: "Gurnee"
-      postal_code: "60031"
-      state: "IL"
-    }
     clicked_counts: 0
-  }
+  })
 }
 
-mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
-    job_id: 003
-    company_id: 003
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 3
+    company_id: 3
     job_title: "Computer Sicentist"
     requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
     date_posted: "2017-01-02"
-    location {
-      address_id: 003
-      person_id: 003
-      line1: "423 Jennings St."
-      line2: "Waldorf"
-      postal_code: "60031"
-      state: "IL"
-    }
     clicked_counts: 0
-  }
+  })
 }
 
-mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
-    job_id: 004
-    company_id: 004
+mutation CreatePostedJob{
+  createPostedJob(input: {
+    job_id: 4
+    company_id: 4
     job_title: "Computer Sicentist"
     requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
     date_posted: "2017-01-02"
-    location {
-      address_id: 004
-      person_id: 004
-      line1: "610 East Cardinal Lane"
-      line2: "Owensboro"
-      postal_code: "42301"
-      state: "KY"
-    }
     clicked_counts: 0
-  }
+  })
 }
 
-mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
-    job_id: 005
-    company_id: 005
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 5
+    company_id: 5
     job_title: "Computer Engineer"
     requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
     date_posted: "2017-02-03"
-    location {
-      address_id: 005
-      person_id: 005
-      line1: "90 Fairground Lane"
-      line2: "Fair Lawn"
-      postal_code: "07410"
-      state: "NJ"
-    }
     clicked_counts: 0
-  }
+  })
 }
 
-mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
-    job_id: 006
-    company_id: 006
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 6
+    company_id: 6
     job_title: "Computer Sicentist"
     requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
     date_posted: "2019-01-02"
-    location {
-      address_id: 006
-      person_id: 006
-      line1: "9863 Cherry Hill St"
-      line2: "North Andover"
-      postal_code: "01845"
-      state: "MA"
-    }
     clicked_counts: 0
-  }
+  })
 }
