@@ -14,9 +14,9 @@ class Login extends React.Component {
     language: window.localStorage.getItem('lan')
   }
 
-  handleSubmit = async(e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.props.form.validateFields(async(err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (err) {
         console.log(err);
         return
@@ -31,6 +31,8 @@ class Login extends React.Component {
           username: user.username
         }
         setUser(userInfo)
+        // the next line must not be deleted and I don't know why
+        console.log(userInfo);
         (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/" + userInfo.username) : navigate("/app/business-profile")
       } catch (err) {
         this.setState({ error: err })
