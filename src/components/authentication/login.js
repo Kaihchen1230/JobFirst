@@ -4,6 +4,9 @@ import { isLoggedIn, setUser, getUser } from "../../services/auth"
 import { I18n } from 'aws-amplify';
 import { Auth } from "aws-amplify"
 import { withAuthenticator } from 'aws-amplify-react'
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import 'antd/dist/antd.css';
+import './login.css';
 
 class Login extends React.Component {
   state = {
@@ -19,10 +22,21 @@ class Login extends React.Component {
     })
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
-    this.handleLogin()
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      } else {
+        this.handleLogin();
+      }
+    });
   }
+
+  // handleSubmit = event => {
+  //   event.preventDefault()
+  //   this.handleLogin()
+  // }
 
   handleLogin = async() => {
     const { username, password } = this.state;
@@ -46,51 +60,46 @@ class Login extends React.Component {
   }
 
   render() {
+    I18n.setLanguage(this.state.language);
     if (isLoggedIn()) {
       const userInfo = getUser();
       // TODO if user has no profile, ask them to fill up basic info after sign in
       //(userInfo['custom:isProfile']) === 'no') ? 
       (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/"  + userInfo.username) : navigate("/app/business-profile")
     }
-    I18n.setLanguage(this.state.language);
-    return (
-      <>
-        <h1>Log in</h1>
-        <div>
-          <button onClick={()=>{
-            this.setState({language:'es'});       
-          }}> 
-            ENGLISH
-          </button> 
-          <button onClick={()=>{
-            this.setState({language:'ch'});
-          }}> 
-           中文
-          </button> 
-       </div>
-        <form
-          method="post"
-          onSubmit={event => {
-            this.handleSubmit(event)
-          }}
-        >
-          <label>
-          {I18n.get('username')}
-            <input type="text" name="username" onChange={this.handleUpdate} />
-          </label>
-          <label>
-          {I18n.get('password')}
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleUpdate}
-            />
-          </label>
-          <input type="submit" value="Log In" />
-        </form>
-      </>
-    )
-  }
+    const { getFieldDecorator } = this.props.form;
+      return (
+        <Form onSubmit={this.handleSubmit} className="login-form">
+          <Form.Item>
+            {getFieldDecorator('userName', {
+              rules: [{ required: true, message: 'Please input your username!' }],
+            })(
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('password', {
+              rules: [{ required: true, message: 'Please input your Password!' }],
+            })(
+              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('remember', {
+              valuePropName: 'checked',
+              initialValue: true,
+            })(
+              <Checkbox>Remember me</Checkbox>
+            )}
+            <a className="login-form-forgot" href="">Forgot password</a>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Log in
+            </Button>
+            Or <a href="">register now!</a>
+          </Form.Item>
+        </Form>
+      );
+    }
 }
-
-export default Login;
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
+export default WrappedNormalLoginForm;

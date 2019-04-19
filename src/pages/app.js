@@ -20,7 +20,7 @@ const App = () => (
       <PrivateRoute path="/app/user-profile/:username"     component={Profile} /> 
       <PrivateRoute path="/app/application"      component={Application} />
       <PostJob      path="/app/postJob" />
-      <Login        path="/app/login" />
+      {/* <Login        path="/app/login" /> */}
       <SignUp       path="/app/signup" />
       <JobList      path="/app/job-list" />
       <Home         path="/" />
