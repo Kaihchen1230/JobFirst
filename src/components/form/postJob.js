@@ -5,21 +5,23 @@ import React from "react"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import { I18n } from 'aws-amplify';
 //import "../style/postJob.css";
-
+import dict from "../dictionary/dictionary"
 const Option = Select.Option;
 const { TextArea } = Input;
 
 class PostJob extends React.Component {
 
     state = {
-        lan: localStorage.getItem('lan')
-    }
-    
+        lan: window.localStorage.getItem('lan')
+    } 
+
     handleSubmit = () => {
 
     }
 
     render() {
+        console.log("language", window.localStorage.getItem('lan'));
+        I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);
         return (
             <div align="center">
