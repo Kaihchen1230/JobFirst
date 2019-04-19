@@ -29,7 +29,6 @@ export const onCreateEmplyeeInfo = `subscription OnCreateEmplyeeInfo {
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }
@@ -64,7 +63,6 @@ export const onUpdateEmplyeeInfo = `subscription OnUpdateEmplyeeInfo {
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }
@@ -99,7 +97,6 @@ export const onDeleteEmplyeeInfo = `subscription OnDeleteEmplyeeInfo {
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }

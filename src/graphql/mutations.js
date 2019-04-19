@@ -29,7 +29,6 @@ export const createEmplyeeInfo = `mutation CreateEmplyeeInfo($input: CreateEmply
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }
@@ -64,7 +63,6 @@ export const updateEmplyeeInfo = `mutation UpdateEmplyeeInfo($input: UpdateEmply
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }
@@ -99,7 +97,6 @@ export const deleteEmplyeeInfo = `mutation DeleteEmplyeeInfo($input: DeleteEmply
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }

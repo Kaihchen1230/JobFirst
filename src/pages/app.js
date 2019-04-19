@@ -11,6 +11,7 @@ import JobList from './jobList';
 import JobDescription from './jobDescription';
 import Application from '../components/form/application';
 import SignUp from '../components/authentication/signup';
+import TalentList from '../pages/talentsList';
 import "antd/dist/antd.css";
 
 const App = () => (
@@ -23,6 +24,7 @@ const App = () => (
       <Login        path="/app/login" />
       <SignUp       path="/app/signup" />
       <JobList      path="/app/job-list" />
+      <TalentList      path="/app/talent-list" />
       <Home         path="/" />
       <JobDescription path="/app/job-detail"/>
     </Router>

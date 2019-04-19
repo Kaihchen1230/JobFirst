@@ -29,7 +29,6 @@ export const getEmplyeeInfo = `query GetEmplyeeInfo($id: ID!) {
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }
@@ -58,7 +57,6 @@ export const listEmplyeeInfos = `query ListEmplyeeInfos(
         line1
         line2
         postal_code
-        state
       }
       applied_job {
         job_id
@@ -130,7 +128,6 @@ export const listAppliedJobs = `query ListAppliedJobs(
         line1
         line2
         postal_code
-        state
       }
       date_applied
     }
@@ -181,7 +178,6 @@ export const listEmployerInfos = `query ListEmployerInfos(
         line1
         line2
         postal_code
-        state
       }
       company_website
       timeline {
@@ -234,7 +230,6 @@ export const listPostedJobs = `query ListPostedJobs(
         line1
         line2
         postal_code
-        state
       }
       clicked_counts
     }
