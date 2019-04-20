@@ -1,67 +1,59 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const getEmplyeeInfo = `query GetEmplyeeInfo($id: ID!) {
-  getEmplyeeInfo(id: $id) {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const getEmployee = `query GetEmployee($id: ID!) {
+  getEmployee(id: $id) {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
-export const listEmplyeeInfos = `query ListEmplyeeInfos(
-  $filter: ModelEmplyeeInfoFilterInput
+export const listEmployees = `query ListEmployees(
+  $filter: ModelEmployeeFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listEmplyeeInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      employee_id
-      first_name
-      middle_name
-      last_name
+      id
+      firstName
+      middleName
+      lastName
       age
       email
       phone
       website
       pic
       address {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
+        state
       }
-      applied_job {
-        job_id
-        owner_id
-        date_applied
+      appliedJob {
+        nextToken
       }
     }
     nextToken
@@ -70,11 +62,10 @@ export const listEmplyeeInfos = `query ListEmplyeeInfos(
 `;
 export const getAddress = `query GetAddress($id: ID!) {
   getAddress(id: $id) {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
@@ -86,11 +77,10 @@ export const listAddresss = `query ListAddresss(
 ) {
   listAddresss(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
     nextToken
@@ -99,17 +89,55 @@ export const listAddresss = `query ListAddresss(
 `;
 export const getAppliedJob = `query GetAppliedJob($id: ID!) {
   getAppliedJob(id: $id) {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
@@ -120,74 +148,115 @@ export const listAppliedJobs = `query ListAppliedJobs(
 ) {
   listAppliedJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
+      id
+      Employee {
+        id
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
       }
-      date_applied
+      Job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+      dateApplied
     }
     nextToken
   }
 }
 `;
-export const getEmployerInfo = `query GetEmployerInfo($id: ID!) {
-  getEmployerInfo(id: $id) {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const getEmployer = `query GetEmployer($id: ID!) {
+  getEmployer(id: $id) {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
-    }
-    company_pic
-    description
-  }
-}
-`;
-export const listEmployerInfos = `query ListEmployerInfos(
-  $filter: ModelEmployerInfoFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listEmployerInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      employer_id
-      company_name
-      company_email
-      company_phone
-      company_address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
-      }
-      company_website
-      timeline {
-        timeline_id
-        company_id
+      items {
+        id
         date
         info
       }
-      company_pic
+      nextToken
+    }
+    companyPic
+    description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+  }
+}
+`;
+export const listEmployers = `query ListEmployers(
+  $filter: ModelEmployerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listEmployers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
       description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
     }
     nextToken
   }
@@ -195,20 +264,51 @@ export const listEmployerInfos = `query ListEmployerInfos(
 `;
 export const getPostedJob = `query GetPostedJob($id: ID!) {
   getPostedJob(id: $id) {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
@@ -219,19 +319,30 @@ export const listPostedJobs = `query ListPostedJobs(
 ) {
   listPostedJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      job_id
-      company_id
-      job_title
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
       requirements
-      date_posted
+      datePosted
       location {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
+        state
       }
-      clicked_counts
+      applied {
+        nextToken
+      }
+      clickedCounts
     }
     nextToken
   }
@@ -239,8 +350,33 @@ export const listPostedJobs = `query ListPostedJobs(
 `;
 export const getTimeline = `query GetTimeline($id: ID!) {
   getTimeline(id: $id) {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
@@ -253,8 +389,16 @@ export const listTimelines = `query ListTimelines(
 ) {
   listTimelines(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      timeline_id
-      company_id
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
       date
       info
     }
