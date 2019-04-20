@@ -1,22 +1,5 @@
-# type Blog @model {
-#   id: ID!
-#   name: String!
-#   posts: [Post] @connection(name: "BlogPosts")
-# }
-# type Post @model {
-#   id: ID!
-#   title: String!
-#   blog: Blog @connection(name: "BlogPosts")
-#   comments: [Comment] @connection(name: "PostComments")
-# }
-# type Comment @model {
-#   id: ID!
-#   content: String
-#   post: Post @connection(name: "PostComments")
-# }
-
 type EmplyeeInfo @model {
-  employee_id: ID! 
+  id: ID! 
   first_name: String!
   middle_name: String
   last_name: String!
@@ -25,51 +8,56 @@ type EmplyeeInfo @model {
   phone: String
   website: String
   pic: String
-  address: Address
-  applied_job: [AppliedJob]
+  address: Address @connection(name: "EmplyeeInfoAddress")
+  applied_job: [AppliedJob] @connection(name: "EmplyeeInfoAppliedJob")
 }
 
 type Address @model {
-  address_id: ID!
+  id: ID!
   person_id: ID!
   line1: String!
   line2: String
   postal_code: String # or Int
   state: State!
+  employee: [EmplyeeInfo] @connection(name: "EmplyeeInfoAddress")
+  job: [PostedJob] @connection(name: "PostedJobAddress")
+  employer: [EmployerInfo] @connection(name: "EmployerInfoAddress")
 }
 
 type AppliedJob @model {
-  job_id: ID!
-  owner_id: ID! # the person who applied to this job
-  address: Address!
+  id: ID!
+  applicant: EmplyeeInfo! @connection(name: "EmplyeeInfoAppliedJob")
+  job: PostedJob! @connection(name: "PostedJobAppliedJob")
   date_applied: String!
 }
 
 type EmployerInfo @model {
-  employer_id: ID!
+  id: ID!
   company_name: String!
   company_email: String!
   company_phone: String!
-  company_address: Address!
+  company_address: Address! @connection(name: "EmployerInfoAddress")
   company_website: String
-  timeline: [Timeline!]
+  timeline: [Timeline] @connection(name: "EmployerInfoTimeline")
   company_pic: String
   description: String
+  post_job: [PostedJob] @connection(name: "EmployerInfoPostedJob")
 }
 
 type PostedJob @model {
-  job_id: ID!
-  company_id: ID!
-  job_title: String
+  id: ID!
+  company: EmployerInfo! @connection(name: "EmployerInfoPostedJob")
+  job_title: String!
   requirements: [String!]
   date_posted: String!
-  location: Address!
+  location: Address! @connection(name: "PostedJobAddress")
+  applied_job: AppliedJob @connection(name: "PostedJobAppliedJob")
   clicked_counts: Int
 }
 
 type Timeline @model {
-  timeline_id: ID!
-  company_id: ID!
+  id: ID!
+  company: EmployerInfo @connection(name: "EmployerInfoTimeline")
   date: String!
   info: String!
 }
