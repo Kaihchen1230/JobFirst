@@ -1,113 +1,61 @@
-type EmplyeeInfo {
-  employee_id: ID!
-  first_name: String!
-  middle_name: String
-  last_name: String!
+type Employee {
+  id: ID!
+  firstName: String!
+  middleName: String
+  lastName: String!
   age: Int
   email: String!
   phone: String
   website: String
   pic: String
   address: Address
-  applied_job: [AppliedJob]
+  appliedJob(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
 }
 
 type Address {
-  address_id: ID!
-  person_id: ID!
+  id: ID!
   line1: String!
   line2: String
-  postal_code: String
-  state: State!
+  postalCode: String
+  state: String!
 }
 
 type AppliedJob {
-  job_id: ID!
-  owner_id: ID!
-  address: Address!
-  date_applied: String!
+  id: ID!
+  Employee: Employee
+  Job: PostedJob
+  dateApplied: String!
 }
 
-type EmployerInfo {
-  employer_id: ID!
-  company_name: String!
-  company_email: String!
-  company_phone: String!
-  company_address: Address!
-  company_website: String
-  timeline: [Timeline!]
-  company_pic: String
+type Employer {
+  id: ID!
+  companyName: String!
+  companyEmail: String!
+  companyPhone: String!
+  companyAddress: Address!
+  companyWebsite: String
+  timeline(filter: ModelTimelineFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTimelineConnection
+  companyPic: String
   description: String
+  job: PostedJob
 }
 
 type PostedJob {
-  job_id: ID!
-  company_id: ID!
-  job_title: String
+  id: ID!
+  company: Employer
+  jobTitle: String
   requirements: [String!]
-  date_posted: String!
+  datePosted: String!
   location: Address!
-  clicked_counts: Int
+  applied(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
+  clickedCounts: Int
 }
 
 type Timeline {
-  timeline_id: ID!
-  company_id: ID!
+  id: ID!
+  company: Employer
   date: String!
   info: String!
-}
-
-enum State {
-  AL
-  AK
-  AZ
-  AR
-  CA
-  CO
-  CT
-  DE
-  FL
-  GA
-  HI
-  ID
-  IL
-  IN
-  IA
-  KS
-  KY
-  LA
-  ME
-  MD
-  MA
-  MI
-  MN
-  MS
-  MO
-  MT
-  NE
-  NV
-  NH
-  NJ
-  NM
-  NY
-  NC
-  ND
-  OH
-  OK
-  OR
-  PA
-  RI
-  SC
-  SD
-  TN
-  TX
-  UT
-  VT
-  VA
-  WA
-  WV
-  WI
-  WY
 }
 
 enum ModelSortDirection {
@@ -115,8 +63,8 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelEmplyeeInfoConnection {
-  items: [EmplyeeInfo]
+type ModelEmployeeConnection {
+  items: [Employee]
   nextToken: String
 }
 
@@ -175,77 +123,79 @@ input ModelBooleanFilterInput {
   eq: Boolean
 }
 
-input ModelEmplyeeInfoFilterInput {
-  employee_id: ModelIDFilterInput
-  first_name: ModelStringFilterInput
-  middle_name: ModelStringFilterInput
-  last_name: ModelStringFilterInput
+input ModelEmployeeFilterInput {
+  id: ModelIDFilterInput
+  firstName: ModelStringFilterInput
+  middleName: ModelStringFilterInput
+  lastName: ModelStringFilterInput
   age: ModelIntFilterInput
   email: ModelStringFilterInput
   phone: ModelStringFilterInput
   website: ModelStringFilterInput
   pic: ModelStringFilterInput
-  and: [ModelEmplyeeInfoFilterInput]
-  or: [ModelEmplyeeInfoFilterInput]
-  not: ModelEmplyeeInfoFilterInput
+  and: [ModelEmployeeFilterInput]
+  or: [ModelEmployeeFilterInput]
+  not: ModelEmployeeFilterInput
 }
 
 type Query {
-  getEmplyeeInfo(id: ID!): EmplyeeInfo
-  listEmplyeeInfos(filter: ModelEmplyeeInfoFilterInput, limit: Int, nextToken: String): ModelEmplyeeInfoConnection
+  getEmployee(id: ID!): Employee
+  listEmployees(filter: ModelEmployeeFilterInput, limit: Int, nextToken: String): ModelEmployeeConnection
   getAddress(id: ID!): Address
   listAddresss(filter: ModelAddressFilterInput, limit: Int, nextToken: String): ModelAddressConnection
   getAppliedJob(id: ID!): AppliedJob
   listAppliedJobs(filter: ModelAppliedJobFilterInput, limit: Int, nextToken: String): ModelAppliedJobConnection
-  getEmployerInfo(id: ID!): EmployerInfo
-  listEmployerInfos(filter: ModelEmployerInfoFilterInput, limit: Int, nextToken: String): ModelEmployerInfoConnection
+  getEmployer(id: ID!): Employer
+  listEmployers(filter: ModelEmployerFilterInput, limit: Int, nextToken: String): ModelEmployerConnection
   getPostedJob(id: ID!): PostedJob
   listPostedJobs(filter: ModelPostedJobFilterInput, limit: Int, nextToken: String): ModelPostedJobConnection
   getTimeline(id: ID!): Timeline
   listTimelines(filter: ModelTimelineFilterInput, limit: Int, nextToken: String): ModelTimelineConnection
 }
 
-input CreateEmplyeeInfoInput {
-  employee_id: ID!
-  first_name: String!
-  middle_name: String
-  last_name: String!
+input CreateEmployeeInput {
+  id: ID
+  firstName: String!
+  middleName: String
+  lastName: String!
   age: Int
   email: String!
   phone: String
   website: String
   pic: String
+  employeeAddressId: ID
 }
 
-input UpdateEmplyeeInfoInput {
-  employee_id: ID
-  first_name: String
-  middle_name: String
-  last_name: String
+input UpdateEmployeeInput {
+  id: ID!
+  firstName: String
+  middleName: String
+  lastName: String
   age: Int
   email: String
   phone: String
   website: String
   pic: String
+  employeeAddressId: ID
 }
 
-input DeleteEmplyeeInfoInput {
+input DeleteEmployeeInput {
   id: ID
 }
 
 type Mutation {
-  createEmplyeeInfo(input: CreateEmplyeeInfoInput!): EmplyeeInfo
-  updateEmplyeeInfo(input: UpdateEmplyeeInfoInput!): EmplyeeInfo
-  deleteEmplyeeInfo(input: DeleteEmplyeeInfoInput!): EmplyeeInfo
+  createEmployee(input: CreateEmployeeInput!): Employee
+  updateEmployee(input: UpdateEmployeeInput!): Employee
+  deleteEmployee(input: DeleteEmployeeInput!): Employee
   createAddress(input: CreateAddressInput!): Address
   updateAddress(input: UpdateAddressInput!): Address
   deleteAddress(input: DeleteAddressInput!): Address
   createAppliedJob(input: CreateAppliedJobInput!): AppliedJob
   updateAppliedJob(input: UpdateAppliedJobInput!): AppliedJob
   deleteAppliedJob(input: DeleteAppliedJobInput!): AppliedJob
-  createEmployerInfo(input: CreateEmployerInfoInput!): EmployerInfo
-  updateEmployerInfo(input: UpdateEmployerInfoInput!): EmployerInfo
-  deleteEmployerInfo(input: DeleteEmployerInfoInput!): EmployerInfo
+  createEmployer(input: CreateEmployerInput!): Employer
+  updateEmployer(input: UpdateEmployerInput!): Employer
+  deleteEmployer(input: DeleteEmployerInput!): Employer
   createPostedJob(input: CreatePostedJobInput!): PostedJob
   updatePostedJob(input: UpdatePostedJobInput!): PostedJob
   deletePostedJob(input: DeletePostedJobInput!): PostedJob
@@ -255,18 +205,18 @@ type Mutation {
 }
 
 type Subscription {
-  onCreateEmplyeeInfo: EmplyeeInfo @aws_subscribe(mutations: ["createEmplyeeInfo"])
-  onUpdateEmplyeeInfo: EmplyeeInfo @aws_subscribe(mutations: ["updateEmplyeeInfo"])
-  onDeleteEmplyeeInfo: EmplyeeInfo @aws_subscribe(mutations: ["deleteEmplyeeInfo"])
+  onCreateEmployee: Employee @aws_subscribe(mutations: ["createEmployee"])
+  onUpdateEmployee: Employee @aws_subscribe(mutations: ["updateEmployee"])
+  onDeleteEmployee: Employee @aws_subscribe(mutations: ["deleteEmployee"])
   onCreateAddress: Address @aws_subscribe(mutations: ["createAddress"])
   onUpdateAddress: Address @aws_subscribe(mutations: ["updateAddress"])
   onDeleteAddress: Address @aws_subscribe(mutations: ["deleteAddress"])
   onCreateAppliedJob: AppliedJob @aws_subscribe(mutations: ["createAppliedJob"])
   onUpdateAppliedJob: AppliedJob @aws_subscribe(mutations: ["updateAppliedJob"])
   onDeleteAppliedJob: AppliedJob @aws_subscribe(mutations: ["deleteAppliedJob"])
-  onCreateEmployerInfo: EmployerInfo @aws_subscribe(mutations: ["createEmployerInfo"])
-  onUpdateEmployerInfo: EmployerInfo @aws_subscribe(mutations: ["updateEmployerInfo"])
-  onDeleteEmployerInfo: EmployerInfo @aws_subscribe(mutations: ["deleteEmployerInfo"])
+  onCreateEmployer: Employer @aws_subscribe(mutations: ["createEmployer"])
+  onUpdateEmployer: Employer @aws_subscribe(mutations: ["updateEmployer"])
+  onDeleteEmployer: Employer @aws_subscribe(mutations: ["deleteEmployer"])
   onCreatePostedJob: PostedJob @aws_subscribe(mutations: ["createPostedJob"])
   onUpdatePostedJob: PostedJob @aws_subscribe(mutations: ["updatePostedJob"])
   onDeletePostedJob: PostedJob @aws_subscribe(mutations: ["deletePostedJob"])
@@ -280,39 +230,31 @@ type ModelAddressConnection {
   nextToken: String
 }
 
-input ModelStateFilterInput {
-  eq: State
-  ne: State
-}
-
 input ModelAddressFilterInput {
-  address_id: ModelIDFilterInput
-  person_id: ModelIDFilterInput
+  id: ModelIDFilterInput
   line1: ModelStringFilterInput
   line2: ModelStringFilterInput
-  postal_code: ModelStringFilterInput
-  state: ModelStateFilterInput
+  postalCode: ModelStringFilterInput
+  state: ModelStringFilterInput
   and: [ModelAddressFilterInput]
   or: [ModelAddressFilterInput]
   not: ModelAddressFilterInput
 }
 
 input CreateAddressInput {
-  address_id: ID!
-  person_id: ID!
+  id: ID
   line1: String!
   line2: String
-  postal_code: String
-  state: State!
+  postalCode: String
+  state: String!
 }
 
 input UpdateAddressInput {
-  address_id: ID
-  person_id: ID
+  id: ID!
   line1: String
   line2: String
-  postal_code: String
-  state: State
+  postalCode: String
+  state: String
 }
 
 input DeleteAddressInput {
@@ -325,69 +267,74 @@ type ModelAppliedJobConnection {
 }
 
 input ModelAppliedJobFilterInput {
-  job_id: ModelIDFilterInput
-  owner_id: ModelIDFilterInput
-  date_applied: ModelStringFilterInput
+  id: ModelIDFilterInput
+  dateApplied: ModelStringFilterInput
   and: [ModelAppliedJobFilterInput]
   or: [ModelAppliedJobFilterInput]
   not: ModelAppliedJobFilterInput
 }
 
 input CreateAppliedJobInput {
-  job_id: ID!
-  owner_id: ID!
-  date_applied: String!
+  id: ID
+  dateApplied: String!
+  appliedJobEmployeeId: ID
+  appliedJobJobId: ID
 }
 
 input UpdateAppliedJobInput {
-  job_id: ID
-  owner_id: ID
-  date_applied: String
+  id: ID!
+  dateApplied: String
+  appliedJobEmployeeId: ID
+  appliedJobJobId: ID
 }
 
 input DeleteAppliedJobInput {
   id: ID
 }
 
-type ModelEmployerInfoConnection {
-  items: [EmployerInfo]
+type ModelEmployerConnection {
+  items: [Employer]
   nextToken: String
 }
 
-input ModelEmployerInfoFilterInput {
-  employer_id: ModelIDFilterInput
-  company_name: ModelStringFilterInput
-  company_email: ModelStringFilterInput
-  company_phone: ModelStringFilterInput
-  company_website: ModelStringFilterInput
-  company_pic: ModelStringFilterInput
+input ModelEmployerFilterInput {
+  id: ModelIDFilterInput
+  companyName: ModelStringFilterInput
+  companyEmail: ModelStringFilterInput
+  companyPhone: ModelStringFilterInput
+  companyWebsite: ModelStringFilterInput
+  companyPic: ModelStringFilterInput
   description: ModelStringFilterInput
-  and: [ModelEmployerInfoFilterInput]
-  or: [ModelEmployerInfoFilterInput]
-  not: ModelEmployerInfoFilterInput
+  and: [ModelEmployerFilterInput]
+  or: [ModelEmployerFilterInput]
+  not: ModelEmployerFilterInput
 }
 
-input CreateEmployerInfoInput {
-  employer_id: ID!
-  company_name: String!
-  company_email: String!
-  company_phone: String!
-  company_website: String
-  company_pic: String
+input CreateEmployerInput {
+  id: ID
+  companyName: String!
+  companyEmail: String!
+  companyPhone: String!
+  companyWebsite: String
+  companyPic: String
   description: String
+  employerCompanyAddressId: ID!
+  employerJobId: ID
 }
 
-input UpdateEmployerInfoInput {
-  employer_id: ID
-  company_name: String
-  company_email: String
-  company_phone: String
-  company_website: String
-  company_pic: String
+input UpdateEmployerInput {
+  id: ID!
+  companyName: String
+  companyEmail: String
+  companyPhone: String
+  companyWebsite: String
+  companyPic: String
   description: String
+  employerCompanyAddressId: ID
+  employerJobId: ID
 }
 
-input DeleteEmployerInfoInput {
+input DeleteEmployerInput {
   id: ID
 }
 
@@ -397,33 +344,34 @@ type ModelPostedJobConnection {
 }
 
 input ModelPostedJobFilterInput {
-  job_id: ModelIDFilterInput
-  company_id: ModelIDFilterInput
-  job_title: ModelStringFilterInput
+  id: ModelIDFilterInput
+  jobTitle: ModelStringFilterInput
   requirements: ModelStringFilterInput
-  date_posted: ModelStringFilterInput
-  clicked_counts: ModelIntFilterInput
+  datePosted: ModelStringFilterInput
+  clickedCounts: ModelIntFilterInput
   and: [ModelPostedJobFilterInput]
   or: [ModelPostedJobFilterInput]
   not: ModelPostedJobFilterInput
 }
 
 input CreatePostedJobInput {
-  job_id: ID!
-  company_id: ID!
-  job_title: String
+  id: ID
+  jobTitle: String
   requirements: [String!]
-  date_posted: String!
-  clicked_counts: Int
+  datePosted: String!
+  clickedCounts: Int
+  postedJobCompanyId: ID
+  postedJobLocationId: ID!
 }
 
 input UpdatePostedJobInput {
-  job_id: ID
-  company_id: ID
-  job_title: String
+  id: ID!
+  jobTitle: String
   requirements: [String!]
-  date_posted: String
-  clicked_counts: Int
+  datePosted: String
+  clickedCounts: Int
+  postedJobCompanyId: ID
+  postedJobLocationId: ID
 }
 
 input DeletePostedJobInput {
@@ -436,8 +384,7 @@ type ModelTimelineConnection {
 }
 
 input ModelTimelineFilterInput {
-  timeline_id: ModelIDFilterInput
-  company_id: ModelIDFilterInput
+  id: ModelIDFilterInput
   date: ModelStringFilterInput
   info: ModelStringFilterInput
   and: [ModelTimelineFilterInput]
@@ -446,17 +393,17 @@ input ModelTimelineFilterInput {
 }
 
 input CreateTimelineInput {
-  timeline_id: ID!
-  company_id: ID!
+  id: ID
   date: String!
   info: String!
+  timelineCompanyId: ID
 }
 
 input UpdateTimelineInput {
-  timeline_id: ID
-  company_id: ID
+  id: ID!
   date: String
   info: String
+  timelineCompanyId: ID
 }
 
 input DeleteTimelineInput {

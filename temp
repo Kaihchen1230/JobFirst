@@ -9,7 +9,7 @@ type Employee @model {
   website: String
   pic: String
   address: Address @connection # each employee should have an address
-  appliedJob: [AppliedJob] @connection(name:"employeeJob") # employee can apply to many jobs
+  appliedJob: [AppliedJob] #@connection(name:"employeeJob") # employee can apply to many jobs
 }
 
 type Address @model {
@@ -22,7 +22,7 @@ type Address @model {
 
 type AppliedJob @model {
   id: ID!
-  Employee: Employee @connection(name:"employeeJob")
+  Employee: Employee #@connection(name:"employeeJob")
   Job: PostedJob @connection(name:"postedJob")# each appliedjob should belong to one of the PostedJob
   dateApplied: String!
 }

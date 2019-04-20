@@ -134,7 +134,7 @@
                 }
             }
         },
-        "EmplyeeInfoTable": {
+        "EmployeeTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
@@ -144,7 +144,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfo",
+                                    "Employee",
                                     {
                                         "Fn::GetAtt": [
                                             "GraphQLAPI",
@@ -161,7 +161,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfo",
+                                    "Employee",
                                     {
                                         "Fn::GetAtt": [
                                             "GraphQLAPI",
@@ -198,7 +198,7 @@
                 }
             }
         },
-        "EmplyeeInfoIAMRole": {
+        "EmployeeIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
@@ -208,7 +208,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfoTable",
+                                    "EmployeeTable",
                                     "role",
                                     {
                                         "Fn::GetAtt": [
@@ -226,7 +226,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfoTable",
+                                    "EmployeeTable",
                                     "role",
                                     {
                                         "Fn::GetAtt": [
@@ -272,7 +272,7 @@
                                     "Resource": [
                                         {
                                             "Fn::GetAtt": [
-                                                "EmplyeeInfoTable",
+                                                "EmployeeTable",
                                                 "Arn"
                                             ]
                                         },
@@ -282,7 +282,7 @@
                                                 [
                                                     {
                                                         "Fn::GetAtt": [
-                                                            "EmplyeeInfoTable",
+                                                            "EmployeeTable",
                                                             "Arn"
                                                         ]
                                                     },
@@ -298,7 +298,7 @@
                 ]
             }
         },
-        "EmplyeeInfoDataSource": {
+        "EmployeeDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
@@ -307,11 +307,11 @@
                         "ApiId"
                     ]
                 },
-                "Name": "EmplyeeInfoTable",
+                "Name": "EmployeeTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoIAMRole",
+                        "EmployeeIAMRole",
                         "Arn"
                     ]
                 },
@@ -324,7 +324,7 @@
                                     ":",
                                     {
                                         "Fn::GetAtt": [
-                                            "EmplyeeInfoTable",
+                                            "EmployeeTable",
                                             "Arn"
                                         ]
                                     }
@@ -333,16 +333,16 @@
                         ]
                     },
                     "TableName": {
-                        "Ref": "EmplyeeInfoTable"
+                        "Ref": "EmployeeTable"
                     }
                 }
             },
             "DependsOn": [
-                "EmplyeeInfoTable",
-                "EmplyeeInfoIAMRole"
+                "EmployeeTable",
+                "EmployeeIAMRole"
             ]
         },
-        "GetEmplyeeInfoResolver": {
+        "GetEmployeeResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -353,11 +353,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "EmployeeDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getEmplyeeInfo",
+                "FieldName": "getEmployee",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -379,7 +379,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "getEmplyeeInfo",
+                                                    "getEmployee",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -413,7 +413,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "getEmplyeeInfo",
+                                                    "getEmployee",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -430,7 +430,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "ListEmplyeeInfoResolver": {
+        "ListEmployeeResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -441,11 +441,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "EmployeeDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listEmplyeeInfos",
+                "FieldName": "listEmployees",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -467,7 +467,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "listEmplyeeInfos",
+                                                    "listEmployees",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -501,7 +501,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "listEmplyeeInfos",
+                                                    "listEmployees",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -518,7 +518,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "CreateEmplyeeInfoResolver": {
+        "CreateEmployeeResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -529,11 +529,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "EmployeeDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createEmplyeeInfo",
+                "FieldName": "createEmployee",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -555,7 +555,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "createEmplyeeInfo",
+                                                    "createEmployee",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -589,7 +589,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "createEmplyeeInfo",
+                                                    "createEmployee",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -606,7 +606,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "UpdateEmplyeeInfoResolver": {
+        "UpdateEmployeeResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -617,11 +617,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "EmployeeDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateEmplyeeInfo",
+                "FieldName": "updateEmployee",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -643,7 +643,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "updateEmplyeeInfo",
+                                                    "updateEmployee",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -677,7 +677,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "updateEmplyeeInfo",
+                                                    "updateEmployee",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -694,7 +694,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "DeleteEmplyeeInfoResolver": {
+        "DeleteEmployeeResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -705,11 +705,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "EmployeeDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteEmplyeeInfo",
+                "FieldName": "deleteEmployee",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -731,7 +731,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "deleteEmplyeeInfo",
+                                                    "deleteEmployee",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -765,7 +765,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "deleteEmplyeeInfo",
+                                                    "deleteEmployee",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -1479,6 +1479,14 @@
                     {
                         "AttributeName": "id",
                         "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "appliedJobEmployeeId",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "appliedJobJobId",
+                        "AttributeType": "S"
                     }
                 ],
                 "ProvisionedThroughput": {
@@ -1491,7 +1499,49 @@
                 },
                 "StreamSpecification": {
                     "StreamViewType": "NEW_AND_OLD_IMAGES"
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-employeeJob",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "appliedJobEmployeeId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "ReadCapacityUnits": {
+                                "Ref": "DynamoDBModelTableReadIOPS"
+                            },
+                            "WriteCapacityUnits": {
+                                "Ref": "DynamoDBModelTableWriteIOPS"
+                            }
+                        }
+                    },
+                    {
+                        "IndexName": "gsi-postedJob",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "appliedJobJobId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "ReadCapacityUnits": {
+                                "Ref": "DynamoDBModelTableReadIOPS"
+                            },
+                            "WriteCapacityUnits": {
+                                "Ref": "DynamoDBModelTableWriteIOPS"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "AppliedJobIAMRole": {
@@ -2078,7 +2128,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "EmployerInfoTable": {
+        "EmployerTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
@@ -2088,7 +2138,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Employer",
                                     {
                                         "Fn::GetAtt": [
                                             "GraphQLAPI",
@@ -2105,7 +2155,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Employer",
                                     {
                                         "Fn::GetAtt": [
                                             "GraphQLAPI",
@@ -2142,7 +2192,7 @@
                 }
             }
         },
-        "EmployerInfoIAMRole": {
+        "EmployerIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
@@ -2152,7 +2202,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfoTable",
+                                    "EmployerTable",
                                     "role",
                                     {
                                         "Fn::GetAtt": [
@@ -2170,7 +2220,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfoTable",
+                                    "EmployerTable",
                                     "role",
                                     {
                                         "Fn::GetAtt": [
@@ -2216,7 +2266,7 @@
                                     "Resource": [
                                         {
                                             "Fn::GetAtt": [
-                                                "EmployerInfoTable",
+                                                "EmployerTable",
                                                 "Arn"
                                             ]
                                         },
@@ -2226,7 +2276,7 @@
                                                 [
                                                     {
                                                         "Fn::GetAtt": [
-                                                            "EmployerInfoTable",
+                                                            "EmployerTable",
                                                             "Arn"
                                                         ]
                                                     },
@@ -2242,7 +2292,7 @@
                 ]
             }
         },
-        "EmployerInfoDataSource": {
+        "EmployerDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
@@ -2251,11 +2301,11 @@
                         "ApiId"
                     ]
                 },
-                "Name": "EmployerInfoTable",
+                "Name": "EmployerTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "EmployerInfoIAMRole",
+                        "EmployerIAMRole",
                         "Arn"
                     ]
                 },
@@ -2268,7 +2318,7 @@
                                     ":",
                                     {
                                         "Fn::GetAtt": [
-                                            "EmployerInfoTable",
+                                            "EmployerTable",
                                             "Arn"
                                         ]
                                     }
@@ -2277,16 +2327,16 @@
                         ]
                     },
                     "TableName": {
-                        "Ref": "EmployerInfoTable"
+                        "Ref": "EmployerTable"
                     }
                 }
             },
             "DependsOn": [
-                "EmployerInfoTable",
-                "EmployerInfoIAMRole"
+                "EmployerTable",
+                "EmployerIAMRole"
             ]
         },
-        "GetEmployerInfoResolver": {
+        "GetEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -2297,11 +2347,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getEmployerInfo",
+                "FieldName": "getEmployer",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -2323,7 +2373,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "getEmployerInfo",
+                                                    "getEmployer",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2357,7 +2407,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "getEmployerInfo",
+                                                    "getEmployer",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2374,7 +2424,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "ListEmployerInfoResolver": {
+        "ListEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -2385,11 +2435,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listEmployerInfos",
+                "FieldName": "listEmployers",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -2411,7 +2461,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "listEmployerInfos",
+                                                    "listEmployers",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2445,7 +2495,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "listEmployerInfos",
+                                                    "listEmployers",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2462,7 +2512,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "CreateEmployerInfoResolver": {
+        "CreateEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -2473,11 +2523,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createEmployerInfo",
+                "FieldName": "createEmployer",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -2499,7 +2549,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "createEmployerInfo",
+                                                    "createEmployer",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2533,7 +2583,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "createEmployerInfo",
+                                                    "createEmployer",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2550,7 +2600,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "UpdateEmployerInfoResolver": {
+        "UpdateEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -2561,11 +2611,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateEmployerInfo",
+                "FieldName": "updateEmployer",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -2587,7 +2637,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "updateEmployerInfo",
+                                                    "updateEmployer",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2621,7 +2671,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "updateEmployerInfo",
+                                                    "updateEmployer",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2638,7 +2688,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "DeleteEmployerInfoResolver": {
+        "DeleteEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -2649,11 +2699,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteEmployerInfo",
+                "FieldName": "deleteEmployer",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -2675,7 +2725,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "deleteEmployerInfo",
+                                                    "deleteEmployer",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -2709,7 +2759,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "deleteEmployerInfo",
+                                                    "deleteEmployer",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -3423,6 +3473,10 @@
                     {
                         "AttributeName": "id",
                         "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "timelineCompanyId",
+                        "AttributeType": "S"
                     }
                 ],
                 "ProvisionedThroughput": {
@@ -3435,7 +3489,29 @@
                 },
                 "StreamSpecification": {
                     "StreamViewType": "NEW_AND_OLD_IMAGES"
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-timeline",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "timelineCompanyId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "ReadCapacityUnits": {
+                                "Ref": "DynamoDBModelTableReadIOPS"
+                            },
+                            "WriteCapacityUnits": {
+                                "Ref": "DynamoDBModelTableWriteIOPS"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "TimelineIAMRole": {
@@ -4006,6 +4082,974 @@
                                                 [
                                                     "Mutation",
                                                     "deleteTimeline",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "EmployeeaddressResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "AddressDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "address",
+                "TypeName": "Employee",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employee",
+                                                    "address",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employee",
+                                                    "address",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "EmployeeappliedJobResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "AppliedJobDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "appliedJob",
+                "TypeName": "Employee",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employee",
+                                                    "appliedJob",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employee",
+                                                    "appliedJob",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "AppliedJobEmployeeResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "EmployeeDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "Employee",
+                "TypeName": "AppliedJob",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "AppliedJob",
+                                                    "Employee",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "AppliedJob",
+                                                    "Employee",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "AppliedJobJobResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "PostedJobDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "Job",
+                "TypeName": "AppliedJob",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "AppliedJob",
+                                                    "Job",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "AppliedJob",
+                                                    "Job",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "EmployercompanyAddressResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "AddressDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "companyAddress",
+                "TypeName": "Employer",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employer",
+                                                    "companyAddress",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employer",
+                                                    "companyAddress",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "EmployertimelineResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "TimelineDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "timeline",
+                "TypeName": "Employer",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employer",
+                                                    "timeline",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employer",
+                                                    "timeline",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "EmployerjobResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "PostedJobDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "job",
+                "TypeName": "Employer",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employer",
+                                                    "job",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Employer",
+                                                    "job",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "PostedJobcompanyResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "EmployerDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "company",
+                "TypeName": "PostedJob",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "PostedJob",
+                                                    "company",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "PostedJob",
+                                                    "company",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "PostedJoblocationResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "AddressDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "location",
+                "TypeName": "PostedJob",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "PostedJob",
+                                                    "location",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "PostedJob",
+                                                    "location",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "PostedJobappliedResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "AppliedJobDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "applied",
+                "TypeName": "PostedJob",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "PostedJob",
+                                                    "applied",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "PostedJob",
+                                                    "applied",
+                                                    "response",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "TimelinecompanyResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "EmployerDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "company",
+                "TypeName": "Timeline",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Timeline",
+                                                    "company",
+                                                    "request",
+                                                    {
+                                                        "Ref": "DeploymentTimestamp"
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "s3://",
+                            {
+                                "Fn::Join": [
+                                    "/",
+                                    [
+                                        {
+                                            "Ref": "ResolverBucket"
+                                        },
+                                        {
+                                            "Ref": "ResolverRootKey"
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                ".",
+                                                [
+                                                    "Timeline",
+                                                    "company",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"

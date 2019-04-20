@@ -1,328 +1,620 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const createEmplyeeInfo = `mutation CreateEmplyeeInfo($input: CreateEmplyeeInfoInput!) {
-  createEmplyeeInfo(input: $input) {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInput!) {
+  createEmployee(input: $input) {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
-export const updateEmplyeeInfo = `mutation UpdateEmplyeeInfo($input: UpdateEmplyeeInfoInput!) {
-  updateEmplyeeInfo(input: $input) {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInput!) {
+  updateEmployee(input: $input) {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
-export const deleteEmplyeeInfo = `mutation DeleteEmplyeeInfo($input: DeleteEmplyeeInfoInput!) {
-  deleteEmplyeeInfo(input: $input) {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInput!) {
+  deleteEmployee(input: $input) {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
 export const createAddress = `mutation CreateAddress($input: CreateAddressInput!) {
   createAddress(input: $input) {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const updateAddress = `mutation UpdateAddress($input: UpdateAddressInput!) {
   updateAddress(input: $input) {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const deleteAddress = `mutation DeleteAddress($input: DeleteAddressInput!) {
   deleteAddress(input: $input) {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const createAppliedJob = `mutation CreateAppliedJob($input: CreateAppliedJobInput!) {
   createAppliedJob(input: $input) {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
 export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateAppliedJobInput!) {
   updateAppliedJob(input: $input) {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
 export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteAppliedJobInput!) {
   deleteAppliedJob(input: $input) {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
-export const createEmployerInfo = `mutation CreateEmployerInfo($input: CreateEmployerInfoInput!) {
-  createEmployerInfo(input: $input) {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInput!) {
+  createEmployer(input: $input) {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
   }
 }
 `;
-export const updateEmployerInfo = `mutation UpdateEmployerInfo($input: UpdateEmployerInfoInput!) {
-  updateEmployerInfo(input: $input) {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInput!) {
+  updateEmployer(input: $input) {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
   }
 }
 `;
-export const deleteEmployerInfo = `mutation DeleteEmployerInfo($input: DeleteEmployerInfoInput!) {
-  deleteEmployerInfo(input: $input) {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInput!) {
+  deleteEmployer(input: $input) {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
   }
 }
 `;
 export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJobInput!) {
   createPostedJob(input: $input) {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJobInput!) {
   updatePostedJob(input: $input) {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJobInput!) {
   deletePostedJob(input: $input) {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInput!) {
   createTimeline(input: $input) {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
@@ -330,8 +622,33 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
 `;
 export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInput!) {
   updateTimeline(input: $input) {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
@@ -339,8 +656,33 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
 `;
 export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInput!) {
   deleteTimeline(input: $input) {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
