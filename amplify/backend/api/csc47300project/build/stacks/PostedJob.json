@@ -681,7 +681,31 @@
             }
         }
     },
-    "Outputs": {},
+    "Outputs": {
+        "GetAttPostedJobDataSourceName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "PostedJobDataSource",
+                    "Name"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AppSyncApiId"
+                            },
+                            "GetAtt",
+                            "PostedJobDataSource",
+                            "Name"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [

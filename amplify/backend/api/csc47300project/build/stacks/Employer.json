@@ -69,7 +69,7 @@
         }
     },
     "Resources": {
-        "EmployerInfoTable": {
+        "EmployerTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
@@ -79,7 +79,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Employer",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     },
@@ -93,7 +93,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Employer",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     }
@@ -158,7 +158,7 @@
                 }
             }
         },
-        "EmployerInfoIAMRole": {
+        "EmployerIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
@@ -168,7 +168,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Employer",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -183,7 +183,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Employer",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -235,7 +235,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Employer",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -249,7 +249,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Employer",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -272,7 +272,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Employer",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -286,7 +286,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Employer",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -306,17 +306,17 @@
                 ]
             }
         },
-        "EmployerInfoDataSource": {
+        "EmployerDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
                     "Ref": "GetAttGraphQLAPIApiId"
                 },
-                "Name": "EmployerInfoTable",
+                "Name": "EmployerTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "EmployerInfoIAMRole",
+                        "EmployerIAMRole",
                         "Arn"
                     ]
                 },
@@ -331,7 +331,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "EmployerInfo",
+                                        "Employer",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         },
@@ -345,7 +345,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "EmployerInfo",
+                                        "Employer",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         }
@@ -357,10 +357,10 @@
                 }
             },
             "DependsOn": [
-                "EmployerInfoIAMRole"
+                "EmployerIAMRole"
             ]
         },
-        "GetEmployerInfoResolver": {
+        "GetEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -368,11 +368,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getEmployerInfo",
+                "FieldName": "getEmployer",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -389,7 +389,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getEmployerInfo",
+                                        "getEmployer",
                                         "req",
                                         "vtl"
                                     ]
@@ -413,7 +413,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getEmployerInfo",
+                                        "getEmployer",
                                         "res",
                                         "vtl"
                                     ]
@@ -424,7 +424,7 @@
                 }
             }
         },
-        "ListEmployerInfoResolver": {
+        "ListEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -432,11 +432,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listEmployerInfos",
+                "FieldName": "listEmployers",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -453,7 +453,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listEmployerInfos",
+                                        "listEmployers",
                                         "req",
                                         "vtl"
                                     ]
@@ -477,7 +477,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listEmployerInfos",
+                                        "listEmployers",
                                         "res",
                                         "vtl"
                                     ]
@@ -488,7 +488,7 @@
                 }
             }
         },
-        "CreateEmployerInfoResolver": {
+        "CreateEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -496,11 +496,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createEmployerInfo",
+                "FieldName": "createEmployer",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -517,7 +517,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createEmployerInfo",
+                                        "createEmployer",
                                         "req",
                                         "vtl"
                                     ]
@@ -541,7 +541,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createEmployerInfo",
+                                        "createEmployer",
                                         "res",
                                         "vtl"
                                     ]
@@ -552,7 +552,7 @@
                 }
             }
         },
-        "UpdateEmployerInfoResolver": {
+        "UpdateEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -560,11 +560,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateEmployerInfo",
+                "FieldName": "updateEmployer",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -581,7 +581,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateEmployerInfo",
+                                        "updateEmployer",
                                         "req",
                                         "vtl"
                                     ]
@@ -605,7 +605,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateEmployerInfo",
+                                        "updateEmployer",
                                         "res",
                                         "vtl"
                                     ]
@@ -616,7 +616,7 @@
                 }
             }
         },
-        "DeleteEmployerInfoResolver": {
+        "DeleteEmployerResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -624,11 +624,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EmployerDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteEmployerInfo",
+                "FieldName": "deleteEmployer",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -645,7 +645,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteEmployerInfo",
+                                        "deleteEmployer",
                                         "req",
                                         "vtl"
                                     ]
@@ -669,7 +669,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteEmployerInfo",
+                                        "deleteEmployer",
                                         "res",
                                         "vtl"
                                     ]
@@ -681,7 +681,31 @@
             }
         }
     },
-    "Outputs": {},
+    "Outputs": {
+        "GetAttEmployerDataSourceName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "EmployerDataSource",
+                    "Name"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AppSyncApiId"
+                            },
+                            "GetAtt",
+                            "EmployerDataSource",
+                            "Name"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [

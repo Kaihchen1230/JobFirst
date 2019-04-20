@@ -1,116 +1,59 @@
-type EmplyeeInfo @model {
+type Employee @model {
   id: ID! 
-  first_name: String!
-  middle_name: String
-  last_name: String!
+  firstName: String!
+  middleName: String
+  lastName: String!
   age: Int
   email: String!
   phone: String
   website: String
   pic: String
-  address: Address @connection(name: "EmplyeeInfoAddress")
-  applied_job: [AppliedJob] @connection(name: "EmplyeeInfoAppliedJob")
+  address: Address @connection # each employee should have an address
+  appliedJob: [AppliedJob] @connection(name:"employeeJob") # employee can apply to many jobs
 }
 
 type Address @model {
   id: ID!
-  person_id: ID!
   line1: String!
   line2: String
-  postal_code: String # or Int
-  state: State!
-  employee: [EmplyeeInfo] @connection(name: "EmplyeeInfoAddress")
-  job: [PostedJob] @connection(name: "PostedJobAddress")
-  employer: [EmployerInfo] @connection(name: "EmployerInfoAddress")
+  postalCode: String # or Int
+  state: String!
 }
 
 type AppliedJob @model {
   id: ID!
-  applicant: EmplyeeInfo! @connection(name: "EmplyeeInfoAppliedJob")
-  job: PostedJob! @connection(name: "PostedJobAppliedJob")
-  date_applied: String!
+  Employee: Employee @connection(name:"employeeJob")
+  Job: PostedJob @connection(name:"postedJob")# each appliedjob should belong to one of the PostedJob
+  dateApplied: String!
 }
 
-type EmployerInfo @model {
+type Employer @model {
   id: ID!
-  company_name: String!
-  company_email: String!
-  company_phone: String!
-  company_address: Address! @connection(name: "EmployerInfoAddress")
-  company_website: String
-  timeline: [Timeline] @connection(name: "EmployerInfoTimeline")
-  company_pic: String
+  companyName: String!
+  companyEmail: String!
+  companyPhone: String!
+  companyAddress: Address! @connection
+  companyWebsite: String
+  timeline: [Timeline] @connection(name:"timeline")
+  companyPic: String
   description: String
-  post_job: [PostedJob] @connection(name: "EmployerInfoPostedJob")
+  job: PostedJob @connection(name:"job")
 }
 
 type PostedJob @model {
   id: ID!
-  company: EmployerInfo! @connection(name: "EmployerInfoPostedJob")
-  job_title: String!
+  company: Employer @connection(name:"job")
+  jobTitle: String
   requirements: [String!]
-  date_posted: String!
-  location: Address! @connection(name: "PostedJobAddress")
-  applied_job: AppliedJob @connection(name: "PostedJobAppliedJob")
-  clicked_counts: Int
+  datePosted: String!
+  location: Address! @connection
+  applied: [AppliedJob] @connection(name:"postedJob")
+  clickedCounts: Int
 }
 
 type Timeline @model {
   id: ID!
-  company: EmployerInfo @connection(name: "EmployerInfoTimeline")
+  company: Employer @connection(name:"timeline")
   date: String!
   info: String!
-}
-
-enum State {
-  AL
-  AK
-  AZ
-  AR
-  CA
-  CO
-  CT
-  DE
-  FL
-  GA
-  HI
-  ID
-  IL
-  IN
-  IA
-  KS
-  KY
-  LA
-  ME
-  MD
-  MA
-  MI
-  MN
-  MS
-  MO
-  MT
-  NE
-  NV
-  NH
-  NJ
-  NM
-  NY
-  NC
-  ND
-  OH
-  OK
-  OR
-  PA
-  RI
-  SC
-  SD
-  TN
-  TX
-  UT
-  VT
-  VA
-  WA
-  WV
-  WI
-  WY
 }

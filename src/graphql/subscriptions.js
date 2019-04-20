@@ -1,331 +1,620 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateEmplyeeInfo = `subscription OnCreateEmplyeeInfo {
-  onCreateEmplyeeInfo {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const onCreateEmployee = `subscription OnCreateEmployee {
+  onCreateEmployee {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
-        state
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
-export const onUpdateEmplyeeInfo = `subscription OnUpdateEmplyeeInfo {
-  onUpdateEmplyeeInfo {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const onUpdateEmployee = `subscription OnUpdateEmployee {
+  onUpdateEmployee {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
-        state
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
-export const onDeleteEmplyeeInfo = `subscription OnDeleteEmplyeeInfo {
-  onDeleteEmplyeeInfo {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const onDeleteEmployee = `subscription OnDeleteEmployee {
+  onDeleteEmployee {
+    id
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
-        state
+    appliedJob {
+      items {
+        id
+        dateApplied
       }
-      date_applied
+      nextToken
     }
   }
 }
 `;
 export const onCreateAddress = `subscription OnCreateAddress {
   onCreateAddress {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const onUpdateAddress = `subscription OnUpdateAddress {
   onUpdateAddress {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const onDeleteAddress = `subscription OnDeleteAddress {
   onDeleteAddress {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
   onCreateAppliedJob {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
 export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
   onUpdateAppliedJob {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
 export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
   onDeleteAppliedJob {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
   }
 }
 `;
-export const onCreateEmployerInfo = `subscription OnCreateEmployerInfo {
-  onCreateEmployerInfo {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const onCreateEmployer = `subscription OnCreateEmployer {
+  onCreateEmployer {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
   }
 }
 `;
-export const onUpdateEmployerInfo = `subscription OnUpdateEmployerInfo {
-  onUpdateEmployerInfo {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const onUpdateEmployer = `subscription OnUpdateEmployer {
+  onUpdateEmployer {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
   }
 }
 `;
-export const onDeleteEmployerInfo = `subscription OnDeleteEmployerInfo {
-  onDeleteEmployerInfo {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const onDeleteEmployer = `subscription OnDeleteEmployer {
+  onDeleteEmployer {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyPic
+        description
+      }
+      jobTitle
+      requirements
+      datePosted
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
   }
 }
 `;
 export const onCreatePostedJob = `subscription OnCreatePostedJob {
   onCreatePostedJob {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
   onUpdatePostedJob {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const onDeletePostedJob = `subscription OnDeletePostedJob {
   onDeletePostedJob {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
+    jobTitle
     requirements
-    date_posted
+    datePosted
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const onCreateTimeline = `subscription OnCreateTimeline {
   onCreateTimeline {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
@@ -333,8 +622,33 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
 `;
 export const onUpdateTimeline = `subscription OnUpdateTimeline {
   onUpdateTimeline {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
@@ -342,8 +656,33 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
 `;
 export const onDeleteTimeline = `subscription OnDeleteTimeline {
   onDeleteTimeline {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        id
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
+      }
+    }
     date
     info
   }
