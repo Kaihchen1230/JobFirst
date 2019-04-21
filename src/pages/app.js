@@ -24,7 +24,7 @@ const App = () => (
       <SignUp       path="/app/signup" />
       <JobList      path="/app/job-list" />
       <Home         path="/" />
-      <JobDescription path="/app/job-detail"/>
+      <JobDescription path="/app/job-detail/:jobID"/>
     </Router>
   </Layout>
 );

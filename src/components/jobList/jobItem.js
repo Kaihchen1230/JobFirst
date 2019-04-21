@@ -9,7 +9,7 @@ const jobItem = (props) => {
                 <p>{item.datePosted}</p>
                 <div align="center">
                     <Button type="primary" ghost>
-                        <Link to="/app/job-detail">Learn More</Link>
+                        <Link to={'/app/job-detail/'+item.id}>Learn More</Link>
                     </Button>
                 </div>
             </Card>
