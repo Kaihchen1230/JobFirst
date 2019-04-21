@@ -81,8 +81,10 @@ type PostedJob @model {
   id: ID!
   company: Employer @connection(name:"job")
   jobTitle: String
+  description: String
   requirements: [String]
   datePosted: String
+  deadline: String
   location: Address @connection
   applied: [AppliedJob] @connection(name:"postedJob")
   clickedCounts: Int
