@@ -12,47 +12,15 @@ const {
 
 class JobList extends React.Component {
     state = {
-        jobList: [
-            {
-                id: generate(10),
-                campanyName: 'Alibaba',
-                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            },
-            {
-                id: generate(10),
-                campanyName: 'Alibaba',
-                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            },
-            {
-                id: generate(10),
-                campanyName: 'Tencent',
-                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            },
-            {
-                id: generate(10),
-                campanyName: 'Baidu',
-                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            },
-            {
-                id: generate(10),
-                campanyName: 'Ant Fnancial',
-                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            },
-            {
-                id: generate(10),
-                campanyName: 'Xiaomi',
-                description: 'Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure.'
-            }
-        ],
-        testing: []
+        jobList: []
     }
 
     async componentDidMount() {
         const data = await API.graphql(graphqlOperation(listPostedJobs))
         this.setState({
-            testing: data.data.listPostedJobs.items
+            jobList: data.data.listPostedJobs.items
         })
-        console.log(this.state.testing)
+        console.log(this.state.jobList)
     }
     render() {
         return (
