@@ -71,10 +71,16 @@ type Employer @model {
   companyPhone: String
   companyAddress: Address @connection
   companyWebsite: String
+  companyType:String
+  headquarter: String
+  ceo:String
+  ceoPic:String
+  size:String
+  revenue:String
   timeline: [Timeline] @connection(name:"timeline")
   companyPic: String
   description: String
-  job: PostedJob @connection(name:"job")
+  job: [PostedJob] @connection(name:"job")
 }
 
 type PostedJob @model {

@@ -683,6 +683,12 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -751,6 +757,12 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -819,6 +831,12 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -855,6 +873,12 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -866,30 +890,14 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
-        description
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -908,6 +916,12 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -919,30 +933,14 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
-        description
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -961,6 +959,12 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -972,30 +976,14 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
-        description
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -1016,17 +1004,19 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
@@ -1066,17 +1056,19 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
@@ -1116,17 +1108,19 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
@@ -1166,17 +1160,19 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date
@@ -1200,17 +1196,19 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date
@@ -1234,17 +1232,19 @@ export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInp
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date

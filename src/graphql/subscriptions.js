@@ -683,6 +683,12 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -751,6 +757,12 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -819,6 +831,12 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -855,6 +873,12 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -866,30 +890,14 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
-        description
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -908,6 +916,12 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -919,30 +933,14 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
-        description
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -961,6 +959,12 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -972,30 +976,14 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
-        description
+        jobTitle
+        requirements
+        datePosted
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -1016,17 +1004,19 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
@@ -1066,17 +1056,19 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
@@ -1116,17 +1108,19 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
@@ -1166,17 +1160,19 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date
@@ -1200,17 +1196,19 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date
@@ -1234,17 +1232,19 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date

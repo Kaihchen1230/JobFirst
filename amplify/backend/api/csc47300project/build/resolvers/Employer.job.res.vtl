@@ -1,1 +1,4 @@
-$util.toJson($context.result)
+#if( !$result )
+  #set( $result = $ctx.result )
+#end
+$util.toJson($result)

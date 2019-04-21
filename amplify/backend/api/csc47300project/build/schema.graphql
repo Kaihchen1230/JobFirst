@@ -71,10 +71,16 @@ type Employer {
   companyPhone: String
   companyAddress: Address
   companyWebsite: String
+  companyType: String
+  headquarter: String
+  ceo: String
+  ceoPic: String
+  size: String
+  revenue: String
   timeline(filter: ModelTimelineFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTimelineConnection
   companyPic: String
   description: String
-  job: PostedJob
+  job(filter: ModelPostedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPostedJobConnection
 }
 
 type PostedJob {
@@ -499,6 +505,12 @@ input ModelEmployerFilterInput {
   companyEmail: ModelStringFilterInput
   companyPhone: ModelStringFilterInput
   companyWebsite: ModelStringFilterInput
+  companyType: ModelStringFilterInput
+  headquarter: ModelStringFilterInput
+  ceo: ModelStringFilterInput
+  ceoPic: ModelStringFilterInput
+  size: ModelStringFilterInput
+  revenue: ModelStringFilterInput
   companyPic: ModelStringFilterInput
   description: ModelStringFilterInput
   and: [ModelEmployerFilterInput]
@@ -512,10 +524,15 @@ input CreateEmployerInput {
   companyEmail: String
   companyPhone: String
   companyWebsite: String
+  companyType: String
+  headquarter: String
+  ceo: String
+  ceoPic: String
+  size: String
+  revenue: String
   companyPic: String
   description: String
   employerCompanyAddressId: ID
-  employerJobId: ID
 }
 
 input UpdateEmployerInput {
@@ -524,10 +541,15 @@ input UpdateEmployerInput {
   companyEmail: String
   companyPhone: String
   companyWebsite: String
+  companyType: String
+  headquarter: String
+  ceo: String
+  ceoPic: String
+  size: String
+  revenue: String
   companyPic: String
   description: String
   employerCompanyAddressId: ID
-  employerJobId: ID
 }
 
 input DeleteEmployerInput {

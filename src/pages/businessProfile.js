@@ -7,6 +7,9 @@ import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob'; 
 import { generate } from 'randomstring';
 import dict from "../components/dictionary/dictionary"
+import * as mutations from '../graphql/mutations';
+import * as queries from '../graphql/queries';
+import Amplify, { API, graphqlOperation } from "aws-amplify";
 // import { API, graphqlOperation } from 'aws-amplify';
 // import * as queries from '../graphql/queries'
 
@@ -62,6 +65,35 @@ class businessProfile extends React.Component {
           
           ]
    }
+
+
+
+  componentDidMount= async ()=>{
+    const employerdata = {
+      id: "102",
+      companyName: "alibabartrt",
+      companyEmail: "lanjie34569@gmail.com",
+      companyPhone: "5435345",
+      companyWebsite: "qqq.com",
+      employerTimelineId:["100"],
+      
+    }
+    let timelineData = {
+      id:"103",
+      timelineCompanyId:"102",
+      date:"2019-20-10",
+      info:"hgh"
+    }
+
+
+
+
+    // let employer = await API.graphql(graphqlOperation(queries.listEmployers, 
+    //   {filter:(data)=>{return data.companyName === "alibabartrt"}}));
+    // console.log("new employer is",employer);
+  } 
+
+
 
   showModal = () => {
     this.setState({

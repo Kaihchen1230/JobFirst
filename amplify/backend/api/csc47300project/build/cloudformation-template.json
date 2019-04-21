@@ -85,16 +85,7 @@
                         }
                     ]
                 },
-                "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
-                "UserPoolConfig": {
-                    "UserPoolId": {
-                        "Ref": "AuthCognitoUserPoolId"
-                    },
-                    "AwsRegion": {
-                        "Ref": "AWS::Region"
-                    },
-                    "DefaultAction": "ALLOW"
-                }
+                "AuthenticationType": "API_KEY"
             }
         },
         "GraphQLAPIKey": {
@@ -112,7 +103,7 @@
                         {
                             "Ref": "APIKeyExpirationEpoch"
                         },
-                        1556469604
+                        1556492280
                     ]
                 }
             },
@@ -829,6 +820,61 @@
                 "PostedJob",
                 "Timeline",
                 "Employer"
+            ]
+        },
+        "CustomResourcesjson": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "Parameters": {
+                    "AppSyncApiId": {
+                        "Fn::GetAtt": [
+                            "GraphQLAPI",
+                            "ApiId"
+                        ]
+                    },
+                    "AppSyncApiName": {
+                        "Ref": "AppSyncApiName"
+                    },
+                    "env": {
+                        "Ref": "env"
+                    },
+                    "S3DeploymentBucket": {
+                        "Ref": "S3DeploymentBucket"
+                    },
+                    "S3DeploymentRootKey": {
+                        "Ref": "S3DeploymentRootKey"
+                    }
+                },
+                "TemplateURL": {
+                    "Fn::Join": [
+                        "/",
+                        [
+                            "https://s3.amazonaws.com",
+                            {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            {
+                                "Ref": "S3DeploymentRootKey"
+                            },
+                            "stacks",
+                            "CustomResources.json"
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": [
+                "GraphQLAPI",
+                "GraphQLSchema",
+                "Employee",
+                "Association",
+                "Experience",
+                "Education",
+                "Address",
+                "AppliedJob",
+                "Employer",
+                "PostedJob",
+                "Timeline",
+                "ConnectionStack"
             ]
         }
     },
