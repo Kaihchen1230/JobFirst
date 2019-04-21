@@ -5,6 +5,8 @@ import { isLoggedIn, setUser, getUser } from "../../services/auth"
 import { I18n, Auth } from 'aws-amplify';
 import 'antd/dist/antd.css';
 import './login.css';
+import Amplify, { API, graphqlOperation } from "aws-amplify";
+import * as mutations from '../../graphql/mutations';
 
 
 
@@ -87,6 +89,32 @@ class NewLogin extends React.Component {
       } catch (err) {
         this.setState({ error: err })
         console.log('error....: ', err)
+      }
+      try {
+        const userInfo = getUser();
+        const { email, name, phone_number, sub, username } = userInfo
+        const profileExist = userInfo['custom:isProfile'];
+        if (profileExist === 'no') {
+          const data = {
+            id: sub,
+            username: username,
+            firstName: name,
+            phone: phone_number,
+            email: email,
+          }
+          const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
+          console.log(newEmployee);
+          Auth.currentAuthenticatedUser()
+            .then(user => {
+              return Auth.updateUserAttributes(user, {'custom:isProfile': 'yes'});
+            })
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+        }
+        //console.log(sub);
+        //console.log(userInfo);
+      } catch (err) {
+        console.log('error in second try: ', err)
       }
       form.resetFields();
       this.setState({ visible: false });

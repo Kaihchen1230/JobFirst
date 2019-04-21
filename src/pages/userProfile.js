@@ -1,6 +1,8 @@
 import React from 'react';
 import MyCard from '../components/user_profile/card';
 import MyList from '../components/user_profile/resumeList';
+import Person from '../components/user_profile/sidebar';
+import Information from '../components/user_profile/content';
 import { getUser, isLoggedIn } from '../services/auth';
 
 class Profile extends React.Component{

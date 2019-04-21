@@ -48,7 +48,7 @@ class Signup extends React.Component {
     confirmSignUp = async () => {
         const { username, authCode } = this.state
         try {
-            await Auth.confirmSignUp(username, authCode)
+            await Auth.confirmSignUp(username, authCode);
             alert('Successfully signed up!')
             navigate("/app/login")
         } catch (err) {

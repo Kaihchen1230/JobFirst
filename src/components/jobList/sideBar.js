@@ -2,7 +2,7 @@ import React from 'react';
 import { generate } from 'randomstring';
 import { Card, Col, Row, Button, Input, Tabs, Layout, Menu } from 'antd';
 
-const sideBar = (props) => {
+const Person = (props) => {
     const Search = Input.Search;
     return (
         <div>
@@ -25,4 +25,4 @@ const sideBar = (props) => {
     );
 }
 
-export default sideBar;
+export default Person;
