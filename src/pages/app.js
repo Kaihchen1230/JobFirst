@@ -26,7 +26,7 @@ const App = () => (
       <JobList      path="/app/job-list" />
       <TalentList      path="/app/talent-list" />
       <Home         path="/" />
-      <JobDescription path="/app/job-detail"/>
+      <JobDescription path="/app/job-detail/:jobID"/>
     </Router>
   </Layout>
 );

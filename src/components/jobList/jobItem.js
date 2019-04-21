@@ -1,14 +1,15 @@
 import React from 'react';
 import { Card, Row, Col, Button } from 'antd';
-import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 const jobItem = (props) => {
     let jobItem = props.jobs.map((item, index) =>
         <Col span={8} style={{ margin: '10px 0' }}>
-            <Card title={item.campanyName} bordered={true}>
-                <p>{item.description}</p>
+            <Card title={item.jobTitle} bordered={true}>
+                <p>{item.company.companyName}</p>
+                <p>{item.datePosted}</p>
                 <div align="center">
                     <Button type="primary" ghost>
-                        <Link to="/app/job-detail">Learn More</Link>
+                        <Link to={'/app/job-detail/'+item.id}>Learn More</Link>
                     </Button>
                 </div>
             </Card>
