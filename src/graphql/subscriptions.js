@@ -24,6 +24,7 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -89,6 +90,7 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -154,6 +156,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -708,6 +711,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -782,6 +786,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -856,6 +861,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -1033,6 +1039,7 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1085,6 +1092,7 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1137,6 +1145,7 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }

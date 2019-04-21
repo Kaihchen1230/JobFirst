@@ -24,6 +24,7 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -89,6 +90,7 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -154,6 +156,7 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -708,6 +711,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -782,6 +786,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -856,6 +861,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -1033,6 +1039,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1085,6 +1092,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1137,6 +1145,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }

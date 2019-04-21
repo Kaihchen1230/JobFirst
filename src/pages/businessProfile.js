@@ -88,9 +88,9 @@ class businessProfile extends React.Component {
 
 
 
-    // let employer = await API.graphql(graphqlOperation(queries.listEmployers, 
-    //   {filter:(data)=>{return data.companyName === "alibabartrt"}}));
-    // console.log("new employer is",employer);
+    let employer = await API.graphql(graphqlOperation(queries.listEmployers, 
+      {filter:(data)=>{return data.companyName === "alibabartrt"}}));
+    console.log("new employer is",employer);
   } 
 
 

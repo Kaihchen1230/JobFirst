@@ -62,6 +62,7 @@ type AppliedJob @model {
   Employee: Employee @connection(name:"employeeJob")
   Job: PostedJob @connection(name:"postedJob")# each appliedjob should belong to one of the PostedJob
   dateApplied: String
+  status:String
 }
 
 type Employer @model {

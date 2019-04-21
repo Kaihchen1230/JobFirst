@@ -24,6 +24,7 @@ export const getEmployee = `query GetEmployee($id: ID!) {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -447,6 +448,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -482,6 +484,7 @@ export const listAppliedJobs = `query ListAppliedJobs(
         clickedCounts
       }
       dateApplied
+      status
     }
     nextToken
   }
@@ -613,6 +616,7 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
