@@ -4,6 +4,7 @@
 export const getEmployee = `query GetEmployee($id: ID!) {
   getEmployee(id: $id) {
     id
+    username
     firstName
     middleName
     lastName
@@ -26,6 +27,42 @@ export const getEmployee = `query GetEmployee($id: ID!) {
       }
       nextToken
     }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
   }
 }
 `;
@@ -37,6 +74,7 @@ export const listEmployees = `query ListEmployees(
   listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      username
       firstName
       middleName
       lastName
@@ -54,6 +92,257 @@ export const listEmployees = `query ListEmployees(
       }
       appliedJob {
         nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+    nextToken
+  }
+}
+`;
+export const getAssociation = `query GetAssociation($id: ID!) {
+  getAssociation(id: $id) {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const listAssociations = `query ListAssociations(
+  $filter: ModelAssociationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAssociations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      position
+      name
+      whose {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getExperience = `query GetExperience($id: ID!) {
+  getExperience(id: $id) {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const listExperiences = `query ListExperiences(
+  $filter: ModelExperienceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExperiences(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      startYear
+      endYear
+      companyName
+      reasonToLeave
+      city
+      country
+      whose {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getEducation = `query GetEducation($id: ID!) {
+  getEducation(id: $id) {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const listEducations = `query ListEducations(
+  $filter: ModelEducationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listEducations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      startYear
+      endYear
+      degree
+      schoolName
+      country
+      city
+      whose {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
       }
     }
     nextToken
@@ -92,6 +381,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
     id
     Employee {
       id
+      username
       firstName
       middleName
       lastName
@@ -110,6 +400,19 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
       appliedJob {
         nextToken
       }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
     Job {
       id
@@ -151,6 +454,7 @@ export const listAppliedJobs = `query ListAppliedJobs(
       id
       Employee {
         id
+        username
         firstName
         middleName
         lastName
@@ -159,6 +463,10 @@ export const listAppliedJobs = `query ListAppliedJobs(
         phone
         website
         pic
+        award
+        skill
+        language
+        englishLevel
       }
       Job {
         id

@@ -1,5 +1,6 @@
 type Employee {
   id: ID!
+  username: String
   firstName: String
   middleName: String
   lastName: String
@@ -10,6 +11,42 @@ type Employee {
   pic: String
   address: Address
   appliedJob(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
+  education(filter: ModelEducationFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelEducationConnection
+  experience(filter: ModelExperienceFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelExperienceConnection
+  award: [String]
+  association(filter: ModelAssociationFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAssociationConnection
+  skill: [String]
+  language: [String]
+  englishLevel: String
+}
+
+type Association {
+  id: ID!
+  position: String
+  name: String
+  whose: Employee
+}
+
+type Experience {
+  id: ID!
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  whose: Employee
+}
+
+type Education {
+  id: ID!
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  whose: Employee
 }
 
 type Address {
@@ -125,6 +162,7 @@ input ModelBooleanFilterInput {
 
 input ModelEmployeeFilterInput {
   id: ModelIDFilterInput
+  username: ModelStringFilterInput
   firstName: ModelStringFilterInput
   middleName: ModelStringFilterInput
   lastName: ModelStringFilterInput
@@ -133,6 +171,10 @@ input ModelEmployeeFilterInput {
   phone: ModelStringFilterInput
   website: ModelStringFilterInput
   pic: ModelStringFilterInput
+  award: ModelStringFilterInput
+  skill: ModelStringFilterInput
+  language: ModelStringFilterInput
+  englishLevel: ModelStringFilterInput
   and: [ModelEmployeeFilterInput]
   or: [ModelEmployeeFilterInput]
   not: ModelEmployeeFilterInput
@@ -141,6 +183,12 @@ input ModelEmployeeFilterInput {
 type Query {
   getEmployee(id: ID!): Employee
   listEmployees(filter: ModelEmployeeFilterInput, limit: Int, nextToken: String): ModelEmployeeConnection
+  getAssociation(id: ID!): Association
+  listAssociations(filter: ModelAssociationFilterInput, limit: Int, nextToken: String): ModelAssociationConnection
+  getExperience(id: ID!): Experience
+  listExperiences(filter: ModelExperienceFilterInput, limit: Int, nextToken: String): ModelExperienceConnection
+  getEducation(id: ID!): Education
+  listEducations(filter: ModelEducationFilterInput, limit: Int, nextToken: String): ModelEducationConnection
   getAddress(id: ID!): Address
   listAddresss(filter: ModelAddressFilterInput, limit: Int, nextToken: String): ModelAddressConnection
   getAppliedJob(id: ID!): AppliedJob
@@ -155,6 +203,7 @@ type Query {
 
 input CreateEmployeeInput {
   id: ID
+  username: String
   firstName: String
   middleName: String
   lastName: String
@@ -163,11 +212,16 @@ input CreateEmployeeInput {
   phone: String
   website: String
   pic: String
+  award: [String]
+  skill: [String]
+  language: [String]
+  englishLevel: String
   employeeAddressId: ID
 }
 
 input UpdateEmployeeInput {
   id: ID!
+  username: String
   firstName: String
   middleName: String
   lastName: String
@@ -176,6 +230,10 @@ input UpdateEmployeeInput {
   phone: String
   website: String
   pic: String
+  award: [String]
+  skill: [String]
+  language: [String]
+  englishLevel: String
   employeeAddressId: ID
 }
 
@@ -187,6 +245,15 @@ type Mutation {
   createEmployee(input: CreateEmployeeInput!): Employee
   updateEmployee(input: UpdateEmployeeInput!): Employee
   deleteEmployee(input: DeleteEmployeeInput!): Employee
+  createAssociation(input: CreateAssociationInput!): Association
+  updateAssociation(input: UpdateAssociationInput!): Association
+  deleteAssociation(input: DeleteAssociationInput!): Association
+  createExperience(input: CreateExperienceInput!): Experience
+  updateExperience(input: UpdateExperienceInput!): Experience
+  deleteExperience(input: DeleteExperienceInput!): Experience
+  createEducation(input: CreateEducationInput!): Education
+  updateEducation(input: UpdateEducationInput!): Education
+  deleteEducation(input: DeleteEducationInput!): Education
   createAddress(input: CreateAddressInput!): Address
   updateAddress(input: UpdateAddressInput!): Address
   deleteAddress(input: DeleteAddressInput!): Address
@@ -208,6 +275,15 @@ type Subscription {
   onCreateEmployee: Employee @aws_subscribe(mutations: ["createEmployee"])
   onUpdateEmployee: Employee @aws_subscribe(mutations: ["updateEmployee"])
   onDeleteEmployee: Employee @aws_subscribe(mutations: ["deleteEmployee"])
+  onCreateAssociation: Association @aws_subscribe(mutations: ["createAssociation"])
+  onUpdateAssociation: Association @aws_subscribe(mutations: ["updateAssociation"])
+  onDeleteAssociation: Association @aws_subscribe(mutations: ["deleteAssociation"])
+  onCreateExperience: Experience @aws_subscribe(mutations: ["createExperience"])
+  onUpdateExperience: Experience @aws_subscribe(mutations: ["updateExperience"])
+  onDeleteExperience: Experience @aws_subscribe(mutations: ["deleteExperience"])
+  onCreateEducation: Education @aws_subscribe(mutations: ["createEducation"])
+  onUpdateEducation: Education @aws_subscribe(mutations: ["updateEducation"])
+  onDeleteEducation: Education @aws_subscribe(mutations: ["deleteEducation"])
   onCreateAddress: Address @aws_subscribe(mutations: ["createAddress"])
   onUpdateAddress: Address @aws_subscribe(mutations: ["updateAddress"])
   onDeleteAddress: Address @aws_subscribe(mutations: ["deleteAddress"])
@@ -223,6 +299,126 @@ type Subscription {
   onCreateTimeline: Timeline @aws_subscribe(mutations: ["createTimeline"])
   onUpdateTimeline: Timeline @aws_subscribe(mutations: ["updateTimeline"])
   onDeleteTimeline: Timeline @aws_subscribe(mutations: ["deleteTimeline"])
+}
+
+type ModelAssociationConnection {
+  items: [Association]
+  nextToken: String
+}
+
+input ModelAssociationFilterInput {
+  id: ModelIDFilterInput
+  position: ModelStringFilterInput
+  name: ModelStringFilterInput
+  and: [ModelAssociationFilterInput]
+  or: [ModelAssociationFilterInput]
+  not: ModelAssociationFilterInput
+}
+
+input CreateAssociationInput {
+  id: ID
+  position: String
+  name: String
+  associationWhoseId: ID
+}
+
+input UpdateAssociationInput {
+  id: ID!
+  position: String
+  name: String
+  associationWhoseId: ID
+}
+
+input DeleteAssociationInput {
+  id: ID
+}
+
+type ModelExperienceConnection {
+  items: [Experience]
+  nextToken: String
+}
+
+input ModelExperienceFilterInput {
+  id: ModelIDFilterInput
+  startYear: ModelStringFilterInput
+  endYear: ModelStringFilterInput
+  companyName: ModelStringFilterInput
+  reasonToLeave: ModelStringFilterInput
+  city: ModelStringFilterInput
+  country: ModelStringFilterInput
+  and: [ModelExperienceFilterInput]
+  or: [ModelExperienceFilterInput]
+  not: ModelExperienceFilterInput
+}
+
+input CreateExperienceInput {
+  id: ID
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  experienceWhoseId: ID
+}
+
+input UpdateExperienceInput {
+  id: ID!
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  experienceWhoseId: ID
+}
+
+input DeleteExperienceInput {
+  id: ID
+}
+
+type ModelEducationConnection {
+  items: [Education]
+  nextToken: String
+}
+
+input ModelEducationFilterInput {
+  id: ModelIDFilterInput
+  startYear: ModelStringFilterInput
+  endYear: ModelStringFilterInput
+  degree: ModelStringFilterInput
+  schoolName: ModelStringFilterInput
+  country: ModelStringFilterInput
+  city: ModelStringFilterInput
+  and: [ModelEducationFilterInput]
+  or: [ModelEducationFilterInput]
+  not: ModelEducationFilterInput
+}
+
+input CreateEducationInput {
+  id: ID
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  educationWhoseId: ID
+}
+
+input UpdateEducationInput {
+  id: ID!
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  educationWhoseId: ID
+}
+
+input DeleteEducationInput {
+  id: ID
 }
 
 type ModelAddressConnection {
