@@ -4,6 +4,7 @@
 export const onCreateEmployee = `subscription OnCreateEmployee {
   onCreateEmployee {
     id
+    username
     firstName
     middleName
     lastName
@@ -26,12 +27,49 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
       }
       nextToken
     }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
   }
 }
 `;
 export const onUpdateEmployee = `subscription OnUpdateEmployee {
   onUpdateEmployee {
     id
+    username
     firstName
     middleName
     lastName
@@ -54,12 +92,49 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
       }
       nextToken
     }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
   }
 }
 `;
 export const onDeleteEmployee = `subscription OnDeleteEmployee {
   onDeleteEmployee {
     id
+    username
     firstName
     middleName
     lastName
@@ -81,6 +156,453 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
         dateApplied
       }
       nextToken
+    }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
+  }
+}
+`;
+export const onCreateAssociation = `subscription OnCreateAssociation {
+  onCreateAssociation {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onUpdateAssociation = `subscription OnUpdateAssociation {
+  onUpdateAssociation {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onDeleteAssociation = `subscription OnDeleteAssociation {
+  onDeleteAssociation {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onCreateExperience = `subscription OnCreateExperience {
+  onCreateExperience {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onUpdateExperience = `subscription OnUpdateExperience {
+  onUpdateExperience {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onDeleteExperience = `subscription OnDeleteExperience {
+  onDeleteExperience {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onCreateEducation = `subscription OnCreateEducation {
+  onCreateEducation {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onUpdateEducation = `subscription OnUpdateEducation {
+  onUpdateEducation {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onDeleteEducation = `subscription OnDeleteEducation {
+  onDeleteEducation {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
   }
 }
@@ -120,6 +642,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
     id
     Employee {
       id
+      username
       firstName
       middleName
       lastName
@@ -138,6 +661,19 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       appliedJob {
         nextToken
       }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
     Job {
       id
@@ -174,6 +710,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
     id
     Employee {
       id
+      username
       firstName
       middleName
       lastName
@@ -192,6 +729,19 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       appliedJob {
         nextToken
       }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
     Job {
       id
@@ -228,6 +778,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
     id
     Employee {
       id
+      username
       firstName
       middleName
       lastName
@@ -246,6 +797,19 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       appliedJob {
         nextToken
       }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
     Job {
       id
