@@ -1,10 +1,10 @@
 type Employee {
   id: ID!
-  firstName: String!
+  firstName: String
   middleName: String
-  lastName: String!
+  lastName: String
   age: Int
-  email: String!
+  email: String
   phone: String
   website: String
   pic: String
@@ -14,25 +14,25 @@ type Employee {
 
 type Address {
   id: ID!
-  line1: String!
+  line1: String
   line2: String
   postalCode: String
-  state: String!
+  state: String
 }
 
 type AppliedJob {
   id: ID!
   Employee: Employee
   Job: PostedJob
-  dateApplied: String!
+  dateApplied: String
 }
 
 type Employer {
   id: ID!
-  companyName: String!
-  companyEmail: String!
-  companyPhone: String!
-  companyAddress: Address!
+  companyName: String
+  companyEmail: String
+  companyPhone: String
+  companyAddress: Address
   companyWebsite: String
   timeline(filter: ModelTimelineFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTimelineConnection
   companyPic: String
@@ -44,9 +44,9 @@ type PostedJob {
   id: ID!
   company: Employer
   jobTitle: String
-  requirements: [String!]
-  datePosted: String!
-  location: Address!
+  requirements: [String]
+  datePosted: String
+  location: Address
   applied(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
   clickedCounts: Int
 }
@@ -54,8 +54,8 @@ type PostedJob {
 type Timeline {
   id: ID!
   company: Employer
-  date: String!
-  info: String!
+  date: String
+  info: String
 }
 
 enum ModelSortDirection {
@@ -155,11 +155,11 @@ type Query {
 
 input CreateEmployeeInput {
   id: ID
-  firstName: String!
+  firstName: String
   middleName: String
-  lastName: String!
+  lastName: String
   age: Int
-  email: String!
+  email: String
   phone: String
   website: String
   pic: String
@@ -243,10 +243,10 @@ input ModelAddressFilterInput {
 
 input CreateAddressInput {
   id: ID
-  line1: String!
+  line1: String
   line2: String
   postalCode: String
-  state: String!
+  state: String
 }
 
 input UpdateAddressInput {
@@ -276,7 +276,7 @@ input ModelAppliedJobFilterInput {
 
 input CreateAppliedJobInput {
   id: ID
-  dateApplied: String!
+  dateApplied: String
   appliedJobEmployeeId: ID
   appliedJobJobId: ID
 }
@@ -312,13 +312,13 @@ input ModelEmployerFilterInput {
 
 input CreateEmployerInput {
   id: ID
-  companyName: String!
-  companyEmail: String!
-  companyPhone: String!
+  companyName: String
+  companyEmail: String
+  companyPhone: String
   companyWebsite: String
   companyPic: String
   description: String
-  employerCompanyAddressId: ID!
+  employerCompanyAddressId: ID
   employerJobId: ID
 }
 
@@ -357,17 +357,17 @@ input ModelPostedJobFilterInput {
 input CreatePostedJobInput {
   id: ID
   jobTitle: String
-  requirements: [String!]
-  datePosted: String!
+  requirements: [String]
+  datePosted: String
   clickedCounts: Int
   postedJobCompanyId: ID
-  postedJobLocationId: ID!
+  postedJobLocationId: ID
 }
 
 input UpdatePostedJobInput {
   id: ID!
   jobTitle: String
-  requirements: [String!]
+  requirements: [String]
   datePosted: String
   clickedCounts: Int
   postedJobCompanyId: ID
@@ -394,8 +394,8 @@ input ModelTimelineFilterInput {
 
 input CreateTimelineInput {
   id: ID
-  date: String!
-  info: String!
+  date: String
+  info: String
   timelineCompanyId: ID
 }
 
