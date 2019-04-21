@@ -62,6 +62,7 @@ type AppliedJob @model {
   Employee: Employee @connection(name:"employeeJob")
   Job: PostedJob @connection(name:"postedJob")# each appliedjob should belong to one of the PostedJob
   dateApplied: String
+  status:String
 }
 
 type Employer @model {
@@ -71,10 +72,16 @@ type Employer @model {
   companyPhone: String
   companyAddress: Address @connection
   companyWebsite: String
+  companyType:String
+  headquarter: String
+  ceo:String
+  ceoPic:String
+  size:String
+  revenue:String
   timeline: [Timeline] @connection(name:"timeline")
   companyPic: String
   description: String
-  job: PostedJob @connection(name:"job")
+  job: [PostedJob] @connection(name:"job")
 }
 
 type PostedJob @model {
