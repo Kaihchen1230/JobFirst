@@ -1,8 +1,8 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInput!) {
-  createEmployee(input: $input) {
+export const onCreateEmployee = `subscription OnCreateEmployee {
+  onCreateEmployee {
     id
     username
     firstName
@@ -66,8 +66,8 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
   }
 }
 `;
-export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInput!) {
-  updateEmployee(input: $input) {
+export const onUpdateEmployee = `subscription OnUpdateEmployee {
+  onUpdateEmployee {
     id
     username
     firstName
@@ -131,8 +131,8 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
   }
 }
 `;
-export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInput!) {
-  deleteEmployee(input: $input) {
+export const onDeleteEmployee = `subscription OnDeleteEmployee {
+  onDeleteEmployee {
     id
     username
     firstName
@@ -196,8 +196,8 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
   }
 }
 `;
-export const createAssociation = `mutation CreateAssociation($input: CreateAssociationInput!) {
-  createAssociation(input: $input) {
+export const onCreateAssociation = `subscription OnCreateAssociation {
+  onCreateAssociation {
     id
     position
     name
@@ -239,8 +239,8 @@ export const createAssociation = `mutation CreateAssociation($input: CreateAssoc
   }
 }
 `;
-export const updateAssociation = `mutation UpdateAssociation($input: UpdateAssociationInput!) {
-  updateAssociation(input: $input) {
+export const onUpdateAssociation = `subscription OnUpdateAssociation {
+  onUpdateAssociation {
     id
     position
     name
@@ -282,8 +282,8 @@ export const updateAssociation = `mutation UpdateAssociation($input: UpdateAssoc
   }
 }
 `;
-export const deleteAssociation = `mutation DeleteAssociation($input: DeleteAssociationInput!) {
-  deleteAssociation(input: $input) {
+export const onDeleteAssociation = `subscription OnDeleteAssociation {
+  onDeleteAssociation {
     id
     position
     name
@@ -325,8 +325,8 @@ export const deleteAssociation = `mutation DeleteAssociation($input: DeleteAssoc
   }
 }
 `;
-export const createExperience = `mutation CreateExperience($input: CreateExperienceInput!) {
-  createExperience(input: $input) {
+export const onCreateExperience = `subscription OnCreateExperience {
+  onCreateExperience {
     id
     startYear
     endYear
@@ -372,8 +372,8 @@ export const createExperience = `mutation CreateExperience($input: CreateExperie
   }
 }
 `;
-export const updateExperience = `mutation UpdateExperience($input: UpdateExperienceInput!) {
-  updateExperience(input: $input) {
+export const onUpdateExperience = `subscription OnUpdateExperience {
+  onUpdateExperience {
     id
     startYear
     endYear
@@ -419,8 +419,8 @@ export const updateExperience = `mutation UpdateExperience($input: UpdateExperie
   }
 }
 `;
-export const deleteExperience = `mutation DeleteExperience($input: DeleteExperienceInput!) {
-  deleteExperience(input: $input) {
+export const onDeleteExperience = `subscription OnDeleteExperience {
+  onDeleteExperience {
     id
     startYear
     endYear
@@ -466,8 +466,8 @@ export const deleteExperience = `mutation DeleteExperience($input: DeleteExperie
   }
 }
 `;
-export const createEducation = `mutation CreateEducation($input: CreateEducationInput!) {
-  createEducation(input: $input) {
+export const onCreateEducation = `subscription OnCreateEducation {
+  onCreateEducation {
     id
     startYear
     endYear
@@ -513,8 +513,8 @@ export const createEducation = `mutation CreateEducation($input: CreateEducation
   }
 }
 `;
-export const updateEducation = `mutation UpdateEducation($input: UpdateEducationInput!) {
-  updateEducation(input: $input) {
+export const onUpdateEducation = `subscription OnUpdateEducation {
+  onUpdateEducation {
     id
     startYear
     endYear
@@ -560,8 +560,8 @@ export const updateEducation = `mutation UpdateEducation($input: UpdateEducation
   }
 }
 `;
-export const deleteEducation = `mutation DeleteEducation($input: DeleteEducationInput!) {
-  deleteEducation(input: $input) {
+export const onDeleteEducation = `subscription OnDeleteEducation {
+  onDeleteEducation {
     id
     startYear
     endYear
@@ -607,8 +607,8 @@ export const deleteEducation = `mutation DeleteEducation($input: DeleteEducation
   }
 }
 `;
-export const createAddress = `mutation CreateAddress($input: CreateAddressInput!) {
-  createAddress(input: $input) {
+export const onCreateAddress = `subscription OnCreateAddress {
+  onCreateAddress {
     id
     line1
     line2
@@ -617,8 +617,8 @@ export const createAddress = `mutation CreateAddress($input: CreateAddressInput!
   }
 }
 `;
-export const updateAddress = `mutation UpdateAddress($input: UpdateAddressInput!) {
-  updateAddress(input: $input) {
+export const onUpdateAddress = `subscription OnUpdateAddress {
+  onUpdateAddress {
     id
     line1
     line2
@@ -627,8 +627,8 @@ export const updateAddress = `mutation UpdateAddress($input: UpdateAddressInput!
   }
 }
 `;
-export const deleteAddress = `mutation DeleteAddress($input: DeleteAddressInput!) {
-  deleteAddress(input: $input) {
+export const onDeleteAddress = `subscription OnDeleteAddress {
+  onDeleteAddress {
     id
     line1
     line2
@@ -637,8 +637,8 @@ export const deleteAddress = `mutation DeleteAddress($input: DeleteAddressInput!
   }
 }
 `;
-export const createAppliedJob = `mutation CreateAppliedJob($input: CreateAppliedJobInput!) {
-  createAppliedJob(input: $input) {
+export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
+  onCreateAppliedJob {
     id
     Employee {
       id
@@ -705,8 +705,8 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
   }
 }
 `;
-export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateAppliedJobInput!) {
-  updateAppliedJob(input: $input) {
+export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
+  onUpdateAppliedJob {
     id
     Employee {
       id
@@ -773,8 +773,8 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
   }
 }
 `;
-export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteAppliedJobInput!) {
-  deleteAppliedJob(input: $input) {
+export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
+  onDeleteAppliedJob {
     id
     Employee {
       id
@@ -841,8 +841,8 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
   }
 }
 `;
-export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInput!) {
-  createEmployer(input: $input) {
+export const onCreateEmployer = `subscription OnCreateEmployer {
+  onCreateEmployer {
     id
     companyName
     companyEmail
@@ -894,8 +894,8 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
   }
 }
 `;
-export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInput!) {
-  updateEmployer(input: $input) {
+export const onUpdateEmployer = `subscription OnUpdateEmployer {
+  onUpdateEmployer {
     id
     companyName
     companyEmail
@@ -947,8 +947,8 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
   }
 }
 `;
-export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInput!) {
-  deleteEmployer(input: $input) {
+export const onDeleteEmployer = `subscription OnDeleteEmployer {
+  onDeleteEmployer {
     id
     companyName
     companyEmail
@@ -1000,8 +1000,8 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
   }
 }
 `;
-export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJobInput!) {
-  createPostedJob(input: $input) {
+export const onCreatePostedJob = `subscription OnCreatePostedJob {
+  onCreatePostedJob {
     id
     company {
       id
@@ -1050,8 +1050,8 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
   }
 }
 `;
-export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJobInput!) {
-  updatePostedJob(input: $input) {
+export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
+  onUpdatePostedJob {
     id
     company {
       id
@@ -1100,8 +1100,8 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
   }
 }
 `;
-export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJobInput!) {
-  deletePostedJob(input: $input) {
+export const onDeletePostedJob = `subscription OnDeletePostedJob {
+  onDeletePostedJob {
     id
     company {
       id
@@ -1150,8 +1150,8 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
   }
 }
 `;
-export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInput!) {
-  createTimeline(input: $input) {
+export const onCreateTimeline = `subscription OnCreateTimeline {
+  onCreateTimeline {
     id
     company {
       id
@@ -1184,8 +1184,8 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
   }
 }
 `;
-export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInput!) {
-  updateTimeline(input: $input) {
+export const onUpdateTimeline = `subscription OnUpdateTimeline {
+  onUpdateTimeline {
     id
     company {
       id
@@ -1218,8 +1218,8 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
   }
 }
 `;
-export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInput!) {
-  deleteTimeline(input: $input) {
+export const onDeleteTimeline = `subscription OnDeleteTimeline {
+  onDeleteTimeline {
     id
     company {
       id
