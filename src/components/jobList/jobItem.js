@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Row, Col, Button } from 'antd';
 import { Link } from "gatsby"
+
 const jobItem = (props) => {
     let jobItem = props.jobs.map((item, index) =>
         <Col span={8} style={{ margin: '10px 0' }}>
@@ -21,6 +22,7 @@ const jobItem = (props) => {
             <Row gutter={16}>
                 {jobItem}
             </Row>
+
         </div>
     );
 }

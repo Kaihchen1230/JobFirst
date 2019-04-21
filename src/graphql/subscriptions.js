@@ -687,8 +687,10 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         description
       }
       jobTitle
+      description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -755,8 +757,10 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         description
       }
       jobTitle
+      description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -823,8 +827,10 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         description
       }
       jobTitle
+      description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -866,30 +872,16 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
+        jobTitle
         description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -919,30 +911,16 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
+        jobTitle
         description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -972,30 +950,16 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
+        jobTitle
         description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -1022,16 +986,14 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
+    description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1072,16 +1034,14 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
+    description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1122,16 +1082,14 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
+    description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1172,11 +1130,7 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date
@@ -1206,11 +1160,7 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date
@@ -1240,11 +1190,7 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date

@@ -1,11 +1,15 @@
-import React from "react"
+import React from "react";
 //import { navigate } from "gatsby"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import { I18n } from 'aws-amplify';
 //import "../style/postJob.css";
-import dict from "../dictionary/dictionary"
+import dict from "../dictionary/dictionary";
+import { createAddress, createPostedJob } from "../../graphql/mutations";
+import { API, graphqlOperation } from 'aws-amplify';
+
+
 const Option = Select.Option;
 const { TextArea } = Input;
 
@@ -16,7 +20,10 @@ class PostJob extends React.Component {
     } 
 
     handleSubmit = () => {
+        const postForm = document.forms["jobPost"];
+        const CreateAddressInput = {
 
+        }
     }
 
     render() {
@@ -27,14 +34,30 @@ class PostJob extends React.Component {
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
-                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }}>
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
+                    {/* make it a entry for now, but should automatic assign when employer */}
                     <Form.Item>
-                        <Input placeholder={I18n.get('Enter Employer Name')}
+                        <Input placeholder={I18n.get('Enter the name of the employer.')}
                             prefix={<Icon type="user" />}
                             suffix={
                                 <Tooltip title={I18n.get('Enter the name of the employer.')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
+                            name="companyName"
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <Input placeholder="address line1" 
+                            name="line1"
+                        />
+                        <Input placeholder="address line2" 
+                            name="line2"
+                        />
+                        <Input placeholder="postalCode" 
+                            name="postalCode"
+                        />
+                        <Input placeholder="state" 
+                            name="state"
                         />
                     </Form.Item>
                     <Form.Item>

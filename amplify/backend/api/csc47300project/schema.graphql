@@ -74,7 +74,7 @@ type Employer @model {
   timeline: [Timeline] @connection(name:"timeline")
   companyPic: String
   description: String
-  job: PostedJob @connection(name:"job")
+  job: [PostedJob] @connection(name:"job")
 }
 
 type PostedJob @model {

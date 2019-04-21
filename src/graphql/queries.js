@@ -426,8 +426,10 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         description
       }
       jobTitle
+      description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -471,8 +473,10 @@ export const listAppliedJobs = `query ListAppliedJobs(
       Job {
         id
         jobTitle
+        description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       dateApplied
@@ -506,30 +510,16 @@ export const getEmployer = `query GetEmployer($id: ID!) {
     companyPic
     description
     job {
-      id
-      company {
+      items {
         id
-        companyName
-        companyEmail
-        companyPhone
-        companyWebsite
-        companyPic
+        jobTitle
         description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
       }
-      jobTitle
-      requirements
-      datePosted
-      location {
-        id
-        line1
-        line2
-        postalCode
-        state
-      }
-      applied {
-        nextToken
-      }
-      clickedCounts
+      nextToken
     }
   }
 }
@@ -559,11 +549,7 @@ export const listEmployers = `query ListEmployers(
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     nextToken
@@ -592,16 +578,14 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     jobTitle
+    description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -638,8 +622,10 @@ export const listPostedJobs = `query ListPostedJobs(
         description
       }
       jobTitle
+      description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -678,11 +664,7 @@ export const getTimeline = `query GetTimeline($id: ID!) {
       companyPic
       description
       job {
-        id
-        jobTitle
-        requirements
-        datePosted
-        clickedCounts
+        nextToken
       }
     }
     date

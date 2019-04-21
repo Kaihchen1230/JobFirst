@@ -74,15 +74,17 @@ type Employer {
   timeline(filter: ModelTimelineFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTimelineConnection
   companyPic: String
   description: String
-  job: PostedJob
+  job(filter: ModelPostedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPostedJobConnection
 }
 
 type PostedJob {
   id: ID!
   company: Employer
   jobTitle: String
+  description: String
   requirements: [String]
   datePosted: String
+  deadline: String
   location: Address
   applied(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
   clickedCounts: Int
@@ -515,7 +517,6 @@ input CreateEmployerInput {
   companyPic: String
   description: String
   employerCompanyAddressId: ID
-  employerJobId: ID
 }
 
 input UpdateEmployerInput {
@@ -527,7 +528,6 @@ input UpdateEmployerInput {
   companyPic: String
   description: String
   employerCompanyAddressId: ID
-  employerJobId: ID
 }
 
 input DeleteEmployerInput {
@@ -542,8 +542,10 @@ type ModelPostedJobConnection {
 input ModelPostedJobFilterInput {
   id: ModelIDFilterInput
   jobTitle: ModelStringFilterInput
+  description: ModelStringFilterInput
   requirements: ModelStringFilterInput
   datePosted: ModelStringFilterInput
+  deadline: ModelStringFilterInput
   clickedCounts: ModelIntFilterInput
   and: [ModelPostedJobFilterInput]
   or: [ModelPostedJobFilterInput]
@@ -553,8 +555,10 @@ input ModelPostedJobFilterInput {
 input CreatePostedJobInput {
   id: ID
   jobTitle: String
+  description: String
   requirements: [String]
   datePosted: String
+  deadline: String
   clickedCounts: Int
   postedJobCompanyId: ID
   postedJobLocationId: ID
@@ -563,8 +567,10 @@ input CreatePostedJobInput {
 input UpdatePostedJobInput {
   id: ID!
   jobTitle: String
+  description: String
   requirements: [String]
   datePosted: String
+  deadline: String
   clickedCounts: Int
   postedJobCompanyId: ID
   postedJobLocationId: ID
