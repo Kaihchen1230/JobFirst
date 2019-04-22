@@ -1,9 +1,10 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import { Auth } from 'aws-amplify';
+import { Auth, I18n } from 'aws-amplify';
 import Error from './Error'
 import { isLoggedIn } from '../../services/auth';
-import { Radio } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
+import dict from "../dictionary/dictionary"
 
 const RadioGroup = Radio.Group;
 class Signup extends React.Component {
@@ -62,20 +63,21 @@ class Signup extends React.Component {
             navigate(`/app/user-profile`)
         }
         return (
-            <div>
-                <h1>Sign up</h1>
+            <div align="center">
+                <br />
+                <h1>Register As A New User</h1>
                 {
                     this.state.stage === 0 && (
-                        <div>
+                        <Form className="signup-form" style={{ "width": "80%"}}>
                             {this.state.error && <Error errorMessage={this.state.error} />}
-                            <div>
+                            
                                 <input
                                     onChange={this.handleUpdate}
                                     placeholder='Username'
                                     name='username'
                                     value={this.state.username}
                                 />
-                            </div>
+                            
                             <div>
                                 <input
                                     onChange={this.handleUpdate}
@@ -118,7 +120,8 @@ class Signup extends React.Component {
                             <div onClick={this.signUp}>
                                 <span id="sign-up">Sign Up</span>
                             </div>
-                        </div>
+                        </Form>
+                        
                     )
                 }
                 {

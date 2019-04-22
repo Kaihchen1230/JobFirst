@@ -100,6 +100,7 @@ class PostJob extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <DatePicker placeholder={I18n.get('Date Posted On')} name="postDate" />
+                        <br />
                         <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
                     </Form.Item>
                     <Form.Item>
