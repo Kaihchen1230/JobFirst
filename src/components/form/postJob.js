@@ -62,19 +62,19 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Input placeholder="Enter the job title" 
+                        <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
                         />
-                        <Input placeholder="address line1" 
+                        <Input placeholder={I18n.get('Address Line 1')} 
                             name="line1"
                         />
-                        <Input placeholder="address line2" 
+                        <Input placeholder={I18n.get('Address Line 2')} 
                             name="line2"
                         />
-                        <Input placeholder="postalCode" 
+                        <Input placeholder={I18n.get('Postal Code')}
                             name="postalCode"
                         />
-                        <Input placeholder="state" 
+                        <Input placeholder={I18n.get('State')} 
                             name="state"
                         />
                     </Form.Item>
@@ -98,7 +98,7 @@ class PostJob extends React.Component {
                             name="description"
                         />
                         <TextArea
-                            placeholder={I18n.get('Enter Job Requirement')} 
+                            placeholder={I18n.get('Enter Job Requirements')} 
                             autosize={{ minRows: 2, maxRows: 6 }}
                             name="requirement"
                         />

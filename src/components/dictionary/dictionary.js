@@ -35,7 +35,15 @@ let dict = {
         'View Job': "查看工作",
         'Business Profile': "业务简介",
         'Contact Us': "联系我们",
-        'Register': "寄存器"
+        'Register': "寄存器",
+        'Enter the Job Title': "输入职位",
+        'Address Line 1': "地址第一行",
+        'Address Line 2': "地址第2行",
+        'Postal Code': "邮政编码",
+        'State': "州",
+        'Deadline': "最后期限",
+        'Enter Job Description': "输入职位描述",
+        'Enter Job Requirements': "输入工作要求"
     },
     'es': {
         'Sign In': "Register",
@@ -73,7 +81,15 @@ let dict = {
         'View Job': "View Job",
         'Business Profile': "Business Profile",
         'Contact Us': "Contact Us",
-        'Register': "Register"
+        'Register': "Register",
+        'Enter the Job Title': "Enter the Job Title",
+        'Address Line 1': "Address Line 1",
+        'Address Line 2': "Address Line 2",
+        'Postal Code': "Postal Code",
+        'State': "State",
+        'Deadline': "Deadline",
+        'Enter Job Description': "Enter Job Description",
+        'Enter Job Requirements': "Enter Job Requirements"
     }
 };
 export default dict;
