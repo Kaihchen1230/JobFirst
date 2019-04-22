@@ -52,11 +52,11 @@ class Login extends React.Component {
             phone: phone_number,
             email: email,
           }
-          const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
+          const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, { input: data }));
           console.log(newEmployee);
           Auth.currentAuthenticatedUser()
             .then(user => {
-              return Auth.updateUserAttributes(user, {'custom:isProfile': 'yes'});
+              return Auth.updateUserAttributes(user, { 'custom:isProfile': 'yes' });
             })
             .then(data => console.log(data))
             .catch(err => console.log(err));
@@ -76,29 +76,33 @@ class Login extends React.Component {
     I18n.setLanguage(this.state.language);
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder={I18n.get('username')} />
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder={I18n.get('password')} />
-          )}
-        </Form.Item>
-        <Form.Item>
-          <a className="login-form-forgot" href="">Forgot password</a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+      <div align='center'>
+        <br />
+        <h1>Login</h1>
+        <Form onSubmit={this.handleSubmit} className="login-form" style={{ "width": "80%" }}>
+          <Form.Item>
+            {getFieldDecorator('userName', {
+              rules: [{ required: true, message: 'Please input your username!' }],
+            })(
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder={I18n.get('username')} />
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('password', {
+              rules: [{ required: true, message: 'Please input your Password!' }],
+            })(
+              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder={I18n.get('password')} />
+            )}
+          </Form.Item>
+          <Form.Item>
+            <a className="login-form-forgot" href="">Forgot password</a>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Log in
           </Button>
-          Or <a href="">register now!</a>
-        </Form.Item>
-      </Form>
+            Or <a href="">register now!</a>
+          </Form.Item>
+        </Form>
+      </div>
     );
 
   }

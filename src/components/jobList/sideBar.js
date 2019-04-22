@@ -18,7 +18,7 @@ const Person = (props) => {
             />
             <Menu
                 mode="inline"
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={['4']}
             >
                 <Menu.Item key='1'>{I18n.get('15 Days')}</Menu.Item>
                 <Menu.Item key='2'>{I18n.get('One Month')}</Menu.Item>
