@@ -92,6 +92,7 @@ type PostedJob @model {
   description: String
   requirements: [String]
   datePosted: String
+  deadline: String
   location: Address @connection
   applied: [AppliedJob] @connection(name:"postedJob")
   clickedCounts: Int
