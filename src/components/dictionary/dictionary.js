@@ -23,8 +23,11 @@ let dict = {
         'Where companies find talents.': "公司找人才的地方。",
         'Get Started Today.': "立即开始。",
         'Welcome to Our Job Pool': "欢迎来到我们的工作池",
-        '15 days': "15天",
-        'One Month': "一个月"
+        '15 Days': "15天",
+        'One Month': "一个月",
+        'Three Months': "三个月",
+        'All': "所有",
+        'Search': "搜索"
     },
     'es': {
         'Sign In': "Register",
@@ -50,8 +53,11 @@ let dict = {
         'Where companies find talents.': "Where companies find talents.",
         'Get Started Today.': "Get Started Today.",
         'Welcome to Our Job Pool': "Welcome to Our Job Pool",
-        '15 days': "15 days",
-        'One Month': "One Month"
+        '15 Days': "15 Days",
+        'One Month': "One Month",
+        'Three Months': "Three Months",
+        'All': "All",
+        'Search': "Search"
     }
 };
 export default dict;

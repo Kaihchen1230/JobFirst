@@ -12,7 +12,7 @@ const Person = (props) => {
     return (
         <div>
             <Search
-                placeholder="input search text"
+                placeholder={I18n.get('Search')}
                 onSearch={value => console.log(value)}
                 enterButton
             />
