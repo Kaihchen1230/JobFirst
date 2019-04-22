@@ -88,6 +88,8 @@ type PostedJob @model {
   id: ID!
   company: Employer @connection(name:"job")
   jobTitle: String
+  jobType: String
+  description: String
   requirements: [String]
   datePosted: String
   location: Address @connection
