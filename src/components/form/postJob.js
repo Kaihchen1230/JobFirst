@@ -6,7 +6,7 @@ import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import { I18n } from 'aws-amplify';
 //import "../style/postJob.css";
 import dict from "../dictionary/dictionary";
-import { createAddress, createPostedJob } from "../../graphql/mutations";
+import * as mutations from "../../graphql/mutations";
 import { API, graphqlOperation } from 'aws-amplify';
 
 
@@ -19,10 +19,24 @@ class PostJob extends React.Component {
         lan: window.localStorage.getItem('lan')
     } 
 
-    handleSubmit = () => {
+    async handleSubmit () {
         const postForm = document.forms["jobPost"];
         const CreateAddressInput = {
-
+            line1: postForm["line1"].value,
+            line2: postForm["line2"].value,
+            postalCode: postForm["postalCode"].value,
+            state: postForm["state"].value
+        }
+        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
+        const CreatePostedJobInput = {
+	        jobTitle: String,
+	        description: String,
+	        requirements: [String],
+	        datePosted: String,
+	        deadline: String,
+	        clickedCounts: Int,
+	        postedJobCompanyId: ID,
+	        postedJobLocationId: ID
         }
     }
 
@@ -43,10 +57,13 @@ class PostJob extends React.Component {
                                 <Tooltip title={I18n.get('Enter the name of the employer.')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
-                            name="companyName"
+                            name="companyID"
                         />
                     </Form.Item>
                     <Form.Item>
+                        <Input placeholder="Enter the job title" 
+                            name="jobTitle"
+                        />
                         <Input placeholder="address line1" 
                             name="line1"
                         />
@@ -61,7 +78,8 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <DatePicker placeholder={I18n.get('Date Posted On')} />
+                        <DatePicker placeholder={I18n.get('Date Posted On')} name="postDate" />
+                        <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
                     </Form.Item>
                     <Form.Item>
                         <Select placeholder={I18n.get('Job Type')}>
@@ -73,7 +91,14 @@ class PostJob extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <TextArea
-                            placeholder={I18n.get('Enter Job Description')} autosize={{ minRows: 2, maxRows: 6 }}
+                            placeholder={I18n.get('Enter Job Description')} 
+                            autosize={{ minRows: 2, maxRows: 6 }}
+                            name="description"
+                        />
+                        <TextArea
+                            placeholder={I18n.get('Enter Job Requirement')} 
+                            autosize={{ minRows: 2, maxRows: 6 }}
+                            name="requirement"
                         />
                     </Form.Item>
                     <Form.Item>
