@@ -22,7 +22,9 @@ let dict = {
         'Where immigrants with degrees find their jobs.': "有学位的移民找到工作的地方。",
         'Where companies find talents.': "公司找人才的地方。",
         'Get Started Today.': "立即开始。",
-        'Welcome to Our Job Pool': "欢迎来到我们的工作池"
+        'Welcome to Our Job Pool': "欢迎来到我们的工作池",
+        '15 days': "15天",
+        'One Month': "一个月"
     },
     'es': {
         'Sign In': "Register",
@@ -47,7 +49,9 @@ let dict = {
         'Where immigrants with degrees find their jobs.': "Where immigrants with degrees find their jobs.",
         'Where companies find talents.': "Where companies find talents.",
         'Get Started Today.': "Get Started Today.",
-        'Welcome to Our Job Pool': "Welcome to Our Job Pool"
+        'Welcome to Our Job Pool': "Welcome to Our Job Pool",
+        '15 days': "15 days",
+        'One Month': "One Month"
     }
 };
 export default dict;
