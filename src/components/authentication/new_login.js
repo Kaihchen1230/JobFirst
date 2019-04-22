@@ -8,8 +8,6 @@ import './login.css';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import * as mutations from '../../graphql/mutations';
 
-
-
 const LoginForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
   class extends React.Component {
@@ -21,20 +19,20 @@ const LoginForm = Form.create({ name: 'form_in_modal' })(
       return (
         <Modal
           visible={visible}
-          title="Login"
+          title={I18n.get('Log in')}
           okText="Login"
           onCancel={onCancel}
           onOk={onLogin}
         >
           <Form layout="vertical" className='login-form'>
-            <Form.Item label="Username">
+            <Form.Item label={I18n.get('Enter Username')}>
               {getFieldDecorator('userName', {
                 rules: [{ required: true, message: 'Please input your username!' }],
               })(
                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
               )}
             </Form.Item>
-            <Form.Item label="Password">
+            <Form.Item label={I18n.get('Enter Password')}>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: 'Please input your Password!' }],
               })(
@@ -42,7 +40,7 @@ const LoginForm = Form.create({ name: 'form_in_modal' })(
               )}
             </Form.Item>
             <Form.Item>
-              <a href="">register now!</a>
+              <a href="">{I18n.get('Register Now')}</a>
             </Form.Item>
           </Form>
         </Modal>
@@ -128,7 +126,7 @@ class NewLogin extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>Login</Button>
+        <Button type="primary" onClick={this.showModal}>{I18n.get('Log in')}</Button>
         <LoginForm
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
