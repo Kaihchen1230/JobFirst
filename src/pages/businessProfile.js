@@ -11,11 +11,17 @@ import * as mutations from '../graphql/mutations';
 import * as queries from '../graphql/queries';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import '../style/businessProfile.css';
+import { relative } from "path";
 
 const TabPane = Tabs.TabPane;
 
 let bodyStyle = {
-  justifyContent: 'center', alignItems: 'center', margin: 'auto', width: '70%'
+  justifyContent: 'center', 
+  alignItems: 'center', 
+  margin: 'auto', 
+  width: '80%',
+  position:"relative",
+  top: "-20px",
 
 }
 
@@ -55,11 +61,11 @@ class businessProfile extends React.Component {
         description: 'Requirement:Know CSS and HTML.'
       }
     ],
-    companyName:"aplibaba",
-    companyAddress: "NY",
+    companyName:"Aplibaba",
+    companyAddress: "New York, NY, US",
     companyWebsite: "alibaba.com",
     companyType:"internet",
-    headquarter: "NY",
+    headquarter: "New York, NY, US",
     ceoPic:"https://smallbiztrends.com/wp-content/uploads/2018/03/shutterstock_705804559.jpg",
     ceo:"Jacky Ma",
     size:"545",
@@ -118,46 +124,52 @@ class businessProfile extends React.Component {
     // I18n.putVocabularies(dict);
     // I18n.setLanguage(this.state.lan);
     return (
-      <div style={bodyStyle}>
-        <h1>{this.state.companyName}</h1>
-        <BusinessPicture companyPic = {this.state.companyPic}/>
-        <h2>{this.state.companyAddress}</h2>
-
-        <Tabs defaultActiveKey="1" >
-          <TabPane tab="Profile" key="1" >
-            <div>
-              <div >
-                <Button type="primary" onClick={this.showModal}>
-                  {I18n.get('Edit Profile')}
-                </Button>
-                <Modal
-                  title="Edit Company Information"
-                  okText={"Save"}
-                  visible={this.state.visible}
-                  onOk={this.handleOk}
-                  onCancel={this.handleCancel}               
-                >
-                  <EditProfileForm />
-                </Modal>
-              </div>
-
-              <h1>About us</h1>
-              <div>
-                {this.state.description}
-              </div>
-              <h2>TimeLine</h2>
-              <Timeline />
-            </div>
-
-          </TabPane>
+        <div >
+          <div className="banner">
+            <BusinessPicture className="companyPicture" companyPic = {this.state.companyPic}/>
+            <h1 className="companyName">{this.state.companyName}</h1>
+            <h2 className="companyLocation">{this.state.companyAddress}</h2>
+          </div>
+        <div style={bodyStyle}>
           
-          <TabPane tab="Jobs" key="2">
-            <div>
-              <PostJob jobList={this.state.jobList} />
-            </div>
-          </TabPane>
-        </Tabs>
+         
 
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="Profile" key="1" >
+              <div>
+                <div >
+                  <Button type="primary" onClick={this.showModal}>
+                    {I18n.get('Edit Profile')}
+                  </Button>
+                  <Modal
+                    title="Edit Company Information"
+                    okText={"Save"}
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}               
+                  >
+                    <EditProfileForm />
+                  </Modal>
+                </div>
+
+                <h1>About us</h1>
+                <div>
+                  {this.state.description}
+                </div>
+                <h2>TimeLine</h2>
+                <Timeline />
+              </div>
+
+            </TabPane>
+            
+            <TabPane tab="Jobs(3)" key="2">
+              <div>
+                <PostJob jobList={this.state.jobList} />
+              </div>
+            </TabPane>
+          </Tabs>
+
+        </div>
       </div>
     );
   }

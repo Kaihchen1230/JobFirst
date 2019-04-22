@@ -1,3 +1,20 @@
-.modal{
-    width:2000px
+.banner{
+    margin-top: 1%;
+    background-color: rgba(219, 216, 216, 0.719);
+    height:35vh;
+}
+
+.companyName{
+    font-size: 5em;
+    position:relative;
+    left:10%
+}
+
+.companyLocation{
+    position:relative;
+    left:10%
+}
+
+.companyPicture{
+    width:10%;
 }
