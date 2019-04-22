@@ -696,10 +696,8 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         description
       }
       jobTitle
-      description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -773,10 +771,8 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         description
       }
       jobTitle
-      description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -850,10 +846,8 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         description
       }
       jobTitle
-      description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -905,10 +899,8 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       items {
         id
         jobTitle
-        description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -950,10 +942,8 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       items {
         id
         jobTitle
-        description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -995,10 +985,8 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       items {
         id
         jobTitle
-        description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -1038,10 +1026,8 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       }
     }
     jobTitle
-    description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
@@ -1093,10 +1079,8 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       }
     }
     jobTitle
-    description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
@@ -1148,10 +1132,8 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       }
     }
     jobTitle
-    description
     requirements
     datePosted
-    deadline
     location {
       id
       line1

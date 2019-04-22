@@ -696,10 +696,8 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         description
       }
       jobTitle
-      description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -773,10 +771,8 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         description
       }
       jobTitle
-      description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -850,10 +846,8 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         description
       }
       jobTitle
-      description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -905,10 +899,8 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       items {
         id
         jobTitle
-        description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -950,10 +942,8 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       items {
         id
         jobTitle
-        description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -995,10 +985,8 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       items {
         id
         jobTitle
-        description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -1038,10 +1026,8 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       }
     }
     jobTitle
-    description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
@@ -1093,10 +1079,8 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       }
     }
     jobTitle
-    description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
@@ -1148,10 +1132,8 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       }
     }
     jobTitle
-    description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
