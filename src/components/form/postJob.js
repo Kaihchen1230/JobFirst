@@ -93,7 +93,7 @@ class PostJob extends React.Component {
                         <Input placeholder={I18n.get('State')} 
                             name="state"
                             suffix={
-                                <Tooltip title={I18n.get('Enter the state of the job location.')}>
+                                <Tooltip title={I18n.get('Enter the state of the job location')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
