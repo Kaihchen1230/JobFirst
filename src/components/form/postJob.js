@@ -31,13 +31,14 @@ class PostJob extends React.Component {
         const CreatePostedJobInput = {
 	        jobTitle: postForm["jobTitle"].value,
 	        description: postForm["description"].value,
-	        requirements: postForm["requirement"].value,
-	        datePosted: StripostForm["postDate"].valueng,
+	        requirements: [postForm["requirement"].value],
+	        datePosted: postForm["postDate"].value,
 	        deadline: postForm["deadline"].value,
 	        clickedCounts: 0,
 	        postedJobCompanyId: postForm["companyID"].value,
-	        postedJobLocationId: newAddress.data.listAddresss.items.id
+	        postedJobLocationId: newAddress.data.createAddress.id
         }
+        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}))
     }
 
     render() {
@@ -69,6 +70,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder="address line2" 
                             name="line2"
+                            value=" "
                         />
                         <Input placeholder="postalCode" 
                             name="postalCode"
@@ -111,7 +113,7 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">{I18n.get('Submit Job')}</Button>
+                        <Button type="primary" htmlType="submit" >{I18n.get('Submit Job')}</Button>
                     </Form.Item>
                 </Form>
             </div>
