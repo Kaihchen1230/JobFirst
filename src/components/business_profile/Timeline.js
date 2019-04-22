@@ -1,6 +1,6 @@
 import { Timeline,Icon } from 'antd';
 import React from 'react';
-
+import { I18n } from 'aws-amplify';
 const timeLine = (props) => {
     let mainStyle ={
         padddingLeft:"0px",
@@ -14,7 +14,7 @@ const timeLine = (props) => {
     }
     return (
         <div style={mainStyle}>
-            <h1>Timeline</h1>
+            <h1>{I18n.get('Timeline')}</h1>
             <Timeline style = {timelineStyle} pending="Keep Going..." >
                 <Timeline.Item
                     dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
