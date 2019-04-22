@@ -156,7 +156,7 @@
 						]
 					},
 					"S3DeploymentBucket": "csc47300project-20190412193852-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/590a50c271f7e4a33fe22302c157e40483cbe95b",
+					"S3DeploymentRootKey": "amplify-appsync-files/c41bc8a73e904eb8a3d39f72dc4100f45ffdad7e",
 					"env": "sidenv"
 				}
 			}
