@@ -1,17 +1,4 @@
 {
-	"auth": {
-		"cognitoed11de21": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation"
-		}
-	},
-	"api": {
-		"csc47300project": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"securityType": "AMAZON_COGNITO_USER_POOLS"
-			}
-		}
-	}
+	"auth": {},
+	"api": {}
 }
