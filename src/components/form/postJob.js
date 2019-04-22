@@ -70,7 +70,6 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder="address line2" 
                             name="line2"
-                            value=" "
                         />
                         <Input placeholder="postalCode" 
                             name="postalCode"
