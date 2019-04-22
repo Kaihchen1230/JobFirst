@@ -84,22 +84,25 @@ class Login extends React.Component {
             {getFieldDecorator('userName', {
               rules: [{ required: true, message: 'Please input your username!' }],
             })(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder={I18n.get('username')} />
+              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder={I18n.get('Enter Username')} />
             )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('password', {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder={I18n.get('password')} />
+              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder={I18n.get('Enter Password')} />
             )}
           </Form.Item>
           <Form.Item>
-            <a className="login-form-forgot" href="">Forgot password</a>
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
-          </Button>
-            Or <a href="">register now!</a>
+            </Button>
+            <br />
+            <br />
+            <a className="login-form-forgot" href="">Forgot password?</a>
+            <br />
+            <a href="">Register Now</a>
           </Form.Item>
         </Form>
       </div>
