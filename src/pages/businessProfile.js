@@ -13,6 +13,7 @@ import Amplify, { API, graphqlOperation } from "aws-amplify";
 import '../style/businessProfile.css';
 
 const TabPane = Tabs.TabPane;
+
 let bodyStyle = {
   justifyContent: 'center', alignItems: 'center', margin: 'auto', width: '70%'
 
@@ -22,15 +23,6 @@ class businessProfile extends React.Component {
   state = {
     lan: window.localStorage.getItem('lan'),
     visible: false,
-    postJob: [{ jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    { jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    { jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    { jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    ],
-    applicant: [{ applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    { applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    { applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
-    { applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },],
     jobList: [
       {
         id: generate(10),
@@ -63,10 +55,22 @@ class businessProfile extends React.Component {
         description: 'Requirement:Know CSS and HTML.'
       }
     ],
+    companyName:"aplibaba",
+    companyAddress: "NY",
+    companyWebsite: "alibaba.com",
+    companyType:"internet",
+    headquarter: "NY",
+    ceoPic:"https://smallbiztrends.com/wp-content/uploads/2018/03/shutterstock_705804559.jpg",
+    ceo:"Jacky Ma",
+    size:"545",
+    revenue:"100M",
+    timeline: "",
+    description: "At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off.\
+                  We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact\
+                  on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love\
+                  to hear from you.",
     companyPic:"https://smallbiztrends.com/wp-content/uploads/2018/03/shutterstock_705804559.jpg"
   }
-
-
 
   componentDidMount = async () => {
     const employerdata = {
@@ -109,20 +113,20 @@ class businessProfile extends React.Component {
       visible: false,
     });
   }
-  render() {
 
+  render() {
     // I18n.putVocabularies(dict);
     // I18n.setLanguage(this.state.lan);
     return (
       <div style={bodyStyle}>
-        <h1>Aplipapa, Inc</h1>
+        <h1>{this.state.companyName}</h1>
         <BusinessPicture companyPic = {this.state.companyPic}/>
-        <h2>Location:NY USA</h2>
+        <h2>{this.state.companyAddress}</h2>
 
         <Tabs defaultActiveKey="1" >
           <TabPane tab="Profile" key="1" >
             <div>
-              <div>
+              <div >
                 <Button type="primary" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button>
@@ -131,23 +135,22 @@ class businessProfile extends React.Component {
                   okText={"Save"}
                   visible={this.state.visible}
                   onOk={this.handleOk}
-                  onCancel={this.handleCancel}
+                  onCancel={this.handleCancel}               
                 >
                   <EditProfileForm />
                 </Modal>
               </div>
 
               <h1>About us</h1>
-              <div>At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off.
-                  We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact
-                  on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love
-                  to hear from you.
+              <div>
+                {this.state.description}
               </div>
               <h2>TimeLine</h2>
               <Timeline />
             </div>
 
           </TabPane>
+          
           <TabPane tab="Jobs" key="2">
             <div>
               <PostJob jobList={this.state.jobList} />
