@@ -78,7 +78,7 @@ class Login extends React.Component {
     return (
       <div align='center'>
         <br />
-        <h1>Login</h1>
+        <h1>{I18n.get('Log in')}</h1>
         <Form onSubmit={this.handleSubmit} className="login-form" style={{ "width": "80%" }}>
           <Form.Item>
             {getFieldDecorator('userName', {
@@ -96,13 +96,13 @@ class Login extends React.Component {
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
+              {I18n.get('Log in')}
             </Button>
             <br />
             <br />
-            <a className="login-form-forgot" href="">Forgot password?</a>
+            <a className="login-form-forgot" href="">{I18n.get('Forgot Password?')}</a>
             <br />
-            <a href="">Register Now</a>
+            <a href="">{I18n.get('Register Now')}</a>
           </Form.Item>
         </Form>
       </div>

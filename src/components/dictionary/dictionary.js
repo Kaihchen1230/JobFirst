@@ -2,8 +2,8 @@ let dict = {
     'ch': {
         'Sign In': "登录",
         'Sign Up': "注册",
-        'username': "用户名",
-        'password': "密码",
+        'Enter Username': "输入用户名",
+        'Enter Password': "输入密码",
         'Post a New Job': "發布一份新工作",
         'Enter Employer Name': "輸入雇主姓名",
         'Date Posted On': "發布日期",
@@ -27,13 +27,16 @@ let dict = {
         'One Month': "一个月",
         'Three Months': "三个月",
         'All': "所有",
-        'Search': "搜索"
+        'Search': "搜索",
+        'Log in': "登录",
+        'Register Now': "现在注册",
+        'Forgot Password?': "忘记密码？"
     },
     'es': {
         'Sign In': "Register",
         'Sign Up': "Register",
-        'username': "username",
-        'password': "password",
+        'Enter Username': "Enter Username",
+        'Enter Password': "Enter Password",
         'Post a New Job': "Post a New Job",
         'Enter Employer Name': "Enter Employer Name",
         'Date Posted On': "Date Posted On",
@@ -57,7 +60,10 @@ let dict = {
         'One Month': "One Month",
         'Three Months': "Three Months",
         'All': "All",
-        'Search': "Search"
+        'Search': "Search",
+        'Log in': "Log in",
+        'Register Now': "Register Now",
+        'Forgot Password?': "Forgot Password?"
     }
 };
 export default dict;
