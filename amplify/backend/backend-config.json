@@ -5,9 +5,7 @@
 			"providerPlugin": "awscloudformation"
 		}
 	},
-<<<<<<< HEAD
-	"api": {}
-=======
+
 	"api": {
 		"csc47300project": {
 			"service": "AppSync",
@@ -17,5 +15,5 @@
 			}
 		}
 	}
->>>>>>> dev
+
 }

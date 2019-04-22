@@ -112,6 +112,14 @@
                     {
                         "AttributeName": "id",
                         "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "appliedJobEmployeeId",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "appliedJobJobId",
+                        "AttributeType": "S"
                     }
                 ],
                 "StreamSpecification": {
@@ -155,7 +163,65 @@
                             "Ref": "AWS::NoValue"
                         }
                     ]
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-employeeJob",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "appliedJobEmployeeId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "Fn::If": [
+                                "ShouldUsePayPerRequestBilling",
+                                {
+                                    "Ref": "AWS::NoValue"
+                                },
+                                {
+                                    "ReadCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableReadIOPS"
+                                    },
+                                    "WriteCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableWriteIOPS"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "IndexName": "gsi-postedJob",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "appliedJobJobId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "Fn::If": [
+                                "ShouldUsePayPerRequestBilling",
+                                {
+                                    "Ref": "AWS::NoValue"
+                                },
+                                {
+                                    "ReadCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableReadIOPS"
+                                    },
+                                    "WriteCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableWriteIOPS"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         },
         "AppliedJobIAMRole": {
@@ -681,7 +747,31 @@
             }
         }
     },
-    "Outputs": {},
+    "Outputs": {
+        "GetAttAppliedJobDataSourceName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "AppliedJobDataSource",
+                    "Name"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AppSyncApiId"
+                            },
+                            "GetAtt",
+                            "AppliedJobDataSource",
+                            "Name"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [
