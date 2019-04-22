@@ -6,11 +6,11 @@ import { Icon } from 'antd';
 let Style = {
     padddingLeft:"0px",
     position:"relative",
-    left:"10%",
+    left:"5%",
     fontSize:"1.2em",
     letterSpacing: "1px",
-    lineHeight:"1.5em"
-
+    lineHeight:"1.8em",
+    border:"solid 1px"
 };
 
 const briefInfo = (props) => {
@@ -19,7 +19,6 @@ const briefInfo = (props) => {
             <div style={Style}  >
                 <h2>Brief Info</h2> 
                 {props.companyType}
-                <br/>
                 <br/>
                 <Icon type="home" style={{ fontSize: '20px' }}  theme="filled" /> Headquarter:{props.headquarter}
                 <br/>    

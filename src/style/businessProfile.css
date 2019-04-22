@@ -28,7 +28,7 @@
     padding:20px 60px;
 }
 
-.row1{
+.row1,.row2{
     display: -webkit-flex; /* Safari */
     display: flex;   
 }
@@ -36,3 +36,5 @@
 .aboutCompany{
     width:70%;
 }
+
+

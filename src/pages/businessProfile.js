@@ -5,6 +5,7 @@ import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
 import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob';
+import About from '../components/business_profile/about';
 import { generate } from 'randomstring';
 import BriefInfo from "../components/business_profile/briefInfo";
 import dict from "../components/dictionary/dictionary"
@@ -159,24 +160,30 @@ class businessProfile extends React.Component {
                   </div>
                   <div className="row1">
                     <div className="aboutCompany">
-                        <h1>About us</h1>
-                        {this.state.description}
+                      <About 
+                        description={this.state.description}
+                      />     
                     </div>
-
-                    <div className="briefInfo">
-                        <BriefInfo
-                          companyWebsite={this.state.companyWebsite}
-                          size={this.state.size}
-                          revenue={this.state.revenue}
-                          jobAmount = {this.state.jobAmount}
-                          companyType={this.state.companyType}
-                          headquarter={this.state.headquarter}
-                        />
-                    </div>
+                    <BriefInfo className="briefInfo"
+                      companyWebsite={this.state.companyWebsite}
+                      size={this.state.size}
+                      revenue={this.state.revenue}
+                      jobAmount = {this.state.jobAmount}
+                      companyType={this.state.companyType}
+                      headquarter={this.state.headquarter}
+                    />     
                   </div>
-
-                  <h2>TimeLine</h2>
-                  <Timeline />
+                  <div className="row2">  
+                    <Timeline />
+                    <BriefInfo className="briefInfo"
+                      companyWebsite={this.state.companyWebsite}
+                      size={this.state.size}
+                      revenue={this.state.revenue}
+                      jobAmount = {this.state.jobAmount}
+                      companyType={this.state.companyType}
+                      headquarter={this.state.headquarter}
+                    />    
+                  </div>    
                 </div>
 
               </TabPane>
