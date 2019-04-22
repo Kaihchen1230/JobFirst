@@ -1,9 +1,5 @@
-import {  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import {  Form, Input } from 'antd';
 import React from 'react';
-
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
-
 
 
 class ModalForm extends React.Component {
@@ -14,16 +10,30 @@ class ModalForm extends React.Component {
       return (
         <Form  className="login-form">
           <Form.Item>
-
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
-    
+              <Input  placeholder="company name" /> 
           </Form.Item>
           <Form.Item>
-
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-   
+              <Input  placeholder="company address" /> 
+          </Form.Item>   
+          <Form.Item>
+              <Input  placeholder="company type" /> 
+          </Form.Item> 
+          <Form.Item>
+              <Input  placeholder="company website" /> 
+          </Form.Item>       
+           <Form.Item>
+              <Input  placeholder="company website" /> 
+          </Form.Item>          
+          <Form.Item>
+              <Input  placeholder="company size" /> 
+          </Form.Item>         
+           <Form.Item>
+              <Input  placeholder="company picture" /> 
+          </Form.Item>          
+          <Form.Item>
+              <Input.TextArea rows={6} placeholder="description" /> 
           </Form.Item>
-
+          
         </Form>
       );
     }

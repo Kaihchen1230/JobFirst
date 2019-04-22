@@ -1,21 +1,23 @@
-import { Card,Button } from 'antd';
+import { Avatar } from 'antd';
 import React from 'react';
+import { relative } from 'path';
+
 
 let imageStyle = {
-    width:'80%',
-    padddingLeft:"0px"
+    width:'10%',
+    padddingLeft:"0px",
+    position:"relative",
+    left:"10%",
+    top:"15%"
+
 };
 
 const profileCard = (props) => {
     return (
-            <Card
-                hoverable
-                style={imageStyle} 
-                cover={<img alt="example" src="https://smallbiztrends.com/wp-content/uploads/2018/03/shutterstock_705804559.jpg" />}
-            >
-                <Button type="primary">Follow On facebook</Button>
-                <Button type="primary">Learn More</Button>
-            </Card>
+            <div style={imageStyle}  >
+                <Avatar size={100} src = {props.companyPic} >
+                </Avatar>   
+            </div>
     )
 }
 export default profileCard;
