@@ -4,24 +4,35 @@
     height:35vh;
     display: -webkit-flex; /* Safari */
     display: flex;
+   
 }
 
 .companyName{
-    font-size: 5em;
-    
-    left:10%
+    font-size: 4em; 
 }
 
 .companyLocation{
-   
-    left:10%
+    position: relative;
+    top:-10%;
+
 }
 
-.companyPicture{
-   
-}
 .companyHeader{
     position: relative;
-    left:30px;
-    width:20%
+    left:10%;
+    top:10%;
+    width:20%;
+}
+
+.tabs{
+    padding:20px 60px;
+}
+
+.row1{
+    display: -webkit-flex; /* Safari */
+    display: flex;   
+}
+
+.aboutCompany{
+    width:70%;
 }

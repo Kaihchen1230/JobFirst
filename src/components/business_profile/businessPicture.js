@@ -7,8 +7,8 @@ let imageStyle = {
     width:'10%',
     padddingLeft:"0px",
     position:"relative",
-    left:"70px",
-    top:"20px"
+    left:"10%",
+    top:"15%"
 
 };
 
