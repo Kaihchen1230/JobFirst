@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from 'antd';
 
 
-let Style = {
+let mainStyle = {
     padddingLeft:"0px",
     position:"relative",
     left:"5%",
@@ -20,7 +20,7 @@ let infoStyle = {
 const briefInfo = (props) => {
     console.log("props, ",props);
     return (
-            <div style={Style}  >
+            <div style={mainStyle}  >
                 <div style={infoStyle}>
                     <h2>Brief Info</h2> 
                     {props.companyType}
