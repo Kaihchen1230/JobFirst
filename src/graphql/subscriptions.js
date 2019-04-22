@@ -696,10 +696,10 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         description
       }
       jobTitle
+      jobType
       description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -773,10 +773,10 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         description
       }
       jobTitle
+      jobType
       description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -850,10 +850,10 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         description
       }
       jobTitle
+      jobType
       description
       requirements
       datePosted
-      deadline
       location {
         id
         line1
@@ -905,10 +905,10 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       items {
         id
         jobTitle
+        jobType
         description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -950,10 +950,10 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       items {
         id
         jobTitle
+        jobType
         description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -995,10 +995,10 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       items {
         id
         jobTitle
+        jobType
         description
         requirements
         datePosted
-        deadline
         clickedCounts
       }
       nextToken
@@ -1038,10 +1038,10 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       }
     }
     jobTitle
+    jobType
     description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
@@ -1093,10 +1093,10 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       }
     }
     jobTitle
+    jobType
     description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
@@ -1148,10 +1148,10 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       }
     }
     jobTitle
+    jobType
     description
     requirements
     datePosted
-    deadline
     location {
       id
       line1
