@@ -29,14 +29,14 @@ class PostJob extends React.Component {
         }
         const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
         const CreatePostedJobInput = {
-	        jobTitle: String,
-	        description: String,
-	        requirements: [String],
-	        datePosted: String,
-	        deadline: String,
-	        clickedCounts: Int,
-	        postedJobCompanyId: ID,
-	        postedJobLocationId: ID
+	        jobTitle: postForm["jobTitle"].value,
+	        description: postForm["description"].value,
+	        requirements: postForm["requirement"].value,
+	        datePosted: StripostForm["postDate"].valueng,
+	        deadline: postForm["deadline"].value,
+	        clickedCounts: 0,
+	        postedJobCompanyId: postForm["companyID"].value,
+	        postedJobLocationId: newAddress.data.listAddresss.items.id
         }
     }
 
@@ -82,7 +82,7 @@ class PostJob extends React.Component {
                         <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
                     </Form.Item>
                     <Form.Item>
-                        <Select placeholder={I18n.get('Job Type')}>
+                        <Select placeholder={I18n.get('Job Type')} name="jobType" >
                             <Option value="Full Time">{I18n.get('Full Time')}</Option>
                             <Option value="Part Time">{I18n.get('Part Time')}</Option>
                             <Option value="Internship">{I18n.get('Internship')}</Option>
