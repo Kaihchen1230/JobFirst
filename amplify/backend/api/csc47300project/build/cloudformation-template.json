@@ -85,7 +85,16 @@
                         }
                     ]
                 },
-                "AuthenticationType": "API_KEY"
+                "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
+                "UserPoolConfig": {
+                    "UserPoolId": {
+                        "Ref": "AuthCognitoUserPoolId"
+                    },
+                    "AwsRegion": {
+                        "Ref": "AWS::Region"
+                    },
+                    "DefaultAction": "ALLOW"
+                }
             }
         },
         "GraphQLAPIKey": {
@@ -103,7 +112,7 @@
                         {
                             "Ref": "APIKeyExpirationEpoch"
                         },
-                        1556494238
+                        1556043372
                     ]
                 }
             },
@@ -133,7 +142,7 @@
                 }
             }
         },
-        "Employee": {
+        "EmplyeeInfo": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "Parameters": {
@@ -192,211 +201,7 @@
                                 "Ref": "S3DeploymentRootKey"
                             },
                             "stacks",
-                            "Employee.json"
-                        ]
-                    ]
-                }
-            },
-            "DependsOn": [
-                "GraphQLSchema"
-            ]
-        },
-        "Association": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "Parameters": {
-                    "AppSyncApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    },
-                    "AppSyncApiName": {
-                        "Ref": "AppSyncApiName"
-                    },
-                    "APIKeyExpirationEpoch": {
-                        "Ref": "APIKeyExpirationEpoch"
-                    },
-                    "DynamoDBModelTableReadIOPS": {
-                        "Ref": "DynamoDBModelTableReadIOPS"
-                    },
-                    "DynamoDBModelTableWriteIOPS": {
-                        "Ref": "DynamoDBModelTableWriteIOPS"
-                    },
-                    "DynamoDBBillingMode": {
-                        "Ref": "DynamoDBBillingMode"
-                    },
-                    "DynamoDBEnablePointInTimeRecovery": {
-                        "Ref": "DynamoDBEnablePointInTimeRecovery"
-                    },
-                    "AuthCognitoUserPoolId": {
-                        "Ref": "AuthCognitoUserPoolId"
-                    },
-                    "env": {
-                        "Ref": "env"
-                    },
-                    "S3DeploymentBucket": {
-                        "Ref": "S3DeploymentBucket"
-                    },
-                    "S3DeploymentRootKey": {
-                        "Ref": "S3DeploymentRootKey"
-                    },
-                    "GetAttGraphQLAPIApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    }
-                },
-                "TemplateURL": {
-                    "Fn::Join": [
-                        "/",
-                        [
-                            "https://s3.amazonaws.com",
-                            {
-                                "Ref": "S3DeploymentBucket"
-                            },
-                            {
-                                "Ref": "S3DeploymentRootKey"
-                            },
-                            "stacks",
-                            "Association.json"
-                        ]
-                    ]
-                }
-            },
-            "DependsOn": [
-                "GraphQLSchema"
-            ]
-        },
-        "Experience": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "Parameters": {
-                    "AppSyncApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    },
-                    "AppSyncApiName": {
-                        "Ref": "AppSyncApiName"
-                    },
-                    "APIKeyExpirationEpoch": {
-                        "Ref": "APIKeyExpirationEpoch"
-                    },
-                    "DynamoDBModelTableReadIOPS": {
-                        "Ref": "DynamoDBModelTableReadIOPS"
-                    },
-                    "DynamoDBModelTableWriteIOPS": {
-                        "Ref": "DynamoDBModelTableWriteIOPS"
-                    },
-                    "DynamoDBBillingMode": {
-                        "Ref": "DynamoDBBillingMode"
-                    },
-                    "DynamoDBEnablePointInTimeRecovery": {
-                        "Ref": "DynamoDBEnablePointInTimeRecovery"
-                    },
-                    "AuthCognitoUserPoolId": {
-                        "Ref": "AuthCognitoUserPoolId"
-                    },
-                    "env": {
-                        "Ref": "env"
-                    },
-                    "S3DeploymentBucket": {
-                        "Ref": "S3DeploymentBucket"
-                    },
-                    "S3DeploymentRootKey": {
-                        "Ref": "S3DeploymentRootKey"
-                    },
-                    "GetAttGraphQLAPIApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    }
-                },
-                "TemplateURL": {
-                    "Fn::Join": [
-                        "/",
-                        [
-                            "https://s3.amazonaws.com",
-                            {
-                                "Ref": "S3DeploymentBucket"
-                            },
-                            {
-                                "Ref": "S3DeploymentRootKey"
-                            },
-                            "stacks",
-                            "Experience.json"
-                        ]
-                    ]
-                }
-            },
-            "DependsOn": [
-                "GraphQLSchema"
-            ]
-        },
-        "Education": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "Parameters": {
-                    "AppSyncApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    },
-                    "AppSyncApiName": {
-                        "Ref": "AppSyncApiName"
-                    },
-                    "APIKeyExpirationEpoch": {
-                        "Ref": "APIKeyExpirationEpoch"
-                    },
-                    "DynamoDBModelTableReadIOPS": {
-                        "Ref": "DynamoDBModelTableReadIOPS"
-                    },
-                    "DynamoDBModelTableWriteIOPS": {
-                        "Ref": "DynamoDBModelTableWriteIOPS"
-                    },
-                    "DynamoDBBillingMode": {
-                        "Ref": "DynamoDBBillingMode"
-                    },
-                    "DynamoDBEnablePointInTimeRecovery": {
-                        "Ref": "DynamoDBEnablePointInTimeRecovery"
-                    },
-                    "AuthCognitoUserPoolId": {
-                        "Ref": "AuthCognitoUserPoolId"
-                    },
-                    "env": {
-                        "Ref": "env"
-                    },
-                    "S3DeploymentBucket": {
-                        "Ref": "S3DeploymentBucket"
-                    },
-                    "S3DeploymentRootKey": {
-                        "Ref": "S3DeploymentRootKey"
-                    },
-                    "GetAttGraphQLAPIApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    }
-                },
-                "TemplateURL": {
-                    "Fn::Join": [
-                        "/",
-                        [
-                            "https://s3.amazonaws.com",
-                            {
-                                "Ref": "S3DeploymentBucket"
-                            },
-                            {
-                                "Ref": "S3DeploymentRootKey"
-                            },
-                            "stacks",
-                            "Education.json"
+                            "EmplyeeInfo.json"
                         ]
                     ]
                 }
@@ -541,7 +346,7 @@
                 "GraphQLSchema"
             ]
         },
-        "Employer": {
+        "EmployerInfo": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
                 "Parameters": {
@@ -600,7 +405,7 @@
                                 "Ref": "S3DeploymentRootKey"
                             },
                             "stacks",
-                            "Employer.json"
+                            "EmployerInfo.json"
                         ]
                     ]
                 }
@@ -743,138 +548,6 @@
             },
             "DependsOn": [
                 "GraphQLSchema"
-            ]
-        },
-        "ConnectionStack": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "Parameters": {
-                    "AppSyncApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    },
-                    "AppSyncApiName": {
-                        "Ref": "AppSyncApiName"
-                    },
-                    "APIKeyExpirationEpoch": {
-                        "Ref": "APIKeyExpirationEpoch"
-                    },
-                    "DynamoDBModelTableReadIOPS": {
-                        "Ref": "DynamoDBModelTableReadIOPS"
-                    },
-                    "DynamoDBModelTableWriteIOPS": {
-                        "Ref": "DynamoDBModelTableWriteIOPS"
-                    },
-                    "DynamoDBBillingMode": {
-                        "Ref": "DynamoDBBillingMode"
-                    },
-                    "DynamoDBEnablePointInTimeRecovery": {
-                        "Ref": "DynamoDBEnablePointInTimeRecovery"
-                    },
-                    "AuthCognitoUserPoolId": {
-                        "Ref": "AuthCognitoUserPoolId"
-                    },
-                    "env": {
-                        "Ref": "env"
-                    },
-                    "S3DeploymentBucket": {
-                        "Ref": "S3DeploymentBucket"
-                    },
-                    "S3DeploymentRootKey": {
-                        "Ref": "S3DeploymentRootKey"
-                    },
-                    "GetAttGraphQLAPIApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    }
-                },
-                "TemplateURL": {
-                    "Fn::Join": [
-                        "/",
-                        [
-                            "https://s3.amazonaws.com",
-                            {
-                                "Ref": "S3DeploymentBucket"
-                            },
-                            {
-                                "Ref": "S3DeploymentRootKey"
-                            },
-                            "stacks",
-                            "ConnectionStack.json"
-                        ]
-                    ]
-                }
-            },
-            "DependsOn": [
-                "GraphQLSchema",
-                "Address",
-                "AppliedJob",
-                "Education",
-                "Experience",
-                "Association",
-                "Employee",
-                "PostedJob",
-                "Timeline",
-                "Employer"
-            ]
-        },
-        "CustomResourcesjson": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "Parameters": {
-                    "AppSyncApiId": {
-                        "Fn::GetAtt": [
-                            "GraphQLAPI",
-                            "ApiId"
-                        ]
-                    },
-                    "AppSyncApiName": {
-                        "Ref": "AppSyncApiName"
-                    },
-                    "env": {
-                        "Ref": "env"
-                    },
-                    "S3DeploymentBucket": {
-                        "Ref": "S3DeploymentBucket"
-                    },
-                    "S3DeploymentRootKey": {
-                        "Ref": "S3DeploymentRootKey"
-                    }
-                },
-                "TemplateURL": {
-                    "Fn::Join": [
-                        "/",
-                        [
-                            "https://s3.amazonaws.com",
-                            {
-                                "Ref": "S3DeploymentBucket"
-                            },
-                            {
-                                "Ref": "S3DeploymentRootKey"
-                            },
-                            "stacks",
-                            "CustomResources.json"
-                        ]
-                    ]
-                }
-            },
-            "DependsOn": [
-                "GraphQLAPI",
-                "GraphQLSchema",
-                "Employee",
-                "Association",
-                "Experience",
-                "Education",
-                "Address",
-                "AppliedJob",
-                "Employer",
-                "PostedJob",
-                "Timeline",
-                "ConnectionStack"
             ]
         }
     },
