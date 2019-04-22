@@ -25,14 +25,14 @@ const LoginForm = Form.create({ name: 'form_in_modal' })(
           onOk={onLogin}
         >
           <Form layout="vertical" className='login-form'>
-            <Form.Item label="Username">
+            <Form.Item label={I18n.get('Enter Username')}>
               {getFieldDecorator('userName', {
                 rules: [{ required: true, message: 'Please input your username!' }],
               })(
                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
               )}
             </Form.Item>
-            <Form.Item label="Password">
+            <Form.Item label={I18n.get('Enter Password')}>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: 'Please input your Password!' }],
               })(
@@ -40,7 +40,7 @@ const LoginForm = Form.create({ name: 'form_in_modal' })(
               )}
             </Form.Item>
             <Form.Item>
-              <a href="">register now!</a>
+              <a href="">{I18n.get('Register Now')}</a>
             </Form.Item>
           </Form>
         </Modal>
