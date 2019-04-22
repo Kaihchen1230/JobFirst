@@ -30,7 +30,9 @@ let dict = {
         'Search': "搜索",
         'Log in': "登录",
         'Register Now': "现在注册",
-        'Forgot Password?': "忘记密码？"
+        'Forgot Password?': "忘记密码？",
+        'Home': "家",
+        'View Job': "查看工作"
     },
     'es': {
         'Sign In': "Register",
@@ -63,7 +65,9 @@ let dict = {
         'Search': "Search",
         'Log in': "Log in",
         'Register Now': "Register Now",
-        'Forgot Password?': "Forgot Password?"
+        'Forgot Password?': "Forgot Password?",
+        'Home': "Home",
+        'View Job': "View Job"
     }
 };
 export default dict;
