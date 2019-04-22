@@ -681,31 +681,7 @@
             }
         }
     },
-    "Outputs": {
-        "GetAttAddressDataSourceName": {
-            "Value": {
-                "Fn::GetAtt": [
-                    "AddressDataSource",
-                    "Name"
-                ]
-            },
-            "Export": {
-                "Name": {
-                    "Fn::Join": [
-                        ":",
-                        [
-                            {
-                                "Ref": "AppSyncApiId"
-                            },
-                            "GetAtt",
-                            "AddressDataSource",
-                            "Name"
-                        ]
-                    ]
-                }
-            }
-        }
-    },
+    "Outputs": {},
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [
