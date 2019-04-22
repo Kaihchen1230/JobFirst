@@ -1,5 +1,6 @@
 import { Card,Button } from 'antd';
 import React from 'react';
+import { configConsumerProps } from 'antd/lib/config-provider';
 
 let imageStyle = {
     width:'80%',
@@ -11,9 +12,8 @@ const profileCard = (props) => {
             <Card
                 hoverable
                 style={imageStyle} 
-                cover={<img alt="example" src="https://smallbiztrends.com/wp-content/uploads/2018/03/shutterstock_705804559.jpg" />}
+                cover={<img alt="example" src = {props.companyPic} />}
             >
-                <Button type="primary">Follow On facebook</Button>
                 <Button type="primary">Learn More</Button>
             </Card>
     )

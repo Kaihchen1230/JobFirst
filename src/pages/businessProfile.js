@@ -1,99 +1,94 @@
 import React from "react"
-import {Select,Modal, Button } from 'antd';
+import {Modal, Button, Tabs } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
-import Timeline from '../components/business_profile/Timeline'; 
-import EditProfileForm from '../components/business_profile/EditProfileForm'; 
+import Timeline from '../components/business_profile/Timeline';
+import EditProfileForm from '../components/business_profile/EditProfileForm';
 import { I18n } from 'aws-amplify';
-import PostJob from '../components/business_profile/postJob'; 
+import PostJob from '../components/business_profile/postJob';
 import { generate } from 'randomstring';
 import dict from "../components/dictionary/dictionary"
 import * as mutations from '../graphql/mutations';
 import * as queries from '../graphql/queries';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
-// import { API, graphqlOperation } from 'aws-amplify';
-// import * as queries from '../graphql/queries'
+import '../style/businessProfile.css';
 
-let bodyStyle={
-  justifyContent: 'center', alignItems: 'center',margin:'auto', width:'60%'
+const TabPane = Tabs.TabPane;
+let bodyStyle = {
+  justifyContent: 'center', alignItems: 'center', margin: 'auto', width: '70%'
 
 }
 
 class businessProfile extends React.Component {
   state = {
-    lan: window.localStorage.getItem('lan'), 
+    lan: window.localStorage.getItem('lan'),
     visible: false,
-    postJob:[{jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-              {jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-              {jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-              {jobID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-            ],
-    applicant:[{applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-                {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-                {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},
-                {applicantID:"1234",jobTitle:"programmer","date":"2019-10-20"},],
+    postJob: [{ jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    { jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    { jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    { jobID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    ],
+    applicant: [{ applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    { applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    { applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },
+    { applicantID: "1234", jobTitle: "programmer", "date": "2019-10-20" },],
     jobList: [
-              {
-                  id: generate(10),
-                  campanyName: 'Front-end developer',
-                  description: 'Requirement:Know CSS and HTML.'
-              },
-              {
-                  id: generate(10),
-                  campanyName: 'Front-end developer',
-                  description: 'Requirement:Know CSS and HTML.'
-              },
-              {
-                  id: generate(10),
-                  campanyName: 'Front-end developer',
-                  description: 'Requirement:Know CSS and HTML.'
-              },
-              {
-                  id: generate(10),
-                  campanyName: 'Front-end developer',
-                  description: 'Requirement:Know CSS and HTML.'
-              },
-              {
-                  id: generate(10),
-                  campanyName: 'Front-end developer',
-                  description: 'Requirement:Know CSS and HTML.'
-              },
-              {
-                  id: generate(10),
-                  campanyName: 'Front-end developer',
-                  description: 'Requirement:Know CSS and HTML.'
-              }
-          
-          ]
-   }
+      {
+        id: generate(10),
+        campanyName: 'Front-end developer',
+        description: 'Requirement:Know CSS and HTML.'
+      },
+      {
+        id: generate(10),
+        campanyName: 'Front-end developer',
+        description: 'Requirement:Know CSS and HTML.'
+      },
+      {
+        id: generate(10),
+        campanyName: 'Front-end developer',
+        description: 'Requirement:Know CSS and HTML.'
+      },
+      {
+        id: generate(10),
+        campanyName: 'Front-end developer',
+        description: 'Requirement:Know CSS and HTML.'
+      },
+      {
+        id: generate(10),
+        campanyName: 'Front-end developer',
+        description: 'Requirement:Know CSS and HTML.'
+      },
+      {
+        id: generate(10),
+        campanyName: 'Front-end developer',
+        description: 'Requirement:Know CSS and HTML.'
+      }
+    ],
+    companyPic:"https://smallbiztrends.com/wp-content/uploads/2018/03/shutterstock_705804559.jpg"
+  }
 
 
 
-  componentDidMount= async ()=>{
+  componentDidMount = async () => {
     const employerdata = {
       id: "102",
       companyName: "alibabartrt",
       companyEmail: "lanjie34569@gmail.com",
       companyPhone: "5435345",
       companyWebsite: "qqq.com",
-      employerTimelineId:["100"],
-      
+      employerTimelineId: ["100"],
+
     }
     let timelineData = {
-      id:"103",
-      timelineCompanyId:"102",
-      date:"2019-20-10",
-      info:"hgh"
+      id: "103",
+      timelineCompanyId: "102",
+      date: "2019-20-10",
+      info: "hgh"
     }
 
-
-
-
-    let employer = await API.graphql(graphqlOperation(queries.listEmployers, 
-      {filter:(data)=>{return data.companyName === "alibabartrt"}}));
-    console.log("new employer is",employer);
-  } 
-
-
+    // let employer = await API.graphql(graphqlOperation(queries.listEmployers,
+    //     { filter: (data) => { return data.companyName === "alibabartrt" } }));
+    // console.log("new employer is", employer);
+  }
 
   showModal = () => {
     this.setState({
@@ -116,38 +111,51 @@ class businessProfile extends React.Component {
   }
   render() {
 
-//     I18n.putVocabularies(dict);
-//     I18n.setLanguage(this.state.lan);
-
+    // I18n.putVocabularies(dict);
+    // I18n.setLanguage(this.state.lan);
     return (
-        <div style={bodyStyle}>
-              <div>
-          <Button type="primary" onClick={this.showModal}>
-            {I18n.get('Edit Profile')}
-          </Button>
-          <Modal
-            title="Edit Company Information"
-            okText={"Save"}
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-          >
-            <EditProfileForm/>
-          </Modal>
-        </div>
-        <h1>Company: aplipapa</h1>
-        <BusinessPicture/>
+      <div style={bodyStyle}>
+        <h1>Aplipapa, Inc</h1>
+        <BusinessPicture companyPic = {this.state.companyPic}/>
         <h2>Location:NY USA</h2>
-        <h1>About us</h1>
-        <div>At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off. 
-            We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact
-            on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love
-            to hear from you.
-        </div>
-        <h2>TimeLine</h2>
-        <Timeline/>  
-        <PostJob jobList={this.state.jobList}/>
-    </div>
+
+        <Tabs defaultActiveKey="1" >
+          <TabPane tab="Profile" key="1" >
+            <div>
+              <div>
+                <Button type="primary" onClick={this.showModal}>
+                  {I18n.get('Edit Profile')}
+                </Button>
+                <Modal
+                  title="Edit Company Information"
+                  okText={"Save"}
+                  visible={this.state.visible}
+                  onOk={this.handleOk}
+                  onCancel={this.handleCancel}
+                >
+                  <EditProfileForm />
+                </Modal>
+              </div>
+
+              <h1>About us</h1>
+              <div>At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off.
+                  We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact
+                  on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love
+                  to hear from you.
+              </div>
+              <h2>TimeLine</h2>
+              <Timeline />
+            </div>
+
+          </TabPane>
+          <TabPane tab="Jobs" key="2">
+            <div>
+              <PostJob jobList={this.state.jobList} />
+            </div>
+          </TabPane>
+        </Tabs>
+
+      </div>
     );
   }
 }
