@@ -80,7 +80,7 @@ class Signup extends React.Component {
                     this.state.stage === 0 && (
                         <div>
                             {this.state.error && <Error errorMessage={this.state.error} />}
-                            <Form className="signup-form" style={{ "width": "80%" }}>
+                            <Form className="signup-form" style={{ "width": "80%" }} onSubmit={this.signUp}>
                                 <Form.Item>
                                     <Input placeholder={I18n.get('Enter Username')}
                                         prefix={<Icon type="user" />}
@@ -109,17 +109,15 @@ class Signup extends React.Component {
                                         prefix={<Icon type="question" />}
                                     />
                                 </Form.Item>
-
-
-                                <div>
-                                    <RadioGroup onChange={this.handleRadio} value={this.state.isEmployer}>
-                                        <Radio value={'no'}>Employee</Radio>
-                                        <Radio value={'yes'}>Employer</Radio>
+                                <Form.Item>
+                                    <RadioGroup onChange={this.handleRadio}>
+                                        <Radio value={'yes'}>I Want to Hire</Radio>
+                                        <Radio value={'no'}>I Want to Work</Radio>
                                     </RadioGroup>
-                                </div>
-                                <div onClick={this.signUp}>
-                                    <span id="sign-up">Sign Up</span>
-                                </div>
+                                </Form.Item>
+                                <Button onClick={this.signUp} type="primary">
+                                    <span id="sign-up">Register</span>
+                                </Button>
                             </Form>
                         </div>
                     )
