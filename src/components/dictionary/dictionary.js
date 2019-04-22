@@ -32,7 +32,10 @@ let dict = {
         'Register Now': "现在注册",
         'Forgot Password?': "忘记密码？",
         'Home': "家",
-        'View Job': "查看工作"
+        'View Job': "查看工作",
+        'Business Profile': "业务简介",
+        'Contact Us': "联系我们",
+        'Register': "寄存器"
     },
     'es': {
         'Sign In': "Register",
@@ -67,7 +70,10 @@ let dict = {
         'Register Now': "Register Now",
         'Forgot Password?': "Forgot Password?",
         'Home': "Home",
-        'View Job': "View Job"
+        'View Job': "View Job",
+        'Business Profile': "Business Profile",
+        'Contact Us': "Contact Us",
+        'Register': "Register"
     }
 };
 export default dict;

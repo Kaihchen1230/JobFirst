@@ -8,8 +8,6 @@ import './login.css';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import * as mutations from '../../graphql/mutations';
 
-
-
 const LoginForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
   class extends React.Component {
@@ -21,7 +19,7 @@ const LoginForm = Form.create({ name: 'form_in_modal' })(
       return (
         <Modal
           visible={visible}
-          title="Login"
+          title={I18n.get('Log in')}
           okText="Login"
           onCancel={onCancel}
           onOk={onLogin}
@@ -128,7 +126,7 @@ class NewLogin extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>Login</Button>
+        <Button type="primary" onClick={this.showModal}>{I18n.get('Log in')}</Button>
         <LoginForm
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}

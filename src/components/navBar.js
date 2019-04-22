@@ -44,24 +44,24 @@ const navBar = (props) => {
       </Menu.Item>
 
       <Menu.Item>
-        <Icon type="file-add" theme="outlined" />Post a New Job
+        <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
         <Link to="/app/postJob"></Link>
       </Menu.Item>
 
       <Menu.Item>
-        <Icon type="bar-chart" theme="outlined" />Business Profile
+        <Icon type="bar-chart" theme="outlined" />{I18n.get('Business Profile')}
         <Link to="/app/business-profile"></Link>
       </Menu.Item>
 
 
       <Menu.Item key="contact">
-        <Icon type="mail" theme="outlined" />Contact us
+        <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
         </Menu.Item>
 
 
       {!isLoggedIn() ? (
         <Menu.Item key="register">
-          <Icon type="form" theme="outlined" />Register
+          <Icon type="form" theme="outlined" />{I18n.get('Register')}
             <Link to="/app/signup"></Link>
         </Menu.Item>) : null}
 
@@ -70,14 +70,14 @@ const navBar = (props) => {
         <Button ghost="true" onClick={() => {
           window.localStorage.setItem('lan', 'es');
           window.location.reload();
-        }}>ENGLISH</Button>
+        }}>ENGLISH - 英语</Button>
       </Menu.Item>
 
       <Menu.Item>
         <Button ghost="true" onClick={() => {
           window.localStorage.setItem('lan', 'ch');
           window.location.reload();
-        }}>中文</Button>
+        }}>CHINESE - 中文</Button>
       </Menu.Item>
 
 
