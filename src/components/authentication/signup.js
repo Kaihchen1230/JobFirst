@@ -57,6 +57,16 @@ class Signup extends React.Component {
             console.log('error confirming signing up...', err)
         }
     }
+    /*
+    <div>
+        <input
+            onChange={this.handleUpdate}
+            placeholder='Phone Number'
+            name='phone_number'
+            value={this.state.phone_number}
+        />
+    </div>
+    */
 
     render() {
         if (isLoggedIn()) {
@@ -78,45 +88,29 @@ class Signup extends React.Component {
                                 </Form.Item>
                                 <Form.Item>
                                     <Input.Password placeholder={I18n.get('Enter Password')}
-                                        prefix={<Icon type="question" />}
+                                        prefix={<Icon type="lock" />}
                                     />
                                     <Input.Password placeholder={I18n.get('Repeat Password')}
+                                        prefix={<Icon type="lock" />}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Email')}
                                         prefix={<Icon type="question" />}
                                     />
                                 </Form.Item>
-                                <div>
-                                    <input
-                                        onChange={this.handleUpdate}
-                                        placeholder='Password'
-                                        name='password'
-                                        value={this.state.password}
-                                        type='password'
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Name')}
+                                        prefix={<Icon type="question" />}
                                     />
-                                </div>
-                                <div>
-                                    <input
-                                        onChange={this.handleUpdate}
-                                        placeholder='Email'
-                                        name='email'
-                                        value={this.state.email}
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Phone Number')}
+                                        prefix={<Icon type="question" />}
                                     />
-                                </div>
-                                <div>
-                                    <input
-                                        onChange={this.handleUpdate}
-                                        placeholder='Name'
-                                        name='name'
-                                        value={this.state.name}
-                                    />
-                                </div>
-                                <div>
-                                    <input
-                                        onChange={this.handleUpdate}
-                                        placeholder='Phone Number'
-                                        name='phone_number'
-                                        value={this.state.phone_number}
-                                    />
-                                </div>
+                                </Form.Item>
+
+
                                 <div>
                                     <RadioGroup onChange={this.handleRadio} value={this.state.isEmployer}>
                                         <Radio value={'no'}>Employee</Radio>
