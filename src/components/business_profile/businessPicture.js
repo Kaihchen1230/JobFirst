@@ -1,21 +1,24 @@
-import { Card,Button } from 'antd';
+import { Avatar } from 'antd';
 import React from 'react';
-import { configConsumerProps } from 'antd/lib/config-provider';
+import { relative } from 'path';
+
 
 let imageStyle = {
-    width:'80%',
-    padddingLeft:"0px"
+    width:'10%',
+    padddingLeft:"0px",
+    position:"relative",
+    left:"70px",
+    top:"20px"
+
 };
 
 const profileCard = (props) => {
     return (
-            <Card
-                hoverable
-                style={imageStyle} 
-                cover={<img alt="example" src = {props.companyPic} />}
-            >
-                <Button type="primary">Learn More</Button>
-            </Card>
+            <div style={imageStyle}  >
+            <Avatar size={100} src = {props.companyPic} >
+            </Avatar>
+             
+            </div>
     )
 }
 export default profileCard;

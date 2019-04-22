@@ -19,9 +19,10 @@ let bodyStyle = {
   justifyContent: 'center', 
   alignItems: 'center', 
   margin: 'auto', 
-  width: '80%',
+  width: '90%',
   position:"relative",
   top: "-20px",
+  backgroundColor: "white"
 
 }
 
@@ -127,13 +128,13 @@ class businessProfile extends React.Component {
         <div >
           <div className="banner">
             <BusinessPicture className="companyPicture" companyPic = {this.state.companyPic}/>
-            <h1 className="companyName">{this.state.companyName}</h1>
-            <h2 className="companyLocation">{this.state.companyAddress}</h2>
+            <div className = "companyHeader">
+              <h1 className="companyName">{this.state.companyName}</h1>
+              <h2 className="companyLocation">{this.state.companyAddress}</h2>
+            </div>
           </div>
         <div style={bodyStyle}>
           
-         
-
           <Tabs defaultActiveKey="1" >
             <TabPane tab="Profile" key="1" >
               <div>
