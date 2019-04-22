@@ -57,17 +57,7 @@ class Signup extends React.Component {
             console.log('error confirming signing up...', err)
         }
     }
-    /*
-    <div>
-        <input
-            onChange={this.handleUpdate}
-            placeholder='Phone Number'
-            name='phone_number'
-            value={this.state.phone_number}
-        />
-    </div>
-    */
-
+    
     render() {
         if (isLoggedIn()) {
             navigate(`/app/user-profile`)
@@ -84,29 +74,47 @@ class Signup extends React.Component {
                                 <Form.Item>
                                     <Input placeholder={I18n.get('Enter Username')}
                                         prefix={<Icon type="user" />}
+                                        name='username'
+                                        value={this.state.username}
+                                        onChange={this.handleUpdate}
                                     />
                                 </Form.Item>
                                 <Form.Item>
                                     <Input.Password placeholder={I18n.get('Enter Password')}
                                         prefix={<Icon type="lock" />}
+                                        name='password'
+                                        value={this.state.password}
+                                        onChange={this.handleUpdate}
                                     />
                                     <Input.Password placeholder={I18n.get('Repeat Password')}
                                         prefix={<Icon type="lock" />}
+                                        name='password'
+                                        value={this.state.password}
+                                        onChange={this.handleUpdate}
                                     />
                                 </Form.Item>
                                 <Form.Item>
                                     <Input placeholder={I18n.get('Enter Email')}
-                                        prefix={<Icon type="question" />}
+                                        prefix={<Icon type="laptop" />}
+                                        name='email'
+                                        value={this.state.email}
+                                        onChange={this.handleUpdate}
                                     />
                                 </Form.Item>
                                 <Form.Item>
                                     <Input placeholder={I18n.get('Enter Name')}
-                                        prefix={<Icon type="question" />}
+                                        prefix={<Icon type="user" />}
+                                        name='name'
+                                        value={this.state.name}
+                                        onChange={this.handleUpdate}
                                     />
                                 </Form.Item>
                                 <Form.Item>
                                     <Input placeholder={I18n.get('Enter Phone Number')}
-                                        prefix={<Icon type="question" />}
+                                        prefix={<Icon type="phone" />}
+                                        name='phone_number'
+                                        value={this.state.phone_number}
+                                        onChange={this.handleUpdate}
                                     />
                                 </Form.Item>
                                 <Form.Item>
