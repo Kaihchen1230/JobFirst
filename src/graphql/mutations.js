@@ -24,6 +24,7 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -89,6 +90,7 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -154,6 +156,7 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -683,6 +686,12 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -704,6 +713,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -753,6 +763,12 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -774,6 +790,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -823,6 +840,12 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -844,6 +867,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -861,6 +885,12 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -900,6 +930,12 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -939,6 +975,12 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -980,6 +1022,12 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1005,6 +1053,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1028,6 +1077,12 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1053,6 +1108,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1076,6 +1132,12 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1101,6 +1163,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1124,6 +1187,12 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1154,6 +1223,12 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1184,6 +1259,12 @@ export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInp
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }

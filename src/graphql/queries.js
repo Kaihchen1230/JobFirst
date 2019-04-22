@@ -24,6 +24,7 @@ export const getEmployee = `query GetEmployee($id: ID!) {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -422,6 +423,12 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -443,6 +450,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -480,6 +488,7 @@ export const listAppliedJobs = `query ListAppliedJobs(
         clickedCounts
       }
       dateApplied
+      status
     }
     nextToken
   }
@@ -499,6 +508,12 @@ export const getEmployer = `query GetEmployer($id: ID!) {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -543,6 +558,12 @@ export const listEmployers = `query ListEmployers(
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -572,6 +593,12 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -597,6 +624,7 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -618,6 +646,12 @@ export const listPostedJobs = `query ListPostedJobs(
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -658,6 +692,12 @@ export const getTimeline = `query GetTimeline($id: ID!) {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -686,6 +726,12 @@ export const listTimelines = `query ListTimelines(
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }

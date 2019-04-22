@@ -24,6 +24,7 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -89,6 +90,7 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -154,6 +156,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -683,6 +686,12 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -704,6 +713,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -753,6 +763,12 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -774,6 +790,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -823,6 +840,12 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         companyEmail
         companyPhone
         companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
         companyPic
         description
       }
@@ -844,6 +867,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       clickedCounts
     }
     dateApplied
+    status
   }
 }
 `;
@@ -861,6 +885,12 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -900,6 +930,12 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -939,6 +975,12 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       state
     }
     companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
       items {
         id
@@ -980,6 +1022,12 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1005,6 +1053,7 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1028,6 +1077,12 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1053,6 +1108,7 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1076,6 +1132,12 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1101,6 +1163,7 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       items {
         id
         dateApplied
+        status
       }
       nextToken
     }
@@ -1124,6 +1187,12 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1154,6 +1223,12 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
@@ -1184,6 +1259,12 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
         state
       }
       companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
         nextToken
       }
