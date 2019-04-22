@@ -52,10 +52,10 @@ class PostJob extends React.Component {
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
                     {/* make it a entry for now, but should automatic assign when employer */}
                     <Form.Item>
-                        <Input placeholder={I18n.get('Enter the name of the employer.')}
+                        <Input placeholder={I18n.get('Enter Employer Name')}
                             prefix={<Icon type="user" />}
                             suffix={
-                                <Tooltip title={I18n.get('Enter the name of the employer.')}>
+                                <Tooltip title={I18n.get('Enter the name of the employer')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                             name="companyID"
@@ -64,18 +64,38 @@ class PostJob extends React.Component {
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the name of the job')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
                         />
                         <Input placeholder={I18n.get('Address Line 1')} 
                             name="line1"
+                            suffix={
+                                <Tooltip title={I18n.get('Line 1 of job address')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
                         />
                         <Input placeholder={I18n.get('Address Line 2')} 
                             name="line2"
+                            suffix={
+                                <Tooltip title={I18n.get('Line 2 of job address')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
                         />
                         <Input placeholder={I18n.get('Postal Code')}
                             name="postalCode"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the postal code of the job location')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
                         />
                         <Input placeholder={I18n.get('State')} 
                             name="state"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the state of the job location.')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
