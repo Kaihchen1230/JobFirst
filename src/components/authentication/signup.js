@@ -3,10 +3,10 @@ import { navigate } from 'gatsby';
 import { Auth, I18n } from 'aws-amplify';
 import Error from './Error'
 import { isLoggedIn } from '../../services/auth';
-import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
-import dict from "../dictionary/dictionary"
+import { Radio, Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 
 const RadioGroup = Radio.Group;
+
 class Signup extends React.Component {
     state = {
         username: '',
@@ -38,7 +38,7 @@ class Signup extends React.Component {
     signUp = async () => {
         const { username, password, email, name, phone_number, isEmployer, isProfile } = this.state;
         try {
-            await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer':isEmployer, 'custom:isProfile':isProfile } })
+            await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer': isEmployer, 'custom:isProfile': isProfile } })
             this.setState({ stage: 1 })
         } catch (err) {
             this.setState({ error: err })
@@ -68,60 +68,66 @@ class Signup extends React.Component {
                 <h1>Register As A New User</h1>
                 {
                     this.state.stage === 0 && (
-                        <Form className="signup-form" style={{ "width": "80%"}}>
+                        <div>
                             {this.state.error && <Error errorMessage={this.state.error} />}
-                            
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Username'
-                                    name='username'
-                                    value={this.state.username}
-                                />
-                            
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Password'
-                                    name='password'
-                                    value={this.state.password}
-                                    type='password'
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Email'
-                                    name='email'
-                                    value={this.state.email}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Name'
-                                    name='name'
-                                    value={this.state.name}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Phone Number'
-                                    name='phone_number'
-                                    value={this.state.phone_number}
-                                />
-                            </div>
-                            <div>
-                                <RadioGroup onChange={this.handleRadio} value={this.state.isEmployer}>
-                                    <Radio value={'no'}>Employee</Radio>
-                                    <Radio value={'yes'}>Employer</Radio>
-                                </RadioGroup>
-                            </div>
-                            <div onClick={this.signUp}>
-                                <span id="sign-up">Sign Up</span>
-                            </div>
-                        </Form>
-                        
+                            <Form className="signup-form" style={{ "width": "80%" }}>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Username')}
+                                        prefix={<Icon type="user" />}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input.Password placeholder={I18n.get('Enter Password')}
+                                        prefix={<Icon type="question" />}
+                                    />
+                                    <Input.Password placeholder={I18n.get('Repeat Password')}
+                                        prefix={<Icon type="question" />}
+                                    />
+                                </Form.Item>
+                                <div>
+                                    <input
+                                        onChange={this.handleUpdate}
+                                        placeholder='Password'
+                                        name='password'
+                                        value={this.state.password}
+                                        type='password'
+                                    />
+                                </div>
+                                <div>
+                                    <input
+                                        onChange={this.handleUpdate}
+                                        placeholder='Email'
+                                        name='email'
+                                        value={this.state.email}
+                                    />
+                                </div>
+                                <div>
+                                    <input
+                                        onChange={this.handleUpdate}
+                                        placeholder='Name'
+                                        name='name'
+                                        value={this.state.name}
+                                    />
+                                </div>
+                                <div>
+                                    <input
+                                        onChange={this.handleUpdate}
+                                        placeholder='Phone Number'
+                                        name='phone_number'
+                                        value={this.state.phone_number}
+                                    />
+                                </div>
+                                <div>
+                                    <RadioGroup onChange={this.handleRadio} value={this.state.isEmployer}>
+                                        <Radio value={'no'}>Employee</Radio>
+                                        <Radio value={'yes'}>Employer</Radio>
+                                    </RadioGroup>
+                                </div>
+                                <div onClick={this.signUp}>
+                                    <span id="sign-up">Sign Up</span>
+                                </div>
+                            </Form>
+                        </div>
                     )
                 }
                 {
