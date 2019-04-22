@@ -433,8 +433,6 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -481,8 +479,6 @@ export const listAppliedJobs = `query ListAppliedJobs(
       Job {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -528,8 +524,6 @@ export const getEmployer = `query GetEmployer($id: ID!) {
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -609,8 +603,6 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {
@@ -656,8 +648,6 @@ export const listPostedJobs = `query ListPostedJobs(
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {

@@ -696,8 +696,6 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -773,8 +771,6 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -850,8 +846,6 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -905,8 +899,6 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -950,8 +942,6 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -995,8 +985,6 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -1038,8 +1026,6 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {
@@ -1093,8 +1079,6 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {
@@ -1148,8 +1132,6 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {

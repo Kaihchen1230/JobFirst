@@ -696,8 +696,6 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -773,8 +771,6 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -850,8 +846,6 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         description
       }
       jobTitle
-      jobType
-      description
       requirements
       datePosted
       location {
@@ -905,8 +899,6 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -950,8 +942,6 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -995,8 +985,6 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       items {
         id
         jobTitle
-        jobType
-        description
         requirements
         datePosted
         clickedCounts
@@ -1038,8 +1026,6 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {
@@ -1093,8 +1079,6 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {
@@ -1148,8 +1132,6 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       }
     }
     jobTitle
-    jobType
-    description
     requirements
     datePosted
     location {
