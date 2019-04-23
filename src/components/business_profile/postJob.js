@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from "gatsby"
 const JobItem = (props) => {
     let jobItem = props.jobs.map((item, index) =>
-        <Col span={8} style={{ margin: '10px 0' }}>
+        <Col key ={index} span={8} style={{ margin: '10px 0' }}>
             <Card title={item.campanyName} bordered={true}>
                 <p>{item.description}</p>
                 <div align="center">

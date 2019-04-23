@@ -87,25 +87,19 @@ class businessProfile extends React.Component {
   }
 
   componentDidMount = async () => {
-    const employerdata = {
-      id: "102",
-      companyName: "alibabartrt",
-      companyEmail: "lanjie34569@gmail.com",
-      companyPhone: "5435345",
-      companyWebsite: "qqq.com",
-      employerTimelineId: ["100"],
 
-    }
-    let timelineData = {
-      id: "103",
-      timelineCompanyId: "102",
-      date: "2019-20-10",
-      info: "hgh"
-    }
+    // let employerData = {
+    //   id: "0403b921-33c6-4456-81ca-cfc21394dd7d",
+    //   companyName: "alibabartrt",
+    //   companyEmail: "lanjie34569@gmail.com",
+    //   companyPhone: "5435345",
+    //   companyWebsite: "qqq.com",
+    //   employerCompanyAddressId:"100"
+    // }
 
-    // let employer = await API.graphql(graphqlOperation(queries.listEmployers,
-    //     { filter: (data) => { return data.companyName === "alibabartrt" } }));
-    // console.log("new employer is", employer);
+    // let data= await API.graphql(graphqlOperation(mutations.updateEmployer,
+    //    {input: employerData}));
+    // console.log("new timeline is", data);
   }
 
   showModal = () => {
@@ -115,14 +109,12 @@ class businessProfile extends React.Component {
   }
 
   handleOk = (e) => {
-    console.log(e);
     this.setState({
       visible: false,
     });
   }
 
   handleCancel = (e) => {
-    console.log(e);
     this.setState({
       visible: false,
     });
@@ -156,7 +148,7 @@ class businessProfile extends React.Component {
                       onCancel={this.handleCancel}  
                       width = {800}             
                     >
-                      <EditProfileForm />
+                      <EditProfileForm data = {this.state}/>
                     </Modal>
                   </div>
                   <div className="row1">
