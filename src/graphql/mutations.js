@@ -700,6 +700,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
       description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -777,6 +778,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
       description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -854,6 +856,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
       description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -909,6 +912,7 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
         description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       nextToken
@@ -954,6 +958,7 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
         description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       nextToken
@@ -999,6 +1004,7 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
         description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       nextToken
@@ -1042,6 +1048,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
     description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1097,6 +1104,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
     description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1152,6 +1160,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
     description
     requirements
     datePosted
+    deadline
     location {
       id
       line1

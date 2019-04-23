@@ -69,7 +69,7 @@
         }
     },
     "Resources": {
-        "EmployerInfoTable": {
+        "EducationTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
@@ -79,7 +79,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Education",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     },
@@ -93,7 +93,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Education",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     }
@@ -111,6 +111,10 @@
                 "AttributeDefinitions": [
                     {
                         "AttributeName": "id",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "educationWhoseId",
                         "AttributeType": "S"
                     }
                 ],
@@ -155,10 +159,40 @@
                             "Ref": "AWS::NoValue"
                         }
                     ]
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-employeeEdu",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "educationWhoseId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "Fn::If": [
+                                "ShouldUsePayPerRequestBilling",
+                                {
+                                    "Ref": "AWS::NoValue"
+                                },
+                                {
+                                    "ReadCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableReadIOPS"
+                                    },
+                                    "WriteCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableWriteIOPS"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         },
-        "EmployerInfoIAMRole": {
+        "EducationIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
@@ -168,7 +202,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Education",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -183,7 +217,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmployerInfo",
+                                    "Education",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -235,7 +269,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Education",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -249,7 +283,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Education",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -272,7 +306,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Education",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -286,7 +320,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmployerInfo",
+                                                                        "Education",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -306,17 +340,17 @@
                 ]
             }
         },
-        "EmployerInfoDataSource": {
+        "EducationDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
                     "Ref": "GetAttGraphQLAPIApiId"
                 },
-                "Name": "EmployerInfoTable",
+                "Name": "EducationTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "EmployerInfoIAMRole",
+                        "EducationIAMRole",
                         "Arn"
                     ]
                 },
@@ -331,7 +365,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "EmployerInfo",
+                                        "Education",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         },
@@ -345,7 +379,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "EmployerInfo",
+                                        "Education",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         }
@@ -357,10 +391,10 @@
                 }
             },
             "DependsOn": [
-                "EmployerInfoIAMRole"
+                "EducationIAMRole"
             ]
         },
-        "GetEmployerInfoResolver": {
+        "GetEducationResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -368,11 +402,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EducationDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getEmployerInfo",
+                "FieldName": "getEducation",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -389,7 +423,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getEmployerInfo",
+                                        "getEducation",
                                         "req",
                                         "vtl"
                                     ]
@@ -413,7 +447,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getEmployerInfo",
+                                        "getEducation",
                                         "res",
                                         "vtl"
                                     ]
@@ -424,7 +458,7 @@
                 }
             }
         },
-        "ListEmployerInfoResolver": {
+        "ListEducationResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -432,11 +466,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EducationDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listEmployerInfos",
+                "FieldName": "listEducations",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -453,7 +487,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listEmployerInfos",
+                                        "listEducations",
                                         "req",
                                         "vtl"
                                     ]
@@ -477,7 +511,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listEmployerInfos",
+                                        "listEducations",
                                         "res",
                                         "vtl"
                                     ]
@@ -488,7 +522,7 @@
                 }
             }
         },
-        "CreateEmployerInfoResolver": {
+        "CreateEducationResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -496,11 +530,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EducationDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createEmployerInfo",
+                "FieldName": "createEducation",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -517,7 +551,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createEmployerInfo",
+                                        "createEducation",
                                         "req",
                                         "vtl"
                                     ]
@@ -541,7 +575,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createEmployerInfo",
+                                        "createEducation",
                                         "res",
                                         "vtl"
                                     ]
@@ -552,7 +586,7 @@
                 }
             }
         },
-        "UpdateEmployerInfoResolver": {
+        "UpdateEducationResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -560,11 +594,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EducationDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateEmployerInfo",
+                "FieldName": "updateEducation",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -581,7 +615,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateEmployerInfo",
+                                        "updateEducation",
                                         "req",
                                         "vtl"
                                     ]
@@ -605,7 +639,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateEmployerInfo",
+                                        "updateEducation",
                                         "res",
                                         "vtl"
                                     ]
@@ -616,7 +650,7 @@
                 }
             }
         },
-        "DeleteEmployerInfoResolver": {
+        "DeleteEducationResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -624,11 +658,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmployerInfoDataSource",
+                        "EducationDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteEmployerInfo",
+                "FieldName": "deleteEducation",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -645,7 +679,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteEmployerInfo",
+                                        "deleteEducation",
                                         "req",
                                         "vtl"
                                     ]
@@ -669,7 +703,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteEmployerInfo",
+                                        "deleteEducation",
                                         "res",
                                         "vtl"
                                     ]
@@ -681,7 +715,31 @@
             }
         }
     },
-    "Outputs": {},
+    "Outputs": {
+        "GetAttEducationDataSourceName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "EducationDataSource",
+                    "Name"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AppSyncApiId"
+                            },
+                            "GetAtt",
+                            "EducationDataSource",
+                            "Name"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [

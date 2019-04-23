@@ -9,7 +9,7 @@ let dict = {
         'Date Posted On': "發布日期",
         'Job Type': "工作類型",
         'Enter Job Description': "輸入職位描述",
-        'Enter the name of the employer.': "輸入雇主的姓名。",
+        'Enter the name of the employer': "輸入雇主的姓名。",
         'Enter the contact number of the employer.': "輸入雇主的聯繫電話。",
         'Full Time': "全職",
         'Part Time': "兼職",
@@ -35,7 +35,27 @@ let dict = {
         'View Job': "查看工作",
         'Business Profile': "业务简介",
         'Contact Us': "联系我们",
-        'Register': "寄存器"
+        'Register': "寄存器",
+        'Enter the Job Title': "输入职位",
+        'Address Line 1': "地址第一行",
+        'Address Line 2': "地址第2行",
+        'Postal Code': "邮政编码",
+        'State': "州",
+        'Deadline': "最后期限",
+        'Enter Job Description': "输入职位描述",
+        'Enter Job Requirements': "输入工作要求",
+        'Enter the name of the job': "输入作业的名称",
+        'Line 1 of job address': "工作地址的第1行",
+        'Line 2 of job address': "工作地址第2行",
+        'Enter the postal code of the job location': "输入工作地点的邮政编码",
+        'Enter the state of the job location': "输入作业位置的状态",
+        "Brief Info":"简介",
+        "Profile":"详情",
+        "Jobs":"工作",
+        "Timeline":"时间轴",
+        "About Company":"公司简介"
+
+        
     },
     'es': {
         'Sign In': "Register",
@@ -73,7 +93,25 @@ let dict = {
         'View Job': "View Job",
         'Business Profile': "Business Profile",
         'Contact Us': "Contact Us",
-        'Register': "Register"
+        'Register': "Register",
+        'Enter the Job Title': "Enter the Job Title",
+        'Address Line 1': "Address Line 1",
+        'Address Line 2': "Address Line 2",
+        'Postal Code': "Postal Code",
+        'State': "State",
+        'Deadline': "Deadline",
+        'Enter Job Description': "Enter Job Description",
+        'Enter Job Requirements': "Enter Job Requirements",
+        'Enter the name of the job': "Enter the name of the job",
+        'Line 1 of job address': "Line 1 of job address",
+        'Line 2 of job address': "Line 2 of job address",
+        'Enter the postal code of the job location': "Enter the postal code of the job location",
+        'Enter the state of the job location': "Enter the state of the job location",
+        "Brief Info":"Brief Info",
+        "Profile":"Profile",
+        "Jobs":"Jobs",
+        "Timeline":"Timeline",
+        "About Company":"About Company"
     }
 };
 export default dict;

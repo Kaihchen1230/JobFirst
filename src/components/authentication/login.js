@@ -45,15 +45,30 @@ class Login extends React.Component {
         const { email, name, phone_number, sub, username } = userInfo
         const profileExist = userInfo['custom:isProfile'];
         if (profileExist === 'no') {
-          const data = {
-            id: sub,
-            username: username,
-            firstName: name,
-            phone: phone_number,
-            email: email,
-          }
-          const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, { input: data }));
-          console.log(newEmployee);
+            let data ={
+              id:sub
+            };
+            if(userInfo['custom:isEmployer'] == 'no'){
+              data = {
+                username: username,
+                firstName: name,
+                phone: phone_number,
+                companyEmail: email,
+              }
+              const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
+              console.log("new employee", newEmployee);
+            }
+            else{
+              data = {
+                companyName: username,
+                companyEmail: email,
+              }
+              const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: data})); 
+              console.log("new employer",newEmployeer);           
+            }
+
+
+
           Auth.currentAuthenticatedUser()
             .then(user => {
               return Auth.updateUserAttributes(user, { 'custom:isProfile': 'yes' });
@@ -91,7 +106,7 @@ class Login extends React.Component {
             {getFieldDecorator('password', {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder={I18n.get('Enter Password')} />
+              <Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder={I18n.get('Enter Password')} />
             )}
           </Form.Item>
           <Form.Item>

@@ -69,7 +69,7 @@
         }
     },
     "Resources": {
-        "EmplyeeInfoTable": {
+        "ExperienceTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
@@ -79,7 +79,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfo",
+                                    "Experience",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     },
@@ -93,7 +93,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfo",
+                                    "Experience",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     }
@@ -111,6 +111,10 @@
                 "AttributeDefinitions": [
                     {
                         "AttributeName": "id",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "experienceWhoseId",
                         "AttributeType": "S"
                     }
                 ],
@@ -155,10 +159,40 @@
                             "Ref": "AWS::NoValue"
                         }
                     ]
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-employeeExp",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "experienceWhoseId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "Fn::If": [
+                                "ShouldUsePayPerRequestBilling",
+                                {
+                                    "Ref": "AWS::NoValue"
+                                },
+                                {
+                                    "ReadCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableReadIOPS"
+                                    },
+                                    "WriteCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableWriteIOPS"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         },
-        "EmplyeeInfoIAMRole": {
+        "ExperienceIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
@@ -168,7 +202,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfo",
+                                    "Experience",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -183,7 +217,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "EmplyeeInfo",
+                                    "Experience",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -235,7 +269,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmplyeeInfo",
+                                                                        "Experience",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -249,7 +283,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmplyeeInfo",
+                                                                        "Experience",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -272,7 +306,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmplyeeInfo",
+                                                                        "Experience",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -286,7 +320,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "EmplyeeInfo",
+                                                                        "Experience",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -306,17 +340,17 @@
                 ]
             }
         },
-        "EmplyeeInfoDataSource": {
+        "ExperienceDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
                     "Ref": "GetAttGraphQLAPIApiId"
                 },
-                "Name": "EmplyeeInfoTable",
+                "Name": "ExperienceTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoIAMRole",
+                        "ExperienceIAMRole",
                         "Arn"
                     ]
                 },
@@ -331,7 +365,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "EmplyeeInfo",
+                                        "Experience",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         },
@@ -345,7 +379,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "EmplyeeInfo",
+                                        "Experience",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         }
@@ -357,10 +391,10 @@
                 }
             },
             "DependsOn": [
-                "EmplyeeInfoIAMRole"
+                "ExperienceIAMRole"
             ]
         },
-        "GetEmplyeeInfoResolver": {
+        "GetExperienceResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -368,11 +402,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "ExperienceDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getEmplyeeInfo",
+                "FieldName": "getExperience",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -389,7 +423,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getEmplyeeInfo",
+                                        "getExperience",
                                         "req",
                                         "vtl"
                                     ]
@@ -413,7 +447,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getEmplyeeInfo",
+                                        "getExperience",
                                         "res",
                                         "vtl"
                                     ]
@@ -424,7 +458,7 @@
                 }
             }
         },
-        "ListEmplyeeInfoResolver": {
+        "ListExperienceResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -432,11 +466,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "ExperienceDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listEmplyeeInfos",
+                "FieldName": "listExperiences",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -453,7 +487,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listEmplyeeInfos",
+                                        "listExperiences",
                                         "req",
                                         "vtl"
                                     ]
@@ -477,7 +511,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listEmplyeeInfos",
+                                        "listExperiences",
                                         "res",
                                         "vtl"
                                     ]
@@ -488,7 +522,7 @@
                 }
             }
         },
-        "CreateEmplyeeInfoResolver": {
+        "CreateExperienceResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -496,11 +530,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "ExperienceDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createEmplyeeInfo",
+                "FieldName": "createExperience",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -517,7 +551,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createEmplyeeInfo",
+                                        "createExperience",
                                         "req",
                                         "vtl"
                                     ]
@@ -541,7 +575,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createEmplyeeInfo",
+                                        "createExperience",
                                         "res",
                                         "vtl"
                                     ]
@@ -552,7 +586,7 @@
                 }
             }
         },
-        "UpdateEmplyeeInfoResolver": {
+        "UpdateExperienceResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -560,11 +594,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "ExperienceDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateEmplyeeInfo",
+                "FieldName": "updateExperience",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -581,7 +615,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateEmplyeeInfo",
+                                        "updateExperience",
                                         "req",
                                         "vtl"
                                     ]
@@ -605,7 +639,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateEmplyeeInfo",
+                                        "updateExperience",
                                         "res",
                                         "vtl"
                                     ]
@@ -616,7 +650,7 @@
                 }
             }
         },
-        "DeleteEmplyeeInfoResolver": {
+        "DeleteExperienceResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -624,11 +658,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "EmplyeeInfoDataSource",
+                        "ExperienceDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteEmplyeeInfo",
+                "FieldName": "deleteExperience",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -645,7 +679,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteEmplyeeInfo",
+                                        "deleteExperience",
                                         "req",
                                         "vtl"
                                     ]
@@ -669,7 +703,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteEmplyeeInfo",
+                                        "deleteExperience",
                                         "res",
                                         "vtl"
                                     ]
@@ -681,7 +715,31 @@
             }
         }
     },
-    "Outputs": {},
+    "Outputs": {
+        "GetAttExperienceDataSourceName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "ExperienceDataSource",
+                    "Name"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AppSyncApiId"
+                            },
+                            "GetAtt",
+                            "ExperienceDataSource",
+                            "Name"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [

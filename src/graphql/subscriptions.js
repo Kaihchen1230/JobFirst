@@ -700,6 +700,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -777,6 +778,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -854,6 +856,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       description
       requirements
       datePosted
+      deadline
       location {
         id
         line1
@@ -909,6 +912,7 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
         description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       nextToken
@@ -954,6 +958,7 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
         description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       nextToken
@@ -999,6 +1004,7 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
         description
         requirements
         datePosted
+        deadline
         clickedCounts
       }
       nextToken
@@ -1042,6 +1048,7 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
     description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1097,6 +1104,7 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
     description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
@@ -1152,6 +1160,7 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
     description
     requirements
     datePosted
+    deadline
     location {
       id
       line1
