@@ -88,9 +88,16 @@ const navBar = (props) => {
       </Menu.Item>
 
 
-      <Menu.Item>
+      {isLoggedIn() ? (
+        <Menu.Item>
+        {state.login}
+        <Link to={`/app/user-profile/${getUser().sub}`}></Link>
+      </Menu.Item>
+      ) : (
+        <Menu.Item>
         {state.login}
       </Menu.Item>
+      )}
 
 
 

@@ -109,6 +109,7 @@ class Home extends React.Component {
                 onMouseEnter={this.onMouseEnter}
                 onMouseLeave={this.onMouseLeave}
                 prefixCls="custom-arrow-thumb"
+                autoPlay={true}
             >
                 <Element 
                     key="aaa"
