@@ -5,11 +5,10 @@ import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
 import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob';
-import About from '../components/business_profile/about';
+import About from '../components/business_profile/aboutCompany';
 import CeoPic from '../components/business_profile/ceoPic'
 import { generate } from 'randomstring';
 import BriefInfo from "../components/business_profile/briefInfo";
-import dict from "../components/dictionary/dictionary"
 import * as mutations from '../graphql/mutations';
 import * as queries from '../graphql/queries';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
@@ -74,7 +73,8 @@ class businessProfile extends React.Component {
     ceo:"Xiao Tiantian",
     size:"545",
     revenue:"100M",
-    timeline: "",
+    timeline: ["Create a services site 2015-09-01","Create a services site 2015-09-01",
+               "Create a services site 2015-09-01","Create a services site 2015-09-01"],
     jobAmount:5,
     description: "At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off.\
                   We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact\
@@ -129,8 +129,7 @@ class businessProfile extends React.Component {
   }
 
   render() {
-    // I18n.putVocabularies(dict);
-    // I18n.setLanguage(this.state.lan);
+
     return (
         <div >
           <div className="banner">
@@ -143,7 +142,7 @@ class businessProfile extends React.Component {
         <div style={bodyStyle}>
           <div className = "tabs">
             <Tabs defaultActiveKey="1" >
-              <TabPane tab="Profile" key="1" >
+              <TabPane tab={I18n.get('Profile')} key="1" >
                 <div>
                   <div >
                     <Button type="primary" onClick={this.showModal}>
@@ -175,7 +174,7 @@ class businessProfile extends React.Component {
                     />     
                   </div>
                   <div className="row2">  
-                    <Timeline />
+                    <Timeline timeline= {this.state.timeline}/>
                     <CeoPic
                       ceo = {this.state.ceo}
                       ceoPic = {this.state.ceoPic}
@@ -186,7 +185,7 @@ class businessProfile extends React.Component {
 
               </TabPane>
           
-              <TabPane tab="Jobs(3)" key="2">
+              <TabPane tab={I18n.get('Jobs')+"("+this.state.jobAmount+")"} key="2">
                 <div>
                   <PostJob jobList={this.state.jobList} />
                 </div>

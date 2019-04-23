@@ -1,7 +1,7 @@
 import { Avatar } from 'antd';
 import React from 'react';
 import { Icon } from 'antd';
-
+import { I18n } from 'aws-amplify';
 
 let mainStyle = {
     padddingLeft:"0px",
@@ -18,11 +18,10 @@ let infoStyle = {
 }
 
 const briefInfo = (props) => {
-    console.log("props, ",props);
     return (
             <div style={mainStyle}  >
                 <div style={infoStyle}>
-                    <h2>Brief Info</h2> 
+                    <h2>{I18n.get('Brief Info')}</h2> 
                     {props.companyType}
                     <br/>
                     <Icon type="home" style={{ fontSize: '20px' }}  theme="filled" /> Headquarter:{props.headquarter}

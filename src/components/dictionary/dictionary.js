@@ -48,7 +48,14 @@ let dict = {
         'Line 1 of job address': "工作地址的第1行",
         'Line 2 of job address': "工作地址第2行",
         'Enter the postal code of the job location': "输入工作地点的邮政编码",
-        'Enter the state of the job location': "输入作业位置的状态"
+        'Enter the state of the job location': "输入作业位置的状态",
+        "Brief Info":"简介",
+        "Profile":"详情",
+        "Jobs":"工作",
+        "Timeline":"时间轴",
+        "About Company":"公司简介"
+
+        
     },
     'es': {
         'Sign In': "Register",
@@ -99,7 +106,12 @@ let dict = {
         'Line 1 of job address': "Line 1 of job address",
         'Line 2 of job address': "Line 2 of job address",
         'Enter the postal code of the job location': "Enter the postal code of the job location",
-        'Enter the state of the job location': "Enter the state of the job location"
+        'Enter the state of the job location': "Enter the state of the job location",
+        "Brief Info":"Brief Info",
+        "Profile":"Profile",
+        "Jobs":"Jobs",
+        "Timeline":"Timeline",
+        "About Company":"About Company"
     }
 };
 export default dict;
