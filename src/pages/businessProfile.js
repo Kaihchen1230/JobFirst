@@ -3,7 +3,6 @@ import {Modal, Button, Tabs } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
-import { I18n } from 'aws-amplify';
 import PostJob from '../components/business_profile/postJob';
 import About from '../components/business_profile/aboutCompany';
 import CeoPic from '../components/business_profile/ceoPic'
@@ -11,7 +10,7 @@ import { generate } from 'randomstring';
 import BriefInfo from "../components/business_profile/briefInfo";
 import * as mutations from '../graphql/mutations';
 import * as queries from '../graphql/queries';
-import Amplify, { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation,Auth, I18n } from "aws-amplify";
 import '../style/businessProfile.css';
 
 
@@ -91,19 +90,11 @@ class businessProfile extends React.Component {
   }
 
   componentDidMount = async () => {
-
-    // let employerData = {
-    //   id: "0403b921-33c6-4456-81ca-cfc21394dd7d",
-    //   companyName: "alibabartrt",
-    //   companyEmail: "lanjie34569@gmail.com",
-    //   companyPhone: "5435345",
-    //   companyWebsite: "qqq.com",
-    //   employerCompanyAddressId:"100"
-    // }
-
-    // let data= await API.graphql(graphqlOperation(mutations.updateEmployer,
-    //    {input: employerData}));
-    // console.log("new timeline is", data);
+    let user = await Auth.currentAuthenticatedUser();
+    const { attributes } = user;
+    let employerData = await API.graphql(graphqlOperation(queries.getEmployer,{id:attributes.sub}));
+    employerData = employerData.data.getEmployer;
+    console.log("employer",employerData);
   }
 
   showModal = () => {
@@ -119,6 +110,7 @@ class businessProfile extends React.Component {
   }
 
   handleCancel = (e) => {
+
     this.setState({
       visible: false,
     });
@@ -144,16 +136,13 @@ class businessProfile extends React.Component {
                     <Button type="primary" onClick={this.showModal}>
                       {I18n.get('Edit Profile')}
                     </Button>
-                    <Modal
-                      title="Edit Company Information"
-                      okText={"Save"}
-                      visible={this.state.visible}
-                      onOk={this.handleOk}
-                      onCancel={this.handleCancel}  
-                      width = {800}             
-                    >
-                      <EditProfileForm data = {this.state}/>
-                    </Modal>
+
+                    <EditProfileForm
+                     data = {this.state}
+                     visible={this.state.visible}
+                     onOk={this.handleOk}
+                     onCancel={this.handleCancel}
+                    />
                   </div>
                   <div className="row1">
                     <div className="aboutCompany">
@@ -171,11 +160,7 @@ class businessProfile extends React.Component {
                     />     
                   </div>
                   <div className="row2">  
-                    <Timeline timeline
-                    
-                    
-                    
-                    = {this.state.timeline}/>
+                    <Timeline timeline = {this.state.timeline}/>
                     <CeoPic
                       ceo = {this.state.ceo}
                       ceoPic = {this.state.ceoPic}
