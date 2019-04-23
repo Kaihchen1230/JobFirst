@@ -36,7 +36,7 @@ const navBar = (props) => {
     <Menu
       mode="horizontal"
       theme="dark"
-      style={{ position: "sticky", top: "0", zIndex:1}}
+      style={{ position: "sticky", top: "0", zIndex: 1}}
     >
       <Menu.Item  key="home" >
         <Icon type="home" theme="outlined" style={{style}}/>
@@ -65,14 +65,6 @@ const navBar = (props) => {
         <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
         </Menu.Item>
 
-
-      {!isLoggedIn() ? (
-        <Menu.Item key="register">
-          <Icon type="form" theme="outlined" />{I18n.get('Register')}
-            <Link to="/app/signup"></Link>
-        </Menu.Item>) : null}
-
-
       <Menu.Item>
         <Button ghost="true" onClick={() => {
           window.localStorage.setItem('lan', 'es');
@@ -87,6 +79,14 @@ const navBar = (props) => {
         }}>CHINESE - 中文</Button>
       </Menu.Item>
 
+      {!isLoggedIn() ? (
+      <Menu.Item>
+        <Link to="/app/signup">
+        <Button type="primary">Register</Button>
+        </Link>
+      </Menu.Item>
+      ) : null
+      }
 
       {isLoggedIn() ? (
         <Menu.Item>
@@ -98,8 +98,6 @@ const navBar = (props) => {
         {state.login}
       </Menu.Item>
       )}
-
-
 
       {/* if logged in, then display log out button */}
       {isLoggedIn() ? (
