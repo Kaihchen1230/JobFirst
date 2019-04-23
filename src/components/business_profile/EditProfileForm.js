@@ -46,7 +46,8 @@ class ModalForm extends React.Component {
     let data= await API.graphql(graphqlOperation(mutations.updateEmployer,
         {input: employerData}));
     console.log("upload new profile")
-    this.props.onCancel();
+    this.props.onOk();
+    location.reload(true);
   }
 
   render() {
@@ -85,7 +86,7 @@ class ModalForm extends React.Component {
         okText={"Save"}
         visible={this.props.visible}
         onOk={this.handleSubmit}
-        onCancel={this.onCancel}
+        onCancel={this.props.onCancel}
         width={800}
       >
         <Form className="login-form">
