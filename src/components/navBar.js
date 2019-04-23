@@ -36,7 +36,7 @@ const navBar = (props) => {
     <Menu
       mode="horizontal"
       theme="dark"
-      style={{ position: "sticky", top: "0", zIndex:1}}
+      style={{ position: "sticky", top: "0", zIndex: 1}}
     >
       <Menu.Item  key="home" >
         <Icon type="home" theme="outlined" style={{style}}/>
