@@ -3,7 +3,7 @@ import React from "react";
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
-import { I18n } from 'aws-amplify';
+import { Auth, I18n } from 'aws-amplify';
 //import "../style/postJob.css";
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
@@ -20,6 +20,8 @@ class PostJob extends React.Component {
     } 
 
     async handleSubmit () {
+        let user = await Auth.currentAuthenticatedUser();
+        const { attributes } = user;
         const postForm = document.forms["jobPost"];
         const CreateAddressInput = {
             line1: postForm["line1"].value,
@@ -35,7 +37,7 @@ class PostJob extends React.Component {
 	        datePosted: postForm["postDate"].value,
 	        deadline: postForm["deadline"].value,
 	        clickedCounts: 0,
-	        postedJobCompanyId: postForm["companyID"].value,
+	        postedJobCompanyId: attributes.sub,
 	        postedJobLocationId: newAddress.data.createAddress.id
         }
         const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}))
@@ -50,8 +52,8 @@ class PostJob extends React.Component {
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
-                    {/* make it a entry for now, but should automatic assign when employer */}
-                    <Form.Item>
+                    {/* We don't this part */}
+                    {/* <Form.Item>
                         <Input placeholder={I18n.get('Enter Employer Name')}
                             prefix={<Icon type="user" />}
                             suffix={
@@ -60,7 +62,7 @@ class PostJob extends React.Component {
                                 </Tooltip>}
                             name="companyID"
                         />
-                    </Form.Item>
+                    </Form.Item> */}
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"

@@ -11,13 +11,17 @@ const jobItem = (props) => {
                 <p>Deadline: {item.deadline}</p>
                 <div align="center">
                     <Button type="primary" ghost>
-                        <Link to={'/app/job-detail/'+item.id}>Learn More</Link>
+                        <Link 
+                            to={'/app/job-detail/'+item.id}
+                            state={{ id: item.id}}
+                        >Learn More</Link>
                     </Button>
                 </div>
             </Card>
         </Col>
     );
     return (
+
         <div style={{ background: '#ECECEC', padding: '30px', height: '1000px' }}>
             <h1 align="center">Welcome to Our Job Pool</h1>
             <Row gutter={16}>
