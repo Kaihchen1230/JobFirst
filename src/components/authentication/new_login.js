@@ -93,23 +93,21 @@ class NewLogin extends React.Component {
         const { email, name, phone_number, sub, username} = userInfo
         const profileExist = userInfo['custom:isProfile'];
         console.log("userInfo",userInfo);
-        console.log("isEmployer",userInfo['custom:isEmployer'] === 'no');
         if (profileExist === 'no') {
-          let data ={
-            id:sub
-          };
           if(userInfo['custom:isEmployer'] == 'no'){
-            data = {
+            let data = {
+              id:sub,
               username: username,
               firstName: name,
               phone: phone_number,
-              companyEmail: email,
+              email: email,
             }
             const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
             console.log("new employee", newEmployee);
           }
           else{
-            data = {
+            let data = {
+              id:sub,
               companyName: username,
               companyEmail: email,
             }

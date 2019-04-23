@@ -153,7 +153,8 @@ class businessProfile extends React.Component {
                       okText={"Save"}
                       visible={this.state.visible}
                       onOk={this.handleOk}
-                      onCancel={this.handleCancel}               
+                      onCancel={this.handleCancel}  
+                      width = {800}             
                     >
                       <EditProfileForm />
                     </Modal>
@@ -174,7 +175,11 @@ class businessProfile extends React.Component {
                     />     
                   </div>
                   <div className="row2">  
-                    <Timeline timeline= {this.state.timeline}/>
+                    <Timeline timeline
+                    
+                    
+                    
+                    = {this.state.timeline}/>
                     <CeoPic
                       ceo = {this.state.ceo}
                       ceoPic = {this.state.ceoPic}
