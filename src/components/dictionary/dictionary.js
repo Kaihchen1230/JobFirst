@@ -53,13 +53,18 @@ let dict = {
         "Profile":"详情",
         "Jobs":"工作",
         "Timeline":"时间轴",
-        "About Company":"公司简介"
-
-        
+        "About Company":"公司简介",
+        "Register As A New User": "注册成为新用户",
+        "Repeat Password": "重复输入密码",
+        "Enter Email": "输入邮箱",
+        "Enter Name": "输入名字",
+        "Enter Phone Number": "输入电话号码",
+        "I Want to Hire": "我想雇用",
+        "I Want to Work": "我想要工作"
     },
     'es': {
-        'Sign In': "Register",
-        'Sign Up': "Register",
+        'Sign In': "Sign In",
+        'Sign Up': "Sign Up",
         'Enter Username': "Enter Username",
         'Enter Password': "Enter Password",
         'Post a New Job': "Post a New Job",
@@ -111,7 +116,14 @@ let dict = {
         "Profile":"Profile",
         "Jobs":"Jobs",
         "Timeline":"Timeline",
-        "About Company":"About Company"
+        "About Company":"About Company",
+        "Register As A New User": "Register As A New User",
+        "Repeat Password": "Repeat Password",
+        "Enter Email": "Enter Email",
+        "Enter Name": "Enter Name",
+        "Enter Phone Number": "Enter Phone Number",
+        "I Want to Hire": "I Want to Hire",
+        "I Want to Work": "I Want to Work"
     }
 };
 export default dict;

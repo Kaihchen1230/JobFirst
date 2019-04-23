@@ -95,7 +95,7 @@ class Login extends React.Component {
       <div align='center'>
         <br />
         <h1>{I18n.get('Log in')}</h1>
-        <Form onSubmit={this.handleSubmit} className="login-form" style={{ "width": "80%" }}>
+        <Form onSubmit={this.handleSubmit} className="login-form" style={{ "width": "50%" }}>
           <Form.Item>
             {getFieldDecorator('userName', {
               rules: [{ required: true, message: 'Please input your username!' }],
