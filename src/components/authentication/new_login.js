@@ -94,7 +94,7 @@ class NewLogin extends React.Component {
         const profileExist = userInfo['custom:isProfile'];
         console.log("userInfo",userInfo);
         if (profileExist === 'no') {
-          if(userInfo['custom:isEmployer'] == 'no'){
+          if(userInfo['custom:isEmployer'] === 'no'){
             let data = {
               id:sub,
               username: username,

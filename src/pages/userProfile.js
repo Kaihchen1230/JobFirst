@@ -6,43 +6,95 @@ import Information from '../components/user_profile/content';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import { getUser, isLoggedIn } from '../services/auth';
+import { Layout, Skeleton, Menu, Icon } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
+const SubMenu = Menu.SubMenu;
 
-class Profile extends React.Component{
+class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userID: this.props.userID
+            userID: this.props.userID,
+            loading: true,
+            collapsed: false,
         }
     }
 
-    componentDidMount = async() => {
+    onCollapse = (collapsed) => {
+        console.log(collapsed);
+        this.setState({ collapsed });
+    }
+
+    componentDidMount = async () => {
         // fetch the user info
-        const user = await API.graphql(graphqlOperation(queries.getEmployee, { id: this.state.userID }));
-        console.log(user.data.getEmployee);
-        this.setState({
-            username:       user.data.getEmployee.username,
-            address:        user.data.getEmployee.address,
-            age:            user.data.getEmployee.age,
-            award:          user.data.getEmployee.award,
-            email:          user.data.getEmployee.email,
-            englishLevel:   user.data.getEmployee.englishLevel,
-            firstName:      user.data.getEmployee.firstName,
-            lastName:       user.data.getEmployee.lastName,
-            middleName:     user.data.getEmployee.middleName,
-            phone:          user.data.getEmployee.phone,
-            pic:            user.data.getEmployee.pic,
-            website:        user.data.getEmployee.website
-
-        })
-    }
-    
-    render() {
-        if(this.state.pic == null) {
+        try {
+            // console.log(this.props.userID);
+            const user = await API.graphql(graphqlOperation(queries.getEmployee, { id: this.state.userID }));
+            // console.log(user);
             this.setState({
-                pic: '../../static/pik.png'
+                user: user.data.getEmployee,
+                loading: false
             })
+        } catch (err) {
+            console.log("error in getting the user's information", err);
         }
-        return pro;
+
+    }
+
+    render() {
+        if (this.state.loading) {
+            return (
+                <Skeleton active />
+            );
+        }
+        console.log(this.state.user);
+        return (
+            <Layout style={{ minHeight: '100vh' }}>
+                <Sider
+                    collapsible
+                    collapsed={this.state.collapsed}
+                    onCollapse={this.onCollapse}
+                    width={300}
+                >
+                    <Person user={this.state.user} />
+                    {(getUser().sub === this.state.userID) ?(
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                        <Menu.Item key="1">
+                            <Icon type="form" />
+                            <span>Edit Profile</span>
+                        </Menu.Item>
+                        <Menu.Item key="2">
+                            <Icon type="picture" />
+                            <span>Change Profile Picture</span>
+                        </Menu.Item>
+                        <SubMenu
+                            key="sub1"
+                            title={<span><Icon type="user" /><span>User</span></span>}
+                        >
+                            <Menu.Item key="3">Tom</Menu.Item>
+                            <Menu.Item key="4">Bill</Menu.Item>
+                            <Menu.Item key="5">Alex</Menu.Item>
+                        </SubMenu>
+                        <SubMenu
+                            key="sub2"
+                            title={<span><Icon type="team" /><span>Team</span></span>}
+                        >
+                            <Menu.Item key="6">Team 1</Menu.Item>
+                            <Menu.Item key="8">Team 2</Menu.Item>
+                        </SubMenu>
+                        <Menu.Item key="9">
+                            <Icon type="file" />
+                            <span>Upload A resume</span>
+                        </Menu.Item>
+                    </Menu>): null
+                    }
+                </Sider>
+                <Content>
+                    <Information user={this.state.user} />
+                </Content>
+            </Layout>
+
+        );
     }
 }
 
