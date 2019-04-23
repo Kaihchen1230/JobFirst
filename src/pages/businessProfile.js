@@ -73,7 +73,8 @@ class businessProfile extends React.Component {
     ceo:"Xiao Tiantian",
     size:"545",
     revenue:"100M",
-    timeline: "",
+    timeline: ["Create a services site 2015-09-01","Create a services site 2015-09-01",
+               "Create a services site 2015-09-01","Create a services site 2015-09-01"],
     jobAmount:5,
     description: "At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off.\
                   We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact\
@@ -173,7 +174,7 @@ class businessProfile extends React.Component {
                     />     
                   </div>
                   <div className="row2">  
-                    <Timeline />
+                    <Timeline timeline= {this.state.timeline}/>
                     <CeoPic
                       ceo = {this.state.ceo}
                       ceoPic = {this.state.ceoPic}

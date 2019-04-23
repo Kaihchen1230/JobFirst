@@ -18,7 +18,6 @@ let infoStyle = {
 }
 
 const briefInfo = (props) => {
-    console.log("props, ",props);
     return (
             <div style={mainStyle}  >
                 <div style={infoStyle}>

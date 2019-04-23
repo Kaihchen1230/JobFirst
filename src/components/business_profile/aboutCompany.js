@@ -12,7 +12,6 @@ let Style = {
 };
 
 const about = (props) => {
-    console.log("props, ",props);
     return (
             <div style={Style}  >
                 <h2>{I18n.get('About Company')}</h2> 

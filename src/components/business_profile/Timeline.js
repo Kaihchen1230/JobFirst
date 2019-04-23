@@ -12,23 +12,20 @@ const timeLine = (props) => {
     let timelineStyle ={
         marginLeft:"5%"
     }
+    let timelines = props["timeline"];
+    let Timelines = ()=>{  
+        return timelines.map(element => {
+                            return(<Timeline.Item
+                              dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
+                              {element}</Timeline.Item> )
+                            })
+    }
+
     return (
         <div style={mainStyle}>
             <h1>{I18n.get('Timeline')}</h1>
             <Timeline style = {timelineStyle} pending="Keep Going..." >
-                <Timeline.Item
-                    dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
-                    Create a services site 2015-09-01</Timeline.Item>
-                <Timeline.Item
-                    dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
-                    Solve initial network problems 2015-09-01
-                </Timeline.Item>
-                <Timeline.Item
-                    dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
-                Network problems being solved 2015-09-01</Timeline.Item>
-                <Timeline.Item
-                    dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
-                    Technical testing 2015-09-01</Timeline.Item>              
+                <Timelines/>        
             </Timeline>
         </div>
     )
