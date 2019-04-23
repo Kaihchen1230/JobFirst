@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, navigate } from "gatsby";
 import { Auth } from "aws-amplify";
-import { Menu, Icon, Avatar, Button, Modal, Form, Input, Checkbox } from 'antd';
+import { Menu, Icon, Avatar, Button, Dropdown } from 'antd';
 import { isLoggedIn, setUser, getUser, logout } from "../services/auth"
 import { I18n } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react'
@@ -28,26 +28,44 @@ const navBar = (props) => {
   I18n.putVocabularies(dict);
   I18n.setLanguage(lan);
   const style = {
-      fontSize: "25px"
+    fontSize: "25px"
 
   };
+
+  const language_menu = (
+    <Menu>
+      <Menu.Item>
+        <Button type="primary" onClick={() => {
+          window.localStorage.setItem('lan', 'es');
+          window.location.reload();
+        }}>ENGLISH - 英语</Button>
+      </Menu.Item>
+
+      <Menu.Item>
+        <Button type="primary" onClick={() => {
+          window.localStorage.setItem('lan', 'ch');
+          window.location.reload();
+        }}>CHINESE - 中文</Button>
+      </Menu.Item>
+    </Menu>
+  )
 
   return (
     <Menu
       mode="horizontal"
       theme="dark"
-      style={{ position: "sticky", top: "0", zIndex: 1}}
+      style={{ position: "sticky", top: "0", zIndex: 1 }}
     >
-      <Menu.Item  key="home" >
-        <Icon type="home" theme="outlined" style={{style}}/>
-          {I18n.get('Home')}
-          <Link to="/"></Link>
+      <Menu.Item key="home" >
+        <Icon type="home" theme="outlined" style={{ style }} />
+        {I18n.get('Home')}
+        <Link to="/"></Link>
       </Menu.Item>
 
 
       <Menu.Item key="about">
         <Icon type="solution" theme="outlined" />{I18n.get('View Job')}
-          <Link to="/app/job-list"></Link>
+        <Link to="/app/job-list"></Link>
       </Menu.Item>
 
       <Menu.Item>
@@ -63,41 +81,31 @@ const navBar = (props) => {
 
       <Menu.Item key="contact">
         <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
-        </Menu.Item>
-
-      <Menu.Item>
-        <Button ghost="true" onClick={() => {
-          window.localStorage.setItem('lan', 'es');
-          window.location.reload();
-        }}>ENGLISH - 英语</Button>
       </Menu.Item>
 
-      <Menu.Item>
-        <Button ghost="true" onClick={() => {
-          window.localStorage.setItem('lan', 'ch');
-          window.location.reload();
-        }}>CHINESE - 中文</Button>
-      </Menu.Item>
+      <Dropdown overlay={language_menu}>
+        <Button>Language</Button>
+      </Dropdown>
 
       {!isLoggedIn() ? (
-      <Menu.Item>
-        <Link to="/app/signup">
-        <Button type="primary">Register</Button>
-        </Link>
-      </Menu.Item>
+        <Menu.Item>
+          <Link to="/app/signup">
+            <Button type="primary">{I18n.get('Register')}</Button>
+          </Link>
+        </Menu.Item>
       ) : null
       }
 
       {isLoggedIn() ? (
         <Menu.Item>
-        {state.login}
-        <Link to={`/app/user-profile/${getUser().sub}`}></Link>
-      </Menu.Item>
+          {state.login}
+          <Link to={`/app/user-profile/${getUser().sub}`}></Link>
+        </Menu.Item>
       ) : (
-        <Menu.Item>
-        {state.login}
-      </Menu.Item>
-      )}
+          <Menu.Item>
+            {state.login}
+          </Menu.Item>
+        )}
 
       {/* if logged in, then display log out button */}
       {isLoggedIn() ? (

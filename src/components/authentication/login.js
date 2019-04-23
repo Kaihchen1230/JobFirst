@@ -118,7 +118,7 @@ class Login extends React.Component {
             <br />
             <a className="login-form-forgot" href="">{I18n.get('Forgot Password?')}</a>
             <br />
-            <a href="">{I18n.get('Register Now')}</a>
+            <a href="/app/signup">{I18n.get('Register Now')}</a>
           </Form.Item>
         </Form>
       </div>
