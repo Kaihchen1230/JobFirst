@@ -10,18 +10,17 @@ const FormItem = Form.Item;
 class ModalForm extends React.Component {
   constructor(props) {
     super(props);
-    let data = this.props.data;
-    
+    let data = this.props.data; 
     this.state = { ...data };
+    this.state.addressLine1 = data.companyAddress.addressLine1;
+    this.state.addressLine2 =data.companyAddress.addressLine2;
+    this.state.postalCode =data.companyAddress.postalCode;
+    this.state.state = data.companyAddress.state;
     this.state.lan = window.localStorage.getItem('lan');
   }
 
   componentDidMount = async () => {
-    let user = await Auth.currentAuthenticatedUser();
-    const { attributes } = user;
-    let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: attributes.sub }));
-    employerData = employerData.data.getEmployer;
-    console.log("employer", employerData);
+
   }
 
   handleUpdate = (event) => {
