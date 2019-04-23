@@ -9,7 +9,9 @@ const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
 
+
     state = {
+        jobId: "",
         jobDetail:[
             {
                 title: 'Software Engineer Intern',
@@ -106,11 +108,20 @@ class JobDescription extends React.Component{
             address: 'London No. 12 Lake Park',
           }
         ]
+        
     }
-            
+    componentDidMount(){
+      let id = window.history.state.id;
+      this.setState({
+        jobId: id
+      });
+      
+    }
+    
     render(){
-
+      
         return(
+            
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
                 <h4>{this.state['company'][0].name}</h4>

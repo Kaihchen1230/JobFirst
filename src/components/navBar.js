@@ -27,14 +27,20 @@ const navBar = (props) => {
   }
   I18n.putVocabularies(dict);
   I18n.setLanguage(lan);
+  const style = {
+      fontSize: "25px"
+
+  };
+
   return (
     <Menu
       mode="horizontal"
       theme="dark"
-      style={{ position: "sticky", top: "0", zIndex:1 }}
+      style={{ position: "sticky", top: "0", zIndex:1}}
     >
-      <Menu.Item key="home">
-        <Icon type="home" theme="outlined" />{I18n.get('Home')}
+      <Menu.Item  key="home" >
+        <Icon type="home" theme="outlined" style={{style}}/>
+          {I18n.get('Home')}
           <Link to="/"></Link>
       </Menu.Item>
 
