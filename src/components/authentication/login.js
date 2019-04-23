@@ -33,9 +33,10 @@ class Login extends React.Component {
           username: user.username
         }
         setUser(userInfo)
-        // the next line must not be deleted and I don't know why
+        //! the next line must not be deleted and I don't know why
         console.log(userInfo);
-        (userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/" + userInfo.username) : navigate("/app/business-profile")
+        //(userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/" + userInfo.username) : navigate("/app/business-profile")
+        navigate("/")
       } catch (err) {
         this.setState({ error: err })
         console.log('error....: ', err)

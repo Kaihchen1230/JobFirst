@@ -1,6 +1,6 @@
 import { Button, Modal, Form, Input, Radio, Icon } from 'antd';
 import React from 'react';
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import { isLoggedIn, setUser, getUser } from "../../services/auth"
 import { I18n, Auth } from 'aws-amplify';
 import 'antd/dist/antd.css';
@@ -40,7 +40,7 @@ const LoginForm = Form.create({ name: 'form_in_modal' })(
               )}
             </Form.Item>
             <Form.Item>
-              <a href="">{I18n.get('Register Now')}</a>
+              <Link to="/app/signup">{I18n.get('Register Now')}</Link>
             </Form.Item>
           </Form>
         </Modal>
@@ -83,7 +83,7 @@ class NewLogin extends React.Component {
         // const test = await Auth.userAttributes(user);
         //console.log(test)
         setUser(userInfo)
-        userInfo['custom:isEmployer'] === 'no' ? navigate("/app/user-profile/" + userInfo.username) : navigate("/app/business-profile")
+        navigate("/")
       } catch (err) {
         this.setState({ error: err })
         console.log('error....: ', err)
