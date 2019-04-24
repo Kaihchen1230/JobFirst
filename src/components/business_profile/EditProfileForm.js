@@ -4,6 +4,7 @@ import { generate } from 'randomstring';
 import * as mutations from '../../graphql/mutations';
 import * as queries from '../../graphql/queries';
 import { API, graphqlOperation, Auth, I18n } from "aws-amplify";
+import moment from 'moment';
 
 const FormItem = Form.Item;
 
@@ -77,6 +78,8 @@ class ModalForm extends React.Component {
     // location.reload(true);
   }
 
+  
+
   render() {
 
     const formItemLayout = {
@@ -99,12 +102,22 @@ class ModalForm extends React.Component {
               key={index}
               label={"Timeline" + " " + index}
             >
-              <Input value={element.info} style={{ width: "60%" }} required>
+              <Input value={element.title} style={{ width: "60%" }} required>
               </Input>
               <Button>
                 <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
               </Button>
-              
+              <Input.TextArea
+                value={element.info} 
+                style={{ width: "60%" }}
+                rows={3}
+                name="description"
+                placeholder="description" />
+                <br/>
+              <DatePicker 
+                defaultValue={moment(element.date, 'YYYY-MM-DD')}
+                placeholder={I18n.get('Event Date')}
+                name="postDate"/>     
             </FormItem>)
         }
       )

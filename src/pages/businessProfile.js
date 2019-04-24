@@ -10,6 +10,7 @@ import { generate } from 'randomstring';
 import BriefInfo from "../components/business_profile/briefInfo";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation,Auth, I18n } from "aws-amplify";
+import * as mutations from '../graphql/mutations';
 import '../style/businessProfile.css';
 
 
@@ -98,6 +99,18 @@ class businessProfile extends React.Component {
     const { attributes } = user;
     let employerData = await API.graphql(graphqlOperation(queries.getEmployer,{id:attributes.sub}));
     this.setState({companyID:attributes.sub});
+
+    //create some timeline data
+    // let timelineData = {
+    //   id: "105",
+    //   timelineCompanyId: attributes.sub,
+    //   date:"2019-09-10",
+    //   title:"ma yun create alibaba yu 2019 nian",
+    //   info: "hgh"
+    // }
+    // console.log("new timeline",timelineData);
+    // let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,{input: timelineData}));
+    // console.log("new timeline",timeline);
 
     //set up other employer info
     employerData = employerData.data.getEmployer;
