@@ -78,14 +78,40 @@ class ModalForm extends React.Component {
     // location.reload(true);
   }
 
+  //add one more timeline
   handleAddTimeline =()=>{
+    let timelines = this.state.timeline;
+    let newTimeline = {
+      info:"",
+      title:"",
+      date:moment(new Date(),"YYYY-MM-DD")
+    }
+    timelines = [...timelines, newTimeline];
+    this.setState({timeline:timelines});
+    console.log(this.state.timeline);
+  }
+
+  //delete one timeline by index
+  handleDeleteTimeline =(index)=>{
+    let timelines = [...this.state.timeline];
+    timelines.splice(0,1);
+    this.setState({timeline:timelines});
+  }
+
+  //update the state when timeline title change
+  handleTitleUpdate = ()=>{
 
   }
 
-  handleDeleteTimeline =()=>{
+  //update the state when timeline date change
+  handleDateUpdate = ()=>{
     
   }
 
+  //update the state when description change
+  handleDesUpdate = ()=>{
+    
+  }
   
 
   render() {
@@ -100,6 +126,7 @@ class ModalForm extends React.Component {
         sm: { span: 16 },
       }
     };
+
     let Timelines = () => {
       return this.state.timeline.map(
         (element, index) => {
@@ -110,13 +137,15 @@ class ModalForm extends React.Component {
               key={index}
               label={"Timeline" + " " + index}
             >
-              <Input value={element.title} style={{ width: "60%" }} required>
-              </Input>
+              {/* title input */}
+              <Input value={element.title} style={{ width: "60%" }} required ></Input>
               <Tooltip title="Delete">
-                <Button>
+                <Button
+                  onClick = {()=>{this.handleDeleteTimeline(index)}}>
                   <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
                 </Button>
               </Tooltip>
+              {/* textArea*/}
               <Input.TextArea
                 value={element.info} 
                 style={{ width: "60%" }}
@@ -124,6 +153,7 @@ class ModalForm extends React.Component {
                 name="description"
                 placeholder="description" />
                 <br/>
+              {/* datepicker */}
               <DatePicker 
                 defaultValue={moment(element.date, 'YYYY-MM-DD')}
                 placeholder={I18n.get('Event Date')}
@@ -294,7 +324,9 @@ class ModalForm extends React.Component {
           <h2 style={{ marginLeft: "20%" }}>Timeline:</h2>
           <Timelines />
           <div style={{ textAlign: "center" }} >
-            <Button>     
+            <Button
+              onClick = {this.handleAddTimeline}
+            >     
                 <Icon type="plus" />
                 Add More Timelines    
             </Button>

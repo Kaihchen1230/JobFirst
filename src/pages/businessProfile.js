@@ -107,7 +107,7 @@ class businessProfile extends React.Component {
     //   date:"2019-09-10",
     //   title:"ma yun create alibaba yu 2019 nian",
     //   info: "hgh"
-    // }
+    // }o;;o;;
     // console.log("new timeline",timelineData);
     // let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,{input: timelineData}));
     // console.log("new timeline",timeline);
