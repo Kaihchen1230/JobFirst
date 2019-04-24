@@ -1,4 +1,4 @@
-import { Form, Modal, Input, DatePicker, Select, Cascader, Button, Icon } from 'antd';
+import { Form, Modal, Input, DatePicker,Tooltip, Button, Icon } from 'antd';
 import React from 'react';
 import { generate } from 'randomstring';
 import * as mutations from '../../graphql/mutations';
@@ -78,6 +78,14 @@ class ModalForm extends React.Component {
     // location.reload(true);
   }
 
+  handleAddTimeline =()=>{
+
+  }
+
+  handleDeleteTimeline =()=>{
+    
+  }
+
   
 
   render() {
@@ -104,9 +112,11 @@ class ModalForm extends React.Component {
             >
               <Input value={element.title} style={{ width: "60%" }} required>
               </Input>
-              <Button>
-                <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
-              </Button>
+              <Tooltip title="Delete">
+                <Button>
+                  <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
+                </Button>
+              </Tooltip>
               <Input.TextArea
                 value={element.info} 
                 style={{ width: "60%" }}
