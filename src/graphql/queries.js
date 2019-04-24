@@ -520,6 +520,7 @@ export const getEmployer = `query GetEmployer($id: ID!) {
       items {
         id
         date
+        title
         info
       }
       nextToken
@@ -713,6 +714,7 @@ export const getTimeline = `query GetTimeline($id: ID!) {
       }
     }
     date
+    title
     info
   }
 }
@@ -741,6 +743,7 @@ export const listTimelines = `query ListTimelines(
         description
       }
       date
+      title
       info
     }
     nextToken
