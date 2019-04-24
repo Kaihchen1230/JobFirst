@@ -19,6 +19,16 @@ class ModalForm extends React.Component {
     this.state.lan = window.localStorage.getItem('lan');
   }
 
+  componentWillReceiveProps=(nextProps)=>{
+    let data = nextProps.data; 
+    this.setState({ ...data });
+    this.setState({addressLine1 : data.companyAddress.addressLine1});
+    this.setState({addressLine2 : data.companyAddress.addressLine2});
+    this.setState({postalCode : data.companyAddress.postalCode});
+    this.setState({state : data.companyAddress.state});
+    this.setState({lan : window.localStorage.getItem('lan')});
+  }
+
   componentDidMount = async () => {
 
   }
@@ -35,18 +45,19 @@ class ModalForm extends React.Component {
     const { attributes } = user;
     let employerData = {
       id: "0403b921-33c6-4456-81ca-cfc21394dd7d",
-      companyName: "alibabartrt",
+      companyName: "alibaba12",
       companyEmail: "lanjie34569@gmail.com",
       companyPhone: "5435345",
-      companyWebsite: "rfrgrgr",
+      companyWebsite: "alibaba@123",
       employerCompanyAddressId:"100"
     }
   
     let data= await API.graphql(graphqlOperation(mutations.updateEmployer,
         {input: employerData}));
-    console.log("upload new profile")
+    
+    console.log("upload new profile",data);
     this.props.onOk();
-    location.reload(true);
+    // location.reload(true);
   }
 
   render() {
@@ -71,7 +82,7 @@ class ModalForm extends React.Component {
               key={index}
               label={"Timeline" + " " + index}
             >
-              <Input value={element} style={{ width: "60%" }} required>
+              <Input value={element.info} style={{ width: "60%" }} required>
               </Input>
               <Icon style={{ fontSize: "20px", marginLeft: "1%" }} type="delete" />
             </FormItem>)
@@ -212,7 +223,7 @@ class ModalForm extends React.Component {
             <Input
               value={this.state.addressLine1}
               style={{ width: "60%" }}
-              name="addressline1"
+              name="addressLine1"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
           </FormItem>
@@ -222,20 +233,9 @@ class ModalForm extends React.Component {
           >
             <Input
               value={this.state.addressLine2}
-              name="addressline2"
+              name="addressLine2"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="City"
-          >
-            <Input
-              value={this.state.city}
-              style={{ width: "60%" }}
-              name="city"
-              onChange={(event) => { this.handleUpdate(event) }}
-              required />
           </FormItem>
           <FormItem
             {...formItemLayout}

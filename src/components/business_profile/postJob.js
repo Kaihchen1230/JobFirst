@@ -5,7 +5,7 @@ const JobItem = (props) => {
     let jobItem = props.jobs.map((item, index) =>
         <Col key={index} span={8} style={{ margin: '10px 0' }}>
             <Card title={item.campanyName} bordered={true}>
-                <p>{item.description}</p>
+                <p>{item.jobTitle}</p>
                 <div align="center">
                     <Button type="primary" ghost>
                         <Link to="/app/job-detail">Learn More</Link>

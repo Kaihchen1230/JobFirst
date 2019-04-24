@@ -17,7 +17,7 @@ const timeLine = (props) => {
         return timelines.map((element,index) => {
                             return(<Timeline.Item key ={index}
                               dot={<Icon type="down-circle" style={{ fontSize: '2em' }}/>}>
-                              {element}</Timeline.Item> )
+                              {element.info}</Timeline.Item> )
                             })
     }
 
