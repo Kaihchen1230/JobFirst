@@ -19,14 +19,16 @@ class JobList extends React.Component {
         return (
             <container>
                 <Layout>
-                    <Sider>
+                    <Header>
                         <SideBar />
-                    </Sider>
+                    </Header>
+                </Layout>
+                <Layout>
                     <Content>
                         <Connect query={graphqlOperation(queries.listPostedJobs)}>
                             {({ data: { listPostedJobs }, loading, error }) => {
-                                if(error) return (<h3>ERROR</h3>);
-                                if(loading || !listPostedJobs) return (<h3>Loading...</h3>);
+                                if (error) return (<h3>ERROR</h3>);
+                                if (loading || !listPostedJobs) return (<h3>Loading...</h3>);
                                 return (<JobItem jobs={listPostedJobs.items} />);
                             }}
                         </Connect>
