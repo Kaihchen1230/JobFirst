@@ -62,6 +62,7 @@ class businessProfile extends React.Component {
         description: 'Requirement:Know CSS and HTML.'
       }
     ],
+    companyID:"",
     companyName:"xiaomi",
     companyWebsite: "xiaomi.com",
     companyType:"Internet Service",
@@ -91,34 +92,42 @@ class businessProfile extends React.Component {
 
   //Download businessProfile data from AWS
   componentDidMount = async () => {
+
+    //set up companyID
     let user = await Auth.currentAuthenticatedUser();
     const { attributes } = user;
     let employerData = await API.graphql(graphqlOperation(queries.getEmployer,{id:attributes.sub}));
-    employerData = employerData.data.getEmployer;
+    this.setState({companyID:attributes.sub});
 
+    //set up other employer info
+    employerData = employerData.data.getEmployer;
     for(let item in employerData){
-      
       if(employerData[item] && item != "timeline" && item != "companyAddress" && item != "job" && item !="id"){ 
         this.setState({[item]:employerData[item]});
       }
     }
 
+    //set up other employer info with nested object
     this.setState({timeline:employerData.timeline.items});
     this.setState({jobList:employerData.job.items});
+    this.setState({jobAmount:employerData.job.items.length})
 
     //set up the address data
-    let addressLine1 = employerData.companyAddress.line1;
-    let addressLine2 = employerData.companyAddress.line2;
-    let postalCode = employerData.companyAddress.postalCode;
-    let state = employerData.companyAddress.state;
-    let companyAddress = {
-      addressLine1,
-      addressLine2,
-      postalCode,
-      state
+    if(employerData.companyAddress){
+      let addressLine1 = employerData.companyAddress.line1;
+      let addressLine2 = employerData.companyAddress.line2;
+      let postalCode = employerData.companyAddress.postalCode;
+      let state = employerData.companyAddress.state;
+      let id = employerData.companyAddress.id;
+      let companyAddress = {
+        id,
+        addressLine1,
+        addressLine2,
+        postalCode,
+        state
+      }
+      this.setState({companyAddress});
     }
-    this.setState({companyAddress});
-    this.setState({jobAmount:employerData.job.items.length})
 
     console.log("employer",employerData);
   }

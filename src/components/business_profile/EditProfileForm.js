@@ -1,4 +1,4 @@
-import { Form, Modal,Input, DatePicker, Select, Cascader, Button, Icon } from 'antd';
+import { Form, Modal, Input, DatePicker, Select, Cascader, Button, Icon } from 'antd';
 import React from 'react';
 import { generate } from 'randomstring';
 import * as mutations from '../../graphql/mutations';
@@ -10,52 +10,69 @@ const FormItem = Form.Item;
 class ModalForm extends React.Component {
   constructor(props) {
     super(props);
-    let data = this.props.data; 
+    let data = this.props.data;
     this.state = { ...data };
     this.state.addressLine1 = data.companyAddress.addressLine1;
-    this.state.addressLine2 =data.companyAddress.addressLine2;
-    this.state.postalCode =data.companyAddress.postalCode;
+    this.state.addressLine2 = data.companyAddress.addressLine2;
+    this.state.postalCode = data.companyAddress.postalCode;
     this.state.state = data.companyAddress.state;
+    this.state.addressID = data.companyAddress.id;
     this.state.lan = window.localStorage.getItem('lan');
   }
 
-  componentWillReceiveProps=(nextProps)=>{
-    let data = nextProps.data; 
+  componentWillReceiveProps = (nextProps) => {
+    let data = nextProps.data;
     this.setState({ ...data });
-    this.setState({addressLine1 : data.companyAddress.addressLine1});
-    this.setState({addressLine2 : data.companyAddress.addressLine2});
-    this.setState({postalCode : data.companyAddress.postalCode});
-    this.setState({state : data.companyAddress.state});
-    this.setState({lan : window.localStorage.getItem('lan')});
+    this.setState({ addressLine1: data.companyAddress.addressLine1 });
+    this.setState({ addressLine2: data.companyAddress.addressLine2 });
+    this.setState({ postalCode: data.companyAddress.postalCode });
+    this.setState({ state: data.companyAddress.state });
+    this.setState({ addressID: data.companyAddress.id });
+    this.setState({ lan: window.localStorage.getItem('lan') });
   }
 
-  componentDidMount = async () => {
-
-  }
 
   handleUpdate = (event) => {
-    console.log("update", event.target.value);
+    console.log("update", event.target.name, event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = async()=>{
-    let user = await Auth.currentAuthenticatedUser();
-    const { attributes } = user;
+  handleSubmit = async () => {
+
+    //update basic employer information
     let employerData = {
-      id: "0403b921-33c6-4456-81ca-cfc21394dd7d",
-      companyName: "alibaba12",
-      companyEmail: "lanjie34569@gmail.com",
-      companyPhone: "5435345",
-      companyWebsite: "alibaba@123",
-      employerCompanyAddressId:"100"
+      id: this.state.companyID,
+      companyName: this.state.companyName,
+      companyEmail: this.state.companyEmail,
+      companyPhone: this.state.companyPhone,
+      companyWebsite: this.state.companyWebsite,
+      companyPic: this.state.companyPic,
+      revenue: this.state.revenue,
+      ceo: this.state.ceo,
+      ceoPic: this.state.ceoPic,
+      companyType: this.state.companyType,
+      description: this.state.description,
+      headquarter: this.state.headquarter,
+      size: this.state.size
     }
-  
-    let data= await API.graphql(graphqlOperation(mutations.updateEmployer,
-        {input: employerData}));
-    
-    console.log("upload new profile",data);
+    let newEmployer = await API.graphql(graphqlOperation(mutations.updateEmployer,
+      { input: employerData }));
+    console.log("upload new profile", newEmployer);
+
+    //update address
+    let addressData = {
+      id: this.state.addressID,
+      line1: this.state.addressLine1,
+      line2: this.state.addressLine2,
+      postalCode: this.state.postalCode,
+      state: this.state.state
+    }
+    let newAddress = await API.graphql(graphqlOperation(mutations.updateAddress,
+      { input: addressData }));
+    console.log("upload new profile", newAddress);
+
     this.props.onOk();
     // location.reload(true);
   }
@@ -84,7 +101,10 @@ class ModalForm extends React.Component {
             >
               <Input value={element.info} style={{ width: "60%" }} required>
               </Input>
-              <Icon style={{ fontSize: "20px", marginLeft: "1%" }} type="delete" />
+              <Button>
+                <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
+              </Button>
+              
             </FormItem>)
         }
       )
@@ -116,10 +136,10 @@ class ModalForm extends React.Component {
           <FormItem
             {...formItemLayout}
             label="Website"
-            name="companyWebsite"
           >
             <Input
               value={this.state.companyWebsite}
+              name="companyWebsite"
               style={{ width: "60%" }}
               onChange={(event) => { this.handleUpdate(event) }}
               required />
@@ -250,10 +270,13 @@ class ModalForm extends React.Component {
           </FormItem>
           <h2 style={{ marginLeft: "20%" }}>Timeline:</h2>
           <Timelines />
-          <div style={{ textAlign: "center" }}>
-            <Icon type="plus" />
-            Add More Timelines
-              </div>
+          <div style={{ textAlign: "center" }} >
+            <Button>     
+                <Icon type="plus" />
+                Add More Timelines    
+            </Button>
+          </div>
+
 
         </Form>
       </Modal>
