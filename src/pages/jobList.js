@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Select, Input, Icon, Menu, Layout } from 'antd';
+import { Col, Row, Select, Input, Icon, Layout } from 'antd';
 import JobItem from '../components/jobList/jobItem';
 import dict from "../components/dictionary/dictionary";
 import { I18n, graphqlOperation } from 'aws-amplify';
@@ -10,7 +10,6 @@ const {
     Header, Footer, Sider, Content,
 } = Layout;
 const Search = Input.Search;
-const SubMenu = Menu.SubMenu;
 const Option = Select.Option;
 const InputGroup = Input.Group;
 let lan = window.localStorage.getItem('lan');
@@ -18,32 +17,33 @@ I18n.putVocabularies(dict);
 I18n.setLanguage(lan);
 class JobList extends React.Component {
 
-    state = {}
+    state = {
+        filter: {}
+    }
 
-    handleChange = (value) => {
-        console.log('select ${value}');
+    handleChange (value) {
+        console.log(value);
     }
 
     render() {
         return (
-            <container>
-                <Layout>
-                    <Header>
+                <Layout style={{ margin: "16px 24px 16px 24px" }}>
+                    <Header  style={{ textAlign: "center", backgroundColor:"gray", height:"15%" }}>
                         <InputGroup compact>
                             <Select size="large" defaultValue="Name" style={{ width: "10%" }}>
                                 <Option value="Name">Name</Option>
                                 <Option value="Location">Location</Option>
                             </Select>
                             <Search
-                                style={{ width: '54%' }}
+                                style={{ width: '50%' }}
                                 placeholder={I18n.get('Search')}
                                 enterButton="Search"
                                 size="large"
-                                onSearch={value => console.log(value)}
+                                onSearch={value => this.handleChange(value)}
                             />
                         </InputGroup>
                         <InputGroup compact>
-                            <Row gutter={8} style={{ width: '80%' }}>
+                            <Row gutter={8} style={{ width: '60%' }}>
                                 <Col span={4}>
                                     <Select style={{ width: "80%" }} size="large" placeholder="Category">
                                         <Option value="Option1-1">Option1-1</Option>
@@ -81,8 +81,6 @@ class JobList extends React.Component {
                             </Row>
                         </InputGroup>
                     </Header>
-                </Layout>
-                <Layout>
                     <Content>
                         <Connect query={graphqlOperation(queries.listPostedJobs)}>
                             {({ data: { listPostedJobs }, loading, error }) => {
@@ -93,9 +91,6 @@ class JobList extends React.Component {
                         </Connect>
                     </Content>
                 </Layout>
-
-            </container>
-
         );
     }
 }
