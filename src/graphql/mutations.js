@@ -898,7 +898,6 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       items {
         id
         date
-        title
         info
       }
       nextToken
@@ -945,7 +944,6 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       items {
         id
         date
-        title
         info
       }
       nextToken
@@ -992,7 +990,6 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       items {
         id
         date
-        title
         info
       }
       nextToken
@@ -1215,7 +1212,6 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
       }
     }
     date
-    title
     info
   }
 }
@@ -1252,7 +1248,6 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
       }
     }
     date
-    title
     info
   }
 }
@@ -1289,7 +1284,6 @@ export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInp
       }
     }
     date
-    title
     info
   }
 }
