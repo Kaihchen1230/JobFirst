@@ -59,12 +59,20 @@ class Login extends React.Component {
               console.log("new employee", newEmployee);
             }
             else{
-              let data = {
+              //create a default address and profile
+              let address ={
+                line1:null,
+                line2:null,
+                state:null
+              }
+              const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: address})); 
+              let employerData = {
                 id:sub,
+                employerCompanyAddressId:newAddress.data.createAddress.id,
                 companyName: username,
                 companyEmail: email,
               }
-              const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: data})); 
+              const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: employerData })); 
               console.log("new employer",newEmployeer);           
             }
 
