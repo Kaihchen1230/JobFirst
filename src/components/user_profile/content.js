@@ -7,10 +7,6 @@ import * as mutations from '../../graphql/mutations';
 
 const TabPane = Tabs.TabPane;
 
-function callback(key) {
-    console.log(key);
-}
-
 const dataSource = [{
     key: '1',
     job: 'Front-end developer',
@@ -46,63 +42,74 @@ const columns = [{
 }];
 
 const fakeAppliedJobObject = {
-//Employee: Employee object
-//Job: PostedJob
-//dateApplied: String
-//status: String
+    //Employee: Employee object
+    //Job: PostedJob
+    //dateApplied: String
+    //status: String
     dateApplied: "today",
     status: "pending"
 }
 
-const fetchAppliedJobs = async (e) => {
-    // post a fake job for testing
-    //try {
-    //    const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
-    //    console.log("The following job was added:\n", newAppliedJob);
-    //} catch (err) {
-    //    console.log("The error is ", err);
-    //}
-    // once a fake job is posted fetch all jobs (for now)
-    try {
-        let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
-        console.log("The following jobs were fetched:\n", fetchAllAppliedJobs);
-    } catch (err) {
-        console.log("The error is ", err);
+class Information extends React.Component {
+
+    state = {
+        theJobs: []
     }
-}
 
-const Information = (props) => {
-    // should get all the user information from props
-    const user = props.user;
-    return (
-        <div>
-            <Tabs defaultActiveKey="1" onChange={callback}>
-                <TabPane tab="General Info" key="1">
-                    <div>
-                        First Name: {user.firstName}
-                        <br />
-                        Last Name: {user.lastName}
-                        <br />
-                        Age: {user.age}
-                        <br />
-                    </div>
+    componentDidMount = () => {}
 
-                </TabPane>
+    fetchAppliedJobs = async (e) => {
+        // post a fake job for testing
+        //try {
+        //    const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
+        //    console.log("The following job was added:\n", newAppliedJob);
+        //} catch (err) {
+        //    console.log("The error is ", err);
+        //}
+        // once a fake job is posted fetch all jobs (for now)
+        try {
+            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+            console.log("The following jobs were fetched:\n", fetchAllAppliedJobs);
+        } catch (err) {
+            console.log("The error is ", err);
+        }
+    }
 
-                <TabPane tab="Education and Award" key="2">Content of Tab Pane 2</TabPane>
+    callback = (key) => {
+        console.log(key);
+    }
 
-                <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
-                {(getUser().sub === user.id) ?
+    render() {
+        const user = getUser();
+        console.log(user);
+        return (
+            <div>
+                <Tabs defaultActiveKey="1" onChange={this.callback}>
+                    <TabPane tab="General Info" key="1">
+                        <div>
+                            First Name: {user.name}
+                            <br />
+                            Last Name: {user.lastName}
+                            <br />
+                            Age: {user.age}
+                            <br />
+                        </div>
+
+                    </TabPane>
+
+                    <TabPane tab="Education and Award" key="2">Content of Tab Pane 2</TabPane>
+
+                    <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
+
                     <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
                         <h1 align="center">Applied Jobs</h1>
                         <Table dataSource={dataSource} columns={columns} />
-                        <Button onClick={fetchAppliedJobs}>Test</Button>
-                    </TabPane> :
-                    null
-                }
-            </Tabs>
-        </div>
-    );
+                        <Button onClick={this.fetchAppliedJobs}>(Add Some Jobs for Testing)</Button>
+                    </TabPane>
+                </Tabs>
+            </div>
+        );
+    }
 }
 
 export default Information;
