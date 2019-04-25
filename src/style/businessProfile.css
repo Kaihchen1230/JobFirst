@@ -7,10 +7,6 @@
    
 }
 
-.companyName{
-    font-size: 4em; 
-}
-
 .companyLocation{
     position: relative;
     top:-10%;
@@ -24,17 +20,12 @@
     width:20%;
 }
 
-.tabs{
-    padding:20px 60px;
-}
 
 .row1,.row2{
     display: -webkit-flex; /* Safari */
     display: flex;   
 }
 
-.aboutCompany{
-    width:65%;
-}
+
 
 

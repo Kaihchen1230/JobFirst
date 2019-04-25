@@ -7,6 +7,7 @@ let mainStyle = {
     padddingLeft:"0px",
     position:"relative",
     left:"5%",
+    marginTop:"3%",
     fontSize:"1.2em",
     letterSpacing: "1px",
     lineHeight:"1.8em",

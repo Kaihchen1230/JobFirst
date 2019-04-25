@@ -148,7 +148,7 @@ class businessProfile extends React.Component {
                         description={this.state.description}
                       />     
                     </div>
-                    <BriefInfo className="briefInfo"
+                    <BriefInfo 
                       companyWebsite={this.state.companyWebsite}
                       size={this.state.size}
                       revenue={this.state.revenue}
@@ -166,8 +166,7 @@ class businessProfile extends React.Component {
                   </div>    
                 </div>
 
-              </TabPane>
-          
+              </TabPane>        
               <TabPane tab={I18n.get('Jobs')+"("+this.state.jobAmount+")"} key="2">
                 <div>
                   <PostJob jobList={this.state.jobList} />
