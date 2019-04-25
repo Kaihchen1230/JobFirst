@@ -170,7 +170,9 @@ class businessProfile extends React.Component {
               </TabPane>
               <TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
                 <div>
-                  <PostJob jobList={this.state.jobList} />
+                  <PostJob 
+                  jobList={this.state.jobList} 
+                  companyPic={this.state.companyPic}/>
                 </div>
               </TabPane>
             </Tabs>
