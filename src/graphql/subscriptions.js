@@ -1,350 +1,1295 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateEmplyeeInfo = `subscription OnCreateEmplyeeInfo {
-  onCreateEmplyeeInfo {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const onCreateEmployee = `subscription OnCreateEmployee {
+  onCreateEmployee {
+    id
+    username
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
+    appliedJob {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
+  }
+}
+`;
+export const onUpdateEmployee = `subscription OnUpdateEmployee {
+  onUpdateEmployee {
+    id
+    username
+    firstName
+    middleName
+    lastName
+    age
+    email
+    phone
+    website
+    pic
+    address {
+      id
+      line1
+      line2
+      postalCode
+      state
+    }
+    appliedJob {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
+  }
+}
+`;
+export const onDeleteEmployee = `subscription OnDeleteEmployee {
+  onDeleteEmployee {
+    id
+    username
+    firstName
+    middleName
+    lastName
+    age
+    email
+    phone
+    website
+    pic
+    address {
+      id
+      line1
+      line2
+      postalCode
+      state
+    }
+    appliedJob {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
+  }
+}
+`;
+export const onCreateAssociation = `subscription OnCreateAssociation {
+  onCreateAssociation {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
       address {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
         state
       }
-      date_applied
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
   }
 }
 `;
-export const onUpdateEmplyeeInfo = `subscription OnUpdateEmplyeeInfo {
-  onUpdateEmplyeeInfo {
-    employee_id
-    first_name
-    middle_name
-    last_name
-    age
-    email
-    phone
-    website
-    pic
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
-    }
-    applied_job {
-      job_id
-      owner_id
+export const onUpdateAssociation = `subscription OnUpdateAssociation {
+  onUpdateAssociation {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
       address {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
         state
       }
-      date_applied
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
   }
 }
 `;
-export const onDeleteEmplyeeInfo = `subscription OnDeleteEmplyeeInfo {
-  onDeleteEmplyeeInfo {
-    employee_id
-    first_name
-    middle_name
-    last_name
-    age
-    email
-    phone
-    website
-    pic
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
-    }
-    applied_job {
-      job_id
-      owner_id
+export const onDeleteAssociation = `subscription OnDeleteAssociation {
+  onDeleteAssociation {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
       address {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
         state
       }
-      date_applied
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onCreateExperience = `subscription OnCreateExperience {
+  onCreateExperience {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onUpdateExperience = `subscription OnUpdateExperience {
+  onUpdateExperience {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onDeleteExperience = `subscription OnDeleteExperience {
+  onDeleteExperience {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onCreateEducation = `subscription OnCreateEducation {
+  onCreateEducation {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onUpdateEducation = `subscription OnUpdateEducation {
+  onUpdateEducation {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const onDeleteEducation = `subscription OnDeleteEducation {
+  onDeleteEducation {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
   }
 }
 `;
 export const onCreateAddress = `subscription OnCreateAddress {
   onCreateAddress {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const onUpdateAddress = `subscription OnUpdateAddress {
   onUpdateAddress {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const onDeleteAddress = `subscription OnDeleteAddress {
   onDeleteAddress {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
 `;
 export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
   onCreateAppliedJob {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+      }
+      jobTitle
+      jobType
+      description
+      requirements
+      datePosted
+      deadline
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
+    status
   }
 }
 `;
 export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
   onUpdateAppliedJob {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+      }
+      jobTitle
+      jobType
+      description
+      requirements
+      datePosted
+      deadline
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
+    status
   }
 }
 `;
 export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
   onDeleteAppliedJob {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+      }
+      jobTitle
+      jobType
+      description
+      requirements
+      datePosted
+      deadline
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
+    status
   }
 }
 `;
-export const onCreateEmployerInfo = `subscription OnCreateEmployerInfo {
-  onCreateEmployerInfo {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const onCreateEmployer = `subscription OnCreateEmployer {
+  onCreateEmployer {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        title
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      items {
+        id
+        jobTitle
+        jobType
+        description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
+      }
+      nextToken
+    }
   }
 }
 `;
-export const onUpdateEmployerInfo = `subscription OnUpdateEmployerInfo {
-  onUpdateEmployerInfo {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const onUpdateEmployer = `subscription OnUpdateEmployer {
+  onUpdateEmployer {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        title
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      items {
+        id
+        jobTitle
+        jobType
+        description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
+      }
+      nextToken
+    }
   }
 }
 `;
-export const onDeleteEmployerInfo = `subscription OnDeleteEmployerInfo {
-  onDeleteEmployerInfo {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const onDeleteEmployer = `subscription OnDeleteEmployer {
+  onDeleteEmployer {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        title
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      items {
+        id
+        jobTitle
+        jobType
+        description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
+      }
+      nextToken
+    }
   }
 }
 `;
 export const onCreatePostedJob = `subscription OnCreatePostedJob {
   onCreatePostedJob {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
+    jobTitle
+    jobType
+    description
     requirements
-    date_posted
+    datePosted
+    deadline
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
   onUpdatePostedJob {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
+    jobTitle
+    jobType
+    description
     requirements
-    date_posted
+    datePosted
+    deadline
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const onDeletePostedJob = `subscription OnDeletePostedJob {
   onDeletePostedJob {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
+    jobTitle
+    jobType
+    description
     requirements
-    date_posted
+    datePosted
+    deadline
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
 export const onCreateTimeline = `subscription OnCreateTimeline {
   onCreateTimeline {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
     date
+    title
     info
   }
 }
 `;
 export const onUpdateTimeline = `subscription OnUpdateTimeline {
   onUpdateTimeline {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
     date
+    title
     info
   }
 }
 `;
 export const onDeleteTimeline = `subscription OnDeleteTimeline {
   onDeleteTimeline {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
     date
+    title
     info
   }
 }

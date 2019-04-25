@@ -1,11 +1,15 @@
-import React from "react"
+import React from "react";
 //import { navigate } from "gatsby"
 //import { handleLogin, isLoggedIn } from "../services/auth"
 //import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
-import { I18n } from 'aws-amplify';
+import { Auth, I18n } from 'aws-amplify';
 //import "../style/postJob.css";
-import dict from "../dictionary/dictionary"
+import dict from "../dictionary/dictionary";
+import * as mutations from "../../graphql/mutations";
+import { API, graphqlOperation } from 'aws-amplify';
+
+
 const Option = Select.Option;
 const { TextArea } = Input;
 
@@ -15,8 +19,28 @@ class PostJob extends React.Component {
         lan: window.localStorage.getItem('lan')
     } 
 
-    handleSubmit = () => {
-
+    async handleSubmit () {
+        let user = await Auth.currentAuthenticatedUser();
+        const { attributes } = user;
+        const postForm = document.forms["jobPost"];
+        const CreateAddressInput = {
+            line1: postForm["line1"].value,
+            line2: postForm["line2"].value,
+            postalCode: postForm["postalCode"].value,
+            state: postForm["state"].value
+        }
+        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
+        const CreatePostedJobInput = {
+            jobTitle: postForm["jobTitle"].value,
+	        description: postForm["description"].value,
+	        requirements: [postForm["requirement"].value],
+	        datePosted: postForm["postDate"].value,
+	        deadline: postForm["deadline"].value,
+	        clickedCounts: 0,
+	        postedJobCompanyId: attributes.sub,
+	        postedJobLocationId: newAddress.data.createAddress.id
+        }
+        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}))
     }
 
     render() {
@@ -27,21 +51,63 @@ class PostJob extends React.Component {
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
-                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }}>
-                    <Form.Item>
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
+                    {/* We don't this part */}
+                    {/* <Form.Item>
                         <Input placeholder={I18n.get('Enter Employer Name')}
                             prefix={<Icon type="user" />}
                             suffix={
-                                <Tooltip title={I18n.get('Enter the name of the employer.')}>
+                                <Tooltip title={I18n.get('Enter the name of the employer')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                            name="companyID"
+                        />
+                    </Form.Item> */}
+                    <Form.Item>
+                        <Input placeholder={I18n.get('Enter the Job Title')} 
+                            name="jobTitle"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the name of the job')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Address Line 1')} 
+                            name="line1"
+                            suffix={
+                                <Tooltip title={I18n.get('Line 1 of job address')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Address Line 2')} 
+                            name="line2"
+                            suffix={
+                                <Tooltip title={I18n.get('Line 2 of job address')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Postal Code')}
+                            name="postalCode"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the postal code of the job location')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('State')} 
+                            name="state"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the state of the job location')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
-                        <DatePicker placeholder={I18n.get('Date Posted On')} />
+                        <DatePicker placeholder={I18n.get('Date Posted On')} name="postDate" />
+                        <br />
+                        <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
                     </Form.Item>
                     <Form.Item>
-                        <Select placeholder={I18n.get('Job Type')}>
+                    {/* doesn't seems to be pass correct value */}
+                        <Select placeholder={I18n.get('Job Type')} name="jobType" >
                             <Option value="Full Time">{I18n.get('Full Time')}</Option>
                             <Option value="Part Time">{I18n.get('Part Time')}</Option>
                             <Option value="Internship">{I18n.get('Internship')}</Option>
@@ -50,7 +116,14 @@ class PostJob extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <TextArea
-                            placeholder={I18n.get('Enter Job Description')} autosize={{ minRows: 2, maxRows: 6 }}
+                            placeholder={I18n.get('Enter Job Description')} 
+                            autosize={{ minRows: 2, maxRows: 6 }}
+                            name="description"
+                        />
+                        <TextArea
+                            placeholder={I18n.get('Enter Job Requirements')} 
+                            autosize={{ minRows: 2, maxRows: 6 }}
+                            name="requirement"
                         />
                     </Form.Item>
                     <Form.Item>
@@ -63,7 +136,7 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">{I18n.get('Submit Job')}</Button>
+                        <Button type="primary" htmlType="submit" >{I18n.get('Submit Job')}</Button>
                     </Form.Item>
                 </Form>
             </div>

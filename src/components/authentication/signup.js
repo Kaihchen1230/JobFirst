@@ -1,11 +1,12 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import { Auth } from 'aws-amplify';
+import { Auth, I18n } from 'aws-amplify';
 import Error from './Error'
 import { isLoggedIn } from '../../services/auth';
-import { Radio } from 'antd';
+import { Radio, Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 
 const RadioGroup = Radio.Group;
+
 class Signup extends React.Component {
     state = {
         username: '',
@@ -37,7 +38,7 @@ class Signup extends React.Component {
     signUp = async () => {
         const { username, password, email, name, phone_number, isEmployer, isProfile } = this.state;
         try {
-            await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer':isEmployer, 'custom:isProfile':isProfile } })
+            await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer': isEmployer, 'custom:isProfile': isProfile } })
             this.setState({ stage: 1 })
         } catch (err) {
             this.setState({ error: err })
@@ -48,7 +49,7 @@ class Signup extends React.Component {
     confirmSignUp = async () => {
         const { username, authCode } = this.state
         try {
-            await Auth.confirmSignUp(username, authCode)
+            await Auth.confirmSignUp(username, authCode);
             alert('Successfully signed up!')
             navigate("/app/login")
         } catch (err) {
@@ -56,68 +57,76 @@ class Signup extends React.Component {
             console.log('error confirming signing up...', err)
         }
     }
-
+    
     render() {
         if (isLoggedIn()) {
             navigate(`/app/user-profile`)
         }
         return (
-            <div>
-                <h1>Sign up</h1>
+            <div align="center">
+                <br />
+                <h1>{I18n.get('Register As A New User')}</h1>
                 {
                     this.state.stage === 0 && (
                         <div>
                             {this.state.error && <Error errorMessage={this.state.error} />}
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Username'
-                                    name='username'
-                                    value={this.state.username}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Password'
-                                    name='password'
-                                    value={this.state.password}
-                                    type='password'
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Email'
-                                    name='email'
-                                    value={this.state.email}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Name'
-                                    name='name'
-                                    value={this.state.name}
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    onChange={this.handleUpdate}
-                                    placeholder='Phone Number'
-                                    name='phone_number'
-                                    value={this.state.phone_number}
-                                />
-                            </div>
-                            <div>
-                                <RadioGroup onChange={this.handleRadio} value={this.state.isEmployer}>
-                                    <Radio value={'no'}>Employee</Radio>
-                                    <Radio value={'yes'}>Employer</Radio>
-                                </RadioGroup>
-                            </div>
-                            <div onClick={this.signUp}>
-                                <span id="sign-up">Sign Up</span>
-                            </div>
+                            <Form className="signup-form" style={{ "width": "50%" }} onSubmit={this.signUp}>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Username')}
+                                        prefix={<Icon type="user" />}
+                                        name='username'
+                                        value={this.state.username}
+                                        onChange={this.handleUpdate}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input.Password placeholder={I18n.get('Enter Password')}
+                                        prefix={<Icon type="lock" />}
+                                        name='password'
+                                        value={this.state.password}
+                                        onChange={this.handleUpdate}
+                                    />
+                                    <Input.Password placeholder={I18n.get('Repeat Password')}
+                                        prefix={<Icon type="lock" />}
+                                        name='password'
+                                        value={this.state.password}
+                                        onChange={this.handleUpdate}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Email')}
+                                        prefix={<Icon type="laptop" />}
+                                        name='email'
+                                        value={this.state.email}
+                                        onChange={this.handleUpdate}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Name')}
+                                        prefix={<Icon type="user" />}
+                                        name='name'
+                                        value={this.state.name}
+                                        onChange={this.handleUpdate}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <Input placeholder={I18n.get('Enter Phone Number')}
+                                        prefix={<Icon type="phone" />}
+                                        name='phone_number'
+                                        value={this.state.phone_number}
+                                        onChange={this.handleUpdate}
+                                    />
+                                </Form.Item>
+                                <Form.Item>
+                                    <RadioGroup onChange={this.handleRadio}>
+                                        <Radio value={'yes'}>{I18n.get('I Want to Hire')}</Radio>
+                                        <Radio value={'no'}>{I18n.get('I Want to Work')}</Radio>
+                                    </RadioGroup>
+                                </Form.Item>
+                                <Button onClick={this.signUp} type="primary">
+                                    <span id="sign-up">{I18n.get('Register')}</span>
+                                </Button>
+                            </Form>
                         </div>
                     )
                 }

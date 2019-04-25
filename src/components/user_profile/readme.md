@@ -1,1 +1,0 @@
-This folder will contain all the components for the user profile

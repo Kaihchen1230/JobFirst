@@ -1,0 +1,65 @@
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 001
+    company_id: 001
+    job_title: "Programmer"
+    requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
+    date_posted: "2016-01-01"
+    clicked_counts: 0
+  })
+}
+
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 2
+    company_id: 2
+    job_title: "Data Scientist"
+    requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
+    date_posted: "2017-01-01"
+    clicked_counts: 0
+  })
+}
+
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 3
+    company_id: 3
+    job_title: "Computer Sicentist"
+    requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
+    date_posted: "2017-01-02"
+    clicked_counts: 0
+  })
+}
+
+mutation CreatePostedJob{
+  createPostedJob(input: {
+    job_id: 4
+    company_id: 4
+    job_title: "Computer Sicentist"
+    requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
+    date_posted: "2017-01-02"
+    clicked_counts: 0
+  })
+}
+
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 5
+    company_id: 5
+    job_title: "Computer Engineer"
+    requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
+    date_posted: "2017-02-03"
+    clicked_counts: 0
+  })
+}
+
+mutation CreatePostedJob {
+  createPostedJob(input: {
+    job_id: 6
+    company_id: 6
+    job_title: "Computer Sicentist"
+    requirements: "Sit aliquip laboris proident adipisicing tempor esse non do non. Consectetur sunt incididunt dolore labore velit incididunt laborum excepteur non incididunt cillum reprehenderit. Exercitation minim reprehenderit et officia culpa laboris consequat. Aliqua minim duis ipsum voluptate consectetur dolore deserunt sint veniam consectetur pariatur adipisicing irure."
+    date_posted: "2019-01-02"
+    clicked_counts: 0
+  })
+}

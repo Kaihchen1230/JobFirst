@@ -1,128 +1,107 @@
-# type Blog @model {
-#   id: ID!
-#   name: String!
-#   posts: [Post] @connection(name: "BlogPosts")
-# }
-# type Post @model {
-#   id: ID!
-#   title: String!
-#   blog: Blog @connection(name: "BlogPosts")
-#   comments: [Comment] @connection(name: "PostComments")
-# }
-# type Comment @model {
-#   id: ID!
-#   content: String
-#   post: Post @connection(name: "PostComments")
-# }
-
-type EmplyeeInfo @model {
-  employee_id: ID! 
-  first_name: String!
-  middle_name: String
-  last_name: String!
+type Employee @model {
+  id: ID! 
+  username: String
+  firstName: String
+  middleName: String
+  lastName: String
   age: Int
-  email: String!
+  email: String
   phone: String
   website: String
   pic: String
-  address: Address
-  applied_job: [AppliedJob]
+  address: Address @connection # each employee should have an address
+  appliedJob: [AppliedJob] @connection(name:"employeeJob") # employee can apply to many jobs
+  education: [Education] @connection(name:"employeeEdu") # employee can have multiple education(degree)
+  experience: [Experience] @connection(name:"employeeExp") # employee can have multiple work experience
+  award: [String]
+  association: [Association] @connection(name:"employeeAsso")
+  skill: [String]
+  language: [String]
+  englishLevel: String
+}
+
+type Association @model {
+  id: ID!
+  position: String # member? president? treasury?  
+  name: String # the name of the association
+  whose: Employee @connection(name:"employeeAsso")
+}
+
+type Experience @model {
+  id: ID!
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  whose: Employee @connection(name:"employeeExp")
+}
+
+type Education @model {
+  id: ID!
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  whose: Employee @connection(name:"employeeEdu")
 }
 
 type Address @model {
-  address_id: ID!
-  person_id: ID!
-  line1: String!
+  id: ID!
+  line1: String
   line2: String
-  postal_code: String # or Int
-  state: State!
+  postalCode: String # or Int
+  state: String
 }
 
 type AppliedJob @model {
-  job_id: ID!
-  owner_id: ID! # the person who applied to this job
-  address: Address!
-  date_applied: String!
+  id: ID!
+  Employee: Employee @connection(name:"employeeJob")
+  Job: PostedJob @connection(name:"postedJob")# each appliedjob should belong to one of the PostedJob
+  dateApplied: String
+  status:String
 }
 
-type EmployerInfo @model {
-  employer_id: ID!
-  company_name: String!
-  company_email: String!
-  company_phone: String!
-  company_address: Address!
-  company_website: String
-  timeline: [Timeline!]
-  company_pic: String
+type Employer @model {
+  id: ID!
+  companyName: String
+  companyEmail: String
+  companyPhone: String
+  companyAddress: Address @connection
+  companyWebsite: String
+  companyType:String
+  headquarter: String
+  ceo:String
+  ceoPic:String
+  size:String
+  revenue:String
+  timeline: [Timeline] @connection(name:"timeline")
+  companyPic: String
   description: String
+  job: [PostedJob] @connection(name:"job")
 }
 
 type PostedJob @model {
-  job_id: ID!
-  company_id: ID!
-  job_title: String
-  requirements: [String!]
-  date_posted: String!
-  location: Address!
-  clicked_counts: Int
+  id: ID!
+  company: Employer @connection(name:"job")
+  jobTitle: String
+  jobType: String
+  description: String
+  requirements: [String]
+  datePosted: String
+  deadline: String
+  location: Address @connection
+  applied: [AppliedJob] @connection(name:"postedJob")
+  clickedCounts: Int
 }
 
 type Timeline @model {
-  timeline_id: ID!
-  company_id: ID!
-  date: String!
-  info: String!
-}
-
-enum State {
-  AL
-  AK
-  AZ
-  AR
-  CA
-  CO
-  CT
-  DE
-  FL
-  GA
-  HI
-  ID
-  IL
-  IN
-  IA
-  KS
-  KY
-  LA
-  ME
-  MD
-  MA
-  MI
-  MN
-  MS
-  MO
-  MT
-  NE
-  NV
-  NH
-  NJ
-  NM
-  NY
-  NC
-  ND
-  OH
-  OK
-  OR
-  PA
-  RI
-  SC
-  SD
-  TN
-  TX
-  UT
-  VT
-  VA
-  WA
-  WV
-  WI
-  WY
+  id: ID!
+  company: Employer @connection(name:"timeline")
+  date: String
+  title:String
+  info: String
 }

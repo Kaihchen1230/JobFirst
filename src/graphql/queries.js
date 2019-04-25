@@ -1,69 +1,349 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const getEmplyeeInfo = `query GetEmplyeeInfo($id: ID!) {
-  getEmplyeeInfo(id: $id) {
-    employee_id
-    first_name
-    middle_name
-    last_name
+export const getEmployee = `query GetEmployee($id: ID!) {
+  getEmployee(id: $id) {
+    id
+    username
+    firstName
+    middleName
+    lastName
     age
     email
     phone
     website
     pic
     address {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    applied_job {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
-        state
+    appliedJob {
+      items {
+        id
+        dateApplied
+        status
       }
-      date_applied
+      nextToken
     }
+    education {
+      items {
+        id
+        startYear
+        endYear
+        degree
+        schoolName
+        country
+        city
+      }
+      nextToken
+    }
+    experience {
+      items {
+        id
+        startYear
+        endYear
+        companyName
+        reasonToLeave
+        city
+        country
+      }
+      nextToken
+    }
+    award
+    association {
+      items {
+        id
+        position
+        name
+      }
+      nextToken
+    }
+    skill
+    language
+    englishLevel
   }
 }
 `;
-export const listEmplyeeInfos = `query ListEmplyeeInfos(
-  $filter: ModelEmplyeeInfoFilterInput
+export const listEmployees = `query ListEmployees(
+  $filter: ModelEmployeeFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listEmplyeeInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      employee_id
-      first_name
-      middle_name
-      last_name
+      id
+      username
+      firstName
+      middleName
+      lastName
       age
       email
       phone
       website
       pic
       address {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
         state
       }
-      applied_job {
-        job_id
-        owner_id
-        date_applied
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+    nextToken
+  }
+}
+`;
+export const getAssociation = `query GetAssociation($id: ID!) {
+  getAssociation(id: $id) {
+    id
+    position
+    name
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const listAssociations = `query ListAssociations(
+  $filter: ModelAssociationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAssociations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      position
+      name
+      whose {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getExperience = `query GetExperience($id: ID!) {
+  getExperience(id: $id) {
+    id
+    startYear
+    endYear
+    companyName
+    reasonToLeave
+    city
+    country
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const listExperiences = `query ListExperiences(
+  $filter: ModelExperienceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExperiences(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      startYear
+      endYear
+      companyName
+      reasonToLeave
+      city
+      country
+      whose {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getEducation = `query GetEducation($id: ID!) {
+  getEducation(id: $id) {
+    id
+    startYear
+    endYear
+    degree
+    schoolName
+    country
+    city
+    whose {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
+    }
+  }
+}
+`;
+export const listEducations = `query ListEducations(
+  $filter: ModelEducationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listEducations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      startYear
+      endYear
+      degree
+      schoolName
+      country
+      city
+      whose {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
       }
     }
     nextToken
@@ -72,11 +352,10 @@ export const listEmplyeeInfos = `query ListEmplyeeInfos(
 `;
 export const getAddress = `query GetAddress($id: ID!) {
   getAddress(id: $id) {
-    address_id
-    person_id
+    id
     line1
     line2
-    postal_code
+    postalCode
     state
   }
 }
@@ -88,11 +367,10 @@ export const listAddresss = `query ListAddresss(
 ) {
   listAddresss(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
     nextToken
@@ -101,17 +379,79 @@ export const listAddresss = `query ListAddresss(
 `;
 export const getAppliedJob = `query GetAppliedJob($id: ID!) {
   getAppliedJob(id: $id) {
-    job_id
-    owner_id
-    address {
-      address_id
-      person_id
-      line1
-      line2
-      postal_code
-      state
+    id
+    Employee {
+      id
+      username
+      firstName
+      middleName
+      lastName
+      age
+      email
+      phone
+      website
+      pic
+      address {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      appliedJob {
+        nextToken
+      }
+      education {
+        nextToken
+      }
+      experience {
+        nextToken
+      }
+      award
+      association {
+        nextToken
+      }
+      skill
+      language
+      englishLevel
     }
-    date_applied
+    Job {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+      }
+      jobTitle
+      jobType
+      description
+      requirements
+      datePosted
+      deadline
+      location {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      clickedCounts
+    }
+    dateApplied
+    status
   }
 }
 `;
@@ -122,76 +462,120 @@ export const listAppliedJobs = `query ListAppliedJobs(
 ) {
   listAppliedJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      job_id
-      owner_id
-      address {
-        address_id
-        person_id
-        line1
-        line2
-        postal_code
-        state
+      id
+      Employee {
+        id
+        username
+        firstName
+        middleName
+        lastName
+        age
+        email
+        phone
+        website
+        pic
+        award
+        skill
+        language
+        englishLevel
       }
-      date_applied
+      Job {
+        id
+        jobTitle
+        jobType
+        description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
+      }
+      dateApplied
+      status
     }
     nextToken
   }
 }
 `;
-export const getEmployerInfo = `query GetEmployerInfo($id: ID!) {
-  getEmployerInfo(id: $id) {
-    employer_id
-    company_name
-    company_email
-    company_phone
-    company_address {
-      address_id
-      person_id
+export const getEmployer = `query GetEmployer($id: ID!) {
+  getEmployer(id: $id) {
+    id
+    companyName
+    companyEmail
+    companyPhone
+    companyAddress {
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    company_website
+    companyWebsite
+    companyType
+    headquarter
+    ceo
+    ceoPic
+    size
+    revenue
     timeline {
-      timeline_id
-      company_id
-      date
-      info
+      items {
+        id
+        date
+        title
+        info
+      }
+      nextToken
     }
-    company_pic
+    companyPic
     description
+    job {
+      items {
+        id
+        jobTitle
+        jobType
+        description
+        requirements
+        datePosted
+        deadline
+        clickedCounts
+      }
+      nextToken
+    }
   }
 }
 `;
-export const listEmployerInfos = `query ListEmployerInfos(
-  $filter: ModelEmployerInfoFilterInput
+export const listEmployers = `query ListEmployers(
+  $filter: ModelEmployerFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listEmployerInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listEmployers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      employer_id
-      company_name
-      company_email
-      company_phone
-      company_address {
-        address_id
-        person_id
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
         line1
         line2
-        postal_code
+        postalCode
         state
       }
-      company_website
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
       timeline {
-        timeline_id
-        company_id
-        date
-        info
+        nextToken
       }
-      company_pic
+      companyPic
       description
+      job {
+        nextToken
+      }
     }
     nextToken
   }
@@ -199,20 +583,57 @@ export const listEmployerInfos = `query ListEmployerInfos(
 `;
 export const getPostedJob = `query GetPostedJob($id: ID!) {
   getPostedJob(id: $id) {
-    job_id
-    company_id
-    job_title
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
+    jobTitle
+    jobType
+    description
     requirements
-    date_posted
+    datePosted
+    deadline
     location {
-      address_id
-      person_id
+      id
       line1
       line2
-      postal_code
+      postalCode
       state
     }
-    clicked_counts
+    applied {
+      items {
+        id
+        dateApplied
+        status
+      }
+      nextToken
+    }
+    clickedCounts
   }
 }
 `;
@@ -223,20 +644,39 @@ export const listPostedJobs = `query ListPostedJobs(
 ) {
   listPostedJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      job_id
-      company_id
-      job_title
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+      }
+      jobTitle
+      jobType
+      description
       requirements
-      date_posted
+      datePosted
+      deadline
       location {
-        address_id
-        person_id
+        id
         line1
         line2
-        postal_code
+        postalCode
         state
       }
-      clicked_counts
+      applied {
+        nextToken
+      }
+      clickedCounts
     }
     nextToken
   }
@@ -244,9 +684,37 @@ export const listPostedJobs = `query ListPostedJobs(
 `;
 export const getTimeline = `query GetTimeline($id: ID!) {
   getTimeline(id: $id) {
-    timeline_id
-    company_id
+    id
+    company {
+      id
+      companyName
+      companyEmail
+      companyPhone
+      companyAddress {
+        id
+        line1
+        line2
+        postalCode
+        state
+      }
+      companyWebsite
+      companyType
+      headquarter
+      ceo
+      ceoPic
+      size
+      revenue
+      timeline {
+        nextToken
+      }
+      companyPic
+      description
+      job {
+        nextToken
+      }
+    }
     date
+    title
     info
   }
 }
@@ -258,9 +726,24 @@ export const listTimelines = `query ListTimelines(
 ) {
   listTimelines(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      timeline_id
-      company_id
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+      }
       date
+      title
       info
     }
     nextToken

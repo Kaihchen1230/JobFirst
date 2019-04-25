@@ -112,6 +112,10 @@
                     {
                         "AttributeName": "id",
                         "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "timelineCompanyId",
+                        "AttributeType": "S"
                     }
                 ],
                 "StreamSpecification": {
@@ -155,7 +159,37 @@
                             "Ref": "AWS::NoValue"
                         }
                     ]
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-timeline",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "timelineCompanyId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "Fn::If": [
+                                "ShouldUsePayPerRequestBilling",
+                                {
+                                    "Ref": "AWS::NoValue"
+                                },
+                                {
+                                    "ReadCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableReadIOPS"
+                                    },
+                                    "WriteCapacityUnits": {
+                                        "Ref": "DynamoDBModelTableWriteIOPS"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         },
         "TimelineIAMRole": {
@@ -681,7 +715,31 @@
             }
         }
     },
-    "Outputs": {},
+    "Outputs": {
+        "GetAttTimelineDataSourceName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "TimelineDataSource",
+                    "Name"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AppSyncApiId"
+                            },
+                            "GetAtt",
+                            "TimelineDataSource",
+                            "Name"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
     "Conditions": {
         "ShouldUsePayPerRequestBilling": {
             "Fn::Equals": [
