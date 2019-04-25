@@ -1,7 +1,8 @@
 import React from 'react';
-import { Tabs, Table } from 'antd';
+import { Tabs, Table, Button } from 'antd';
 import { getUser } from '../../services/auth';
 import { API, graphqlOperation } from 'aws-amplify';
+import * as queries from '../../graphql/queries';
 
 const TabPane = Tabs.TabPane;
 
@@ -11,31 +12,44 @@ function callback(key) {
 
 const dataSource = [{
     key: '1',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street'
+    job: 'Front-end developer',
+    date_applied: 'Today',
+    address: '10 Downing Street',
+    status: 'Pending'
 }, {
     key: '2',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street'
+    job: 'Back-end developer',
+    date_applied: 'Today',
+    address: '10 Downing Street',
+    status: 'Pending'
+}, {
+    key: '3',
+    job: 'Full-stack developer',
+    date_applied: 'Today',
+    address: '10 Downing Street',
+    status: 'Pending'
 }];
 
 const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'Job',
+    dataIndex: 'job',
+    key: 'job',
 }, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Date Applied',
+    dataIndex: 'date_applied',
+    key: 'date_applied',
 }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status'
 }];
 
-//let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+const fetchAppliedJobs = async (e) => {
+    const userInfo = getUser();
+    console.log(userInfo);
+    // from here we run the query to fetch the applied jobs for the user
+    //let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+}
 
 const Information = (props) => {
     // should get all the user information from props
@@ -59,9 +73,10 @@ const Information = (props) => {
 
                 <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
                 {(getUser().sub === user.id) ?
-                    <TabPane tab="Jobs Applied" key="4">Content of Tab Pane 4
-                    <h1>Test</h1>
+                    <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
+                        <h1 align="center">Applied Jobs</h1>
                         <Table dataSource={dataSource} columns={columns} />
+                        <Button onClick={fetchAppliedJobs}>Test</Button>
                     </TabPane> :
                     null
                 }
