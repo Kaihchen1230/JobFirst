@@ -3,6 +3,7 @@ import { Tabs, Table, Button } from 'antd';
 import { getUser } from '../../services/auth';
 import { API, graphqlOperation } from 'aws-amplify';
 import * as queries from '../../graphql/queries';
+import * as mutations from '../../graphql/mutations';
 
 const TabPane = Tabs.TabPane;
 
@@ -44,11 +45,30 @@ const columns = [{
     key: 'status'
 }];
 
+const fakeAppliedJobObject = {
+//Employee: Employee object
+//Job: PostedJob
+//dateApplied: String
+//status: String
+    dateApplied: "today",
+    status: "pending"
+}
+
 const fetchAppliedJobs = async (e) => {
-    const userInfo = getUser();
-    console.log(userInfo);
-    // from here we run the query to fetch the applied jobs for the user
-    //let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+    // post a fake job for testing
+    //try {
+    //    const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
+    //    console.log("The following job was added:\n", newAppliedJob);
+    //} catch (err) {
+    //    console.log("The error is ", err);
+    //}
+    // once a fake job is posted fetch all jobs (for now)
+    try {
+        let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+        console.log("The following jobs were fetched:\n", fetchAllAppliedJobs);
+    } catch (err) {
+        console.log("The error is ", err);
+    }
 }
 
 const Information = (props) => {
