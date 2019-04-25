@@ -7,26 +7,6 @@ import * as mutations from '../../graphql/mutations';
 
 const TabPane = Tabs.TabPane;
 
-const dataSource = [{
-    key: '1',
-    job: 'Front-end developer',
-    date_applied: 'Today',
-    address: '10 Downing Street',
-    status: 'Pending'
-}, {
-    key: '2',
-    job: 'Back-end developer',
-    date_applied: 'Today',
-    address: '10 Downing Street',
-    status: 'Pending'
-}, {
-    key: '3',
-    job: 'Full-stack developer',
-    date_applied: 'Today',
-    address: '10 Downing Street',
-    status: 'Pending'
-}];
-
 const columns = [{
     title: 'Job',
     dataIndex: 'job',
