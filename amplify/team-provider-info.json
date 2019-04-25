@@ -134,8 +134,6 @@
                 "cognitoed11de21": {}
             }
         }
-<<<<<<< HEAD
-=======
     },
     "gongenv": {
         "awscloudformation": {
@@ -153,6 +151,5 @@
                 "cognitoed11de21": {}
             }
         }
->>>>>>> 8e94084e7e3f24f4bfc594e48fdbd91d111a2261
     }
 }
