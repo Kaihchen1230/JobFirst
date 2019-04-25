@@ -36,36 +36,47 @@ class ModalForm extends React.Component {
 
 
   handleUpdate = (event) => {
-    console.log("update", event.target.name, event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
   //update timelines on AWS
-  updateTimeline =async ()=>{
+  updateTimeline = async ()=>{
     let newLength = this.state.timeline.length;
     let originalLen = this.state.timelineNum;
     let timelines = this.state.timeline;
 
-    for(let index = 0; index < originalLen; index++){
+    //update events
+    let updateNum = originalLen < newLength? originalLen : newLength;
+    for(let index = 0; index < updateNum; index++){
       let timelineData = timelines[index]
+      timelineData.timelineCompanyId = this.state.companyID;
       let timeline = await API.graphql(graphqlOperation(mutations.updateTimeline,
         {input: timelineData}));
+      console.log("update timeline", timeline);
     }
-
+    
+    //create new event
     if(originalLen < newLength){
-      for(let index = originalLen +1; index < newLength; index++){
-        let timelineData = timelines[index]
+      console.log("enter create timeline",originalLen,newLength);
+      for(let index = originalLen; index < newLength; index++){
+        let timelineData =timelines[index];
+        timelineData.timelineCompanyId = this.state.companyID;
         let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,
           {input: timelineData}));
+        console.log("create timeline", timeline);
       }
     }
+    //delete extra event
     else if(originalLen > newLength){
-      for(let index = newLength +1; index < originalLen; index++){
-        let timelineData = timelines[index]
+      for(let index = newLength; index < originalLen; index++){
+        let timelineData= {};
+        timelineData.id = timelines[index].id;
+        console.log(timelineData);
         let timeline = await API.graphql(graphqlOperation(mutations.deleteTimeline,
           {input: timelineData}));
+        console.log("delele timeline", timeline); 
       }
     }
   }
@@ -177,7 +188,9 @@ class ModalForm extends React.Component {
         onCancel={this.props.onCancel}
         width={800}
       >
-        <Form className="login-form">
+        <Form 
+          onSubmit={this.handleAddTimeline}
+          className="login-form">
           <br />
           <h2 style={{ marginLeft: "7%" }}>Base Information:</h2>
           <FormItem
@@ -336,10 +349,11 @@ class ModalForm extends React.Component {
                 <FormItem
                   {...formItemLayout}
                   key={index}
-                  label={"Timeline" + " " + (index + 1)}
+                  label={"Event" + " " + (index + 1)}
                 >
                   {/* title input */}
                   <Input value={element.title}
+                    required
                     id={index + "title"}
                     placeholder="Title"
                     key={index + "title"}
@@ -356,6 +370,7 @@ class ModalForm extends React.Component {
 
                   {/* textArea*/}
                   <Input.TextArea
+                    required
                     value={element.info}
                     style={{ width: "60%" }}
                     rows={3}
@@ -366,6 +381,7 @@ class ModalForm extends React.Component {
 
                   {/* datepicker */}
                   <DatePicker
+                    required
                     onChange={(date,dateString) => { this.handleDateUpdate(dateString, index) }}
                     defaultValue={moment(element.date, 'YYYY-MM-DD')}
                     placeholder={I18n.get('Event Date')}
@@ -373,9 +389,7 @@ class ModalForm extends React.Component {
                 </FormItem>)
             })}
           <div style={{ textAlign: "center" }} >
-            <Button
-              onClick={this.handleAddTimeline}
-            >
+            <Button>
               <Icon type="plus" />
               Add More Events
             </Button>
