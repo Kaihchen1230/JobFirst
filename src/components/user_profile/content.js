@@ -1,7 +1,8 @@
 import React from 'react';
-import { Tabs, Table } from 'antd';
+import { Tabs, Table, Button } from 'antd';
 import { getUser } from '../../services/auth';
 import { API, graphqlOperation } from 'aws-amplify';
+import * as queries from '../../graphql/queries';
 
 const TabPane = Tabs.TabPane;
 
@@ -35,7 +36,11 @@ const columns = [{
     key: 'address',
 }];
 
-//let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+const fetchAppliedJobs = async (e) => {
+    const userInfo = getUser();
+    console.log(userInfo);
+    //let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+}
 
 const Information = (props) => {
     // should get all the user information from props
@@ -60,8 +65,9 @@ const Information = (props) => {
                 <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
                 {(getUser().sub === user.id) ?
                     <TabPane tab="Jobs Applied" key="4">Content of Tab Pane 4
-                    <h1>Test</h1>
+                        <h1>Test</h1>
                         <Table dataSource={dataSource} columns={columns} />
+                        <Button onClick={fetchAppliedJobs}>Test</Button>
                     </TabPane> :
                     null
                 }
