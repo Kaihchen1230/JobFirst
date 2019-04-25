@@ -81,7 +81,7 @@
 		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190424051914-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": false,
@@ -139,20 +139,25 @@
 							"Arn"
 						]
 					},
-					"env": "jielan"
+					"env": "gongenv"
 				}
 			}
 		},
 		"apicsc47300project": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190424051914-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "csc47300project",
-					"DynamoDBBillingMode": "PAY_PER_REQUEST",
-					"S3DeploymentBucket": "csc47300project-20190413183412-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/aa25c6a32d745f6acaeb999fed1a30af6c82c593",
-					"env": "jielan"
+					"AuthCognitoUserPoolId": {
+						"Fn::GetAtt": [
+							"authcognitoed11de21",
+							"Outputs.UserPoolId"
+						]
+					},
+					"S3DeploymentBucket": "csc47300project-20190424051914-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/4f8c270926404dcd3ac54d0de135e79e0fbfdb42",
+					"env": "gongenv"
 				}
 			}
 		}
