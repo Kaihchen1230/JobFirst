@@ -24,14 +24,8 @@ class JobList extends React.Component {
     }
 
     searchByName (value) {
-        console.log(this.state);
         let newSearch = {"filter":{"jobTitle":{"contains":value}}};
-        // newSearch["filter"]={};
-        // newSearch["filter"]["jobTitle"]={};
-        // newSearch["filter"]["jobTitle"]["contains"]=value;
         this.setState({"filter":newSearch});
-        console.log(this.state);
-        // console.log(value);
     }
 
     render() {
