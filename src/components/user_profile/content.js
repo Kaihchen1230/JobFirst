@@ -50,15 +50,6 @@ const fakeAppliedJobObject = {
 //Job: PostedJob
 //dateApplied: String
 //status: String
-    Employee: {
-        id: getUser().sub,
-        username: "srajan5",
-        firstName: "sid5",
-        phone: "+19175740938"
-    },
-    Job: {
-        jobTitle: "full-time"
-    },
     dateApplied: "today",
     status: "pending"
 }
@@ -70,7 +61,7 @@ const fetchAppliedJobs = async (e) => {
     // from here we run the query to fetch the applied jobs for the user
     try {
         const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
-        console.log(newAppliedJob);
+        console.log("The following job was added:\n", newAppliedJob);
     } catch (err) {
         console.log("The error is ", err);
     }
