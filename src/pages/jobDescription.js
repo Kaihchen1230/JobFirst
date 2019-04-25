@@ -124,7 +124,6 @@ class JobDescription extends React.Component{
             
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
-                <h4>Job id: {this.state.jobId}</h4>
                 <h4>{this.state['company'][0].name}</h4>
                 <Button type="primary" ghost >
                             <Link to="/app/application">

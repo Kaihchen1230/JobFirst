@@ -898,6 +898,7 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       items {
         id
         date
+        title
         info
       }
       nextToken
@@ -944,6 +945,7 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       items {
         id
         date
+        title
         info
       }
       nextToken
@@ -990,6 +992,7 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       items {
         id
         date
+        title
         info
       }
       nextToken
@@ -1212,6 +1215,7 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
       }
     }
     date
+    title
     info
   }
 }
@@ -1248,6 +1252,7 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
       }
     }
     date
+    title
     info
   }
 }
@@ -1284,6 +1289,7 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
       }
     }
     date
+    title
     info
   }
 }
