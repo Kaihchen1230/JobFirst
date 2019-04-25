@@ -54,14 +54,20 @@ const fakeAppliedJobObject = {
     status: "pending"
 }
 
+const fetchAllAppliedJobs = {};
+
 const fetchAppliedJobs = async (e) => {
-    const userInfo = getUser();
-    console.log(userInfo);
-    console.log(userInfo.sub);
-    // from here we run the query to fetch the applied jobs for the user
+    // post a fake job for testing
+    //try {
+    //    const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
+    //    console.log("The following job was added:\n", newAppliedJob);
+    //} catch (err) {
+    //    console.log("The error is ", err);
+    //}
+    // once a fake job is posted fetch all jobs (for now)
     try {
-        const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
-        console.log("The following job was added:\n", newAppliedJob);
+        fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+        console.log("The following jobs were fetched:\n", fetchAllAppliedJobs);
     } catch (err) {
         console.log("The error is ", err);
     }
@@ -91,7 +97,7 @@ const Information = (props) => {
                 {(getUser().sub === user.id) ?
                     <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
                         <h1 align="center">Applied Jobs</h1>
-                        <Table dataSource={dataSource} columns={columns} />
+                        <Table dataSource={fetchAllAppliedJobs} columns={columns} />
                         <Button onClick={fetchAppliedJobs}>Test</Button>
                     </TabPane> :
                     null
