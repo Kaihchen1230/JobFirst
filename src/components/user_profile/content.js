@@ -33,8 +33,8 @@ const columns = [{
     key: 'job',
 }, {
     title: 'Date Applied',
-    dataIndex: 'date_applied',
-    key: 'date_applied',
+    dataIndex: 'dateApplied',
+    key: 'dateApplied',
 }, {
     title: 'Status',
     dataIndex: 'status',
@@ -56,20 +56,11 @@ class Information extends React.Component {
         theJobs: []
     }
 
-    componentDidMount = () => {}
-
-    fetchAppliedJobs = async (e) => {
-        // post a fake job for testing
-        //try {
-        //    const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
-        //    console.log("The following job was added:\n", newAppliedJob);
-        //} catch (err) {
-        //    console.log("The error is ", err);
-        //}
-        // once a fake job is posted fetch all jobs (for now)
+    componentDidMount = async () => {
         try {
             let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
-            console.log("The following jobs were fetched:\n", fetchAllAppliedJobs);
+            console.log("The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
+            this.setState({theJobs: fetchAllAppliedJobs.data.listAppliedJobs.items});
         } catch (err) {
             console.log("The error is ", err);
         }
@@ -103,8 +94,7 @@ class Information extends React.Component {
 
                     <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
                         <h1 align="center">Applied Jobs</h1>
-                        <Table dataSource={dataSource} columns={columns} />
-                        <Button onClick={this.fetchAppliedJobs}>(Add Some Jobs for Testing)</Button>
+                        <Table dataSource={this.state.theJobs} columns={columns} />
                     </TabPane>
                 </Tabs>
             </div>
