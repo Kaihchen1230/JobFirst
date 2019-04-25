@@ -119,7 +119,7 @@ class JobDescription extends React.Component{
     }
     
     render(){
-      
+        console.log(this.state.jobId);
         return(
             
             <div>
