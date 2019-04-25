@@ -18,11 +18,20 @@ I18n.setLanguage(lan);
 class JobList extends React.Component {
 
     state = {
-        filter: {}
+        "filter":{
+
+        }
     }
 
-    handleChange (value) {
-        console.log(value);
+    searchByName (value) {
+        console.log(this.state);
+        let newSearch = {"filter":{"jobTitle":{"contains":value}}};
+        // newSearch["filter"]={};
+        // newSearch["filter"]["jobTitle"]={};
+        // newSearch["filter"]["jobTitle"]["contains"]=value;
+        this.setState({"filter":newSearch});
+        console.log(this.state);
+        // console.log(value);
     }
 
     render() {
@@ -39,18 +48,18 @@ class JobList extends React.Component {
                                 placeholder={I18n.get('Search')}
                                 enterButton="Search"
                                 size="large"
-                                onSearch={value => this.handleChange(value)}
+                                onSearch={value => this.searchByName(value)}
                             />
                         </InputGroup>
                         <InputGroup compact>
                             <Row gutter={8} style={{ width: '60%' }}>
-                                <Col span={4}>
+                                <Col span={5}>
                                     <Select style={{ width: "80%" }} size="large" placeholder="Category">
                                         <Option value="Option1-1">Option1-1</Option>
                                         <Option value="Option1-2">Option1-2</Option>
                                     </Select>
                                 </Col>
-                                <Col span={4}>
+                                <Col span={5}>
                                     <Select style={{ width: "80%" }} size="large" placeholder="Type">
                                         <Option value="Option1-1">{I18n.get('Full Time')}</Option>
                                         <Option value="Option1-2">{I18n.get('Part Time')}</Option>
@@ -58,13 +67,13 @@ class JobList extends React.Component {
                                         <Option value="Option1-4">{I18n.get('Temporary')}</Option>
                                     </Select>
                                 </Col>
-                                <Col span={4}>
+                                <Col span={5}>
                                     <Select style={{ width: "80%" }} size="large" placeholder="Education">
                                         <Option value="Option1-1">Option1-1</Option>
                                         <Option value="Option1-2">Option1-2</Option>
                                     </Select>
                                 </Col>
-                                <Col span={4}>
+                                <Col span={5}>
                                     <Select style={{ width: "80%" }} size="large" placeholder="Company Scale">
                                         <Option value="Option1-1">Option1-1</Option>
                                         <Option value="Option1-2">Option1-2</Option>
@@ -82,7 +91,7 @@ class JobList extends React.Component {
                         </InputGroup>
                     </Header>
                     <Content>
-                        <Connect query={graphqlOperation(queries.listPostedJobs)}>
+                        <Connect query={graphqlOperation(queries.listPostedJobs, this.state.filter)}>
                             {({ data: { listPostedJobs }, loading, error }) => {
                                 if (error) return (<h3>ERROR</h3>);
                                 if (loading || !listPostedJobs) return (<h3>Loading...</h3>);
