@@ -76,6 +76,8 @@ class ModalForm extends React.Component {
       { input: addressData }));
     console.log("upload new profile", newAddress);
 
+    //update timelines
+    console.log("new timeline", this.state.timeline,this.state.timelineNum);
     this.props.onOk();
     // location.reload(true);
   }
@@ -113,8 +115,9 @@ class ModalForm extends React.Component {
   handleDateUpdate = (dateString, index) => {
     let timelines = [...this.state.timeline];
     let changeTimeline = timelines[index];
-    changeTimeline.date = dateString._i;
+    changeTimeline.date = dateString;
     this.setState({ timeline: timelines });
+    console.log(this.state.timeline);
   }
 
   //update the state when description change
@@ -337,7 +340,7 @@ class ModalForm extends React.Component {
 
                   {/* datepicker */}
                   <DatePicker
-                    onChange={(dateString) => { this.handleDateUpdate(dateString, index) }}
+                    onChange={(date,dateString) => { this.handleDateUpdate(dateString, index) }}
                     defaultValue={moment(element.date, 'YYYY-MM-DD')}
                     placeholder={I18n.get('Event Date')}
                     name="postDate" />
