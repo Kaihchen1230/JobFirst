@@ -10,6 +10,7 @@ let mainStyle = {
     lineHeight:"1.8em",
     border:"solid 1px",
     width:"30%",
+    height:"70%",
     textAlign: "center",
     marginTop:"2%"
 };
