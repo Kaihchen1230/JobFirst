@@ -20,6 +20,7 @@ class ModalForm extends React.Component {
     this.state.addressID = data.companyAddress.id;
     this.state.lan = window.localStorage.getItem('lan');
     this.state.timelineNum = data.timeline.length;
+    this.state.originalTimeline = data.timeline;
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -31,7 +32,8 @@ class ModalForm extends React.Component {
     this.setState({ state: data.companyAddress.state });
     this.setState({ addressID: data.companyAddress.id });
     this.setState({ lan: window.localStorage.getItem('lan') });
-    this.setState({timelineNum : data.timeline.length})
+    this.setState({timelineNum : data.timeline.length});
+    this.setState({originalTimeline : data.timeline});
   }
 
 
@@ -59,7 +61,6 @@ class ModalForm extends React.Component {
     
     //create new event
     if(originalLen < newLength){
-      console.log("enter create timeline",originalLen,newLength);
       for(let index = originalLen; index < newLength; index++){
         let timelineData =timelines[index];
         timelineData.timelineCompanyId = this.state.companyID;
@@ -72,8 +73,7 @@ class ModalForm extends React.Component {
     else if(originalLen > newLength){
       for(let index = newLength; index < originalLen; index++){
         let timelineData= {};
-        timelineData.id = timelines[index].id;
-        console.log(timelineData);
+        timelineData.id = this.state.originalTimeline[index].id;
         let timeline = await API.graphql(graphqlOperation(mutations.deleteTimeline,
           {input: timelineData}));
         console.log("delele timeline", timeline); 
@@ -189,7 +189,6 @@ class ModalForm extends React.Component {
         width={800}
       >
         <Form 
-          onSubmit={this.handleAddTimeline}
           className="login-form">
           <br />
           <h2 style={{ marginLeft: "7%" }}>Base Information:</h2>
@@ -389,7 +388,8 @@ class ModalForm extends React.Component {
                 </FormItem>)
             })}
           <div style={{ textAlign: "center" }} >
-            <Button>
+            <Button
+              onClick ={this.handleAddTimeline}>
               <Icon type="plus" />
               Add More Events
             </Button>
