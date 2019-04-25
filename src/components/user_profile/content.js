@@ -12,29 +12,25 @@ function callback(key) {
 
 const dataSource = [{
     key: '1',
-    name: 'Mike',
-    age: 32,
+    job: 'Front-end developer',
+    date_applied: 'Today',
     address: '10 Downing Street',
-    job: 'hello'
+    status: 'Pending'
 }, {
     key: '2',
-    name: 'John',
-    age: 42,
+    job: 'Back-end developer',
+    date_applied: 'Today',
     address: '10 Downing Street',
-    job: 'hello'
+    status: 'Pending'
 }, {
     key: '3',
-    name: 'Sally',
-    age: 25,
+    job: 'Full-stack developer',
+    date_applied: 'Today',
     address: '10 Downing Street',
-    job: 'hello'
+    status: 'Pending'
 }];
 
 const columns = [{
-    title: 'Employee',
-    dataIndex: 'employee',
-    key: 'employee',
-}, {
     title: 'Job',
     dataIndex: 'job',
     key: 'job',
@@ -51,6 +47,7 @@ const columns = [{
 const fetchAppliedJobs = async (e) => {
     const userInfo = getUser();
     console.log(userInfo);
+    // from here we run the query to fetch the applied jobs for the user
     //let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
 }
 
@@ -76,8 +73,8 @@ const Information = (props) => {
 
                 <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
                 {(getUser().sub === user.id) ?
-                    <TabPane tab="Jobs Applied" key="4">Content of Tab Pane 4
-                        <h1>Applied Jobs</h1>
+                    <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
+                        <h1 align="center">Applied Jobs</h1>
                         <Table dataSource={dataSource} columns={columns} />
                         <Button onClick={fetchAppliedJobs}>Test</Button>
                     </TabPane> :
