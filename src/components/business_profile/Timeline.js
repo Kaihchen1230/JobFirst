@@ -1,4 +1,5 @@
 import { Timeline, TimelineEvent } from 'react-event-timeline'
+import {Icon} from 'antd';
 import React from 'react';
 import { I18n } from 'aws-amplify';
 const timeLine = (props) => {
@@ -12,23 +13,24 @@ const timeLine = (props) => {
         fontWeight: "700"
     }
     let timelineStyle = {
+        fontSize: "1.1em",
         marginLeft: "10%",
         fontWeight: "500",
     }
     let timelines = props["timeline"];
     let Events = () => {
         return timelines.map((element, index) => {
-            let content = "    " + element.info
             return (
                 <div>
                     <TimelineEvent
+                        bubbleStyle={{ border: "2px solid #1890ff"} }
+                        icon ={<Icon type="trophy"  style={{ fontSize: '20px' ,color:"#1890ff" }}  />}
                         createdAt={element.date}
                         title={element.title}
                         collapsible={true}>
                         {element.info}
                     </TimelineEvent>
-
-            </div>
+                </div>
             )
         })
     }
