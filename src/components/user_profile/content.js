@@ -14,26 +14,38 @@ const dataSource = [{
     key: '1',
     name: 'Mike',
     age: 32,
-    address: '10 Downing Street'
+    address: '10 Downing Street',
+    job: 'hello'
 }, {
     key: '2',
     name: 'John',
     age: 42,
-    address: '10 Downing Street'
+    address: '10 Downing Street',
+    job: 'hello'
+}, {
+    key: '3',
+    name: 'Sally',
+    age: 25,
+    address: '10 Downing Street',
+    job: 'hello'
 }];
 
 const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'Employee',
+    dataIndex: 'employee',
+    key: 'employee',
 }, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Job',
+    dataIndex: 'job',
+    key: 'job',
 }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Date Applied',
+    dataIndex: 'date_applied',
+    key: 'date_applied',
+}, {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status'
 }];
 
 const fetchAppliedJobs = async (e) => {
@@ -65,7 +77,7 @@ const Information = (props) => {
                 <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
                 {(getUser().sub === user.id) ?
                     <TabPane tab="Jobs Applied" key="4">Content of Tab Pane 4
-                        <h1>Test</h1>
+                        <h1>Applied Jobs</h1>
                         <Table dataSource={dataSource} columns={columns} />
                         <Button onClick={fetchAppliedJobs}>Test</Button>
                     </TabPane> :
