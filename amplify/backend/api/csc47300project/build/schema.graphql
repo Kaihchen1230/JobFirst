@@ -102,6 +102,7 @@ type Timeline {
   id: ID!
   company: Employer
   date: String
+  title: String
   info: String
 }
 
@@ -620,6 +621,7 @@ type ModelTimelineConnection {
 input ModelTimelineFilterInput {
   id: ModelIDFilterInput
   date: ModelStringFilterInput
+  title: ModelStringFilterInput
   info: ModelStringFilterInput
   and: [ModelTimelineFilterInput]
   or: [ModelTimelineFilterInput]
@@ -629,6 +631,7 @@ input ModelTimelineFilterInput {
 input CreateTimelineInput {
   id: ID
   date: String
+  title: String
   info: String
   timelineCompanyId: ID
 }
@@ -636,6 +639,7 @@ input CreateTimelineInput {
 input UpdateTimelineInput {
   id: ID!
   date: String
+  title: String
   info: String
   timelineCompanyId: ID
 }

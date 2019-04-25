@@ -102,5 +102,6 @@ type Timeline @model {
   id: ID!
   company: Employer @connection(name:"timeline")
   date: String
+  title:String
   info: String
 }
