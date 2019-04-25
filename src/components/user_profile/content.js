@@ -44,9 +44,17 @@ const columns = [{
     key: 'status'
 }];
 
+const fakeAppliedJobObject = {
+//Employee: Employee object
+//Job: PostedJob
+//dateApplied: String
+//status: String
+}
+
 const fetchAppliedJobs = async (e) => {
     const userInfo = getUser();
     console.log(userInfo);
+    console.log(userInfo.sub);
     // from here we run the query to fetch the applied jobs for the user
     //let appliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
 }
