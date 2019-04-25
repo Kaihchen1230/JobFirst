@@ -46,6 +46,17 @@ const columns = [{
 
 const fakeAppliedJobObject = {
 //Employee: Employee object
+    Employee: {
+        id: getUser().sub,
+        username: "srajan5",
+        firstName: "sid5",
+        phone: "+19175740938"
+    },
+    Job: {
+        jobTitle: "full-time"
+    },
+    dateApplied: "today",
+    status: "pending"
 //Job: PostedJob
 //dateApplied: String
 //status: String
