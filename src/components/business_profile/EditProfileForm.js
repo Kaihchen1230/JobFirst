@@ -1,4 +1,4 @@
-import { Form, Modal, Input, DatePicker,Tooltip, Button, Icon } from 'antd';
+import { Form, Modal, Input, DatePicker, Tooltip, Button, Icon } from 'antd';
 import React from 'react';
 import { generate } from 'randomstring';
 import * as mutations from '../../graphql/mutations';
@@ -79,40 +79,46 @@ class ModalForm extends React.Component {
   }
 
   //add one more timeline
-  handleAddTimeline =()=>{
+  handleAddTimeline = () => {
     let timelines = this.state.timeline;
     let newTimeline = {
-      info:"",
-      title:"",
-      date:moment(new Date(),"YYYY-MM-DD")
+      info: "",
+      title: "",
+      date: moment(new Date(), "YYYY-MM-DD")
     }
     timelines = [...timelines, newTimeline];
-    this.setState({timeline:timelines});
+    this.setState({ timeline: timelines });
     console.log(this.state.timeline);
   }
 
   //delete one timeline by index
-  handleDeleteTimeline =(index)=>{
+  handleDeleteTimeline = (index) => {
     let timelines = [...this.state.timeline];
-    timelines.splice(0,1);
-    this.setState({timeline:timelines});
+    console.log(index);
+    timelines.splice(index, 1);
+    this.setState({ timeline: timelines });
   }
 
   //update the state when timeline title change
-  handleTitleUpdate = ()=>{
-
+  handleTitleUpdate = (e, index) => {
+    console.log(index);
+    let timelines = [...this.state.timeline];
+    console.log(timelines);
+    let changeTimeline = timelines[index];
+    changeTimeline.title = e.target.value;
+    this.setState({ timeline: timelines });
   }
 
   //update the state when timeline date change
-  handleDateUpdate = ()=>{
-    
+  handleDateUpdate = () => {
+
   }
 
   //update the state when description change
-  handleDesUpdate = ()=>{
-    
+  handleDesUpdate = () => {
+
   }
-  
+
 
   render() {
 
@@ -126,43 +132,7 @@ class ModalForm extends React.Component {
         sm: { span: 16 },
       }
     };
-
-    let Timelines = () => {
-      return this.state.timeline.map(
-        (element, index) => {
-          index++;
-          return (
-            <FormItem
-              {...formItemLayout}
-              key={index}
-              label={"Timeline" + " " + index}
-            >
-              {/* title input */}
-              <Input value={element.title} style={{ width: "60%" }} required ></Input>
-              <Tooltip title="Delete">
-                <Button
-                  onClick = {()=>{this.handleDeleteTimeline(index)}}>
-                  <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
-                </Button>
-              </Tooltip>
-              {/* textArea*/}
-              <Input.TextArea
-                value={element.info} 
-                style={{ width: "60%" }}
-                rows={3}
-                name="description"
-                placeholder="description" />
-                <br/>
-              {/* datepicker */}
-              <DatePicker 
-                defaultValue={moment(element.date, 'YYYY-MM-DD')}
-                placeholder={I18n.get('Event Date')}
-                name="postDate"/>     
-            </FormItem>)
-        }
-      )
-    }
-
+       
     return (
       <Modal
         title="Edit Company Information"
@@ -322,13 +292,55 @@ class ModalForm extends React.Component {
               required />
           </FormItem>
           <h2 style={{ marginLeft: "20%" }}>Timeline:</h2>
-          <Timelines />
+
+          {/* timelines component */}
+          {this.state.timeline.map(
+            (element, index) => {
+              index;
+              return (
+                <FormItem
+                  {...formItemLayout}
+                  key={index}
+                  label={"Timeline" + " " + (index + 1)}
+                >
+                  {/* title input */}
+                  <Input value={element.title}
+                    id={index + "title"}
+                    placeholder="Title"
+                    key={index + "title"}
+                    onChange={(event) => { this.handleTitleUpdate(event, index) }}
+                    style={{ width: "60%" }}
+                    required >
+                  </Input>
+                  <Tooltip title="Delete">
+                    <Button
+                      onClick={() => { this.handleDeleteTimeline(index) }}>
+                      <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
+                    </Button>
+                  </Tooltip>
+
+                  {/* textArea*/}
+                  <Input.TextArea
+                    value={element.info}
+                    style={{ width: "60%" }}
+                    rows={3}
+                    name="description"
+                    placeholder="Description" />
+                  <br />
+
+                  {/* datepicker */}
+                  <DatePicker
+                    defaultValue={moment(element.date, 'YYYY-MM-DD')}
+                    placeholder={I18n.get('Event Date')}
+                    name="postDate" />
+                </FormItem>)
+            })}
           <div style={{ textAlign: "center" }} >
             <Button
-              onClick = {this.handleAddTimeline}
-            >     
-                <Icon type="plus" />
-                Add More Timelines    
+              onClick={this.handleAddTimeline}
+            >
+              <Icon type="plus" />
+              Add More Timelines
             </Button>
           </div>
 
