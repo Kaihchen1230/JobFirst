@@ -42,6 +42,34 @@ class ModalForm extends React.Component {
     })
   }
 
+  //update timelines on AWS
+  updateTimeline =async ()=>{
+    let newLength = this.state.timeline.length;
+    let originalLen = this.state.timelineNum;
+    let timelines = this.state.timeline;
+
+    for(let index = 0; index < originalLen; index++){
+      let timelineData = timelines[index]
+      let timeline = await API.graphql(graphqlOperation(mutations.updateTimeline,
+        {input: timelineData}));
+    }
+
+    if(originalLen < newLength){
+      for(let index = originalLen +1; index < newLength; index++){
+        let timelineData = timelines[index]
+        let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,
+          {input: timelineData}));
+      }
+    }
+    else if(originalLen > newLength){
+      for(let index = newLength +1; index < originalLen; index++){
+        let timelineData = timelines[index]
+        let timeline = await API.graphql(graphqlOperation(mutations.deleteTimeline,
+          {input: timelineData}));
+      }
+    }
+  }
+
   handleSubmit = async () => {
 
     //update basic employer information
@@ -74,10 +102,10 @@ class ModalForm extends React.Component {
     }
     let newAddress = await API.graphql(graphqlOperation(mutations.updateAddress,
       { input: addressData }));
-    console.log("upload new profile", newAddress);
+    console.log("upload new address", newAddress);
 
     //update timelines
-    console.log("new timeline", this.state.timeline,this.state.timelineNum);
+    this.updateTimeline();    
     this.props.onOk();
     // location.reload(true);
   }
@@ -92,13 +120,11 @@ class ModalForm extends React.Component {
     }
     timelines = [...timelines, newTimeline];
     this.setState({ timeline: timelines });
-    console.log(this.state.timeline);
   }
 
   //delete one timeline by index
   handleDeleteTimeline = (index) => {
     let timelines = [...this.state.timeline];
-    console.log(index);
     timelines.splice(index, 1);
     this.setState({ timeline: timelines });
   }
@@ -117,7 +143,7 @@ class ModalForm extends React.Component {
     let changeTimeline = timelines[index];
     changeTimeline.date = dateString;
     this.setState({ timeline: timelines });
-    console.log(this.state.timeline);
+
   }
 
   //update the state when description change
