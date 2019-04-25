@@ -19,6 +19,7 @@ class ModalForm extends React.Component {
     this.state.state = data.companyAddress.state;
     this.state.addressID = data.companyAddress.id;
     this.state.lan = window.localStorage.getItem('lan');
+    this.state.timelineNum = data.timeline.length;
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -30,6 +31,7 @@ class ModalForm extends React.Component {
     this.setState({ state: data.companyAddress.state });
     this.setState({ addressID: data.companyAddress.id });
     this.setState({ lan: window.localStorage.getItem('lan') });
+    this.setState({timelineNum : data.timeline.length})
   }
 
 
@@ -101,22 +103,26 @@ class ModalForm extends React.Component {
 
   //update the state when timeline title change
   handleTitleUpdate = (e, index) => {
-    console.log(index);
     let timelines = [...this.state.timeline];
-    console.log(timelines);
     let changeTimeline = timelines[index];
     changeTimeline.title = e.target.value;
     this.setState({ timeline: timelines });
   }
 
   //update the state when timeline date change
-  handleDateUpdate = () => {
-
+  handleDateUpdate = (dateString, index) => {
+    let timelines = [...this.state.timeline];
+    let changeTimeline = timelines[index];
+    changeTimeline.date = dateString._i;
+    this.setState({ timeline: timelines });
   }
 
   //update the state when description change
-  handleDesUpdate = () => {
-
+  handleInfoUpdate = (e,index) => {
+    let timelines = [...this.state.timeline];
+    let changeTimeline = timelines[index];
+    changeTimeline.info = e.target.value;
+    this.setState({ timeline: timelines });
   }
 
 
@@ -324,12 +330,14 @@ class ModalForm extends React.Component {
                     value={element.info}
                     style={{ width: "60%" }}
                     rows={3}
+                    onChange={(event) => { this.handleInfoUpdate(event, index) }}
                     name="description"
                     placeholder="Description" />
                   <br />
 
                   {/* datepicker */}
                   <DatePicker
+                    onChange={(dateString) => { this.handleDateUpdate(dateString, index) }}
                     defaultValue={moment(element.date, 'YYYY-MM-DD')}
                     placeholder={I18n.get('Event Date')}
                     name="postDate" />
@@ -340,11 +348,9 @@ class ModalForm extends React.Component {
               onClick={this.handleAddTimeline}
             >
               <Icon type="plus" />
-              Add More Timelines
+              Add More Events
             </Button>
           </div>
-
-
         </Form>
       </Modal>
     );
