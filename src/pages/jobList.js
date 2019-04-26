@@ -13,7 +13,7 @@ const {
 const Search = Input.Search;
 const Option = Select.Option;
 const InputGroup = Input.Group;
-let lan = window.localStorage.getItem('lan');
+// let lan = window.localStorage.getItem('lan');
 I18n.putVocabularies(dict);
 I18n.setLanguage(lan);
 class JobList extends React.Component {
