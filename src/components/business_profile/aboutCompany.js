@@ -13,11 +13,11 @@ let Style = {
 
 const about = (props) => {
     return (
-            <div style={Style}  >
-            <br />
-                <h2>{I18n.get('About Company')}</h2> 
-                {props.description}
-            </div>
+        <div style={Style}  >
+        <br />
+            <h2>{I18n.get('About Company')}</h2> 
+            {props.description}
+        </div>
     )
 }
 export default about;

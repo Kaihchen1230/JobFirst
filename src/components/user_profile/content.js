@@ -37,7 +37,9 @@ class Information extends React.Component {
     }
 
     componentDidMount = async () => {
+        // fetch all jobs and save to state to render to page
         try {
+            // This query needs to be modified so that it calls queries.getAppliedJob(id: id) where id is the user id (need to figure out how to pass this in)
             let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
             console.log("The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
             this.setState({theJobs: fetchAllAppliedJobs.data.listAppliedJobs.items});
