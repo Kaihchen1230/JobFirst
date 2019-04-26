@@ -5,13 +5,14 @@ import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
+import { API, graphqlOperation } from 'aws-amplify';
+import * as queries from '../graphql/queries';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
 
 
     state = {
-        jobId: "",
         jobDetail:[
             {
                 title: 'Software Engineer Intern',
@@ -107,19 +108,32 @@ class JobDescription extends React.Component{
             degree: "Associate degree in computer information system",
             address: 'London No. 12 Lake Park',
           }
-        ]
+        ],
+        jobId: "",
+        jobInfo: {}
+
         
     }
-    componentDidMount(){
-      let id = window.history.state.id;
-      this.setState({
-        jobId: id
-      });
+    componentDidMount = async () => {
+      let jobId = window.history.state.id;
+      try{
+        const jobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: jobId}));
+
+        this.setState({
+          jobId: jobId,
+          jobInfo: jobInfo
+        });
+
+      }catch(err){
+        console.log('there is an error fetching data...', err);
+      }
+
       
     }
     
     render(){
-        console.log(this.state.jobId);
+        console.log("this is the job id: ", this.state.jobId);
+        console.log('this is the job info: ', this.state.jobInfo);
         return(
             
             <div>

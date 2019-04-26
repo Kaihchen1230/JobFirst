@@ -99,7 +99,7 @@ class businessProfile extends React.Component {
     const { attributes } = user;
     let employerData = await API.graphql(graphqlOperation(queries.getEmployer,{id:attributes.sub}));
     this.setState({companyID:attributes.sub});
-
+    console.log("this is employerdata: " + employerData);
     //create some timeline data
     // let timelineData = {
     //   id: "105",
