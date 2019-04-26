@@ -1,13 +1,13 @@
 import React from "react"
 import { Link, navigate } from "gatsby";
 import { Auth } from "aws-amplify";
-import { Menu, Icon, Avatar, Button, Dropdown } from 'antd';
+import { Menu, Icon, Avatar, Button, Dropdown, Layout } from 'antd';
 import { isLoggedIn, setUser, getUser, logout } from "../services/auth"
 import { I18n } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react'
 import NewLogin from './authentication/new_login';
 import dict from "./dictionary/dictionary";
-
+const { Header, Content, Footer } = Layout;
 const navBar = (props) => {
   const state = {
     login:
@@ -49,11 +49,12 @@ const navBar = (props) => {
   )
 
   return (
-    <div align="center">
-      <Menu
+    <Layout align="center">
+    <Header style={{position: 'fixed', width: '100%', height: '30px', zIndex: 1, padding:"5px 0"}}>
+    <Menu
         mode="horizontal"
         theme="dark"
-        style={{ position: "sticky", top: "0", zIndex: 1 }}
+        style={{  }}
       >
         <Menu.Item key="home" >
           <Icon type="home" theme="outlined" style={{ style }} />
@@ -121,7 +122,9 @@ const navBar = (props) => {
         </Menu.Item>
 
       </Menu>
-    </div>
+    </Header>
+      
+    </Layout>
   );
 }
 

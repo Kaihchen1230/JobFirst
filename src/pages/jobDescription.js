@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from "@reach/router"
-import { Tabs, Button } from 'antd';
+import { Tabs, Button, Popover } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
+import { API, graphqlOperation } from 'aws-amplify';
+import * as queries from '../graphql/queries';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -12,6 +14,15 @@ class JobDescription extends React.Component{
 
     state = {
         jobId: "",
+        postJobInfo: {},
+        jobInfo: {
+          title: "",
+          type: "",
+          description: "",
+          requirements: [],
+        },
+        companyInfo: {},
+        location: {},
         jobDetail:[
             {
                 title: 'Software Engineer Intern',
@@ -107,24 +118,67 @@ class JobDescription extends React.Component{
             degree: "Associate degree in computer information system",
             address: 'London No. 12 Lake Park',
           }
-        ]
-        
+        ],
+
     }
-    componentDidMount(){
-      let id = window.history.state.id;
-      this.setState({
-        jobId: id
-      });
+    componentDidMount = async () => {
+      let currentId = window.history.state.id;
+      try{
+        const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
+        let incomingJobInfo = {...this.state.jobInfo};
+        incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
+        incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
+        incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
+        incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
+        this.setState({
+          jobId: currentId,
+          postJobInfo: currentJobInfo,
+          jobInfo: incomingJobInfo,
+          companyInfo: currentJobInfo.data.getPostedJob.company,
+          location: currentJobInfo.data.getPostedJob.location
+
+
+        });
+
+      }catch(err){
+        console.log('there is an error fetching data...', err);
+      }
+
       
     }
     
     render(){
-      
+        // console.log("this is the job id: ", this.state.jobId);
+        // console.log('this is the postjob info: ', this.state.postJobInfo);
+        // console.log('this is the job info: ', this.state.jobInfo);        
+        // console.log('this is the company: ', this.state.companyInfo);
+        console.log('this is the location: ', this.state.location);
+        // console.log('this is the city: ', this.state.location.city);
+
+        let content = "";
+        let viewCompanyInfo;
+        if(this.state.companyInfo != null){
+          content = this.state.companyInfo.description;
+          viewCompanyInfo = (<Popover content={content}>
+                  <div>
+                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
+                  </div>
+            </Popover>)
+        }else{
+          console.log('it is null');
+          viewCompanyInfo = (
+            <div>
+              The company is not provided...
+            </div>
+          )
+        }
+        
         return(
             
             <div>
-                <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
-                <h4>{this.state['company'][0].name}</h4>
+                <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
+                {viewCompanyInfo}
+                
                 <Button type="primary" ghost >
                             <Link to="/app/application">
                                 Apply Now
@@ -133,13 +187,13 @@ class JobDescription extends React.Component{
                 <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>
-                            <JobDetails jobInfo = {this.state.jobDetail}></JobDetails>
+                            <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                         </div>
             
                     </TabPane>
                     <TabPane tab="Company" key="2">
                         <div>
-                        <CompanyDetail companyInfo = {this.state['company']}></CompanyDetail>
+                        <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
                         </div>
                     </TabPane>
 

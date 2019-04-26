@@ -17,6 +17,7 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -83,6 +84,7 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -149,6 +151,7 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -219,6 +222,7 @@ export const createAssociation = `mutation CreateAssociation($input: CreateAssoc
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -262,6 +266,7 @@ export const updateAssociation = `mutation UpdateAssociation($input: UpdateAssoc
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -305,6 +310,7 @@ export const deleteAssociation = `mutation DeleteAssociation($input: DeleteAssoc
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -352,6 +358,7 @@ export const createExperience = `mutation CreateExperience($input: CreateExperie
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -399,6 +406,7 @@ export const updateExperience = `mutation UpdateExperience($input: UpdateExperie
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -446,6 +454,7 @@ export const deleteExperience = `mutation DeleteExperience($input: DeleteExperie
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -493,6 +502,7 @@ export const createEducation = `mutation CreateEducation($input: CreateEducation
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -540,6 +550,7 @@ export const updateEducation = `mutation UpdateEducation($input: UpdateEducation
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -587,6 +598,7 @@ export const deleteEducation = `mutation DeleteEducation($input: DeleteEducation
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -615,6 +627,7 @@ export const createAddress = `mutation CreateAddress($input: CreateAddressInput!
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -625,6 +638,7 @@ export const updateAddress = `mutation UpdateAddress($input: UpdateAddressInput!
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -635,6 +649,7 @@ export const deleteAddress = `mutation DeleteAddress($input: DeleteAddressInput!
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -658,6 +673,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -705,6 +721,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -736,6 +753,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -783,6 +801,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -814,6 +833,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -861,6 +881,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -884,6 +905,7 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -931,6 +953,7 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -978,6 +1001,7 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1027,6 +1051,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1056,6 +1081,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1083,6 +1109,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1112,6 +1139,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1139,6 +1167,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1168,6 +1197,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1195,6 +1225,7 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1232,6 +1263,7 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1269,6 +1301,7 @@ export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInp
         id
         line1
         line2
+        city
         postalCode
         state
       }
