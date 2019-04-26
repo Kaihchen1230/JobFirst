@@ -53,6 +53,7 @@ type Address @model {
   id: ID!
   line1: String
   line2: String
+  city: String
   postalCode: String # or Int
   state: String
 }
