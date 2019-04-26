@@ -152,7 +152,7 @@ class JobDescription extends React.Component{
         // console.log('this is the postjob info: ', this.state.postJobInfo);
         // console.log('this is the job info: ', this.state.jobInfo);        
         // console.log('this is the company: ', this.state.companyInfo);
-        // console.log('this is the location: ', this.state.location);
+        console.log('this is the location: ', this.state.location);
         // console.log('this is the city: ', this.state.location.city);
 
         let content = "";
