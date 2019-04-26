@@ -1024,6 +1024,17 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "city",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "postalCode",
           "description" : null,
           "args" : [ ],
@@ -3234,6 +3245,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "city",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringFilterInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "postalCode",
           "description" : null,
           "type" : {
@@ -4990,6 +5010,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "city",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "postalCode",
           "description" : null,
           "type" : {
@@ -5040,6 +5069,15 @@
           "defaultValue" : null
         }, {
           "name" : "line2",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "city",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",

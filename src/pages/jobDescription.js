@@ -125,7 +125,6 @@ class JobDescription extends React.Component{
       let currentId = window.history.state.id;
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
-
         let incomingJobInfo = {...this.state.jobInfo};
         incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
         incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
@@ -149,22 +148,31 @@ class JobDescription extends React.Component{
     }
     
     render(){
-        console.log("this is the job id: ", this.state.jobId);
-        console.log('this is the postjob info: ', this.state.postJobInfo);
-        console.log('this is the job info: ', this.state.jobInfo.title);        
-        console.log('this is the company: ', this.state.companyInfo);
-        console.log('this is the location: ', this.state.location);
-        
-        const viewCompanyInfo = () => {
-          let content = "";
-          if(this.state.companyInfo){
-            <Popover content={content}>
+        // console.log("this is the job id: ", this.state.jobId);
+        // console.log('this is the postjob info: ', this.state.postJobInfo);
+        // console.log('this is the job info: ', this.state.jobInfo);        
+        // console.log('this is the company: ', this.state.companyInfo);
+        // console.log('this is the location: ', this.state.location);
+        // console.log('this is the city: ', this.state.location.city);
+
+        let content = "";
+        let viewCompanyInfo;
+        if(this.state.companyInfo != null){
+          content = this.state.companyInfo.description;
+          viewCompanyInfo = (<Popover content={content}>
                   <div>
-                  {this.state.companyInfo.companyName}, {this.state.companyInfo.headquarter}
+                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
                   </div>
-            </Popover>
-          }
+            </Popover>)
+        }else{
+          console.log('it is null');
+          viewCompanyInfo = (
+            <div>
+              The company is not provided...
+            </div>
+          )
         }
+        
         return(
             
             <div>
@@ -185,7 +193,7 @@ class JobDescription extends React.Component{
                     </TabPane>
                     <TabPane tab="Company" key="2">
                         <div>
-                        <CompanyDetail companyInfo = {this.state['company']}></CompanyDetail>
+                        <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
                         </div>
                     </TabPane>
 
