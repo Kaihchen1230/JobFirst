@@ -14,7 +14,7 @@ const navBar = (props) => {
       /* <Avatar shape="square" size="large" icon="user" /> */
       <NewLogin />
   };
-  let lan = window.localStorage.getItem('lan')
+  // let lan = window.localStorage.getItem('lan')
   // the login button should change based on the user
   if (isLoggedIn()) { // if logged in we can display the username
     state.login =
@@ -23,8 +23,8 @@ const navBar = (props) => {
         <span>{"   " + getUser().username}</span>
       </span>
   }
-  I18n.putVocabularies(dict);
-  I18n.setLanguage(lan);
+  // I18n.putVocabularies(dict);
+  // I18n.setLanguage(lan);
   const style = {
     fontSize: "25px"
 
