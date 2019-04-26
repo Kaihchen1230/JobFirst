@@ -13,6 +13,16 @@ class JobDescription extends React.Component{
 
 
     state = {
+        jobId: "",
+        postJobInfo: {},
+        jobInfo: {
+          title: "",
+          type: "",
+          description: "",
+          requirements: [],
+        },
+        companyInfo: {},
+        location: {},
         jobDetail:[
             {
                 title: 'Software Engineer Intern',
@@ -109,19 +119,26 @@ class JobDescription extends React.Component{
             address: 'London No. 12 Lake Park',
           }
         ],
-        jobId: "",
-        jobInfo: {}
 
-        
     }
     componentDidMount = async () => {
-      let jobId = window.history.state.id;
+      let currentId = window.history.state.id;
       try{
-        const jobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: jobId}));
+        const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
 
+        let incomingJobInfo = {...this.state.jobInfo};
+        incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
+        incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
+        incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
+        incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
         this.setState({
-          jobId: jobId,
-          jobInfo: jobInfo
+          jobId: currentId,
+          postJobInfo: currentJobInfo,
+          jobInfo: incomingJobInfo,
+          companyInfo: currentJobInfo.data.getPostedJob.company,
+          location: currentJobInfo.data.getPostedJob.location
+
+
         });
 
       }catch(err){
@@ -133,11 +150,14 @@ class JobDescription extends React.Component{
     
     render(){
         console.log("this is the job id: ", this.state.jobId);
-        console.log('this is the job info: ', this.state.jobInfo);
+        console.log('this is the postjob info: ', this.state.postJobInfo);
+        console.log('this is the job info: ', this.state.jobInfo.title);        
+        console.log('this is the company: ', this.state.companyInfo);
+        console.log('this is the location: ', this.state.location);
         return(
             
             <div>
-                <h2 style = {{margin: '10px 0'}}>{this.state.jobDetail[0].title}</h2>
+                <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
                 <h4>{this.state['company'][0].name}</h4>
                 <Button type="primary" ghost >
                             <Link to="/app/application">
