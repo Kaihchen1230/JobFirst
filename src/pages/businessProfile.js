@@ -28,7 +28,7 @@ let bodyStyle = {
 
 class businessProfile extends React.Component {
   state = {
-    lan: window.localStorage.getItem('lan'),
+//     lan: window.localStorage.getItem('lan'), 
     visible: false,
     jobList: [],
     companyID: "",
