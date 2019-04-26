@@ -155,17 +155,22 @@ class JobDescription extends React.Component{
         console.log('this is the company: ', this.state.companyInfo);
         console.log('this is the location: ', this.state.location);
         
-        const content = this.state.companyInfo.description;
+        const viewCompanyInfo = () => {
+          let content = "";
+          if(this.state.companyInfo){
+            <Popover content={content}>
+                  <div>
+                  {this.state.companyInfo.companyName}, {this.state.companyInfo.headquarter}
+                  </div>
+            </Popover>
+          }
+        }
         return(
             
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
-
-                  <Popover content={content}>
-                  <div>
-                  {this.state.companyInfo.companyName}, {this.state.companyInfo.headquarter}
-                  </div>
-                  </Popover>
+                {viewCompanyInfo}
+                
                 <Button type="primary" ghost >
                             <Link to="/app/application">
                                 Apply Now
