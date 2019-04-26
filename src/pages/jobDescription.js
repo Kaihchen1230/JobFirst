@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "@reach/router"
-import { Tabs, Button } from 'antd';
+import { Tabs, Button, Popover } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
@@ -154,11 +154,18 @@ class JobDescription extends React.Component{
         console.log('this is the job info: ', this.state.jobInfo.title);        
         console.log('this is the company: ', this.state.companyInfo);
         console.log('this is the location: ', this.state.location);
+        
+        const content = this.state.companyInfo.description;
         return(
             
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
-                <h4>{this.state['company'][0].name}</h4>
+
+                  <Popover content={content}>
+                  <div>
+                  {this.state.companyInfo.companyName}, {this.state.companyInfo.headquarter}
+                  </div>
+                  </Popover>
                 <Button type="primary" ghost >
                             <Link to="/app/application">
                                 Apply Now
@@ -167,7 +174,7 @@ class JobDescription extends React.Component{
                 <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>
-                            <JobDetails jobInfo = {this.state.jobDetail}></JobDetails>
+                            <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                         </div>
             
                     </TabPane>
