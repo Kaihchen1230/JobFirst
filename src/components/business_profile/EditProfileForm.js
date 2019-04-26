@@ -18,7 +18,7 @@ class ModalForm extends React.Component {
     this.state.postalCode = data.companyAddress.postalCode;
     this.state.state = data.companyAddress.state;
     this.state.addressID = data.companyAddress.id;
-    this.state.lan = window.localStorage.getItem('lan');
+    // this.state.lan = window.localStorage.getItem('lan');
     this.state.timelineNum = data.timeline.length;
     this.state.originalTimeline = data.timeline;
   }
