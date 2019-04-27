@@ -5,14 +5,17 @@ import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation, Auth } from 'aws-amplify';
 import * as queries from '../graphql/queries';
+import * as mutations from '../graphql/mutations';
+import { template } from '@babel/core';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
 
 
     state = {
+        userId: "",
         jobId: "",
         postJobInfo: {},
         jobInfo: {
@@ -23,38 +26,6 @@ class JobDescription extends React.Component{
         },
         companyInfo: {},
         location: {},
-        jobDetail:[
-            {
-                title: 'Software Engineer Intern',
-                description: 'Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.',
-                responsibilities: [
-                    'Proficient in Python and SQL',
-                    'Familiarity with working using Machine Learning techniques.',
-                    'Naturally curious, detail oriented, passionate about data quality and statistical methods, ability to drive a project to completion.',
-                    'Availability full-time June - August 2019 in NYC'
-                ],
-                location: 'New York'
-            }
-                
-        ], 
-        'company':[
-            {
-                name: 'Alibaba',
-                headquarter: 'Hanzhou, China',
-                founded: '1923',
-                industry: 'Enterprise Software & Network',
-                revenue: '$5 to $10 billion(USD)',
-                size: '10000+ Employees'
-            }
-        ],
-        'location': [
-            {
-                street1: '85 Broad Street',
-                city: 'New York',
-                state: 'NY',
-                zipCode: 11225
-            }
-        ],
         'applicant': [{
             key: '1',
             name: 'John Brown',
@@ -122,7 +93,11 @@ class JobDescription extends React.Component{
 
     }
     componentDidMount = async () => {
-      let currentId = window.history.state.id;
+      const currentId = window.history.state.id;
+      const user = await Auth.currentAuthenticatedUser();
+      const { attributes } = user;
+      const currentUserId = attributes.sub;
+      console.log('this is currentUserId: ', currentUserId);
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
         let incomingJobInfo = {...this.state.jobInfo};
@@ -135,9 +110,8 @@ class JobDescription extends React.Component{
           postJobInfo: currentJobInfo,
           jobInfo: incomingJobInfo,
           companyInfo: currentJobInfo.data.getPostedJob.company,
-          location: currentJobInfo.data.getPostedJob.location
-
-
+          location: currentJobInfo.data.getPostedJob.location,
+          userId: currentUserId
         });
 
       }catch(err){
@@ -146,44 +120,68 @@ class JobDescription extends React.Component{
 
       
     }
+
+    applyHandler = async (event) => {
+      event.preventDefault();
+      try{
+          const tempDate = new Date();
+          
+          const date = tempDate.getMonth() + '/' + tempDate.getDay() + '/' + tempDate.getFullYear()
+          console.log('this is the date: ' + date);
+          const createAppliedJobInput = {
+            dateApplied: date,
+            status: "applied",
+            appliedJobEmployeeId: this.state.userId,
+            appliedJobJobId: this.state.jobId
+          }
+          console.log('this is createAppliedJobInput', createAppliedJobInput);
+          await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+
+      }catch(err){
+        console.log('there is an error updating applied job... ', err);
+      }
+    }
     
     render(){
         // console.log("this is the job id: ", this.state.jobId);
-        // console.log('this is the postjob info: ', this.state.postJobInfo);
+        console.log('this is the postjob info: ', this.state.postJobInfo);
         // console.log('this is the job info: ', this.state.jobInfo);        
         // console.log('this is the company: ', this.state.companyInfo);
-        console.log('this is the location: ', this.state.location);
+        // console.log('this is the location: ', this.state.location);
         // console.log('this is the city: ', this.state.location.city);
-
+        // console.log('this is user id: ', this.state.userId);
+        console.log('this is the state of userId: ', this.state.userId);
         let content = "";
-        let viewCompanyInfo;
-        if(this.state.companyInfo != null){
+        let displayCompanyInfo;
+        console.log(this.state.companyInfo);
+        if(this.state.companyInfo){
           content = this.state.companyInfo.description;
-          viewCompanyInfo = (<Popover content={content}>
+          displayCompanyInfo = (<Popover content={content}>
                   <div>
                   {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
                   </div>
             </Popover>)
         }else{
           console.log('it is null');
-          viewCompanyInfo = (
+          displayCompanyInfo = (
             <div>
               The company is not provided...
             </div>
           )
         }
-        
         return(
             
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
-                {viewCompanyInfo}
+                {displayCompanyInfo}
                 
-                <Button type="primary" ghost >
-                            <Link to="/app/application">
-                                Apply Now
-                            </Link>
-                </Button>
+                <Popover 
+                  content={"We will use your profile information to fill out the application"}>
+                  <Button type="primary" ghost onClick={this.applyHandler}>
+                      Apply Now
+                  </Button>
+                </Popover>
+                
                 <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>
