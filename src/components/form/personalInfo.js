@@ -22,6 +22,14 @@ const states = [
 
 
 class PersonalInfo extends React.Component{
+
+    state = {
+        id: ""
+    }
+
+    componentDidMount = async () => {
+    
+    }
     
     render(){
         const { getFieldDecorator } = this.props.form;
@@ -49,12 +57,9 @@ class PersonalInfo extends React.Component{
             },
           };
 
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '86',
-          })(
+        const prefixSelector =(
             <Select style={{ width: 60 }}>
-              <Option value="86">+86</Option>
-              <Option value="1">+1</Option>
+              <Option value="+1" selected="selected">+1</Option>
             </Select>
           );
         return(

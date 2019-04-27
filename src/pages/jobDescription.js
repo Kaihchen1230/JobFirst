@@ -121,7 +121,7 @@ class JobDescription extends React.Component{
     
     render(){
         // console.log("this is the job id: ", this.state.jobId);
-        // console.log('this is the postjob info: ', this.state.postJobInfo);
+        console.log('this is the postjob info: ', this.state.postJobInfo);
         // console.log('this is the job info: ', this.state.jobInfo);        
         // console.log('this is the company: ', this.state.companyInfo);
         // console.log('this is the location: ', this.state.location);
@@ -129,7 +129,8 @@ class JobDescription extends React.Component{
         // console.log('this is user id: ', this.state.userId);
         let content = "";
         let displayCompanyInfo;
-        if(this.state.companyInfo != null){
+        console.log(this.state.companyInfo);
+        if(this.state.companyInfo){
           content = this.state.companyInfo.description;
           displayCompanyInfo = (<Popover content={content}>
                   <div>
