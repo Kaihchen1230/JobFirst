@@ -21,16 +21,7 @@ const states = [
 
 
 
-class Application extends React.Component{
-
-    state = {
-        id: ""
-    }
-
-    componentDidMount = async () => {
-        const currentId = window.history.state.id;
-        console.log('this is the id: ', currentId);
-    }
+class PersonalInfo extends React.Component{
     
     render(){
         const { getFieldDecorator } = this.props.form;
@@ -58,9 +49,12 @@ class Application extends React.Component{
             },
           };
 
-        const prefixSelector =(
+        const prefixSelector = getFieldDecorator('prefix', {
+            initialValue: '86',
+          })(
             <Select style={{ width: 60 }}>
-              <Option value="+1" selected="selected">+1</Option>
+              <Option value="86">+86</Option>
+              <Option value="1">+1</Option>
             </Select>
           );
         return(
@@ -302,6 +296,7 @@ class Application extends React.Component{
             </Form>
         );
     }
+    
 }
 
-export default Form.create()(Application);
+export default Form.create()(PersonalInfo);
