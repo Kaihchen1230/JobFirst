@@ -154,13 +154,8 @@ class JobDescription extends React.Component{
                 
                 <Popover 
                   content={"We will use your profile information to fill out the application"}>
-                  <Button type="primary" ghost >
-                      <Link 
-                        to={"/app/application/"+this.state.jobId}
-                        state={{ id: this.state.userId}}
-                        >
-                          Apply Now
-                      </Link>
+                  <Button type="primary" ghost>
+                      Apply Now
                   </Button>
                 </Popover>
                 
