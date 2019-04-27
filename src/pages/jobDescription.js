@@ -95,7 +95,7 @@ class JobDescription extends React.Component{
       const user = await Auth.currentAuthenticatedUser();
       const { attributes } = user;
       const currentUserId = attributes.sub;
-      console.log({attributes});
+      console.log('this is currentUserId: ', currentUserId);
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
         let incomingJobInfo = {...this.state.jobInfo};
@@ -109,7 +109,7 @@ class JobDescription extends React.Component{
           jobInfo: incomingJobInfo,
           companyInfo: currentJobInfo.data.getPostedJob.company,
           location: currentJobInfo.data.getPostedJob.location,
-          userId: currentId
+          userId: currentUserId
         });
 
       }catch(err){
@@ -127,6 +127,7 @@ class JobDescription extends React.Component{
         // console.log('this is the location: ', this.state.location);
         // console.log('this is the city: ', this.state.location.city);
         // console.log('this is user id: ', this.state.userId);
+        console.log('this is the state of userId: ', this.state.userId);
         let content = "";
         let displayCompanyInfo;
         console.log(this.state.companyInfo);
@@ -145,9 +146,6 @@ class JobDescription extends React.Component{
             </div>
           )
         }
-
-        
-        
         return(
             
             <div>
