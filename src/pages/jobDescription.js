@@ -7,6 +7,8 @@ import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
 import { API, graphqlOperation, Auth } from 'aws-amplify';
 import * as queries from '../graphql/queries';
+import * as mutations from '../graphql/mutations';
+import { template } from '@babel/core';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -118,6 +120,27 @@ class JobDescription extends React.Component{
 
       
     }
+
+    applyHandler = async (event) => {
+      event.preventDefault();
+      try{
+          const tempDate = new Date();
+          
+          const date = tempDate.getMonth() + '/' + tempDate.getDay() + '/' + tempDate.getFullYear()
+          console.log('this is the date: ' + date);
+          const createAppliedJobInput = {
+            dateApplied: date,
+            status: "applied",
+            appliedJobEmployeeId: this.state.userId,
+            appliedJobJobId: this.state.jobId
+          }
+          console.log('this is createAppliedJobInput', createAppliedJobInput);
+          await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+
+      }catch(err){
+        console.log('there is an error updating applied job... ', err);
+      }
+    }
     
     render(){
         // console.log("this is the job id: ", this.state.jobId);
@@ -154,7 +177,7 @@ class JobDescription extends React.Component{
                 
                 <Popover 
                   content={"We will use your profile information to fill out the application"}>
-                  <Button type="primary" ghost>
+                  <Button type="primary" ghost onClick={this.applyHandler}>
                       Apply Now
                   </Button>
                 </Popover>
