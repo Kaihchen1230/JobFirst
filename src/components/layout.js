@@ -5,7 +5,7 @@ import NavBar from './navBar';
 const Layout = ({ children }) => (
   <>
     <NavBar />
-    <div style={{marginTop: "55px"}}>
+    <div style={{}}>
     {children}
     </div>
     
