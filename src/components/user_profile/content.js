@@ -44,7 +44,7 @@ const Information = (props) => {
 
                 </TabPane>
 
-                <TabPane tab="Education and Award" key="2">Content of Tab Pane 2</TabPane>
+                <TabPane tab="Education and Awards" key="2">Content of Tab Pane 2</TabPane>
 
                 <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
 

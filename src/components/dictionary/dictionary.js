@@ -60,7 +60,10 @@ let dict = {
         "Enter Name": "输入名字",
         "Enter Phone Number": "输入电话号码",
         "I Want to Hire": "我想雇用",
-        "I Want to Work": "我想要工作"
+        "I Want to Work": "我想要工作",
+        "Language": "语言",
+        "Logout": "登出",
+        "General Info": "基本信息"
     },
     'es': {
         'Sign In': "Sign In",
@@ -123,7 +126,10 @@ let dict = {
         "Enter Name": "Enter Name",
         "Enter Phone Number": "Enter Phone Number",
         "I Want to Hire": "I Want to Hire",
-        "I Want to Work": "I Want to Work"
+        "I Want to Work": "I Want to Work",
+        "Language": "Language",
+        "Logout": "Logout",
+        "General Info": "General Info"
     }
 };
 export default dict;
