@@ -39,6 +39,21 @@ class Profile extends React.Component {
             console.log("error in getting the user's information", err);
         }
 
+        // fetch all relevant jobs and save to state to render to page
+        try {
+            // we can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
+            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: this.state.userID }));
+            if (fetchAllAppliedJobs.data == null) {
+                console.log("From userProfile.js - There are no jobs to be fetched.");
+            }
+            else {
+                console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
+            }
+            this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
+        } catch (err) {
+            console.log("From userProfile.js - The error is ", err);
+        }
+
     }
 
     render() {
@@ -47,7 +62,7 @@ class Profile extends React.Component {
                 <Skeleton active />
             );
         }
-        console.log(this.state.user);
+        //console.log(this.state.user);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
