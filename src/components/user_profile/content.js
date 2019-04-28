@@ -1,22 +1,20 @@
 import React from 'react';
 import { Tabs, Table, Button } from 'antd';
 import { getUser } from '../../services/auth';
-import { API, graphqlOperation, Auth, I18n } from 'aws-amplify';
-import * as queries from '../../graphql/queries';
-import * as mutations from '../../graphql/mutations';
+import { I18n } from 'aws-amplify';
 
 const TabPane = Tabs.TabPane;
 
 const columns = [{
-    title: 'Job',
+    title: I18n.get('Job'),
     dataIndex: 'job',
     key: 'job',
 }, {
-    title: 'Date Applied',
+    title: I18n.get('Date Applied'),
     dataIndex: 'dateApplied',
     key: 'dateApplied',
 }, {
-    title: 'Status',
+    title: I18n.get('Status'),
     dataIndex: 'status',
     key: 'status'
 }];
@@ -49,7 +47,7 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Experience and Skills")} key="3">Content of Tab Pane 3</TabPane>
 
                 <TabPane tab={I18n.get("Applied Jobs")} key="4">Content of Tab Pane 4
-                    <h1 align="center">Applied Jobs</h1>
+                    <h1 align="center">{I18n.get("Applied Jobs")}</h1>
                     {props.jobs.length > 0 ? (
                         <Table dataSource={props.jobs} columns={columns} />
                     ) : <h1 align="center">You haven't applied to any jobs yet.</h1>

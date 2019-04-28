@@ -66,7 +66,16 @@ let dict = {
         "General Info": "基本信息",
         "Education and Awards": "教育和奖励",
         "Experience and Skills": "经验和技能",
-        "Applied Jobs": "应用工作"
+        "Applied Jobs": "应用工作",
+        "Job": "工作",
+        "Date Applied": "申请日期",
+        "Status": "状态",
+        "This is the description": "这是描述",
+        "Edit Profile": "编辑个人资料",
+        "Change Profile Picture": "更改个人资料图片",
+        "Upload a Resume": "上传简历",
+        "User": "用户",
+        "Team": "球队",
     },
     'es': {
         'Sign In': "Sign In",
@@ -135,7 +144,16 @@ let dict = {
         "General Info": "General Info",
         "Education and Awards": "Education and Awards",
         "Experience and Skills": "Experience and Skills",
-        "Applied Jobs": "Applied Jobs"
+        "Applied Jobs": "Applied Jobs",
+        "Job": "Job",
+        "Date Applied": "Date Applied",
+        "Status": "Status",
+        "This is the description": "This is the description",
+        "Edit Profile": "Edit Profile",
+        "Change Profile Picture": "Change Profile Picture",
+        "Upload a Resume": "Upload a Resume",
+        "User": "User",
+        "Team": "Team"
     }
 };
 export default dict;

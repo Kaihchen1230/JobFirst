@@ -3,7 +3,7 @@ import MyCard from '../components/user_profile/card';
 import MyList from '../components/user_profile/resumeList';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
-import Amplify, { API, graphqlOperation } from "aws-amplify";
+import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import { getUser, isLoggedIn } from '../services/auth';
 import { Layout, Skeleton, Menu, Icon } from 'antd';
@@ -85,15 +85,15 @@ class Profile extends React.Component {
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
                             <Icon type="form" />
-                            <span>Edit Profile</span>
+                            <span>{I18n.get('Edit Profile')}</span>
                         </Menu.Item>
                         <Menu.Item key="2">
                             <Icon type="picture" />
-                            <span>Change Profile Picture</span>
+                            <span>{I18n.get('Change Profile Picture')}</span>
                         </Menu.Item>
                         <SubMenu
                             key="sub1"
-                            title={<span><Icon type="user" /><span>User</span></span>}
+                            title={<span><Icon type="user" /><span>{I18n.get('User')}</span></span>}
                         >
                             <Menu.Item key="3">Tom</Menu.Item>
                             <Menu.Item key="4">Bill</Menu.Item>
@@ -101,14 +101,14 @@ class Profile extends React.Component {
                         </SubMenu>
                         <SubMenu
                             key="sub2"
-                            title={<span><Icon type="team" /><span>Team</span></span>}
+                            title={<span><Icon type="team" /><span>{I18n.get('Team')}</span></span>}
                         >
-                            <Menu.Item key="6">Team 1</Menu.Item>
-                            <Menu.Item key="8">Team 2</Menu.Item>
+                            <Menu.Item key="6">1</Menu.Item>
+                            <Menu.Item key="8">2</Menu.Item>
                         </SubMenu>
                         <Menu.Item key="9">
                             <Icon type="file" />
-                            <span>Upload A resume</span>
+                            <span>{I18n.get('Upload a Resume')}</span>
                         </Menu.Item>
                     </Menu>): null
                     }
