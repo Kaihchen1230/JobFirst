@@ -37,6 +37,7 @@ class Information extends React.Component {
     }
 
     componentDidMount = async () => {
+        // Get user information using Auth
         const user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
         const userID = attributes.sub;
@@ -45,14 +46,13 @@ class Information extends React.Component {
             // This query needs to be modified so that it calls queries.getAppliedJob(id: id) where id is the user id (need to figure out how to pass this in)
                 //let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
             let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: userID }));
-            console.log("results: ", fetchAllAppliedJobs.data);
-            //if (fetchAllAppliedJobs.data.listAppliedJobs.items.length == 0) {
-            //    console.log("There are no jobs to be fetched.");
-            //}
-            //else {
-            //    console.log("The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
-            //}
-            //this.setState({ theJobs: fetchAllAppliedJobs.data.listAppliedJobs.items });
+            if (fetchAllAppliedJobs.data == null) {
+                console.log("There are no jobs to be fetched.");
+            }
+            else {
+                console.log("The following jobs were fetched:\n", fetchAllAppliedJobs.data);
+            }
+            this.setState({ theJobs: fetchAllAppliedJobs.data });
         } catch (err) {
             console.log("The error is ", err);
         }
