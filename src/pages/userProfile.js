@@ -3,7 +3,7 @@ import MyCard from '../components/user_profile/card';
 import MyList from '../components/user_profile/resumeList';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
-import Amplify, { API, graphqlOperation } from "aws-amplify";
+import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import { getUser, isLoggedIn } from '../services/auth';
 import { Layout, Skeleton, Menu, Icon } from 'antd';
@@ -17,6 +17,7 @@ class Profile extends React.Component {
             userID: this.props.userID,
             loading: true,
             collapsed: false,
+            theJobs: []
         }
     }
 
@@ -36,7 +37,30 @@ class Profile extends React.Component {
                 loading: false
             })
         } catch (err) {
-            console.log("error in getting the user's information", err);
+            console.log("From userProfile.js - error in getting the user's information", err);
+        }
+
+        // Attempt to add one applied job for testing
+        try {
+            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: this.state.userID}));
+            console.log("From userProfile.js - The test job was added");
+        } catch(err) {
+            console.log("From userProfile.js - Error: The test job was not added because it already exists");
+        }
+
+        // Fetch all relevant jobs and save to state to render to page
+        try {
+            // We can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
+            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: this.state.userID }));
+            if (fetchAllAppliedJobs.data == null) {
+                console.log("From userProfile.js - There are no jobs to be fetched.");
+            }
+            else {
+                console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
+            }
+            this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
+        } catch (err) {
+            console.log("From userProfile.js - Error: ", err);
         }
 
     }
@@ -47,7 +71,7 @@ class Profile extends React.Component {
                 <Skeleton active />
             );
         }
-        console.log(this.state.user);
+        //console.log(this.state.user);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
@@ -61,15 +85,15 @@ class Profile extends React.Component {
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
                             <Icon type="form" />
-                            <span>Edit Profile</span>
+                            <span>{I18n.get('Edit Profile')}</span>
                         </Menu.Item>
                         <Menu.Item key="2">
                             <Icon type="picture" />
-                            <span>Change Profile Picture</span>
+                            <span>{I18n.get('Change Profile Picture')}</span>
                         </Menu.Item>
                         <SubMenu
                             key="sub1"
-                            title={<span><Icon type="user" /><span>User</span></span>}
+                            title={<span><Icon type="user" /><span>{I18n.get('User')}</span></span>}
                         >
                             <Menu.Item key="3">Tom</Menu.Item>
                             <Menu.Item key="4">Bill</Menu.Item>
@@ -77,20 +101,20 @@ class Profile extends React.Component {
                         </SubMenu>
                         <SubMenu
                             key="sub2"
-                            title={<span><Icon type="team" /><span>Team</span></span>}
+                            title={<span><Icon type="team" /><span>{I18n.get('Team')}</span></span>}
                         >
-                            <Menu.Item key="6">Team 1</Menu.Item>
-                            <Menu.Item key="8">Team 2</Menu.Item>
+                            <Menu.Item key="6">1</Menu.Item>
+                            <Menu.Item key="8">2</Menu.Item>
                         </SubMenu>
                         <Menu.Item key="9">
                             <Icon type="file" />
-                            <span>Upload A resume</span>
+                            <span>{I18n.get('Upload a Resume')}</span>
                         </Menu.Item>
                     </Menu>): null
                     }
                 </Sider>
                 <Content>
-                    <Information user={this.state.user} />
+                    <Information user={this.state.user} jobs={this.state.theJobs} />
                 </Content>
             </Layout>
 

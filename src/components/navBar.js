@@ -111,13 +111,13 @@ const navBar = (props) => {
                   .then(logout(() => navigate(`/`)))
                   .catch(err => console.log('error: ', err))
               }}>
-              <Icon type="logout" theme="outlined" />Logout
+              <Icon type="logout" theme="outlined" />{I18n.get('Logout')}
         </Menu.Item>
           ) : null}
 
           <Menu.Item>
             <Dropdown overlay={language_menu}>
-              <Button>Language</Button>
+              <Button>{I18n.get('Language')}</Button>
             </Dropdown>
           </Menu.Item>
 
