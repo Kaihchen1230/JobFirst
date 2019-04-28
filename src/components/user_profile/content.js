@@ -26,9 +26,9 @@ const callback = (key) => {
 }
 
 const Information = (props) => {
-
+    //{console.log(props.jobs)}
+    //{console.log(props.user)}
     const user = getUser();
-    console.log("The current user's information:", user);
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
@@ -50,10 +50,10 @@ const Information = (props) => {
 
                 <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
                     <h1 align="center">Applied Jobs</h1>
-                    <Table dataSource={props.jobs} columns={columns} />
-                    <h1 align="center">You haven't applied to any jobs yet.</h1>
-
-                    {console.log("This line was printed")}
+                    {props.jobs.length > 0 ? (
+                        <Table dataSource={props.jobs} columns={columns} />
+                    ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
+                    }
                 </TabPane>
             </Tabs>
         </div>

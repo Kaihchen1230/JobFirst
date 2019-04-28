@@ -17,6 +17,7 @@ class Profile extends React.Component {
             userID: this.props.userID,
             loading: true,
             collapsed: false,
+            theJobs: []
         }
     }
 
@@ -36,16 +37,15 @@ class Profile extends React.Component {
                 loading: false
             })
         } catch (err) {
-            console.log("error in getting the user's information", err);
+            console.log("From userProfile.js - error in getting the user's information", err);
         }
 
         // Attempt to add one applied job for testing
         try {
-            fakeAppliedJobObject.id = randomID;
-            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
-            console.log("From userProfile.js - the job was added");
+            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: this.state.userID}));
+            console.log("From userProfile.js - The test job was added");
         } catch(err) {
-            console.log("From userProfile.js - error - job was not added or it already exists");
+            console.log("From userProfile.js - Error: The test job was not added because it already exists");
         }
 
         // Fetch all relevant jobs and save to state to render to page
@@ -60,7 +60,7 @@ class Profile extends React.Component {
             }
             this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
         } catch (err) {
-            console.log("From userProfile.js - The error is ", err);
+            console.log("From userProfile.js - Error: ", err);
         }
 
     }
@@ -114,7 +114,7 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information user={this.state.user} />
+                    <Information user={this.state.user} jobs={this.state.theJobs} />
                 </Content>
             </Layout>
 
