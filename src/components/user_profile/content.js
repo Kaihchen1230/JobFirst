@@ -54,8 +54,7 @@ class Information extends React.Component {
 
         // fetch all relevant jobs and save to state to render to page
         try {
-            // This query needs to be modified so that it calls queries.getAppliedJob(id: id) where id is the user id (need to figure out how to pass this in)
-                //let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+            // we can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
             let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: userID }));
             if (fetchAllAppliedJobs.data == null) {
                 console.log("There are no jobs to be fetched.");
