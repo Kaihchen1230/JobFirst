@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs, Table, Button } from 'antd';
 import { getUser } from '../../services/auth';
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation, Auth } from 'aws-amplify';
 import * as queries from '../../graphql/queries';
 import * as mutations from '../../graphql/mutations';
 
@@ -37,17 +37,22 @@ class Information extends React.Component {
     }
 
     componentDidMount = async () => {
-        // fetch all jobs and save to state to render to page
+        const user = await Auth.currentAuthenticatedUser();
+        const { attributes } = user;
+        const userID = attributes.sub;
+        // fetch all relevant jobs and save to state to render to page
         try {
             // This query needs to be modified so that it calls queries.getAppliedJob(id: id) where id is the user id (need to figure out how to pass this in)
-            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
-            if (fetchAllAppliedJobs.data.listAppliedJobs.items.length == 0) {
-                console.log("There are no jobs to be fetched.");
-            }
-            else {
-                console.log("The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
-            }
-            this.setState({ theJobs: fetchAllAppliedJobs.data.listAppliedJobs.items });
+                //let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: userID }));
+            console.log("results: ", fetchAllAppliedJobs.data);
+            //if (fetchAllAppliedJobs.data.listAppliedJobs.items.length == 0) {
+            //    console.log("There are no jobs to be fetched.");
+            //}
+            //else {
+            //    console.log("The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
+            //}
+            //this.setState({ theJobs: fetchAllAppliedJobs.data.listAppliedJobs.items });
         } catch (err) {
             console.log("The error is ", err);
         }
@@ -59,7 +64,7 @@ class Information extends React.Component {
 
     render() {
         const user = getUser();
-        console.log(user);
+        console.log("The current user's information:", user);
         return (
             <div>
                 <Tabs defaultActiveKey="1" onChange={this.callback}>
