@@ -21,90 +21,43 @@ const columns = [{
     key: 'status'
 }];
 
-const fakeAppliedJobObject = {
-    //Employee: Employee object
-    //Job: PostedJob
-    //dateApplied: String
-    //status: String
-    dateApplied: "it was today",
-    status: "it is pending"
+const callback = (key) => {
+    console.log(key);
 }
 
-class Information extends React.Component {
+const Information = (props) => {
 
-    state = {
-        theJobs: []
-    }
+    const user = getUser();
+    console.log("The current user's information:", user);
+    return (
+        <div>
+            <Tabs defaultActiveKey="1" onChange={callback}>
+                <TabPane tab="General Info" key="1">
+                    <div>
+                        First Name: {user.name}
+                        <br />
+                        Last Name: {user.lastName}
+                        <br />
+                        Age: {user.age}
+                        <br />
+                    </div>
 
-    componentDidMount = async () => {
-        // Get user information using Auth
-        const user = await Auth.currentAuthenticatedUser();
-        const { attributes } = user;
-        const userID = attributes.sub;
-        const randomID = "58560a0d-6569-421e-9c33-069ed18c08d0"
+                </TabPane>
 
-        // Add one applied job for testing
-        try {
-            fakeAppliedJobObject.id = randomID;
-            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: fakeAppliedJobObject}));
-            console.log("the job was added");
-        } catch(err) {
-            console.log("error - job was not added or it already exists");
-        }
+                <TabPane tab="Education and Award" key="2">Content of Tab Pane 2</TabPane>
 
-        // fetch all relevant jobs and save to state to render to page
-        try {
-            // we can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
-            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: userID }));
-            if (fetchAllAppliedJobs.data == null) {
-                console.log("There are no jobs to be fetched.");
-            }
-            else {
-                console.log("The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
-            }
-            this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
-        } catch (err) {
-            console.log("The error is ", err);
-        }
-    }
+                <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
 
-    callback = (key) => {
-        console.log(key);
-    }
+                <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
+                    <h1 align="center">Applied Jobs</h1>
+                    <Table dataSource={props.jobs} columns={columns} />
+                    <h1 align="center">You haven't applied to any jobs yet.</h1>
 
-    render() {
-        const user = getUser();
-        console.log("The current user's information:", user);
-        return (
-            <div>
-                <Tabs defaultActiveKey="1" onChange={this.callback}>
-                    <TabPane tab="General Info" key="1">
-                        <div>
-                            First Name: {user.name}
-                            <br />
-                            Last Name: {user.lastName}
-                            <br />
-                            Age: {user.age}
-                            <br />
-                        </div>
-
-                    </TabPane>
-
-                    <TabPane tab="Education and Award" key="2">Content of Tab Pane 2</TabPane>
-
-                    <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
-
-                    <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
-                        <h1 align="center">Applied Jobs</h1>
-                        {this.state.theJobs.length > 0 ? (
-                            <Table dataSource={this.state.theJobs} columns={columns} />
-                        ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
-                        }
-                    </TabPane>
-                </Tabs>
-            </div>
-        );
-    }
+                    {console.log("This line was printed")}
+                </TabPane>
+            </Tabs>
+        </div>
+    );
 }
 
 export default Information;
