@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs, Table, Button } from 'antd';
 import { getUser } from '../../services/auth';
-import { API, graphqlOperation, Auth } from 'aws-amplify';
+import { API, graphqlOperation, Auth, I18n } from 'aws-amplify';
 import * as queries from '../../graphql/queries';
 import * as mutations from '../../graphql/mutations';
 
@@ -32,7 +32,7 @@ const Information = (props) => {
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
-                <TabPane tab="General Info" key="1">
+                <TabPane tab={I18n.get("General Info")} key="1">
                     <div>
                         First Name: {user.name}
                         <br />
@@ -44,11 +44,11 @@ const Information = (props) => {
 
                 </TabPane>
 
-                <TabPane tab="Education and Awards" key="2">Content of Tab Pane 2</TabPane>
+                <TabPane tab={I18n.get("Education and Awards")} key="2">Content of Tab Pane 2</TabPane>
 
-                <TabPane tab="Experience and Skills" key="3">Content of Tab Pane 3</TabPane>
+                <TabPane tab={I18n.get("Experience and Skills")} key="3">Content of Tab Pane 3</TabPane>
 
-                <TabPane tab="Applied Jobs" key="4">Content of Tab Pane 4
+                <TabPane tab={I18n.get("Applied Jobs")} key="4">Content of Tab Pane 4
                     <h1 align="center">Applied Jobs</h1>
                     {props.jobs.length > 0 ? (
                         <Table dataSource={props.jobs} columns={columns} />

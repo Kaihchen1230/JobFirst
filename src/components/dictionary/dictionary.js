@@ -63,7 +63,10 @@ let dict = {
         "I Want to Work": "我想要工作",
         "Language": "语言",
         "Logout": "登出",
-        "General Info": "基本信息"
+        "General Info": "基本信息",
+        "Education and Awards": "教育和奖励",
+        "Experience and Skills": "经验和技能",
+        "Applied Jobs": "应用工作"
     },
     'es': {
         'Sign In': "Sign In",
@@ -129,7 +132,10 @@ let dict = {
         "I Want to Work": "I Want to Work",
         "Language": "Language",
         "Logout": "Logout",
-        "General Info": "General Info"
+        "General Info": "General Info",
+        "Education and Awards": "Education and Awards",
+        "Experience and Skills": "Experience and Skills",
+        "Applied Jobs": "Applied Jobs"
     }
 };
 export default dict;
