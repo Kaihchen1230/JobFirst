@@ -1,6 +1,7 @@
 import React from 'react';
 import pikachiu from '../../../static/pik.jpg';
 import { Card, Icon, Avatar } from 'antd';
+import { I18n } from 'aws-amplify';
 const { Meta } = Card;
 
 const Sidebar = (props) => {
@@ -16,7 +17,7 @@ const Sidebar = (props) => {
             <Meta
                 avatar={<Avatar src={pic} />}
                 title={firstName}
-                description="This is the description"
+                description={I18n.get("This is the description")}
             />
         </Card>
     );

@@ -24,7 +24,7 @@ class Home extends React.Component {
             prevEnter: false,
             nextEnter: false,
             thumbEnter: false,
-//             lan: window.localStorage.getItem('lan')
+            lan: window.localStorage.getItem('lan')
         };
         [
             'onChange', //
