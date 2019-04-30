@@ -79,6 +79,7 @@ const navBar = (props) => {
 
           <Menu.Item key="contact">
             <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
+            <Link to="/app/contact"></Link>
           </Menu.Item>
 
 

@@ -8,6 +8,7 @@ import PostJob from "../components/form/postJob";
 import Home from '../components/Home/home';
 import Profile from "./userProfile";
 import JobList from './jobList';
+import Contact from "./contact";
 import JobDescription from './jobDescription';
 import Application from '../components/form/application';
 import SignUp from '../components/authentication/signup';
@@ -26,7 +27,8 @@ const App = () => (
       <JobList      path="/app/job-list" />
       <TalentList      path="/app/talent-list" />
       <Home         path="/" />
-      <JobDescription path="/app/job-detail/:jobID"/>
+      <JobDescription path="/app/job-detail/:jobID" />
+      <Contact        path="/app/contact" />
     </Router>
   </Layout>
 );
