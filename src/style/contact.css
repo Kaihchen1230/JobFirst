@@ -1,4 +1,4 @@
-div {
+.mainDiv {
     height: 100%;
 }
 
@@ -10,4 +10,8 @@ div {
     font-weight: bold;
     font-size: 24px;
     color: black;
+}
+
+.rows .row {
+    display: inline-block;
 }

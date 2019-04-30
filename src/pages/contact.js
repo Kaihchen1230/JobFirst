@@ -9,15 +9,29 @@ class Contact extends React.Component {
     render() {
         return (
 
-            <div style={{ backgroundImage: `url(${officeImage})` }}>
+            <div align="center" className="mainDiv" style={{ backgroundImage: `url(${officeImage})` }}>
+                <br />
                 <br />
                 <h1 className="title" align="center">Contact Us</h1>
                 <br />
                 <p className="description" align="center">You can get in touch with us at any time for 24/7 support and troubleshooting.</p>
-                <Card size="small" style={{ width: 300 }}></Card>
-                <p>+1800JOBFIRST</p>
+                <div className='rows'>
+                    <div className='row'>
+                        <Card size="small" style={{ width: 300, height: 250 }}>
+                            <p>+1800JOBFIRST</p>
+                        </Card>
+                    </div>
+                    {"   "}
+                    <div className='row'>
+                        <Card size="small" style={{ width: 300, height: 250 }}>
+                            <p>HeadQuarters: New York City</p>
+                        </Card>
+                    </div>
+                </div>
                 <br />
-                <p>HeadQuarters: New York City</p>
+                <br />
+                <br />
+                <br />
                 <br />
             </div>
         );
