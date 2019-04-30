@@ -40,27 +40,14 @@ class Profile extends React.Component {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
 
-        // Attempt to add one applied job for testing
-        try {
-            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: this.state.userID}));
-            console.log("From userProfile.js - The test job was added");
-        } catch(err) {
-            console.log("From userProfile.js - Error: The test job was not added because it already exists");
-        }
-
         // Fetch all relevant jobs and save to state to render to page
         try {
             // We can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
             let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: this.state.userID }));
-            if (fetchAllAppliedJobs.data == null) {
-                console.log("From userProfile.js - There are no jobs to be fetched.");
-            }
-            else {
-                console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
-            }
+            console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
             this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
         } catch (err) {
-            console.log("From userProfile.js - Error: ", err);
+            console.log("From userProfile.js - error in getting list of jobs: ", err);
         }
 
     }
