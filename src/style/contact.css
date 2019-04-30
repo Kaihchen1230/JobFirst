@@ -1,3 +1,13 @@
 div {
     height: 100%;
 }
+
+.title {
+    color: black;
+}
+
+.description {
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+}
