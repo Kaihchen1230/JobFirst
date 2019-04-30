@@ -18,6 +18,7 @@ type Employee {
   skill: [String]
   language: [String]
   englishLevel: String
+  favoriteQuote: String
 }
 
 type Association {
@@ -187,6 +188,7 @@ input ModelEmployeeFilterInput {
   skill: ModelStringFilterInput
   language: ModelStringFilterInput
   englishLevel: ModelStringFilterInput
+  favoriteQuote: ModelStringFilterInput
   and: [ModelEmployeeFilterInput]
   or: [ModelEmployeeFilterInput]
   not: ModelEmployeeFilterInput
@@ -228,6 +230,7 @@ input CreateEmployeeInput {
   skill: [String]
   language: [String]
   englishLevel: String
+  favoriteQuote: String
   employeeAddressId: ID
 }
 
@@ -246,6 +249,7 @@ input UpdateEmployeeInput {
   skill: [String]
   language: [String]
   englishLevel: String
+  favoriteQuote: String
   employeeAddressId: ID
 }
 

@@ -18,6 +18,7 @@ type Employee @model {
   skill: [String]
   language: [String]
   englishLevel: String
+  favoriteQuote: String
 }
 
 type Association @model {

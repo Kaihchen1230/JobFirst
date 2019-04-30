@@ -65,6 +65,7 @@ export const getEmployee = `query GetEmployee($id: ID!) {
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -109,6 +110,7 @@ export const listEmployees = `query ListEmployees(
       skill
       language
       englishLevel
+      favoriteQuote
     }
     nextToken
   }
@@ -154,6 +156,7 @@ export const getAssociation = `query GetAssociation($id: ID!) {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -183,6 +186,7 @@ export const listAssociations = `query ListAssociations(
         skill
         language
         englishLevel
+        favoriteQuote
       }
     }
     nextToken
@@ -233,6 +237,7 @@ export const getExperience = `query GetExperience($id: ID!) {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -266,6 +271,7 @@ export const listExperiences = `query ListExperiences(
         skill
         language
         englishLevel
+        favoriteQuote
       }
     }
     nextToken
@@ -316,6 +322,7 @@ export const getEducation = `query GetEducation($id: ID!) {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -349,6 +356,7 @@ export const listEducations = `query ListEducations(
         skill
         language
         englishLevel
+        favoriteQuote
       }
     }
     nextToken
@@ -422,6 +430,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id
@@ -487,6 +496,7 @@ export const listAppliedJobs = `query ListAppliedJobs(
         skill
         language
         englishLevel
+        favoriteQuote
       }
       Job {
         id

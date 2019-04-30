@@ -65,6 +65,7 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -132,6 +133,7 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -199,6 +201,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -242,6 +245,7 @@ export const onCreateAssociation = `subscription OnCreateAssociation {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -286,6 +290,7 @@ export const onUpdateAssociation = `subscription OnUpdateAssociation {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -330,6 +335,7 @@ export const onDeleteAssociation = `subscription OnDeleteAssociation {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -378,6 +384,7 @@ export const onCreateExperience = `subscription OnCreateExperience {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -426,6 +433,7 @@ export const onUpdateExperience = `subscription OnUpdateExperience {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -474,6 +482,7 @@ export const onDeleteExperience = `subscription OnDeleteExperience {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -522,6 +531,7 @@ export const onCreateEducation = `subscription OnCreateEducation {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -570,6 +580,7 @@ export const onUpdateEducation = `subscription OnUpdateEducation {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -618,6 +629,7 @@ export const onDeleteEducation = `subscription OnDeleteEducation {
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -693,6 +705,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id
@@ -773,6 +786,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id
@@ -853,6 +867,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id
