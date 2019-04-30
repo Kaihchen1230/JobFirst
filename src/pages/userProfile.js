@@ -1,6 +1,4 @@
 import React from 'react';
-import MyCard from '../components/user_profile/card';
-import MyList from '../components/user_profile/resumeList';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
 import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
