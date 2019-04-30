@@ -76,6 +76,7 @@ let dict = {
         "Upload a Resume": "上传简历",
         "User": "用户",
         "Team": "球队",
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "您可以随时与我们联系，以获得全天候支持和故障排除。"
     },
     'es': {
         'Sign In': "Sign In",
@@ -153,7 +154,8 @@ let dict = {
         "Change Profile Picture": "Change Profile Picture",
         "Upload a Resume": "Upload a Resume",
         "User": "User",
-        "Team": "Team"
+        "Team": "Team",
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "You can get in touch with us at any time for 24/7 support and troubleshooting."
     }
 };
 export default dict;

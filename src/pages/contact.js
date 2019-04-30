@@ -1,6 +1,6 @@
 import React from 'react';
 import { I18n } from "aws-amplify";
-import { Layout, Skeleton, Menu, Icon, Card } from 'antd';
+import { Icon, Card } from 'antd';
 import officeImage from "../../static/office.jpg";
 import "../style/contact.css";
 import { Column, Row } from 'simple-flexbox';
@@ -12,9 +12,9 @@ class Contact extends React.Component {
 
             <div align="center" className="mainDiv" style={{ backgroundImage: `url(${officeImage})` }}>
                 <br />
-                <h1 className="title" align="center">Contact Us</h1>
+                <h1 className="title" align="center">{I18n.get('Contact Us')}</h1>
                 <br />
-                <p className="description" align="center">You can get in touch with us at any time for 24/7 support and troubleshooting.</p>
+                <p className="description" align="center">{I18n.get('You can get in touch with us at any time for 24/7 support and troubleshooting.')}</p>
                 <br /><br />
                 <Column flexGrow={1}>
                     <Row vertical='center'>
