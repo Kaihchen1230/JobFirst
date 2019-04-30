@@ -15,25 +15,25 @@ class Contact extends React.Component {
                 <h1 className="title" align="center">Contact Us</h1>
                 <br />
                 <p className="description" align="center">You can get in touch with us at any time for 24/7 support and troubleshooting.</p>
+                <br /><br />
                 <Column flexGrow={1}>
-                    <Row horizontal='center'>
-                        <h1>HEADER</h1>
-                    </Row>
                     <Row vertical='center'>
                         <Column flexGrow={1} horizontal='center'>
                             <Card
                                 size="default"
-                                title="Default size card"
+                                title={<Icon type="phone" style={{fontSize: 25}}/>}
+                                style={{ border: "solid" }}
                             >
-                                <p>+1800JOBFIRST</p>
+                                <p className="description">+1800JOBFIRST</p>
                             </Card>
                         </Column>
                         <Column flexGrow={1} horizontal='center'>
                             <Card
                                 size="default"
-                                title="Default size card"
+                                title={<Icon type="home" style={{fontSize: 25}}/>}
+                                style={{ border: "solid" }}
                             >
-                                <p>HeadQuarters: New York City</p>
+                                <p className="description">HeadQuarters: New York City</p>
                             </Card>
                         </Column>
                     </Row>

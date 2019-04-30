@@ -11,11 +11,3 @@
     font-size: 24px;
     color: black;
 }
-
-.rows .row {
-    display: inline-block;
-}
-
-.row {
-    border-style: solid;
-}
