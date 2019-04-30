@@ -22,7 +22,7 @@ class Contact extends React.Component {
                             <Card
                                 size="default"
                                 title={<Icon type="phone" style={{fontSize: 25}}/>}
-                                style={{ border: "solid" }}
+                                style={{ border: "solid", height: 210 }}
                             >
                                 <p className="description">+1800JOBFIRST</p>
                             </Card>
@@ -31,9 +31,9 @@ class Contact extends React.Component {
                             <Card
                                 size="default"
                                 title={<Icon type="home" style={{fontSize: 25}}/>}
-                                style={{ border: "solid" }}
+                                style={{ border: "solid", height: 210, width: 250 }}
                             >
-                                <p className="description">HeadQuarters: New York City</p>
+                                <p className="description">160 Convent Av,<br /> New York, NY<br /> 10031</p>
                             </Card>
                         </Column>
                     </Row>
