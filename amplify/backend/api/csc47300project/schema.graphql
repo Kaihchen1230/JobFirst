@@ -95,7 +95,8 @@ type PostedJob @model {
   deadline: AWSDate
   location: Address @connection
   applied: [AppliedJob] @connection(name:"postedJob")
-
+  searchFieldName: String
+  searchFieldLocation: String
   clickedCounts: Int
 }
 
