@@ -83,29 +83,32 @@ class Profile extends React.Component {
                     <Person user={this.state.user} />
                     {(getUser().sub === this.state.userID) ?(
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1">
-                            <Icon type="form" />
-                            <span>{I18n.get('Edit Profile')}</span>
-                        </Menu.Item>
+                        <SubMenu
+                            key="sub1"
+                            title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
+                        >
+                            <Menu.Item key="3">
+                                Modify Basic Info
+                            </Menu.Item>
+
+                            <Menu.Item key="4">
+                                Update address
+                            </Menu.Item>
+
+                            <Menu.Item key="5">
+                                Add Education or Award
+                            </Menu.Item>
+                            
+                            <Menu.Item key="6">
+                                Add Experience or Skill
+                            </Menu.Item>
+                        </SubMenu>
+
                         <Menu.Item key="2">
                             <Icon type="picture" />
                             <span>{I18n.get('Change Profile Picture')}</span>
                         </Menu.Item>
-                        <SubMenu
-                            key="sub1"
-                            title={<span><Icon type="user" /><span>{I18n.get('User')}</span></span>}
-                        >
-                            <Menu.Item key="3">Tom</Menu.Item>
-                            <Menu.Item key="4">Bill</Menu.Item>
-                            <Menu.Item key="5">Alex</Menu.Item>
-                        </SubMenu>
-                        <SubMenu
-                            key="sub2"
-                            title={<span><Icon type="team" /><span>{I18n.get('Team')}</span></span>}
-                        >
-                            <Menu.Item key="6">1</Menu.Item>
-                            <Menu.Item key="8">2</Menu.Item>
-                        </SubMenu>
+                        
                         <Menu.Item key="9">
                             <Icon type="file" />
                             <span>{I18n.get('Upload a Resume')}</span>
