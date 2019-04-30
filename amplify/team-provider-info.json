@@ -145,11 +145,6 @@
             "UnauthRoleName": "csc47300project-20190424051914-unauthRole",
             "StackName": "csc47300project-20190424051914",
             "StackId": "arn:aws:cloudformation:us-east-2:534088467140:stack/csc47300project-20190424051914/078ae9c0-6672-11e9-8e3e-02c65bf75a14"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
         }
     }
 }
