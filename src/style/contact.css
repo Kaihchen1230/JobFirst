@@ -15,3 +15,7 @@
 .rows .row {
     display: inline-block;
 }
+
+.row {
+    border-style: solid;
+}
