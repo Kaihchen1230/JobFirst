@@ -31,7 +31,7 @@ class Profile extends React.Component {
         try {
             // console.log(this.props.userID);
             const user = await API.graphql(graphqlOperation(queries.getEmployee, { id: this.state.userID }));
-            // console.log(user);
+            console.log(user);
             this.setState({
                 user: user.data.getEmployee,
                 loading: false

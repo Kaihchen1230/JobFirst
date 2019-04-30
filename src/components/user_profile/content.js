@@ -36,8 +36,19 @@ const Information = (props) => {
                         <br />
                         Last Name: {user.lastName}
                         <br />
+                        Middle Name: {user.middleName}
+                        <br />
                         Age: {user.age}
                         <br />
+                        Email: {user.email}
+                        <br />
+                        Phone number: {user.phone}
+                        <br />
+                        English Level: {user.englishLevel}
+                        <br />
+                        Languages Speak: {user.language}
+                        <br />
+
                     </div>
 
                 </TabPane>
