@@ -40,7 +40,7 @@ class Profile extends React.Component {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
         try {
-            const testing = await API.graphql(graphqlOperation(customQueries.getUsernameEmployee, { id: this.state.userID }));
+            const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
             console.log(testing)
         } catch (err) {
             console.log("custom queries failed", err);

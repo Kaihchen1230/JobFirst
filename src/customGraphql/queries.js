@@ -1,6 +1,6 @@
 export const getAppliedJobEmployee = 
-`query GetEmployee(
-    $id: ID!
+`query GetAppliedJobEmployee(
+    $id: ID! 
     $appliedJobLimit: Int
     $appliedJobNextToken: String
 ) {
