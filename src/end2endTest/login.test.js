@@ -10,12 +10,12 @@ test('should fill username', async () => {
   await page.goto(
     'http://localhost:8000/app/login'
   );
-  await page.click('[name="username"]');
-  await page.type('[name="username"]', 'testing2');
-  await page.click('[name="password"]');
-  await page.type('[name="password"]', 'testingPass1@');
-  await page.click('[value="Log In"]');
-  await page.waitFor(3000);
+  await page.click('#normal_login_userName');
+  await page.type('#normal_login_userName', 'kappa');
+  await page.click('#normal_login_password');
+  await page.type('#normal_login_password', '214890303Khc');
+  await page.click('.login-form-button');
+  await page.waitFor(30000);
   browser.close();
   
 },1000000);

@@ -5,14 +5,16 @@ import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
-import { API, graphqlOperation } from 'aws-amplify';
+import { Auth, API, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
+import * as mutations from '../graphql/mutations';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
 
 
     state = {
+        userId: "",
         jobId: "",
         postJobInfo: {},
         jobInfo: {
@@ -20,41 +22,10 @@ class JobDescription extends React.Component{
           type: "",
           description: "",
           requirements: [],
+          clickedCount: 0
         },
         companyInfo: {},
         location: {},
-        jobDetail:[
-            {
-                title: 'Software Engineer Intern',
-                description: 'Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.',
-                responsibilities: [
-                    'Proficient in Python and SQL',
-                    'Familiarity with working using Machine Learning techniques.',
-                    'Naturally curious, detail oriented, passionate about data quality and statistical methods, ability to drive a project to completion.',
-                    'Availability full-time June - August 2019 in NYC'
-                ],
-                location: 'New York'
-            }
-                
-        ], 
-        'company':[
-            {
-                name: 'Alibaba',
-                headquarter: 'Hanzhou, China',
-                founded: '1923',
-                industry: 'Enterprise Software & Network',
-                revenue: '$5 to $10 billion(USD)',
-                size: '10000+ Employees'
-            }
-        ],
-        'location': [
-            {
-                street1: '85 Broad Street',
-                city: 'New York',
-                state: 'NY',
-                zipCode: 11225
-            }
-        ],
         'applicant': [{
             key: '1',
             name: 'John Brown',
@@ -123,42 +94,92 @@ class JobDescription extends React.Component{
     }
     componentDidMount = async () => {
       let currentId = window.history.state.id;
+      let user = await Auth.currentAuthenticatedUser();
+      const { attributes } = user;
+      let currentUserId = attributes.sub;
+      
+      // get the current job info
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
+        console.log('this is currentJobInfo: ', currentJobInfo);
         let incomingJobInfo = {...this.state.jobInfo};
         incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
         incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
+        incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
         this.setState({
+          userId: currentUserId,
           jobId: currentId,
           postJobInfo: currentJobInfo,
           jobInfo: incomingJobInfo,
           companyInfo: currentJobInfo.data.getPostedJob.company,
           location: currentJobInfo.data.getPostedJob.location
-
-
         });
-
+        // console.log('this is the clickcount: ', this.state.jobInfo.clickedCount);
       }catch(err){
         console.log('there is an error fetching data...', err);
       }
 
+      // update posted job click count
+      try{
+        let currentJobClickedCounts = this.state.jobInfo.clickedCount;
+        // console.log('this is !!!clickcount: ', currentJobClickedCounts);
+        // console.log('this is !!!!!! current id: ', currentId);
+        const updatePostedJobInput = {
+          id: currentId,
+          clickedCounts: currentJobClickedCounts + 1
+        };
+        await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
+        // const newUpdatePostJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
+        // console.log(' this is the newUpdatePostJob: ', newUpdatePostJob);
+
+      }catch(err){
+        console.log('there is an error updating click count: ', err);
+      }
       
+      // console.log('this is attribute: ', currentUserId);
+      // console.log('this is attr: ', {attributes});
     }
-    
+
+    applyJob = async () => {
+      // event.preventDefault();
+      // console.log('this is word: ', word);
+      const newDate = new Date()
+      const date = newDate.getDate();
+      const month = newDate.getMonth() + 1;
+      const year = newDate.getFullYear();
+      const currentDate = month + '/' + date + '/' + year;
+      const userId = this.state.userId;
+      const jobId = this.state.jobId;
+      // console.log('this is the date: ', this.state.userId);
+      // console.log('this is the userId: ', userId);
+      // console.log('this is jobId: ', jobId);
+      try{
+        const createAppliedJobInput = {
+          dateApplied : currentDate,
+          status: "Pending",
+          appliedJobEmployeeId: userId,
+          appliedJobJobId: jobId
+        }
+        const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+        // console.log(' this is the newAppliedJob: ', newAppliedJob);
+
+      }catch(err){
+        console.log('there is an eeror updating the applied job table: ', err);
+      }
+    }    
     render(){
         // console.log("this is the job id: ", this.state.jobId);
         // console.log('this is the postjob info: ', this.state.postJobInfo);
         // console.log('this is the job info: ', this.state.jobInfo);        
         // console.log('this is the company: ', this.state.companyInfo);
-        console.log('this is the location: ', this.state.location);
+        // console.log('this is the location: ', this.state.location);
         // console.log('this is the city: ', this.state.location.city);
 
-        let content = "";
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
-          content = this.state.companyInfo.description;
+          let content = this.state.companyInfo.description;
           viewCompanyInfo = (<Popover content={content}>
                   <div>
                   {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
@@ -172,18 +193,16 @@ class JobDescription extends React.Component{
             </div>
           )
         }
+
         
         return(
             
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
-                
-                <Button type="primary" ghost >
-                            <Link to="/app/application">
-                                Apply Now
-                            </Link>
-                </Button>
+                <Popover content={"We will use your default information to apply to the job"} >
+                <Button type="primary" onClick={this.applyJob}>Apply Now</Button>
+              </Popover>
                 <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>

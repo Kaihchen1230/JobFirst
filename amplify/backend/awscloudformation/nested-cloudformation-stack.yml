@@ -81,7 +81,11 @@
 		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
+<<<<<<< HEAD
 				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190430171312-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+=======
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412181322-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+>>>>>>> 151b20d8df9640b06ec984a23dd5371aeb71888f
 				"Parameters": {
 					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": false,
@@ -139,13 +143,18 @@
 							"Arn"
 						]
 					},
+<<<<<<< HEAD
 					"env": "alanenvvv"
+=======
+					"env": "product"
+>>>>>>> 151b20d8df9640b06ec984a23dd5371aeb71888f
 				}
 			}
 		},
 		"apicsc47300project": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
+<<<<<<< HEAD
 				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190430171312-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "csc47300project",
@@ -154,6 +163,15 @@
 					"ResolverRootKey": "amplify-appsync-files",
 					"DeploymentTimestamp": "1556661795599",
 					"env": "alanenvvv"
+=======
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190412181322-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"AppSyncApiName": "csc47300project",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
+					"S3DeploymentBucket": "csc47300project-20190412181322-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/86411e94dadebccd8f4858444d82ac65f8ab1386",
+					"env": "product"
+>>>>>>> 151b20d8df9640b06ec984a23dd5371aeb71888f
 				}
 			}
 		}

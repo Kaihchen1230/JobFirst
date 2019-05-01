@@ -7,8 +7,8 @@ const TabPane = Tabs.TabPane;
 
 const columns = [{
     title: I18n.get('Job'),
-    dataIndex: 'job',
-    key: 'job',
+    dataIndex: 'Job',
+    key: 'Job',
 }, {
     title: I18n.get('Date Applied'),
     dataIndex: 'dateApplied',
