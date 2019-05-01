@@ -46,7 +46,7 @@ const Information = (props) => {
 
                 <TabPane tab={I18n.get("Experience and Skills")} key="3">Content of Tab Pane 3</TabPane>
 
-                <TabPane tab={I18n.get("Applied Jobs")} key="4">Content of Tab Pane 4
+                <TabPane tab={I18n.get("Applied Jobs")} key="4">
                     <h1 align="center">{I18n.get("Applied Jobs")}</h1>
                     {props.jobs.length > 0 ? (
                         <Table dataSource={props.jobs} columns={columns} />

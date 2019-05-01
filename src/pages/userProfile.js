@@ -5,6 +5,7 @@ import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
 import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
 import * as queries from '../graphql/queries';
+import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
 import { Layout, Skeleton, Menu, Icon } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -40,25 +41,34 @@ class Profile extends React.Component {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
 
+        // What to pass in when creating applied job objects. The id parameter must be different each time
+        const appliedJobInput = {
+            id: "54160v2d-6469-411e-9b53-012ed15c08d0",
+            dateApplied: "some days ago",
+            status: "just received",
+            appliedJobEmployeeId: "57564b0d-2069-451e-9b13-075ed12c08g0",
+            appliedJobJobId: "51563b0d-4069-411e-9n33-049ed15c01f0"
+        }
+
         // Attempt to add one applied job for testing
         try {
-            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: this.state.userID}));
+            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: appliedJobInput}));
             console.log("From userProfile.js - The test job was added");
         } catch(err) {
-            console.log("From userProfile.js - Error: The test job was not added because it already exists");
+            console.log("From userProfile.js - Error: ", err);
         }
 
         // Fetch all relevant jobs and save to state to render to page
         try {
             // We can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
-            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: this.state.userID }));
-            if (fetchAllAppliedJobs.data == null) {
+            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
+            if (fetchAllAppliedJobs == null) {
                 console.log("From userProfile.js - There are no jobs to be fetched.");
             }
             else {
-                console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
+                console.log("From userProfile.js - The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
             }
-            this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
+            //this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
         } catch (err) {
             console.log("From userProfile.js - Error: ", err);
         }
