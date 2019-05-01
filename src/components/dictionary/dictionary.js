@@ -85,7 +85,11 @@ let dict = {
         "Email": "电邮",
         "Phone Number": "电话号码",
         "English Level": "英文程度",
-        "Language Spoken": "会说语言",
+        "Spoken Language": "会说语言",
+        "Modify Basic Info": "更改基本资料",
+        "Update address": "更新地址",
+        "Add Education or Award": "添加教育或奖项",
+        "Add Experience or Skill": "添加经验或技能",
         /* end of user profile */
 
     },
@@ -175,7 +179,11 @@ let dict = {
         "Email": "Email",
         "Phone Number": "Phone Number",
         "English Level": "English Level",
-        "Language Spoken": "Language Spoken",
+        "Spoken Language": "Spoken Language",
+        "Modify Basic Info": "Modify Basic Info",
+        "Update address": "Update address",
+        "Add Education or Award": "Add Education or Award",
+        "Add Experience or Skill": "Add Experience or Skill",
         /* end of user profile */
     }
 };
