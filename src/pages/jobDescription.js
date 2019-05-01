@@ -22,6 +22,7 @@ class JobDescription extends React.Component{
           type: "",
           description: "",
           requirements: [],
+          clickedCount: 0
         },
         companyInfo: {},
         location: {},
@@ -96,13 +97,17 @@ class JobDescription extends React.Component{
       let user = await Auth.currentAuthenticatedUser();
       const { attributes } = user;
       let currentUserId = attributes.sub;
+      
+      // get the current job info
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
+        console.log('this is currentJobInfo: ', currentJobInfo);
         let incomingJobInfo = {...this.state.jobInfo};
         incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
         incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
+        incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
         this.setState({
           userId: currentUserId,
           jobId: currentId,
@@ -111,17 +116,35 @@ class JobDescription extends React.Component{
           companyInfo: currentJobInfo.data.getPostedJob.company,
           location: currentJobInfo.data.getPostedJob.location
         });
-
+        // console.log('this is the clickcount: ', this.state.jobInfo.clickedCount);
       }catch(err){
         console.log('there is an error fetching data...', err);
       }
+
+      // update posted job click count
+      try{
+        let currentJobClickedCounts = this.state.jobInfo.clickedCount;
+        // console.log('this is !!!clickcount: ', currentJobClickedCounts);
+        // console.log('this is !!!!!! current id: ', currentId);
+        const updatePostedJobInput = {
+          id: currentId,
+          clickedCounts: currentJobClickedCounts + 1
+        };
+        await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
+        // const newUpdatePostJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
+        // console.log(' this is the newUpdatePostJob: ', newUpdatePostJob);
+
+      }catch(err){
+        console.log('there is an error updating click count: ', err);
+      }
+      
       // console.log('this is attribute: ', currentUserId);
       // console.log('this is attr: ', {attributes});
     }
 
-    applyJob = async (event) => {
-      event.preventDefault();
-
+    applyJob = async () => {
+      // event.preventDefault();
+      // console.log('this is word: ', word);
       const newDate = new Date()
       const date = newDate.getDate();
       const month = newDate.getMonth() + 1;
@@ -130,8 +153,8 @@ class JobDescription extends React.Component{
       const userId = this.state.userId;
       const jobId = this.state.jobId;
       // console.log('this is the date: ', this.state.userId);
-      console.log('this is the userId: ', userId);
-      console.log('this is jobId: ', jobId);
+      // console.log('this is the userId: ', userId);
+      // console.log('this is jobId: ', jobId);
       try{
         const createAppliedJobInput = {
           dateApplied : currentDate,
@@ -140,7 +163,7 @@ class JobDescription extends React.Component{
           appliedJobJobId: jobId
         }
         const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
-        console.log(' this is the newAppliedJob: ', newAppliedJob);
+        // console.log(' this is the newAppliedJob: ', newAppliedJob);
 
       }catch(err){
         console.log('there is an eeror updating the applied job table: ', err);
@@ -151,7 +174,7 @@ class JobDescription extends React.Component{
         // console.log('this is the postjob info: ', this.state.postJobInfo);
         // console.log('this is the job info: ', this.state.jobInfo);        
         // console.log('this is the company: ', this.state.companyInfo);
-        console.log('this is the location: ', this.state.location);
+        // console.log('this is the location: ', this.state.location);
         // console.log('this is the city: ', this.state.location.city);
 
         let viewCompanyInfo;
