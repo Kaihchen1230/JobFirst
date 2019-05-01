@@ -5,14 +5,16 @@ import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
-import { API, graphqlOperation } from 'aws-amplify';
+import { Auth, API, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
+import * as mutations from '../graphql/mutations';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
 
 
     state = {
+        userId: "",
         jobId: "",
         postJobInfo: {},
         jobInfo: {
@@ -91,6 +93,9 @@ class JobDescription extends React.Component{
     }
     componentDidMount = async () => {
       let currentId = window.history.state.id;
+      let user = await Auth.currentAuthenticatedUser();
+      const { attributes } = user;
+      let currentUserId = attributes.sub;
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
         let incomingJobInfo = {...this.state.jobInfo};
@@ -99,6 +104,7 @@ class JobDescription extends React.Component{
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
         this.setState({
+          userId: currentUserId,
           jobId: currentId,
           postJobInfo: currentJobInfo,
           jobInfo: incomingJobInfo,
@@ -109,10 +115,37 @@ class JobDescription extends React.Component{
       }catch(err){
         console.log('there is an error fetching data...', err);
       }
-
-      
+      // console.log('this is attribute: ', currentUserId);
+      // console.log('this is attr: ', {attributes});
     }
-    
+
+    applyJob = async (event) => {
+      event.preventDefault();
+
+      const newDate = new Date()
+      const date = newDate.getDate();
+      const month = newDate.getMonth() + 1;
+      const year = newDate.getFullYear();
+      const currentDate = month + '/' + date + '/' + year;
+      const userId = this.state.userId;
+      const jobId = this.state.jobId;
+      // console.log('this is the date: ', this.state.userId);
+      console.log('this is the userId: ', userId);
+      console.log('this is jobId: ', jobId);
+      try{
+        const createAppliedJobInput = {
+          dateApplied : currentDate,
+          status: "Pending",
+          appliedJobEmployeeId: userId,
+          appliedJobJobId: jobId
+        }
+        const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+        console.log(' this is the newAppliedJob: ', newAppliedJob);
+
+      }catch(err){
+        console.log('there is an eeror updating the applied job table: ', err);
+      }
+    }    
     render(){
         // console.log("this is the job id: ", this.state.jobId);
         // console.log('this is the postjob info: ', this.state.postJobInfo);
@@ -121,10 +154,9 @@ class JobDescription extends React.Component{
         console.log('this is the location: ', this.state.location);
         // console.log('this is the city: ', this.state.location.city);
 
-        let content = "";
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
-          content = this.state.companyInfo.description;
+          let content = this.state.companyInfo.description;
           viewCompanyInfo = (<Popover content={content}>
                   <div>
                   {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
@@ -138,18 +170,16 @@ class JobDescription extends React.Component{
             </div>
           )
         }
+
         
         return(
             
             <div>
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
-                
-                <Button type="primary" ghost >
-                            <Link to="/app/application">
-                                Apply Now
-                            </Link>
-                </Button>
+                <Popover content={"We will use your default information to apply to the job"} >
+                <Button type="primary" onClick={this.applyJob}>Apply Now</Button>
+              </Popover>
                 <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>
