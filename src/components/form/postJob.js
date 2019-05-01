@@ -42,13 +42,15 @@ class PostJob extends React.Component {
             postedJobLocationId: newAddress.data.createAddress.id,
         };
         const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
-        console.log(newJob);
         const UpdatePostedJobInput = {
             id: newJob.data.createPostedJob.id,
             searchFieldName: newJob.data.createPostedJob.jobTitle.toLowerCase() + newJob.data.createPostedJob.company.companyName.toLowerCase(),
             searchFieldLocation: newAddress.data.createAddress.line1.toLowerCase() + newAddress.data.createAddress.line2.toLowerCase()
         }
         const updateJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: UpdatePostedJobInput}));
+        console.log(updateJob);
+        console.log(updateJob);
+        console.log(updateJob);
     }
 
     render() {
@@ -60,17 +62,6 @@ class PostJob extends React.Component {
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
-                    {/* We don't this part */}
-                    {/* <Form.Item>
-                        <Input placeholder={I18n.get('Enter Employer Name')}
-                            prefix={<Icon type="user" />}
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the name of the employer')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                            name="companyID"
-                        />
-                    </Form.Item> */}
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
@@ -132,15 +123,6 @@ class PostJob extends React.Component {
                             placeholder={I18n.get('Enter Job Requirements')} 
                             autosize={{ minRows: 2, maxRows: 6 }}
                             name="requirement"
-                        />
-                    </Form.Item>
-                    <Form.Item>
-                        <Input placeholder="(###) ###-####"
-                            prefix={<Icon type="contacts" />}
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the contact number of the employer.')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
                         />
                     </Form.Item>
                     <Form.Item>
