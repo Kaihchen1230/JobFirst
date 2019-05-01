@@ -17,8 +17,13 @@ const { TextArea } = Input;
 class PostJob extends React.Component {
 
     state = {
-        lan: window.localStorage.getItem('lan')
+        lan: window.localStorage.getItem('lan'),
+        type: ""
     } 
+
+    typeUpdate = (value) => {
+        this.setState({type: value});
+    }
 
     async handleSubmit () {
         let user = await Auth.currentAuthenticatedUser();
@@ -98,8 +103,7 @@ class PostJob extends React.Component {
                         <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
                     </Form.Item>
                     <Form.Item>
-                    {/* doesn't seems to be pass correct value */}
-                        <Select placeholder={I18n.get('Job Type')} name="jobType" >
+                        <Select onChange={value => this.typeUpdate(value)} placeholder={I18n.get('Job Type')} name="jobType" >
                             <Option value="Full Time">{I18n.get('Full Time')}</Option>
                             <Option value="Part Time">{I18n.get('Part Time')}</Option>
                             <Option value="Internship">{I18n.get('Internship')}</Option>

@@ -27,8 +27,6 @@ class JobList extends React.Component {
 
     selectSearch = (value) => {
         console.log(value);
-        // let item = this.state;
-        // item["search"] = value;
         this.setState({"search": value});
         console.log(this.state);
     }
