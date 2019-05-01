@@ -33,14 +33,14 @@ const navBar = (props) => {
   const language_menu = (
     <Menu>
       <Menu.Item>
-        <Button type="primary" onClick={() => {
+        <Button id="english-button" type="primary" onClick={() => {
           window.localStorage.setItem('lan', 'es');
           window.location.reload();
         }}>ENGLISH - 英语</Button>
       </Menu.Item>
 
       <Menu.Item>
-        <Button type="primary" onClick={() => {
+        <Button id="chinese-button" type="primary" onClick={() => {
           window.localStorage.setItem('lan', 'ch');
           window.location.reload();
         }}>CHINESE - 中文</Button>
