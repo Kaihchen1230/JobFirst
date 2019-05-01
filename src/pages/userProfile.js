@@ -43,17 +43,31 @@ class Profile extends React.Component {
 
         // What to pass in when creating applied job objects. The id parameter must be different each time
         const appliedJobInput = {
-            id: "54160v2d-6469-411e-9b53-012ed15c08d0",
-            dateApplied: "some days ago",
-            status: "just received",
-            appliedJobEmployeeId: "57564b0d-2069-451e-9b13-075ed12c08g0",
-            appliedJobJobId: "51563b0d-4069-411e-9n33-049ed15c01f0"
+            id: "54160v2d-7469-411e-9b53-012ed15c98d0",
+            dateApplied: "right this second",
+            status: "got it again",
+            appliedJobEmployeeId: "59560b0d-6069-431e-9b33-079ed12c08f0",   // my user id
+            appliedJobJobId: "54563b0d-7069-411e-9n33-049ed15c01f0"
+        }
+
+        const postedJobInput = {
+            id: "54563b0d-7069-411e-9n33-049ed15c01f0",
+            jobTitle: "Full Stack Developer",
+            jobType: "Coding"
+        }
+
+        // Attempt to add one posted job for testing
+        try {
+            const newPostedJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: postedJobInput}));
+            console.log("From userProfile.js - The test posted job was added");
+        } catch(err) {
+            console.log("From userProfile.js - Error: ", err);
         }
 
         // Attempt to add one applied job for testing
         try {
             const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: appliedJobInput}));
-            console.log("From userProfile.js - The test job was added");
+            console.log("From userProfile.js - The test applied job was added");
         } catch(err) {
             console.log("From userProfile.js - Error: ", err);
         }
@@ -68,7 +82,7 @@ class Profile extends React.Component {
             else {
                 console.log("From userProfile.js - The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
             }
-            //this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
+            this.setState({ theJobs: [...fetchAllAppliedJobs.data.listAppliedJobs.items] });
         } catch (err) {
             console.log("From userProfile.js - Error: ", err);
         }
