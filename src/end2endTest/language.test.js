@@ -1,22 +1,20 @@
 const puppeteer = require('puppeteer');
-
-// function delay(timeout) {
-//     return new Promise((resolve) => {
-//       setTimeout(resolve, timeout);
-//     });
-//   }
-test('should change language to chinese', async () => {
+const VIEWPORT = { width: 1300, height: 800 };
+test('should able to see the translated page', async () => {
     const browser = await puppeteer.launch({
-        headless: false,
-        slowMo: 80,
-        args: ['--window-size=2000,1080']
+        headless: false
     });
     const page = await browser.newPage();
     await page.goto(
         'http://localhost:8000/'
     );
-    //await page.waitFor(1000);
-    await page.click('button#lanButton');
-    await browser.close();
-    //await page.click('CHINESE - 中文');
-})
+    await page.setViewport(VIEWPORT);
+    await page.waitFor(1000);
+    await page.click('li:nth-child(6)');
+    await page.waitFor(500);
+    await page.click('li:nth-last-child(2)');
+    await page.waitFor(500);
+    await page.click('#chinese-button');
+    await page.waitFor(1500);
+    browser.close();
+}, 10000);
