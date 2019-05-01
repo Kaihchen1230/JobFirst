@@ -27,16 +27,19 @@ class JobList extends React.Component {
 
     selectSearch = (value) => {
         console.log(value);
-        let item = this.state;
-        item["search"] = value;
-        this.setState({"search": item});
+        // let item = this.state;
+        // item["search"] = value;
+        this.setState({"search": value});
         console.log(this.state);
     }
     searchByName = (value) => {
         if(value == ""){
             this.setState({"filter":{}});
-        }else{
+        }else if(this.state["search"] == "Name"){
             let newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
+            this.setState({"filter":newSearch});
+        }else {
+            let newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
             this.setState({"filter":newSearch});
         }
     }
