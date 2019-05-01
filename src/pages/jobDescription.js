@@ -23,38 +23,6 @@ class JobDescription extends React.Component{
         },
         companyInfo: {},
         location: {},
-        jobDetail:[
-            {
-                title: 'Software Engineer Intern',
-                description: 'Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.',
-                responsibilities: [
-                    'Proficient in Python and SQL',
-                    'Familiarity with working using Machine Learning techniques.',
-                    'Naturally curious, detail oriented, passionate about data quality and statistical methods, ability to drive a project to completion.',
-                    'Availability full-time June - August 2019 in NYC'
-                ],
-                location: 'New York'
-            }
-                
-        ], 
-        'company':[
-            {
-                name: 'Alibaba',
-                headquarter: 'Hanzhou, China',
-                founded: '1923',
-                industry: 'Enterprise Software & Network',
-                revenue: '$5 to $10 billion(USD)',
-                size: '10000+ Employees'
-            }
-        ],
-        'location': [
-            {
-                street1: '85 Broad Street',
-                city: 'New York',
-                state: 'NY',
-                zipCode: 11225
-            }
-        ],
         'applicant': [{
             key: '1',
             name: 'John Brown',
@@ -136,8 +104,6 @@ class JobDescription extends React.Component{
           jobInfo: incomingJobInfo,
           companyInfo: currentJobInfo.data.getPostedJob.company,
           location: currentJobInfo.data.getPostedJob.location
-
-
         });
 
       }catch(err){
