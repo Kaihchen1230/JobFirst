@@ -22,6 +22,7 @@ const AppliedJob = (props) => {
     const jobs = props.jobs.map(item => {
         const {jobTitle, dateApplied, status } = item;
         const temp = {
+            key: item.id,
             jobTitle: jobTitle,
             dateApplied: dateApplied,
             status: status,
@@ -29,7 +30,7 @@ const AppliedJob = (props) => {
         return temp;
     })
     return (
-        <Table dataSource={jobs} columns={columns} />
+        <Table dataSource={jobs} columns={columns} pagination={{ pageSize: 15 }} scroll={{ y: 240 }} />
     )
 }
 
