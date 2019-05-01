@@ -21,14 +21,22 @@ class JobList extends React.Component {
     state = {
         "filter":{
 
-        }
+        },
+        "search": "Name"
     }
 
+    selectSearch = (value) => {
+        console.log(value);
+        let item = this.state;
+        item["search"] = value;
+        this.setState({"search": item});
+        console.log(this.state);
+    }
     searchByName = (value) => {
         if(value == ""){
             this.setState({"filter":{}});
         }else{
-            let newSearch = {"filter":{"searchFieldName":{"contains":value}}};
+            let newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
             this.setState({"filter":newSearch});
         }
     }
@@ -42,7 +50,7 @@ class JobList extends React.Component {
                 <Layout style={{ margin: "16px 24px 16px 24px" }}>
                     <Header  style={{ textAlign: "center", backgroundColor:"gray", height:"15%" }}>
                         <InputGroup compact>
-                            <Select size="large" defaultValue="Name" style={{ width: "10%" }}>
+                            <Select onChange={value => this.selectSearch(value)} size="large" defaultValue="Name" style={{ width: "10%" }}>
                                 <Option value="Name">Name</Option>
                                 <Option value="Location">Location</Option>
                             </Select>
