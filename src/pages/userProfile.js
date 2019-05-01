@@ -43,19 +43,19 @@ class Profile extends React.Component {
 
         // What to pass in when creating applied job objects. The id parameter must be different each time
         const appliedJobInput = {
-            id: "54160v2d-7469-411e-9b53-012ed15c98d0",
-            dateApplied: "right this second",
-            status: "got it again",
+            id: "54160v2d-7469-411e-9b53-012ed15c97d0",
+            dateApplied: "right this MOMENT",
+            status: "got it YET AGAIN",
             appliedJobEmployeeId: "59560b0d-6069-431e-9b33-079ed12c08f0",   // my user id
-            appliedJobJobId: "54563b0d-7069-411e-9n33-049ed15c01f0"
+            appliedJobJobId: "54563b0d-7069-411e-9n33-049ed15c02f0"
         }
 
         const postedJobInput = {
-            id: "54563b0d-7069-411e-9n33-049ed15c01f0",
-            jobTitle: "Full Stack Developer",
-            jobType: "Coding"
+            id: "54563b0d-7069-411e-9n33-049ed15c02f0",
+            jobTitle: "Front End Developer",
+            jobType: "Management"
         }
-
+        /*
         // Attempt to add one posted job for testing
         try {
             const newPostedJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: postedJobInput}));
@@ -70,7 +70,7 @@ class Profile extends React.Component {
             console.log("From userProfile.js - The test applied job was added");
         } catch(err) {
             console.log("From userProfile.js - Error: ", err);
-        }
+        }*/
 
         // Fetch all relevant jobs and save to state to render to page
         try {
@@ -82,7 +82,15 @@ class Profile extends React.Component {
             else {
                 console.log("From userProfile.js - The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
             }
-            this.setState({ theJobs: [...fetchAllAppliedJobs.data.listAppliedJobs.items] });
+
+            let arr = new Array(...fetchAllAppliedJobs.data.listAppliedJobs.items);
+            console.log(arr.length);
+            for (let i = 0; i < arr.length; ++i) {
+                console.log(arr[i]);
+            }
+                
+            
+            //this.setState({ theJobs: [...j] });
         } catch (err) {
             console.log("From userProfile.js - Error: ", err);
         }
