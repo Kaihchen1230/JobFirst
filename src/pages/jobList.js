@@ -28,7 +28,7 @@ class JobList extends React.Component {
         if(value == ""){
             this.setState({"filter":{}});
         }else{
-            let newSearch = {"filter":{"jobTitle":{"contains":value}}};
+            let newSearch = {"filter":{"searchFieldName":{"contains":value}}};
             this.setState({"filter":newSearch});
         }
     }

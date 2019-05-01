@@ -23,7 +23,6 @@ class PostJob extends React.Component {
     async handleSubmit () {
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
-        console.log(attributes);
         const postForm = document.forms["jobPost"];
         const CreateAddressInput = {
             line1: postForm["line1"].value,
