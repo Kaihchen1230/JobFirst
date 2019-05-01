@@ -93,10 +93,12 @@ type PostedJob {
   jobType: String
   description: String
   requirements: [String]
-  datePosted: String
-  deadline: String
+  datePosted: AWSDate
+  deadline: AWSDate
   location: Address
   applied(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
+  searchFieldName: String
+  searchFieldLocation: String
   clickedCounts: Int
 }
 
@@ -585,6 +587,8 @@ input ModelPostedJobFilterInput {
   requirements: ModelStringFilterInput
   datePosted: ModelStringFilterInput
   deadline: ModelStringFilterInput
+  searchFieldName: ModelStringFilterInput
+  searchFieldLocation: ModelStringFilterInput
   clickedCounts: ModelIntFilterInput
   and: [ModelPostedJobFilterInput]
   or: [ModelPostedJobFilterInput]
@@ -597,8 +601,10 @@ input CreatePostedJobInput {
   jobType: String
   description: String
   requirements: [String]
-  datePosted: String
-  deadline: String
+  datePosted: AWSDate
+  deadline: AWSDate
+  searchFieldName: String
+  searchFieldLocation: String
   clickedCounts: Int
   postedJobCompanyId: ID
   postedJobLocationId: ID
@@ -610,8 +616,10 @@ input UpdatePostedJobInput {
   jobType: String
   description: String
   requirements: [String]
-  datePosted: String
-  deadline: String
+  datePosted: AWSDate
+  deadline: AWSDate
+  searchFieldName: String
+  searchFieldLocation: String
   clickedCounts: Int
   postedJobCompanyId: ID
   postedJobLocationId: ID

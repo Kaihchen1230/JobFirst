@@ -21,14 +21,29 @@ class JobList extends React.Component {
     state = {
         "filter":{
 
-        }
+        },
+        "search": "Name"
     }
 
+    filterType = (value) => {
+
+    }
+
+    filterDate = (value) =>{
+
+    }
+
+    selectSearch = (value) => {
+        this.setState({"search": value});
+    }
     searchByName = (value) => {
         if(value == ""){
             this.setState({"filter":{}});
-        }else{
-            let newSearch = {"filter":{"jobTitle":{"contains":value}}};
+        }else if(this.state["search"] == "Name"){
+            let newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
+            this.setState({"filter":newSearch});
+        }else {
+            let newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
             this.setState({"filter":newSearch});
         }
     }
@@ -42,7 +57,7 @@ class JobList extends React.Component {
                 <Layout style={{ margin: "16px 24px 16px 24px" }}>
                     <Header  style={{ textAlign: "center", backgroundColor:"gray", height:"15%" }}>
                         <InputGroup compact>
-                            <Select size="large" defaultValue="Name" style={{ width: "10%" }}>
+                            <Select onChange={value => this.selectSearch(value)} size="large" defaultValue="Name" style={{ width: "10%" }}>
                                 <Option value="Name">Name</Option>
                                 <Option value="Location">Location</Option>
                             </Select>
@@ -63,11 +78,12 @@ class JobList extends React.Component {
                                     </Select>
                                 </Col>
                                 <Col span={4}>
-                                    <Select style={{ width: "80%" }} size="large" placeholder="Type">
-                                        <Option value="Option1-1">{I18n.get('Full Time')}</Option>
-                                        <Option value="Option1-2">{I18n.get('Part Time')}</Option>
-                                        <Option value="Option1-3">{I18n.get('Internship')}</Option>
-                                        <Option value="Option1-4">{I18n.get('Temporary')}</Option>
+                                    <Select onChange={value => this.filterType(value)} style={{ width: "80%" }} size="large" placeholder="Type">
+                                        <Option value="Full Time">{I18n.get('Full Time')}</Option>
+                                        <Option value="Part Time">{I18n.get('Part Time')}</Option>
+                                        <Option value="Internship">{I18n.get('Internship')}</Option>
+                                        <Option value="Temporary">{I18n.get('Temporary')}</Option>
+                                        <Option value="All">{I18n.get('All')}</Option>
                                     </Select>
                                 </Col>
                                 <Col span={4}>
@@ -83,11 +99,11 @@ class JobList extends React.Component {
                                     </Select>
                                 </Col>
                                 <Col span={4}>
-                                    <Select style={{ width: "80%" }} size="large" placeholder="Post Day">
-                                        <Option value="Option1-1">{I18n.get('15 Days')}</Option>
-                                        <Option value="Option1-2">{I18n.get('One Month')}</Option>
-                                        <Option value="Option1-3">{I18n.get('Three Months')}</Option>
-                                        <Option value="Option1-4">{I18n.get('All')}</Option>
+                                    <Select onChange={value => this.filterDate(value)} style={{ width: "80%" }} size="large" placeholder="Post Day">
+                                        <Option value="15 Days">{I18n.get('15 Days')}</Option>
+                                        <Option value="One Month">{I18n.get('One Month')}</Option>
+                                        <Option value="Three Months">{I18n.get('Three Months')}</Option>
+                                        <Option value="All">{I18n.get('All')}</Option>
                                     </Select>
                                 </Col>
                                 <Col span={4}>

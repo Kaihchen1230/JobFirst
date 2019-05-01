@@ -149,10 +149,10 @@
 				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190430171312-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "csc47300project",
-					"schemaGraphql": "s3://csc47300project-20190430171312-deployment/amplify-appsync-files/schema.graphql.1556686123832",
+					"schemaGraphql": "s3://csc47300project-20190430171312-deployment/amplify-appsync-files/schema.graphql.1556730964260",
 					"ResolverBucket": "csc47300project-20190430171312-deployment",
 					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1556686123832",
+					"DeploymentTimestamp": "1556730964260",
 					"env": "alanenvvv"
 				}
 			}

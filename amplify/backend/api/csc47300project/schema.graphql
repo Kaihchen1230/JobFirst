@@ -93,10 +93,12 @@ type PostedJob @model {
   jobType: String
   description: String
   requirements: [String]
-  datePosted: String
-  deadline: String
+  datePosted: AWSDate
+  deadline: AWSDate
   location: Address @connection
   applied: [AppliedJob] @connection(name:"postedJob")
+  searchFieldName: String
+  searchFieldLocation: String
   clickedCounts: Int
 }
 

@@ -741,6 +741,8 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -822,6 +824,8 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -903,6 +907,8 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -951,6 +957,8 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -999,6 +1007,8 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -1047,6 +1057,8 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -1108,6 +1120,8 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
@@ -1166,6 +1180,8 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
@@ -1224,6 +1240,8 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
