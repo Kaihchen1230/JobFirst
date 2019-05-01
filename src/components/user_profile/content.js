@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs, Table, Button, Progress } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
+import AppliedJob from "./appliedJob";
 
 const TabPane = Tabs.TabPane;
 
@@ -61,7 +62,7 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Applied Jobs")} key="4">
                     <h1 align="center">{I18n.get("Applied Jobs")}</h1>
                     {props.jobs.length > 0 ? (
-                        <Table dataSource={props.jobs} columns={columns} />
+                        <AppliedJob jobs={props.jobs} />
                     ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
                     }
                 </TabPane>

@@ -34,27 +34,37 @@ class Profile extends React.Component {
             console.log(user);
             this.setState({
                 user: user.data.getEmployee,
-                loading: false
             })
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
-            console.log(testing)
+            const temp = testing.data.getEmployee.appliedJob.items;
+            console.log(temp)
+            const transformJob = temp.map(item => {
+                const jobID = item.Job.id
+                const { datePosted, deadline, jobTitle } = item.Job
+                const job = {
+                    jobID: jobID,
+                    jobTitle: jobTitle,
+                    datePosted: datePosted,
+                    deadline: deadline,
+                    status: item.status,
+                    dateApplied: item.dateApplied
+                }
+                return job;
+            })
+            this.setState({
+                jobs: transformJob
+            })
+            console.log(this.state.jobs);
         } catch (err) {
             console.log("custom queries failed", err);
         }
-
-        // Fetch all relevant jobs and save to state to render to page
-        try {
-            // We can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
-            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: this.state.userID }));
-            console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
-            this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
-        } catch (err) {
-            console.log("From userProfile.js - error in getting list of jobs: ", err);
-        }
+        this.setState({
+            loading: false
+        })
 
     }
 
@@ -110,7 +120,10 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information user={this.state.user} jobs={this.state.theJobs} />
+                    <Information 
+                    user={this.state.user} 
+                    jobs={this.state.jobs}
+                    />
                 </Content>
             </Layout>
 
