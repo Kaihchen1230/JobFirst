@@ -711,6 +711,8 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -789,6 +791,8 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -867,6 +871,8 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -914,6 +920,8 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -961,6 +969,8 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -1008,6 +1018,8 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -1067,6 +1079,8 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
@@ -1123,6 +1137,8 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
@@ -1179,6 +1195,8 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
