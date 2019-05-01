@@ -457,6 +457,8 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     dateApplied
@@ -496,6 +498,8 @@ export const listAppliedJobs = `query ListAppliedJobs(
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       dateApplied
@@ -546,6 +550,8 @@ export const getEmployer = `query GetEmployer($id: ID!) {
         requirements
         datePosted
         deadline
+        searchFieldName
+        searchFieldLocation
         clickedCounts
       }
       nextToken
@@ -646,6 +652,8 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       }
       nextToken
     }
+    searchFieldName
+    searchFieldLocation
     clickedCounts
   }
 }
@@ -690,6 +698,8 @@ export const listPostedJobs = `query ListPostedJobs(
       applied {
         nextToken
       }
+      searchFieldName
+      searchFieldLocation
       clickedCounts
     }
     nextToken
