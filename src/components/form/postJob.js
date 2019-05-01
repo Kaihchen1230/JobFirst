@@ -7,6 +7,7 @@ import { Auth, I18n } from 'aws-amplify';
 //import "../style/postJob.css";
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
+import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 
 
@@ -29,18 +30,25 @@ class PostJob extends React.Component {
             postalCode: postForm["postalCode"].value,
             state: postForm["state"].value
         }
-        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
+        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}));
         const CreatePostedJobInput = {
             jobTitle: postForm["jobTitle"].value,
 	        description: postForm["description"].value,
 	        requirements: [postForm["requirement"].value],
 	        datePosted: postForm["postDate"].value,
-	        deadline: postForm["deadline"].value,
+            deadline: postForm["deadline"].value,
 	        clickedCounts: 0,
 	        postedJobCompanyId: attributes.sub,
-	        postedJobLocationId: newAddress.data.createAddress.id
+            postedJobLocationId: newAddress.data.createAddress.id,
+        };
+        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
+        console.log(newJob);
+        const UpdatePostedJobInput = {
+            id: newJob.data.createPostedJob.id,
+            searchFieldName: newJob.data.createPostedJob.jobTitle.toLowerCase() + newJob.data.createPostedJob.company.companyName.toLowerCase(),
+            searchFieldLocation: newAddress.data.createAddress.line1.toLowerCase() + newAddress.data.createAddress.line2.toLowerCase()
         }
-        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}))
+        const updateJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: UpdatePostedJobInput}));
     }
 
     render() {
