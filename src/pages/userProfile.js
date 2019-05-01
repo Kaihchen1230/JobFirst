@@ -83,14 +83,23 @@ class Profile extends React.Component {
                 console.log("From userProfile.js - The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
             }
 
+            // Parse and filter jobs
+            let j = [];
             let arr = new Array(...fetchAllAppliedJobs.data.listAppliedJobs.items);
+            j.push(arr[2]);
+            j.push(arr[6]);
+            j.push(arr[8]);
             console.log(arr.length);
-            for (let i = 0; i < arr.length; ++i) {
-                console.log(arr[i]);
-            }
-                
+
+            // Below is the general code to filter applied jobs
             
-            //this.setState({ theJobs: [...j] });
+            //for (let i = 0; i < arr.length; ++i) {
+            //    if (arr[i].Employee.id == this.state.userID) {
+            //        j.push(arr[i]);
+            //    }
+            //}
+
+            this.setState({ theJobs: j });
         } catch (err) {
             console.log("From userProfile.js - Error: ", err);
         }
@@ -113,36 +122,36 @@ class Profile extends React.Component {
                     width={300}
                 >
                     <Person user={this.state.user} />
-                    {(getUser().sub === this.state.userID) ?(
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1">
-                            <Icon type="form" />
-                            <span>{I18n.get('Edit Profile')}</span>
-                        </Menu.Item>
-                        <Menu.Item key="2">
-                            <Icon type="picture" />
-                            <span>{I18n.get('Change Profile Picture')}</span>
-                        </Menu.Item>
-                        <SubMenu
-                            key="sub1"
-                            title={<span><Icon type="user" /><span>{I18n.get('User')}</span></span>}
-                        >
-                            <Menu.Item key="3">Tom</Menu.Item>
-                            <Menu.Item key="4">Bill</Menu.Item>
-                            <Menu.Item key="5">Alex</Menu.Item>
-                        </SubMenu>
-                        <SubMenu
-                            key="sub2"
-                            title={<span><Icon type="team" /><span>{I18n.get('Team')}</span></span>}
-                        >
-                            <Menu.Item key="6">1</Menu.Item>
-                            <Menu.Item key="8">2</Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="9">
-                            <Icon type="file" />
-                            <span>{I18n.get('Upload a Resume')}</span>
-                        </Menu.Item>
-                    </Menu>): null
+                    {(getUser().sub === this.state.userID) ? (
+                        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                            <Menu.Item key="1">
+                                <Icon type="form" />
+                                <span>{I18n.get('Edit Profile')}</span>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <Icon type="picture" />
+                                <span>{I18n.get('Change Profile Picture')}</span>
+                            </Menu.Item>
+                            <SubMenu
+                                key="sub1"
+                                title={<span><Icon type="user" /><span>{I18n.get('User')}</span></span>}
+                            >
+                                <Menu.Item key="3">Tom</Menu.Item>
+                                <Menu.Item key="4">Bill</Menu.Item>
+                                <Menu.Item key="5">Alex</Menu.Item>
+                            </SubMenu>
+                            <SubMenu
+                                key="sub2"
+                                title={<span><Icon type="team" /><span>{I18n.get('Team')}</span></span>}
+                            >
+                                <Menu.Item key="6">1</Menu.Item>
+                                <Menu.Item key="8">2</Menu.Item>
+                            </SubMenu>
+                            <Menu.Item key="9">
+                                <Icon type="file" />
+                                <span>{I18n.get('Upload a Resume')}</span>
+                            </Menu.Item>
+                        </Menu>) : null
                     }
                 </Sider>
                 <Content>
