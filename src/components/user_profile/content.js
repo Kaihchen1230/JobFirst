@@ -42,11 +42,11 @@ const Information = (props) => {
                         <br />
                         Email: {user.email}
                         <br />
-                        Phone number: {user.phone}
+                        Phone Number: {user.phone}
                         <br />
                         English Level: {user.englishLevel}
                         <br />
-                        Languages Speak: {user.language}
+                        Spoken Language: {user.language}
                         <br />
 
                     </div>

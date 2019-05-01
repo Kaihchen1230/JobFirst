@@ -76,7 +76,18 @@ let dict = {
         "Upload a Resume": "上传简历",
         "User": "用户",
         "Team": "球队",
-        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "您可以随时与我们联系，以获得全天候支持和故障排除。"
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "您可以随时与我们联系，以获得全天候支持和故障排除。",
+        /* user profile */
+        "First Name": "名字",
+        "Last Name": "姓名",
+        "Middle Name": "中间名",
+        "Age": "年龄",
+        "Email": "电邮",
+        "Phone Number": "电话号码",
+        "English Level": "英文程度",
+        "Language Spoken": "会说语言",
+        /* end of user profile */
+
     },
     'es': {
         'Sign In': "Sign In",
@@ -155,7 +166,17 @@ let dict = {
         "Upload a Resume": "Upload a Resume",
         "User": "User",
         "Team": "Team",
-        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "You can get in touch with us at any time for 24/7 support and troubleshooting."
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "You can get in touch with us at any time for 24/7 support and troubleshooting.",
+        /* user profile */
+        "First Name": "First Name",
+        "Last Name": "Last Name",
+        "Middle Name": "Middle Name",
+        "Age": "Age",
+        "Email": "Email",
+        "Phone Number": "Phone Number",
+        "English Level": "English Level",
+        "Language Spoken": "Language Spoken",
+        /* end of user profile */
     }
 };
 export default dict;
