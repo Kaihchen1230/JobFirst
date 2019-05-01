@@ -23,6 +23,7 @@ class PostJob extends React.Component {
     async handleSubmit () {
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
+        console.log(attributes);
         const postForm = document.forms["jobPost"];
         const CreateAddressInput = {
             line1: postForm["line1"].value,
@@ -40,17 +41,10 @@ class PostJob extends React.Component {
 	        clickedCounts: 0,
 	        postedJobCompanyId: attributes.sub,
             postedJobLocationId: newAddress.data.createAddress.id,
+            searchFieldName: postForm["jobTitle"].value.toLowerCase(),
+            searchFieldLocation: newAddress.data.createAddress.line1.toLowerCase() + newAddress.data.createAddress.line2.toLowerCase(),
         };
         const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
-        const UpdatePostedJobInput = {
-            id: newJob.data.createPostedJob.id,
-            searchFieldName: newJob.data.createPostedJob.jobTitle.toLowerCase() + newJob.data.createPostedJob.company.companyName.toLowerCase(),
-            searchFieldLocation: newAddress.data.createAddress.line1.toLowerCase() + newAddress.data.createAddress.line2.toLowerCase()
-        }
-        const updateJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: UpdatePostedJobInput}));
-        console.log(updateJob);
-        console.log(updateJob);
-        console.log(updateJob);
     }
 
     render() {
