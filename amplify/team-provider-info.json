@@ -101,23 +101,6 @@
             }
         }
     },
-    "alanenvv": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190422214853-authRole",
-            "UnauthRoleArn": "arn:aws:iam::163683266096:role/csc47300project-20190422214853-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::163683266096:role/csc47300project-20190422214853-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "csc47300project-20190422214853-deployment",
-            "UnauthRoleName": "csc47300project-20190422214853-unauthRole",
-            "StackName": "csc47300project-20190422214853",
-            "StackId": "arn:aws:cloudformation:us-east-1:163683266096:stack/csc47300project-20190422214853/f78598d0-6569-11e9-bf7a-0e27f3a268d6"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
     "kailocal": {
         "awscloudformation": {
             "AuthRoleName": "csc47300project-20190422192631-authRole",
@@ -162,6 +145,23 @@
             "UnauthRoleName": "csc47300project-20190425173211-unauthRole",
             "StackName": "csc47300project-20190425173211",
             "StackId": "arn:aws:cloudformation:us-east-2:877372251133:stack/csc47300project-20190425173211/960cfd20-67a1-11e9-98c4-0a2103992610"
+        },
+        "categories": {
+            "auth": {
+                "cognitoed11de21": {}
+            }
+        }
+    },
+    "alanenvvv": {
+        "awscloudformation": {
+            "AuthRoleName": "csc47300project-20190430171312-authRole",
+            "UnauthRoleArn": "arn:aws:iam::163683266096:role/csc47300project-20190430171312-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::163683266096:role/csc47300project-20190430171312-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "csc47300project-20190430171312-deployment",
+            "UnauthRoleName": "csc47300project-20190430171312-unauthRole",
+            "StackName": "csc47300project-20190430171312",
+            "StackId": "arn:aws:cloudformation:us-east-1:163683266096:stack/csc47300project-20190430171312/c3046770-6b8c-11e9-a332-0a262823b4fe"
         },
         "categories": {
             "auth": {

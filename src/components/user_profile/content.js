@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Table, Button } from 'antd';
+import { Tabs, Table, Button, Progress } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 
@@ -31,13 +31,25 @@ const Information = (props) => {
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
+                    <Progress type="circle" percent={75} format={percent => `${percent} Completed`} />
                     <div>
-                        First Name: {user.name}
+                        {I18n.get("First Name")}: {user.name}
                         <br />
-                        Last Name: {user.lastName}
+                        {I18n.get("Last Name")}: {user.lastName}
                         <br />
-                        Age: {user.age}
+                        {I18n.get("Middle Name")}: {user.middleName}
                         <br />
+                        {I18n.get("Age")}: {user.age}
+                        <br />
+                        {I18n.get("Email")}: {user.email}
+                        <br />
+                        {I18n.get("Phone Number")}: {user.phone}
+                        <br />
+                        {I18n.get("English Level")}: {user.englishLevel}
+                        <br />
+                        {I18n.get("Spoken Language")}: {user.language}
+                        <br />
+
                     </div>
 
                 </TabPane>
