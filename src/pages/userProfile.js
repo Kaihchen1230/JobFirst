@@ -3,6 +3,7 @@ import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
 import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
 import * as queries from '../graphql/queries';
+import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
 import { Layout, Skeleton, Menu, Icon } from 'antd';
@@ -37,6 +38,12 @@ class Profile extends React.Component {
             })
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
+        }
+        try {
+            const testing = await API.graphql(graphqlOperation(customQueries.getUsernameEmployee, { id: this.state.userID }));
+            console.log(testing)
+        } catch (err) {
+            console.log("custom queries failed", err);
         }
 
         // Fetch all relevant jobs and save to state to render to page

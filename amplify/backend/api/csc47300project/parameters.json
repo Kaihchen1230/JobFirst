@@ -1,7 +1,7 @@
 {
     "AppSyncApiName": "csc47300project",
-    "schemaGraphql": "s3://csc47300project-20190430171312-deployment/amplify-appsync-files/schema.graphql.1556661795599",
+    "schemaGraphql": "s3://csc47300project-20190430171312-deployment/amplify-appsync-files/schema.graphql.1556686123832",
     "ResolverBucket": "csc47300project-20190430171312-deployment",
     "ResolverRootKey": "amplify-appsync-files",
-    "DeploymentTimestamp": "1556661795599"
+    "DeploymentTimestamp": "1556686123832"
 }
