@@ -17,6 +17,7 @@ export const getEmployee = `query GetEmployee($id: ID!) {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -88,6 +89,7 @@ export const listEmployees = `query ListEmployees(
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -132,6 +134,7 @@ export const getAssociation = `query GetAssociation($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -210,6 +213,7 @@ export const getExperience = `query GetExperience($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -292,6 +296,7 @@ export const getEducation = `query GetEducation($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -355,6 +360,7 @@ export const getAddress = `query GetAddress($id: ID!) {
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -370,6 +376,7 @@ export const listAddresss = `query ListAddresss(
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -395,6 +402,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -442,6 +450,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -510,6 +519,7 @@ export const getEmployer = `query GetEmployer($id: ID!) {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -564,6 +574,7 @@ export const listEmployers = `query ListEmployers(
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -599,6 +610,7 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -628,6 +640,7 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -678,6 +691,7 @@ export const listPostedJobs = `query ListPostedJobs(
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -704,6 +718,7 @@ export const getTimeline = `query GetTimeline($id: ID!) {
         id
         line1
         line2
+        city
         postalCode
         state
       }

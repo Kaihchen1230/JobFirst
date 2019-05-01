@@ -2,17 +2,17 @@ import React from 'react';
 import jobDetail from '../../pages/jobDescription';
 const jobDetails = (props) => {
 
-    let jobInfo = [...props.jobInfo];
+    let jobInfo = {...props.jobInfo};
 
-    let jobDuty = jobInfo[0].responsibilities.map((item) => 
+    let jobDuty = jobInfo.requirements.map((item) => 
         <li>{item}</li>
     )
-    let jobInfoPiece = jobInfo.map((item) => 
-        <div>
-            <h2>{item.title}, {item.location}</h2>
+    let jobInfoPiece = (      
+    <div>
+            <h2>{jobInfo.title}</h2>
             <h3>Description: </h3>
             <p>
-                {item.description}
+                {jobInfo.description}
             </p>
             <h3>Responsibilities: </h3>
             <ul>
@@ -20,8 +20,6 @@ const jobDetails = (props) => {
             </ul>
         </div>
     )
-    console.log({jobDetail});
-    
 
     return(
         <div>

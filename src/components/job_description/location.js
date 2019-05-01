@@ -1,10 +1,10 @@
 import React from 'react';
 
 const location = (props) => {
-    let locationInfo = [...props.locationInfo];
+    let locationInfo = {...props.locationInfo};
 
-    let locationInfoPiece = locationInfo.map((item) => 
-        <h3>{item.street1} {item.city} {item.state} {item.zipCode}</h3>
+    let locationInfoPiece = ( 
+        <h3>{locationInfo.line1} {locationInfo.line2} {locationInfo.city} {locationInfo.state} {locationInfo.postalCode}</h3>
     )
 
     return(

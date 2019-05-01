@@ -5,7 +5,10 @@ import NavBar from './navBar';
 const Layout = ({ children }) => (
   <>
     <NavBar />
+    <div style={{}}>
     {children}
+    </div>
+    
   </>
 )
 

@@ -60,7 +60,23 @@ let dict = {
         "Enter Name": "输入名字",
         "Enter Phone Number": "输入电话号码",
         "I Want to Hire": "我想雇用",
-        "I Want to Work": "我想要工作"
+        "I Want to Work": "我想要工作",
+        "Language": "语言",
+        "Logout": "登出",
+        "General Info": "基本信息",
+        "Education and Awards": "教育和奖励",
+        "Experience and Skills": "经验和技能",
+        "Applied Jobs": "应用工作",
+        "Job": "工作",
+        "Date Applied": "申请日期",
+        "Status": "状态",
+        "This is the description": "这是描述",
+        "Edit Profile": "编辑个人资料",
+        "Change Profile Picture": "更改个人资料图片",
+        "Upload a Resume": "上传简历",
+        "User": "用户",
+        "Team": "球队",
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "您可以随时与我们联系，以获得全天候支持和故障排除。"
     },
     'es': {
         'Sign In': "Sign In",
@@ -123,7 +139,23 @@ let dict = {
         "Enter Name": "Enter Name",
         "Enter Phone Number": "Enter Phone Number",
         "I Want to Hire": "I Want to Hire",
-        "I Want to Work": "I Want to Work"
+        "I Want to Work": "I Want to Work",
+        "Language": "Language",
+        "Logout": "Logout",
+        "General Info": "General Info",
+        "Education and Awards": "Education and Awards",
+        "Experience and Skills": "Experience and Skills",
+        "Applied Jobs": "Applied Jobs",
+        "Job": "Job",
+        "Date Applied": "Date Applied",
+        "Status": "Status",
+        "This is the description": "This is the description",
+        "Edit Profile": "Edit Profile",
+        "Change Profile Picture": "Change Profile Picture",
+        "Upload a Resume": "Upload a Resume",
+        "User": "User",
+        "Team": "Team",
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "You can get in touch with us at any time for 24/7 support and troubleshooting."
     }
 };
 export default dict;

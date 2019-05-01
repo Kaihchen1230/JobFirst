@@ -1,0 +1,14 @@
+.mainDiv {
+    height: 100vh;
+}
+
+.title {
+    color: black;
+    font-weight: bold;
+}
+
+.description {
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+}

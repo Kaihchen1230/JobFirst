@@ -53,6 +53,7 @@ type Address {
   id: ID!
   line1: String
   line2: String
+  city: String
   postalCode: String
   state: String
 }
@@ -443,6 +444,7 @@ input ModelAddressFilterInput {
   id: ModelIDFilterInput
   line1: ModelStringFilterInput
   line2: ModelStringFilterInput
+  city: ModelStringFilterInput
   postalCode: ModelStringFilterInput
   state: ModelStringFilterInput
   and: [ModelAddressFilterInput]
@@ -454,6 +456,7 @@ input CreateAddressInput {
   id: ID
   line1: String
   line2: String
+  city: String
   postalCode: String
   state: String
 }
@@ -462,6 +465,7 @@ input UpdateAddressInput {
   id: ID!
   line1: String
   line2: String
+  city: String
   postalCode: String
   state: String
 }

@@ -17,6 +17,7 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -83,6 +84,7 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -149,6 +151,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -219,6 +222,7 @@ export const onCreateAssociation = `subscription OnCreateAssociation {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -262,6 +266,7 @@ export const onUpdateAssociation = `subscription OnUpdateAssociation {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -305,6 +310,7 @@ export const onDeleteAssociation = `subscription OnDeleteAssociation {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -352,6 +358,7 @@ export const onCreateExperience = `subscription OnCreateExperience {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -399,6 +406,7 @@ export const onUpdateExperience = `subscription OnUpdateExperience {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -446,6 +454,7 @@ export const onDeleteExperience = `subscription OnDeleteExperience {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -493,6 +502,7 @@ export const onCreateEducation = `subscription OnCreateEducation {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -540,6 +550,7 @@ export const onUpdateEducation = `subscription OnUpdateEducation {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -587,6 +598,7 @@ export const onDeleteEducation = `subscription OnDeleteEducation {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -615,6 +627,7 @@ export const onCreateAddress = `subscription OnCreateAddress {
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -625,6 +638,7 @@ export const onUpdateAddress = `subscription OnUpdateAddress {
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -635,6 +649,7 @@ export const onDeleteAddress = `subscription OnDeleteAddress {
     id
     line1
     line2
+    city
     postalCode
     state
   }
@@ -658,6 +673,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -705,6 +721,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -738,6 +755,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -785,6 +803,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -818,6 +837,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -865,6 +885,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -890,6 +911,7 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -939,6 +961,7 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -988,6 +1011,7 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1039,6 +1063,7 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1068,6 +1093,7 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1097,6 +1123,7 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1126,6 +1153,7 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1155,6 +1183,7 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1184,6 +1213,7 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       id
       line1
       line2
+      city
       postalCode
       state
     }
@@ -1213,6 +1243,7 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1250,6 +1281,7 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
         id
         line1
         line2
+        city
         postalCode
         state
       }
@@ -1287,6 +1319,7 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
         id
         line1
         line2
+        city
         postalCode
         state
       }
