@@ -32,21 +32,21 @@ const Information = (props) => {
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
                     <div>
-                        First Name: {user.name}
+                        {I18n.get("First Name")}: {user.name}
                         <br />
-                        Last Name: {user.lastName}
+                        {I18n.get("Last Name")}: {user.lastName}
                         <br />
-                        Middle Name: {user.middleName}
+                        {I18n.get("Middle Name")}: {user.middleName}
                         <br />
-                        Age: {user.age}
+                        {I18n.get("Age")}: {user.age}
                         <br />
-                        Email: {user.email}
+                        {I18n.get("Email")}: {user.email}
                         <br />
-                        Phone Number: {user.phone}
+                        {I18n.get("Phone Number")}: {user.phone}
                         <br />
-                        English Level: {user.englishLevel}
+                        {I18n.get("English Level")}: {user.englishLevel}
                         <br />
-                        Spoken Language: {user.language}
+                        {I18n.get("Spoken Language")}: {user.language}
                         <br />
 
                     </div>
