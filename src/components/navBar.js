@@ -118,7 +118,7 @@ const navBar = (props) => {
 
           <Menu.Item>
             <Dropdown overlay={language_menu}>
-              <Button>{I18n.get('Language')}</Button>
+              <Button id="lanButton">{I18n.get('Language')}</Button>
             </Dropdown>
           </Menu.Item>
         </Menu>
