@@ -13,6 +13,7 @@ import JobDescription from './jobDescription';
 import Application from '../components/form/application';
 import SignUp from '../components/authentication/signup';
 import TalentList from '../pages/talentsList';
+import Photo from './photo.js';
 import "antd/dist/antd.css";
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
       <PrivateRoute path="/app/business-profile/:userID" component={businessProfile} />
       <PrivateRoute path="/app/user-profile/:userID"     component={Profile} /> 
       <PrivateRoute path="/app/application"      component={Application} />
+      <PrivateRoute path="/app/photo" component={Photo} />
       <PostJob      path="/app/postJob" />
       <Login        path="/app/login" />
       <SignUp       path="/app/signup" />
