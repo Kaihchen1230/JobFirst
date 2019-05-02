@@ -15,11 +15,11 @@ exports.filterDateGen = (value) =>{
 exports.selectSearchGen = (value) => {
     return {"search": value};
 }
-exports.searchByNameGen = (value) => {
+exports.searchByNameGen = (value, search) => {
     let newSearch = {};
     if(value == ""){
-        return {"filter":{}};
-    }else if(this.state["search"] == "Name"){
+        return {};
+    }else if(search == "Name"){
         newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
         return newSearch;
     }else {
@@ -29,5 +29,5 @@ exports.searchByNameGen = (value) => {
 }
 
 exports.resetGen = () => {
-    return {"filter":{}};
+    return {};
 }

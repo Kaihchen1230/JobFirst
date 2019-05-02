@@ -6,6 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
+import * as Util from './jobListUtil';
 
 const {
     Header, Footer, Sider, Content,
@@ -26,13 +27,7 @@ class JobList extends React.Component {
     }
 
     filterType = (value) => {
-        let newSearch = {};
-        if(value == "All"){
-            this.setState({"filter":{}});
-        }else{
-            newSearch = {"filter":{"jobType":{"contains":value}}};
-            this.setState({"filter":newSearch});
-        }
+        this.setState({"filter": Util.filterTypeGen(value)});
     }
 
     filterDate = (value) =>{
@@ -42,21 +37,14 @@ class JobList extends React.Component {
     selectSearch = (value) => {
         this.setState({"search": value});
     }
+
     searchByName = (value) => {
-        let newSearch = {};
-        if(value == ""){
-            this.setState({"filter":{}});
-        }else if(this.state["search"] == "Name"){
-            newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
-            this.setState({"filter":newSearch});
-        }else {
-            newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
-            this.setState({"filter":newSearch});
-        }
+        let searchType = this.state.search;
+        this.setState({"filter": Util.searchByNameGen(value, searchType)});
     }
 
     reset = () => {
-        this.setState({"filter":{}});
+        this.setState({"filter":Util.resetGen()});
     }
 
     render() {
