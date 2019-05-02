@@ -49,7 +49,7 @@ class Profile extends React.Component {
             for (let i = 0; i < arr.length; ++i) {
                 arr[i].jobTitle = arr[i].Job.jobTitle;
             }
-            console.log("arr: ", arr);
+            console.log("Array to put in table: ", arr);
 
             this.setState({ theJobs: arr });
         } catch (err) {

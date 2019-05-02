@@ -24,10 +24,9 @@ const callback = (key) => {
 }
 
 const Information = (props) => {
-    //{console.log(props.jobs)}
-    //{console.log(props.user)}
+    
     const user = getUser();
-    console.log("props.jobs", props.jobs)
+    
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
