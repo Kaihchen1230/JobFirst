@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "@reach/router"
+import { Link, navigate } from "gatsby"
 import { Tabs, Button, Popover, Modal } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
@@ -162,13 +162,11 @@ class JobDescription extends React.Component{
           let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
           console.log('this is the getAppliedJob: ', getAppliedJob);
           let appliedEmployeeId = getAppliedJob.data.getAppliedJob.Employee.id;
-          if(appliedEmployeeId === this.state.userId){{
+          if(appliedEmployeeId === this.state.userId){
               this.setState({
                 visible: true
               })
-          }
-          }else{
-            alert('not applied');
+          
           }
         }
       }catch(err){
@@ -241,6 +239,7 @@ class JobDescription extends React.Component{
                     this.setState({
                       visible: false,
                     });
+                    navigate("/app/user-profile/"+this.state.userId)
                   }}
                   onCancel={() => {
                     this.setState({
