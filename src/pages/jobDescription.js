@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from "@reach/router"
-import { Tabs, Button, Popover } from 'antd';
+import { Link, navigate } from "gatsby"
+import { Tabs, Button, Popover, Modal } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/location';
 import CompanyDetail from '../components/job_description/companyDetail';
@@ -26,6 +26,8 @@ class JobDescription extends React.Component{
         },
         companyInfo: {},
         location: {},
+        alreadyAppliedvisible: false,
+        newUserAppliedVisible: false,
         'applicant': [{
             key: '1',
             name: 'John Brown',
@@ -95,7 +97,9 @@ class JobDescription extends React.Component{
     componentDidMount = async () => {
       let currentId = window.history.state.id;
       let user = await Auth.currentAuthenticatedUser();
+      console.log("this is the user: ", user);
       const { attributes } = user;
+      console.log("this is attribute: ", {attributes});
       let currentUserId = attributes.sub;
       
       // get the current job info
@@ -145,6 +149,31 @@ class JobDescription extends React.Component{
     applyJob = async () => {
       // event.preventDefault();
       // console.log('this is word: ', word);
+
+      // make sure the employee hasn't applied to the job yet
+      try{
+        const currentJobInfo = await API.graphql(graphqlOperation(queries.getPostedJob,{id: this.state.jobId}));
+        // console.log('this is the currentJobInfo: ', currentJobInfo);
+        const {applied} = currentJobInfo.data.getPostedJob;
+        // console.log('this is applied: ',{applied});
+        // console.log('this is the item: ', applied.items);
+        // console.log('this is the type of applied.items: ', typeof(applied.items));
+        // console.log('this is the size: ', applied.items.length);
+        for(let i = 0; i < applied.items.length; i++){
+          let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
+          console.log('this is the getAppliedJob: ', getAppliedJob);
+          let appliedEmployeeId = getAppliedJob.data.getAppliedJob.Employee.id;
+          if(appliedEmployeeId === this.state.userId){
+              this.setState({
+                alreadyAppliedvisible: true
+              })
+          
+          }
+        }
+      }catch(err){
+        console.log('there is an error to fetch the data for applied job: ', err);
+      }
+
       const newDate = new Date()
       const date = newDate.getDate();
       const month = newDate.getMonth() + 1;
@@ -163,7 +192,10 @@ class JobDescription extends React.Component{
           appliedJobJobId: jobId
         }
         const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
-        // console.log(' this is the newAppliedJob: ', newAppliedJob);
+        console.log(' this is the newAppliedJob: ', newAppliedJob);
+        this.setState({
+          newUserAppliedVisible: true
+        })
 
       }catch(err){
         console.log('there is an eeror updating the applied job table: ', err);
@@ -203,6 +235,52 @@ class JobDescription extends React.Component{
                 <Popover content={"We will use your default information to apply to the job"} >
                 <Button type="primary" onClick={this.applyJob}>Apply Now</Button>
               </Popover>
+              <div>
+                <Modal
+                  title="Modal"
+                  visible={this.state.alreadyAppliedvisible}
+                  onOk={() => {
+                    this.setState({
+                      alreadyAppliedvisible: false,
+                    });
+                    navigate("/app/user-profile/"+this.state.userId)
+                  }}
+                  onCancel={() => {
+                    this.setState({
+                      alreadyAppliedvisible: false
+                    })
+                  }}
+                  okText="Okay"
+                  cancelText="Cancel"
+                >
+                 <p>
+                   You Already Applied...
+                 </p>
+                </Modal>
+               </div>
+               <div>
+                <Modal
+                  title="Modal"
+                  visible={this.state.newUserAppliedVisible}
+                  onOk={() => {
+                    this.setState({
+                      newUserAppliedVisible: false,
+                    });
+                    navigate("/app/user-profile/"+this.state.userId)
+                  }}
+                  onCancel={() => {
+                    this.setState({
+                      newUserAppliedVisible: false
+                    })
+                  }}
+                  okText="Okay"
+                  cancelText="Cancel"
+                >
+                 <p>
+                   Thanks for applied to xxxx, Employer will contact you in shortly
+                 </p>
+                </Modal>
+              </div>
                 <Tabs defaultActiveKey="1" > 
                     <TabPane tab="Job" key="1" >
                         <div>
