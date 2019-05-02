@@ -2,22 +2,9 @@ import React from 'react';
 import { Tabs, Table, Button, Progress } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
+import AppliedJob from "./appliedJob";
 
 const TabPane = Tabs.TabPane;
-
-const columns = [{
-    title: I18n.get('Job'),
-    dataIndex: 'jobTitle',
-    key: 'jobTitle',
-}, {
-    title: I18n.get('Date Applied'),
-    dataIndex: 'dateApplied',
-    key: 'dateApplied',
-}, {
-    title: I18n.get('Status'),
-    dataIndex: 'status',
-    key: 'status'
-}];
 
 const callback = (key) => {
     console.log(key);
@@ -59,14 +46,11 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Experience and Skills")} key="3">Content of Tab Pane 3</TabPane>
 
                 <TabPane tab={I18n.get("Applied Jobs")} key="4">
-                    <div>
-                        <h1 align="center">{I18n.get("Applied Jobs")}</h1>
-                        {props.jobs.length > 0 ? (
-                            <Table dataSource={props.jobs} columns={columns} />
-                        ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
-                        }
-                    </div>
-
+                    <h1 align="center">{I18n.get("Applied Jobs")}</h1>
+                    {props.jobs.length > 0 ? (
+                        <AppliedJob jobs={props.jobs} />
+                    ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
+                    }
                 </TabPane>
             </Tabs>
         </div>

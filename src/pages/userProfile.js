@@ -36,27 +36,37 @@ class Profile extends React.Component {
             console.log(user);
             this.setState({
                 user: user.data.getEmployee,
-                loading: false
             })
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
-
         try {
-            const userAppliedJobs = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
-            console.log(userAppliedJobs.data.getEmployee.appliedJob.items);
-
-            let arr = userAppliedJobs.data.getEmployee.appliedJob.items;
-
-            for (let i = 0; i < arr.length; ++i) {
-                arr[i].jobTitle = arr[i].Job.jobTitle;
-            }
-            console.log("Array to put in table: ", arr);
-
-            this.setState({ theJobs: arr });
+            const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
+            const temp = testing.data.getEmployee.appliedJob.items;
+            console.log(temp)
+            const transformJob = temp.map(item => {
+                const jobID = item.Job.id
+                const { datePosted, deadline, jobTitle } = item.Job
+                const job = {
+                    jobID: jobID,
+                    jobTitle: jobTitle,
+                    datePosted: datePosted,
+                    deadline: deadline,
+                    status: item.status,
+                    dateApplied: item.dateApplied
+                }
+                return job;
+            })
+            this.setState({
+                jobs: transformJob
+            })
+            console.log(this.state.jobs);
         } catch (err) {
-            console.log("From userProfile.js - error in getting the user's applied jobs: ", err);
+            console.log("custom queries failed", err);
         }
+        this.setState({
+            loading: false
+        })
 
     }
 
@@ -113,7 +123,10 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information user={this.state.user} jobs={this.state.theJobs} />
+                    <Information 
+                    user={this.state.user} 
+                    jobs={this.state.jobs}
+                    />
                 </Content>
             </Layout>
 
