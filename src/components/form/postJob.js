@@ -14,7 +14,7 @@ let jobType = "";
 class PostJob extends React.Component {
     constructor(props) {
         super(props);
-        state = {
+        this.state = {
             lan: window.localStorage.getItem('lan'),
             type: ""
         };
@@ -50,6 +50,7 @@ class PostJob extends React.Component {
             searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
         };
         const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
+        console.log('new job: ', newJob);
     }
 
     render() {
