@@ -40,23 +40,45 @@ class Profile extends React.Component {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
 
+        // test object
+        const newPostedJobObj = {
+            id: "21fv6f71-cd78-4bgd-y11b-a5da2d987fde",
+            jobTitle: "just some job"
+        }
+
+        // test object 2
+        const newAppliedJobObj = {
+            id: "21fc6f71-cd78-4bgd-b11b-a5da2d987fde",
+            dateApplied: "today",
+            status: "pending",
+            appliedJobEmployeeId: "71fc2f71-cd78-4acd-a11a-a5da2d684fde",
+            appliedJobJobId: "21fv6f71-cd78-4bgd-y11b-a5da2d987fde"
+        }
+/*
+        // create postedJob for testing
+        try {
+            const makeNewPostedJob = await API.graphql(graphqlOperation(mutations.createEmployee, {input: newPostedJobObj}));
+            console.log("postedJob created");
+        } catch (err) {
+            console.log("From userProfile.js - error in making new postedJob")
+        }
+
+        // create appliedJob for testing
+        try {
+            const makeNewAppliedJob = await API.graphql(graphqlOperation(mutations.createEmployee, {input: makeNewEmployeeObj}));
+            console.log("employee created");
+        } catch (err) {
+            console.log("From userProfile.js - error in making new employee")
+        }
+
         // Fetch all relevant jobs and save to state to render to page
         try {
             const userAppliedJobs = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
             console.log(userAppliedJobs.data.getEmployee.appliedJob.items);
             this.setState({theJobs: userAppliedJobs.data.getEmployee.appliedJob.items});
+            console.log(userAppliedJobs);
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's applied jobs: ", err);
-        }
-
-        
-        /*try {
-            // We can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
-            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.getAppliedJob, { id: this.state.userID }));
-            console.log("From userProfile.js - The following job was fetched:\n", fetchAllAppliedJobs.data.getAppliedJob);
-            this.setState({ theJobs: [...fetchAllAppliedJobs.data.getAppliedJob] });
-        } catch (err) {
-            console.log("From userProfile.js - error in getting list of jobs: ", err);
         }*/
 
     }
