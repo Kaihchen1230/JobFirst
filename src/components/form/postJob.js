@@ -15,10 +15,13 @@ const Option = Select.Option;
 const { TextArea } = Input;
 
 class PostJob extends React.Component {
-
-    state = {
-        lan: window.localStorage.getItem('lan'),
-        type: ""
+    constructor(props) {
+        super(props);
+        state = {
+            lan: window.localStorage.getItem('lan'),
+            type: ""
+        };
+        this.typeUpdate = this.typeUpdate.bind(this);
     } 
 
     typeUpdate = (value) => {
@@ -47,7 +50,7 @@ class PostJob extends React.Component {
 	        postedJobCompanyId: attributes.sub,
             postedJobLocationId: newAddress.data.createAddress.id,
             searchFieldName: postForm["jobTitle"].value.toLowerCase(),
-            searchFieldLocation: newAddress.data.createAddress.line1.toLowerCase() + newAddress.data.createAddress.line2.toLowerCase(),
+            searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
         };
         const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
     }
