@@ -9,6 +9,7 @@ import "../../style/postJob.css"
 
 const Option = Select.Option;
 const { TextArea } = Input;
+let jobType = "";
 
 class PostJob extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class PostJob extends React.Component {
     } 
 
     typeUpdate = (value) => {
-        this.setState({type: value});
+        jobType = value;
     }
 
     async handleSubmit () {
@@ -37,7 +38,7 @@ class PostJob extends React.Component {
         const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}));
         const CreatePostedJobInput = {
             jobTitle: postForm["jobTitle"].value,
-            jobType: this.state.type,
+            jobType: jobType,
 	        description: postForm["description"].value,
 	        requirements: [postForm["requirement"].value],
 	        datePosted: postForm["postDate"].value,
