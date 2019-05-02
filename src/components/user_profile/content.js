@@ -7,8 +7,8 @@ const TabPane = Tabs.TabPane;
 
 const columns = [{
     title: I18n.get('Job'),
-    dataIndex: 'Job',
-    key: 'Job',
+    dataIndex: 'jobTitle',
+    key: 'jobTitle',
 }, {
     title: I18n.get('Date Applied'),
     dataIndex: 'dateApplied',
@@ -24,9 +24,9 @@ const callback = (key) => {
 }
 
 const Information = (props) => {
-    //{console.log(props.jobs)}
-    //{console.log(props.user)}
+    
     const user = getUser();
+    
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
@@ -59,11 +59,14 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Experience and Skills")} key="3">Content of Tab Pane 3</TabPane>
 
                 <TabPane tab={I18n.get("Applied Jobs")} key="4">
-                    <h1 align="center">{I18n.get("Applied Jobs")}</h1>
-                    {props.jobs.length > 0 ? (
-                        <Table dataSource={props.jobs} columns={columns} />
-                    ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
-                    }
+                    <div>
+                        <h1 align="center">{I18n.get("Applied Jobs")}</h1>
+                        {props.jobs.length > 0 ? (
+                            <Table dataSource={props.jobs} columns={columns} />
+                        ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
+                        }
+                    </div>
+
                 </TabPane>
             </Tabs>
         </div>
