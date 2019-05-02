@@ -26,7 +26,13 @@ class JobList extends React.Component {
     }
 
     filterType = (value) => {
-
+        let newSearch = {};
+        if(value == "All"){
+            this.setState({"filter":{}});
+        }else{
+            newSearch = {"filter":{"jobType":{"contains":value}}};
+            this.setState({"filter":newSearch});
+        }
     }
 
     filterDate = (value) =>{
@@ -37,13 +43,14 @@ class JobList extends React.Component {
         this.setState({"search": value});
     }
     searchByName = (value) => {
+        let newSearch = {};
         if(value == ""){
             this.setState({"filter":{}});
         }else if(this.state["search"] == "Name"){
-            let newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
+            newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
             this.setState({"filter":newSearch});
         }else {
-            let newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
+            newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
             this.setState({"filter":newSearch});
         }
     }
