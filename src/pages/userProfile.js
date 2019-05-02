@@ -6,6 +6,7 @@ import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
+import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -14,6 +15,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            lan: window.localStorage.getItem('lan'),
             userID: this.props.userID,
             loading: true,
             collapsed: false,
@@ -74,7 +76,8 @@ class Profile extends React.Component {
                 <Skeleton active />
             );
         }
-        //console.log(this.state.user);
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
