@@ -18,7 +18,7 @@ import "antd/dist/antd.css";
 const App = () => (
   <Layout>
     <Router>
-      <PrivateRoute path="/app/business-profile" component={businessProfile} />
+      <PrivateRoute path="/app/business-profile/:userID" component={businessProfile} />
       <PrivateRoute path="/app/user-profile/:userID"     component={Profile} /> 
       <PrivateRoute path="/app/application"      component={Application} />
       <PostJob      path="/app/postJob" />
