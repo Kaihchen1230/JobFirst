@@ -26,7 +26,8 @@ class JobDescription extends React.Component{
         },
         companyInfo: {},
         location: {},
-        visible: false,
+        alreadyAppliedvisible: false,
+        newUserAppliedVisible: false,
         'applicant': [{
             key: '1',
             name: 'John Brown',
@@ -152,19 +153,19 @@ class JobDescription extends React.Component{
       // make sure the employee hasn't applied to the job yet
       try{
         const currentJobInfo = await API.graphql(graphqlOperation(queries.getPostedJob,{id: this.state.jobId}));
-        console.log('this is the currentJobInfo: ', currentJobInfo);
+        // console.log('this is the currentJobInfo: ', currentJobInfo);
         const {applied} = currentJobInfo.data.getPostedJob;
-        console.log('this is applied: ',{applied});
-        console.log('this is the item: ', applied.items);
-        console.log('this is the type of applied.items: ', typeof(applied.items));
-        console.log('this is the size: ', applied.items.length);
+        // console.log('this is applied: ',{applied});
+        // console.log('this is the item: ', applied.items);
+        // console.log('this is the type of applied.items: ', typeof(applied.items));
+        // console.log('this is the size: ', applied.items.length);
         for(let i = 0; i < applied.items.length; i++){
           let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
           console.log('this is the getAppliedJob: ', getAppliedJob);
           let appliedEmployeeId = getAppliedJob.data.getAppliedJob.Employee.id;
           if(appliedEmployeeId === this.state.userId){
               this.setState({
-                visible: true
+                alreadyAppliedvisible: true
               })
           
           }
@@ -191,7 +192,10 @@ class JobDescription extends React.Component{
           appliedJobJobId: jobId
         }
         const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
-        // console.log(' this is the newAppliedJob: ', newAppliedJob);
+        console.log(' this is the newAppliedJob: ', newAppliedJob);
+        this.setState({
+          newUserAppliedVisible: true
+        })
 
       }catch(err){
         console.log('there is an eeror updating the applied job table: ', err);
@@ -234,16 +238,16 @@ class JobDescription extends React.Component{
               <div>
                 <Modal
                   title="Modal"
-                  visible={this.state.visible}
+                  visible={this.state.alreadyAppliedvisible}
                   onOk={() => {
                     this.setState({
-                      visible: false,
+                      alreadyAppliedvisible: false,
                     });
                     navigate("/app/user-profile/"+this.state.userId)
                   }}
                   onCancel={() => {
                     this.setState({
-                      visible: false
+                      alreadyAppliedvisible: false
                     })
                   }}
                   okText="Okay"
@@ -251,6 +255,29 @@ class JobDescription extends React.Component{
                 >
                  <p>
                    You Already Applied...
+                 </p>
+                </Modal>
+               </div>
+               <div>
+                <Modal
+                  title="Modal"
+                  visible={this.state.newUserAppliedVisible}
+                  onOk={() => {
+                    this.setState({
+                      newUserAppliedVisible: false,
+                    });
+                    navigate("/app/user-profile/"+this.state.userId)
+                  }}
+                  onCancel={() => {
+                    this.setState({
+                      newUserAppliedVisible: false
+                    })
+                  }}
+                  okText="Okay"
+                  cancelText="Cancel"
+                >
+                 <p>
+                   Thanks for applied to xxxx, Employer will contact you in shortly
                  </p>
                 </Modal>
               </div>
