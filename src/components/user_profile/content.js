@@ -6,28 +6,14 @@ import AppliedJob from "./appliedJob";
 
 const TabPane = Tabs.TabPane;
 
-const columns = [{
-    title: I18n.get('Job'),
-    dataIndex: 'Job',
-    key: 'Job',
-}, {
-    title: I18n.get('Date Applied'),
-    dataIndex: 'dateApplied',
-    key: 'dateApplied',
-}, {
-    title: I18n.get('Status'),
-    dataIndex: 'status',
-    key: 'status'
-}];
-
 const callback = (key) => {
     console.log(key);
 }
 
 const Information = (props) => {
-    //{console.log(props.jobs)}
-    //{console.log(props.user)}
+    
     const user = getUser();
+    
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
