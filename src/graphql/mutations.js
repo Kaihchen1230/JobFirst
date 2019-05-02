@@ -65,6 +65,7 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -132,6 +133,7 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -199,6 +201,7 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
     skill
     language
     englishLevel
+    favoriteQuote
   }
 }
 `;
@@ -242,6 +245,7 @@ export const createAssociation = `mutation CreateAssociation($input: CreateAssoc
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -286,6 +290,7 @@ export const updateAssociation = `mutation UpdateAssociation($input: UpdateAssoc
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -330,6 +335,7 @@ export const deleteAssociation = `mutation DeleteAssociation($input: DeleteAssoc
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -378,6 +384,7 @@ export const createExperience = `mutation CreateExperience($input: CreateExperie
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -426,6 +433,7 @@ export const updateExperience = `mutation UpdateExperience($input: UpdateExperie
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -474,6 +482,7 @@ export const deleteExperience = `mutation DeleteExperience($input: DeleteExperie
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -522,6 +531,7 @@ export const createEducation = `mutation CreateEducation($input: CreateEducation
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -570,6 +580,7 @@ export const updateEducation = `mutation UpdateEducation($input: UpdateEducation
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -618,6 +629,7 @@ export const deleteEducation = `mutation DeleteEducation($input: DeleteEducation
       skill
       language
       englishLevel
+      favoriteQuote
     }
   }
 }
@@ -693,6 +705,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id
@@ -775,6 +788,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id
@@ -857,6 +871,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
       skill
       language
       englishLevel
+      favoriteQuote
     }
     Job {
       id

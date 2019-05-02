@@ -14,7 +14,7 @@ const navBar = (props) => {
       /* <Avatar shape="square" size="large" icon="user" /> */
       <NewLogin />
   };
-  // let lan = window.localStorage.getItem('lan')
+  let lan = window.localStorage.getItem('lan')
   // the login button should change based on the user
   if (isLoggedIn()) { // if logged in we can display the username
     state.login =
@@ -23,8 +23,8 @@ const navBar = (props) => {
         <span>{"   " + getUser().username}</span>
       </span>
   }
-  // I18n.putVocabularies(dict);
-  // I18n.setLanguage(lan);
+  I18n.putVocabularies(dict);
+  I18n.setLanguage(lan);
   const style = {
     fontSize: "25px"
 
@@ -67,15 +67,18 @@ const navBar = (props) => {
             <Link to="/app/job-list"></Link>
           </Menu.Item>
 
-          <Menu.Item>
-            <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
-            <Link to="/app/postJob"></Link>
-          </Menu.Item>
+          {isLoggedIn() ? 
+            getUser()["custom:isEmployer"] === "yes" ?
+              <Menu.Item>
+                <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
+                <Link to="/app/postJob"></Link>
+              </Menu.Item>: null : null
+          }
 
-          <Menu.Item>
+          {/* <Menu.Item>
             <Icon type="bar-chart" theme="outlined" />{I18n.get('Business Profile')}
             <Link to="/app/business-profile"></Link>
-          </Menu.Item>
+          </Menu.Item> */}
 
           <Menu.Item key="contact">
             <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
@@ -93,10 +96,16 @@ const navBar = (props) => {
           }
 
           {isLoggedIn() ? (
-            <Menu.Item>
-              {state.login}
-              <Link to={`/app/user-profile/${getUser().sub}`}></Link>
-            </Menu.Item>
+            getUser()['custom:isEmployer'] ==='no' ?
+              <Menu.Item>
+                {state.login}
+                <Link to={`/app/user-profile/${getUser().sub}`}></Link>
+              </Menu.Item> :
+              <Menu.Item>
+                {/* <Icon type="bar-chart" theme="outlined" />{I18n.get('Business Profile')} */}
+                {state.login}
+                <Link to={`/app/business-profile/${getUser().sub}`}></Link>
+              </Menu.Item>
           ) : (
               <Menu.Item>
                 {state.login}

@@ -1,28 +1,28 @@
 import React from "react";
-//import { navigate } from "gatsby"
-//import { handleLogin, isLoggedIn } from "../services/auth"
-//import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import { Auth, I18n } from 'aws-amplify';
-//import "../style/postJob.css";
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
-
+import "../../style/postJob.css"
 
 const Option = Select.Option;
 const { TextArea } = Input;
+let jobType = "";
 
 class PostJob extends React.Component {
-
-    state = {
-        lan: window.localStorage.getItem('lan'),
-        type: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            lan: window.localStorage.getItem('lan'),
+            type: ""
+        };
+        this.typeUpdate = this.typeUpdate.bind(this);
     } 
 
     typeUpdate = (value) => {
-        this.setState({type: value});
+        jobType = value;
     }
 
     async handleSubmit () {
@@ -38,7 +38,7 @@ class PostJob extends React.Component {
         const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}));
         const CreatePostedJobInput = {
             jobTitle: postForm["jobTitle"].value,
-            jobType: this.state.type,
+            jobType: jobType,
 	        description: postForm["description"].value,
 	        requirements: [postForm["requirement"].value],
 	        datePosted: postForm["postDate"].value,
@@ -47,9 +47,10 @@ class PostJob extends React.Component {
 	        postedJobCompanyId: attributes.sub,
             postedJobLocationId: newAddress.data.createAddress.id,
             searchFieldName: postForm["jobTitle"].value.toLowerCase(),
-            searchFieldLocation: newAddress.data.createAddress.line1.toLowerCase() + newAddress.data.createAddress.line2.toLowerCase(),
+            searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
         };
         const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
+        console.log('new job: ', newJob);
     }
 
     render() {
@@ -60,7 +61,7 @@ class PostJob extends React.Component {
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
-                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
@@ -126,6 +127,7 @@ class PostJob extends React.Component {
                     <Form.Item>
                         <Button type="primary" htmlType="submit" >{I18n.get('Submit Job')}</Button>
                     </Form.Item>
+                    <br />
                 </Form>
             </div>
         )

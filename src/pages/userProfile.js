@@ -1,12 +1,12 @@
 import React from 'react';
-import MyCard from '../components/user_profile/card';
-import MyList from '../components/user_profile/resumeList';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
 import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
 import * as queries from '../graphql/queries';
+import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
+import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -15,6 +15,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            lan: window.localStorage.getItem('lan'),
             userID: this.props.userID,
             loading: true,
             collapsed: false,
@@ -32,77 +33,40 @@ class Profile extends React.Component {
         try {
             // console.log(this.props.userID);
             const user = await API.graphql(graphqlOperation(queries.getEmployee, { id: this.state.userID }));
-            // console.log(user);
+            console.log(user);
             this.setState({
                 user: user.data.getEmployee,
-                loading: false
             })
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
-
-        // What to pass in when creating applied job objects. The id parameter must be different each time
-        const appliedJobInput = {
-            id: "54160v2d-7469-411e-9b53-012ed15c97d0",
-            dateApplied: "right this MOMENT",
-            status: "got it YET AGAIN",
-            appliedJobEmployeeId: "59560b0d-6069-431e-9b33-079ed12c08f0",   // my user id
-            appliedJobJobId: "54563b0d-7069-411e-9n33-049ed15c02f0"
-        }
-
-        const postedJobInput = {
-            id: "54563b0d-7069-411e-9n33-049ed15c02f0",
-            jobTitle: "Front End Developer",
-            jobType: "Management"
-        }
-        /*
-        // Attempt to add one posted job for testing
         try {
-            const newPostedJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: postedJobInput}));
-            console.log("From userProfile.js - The test posted job was added");
-        } catch(err) {
-            console.log("From userProfile.js - Error: ", err);
-        }
-
-        // Attempt to add one applied job for testing
-        try {
-            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: appliedJobInput}));
-            console.log("From userProfile.js - The test applied job was added");
-        } catch(err) {
-            console.log("From userProfile.js - Error: ", err);
-        }*/
-
-        // Fetch all relevant jobs and save to state to render to page
-        try {
-            // We can fetch an applied job by id now. But now we have to filter it by the employee id which returns results specific to the user
-            let fetchAllAppliedJobs = await API.graphql(graphqlOperation(queries.listAppliedJobs));
-            if (fetchAllAppliedJobs == null) {
-                console.log("From userProfile.js - There are no jobs to be fetched.");
-            }
-            else {
-                console.log("From userProfile.js - The following jobs were fetched:\n", fetchAllAppliedJobs.data.listAppliedJobs.items);
-            }
-
-            // Parse and filter jobs
-            let j = [];
-            let arr = new Array(...fetchAllAppliedJobs.data.listAppliedJobs.items);
-            j.push(arr[2]);
-            j.push(arr[6]);
-            j.push(arr[8]);
-            console.log(arr.length);
-
-            // Below is the general code to filter applied jobs
-            
-            //for (let i = 0; i < arr.length; ++i) {
-            //    if (arr[i].Employee.id == this.state.userID) {
-            //        j.push(arr[i]);
-            //    }
-            //}
-
-            this.setState({ theJobs: j });
+            const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
+            const temp = testing.data.getEmployee.appliedJob.items;
+            console.log(temp)
+            const transformJob = temp.map(item => {
+                const jobID = item.Job.id
+                const { datePosted, deadline, jobTitle } = item.Job
+                const job = {
+                    jobID: jobID,
+                    jobTitle: jobTitle,
+                    datePosted: datePosted,
+                    deadline: deadline,
+                    status: item.status,
+                    dateApplied: item.dateApplied
+                }
+                return job;
+            })
+            this.setState({
+                jobs: transformJob
+            })
+            console.log(this.state.jobs);
         } catch (err) {
-            console.log("From userProfile.js - Error: ", err);
+            console.log("custom queries failed", err);
         }
+        this.setState({
+            loading: false
+        })
 
     }
 
@@ -112,7 +76,8 @@ class Profile extends React.Component {
                 <Skeleton active />
             );
         }
-        //console.log(this.state.user);
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
@@ -124,29 +89,32 @@ class Profile extends React.Component {
                     <Person user={this.state.user} />
                     {(getUser().sub === this.state.userID) ? (
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                            <Menu.Item key="1">
-                                <Icon type="form" />
-                                <span>{I18n.get('Edit Profile')}</span>
-                            </Menu.Item>
+                            <SubMenu
+                                key="sub1"
+                                title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
+                            >
+                                <Menu.Item key="3">
+                                    {I18n.get('Modify Basic Info')}
+                                </Menu.Item>
+
+                                <Menu.Item key="4">
+                                    {I18n.get('Update address')}
+                                </Menu.Item>
+
+                                <Menu.Item key="5">
+                                    {I18n.get('Add Education or Award')}
+                                </Menu.Item>
+
+                                <Menu.Item key="6">
+                                    {I18n.get('Add Experience or Skill')}
+                                </Menu.Item>
+                            </SubMenu>
+
                             <Menu.Item key="2">
                                 <Icon type="picture" />
                                 <span>{I18n.get('Change Profile Picture')}</span>
                             </Menu.Item>
-                            <SubMenu
-                                key="sub1"
-                                title={<span><Icon type="user" /><span>{I18n.get('User')}</span></span>}
-                            >
-                                <Menu.Item key="3">Tom</Menu.Item>
-                                <Menu.Item key="4">Bill</Menu.Item>
-                                <Menu.Item key="5">Alex</Menu.Item>
-                            </SubMenu>
-                            <SubMenu
-                                key="sub2"
-                                title={<span><Icon type="team" /><span>{I18n.get('Team')}</span></span>}
-                            >
-                                <Menu.Item key="6">1</Menu.Item>
-                                <Menu.Item key="8">2</Menu.Item>
-                            </SubMenu>
+
                             <Menu.Item key="9">
                                 <Icon type="file" />
                                 <span>{I18n.get('Upload a Resume')}</span>
@@ -155,7 +123,10 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information user={this.state.user} jobs={this.state.theJobs} />
+                    <Information 
+                    user={this.state.user} 
+                    jobs={this.state.jobs}
+                    />
                 </Content>
             </Layout>
 

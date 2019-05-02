@@ -6,6 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
+import * as Util from './jobListUtil';
 
 const {
     Header, Footer, Sider, Content,
@@ -26,7 +27,7 @@ class JobList extends React.Component {
     }
 
     filterType = (value) => {
-
+        this.setState({"filter": Util.filterTypeGen(value)});
     }
 
     filterDate = (value) =>{
@@ -36,20 +37,14 @@ class JobList extends React.Component {
     selectSearch = (value) => {
         this.setState({"search": value});
     }
+
     searchByName = (value) => {
-        if(value == ""){
-            this.setState({"filter":{}});
-        }else if(this.state["search"] == "Name"){
-            let newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
-            this.setState({"filter":newSearch});
-        }else {
-            let newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
-            this.setState({"filter":newSearch});
-        }
+        let searchType = this.state.search;
+        this.setState({"filter": Util.searchByNameGen(value, searchType)});
     }
 
     reset = () => {
-        this.setState({"filter":{}});
+        this.setState({"filter":Util.resetGen()});
     }
 
     render() {
@@ -100,9 +95,9 @@ class JobList extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Select onChange={value => this.filterDate(value)} style={{ width: "80%" }} size="large" placeholder="Post Day">
-                                        <Option value="15 Days">{I18n.get('15 Days')}</Option>
-                                        <Option value="One Month">{I18n.get('One Month')}</Option>
-                                        <Option value="Three Months">{I18n.get('Three Months')}</Option>
+                                        <Option value="15">{I18n.get('15 Days')}</Option>
+                                        <Option value="30">{I18n.get('One Month')}</Option>
+                                        <Option value="90">{I18n.get('Three Months')}</Option>
                                         <Option value="All">{I18n.get('All')}</Option>
                                     </Select>
                                 </Col>
