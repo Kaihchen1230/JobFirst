@@ -67,10 +67,13 @@ const navBar = (props) => {
             <Link to="/app/job-list"></Link>
           </Menu.Item>
 
-          <Menu.Item>
-            <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
-            <Link to="/app/postJob"></Link>
-          </Menu.Item>
+          {isLoggedIn() ? 
+            getUser()["custom:isEmployer"] === "yes" ?
+              <Menu.Item>
+                <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
+                <Link to="/app/postJob"></Link>
+              </Menu.Item>: null : null
+          }
 
           {/* <Menu.Item>
             <Icon type="bar-chart" theme="outlined" />{I18n.get('Business Profile')}
