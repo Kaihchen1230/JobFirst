@@ -107,9 +107,9 @@ class JobList extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Select onChange={value => this.filterDate(value)} style={{ width: "80%" }} size="large" placeholder="Post Day">
-                                        <Option value="15 Days">{I18n.get('15 Days')}</Option>
-                                        <Option value="One Month">{I18n.get('One Month')}</Option>
-                                        <Option value="Three Months">{I18n.get('Three Months')}</Option>
+                                        <Option value="15">{I18n.get('15 Days')}</Option>
+                                        <Option value="30">{I18n.get('One Month')}</Option>
+                                        <Option value="90">{I18n.get('Three Months')}</Option>
                                         <Option value="All">{I18n.get('All')}</Option>
                                     </Select>
                                 </Col>
