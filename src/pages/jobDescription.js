@@ -28,6 +28,7 @@ class JobDescription extends React.Component{
         location: {},
         alreadyAppliedvisible: false,
         newUserAppliedVisible: false,
+        applied: false,
         'applicant': [{
             key: '1',
             name: 'John Brown',
@@ -159,47 +160,53 @@ class JobDescription extends React.Component{
         // console.log('this is the item: ', applied.items);
         // console.log('this is the type of applied.items: ', typeof(applied.items));
         // console.log('this is the size: ', applied.items.length);
+        
         for(let i = 0; i < applied.items.length; i++){
           let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
           console.log('this is the getAppliedJob: ', getAppliedJob);
           let appliedEmployeeId = getAppliedJob.data.getAppliedJob.Employee.id;
           if(appliedEmployeeId === this.state.userId){
               this.setState({
-                alreadyAppliedvisible: true
+                applied: true
               })
-          
           }
         }
+        if(!this.state.applied){
+          const newDate = new Date()
+          const date = newDate.getDate();
+          const month = newDate.getMonth() + 1;
+          const year = newDate.getFullYear();
+          const currentDate = month + '/' + date + '/' + year;
+          const userId = this.state.userId;
+          const jobId = this.state.jobId;
+          // console.log('this is the date: ', this.state.userId);
+          // console.log('this is the userId: ', userId);
+          // console.log('this is jobId: ', jobId);
+          try{
+            const createAppliedJobInput = {
+              dateApplied : currentDate,
+              status: "Pending",
+              appliedJobEmployeeId: userId,
+              appliedJobJobId: jobId
+            }
+            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+            console.log(' this is the newAppliedJob: ', newAppliedJob);
+            this.setState({
+              newUserAppliedVisible: true
+            })
+
+          }catch(err){
+            console.log('there is an eeror updating the applied job table: ', err);
+          }
+        }else{
+          this.setState({alreadyAppliedvisible: true});
+        }
+
       }catch(err){
         console.log('there is an error to fetch the data for applied job: ', err);
       }
 
-      const newDate = new Date()
-      const date = newDate.getDate();
-      const month = newDate.getMonth() + 1;
-      const year = newDate.getFullYear();
-      const currentDate = month + '/' + date + '/' + year;
-      const userId = this.state.userId;
-      const jobId = this.state.jobId;
-      // console.log('this is the date: ', this.state.userId);
-      // console.log('this is the userId: ', userId);
-      // console.log('this is jobId: ', jobId);
-      try{
-        const createAppliedJobInput = {
-          dateApplied : currentDate,
-          status: "Pending",
-          appliedJobEmployeeId: userId,
-          appliedJobJobId: jobId
-        }
-        const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
-        console.log(' this is the newAppliedJob: ', newAppliedJob);
-        this.setState({
-          newUserAppliedVisible: true
-        })
-
-      }catch(err){
-        console.log('there is an eeror updating the applied job table: ', err);
-      }
+      
     }    
     render(){
         // console.log("this is the job id: ", this.state.jobId);
