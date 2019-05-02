@@ -1,15 +1,11 @@
 import React from "react";
-//import { navigate } from "gatsby"
-//import { handleLogin, isLoggedIn } from "../services/auth"
-//import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import { Auth, I18n } from 'aws-amplify';
-//import "../style/postJob.css";
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
-
+import "../../style/postJob.css"
 
 const Option = Select.Option;
 const { TextArea } = Input;
@@ -63,7 +59,7 @@ class PostJob extends React.Component {
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
-                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
@@ -129,6 +125,7 @@ class PostJob extends React.Component {
                     <Form.Item>
                         <Button type="primary" htmlType="submit" >{I18n.get('Submit Job')}</Button>
                     </Form.Item>
+                    <br />
                 </Form>
             </div>
         )

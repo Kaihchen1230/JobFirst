@@ -1,43 +1,42 @@
 import React from 'react';
-import { Tabs, Table, Button } from 'antd';
+import { Tabs, Table, Button, Progress } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
+import AppliedJob from "./appliedJob";
 
 const TabPane = Tabs.TabPane;
-
-const columns = [{
-    title: I18n.get('Job'),
-    dataIndex: 'Job',
-    key: 'Job',
-}, {
-    title: I18n.get('Date Applied'),
-    dataIndex: 'dateApplied',
-    key: 'dateApplied',
-}, {
-    title: I18n.get('Status'),
-    dataIndex: 'status',
-    key: 'status'
-}];
 
 const callback = (key) => {
     console.log(key);
 }
 
 const Information = (props) => {
-    //{console.log(props.jobs)}
-    //{console.log(props.user)}
+    
     const user = getUser();
+    
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
+                    <Progress type="circle" percent={75} format={percent => `${percent} Completed`} />
                     <div>
-                        First Name: {user.name}
+                        {I18n.get("First Name")}: {user.name}
                         <br />
-                        Last Name: {user.lastName}
+                        {I18n.get("Last Name")}: {user.lastName}
                         <br />
-                        Age: {user.age}
+                        {I18n.get("Middle Name")}: {user.middleName}
                         <br />
+                        {I18n.get("Age")}: {user.age}
+                        <br />
+                        {I18n.get("Email")}: {user.email}
+                        <br />
+                        {I18n.get("Phone Number")}: {user.phone}
+                        <br />
+                        {I18n.get("English Level")}: {user.englishLevel}
+                        <br />
+                        {I18n.get("Spoken Language")}: {user.language}
+                        <br />
+
                     </div>
 
                 </TabPane>
@@ -49,7 +48,7 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Applied Jobs")} key="4">
                     <h1 align="center">{I18n.get("Applied Jobs")}</h1>
                     {props.jobs.length > 0 ? (
-                        <Table dataSource={props.jobs} columns={columns} />
+                        <AppliedJob jobs={props.jobs} />
                     ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
                     }
                 </TabPane>
