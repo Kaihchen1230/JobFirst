@@ -12,9 +12,6 @@ exports.filterDateGen = (value) =>{
 
 }
 
-exports.selectSearchGen = (value) => {
-    return {"search": value};
-}
 exports.searchByNameGen = (value, search) => {
     let newSearch = {};
     if(value == ""){
