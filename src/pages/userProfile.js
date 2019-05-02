@@ -40,46 +40,46 @@ class Profile extends React.Component {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
 
+        /*
         // test object
         const newPostedJobObj = {
-            id: "21fv6f71-cd78-4bgd-y11b-a5da2d987fde",
-            jobTitle: "just some job"
+            id: "21fv6f71-bd78-4bbd-y61b-a7yp8d965bgv",
+            jobTitle: "just some job 8"
         }
 
         // test object 2
         const newAppliedJobObj = {
-            id: "21fc6f71-cd78-4bgd-b11b-a5da2d987fde",
-            dateApplied: "today",
-            status: "pending",
-            appliedJobEmployeeId: "71fc2f71-cd78-4acd-a11a-a5da2d684fde",
-            appliedJobJobId: "21fv6f71-cd78-4bgd-y11b-a5da2d987fde"
+            id: "21fv6f71-cd78-4bgd-v87b-b5db2d612fde",
+            dateApplied: "future",
+            status: "done",
+            appliedJobEmployeeId: "71fc2f71-cd78-4bgd-a11b-a5da2d687fde",
+            appliedJobJobId: "21fv6f71-bd78-4bbd-y61b-a7yp8d965bgv"
         }
-/*
+
         // create postedJob for testing
         try {
-            const makeNewPostedJob = await API.graphql(graphqlOperation(mutations.createEmployee, {input: newPostedJobObj}));
+            const makeNewPostedJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: newPostedJobObj}));
             console.log("postedJob created");
         } catch (err) {
-            console.log("From userProfile.js - error in making new postedJob")
+            console.log("From userProfile.js - error in making new postedJob: ", err)
         }
 
         // create appliedJob for testing
         try {
-            const makeNewAppliedJob = await API.graphql(graphqlOperation(mutations.createEmployee, {input: makeNewEmployeeObj}));
-            console.log("employee created");
+            const makeNewAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: newAppliedJobObj}));
+            console.log("appliedJob created");
         } catch (err) {
-            console.log("From userProfile.js - error in making new employee")
+            console.log("From userProfile.js - error in making new appliedJob: ", err)
         }
-
+        */
         // Fetch all relevant jobs and save to state to render to page
         try {
             const userAppliedJobs = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
             console.log(userAppliedJobs.data.getEmployee.appliedJob.items);
             this.setState({theJobs: userAppliedJobs.data.getEmployee.appliedJob.items});
-            console.log(userAppliedJobs);
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's applied jobs: ", err);
-        }*/
+        }
 
     }
 
