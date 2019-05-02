@@ -1,0 +1,13 @@
+{
+    "bucketName": "csc47300projectf1ac5b6f1cbf4f8b96255042ef8d3168",
+    "authPolicyName": "s3_amplify_94abeeab",
+    "unauthPolicyName": "s3_amplify_94abeeab",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authPermissions": "rw",
+    "unauthPermissions": "r"
+}
