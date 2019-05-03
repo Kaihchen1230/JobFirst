@@ -27,7 +27,7 @@ const timeLine = (props) => {
                         icon ={<Icon type="trophy"  style={{ fontSize: '20px' ,color:"#1890ff" }}  />}
                         createdAt={element.date}
                         title={element.title}
-                        collapsible={true}>
+                    >
                         {element.info}
                     </TimelineEvent>
                 </div>

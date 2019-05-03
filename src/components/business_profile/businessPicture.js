@@ -8,13 +8,14 @@ let imageStyle = {
     position:"relative",
     left:"40%",
     top:"-20%",
-    border:"2px solid white"
+    border:"2px solid white",
+    borderRadius: "10px"
 };
 
 const profileCard = (props) => {
     return (
             <div  >
-                <img   style={imageStyle} width ="200" src = {props.companyPic} >
+                <img style={imageStyle} width ="150" src = {props.companyPic} >
                 </img>   
             </div>
     )

@@ -11,11 +11,13 @@ let mainStyle = {
     fontSize:"1.2em",
     letterSpacing: "1px",
     lineHeight:"1.8em",
-    border:"solid 1px",
+    border:"1px solid black",
     width:"30%",
+    borderRadius: "10px",
 };
 let infoStyle = {
-    padding:"8%"
+    padding:"8%",
+
 }
 
 const briefInfo = (props) => {

@@ -7,9 +7,11 @@ import PostJob from '../components/business_profile/postJob';
 import About from '../components/business_profile/aboutCompany';
 import CeoPic from '../components/business_profile/ceoPic'
 import BriefInfo from "../components/business_profile/briefInfo";
+import CompanyVideo from "../components/business_profile/video";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n } from "aws-amplify";
 import '../style/businessProfile.css';
+
 
 
 const TabPane = Tabs.TabPane;
@@ -37,7 +39,7 @@ class businessProfile extends React.Component {
     companyAddress: {
       addressLine1: "",
       addressLine2: "",
-      city:"",
+      city: "",
       state: "",
       postalCode: ""
     },
@@ -45,11 +47,11 @@ class businessProfile extends React.Component {
     ceo: "",
     size: "",
     revenue: "",
-    timeline: [{info:"3"}],
+    timeline: [{ info: "3" }],
     jobAmount: 0,
     description: "",
     companyPic: "",
-    value:0
+    value: 0
   }
 
   //Download businessProfile data from AWS
@@ -58,8 +60,8 @@ class businessProfile extends React.Component {
     //set up companyID
     let user = await Auth.currentAuthenticatedUser();
     const { attributes } = user;
-    let employerData = await API.graphql(graphqlOperation(queries.getEmployer,{id:attributes.sub}));
-    this.setState({companyID:attributes.sub});
+    let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: attributes.sub }));
+    this.setState({ companyID: attributes.sub });
     console.log("this is employerdata: " + employerData);
 
     //set up other employer info
@@ -123,23 +125,21 @@ class businessProfile extends React.Component {
         </div>
         <div style={bodyStyle}>
           <div className="secBanner">
-          <BusinessPicture companyPic={this.state.companyPic} />
+            <BusinessPicture companyPic={this.state.companyPic} />
             <div className="companyHeader">
               <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
               <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
             </div>
+            <Button className="editButton" type="primary" onClick={this.showModal}>
+                {I18n.get('Edit Profile')}
+              </Button>
           </div>
 
-
-          <div style={{ padding: "20px 60px" }}>
+          <div style={{ padding: "0px 60px" }}>
             <Tabs defaultActiveKey="1" >
               <TabPane tab={I18n.get('Profile')} key="1" >
                 <div>
                   <div >
-                    <Button type="primary" onClick={this.showModal}>
-                      {I18n.get('Edit Profile')}
-                    </Button>
-
                     <EditProfileForm
                       data={this.state}
                       visible={this.state.visible}
@@ -164,25 +164,30 @@ class businessProfile extends React.Component {
                   </div>
                   <div className="row2">
                     <Timeline timeline={this.state.timeline} />
-                    <CeoPic
-                      ceo={this.state.ceo}
-                      ceoPic={this.state.ceoPic}
-                    />
+                    <div style={{ width: "50%" }}>
+                      <CeoPic
+                        ceo={this.state.ceo}
+                        ceoPic={this.state.ceoPic}
+                      />
+                      <CompanyVideo />
+    
+                    </div>
+
                   </div>
                 </div>
 
               </TabPane>
               <TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
                 <div>
-                  <PostJob 
-                  jobList={this.state.jobList} 
-                  companyPic={this.state.companyPic}/>
+                  <PostJob
+                    jobList={this.state.jobList}
+                    companyPic={this.state.companyPic} />
                 </div>
               </TabPane>
             </Tabs>
           </div>
 
-        </div>   
+        </div>
       </div>
     );
   }
