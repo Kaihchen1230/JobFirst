@@ -8,6 +8,8 @@ import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon } from 'antd';
+import UploadPage from '../components/user_profile/photoUploader';
+
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 
@@ -111,8 +113,9 @@ class Profile extends React.Component {
                             </SubMenu>
 
                             <Menu.Item key="2">
-                                <Icon type="picture" />
-                                <span>{I18n.get('Change Profile Picture')}</span>
+                                    <UploadPage />
+                                
+                                {/* <span>{I18n.get('Change Profile Picture')}</span> */}
                             </Menu.Item>
 
                             <Menu.Item key="9">
