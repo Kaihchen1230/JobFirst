@@ -99,7 +99,7 @@ class NewLogin extends React.Component {
       //! add entry into dynamodb
       try {
         const userInfo = getUser();
-        const { email, name, phone_number, sub, username} = userInfo
+        const { email, name, phone_number, sub, username, identityID} = userInfo
         const profileExist = userInfo['custom:isProfile'];
         //console.log("userInfo",userInfo);
         if (profileExist === 'no') {
@@ -110,6 +110,7 @@ class NewLogin extends React.Component {
               firstName: name,
               phone: phone_number,
               email: email,
+              identityID: identityID,
             }
             const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
             console.log("new employee", newEmployee);
@@ -127,6 +128,7 @@ class NewLogin extends React.Component {
               employerCompanyAddressId:newAddress.data.createAddress.id,
               companyName: username,
               companyEmail: email,
+              identityID: identityID,
             }
             const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: employerData })); 
             console.log("new employer",newEmployeer);            

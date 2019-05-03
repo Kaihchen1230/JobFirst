@@ -1,7 +1,7 @@
 import React from 'react';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
-import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
+import Amplify, { API, graphqlOperation, I18n, Storage } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
@@ -49,6 +49,7 @@ class Profile extends React.Component {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
             console.log("Applied Job Results: ", testing)
             const temp = testing.data.getEmployee.appliedJob.items;
+            //console.log(temp)
             const transformJob = temp.map(item => {
                 const jobID = item.Job.id
                 const { datePosted, deadline, jobTitle } = item.Job
@@ -65,33 +66,45 @@ class Profile extends React.Component {
             this.setState({
                 jobs: transformJob
             })
+            //console.log(this.state.jobs);
         } catch (err) {
             console.log("custom queries failed", err);
         }
-        this.setState({
-            loading: false
-        })
-
         // fetch the employee's education
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
-            console.log("Education Results: ", educationResults);
+            //console.log("Education Results: ", educationResults);
             const temp = educationResults.data.getEmployee.education.items;
             this.setState({ education: temp });
         } catch (err) {
             console.log("couldn't get education: ", err);
         }
-        
         // fetch the employee's experiences
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
-            console.log("Experience Results: ", experienceResults);
+            //console.log("Experience Results: ", experienceResults);
             const temp = experienceResults.data.getEmployee.experience.items;
             this.setState({ experiences: temp });
         } catch (err) {
             console.log("couldn't get experience: ", err);
         }
-
+        // fetch photo
+        if (this.state.user.pic === 'yes') {
+            Storage.get('profilePic', {
+                level: 'protected',
+                identityId: this.state.user.identityID// the identityId of that user
+            })
+                .then(result => {
+                    console.log(result);
+                    let user = this.state.user;
+                    user.pic = result;
+                    this.setState({ user: user });
+                })
+                .catch(err => console.log(err));
+        }
+        this.setState({
+            loading: false
+        })
     }
 
     render() {

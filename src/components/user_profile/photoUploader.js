@@ -4,7 +4,9 @@ import {
 import React from 'react';
 // import Photo from "./photo.js";
 import './photo.css';
-import { Auth, Storage } from 'aws-amplify';
+import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
+import * as mutations from '../../graphql/mutations';
+import { getUser } from '../../services/auth';
 
 const UploadForm = Form.create({ name: 'upload_photo' })(
     // eslint-disable-next-line
@@ -91,7 +93,8 @@ class UploadPage extends React.Component {
 
     handleUpload = (file) => {
         const pic = file.file;
-        Storage.put(pic.name, pic, {
+        //console.log(pic);
+        Storage.put("profilePic", pic, {
             level: 'protected',
             contentType: pic.type
         })
@@ -101,6 +104,22 @@ class UploadPage extends React.Component {
                 tempfileList[0].status = 'done';
                 this.setState({fileList: tempfileList})
                 //console.log('fileList', this.state.fileList)
+                const user = getUser();
+                const isEmployer = user['custom:isEmployer'];
+                const uid = user.sub
+                if(isEmployer === 'no'){
+                    API.graphql(graphqlOperation(mutations.updateEmployee, {input: { id: uid, pic:'yes' }}))
+                    .then((result) => {
+                        console.log('success to update employee', result);
+                    })
+                    .catch(err => console.log('error in update employee', err));
+                }else {
+                    API.graphql(graphqlOperation(mutations.updateEmployer, {input: { id: uid, ceoPic:'yes' }}))
+                    .then((result) => {
+                        console.log('success to update employer', result);
+                    })
+                    .catch(err => console.log('error in update employer', err));
+                }
             })
             .catch(err => console.log(err));
 
