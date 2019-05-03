@@ -16,7 +16,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                 formPreviewVisible, formPreviewImage, formFileList
             } = this.props;
             const { getFieldDecorator } = form;
-            console.log(fileList);
+            console.log(formFileList);
             const uploadButton = (
                 <div>
                     <Icon type="plus" />
@@ -34,7 +34,9 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                     <Form layout="vertical">
                         <Form.Item label="Photo">
                             {getFieldDecorator('file', {
-                                initialValue: asd,
+                                initialValue: formFileList && formPreviewImage ? formPreviewImage : [],
+                                valuePropName: 'formFileList',
+                                getValueFromEvent: onFormChange,
                                 rules: [{ required: true, message: 'Please upload a photo!' }],
 
                             })(
