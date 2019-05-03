@@ -35,22 +35,24 @@ class PostJob extends React.Component {
             postalCode: postForm["postalCode"].value,
             state: postForm["state"].value
         }
-        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}));
-        const CreatePostedJobInput = {
-            jobTitle: postForm["jobTitle"].value,
-            jobType: jobType,
-	        description: postForm["description"].value,
-	        requirements: [postForm["requirement"].value],
-	        datePosted: postForm["postDate"].value,
-            deadline: postForm["deadline"].value,
-	        clickedCounts: 0,
-	        postedJobCompanyId: attributes.sub,
-            postedJobLocationId: newAddress.data.createAddress.id,
-            searchFieldName: postForm["jobTitle"].value.toLowerCase(),
-            searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
-        };
-        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
-        console.log('new job: ', newJob);
+        API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
+            .then(async (address)=>{
+                const CreatePostedJobInput = {
+                    jobTitle: postForm["jobTitle"].value,
+                    jobType: jobType,
+                    description: postForm["description"].value,
+                    requirements: [postForm["requirement"].value],
+                    datePosted: postForm["postDate"].value,
+                    deadline: postForm["deadline"].value,
+                    clickedCounts: 0,
+                    postedJobCompanyId: attributes.sub,
+                    postedJobLocationId: address.data.createAddress.id,
+                    searchFieldName: postForm["jobTitle"].value.toLowerCase(),
+                    searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
+                };
+                const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
+                console.log(newJob);
+            });
     }
 
     render() {
