@@ -716,6 +716,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         companyPhone
         companyWebsite
         companyType
+        videoURL
         headquarter
         ceo
         ceoPic
@@ -799,6 +800,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         companyPhone
         companyWebsite
         companyType
+        videoURL
         headquarter
         ceo
         ceoPic
@@ -882,6 +884,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         companyPhone
         companyWebsite
         companyType
+        videoURL
         headquarter
         ceo
         ceoPic
@@ -932,6 +935,7 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
     }
     companyWebsite
     companyType
+    videoURL
     headquarter
     ceo
     ceoPic
@@ -982,6 +986,7 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
     }
     companyWebsite
     companyType
+    videoURL
     headquarter
     ceo
     ceoPic
@@ -1032,6 +1037,7 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
     }
     companyWebsite
     companyType
+    videoURL
     headquarter
     ceo
     ceoPic
@@ -1084,6 +1090,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       }
       companyWebsite
       companyType
+      videoURL
       headquarter
       ceo
       ceoPic
@@ -1144,6 +1151,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       }
       companyWebsite
       companyType
+      videoURL
       headquarter
       ceo
       ceoPic
@@ -1204,6 +1212,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       }
       companyWebsite
       companyType
+      videoURL
       headquarter
       ceo
       ceoPic
@@ -1264,6 +1273,7 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
       }
       companyWebsite
       companyType
+      videoURL
       headquarter
       ceo
       ceoPic
@@ -1302,6 +1312,7 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
       }
       companyWebsite
       companyType
+      videoURL
       headquarter
       ceo
       ceoPic
@@ -1340,6 +1351,7 @@ export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInp
       }
       companyWebsite
       companyType
+      videoURL
       headquarter
       ceo
       ceoPic

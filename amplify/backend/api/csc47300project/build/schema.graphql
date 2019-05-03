@@ -75,6 +75,7 @@ type Employer {
   companyAddress: Address
   companyWebsite: String
   companyType: String
+  videoURL: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -524,6 +525,7 @@ input ModelEmployerFilterInput {
   companyPhone: ModelStringFilterInput
   companyWebsite: ModelStringFilterInput
   companyType: ModelStringFilterInput
+  videoURL: ModelStringFilterInput
   headquarter: ModelStringFilterInput
   ceo: ModelStringFilterInput
   ceoPic: ModelStringFilterInput
@@ -543,6 +545,7 @@ input CreateEmployerInput {
   companyPhone: String
   companyWebsite: String
   companyType: String
+  videoURL: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -560,6 +563,7 @@ input UpdateEmployerInput {
   companyPhone: String
   companyWebsite: String
   companyType: String
+  videoURL: String
   headquarter: String
   ceo: String
   ceoPic: String
