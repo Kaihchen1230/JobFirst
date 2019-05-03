@@ -1,35 +1,10 @@
 import React from 'react';
-import { Tabs, Table, Button, Progress, Card, Icon } from 'antd';
+import { Card, Icon } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
+import dict from "../dictionary/dictionary"
 
 const Education = (props) => {
-
-    const columns = [{
-        title: I18n.get('School Name'),
-        dataIndex: 'schoolName',
-        key: 'schoolName',
-    }, {
-        title: I18n.get('Degree'),
-        dataIndex: 'degree',
-        key: 'degree',
-    }, {
-        title: I18n.get('City'),
-        dataIndex: 'city',
-        key: 'city',
-    }, {
-        title: I18n.get('Country'),
-        dataIndex: 'country',
-        key: 'country'
-    }, {
-        title: I18n.get('Start Year'),
-        dataIndex: 'startYear',
-        key: 'startYear',
-    }, {
-        title: I18n.get('End Year'),
-        dataIndex: 'endYear',
-        key: 'endYear'
-    }];
 
     let educationList = [...props.education];
     let display = educationList.map(item =>
@@ -39,16 +14,15 @@ const Education = (props) => {
                 title={item.schoolName}
                 style={{ width: "80%" }}
             >
-                <p className="description" align="left"><Icon type="book" /><b> Degree: </b> {item.degree}</p>
-                <p className="description" align="left"><Icon type="home" /><b> Location: </b>{item.city}, {item.country}</p>
-                <p className="description" align="left"><b> Start Year: </b>{item.startYear}</p>
-                <p className="description" align="left"><b> End Year: </b>{item.endYear}</p>
+                <p className="description" align="left" style={{fontSize: 18}}><Icon type="book" /><b> {I18n.get('Degree')}: </b> {item.degree}</p>
+                <p className="description" align="left" style={{fontSize: 18}}><Icon type="home" /><b> {I18n.get('Location')}: </b>{item.city}, {item.country}</p>
+                <p className="description" align="left" style={{fontSize: 18}}><Icon type="clock-circle" /><b> {I18n.get('Years')}: </b>{item.startYear} to {item.endYear}</p>
             </Card>
             <br />
         </div>
     )
+
     return display;
 }
-
 
 export default Education;
