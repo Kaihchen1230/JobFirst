@@ -21,7 +21,8 @@ class Profile extends React.Component {
             userID: this.props.userID,
             loading: true,
             collapsed: false,
-            education: []
+            education: [],
+            experiences: []
         }
     }
 
@@ -42,6 +43,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
+
         // fetch the employee's applied jobs
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
@@ -79,6 +81,16 @@ class Profile extends React.Component {
             this.setState({ education: temp });
         } catch (err) {
             console.log("couldn't get education: ", err);
+        }
+
+        // fetch the employee's experiences
+        try {
+            const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
+            console.log("Experience Results: ", experienceResults);
+            const temp = experienceResults.data.getEmployee.experience.items;
+            this.setState({ experiences: temp });
+        } catch (err) {
+            console.log("couldn't get experience: ", err);
         }
 
     }
@@ -124,8 +136,8 @@ class Profile extends React.Component {
                             </SubMenu>
 
                             <Menu.Item key="2">
-                                    <UploadPage />
-                                
+                                <UploadPage />
+
                                 {/* <span>{I18n.get('Change Profile Picture')}</span> */}
                             </Menu.Item>
 

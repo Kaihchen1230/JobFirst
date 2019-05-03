@@ -4,6 +4,7 @@ import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import AppliedJob from "./appliedJob";
 import Education from "./education";
+import Experiences from "./experiences";
 
 const TabPane = Tabs.TabPane;
 
@@ -50,7 +51,9 @@ const Information = (props) => {
                     }
                 </TabPane>
 
-                <TabPane tab={I18n.get("Experience and Skills")} key="3">Content of Tab Pane 3</TabPane>
+                <TabPane tab={I18n.get("Experience and Skills")} key="3">
+                    <h1 align="center"><b>{I18n.get("Experience")}</b></h1>
+                </TabPane>
 
                 <TabPane tab={I18n.get("Applied Jobs")} key="4">
                     <h1 align="center"><b>{I18n.get("Applied Jobs")}</b></h1>
