@@ -36,6 +36,7 @@ export const getEducationEmployee =
             nextToken: $educationNextToken
         ) {
             items {
+                id
                 startYear
                 endYear
                 degree

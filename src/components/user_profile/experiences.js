@@ -13,6 +13,7 @@ const Experiences = (props) => {
                 size="default"
                 title={item.companyName}
                 style={{ width: "80%" }}
+                key={item.id}
             >
                 <p className="description" align="left" style={{fontSize: 18}}><Icon type="home" /><b> {I18n.get('Location')}: </b>{item.city}, {item.country}</p>
                 <p className="description" align="left" style={{fontSize: 18}}><Icon type="clock-circle" /><b> {I18n.get('Years')}: </b>{item.startYear} to {item.endYear}</p>

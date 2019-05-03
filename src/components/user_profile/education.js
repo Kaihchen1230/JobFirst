@@ -13,6 +13,7 @@ const Education = (props) => {
                 size="default"
                 title={item.schoolName}
                 style={{ width: "80%" }}
+                key={item.id}
             >
                 <p className="description" align="left" style={{fontSize: 18}}><Icon type="book" /><b> {I18n.get('Degree')}: </b> {item.degree}</p>
                 <p className="description" align="left" style={{fontSize: 18}}><Icon type="home" /><b> {I18n.get('Location')}: </b>{item.city}, {item.country}</p>
