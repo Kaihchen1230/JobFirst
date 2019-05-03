@@ -5,13 +5,5 @@
 			"providerPlugin": "awscloudformation"
 		}
 	},
-	"api": {
-		"csc47300project": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"securityType": "API_KEY"
-			}
-		}
-	}
+	"api": {}
 }
