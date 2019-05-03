@@ -4,7 +4,7 @@ import {
 import React from 'react';
 // import Photo from "./photo.js";
 import './photo.css';
-
+import { Auth, Storage } from 'aws-amplify';
 
 const UploadForm = Form.create({ name: 'upload_photo' })(
     // eslint-disable-next-line
@@ -12,7 +12,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
         render() {
             const {
                 visible, onCancel, onCreate, form,
-                onFormCancel, onFormPreview, onFormChange, onFormDummy,
+                onFormCancel, onFormPreview, onFormChange, onFormDummy, onFormUpload,
                 formPreviewVisible, formPreviewImage, formFileList
             } = this.props;
             const { getFieldDecorator } = form;
@@ -58,7 +58,8 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                     </Form> */}
                     <div className="clearfix">
                         <Upload
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76" // TODO thsi is mocking action
+                            //action="https://www.mocky.io/v2/5cc8019d300000980a055e76" // TODO thsi is mocking action
+                            customRequest={onFormUpload}
                             listType="picture-card"
                             fileList={formFileList}
                             onPreview={onFormPreview}
@@ -84,8 +85,21 @@ class UploadPage extends React.Component {
         fileList: [],
     };
     // for the form
-    handleDummy = () => {
-        console.log('this is dummy');
+    handleDummy = (file) => {
+        console.log('this is dummy', file.file);
+    }
+
+    handleUpload = (file) => {
+        const pic = file.file;
+        Storage.put(pic.name, pic, {
+            level: 'protected',
+            contentType: pic.type
+        })
+            .then((result) => {
+                console.log(result)
+            })
+            .catch(err => console.log(err));
+
     }
 
     handleFormCancel = () => this.setState({ previewVisible: false })
@@ -142,6 +156,7 @@ class UploadPage extends React.Component {
                     onFormPreview={this.handleFormPreview}
                     onFormChange={this.handleFormChange}
                     onFormDummy={this.handleDummy}
+                    onFormUpload={this.handleUpload}
                     formPreviewVisble={this.state.previewVisible}
                     formPreviewImage={this.state.previewImage}
                     formFileList={this.state.fileList}
