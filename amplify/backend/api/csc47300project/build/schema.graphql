@@ -19,6 +19,7 @@ type Employee {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
 }
 
 type Association {
@@ -84,6 +85,7 @@ type Employer {
   companyPic: String
   description: String
   job(filter: ModelPostedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPostedJobConnection
+  identityID: String
 }
 
 type PostedJob {
@@ -191,6 +193,7 @@ input ModelEmployeeFilterInput {
   language: ModelStringFilterInput
   englishLevel: ModelStringFilterInput
   favoriteQuote: ModelStringFilterInput
+  identityID: ModelStringFilterInput
   and: [ModelEmployeeFilterInput]
   or: [ModelEmployeeFilterInput]
   not: ModelEmployeeFilterInput
@@ -233,6 +236,7 @@ input CreateEmployeeInput {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
   employeeAddressId: ID
 }
 
@@ -252,6 +256,7 @@ input UpdateEmployeeInput {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
   employeeAddressId: ID
 }
 
@@ -531,6 +536,7 @@ input ModelEmployerFilterInput {
   revenue: ModelStringFilterInput
   companyPic: ModelStringFilterInput
   description: ModelStringFilterInput
+  identityID: ModelStringFilterInput
   and: [ModelEmployerFilterInput]
   or: [ModelEmployerFilterInput]
   not: ModelEmployerFilterInput
@@ -550,6 +556,7 @@ input CreateEmployerInput {
   revenue: String
   companyPic: String
   description: String
+  identityID: String
   employerCompanyAddressId: ID
 }
 
@@ -567,6 +574,7 @@ input UpdateEmployerInput {
   revenue: String
   companyPic: String
   description: String
+  identityID: String
   employerCompanyAddressId: ID
 }
 
