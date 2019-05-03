@@ -6,22 +6,34 @@ import { I18n } from 'aws-amplify';
 const Education = (props) => {
 
     const columns = [{
-        title: I18n.get('Job'),
-        dataIndex: 'jobTitle',
-        key: 'jobTitle',
+        title: I18n.get('School Name'),
+        dataIndex: 'schoolName',
+        key: 'schoolName',
     }, {
-        title: I18n.get('Date Applied'),
-        dataIndex: 'dateApplied',
-        key: 'dateApplied',
+        title: I18n.get('Degree'),
+        dataIndex: 'degree',
+        key: 'degree',
     }, {
-        title: I18n.get('Status'),
-        dataIndex: 'status',
-        key: 'status'
+        title: I18n.get('City'),
+        dataIndex: 'city',
+        key: 'city',
+    }, {
+        title: I18n.get('Country'),
+        dataIndex: 'country',
+        key: 'country'
+    }, {
+        title: I18n.get('Start Year'),
+        dataIndex: 'startYear',
+        key: 'startYear',
+    }, {
+        title: I18n.get('End Year'),
+        dataIndex: 'endYear',
+        key: 'endYear'
     }];
 
-    
+
     return (
-        <Table dataSource={jobs} columns={columns} pagination={{ pageSize: 15 }} scroll={{ y: 240 }} />
+        <Table dataSource={props.education} columns={columns} pagination={{ pageSize: 15 }} scroll={{ y: 240 }} />
     )
 
 }

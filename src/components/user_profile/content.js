@@ -3,6 +3,7 @@ import { Tabs, Table, Button, Progress } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import AppliedJob from "./appliedJob";
+import Education from "./education";
 
 const TabPane = Tabs.TabPane;
 

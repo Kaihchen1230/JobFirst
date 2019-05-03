@@ -19,6 +19,7 @@ class Profile extends React.Component {
             userID: this.props.userID,
             loading: true,
             collapsed: false,
+            education: []
         }
     }
 
