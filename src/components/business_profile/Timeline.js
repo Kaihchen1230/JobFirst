@@ -17,6 +17,9 @@ const timeLine = (props) => {
         marginLeft: "10%",
         fontWeight: "500",
     }
+    let iconStyle ={
+        width:"400%"
+    }
     let timelines = props["timeline"];
     let Events = () => {
         return timelines.map((element, index) => {
@@ -24,10 +27,10 @@ const timeLine = (props) => {
                 <div>
                     <TimelineEvent
                         bubbleStyle={{ border: "2px solid #1890ff"} }
-                        icon ={<Icon type="trophy"  style={{ fontSize: '20px' ,color:"#1890ff" }}  />}
+                        icon ={<img style={iconStyle} src="https://i.gifer.com/YYe6.gif"></img>}
                         createdAt={element.date}
                         title={element.title}
-                        collapsible={true}>
+                    >
                         {element.info}
                     </TimelineEvent>
                 </div>
