@@ -1,5 +1,5 @@
-export const getAppliedJobEmployee = 
-`query GetAppliedJobEmployee(
+export const getAppliedJobEmployee =
+    `query GetAppliedJobEmployee(
     $id: ID! 
     $appliedJobLimit: Int
     $appliedJobNextToken: String
@@ -24,8 +24,8 @@ export const getAppliedJobEmployee =
     }
 }`
 
-export const getEducationEmployee = 
-`query GetEducationEmployee(
+export const getEducationEmployee =
+    `query GetEducationEmployee(
     $id: ID! 
     $educationLimit: Int
     $educationNextToken: String
@@ -36,6 +36,7 @@ export const getEducationEmployee =
             nextToken: $educationNextToken
         ) {
             items {
+                id
                 startYear
                 endYear
                 degree
@@ -48,9 +49,34 @@ export const getEducationEmployee =
     }
 }`
 
+export const getExperienceEmployee =
+    `query GetExperienceEmployee(
+    $id: ID! 
+    $experienceLimit: Int
+    $experienceNextToken: String
+) {
+    getEmployee(id: $id) {
+        experience(
+            limit: $experienceLimit
+            nextToken: $experienceNextToken
+        ) {
+            items {
+                id
+	            startYear
+	            endYear
+	            companyName
+	            reasonToLeave
+	            city
+	            country
+            }
+            nextToken
+        }
+    }
+}`
+
 // for testing purpose
 export const getUsernameEmployee =
-`query GetEmployee($id: ID!) {
+    `query GetEmployee($id: ID!) {
     getEmployee(id: $id) {
         username
     }
