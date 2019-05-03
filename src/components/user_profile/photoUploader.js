@@ -16,7 +16,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                 formPreviewVisible, formPreviewImage, formFileList
             } = this.props;
             const { getFieldDecorator } = form;
-            console.log(formFileList);
+            //console.log(formFileList);
             const uploadButton = (
                 <div>
                     <Icon type="plus" />
@@ -97,6 +97,10 @@ class UploadPage extends React.Component {
         })
             .then((result) => {
                 console.log(result)
+                let tempfileList = this.state.fileList;
+                tempfileList[0].status = 'done';
+                this.setState({fileList: tempfileList})
+                //console.log('fileList', this.state.fileList)
             })
             .catch(err => console.log(err));
 
@@ -111,8 +115,9 @@ class UploadPage extends React.Component {
         });
     }
 
-    handleFormChange = ({ file, fileList }) => {
+    handleFormChange = ({ fileList }) => {
         // console.log('file', file);
+        // console.log(fileList);
         this.setState({ fileList })
     }
     // end for the form
