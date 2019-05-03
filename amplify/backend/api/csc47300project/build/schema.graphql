@@ -1,0 +1,653 @@
+type Employee {
+  id: ID!
+  username: String
+  firstName: String
+  middleName: String
+  lastName: String
+  age: Int
+  email: String
+  phone: String
+  website: String
+  pic: String
+  address: Address
+  appliedJob(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
+  education(filter: ModelEducationFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelEducationConnection
+  experience(filter: ModelExperienceFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelExperienceConnection
+  award: [String]
+  association(filter: ModelAssociationFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAssociationConnection
+  skill: [String]
+  language: [String]
+  englishLevel: String
+}
+
+type Association {
+  id: ID!
+  position: String
+  name: String
+  whose: Employee
+}
+
+type Experience {
+  id: ID!
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  whose: Employee
+}
+
+type Education {
+  id: ID!
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  whose: Employee
+}
+
+type Address {
+  id: ID!
+  line1: String
+  line2: String
+  city: String
+  postalCode: String
+  state: String
+}
+
+type AppliedJob {
+  id: ID!
+  Employee: Employee
+  Job: PostedJob
+  dateApplied: String
+  status: String
+}
+
+type Employer {
+  id: ID!
+  companyName: String
+  companyEmail: String
+  companyPhone: String
+  companyAddress: Address
+  companyWebsite: String
+  companyType: String
+  headquarter: String
+  ceo: String
+  ceoPic: String
+  size: String
+  revenue: String
+  timeline(filter: ModelTimelineFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTimelineConnection
+  companyPic: String
+  description: String
+  job(filter: ModelPostedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPostedJobConnection
+}
+
+type PostedJob {
+  id: ID!
+  company: Employer
+  jobTitle: String
+  jobType: String
+  description: String
+  requirements: [String]
+  datePosted: String
+  deadline: String
+  location: Address
+  applied(filter: ModelAppliedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAppliedJobConnection
+  clickedCounts: Int
+}
+
+type Timeline {
+  id: ID!
+  company: Employer
+  date: String
+  title: String
+  info: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelEmployeeConnection {
+  items: [Employee]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelEmployeeFilterInput {
+  id: ModelIDFilterInput
+  username: ModelStringFilterInput
+  firstName: ModelStringFilterInput
+  middleName: ModelStringFilterInput
+  lastName: ModelStringFilterInput
+  age: ModelIntFilterInput
+  email: ModelStringFilterInput
+  phone: ModelStringFilterInput
+  website: ModelStringFilterInput
+  pic: ModelStringFilterInput
+  award: ModelStringFilterInput
+  skill: ModelStringFilterInput
+  language: ModelStringFilterInput
+  englishLevel: ModelStringFilterInput
+  and: [ModelEmployeeFilterInput]
+  or: [ModelEmployeeFilterInput]
+  not: ModelEmployeeFilterInput
+}
+
+type Query {
+  getEmployee(id: ID!): Employee
+  listEmployees(filter: ModelEmployeeFilterInput, limit: Int, nextToken: String): ModelEmployeeConnection
+  getAssociation(id: ID!): Association
+  listAssociations(filter: ModelAssociationFilterInput, limit: Int, nextToken: String): ModelAssociationConnection
+  getExperience(id: ID!): Experience
+  listExperiences(filter: ModelExperienceFilterInput, limit: Int, nextToken: String): ModelExperienceConnection
+  getEducation(id: ID!): Education
+  listEducations(filter: ModelEducationFilterInput, limit: Int, nextToken: String): ModelEducationConnection
+  getAddress(id: ID!): Address
+  listAddresss(filter: ModelAddressFilterInput, limit: Int, nextToken: String): ModelAddressConnection
+  getAppliedJob(id: ID!): AppliedJob
+  listAppliedJobs(filter: ModelAppliedJobFilterInput, limit: Int, nextToken: String): ModelAppliedJobConnection
+  getEmployer(id: ID!): Employer
+  listEmployers(filter: ModelEmployerFilterInput, limit: Int, nextToken: String): ModelEmployerConnection
+  getPostedJob(id: ID!): PostedJob
+  listPostedJobs(filter: ModelPostedJobFilterInput, limit: Int, nextToken: String): ModelPostedJobConnection
+  getTimeline(id: ID!): Timeline
+  listTimelines(filter: ModelTimelineFilterInput, limit: Int, nextToken: String): ModelTimelineConnection
+}
+
+input CreateEmployeeInput {
+  id: ID
+  username: String
+  firstName: String
+  middleName: String
+  lastName: String
+  age: Int
+  email: String
+  phone: String
+  website: String
+  pic: String
+  award: [String]
+  skill: [String]
+  language: [String]
+  englishLevel: String
+  employeeAddressId: ID
+}
+
+input UpdateEmployeeInput {
+  id: ID!
+  username: String
+  firstName: String
+  middleName: String
+  lastName: String
+  age: Int
+  email: String
+  phone: String
+  website: String
+  pic: String
+  award: [String]
+  skill: [String]
+  language: [String]
+  englishLevel: String
+  employeeAddressId: ID
+}
+
+input DeleteEmployeeInput {
+  id: ID
+}
+
+type Mutation {
+  createEmployee(input: CreateEmployeeInput!): Employee
+  updateEmployee(input: UpdateEmployeeInput!): Employee
+  deleteEmployee(input: DeleteEmployeeInput!): Employee
+  createAssociation(input: CreateAssociationInput!): Association
+  updateAssociation(input: UpdateAssociationInput!): Association
+  deleteAssociation(input: DeleteAssociationInput!): Association
+  createExperience(input: CreateExperienceInput!): Experience
+  updateExperience(input: UpdateExperienceInput!): Experience
+  deleteExperience(input: DeleteExperienceInput!): Experience
+  createEducation(input: CreateEducationInput!): Education
+  updateEducation(input: UpdateEducationInput!): Education
+  deleteEducation(input: DeleteEducationInput!): Education
+  createAddress(input: CreateAddressInput!): Address
+  updateAddress(input: UpdateAddressInput!): Address
+  deleteAddress(input: DeleteAddressInput!): Address
+  createAppliedJob(input: CreateAppliedJobInput!): AppliedJob
+  updateAppliedJob(input: UpdateAppliedJobInput!): AppliedJob
+  deleteAppliedJob(input: DeleteAppliedJobInput!): AppliedJob
+  createEmployer(input: CreateEmployerInput!): Employer
+  updateEmployer(input: UpdateEmployerInput!): Employer
+  deleteEmployer(input: DeleteEmployerInput!): Employer
+  createPostedJob(input: CreatePostedJobInput!): PostedJob
+  updatePostedJob(input: UpdatePostedJobInput!): PostedJob
+  deletePostedJob(input: DeletePostedJobInput!): PostedJob
+  createTimeline(input: CreateTimelineInput!): Timeline
+  updateTimeline(input: UpdateTimelineInput!): Timeline
+  deleteTimeline(input: DeleteTimelineInput!): Timeline
+}
+
+type Subscription {
+  onCreateEmployee: Employee @aws_subscribe(mutations: ["createEmployee"])
+  onUpdateEmployee: Employee @aws_subscribe(mutations: ["updateEmployee"])
+  onDeleteEmployee: Employee @aws_subscribe(mutations: ["deleteEmployee"])
+  onCreateAssociation: Association @aws_subscribe(mutations: ["createAssociation"])
+  onUpdateAssociation: Association @aws_subscribe(mutations: ["updateAssociation"])
+  onDeleteAssociation: Association @aws_subscribe(mutations: ["deleteAssociation"])
+  onCreateExperience: Experience @aws_subscribe(mutations: ["createExperience"])
+  onUpdateExperience: Experience @aws_subscribe(mutations: ["updateExperience"])
+  onDeleteExperience: Experience @aws_subscribe(mutations: ["deleteExperience"])
+  onCreateEducation: Education @aws_subscribe(mutations: ["createEducation"])
+  onUpdateEducation: Education @aws_subscribe(mutations: ["updateEducation"])
+  onDeleteEducation: Education @aws_subscribe(mutations: ["deleteEducation"])
+  onCreateAddress: Address @aws_subscribe(mutations: ["createAddress"])
+  onUpdateAddress: Address @aws_subscribe(mutations: ["updateAddress"])
+  onDeleteAddress: Address @aws_subscribe(mutations: ["deleteAddress"])
+  onCreateAppliedJob: AppliedJob @aws_subscribe(mutations: ["createAppliedJob"])
+  onUpdateAppliedJob: AppliedJob @aws_subscribe(mutations: ["updateAppliedJob"])
+  onDeleteAppliedJob: AppliedJob @aws_subscribe(mutations: ["deleteAppliedJob"])
+  onCreateEmployer: Employer @aws_subscribe(mutations: ["createEmployer"])
+  onUpdateEmployer: Employer @aws_subscribe(mutations: ["updateEmployer"])
+  onDeleteEmployer: Employer @aws_subscribe(mutations: ["deleteEmployer"])
+  onCreatePostedJob: PostedJob @aws_subscribe(mutations: ["createPostedJob"])
+  onUpdatePostedJob: PostedJob @aws_subscribe(mutations: ["updatePostedJob"])
+  onDeletePostedJob: PostedJob @aws_subscribe(mutations: ["deletePostedJob"])
+  onCreateTimeline: Timeline @aws_subscribe(mutations: ["createTimeline"])
+  onUpdateTimeline: Timeline @aws_subscribe(mutations: ["updateTimeline"])
+  onDeleteTimeline: Timeline @aws_subscribe(mutations: ["deleteTimeline"])
+}
+
+type ModelAssociationConnection {
+  items: [Association]
+  nextToken: String
+}
+
+input ModelAssociationFilterInput {
+  id: ModelIDFilterInput
+  position: ModelStringFilterInput
+  name: ModelStringFilterInput
+  and: [ModelAssociationFilterInput]
+  or: [ModelAssociationFilterInput]
+  not: ModelAssociationFilterInput
+}
+
+input CreateAssociationInput {
+  id: ID
+  position: String
+  name: String
+  associationWhoseId: ID
+}
+
+input UpdateAssociationInput {
+  id: ID!
+  position: String
+  name: String
+  associationWhoseId: ID
+}
+
+input DeleteAssociationInput {
+  id: ID
+}
+
+type ModelExperienceConnection {
+  items: [Experience]
+  nextToken: String
+}
+
+input ModelExperienceFilterInput {
+  id: ModelIDFilterInput
+  startYear: ModelStringFilterInput
+  endYear: ModelStringFilterInput
+  companyName: ModelStringFilterInput
+  reasonToLeave: ModelStringFilterInput
+  city: ModelStringFilterInput
+  country: ModelStringFilterInput
+  and: [ModelExperienceFilterInput]
+  or: [ModelExperienceFilterInput]
+  not: ModelExperienceFilterInput
+}
+
+input CreateExperienceInput {
+  id: ID
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  experienceWhoseId: ID
+}
+
+input UpdateExperienceInput {
+  id: ID!
+  startYear: String
+  endYear: String
+  companyName: String
+  reasonToLeave: String
+  city: String
+  country: String
+  experienceWhoseId: ID
+}
+
+input DeleteExperienceInput {
+  id: ID
+}
+
+type ModelEducationConnection {
+  items: [Education]
+  nextToken: String
+}
+
+input ModelEducationFilterInput {
+  id: ModelIDFilterInput
+  startYear: ModelStringFilterInput
+  endYear: ModelStringFilterInput
+  degree: ModelStringFilterInput
+  schoolName: ModelStringFilterInput
+  country: ModelStringFilterInput
+  city: ModelStringFilterInput
+  and: [ModelEducationFilterInput]
+  or: [ModelEducationFilterInput]
+  not: ModelEducationFilterInput
+}
+
+input CreateEducationInput {
+  id: ID
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  educationWhoseId: ID
+}
+
+input UpdateEducationInput {
+  id: ID!
+  startYear: String
+  endYear: String
+  degree: String
+  schoolName: String
+  country: String
+  city: String
+  educationWhoseId: ID
+}
+
+input DeleteEducationInput {
+  id: ID
+}
+
+type ModelAddressConnection {
+  items: [Address]
+  nextToken: String
+}
+
+input ModelAddressFilterInput {
+  id: ModelIDFilterInput
+  line1: ModelStringFilterInput
+  line2: ModelStringFilterInput
+  city: ModelStringFilterInput
+  postalCode: ModelStringFilterInput
+  state: ModelStringFilterInput
+  and: [ModelAddressFilterInput]
+  or: [ModelAddressFilterInput]
+  not: ModelAddressFilterInput
+}
+
+input CreateAddressInput {
+  id: ID
+  line1: String
+  line2: String
+  city: String
+  postalCode: String
+  state: String
+}
+
+input UpdateAddressInput {
+  id: ID!
+  line1: String
+  line2: String
+  city: String
+  postalCode: String
+  state: String
+}
+
+input DeleteAddressInput {
+  id: ID
+}
+
+type ModelAppliedJobConnection {
+  items: [AppliedJob]
+  nextToken: String
+}
+
+input ModelAppliedJobFilterInput {
+  id: ModelIDFilterInput
+  dateApplied: ModelStringFilterInput
+  status: ModelStringFilterInput
+  and: [ModelAppliedJobFilterInput]
+  or: [ModelAppliedJobFilterInput]
+  not: ModelAppliedJobFilterInput
+}
+
+input CreateAppliedJobInput {
+  id: ID
+  dateApplied: String
+  status: String
+  appliedJobEmployeeId: ID
+  appliedJobJobId: ID
+}
+
+input UpdateAppliedJobInput {
+  id: ID!
+  dateApplied: String
+  status: String
+  appliedJobEmployeeId: ID
+  appliedJobJobId: ID
+}
+
+input DeleteAppliedJobInput {
+  id: ID
+}
+
+type ModelEmployerConnection {
+  items: [Employer]
+  nextToken: String
+}
+
+input ModelEmployerFilterInput {
+  id: ModelIDFilterInput
+  companyName: ModelStringFilterInput
+  companyEmail: ModelStringFilterInput
+  companyPhone: ModelStringFilterInput
+  companyWebsite: ModelStringFilterInput
+  companyType: ModelStringFilterInput
+  headquarter: ModelStringFilterInput
+  ceo: ModelStringFilterInput
+  ceoPic: ModelStringFilterInput
+  size: ModelStringFilterInput
+  revenue: ModelStringFilterInput
+  companyPic: ModelStringFilterInput
+  description: ModelStringFilterInput
+  and: [ModelEmployerFilterInput]
+  or: [ModelEmployerFilterInput]
+  not: ModelEmployerFilterInput
+}
+
+input CreateEmployerInput {
+  id: ID
+  companyName: String
+  companyEmail: String
+  companyPhone: String
+  companyWebsite: String
+  companyType: String
+  headquarter: String
+  ceo: String
+  ceoPic: String
+  size: String
+  revenue: String
+  companyPic: String
+  description: String
+  employerCompanyAddressId: ID
+}
+
+input UpdateEmployerInput {
+  id: ID!
+  companyName: String
+  companyEmail: String
+  companyPhone: String
+  companyWebsite: String
+  companyType: String
+  headquarter: String
+  ceo: String
+  ceoPic: String
+  size: String
+  revenue: String
+  companyPic: String
+  description: String
+  employerCompanyAddressId: ID
+}
+
+input DeleteEmployerInput {
+  id: ID
+}
+
+type ModelPostedJobConnection {
+  items: [PostedJob]
+  nextToken: String
+}
+
+input ModelPostedJobFilterInput {
+  id: ModelIDFilterInput
+  jobTitle: ModelStringFilterInput
+  jobType: ModelStringFilterInput
+  description: ModelStringFilterInput
+  requirements: ModelStringFilterInput
+  datePosted: ModelStringFilterInput
+  deadline: ModelStringFilterInput
+  clickedCounts: ModelIntFilterInput
+  and: [ModelPostedJobFilterInput]
+  or: [ModelPostedJobFilterInput]
+  not: ModelPostedJobFilterInput
+}
+
+input CreatePostedJobInput {
+  id: ID
+  jobTitle: String
+  jobType: String
+  description: String
+  requirements: [String]
+  datePosted: String
+  deadline: String
+  clickedCounts: Int
+  postedJobCompanyId: ID
+  postedJobLocationId: ID
+}
+
+input UpdatePostedJobInput {
+  id: ID!
+  jobTitle: String
+  jobType: String
+  description: String
+  requirements: [String]
+  datePosted: String
+  deadline: String
+  clickedCounts: Int
+  postedJobCompanyId: ID
+  postedJobLocationId: ID
+}
+
+input DeletePostedJobInput {
+  id: ID
+}
+
+type ModelTimelineConnection {
+  items: [Timeline]
+  nextToken: String
+}
+
+input ModelTimelineFilterInput {
+  id: ModelIDFilterInput
+  date: ModelStringFilterInput
+  title: ModelStringFilterInput
+  info: ModelStringFilterInput
+  and: [ModelTimelineFilterInput]
+  or: [ModelTimelineFilterInput]
+  not: ModelTimelineFilterInput
+}
+
+input CreateTimelineInput {
+  id: ID
+  date: String
+  title: String
+  info: String
+  timelineCompanyId: ID
+}
+
+input UpdateTimelineInput {
+  id: ID!
+  date: String
+  title: String
+  info: String
+  timelineCompanyId: ID
+}
+
+input DeleteTimelineInput {
+  id: ID
+}

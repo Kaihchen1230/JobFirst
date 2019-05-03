@@ -142,6 +142,19 @@
 					"env": "jielan"
 				}
 			}
+		},
+		"apicsc47300project": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"AppSyncApiName": "csc47300project",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
+					"S3DeploymentBucket": "csc47300project-20190413183412-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/ef14cf130769aff5363d42c7d74693c223df18fb",
+					"env": "jielan"
+				}
+			}
 		}
 	},
 	"Outputs": {
