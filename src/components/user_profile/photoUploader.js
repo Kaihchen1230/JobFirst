@@ -93,7 +93,7 @@ class UploadPage extends React.Component {
 
     handleUpload = (file) => {
         const pic = file.file;
-        console.log(pic);
+        //console.log(pic);
         Storage.put("profilePic", pic, {
             level: 'protected',
             contentType: pic.type
