@@ -1,6 +1,6 @@
 {
     "identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "thirdPartyAuth": false,
     "lambdaLogPolicy": "cognitoed11de21_lambda_log_policy",
     "openIdLambdaRoleName": "cognitoed11de21_openid_lambda_role",
