@@ -73,6 +73,7 @@ class businessProfile extends React.Component {
     }
 
     //set up other employer info with nested object
+    
     this.setState({ timeline: employerData.timeline.items });
     this.setState({ jobList: employerData.job.items });
     this.setState({ jobAmount: employerData.job.items.length })

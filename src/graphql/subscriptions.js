@@ -730,6 +730,8 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         companyWebsite
         companyType
         videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -816,6 +818,8 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         companyWebsite
         companyType
         videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -902,6 +906,8 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         companyWebsite
         companyType
         videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -954,6 +960,8 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
     companyWebsite
     companyType
     videoURL
+    videoPic
+    bannerPic
     headquarter
     ceo
     ceoPic
@@ -1006,6 +1014,8 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
     companyWebsite
     companyType
     videoURL
+    videoPic
+    bannerPic
     headquarter
     ceo
     ceoPic
@@ -1058,6 +1068,8 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
     companyWebsite
     companyType
     videoURL
+    videoPic
+    bannerPic
     headquarter
     ceo
     ceoPic
@@ -1112,6 +1124,8 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -1174,6 +1188,8 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -1236,6 +1252,8 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -1298,6 +1316,8 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -1338,6 +1358,8 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -1378,6 +1400,8 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic

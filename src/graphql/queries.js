@@ -451,6 +451,8 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         companyWebsite
         companyType
         videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -548,6 +550,8 @@ export const getEmployer = `query GetEmployer($id: ID!) {
     companyWebsite
     companyType
     videoURL
+    videoPic
+    bannerPic
     headquarter
     ceo
     ceoPic
@@ -605,6 +609,8 @@ export const listEmployers = `query ListEmployers(
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -643,6 +649,8 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -702,6 +710,8 @@ export const listPostedJobs = `query ListPostedJobs(
         companyWebsite
         companyType
         videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -755,6 +765,8 @@ export const getTimeline = `query GetTimeline($id: ID!) {
       companyWebsite
       companyType
       videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -792,6 +804,8 @@ export const listTimelines = `query ListTimelines(
         companyWebsite
         companyType
         videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic

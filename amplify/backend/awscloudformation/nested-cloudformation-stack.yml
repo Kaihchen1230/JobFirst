@@ -149,8 +149,15 @@
 				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "csc47300project",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
+					"AuthCognitoUserPoolId": {
+						"Fn::GetAtt": [
+							"authcognitoed11de21",
+							"Outputs.UserPoolId"
+						]
+					},
 					"S3DeploymentBucket": "csc47300project-20190413183412-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/2c9f079a7c8b7407c64b154e124be658be0a4b10",
+					"S3DeploymentRootKey": "amplify-appsync-files/d53d2b032b2b809a1955d206fd8dd21d904dc0eb",
 					"env": "jielan"
 				}
 			}

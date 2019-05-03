@@ -77,6 +77,8 @@ type Employer {
   companyWebsite: String
   companyType: String
   videoURL: String
+  videoPic: String
+  bannerPic: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -531,6 +533,8 @@ input ModelEmployerFilterInput {
   companyWebsite: ModelStringFilterInput
   companyType: ModelStringFilterInput
   videoURL: ModelStringFilterInput
+  videoPic: ModelStringFilterInput
+  bannerPic: ModelStringFilterInput
   headquarter: ModelStringFilterInput
   ceo: ModelStringFilterInput
   ceoPic: ModelStringFilterInput
@@ -552,6 +556,8 @@ input CreateEmployerInput {
   companyWebsite: String
   companyType: String
   videoURL: String
+  videoPic: String
+  bannerPic: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -571,6 +577,8 @@ input UpdateEmployerInput {
   companyWebsite: String
   companyType: String
   videoURL: String
+  videoPic: String
+  bannerPic: String
   headquarter: String
   ceo: String
   ceoPic: String
