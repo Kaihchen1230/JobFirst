@@ -1,35 +1,26 @@
-import React from 'react';
-import { PhotoPicker, S3Image } from 'aws-amplify-react';
-import Amplify from 'aws-amplify';
+/* the purpose of this file is to experiment with storage upload */
 
-const previewStyle = {
-    width: 320,
-    height: 320,
-    objectFit: 'cover',
-    borderRadius: '50%',
-}
+import React from 'react';
+import { Auth, Storage } from 'aws-amplify';
 
 class Photo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            previewSrc: null,
-        }
+    onChange(e) {
+        const file = e.target.files[0];
+        console.log('file', file);
+        Storage.put('example.png', file, {
+            contentType: 'image/png'
+        })
+            .then(result => console.log(result))
+            .catch(err => console.log(err));
     }
 
     render() {
         return (
-            <div>
-                <img src={this.state.previewSrc} style={previewStyle} />
-                {/* <PhotoPicker
-                    title="CHOOSE PHOTO"
-                    preview="hidden"
-                    onLoad={url => this.setState({ previewSrc: url })}
-                    onPick={data => console.log(data)}
-                /> */}
-                <S3Image picker imgKey={this.state.previewSrc} body={this.state.previewSrc} />
-            </div>
-        );
+            <input
+                type="file" accept='image/png'
+                onChange={(e) => this.onChange(e)}
+            />
+        )
     }
 }
 
