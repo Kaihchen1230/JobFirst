@@ -47,8 +47,8 @@ class Profile extends React.Component {
         // fetch the employee's applied jobs
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
+            console.log("Applied Job Results: ", testing)
             const temp = testing.data.getEmployee.appliedJob.items;
-            console.log(temp)
             const transformJob = temp.map(item => {
                 const jobID = item.Job.id
                 const { datePosted, deadline, jobTitle } = item.Job
@@ -65,7 +65,6 @@ class Profile extends React.Component {
             this.setState({
                 jobs: transformJob
             })
-            console.log(this.state.jobs);
         } catch (err) {
             console.log("custom queries failed", err);
         }
@@ -82,26 +81,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get education: ", err);
         }
-        /*
-        const obj = {
-            id: "fe464x4b-i4a8-4dcc-8d4a-6db9b7832ad1", 
-            startYear: "2017",
-            endYear: "2018",
-            companyName: "molecular and structural lab",
-            reasonToLeave: "i wanted to",
-            city: "NY",
-            country: "USA",
-            experienceWhoseId: "fe564f4b-d4a8-4ecc-8d5a-4db0b7836ad1"
-        }
-
-        // add an experience for testing
-        try {
-            const addExp = await API.graphql(graphqlOperation(mutations.createExperience, { input: obj }));
-            console.log("added");
-        } catch (err) {
-            console.log("couldn't add experience: ", err);
-        }*/
-
+        
         // fetch the employee's experiences
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
