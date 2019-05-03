@@ -1,8 +1,9 @@
 import {
-    Button, Modal, Form, Input, Radio,
+    Button, Modal, Form, Input, Radio, Upload, Icon
 } from 'antd';
 import React from 'react';
-import Photo from "./photo.js";
+// import Photo from "./photo.js";
+import './photo.css';
 
 
 const UploadForm = Form.create({ name: 'upload_photo' })(
@@ -15,6 +16,13 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                 formPreviewVisible, formPreviewImage, formFileList
             } = this.props;
             const { getFieldDecorator } = form;
+            console.log(fileList);
+            const uploadButton = (
+                <div>
+                    <Icon type="plus" />
+                    <div className="ant-upload-text">Upload</div>
+                </div>
+            );
             return (
                 <Modal
                     visible={visible}
@@ -24,17 +32,26 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                     onOk={onCreate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Title">
-                            {getFieldDecorator('title', {
-                                rules: [{ required: true, message: 'Please input the title of collection!' }],
+                        <Form.Item label="Photo">
+                            {getFieldDecorator('file', {
+                                initialValue: asd,
+                                rules: [{ required: true, message: 'Please upload a photo!' }],
+
                             })(
-                                <Photo
-                                    handleCancel={onFormCancel}
-                                    handlePreview={onFormPreview}
-                                    handleChange={onFormChange}
-                                    previewVisible={formPreviewVisible}
-                                    previewImage={formPreviewImage}
-                                    fileList={formFileList} />
+                                <div className="clearfix">
+                                    <Upload
+                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                        listType="picture-card"
+                                        fileList={formFileList}
+                                        onPreview={onFormPreview}
+                                        onChange={onFormChange}
+                                    >
+                                        {formFileList.length >= 1 ? null : uploadButton}
+                                    </Upload>
+                                    <Modal visible={formPreviewVisible} footer={null} onCancel={onFormCancel}>
+                                        <img alt="example" style={{ width: '100%' }} src={formPreviewImage} />
+                                    </Modal>
+                                </div>
                             )}
                         </Form.Item>
                     </Form>
