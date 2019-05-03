@@ -1,4 +1,4 @@
-exports.filterTypeGen = (value) => {
+export default filterTypeGen = (value) => {
     let newSearch = {};
     if(value == "All"){
         return {"filter":{}};
@@ -8,11 +8,11 @@ exports.filterTypeGen = (value) => {
     }
 }
 
-exports.filterDateGen = (value) =>{
+export default filterDateGen = (value) =>{
 
 }
 
-exports.searchByNameGen = (value, search) => {
+export default searchByNameGen = (value, search) => {
     let newSearch = {};
     if(value == ""){
         return {};
