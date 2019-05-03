@@ -76,6 +76,22 @@ let dict = {
         "Upload a Resume": "上传简历",
         "User": "用户",
         "Team": "球队",
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "您可以随时与我们联系，以获得全天候支持和故障排除。",
+        /* user profile */
+        "First Name": "名字",
+        "Last Name": "姓名",
+        "Middle Name": "中间名",
+        "Age": "年龄",
+        "Email": "电邮",
+        "Phone Number": "电话号码",
+        "English Level": "英文程度",
+        "Spoken Language": "会说语言",
+        "Modify Basic Info": "更改基本资料",
+        "Update address": "更新地址",
+        "Add Education or Award": "添加教育或奖项",
+        "Add Experience or Skill": "添加经验或技能",
+        /* end of user profile */
+
     },
     'es': {
         'Sign In': "Sign In",
@@ -153,7 +169,22 @@ let dict = {
         "Change Profile Picture": "Change Profile Picture",
         "Upload a Resume": "Upload a Resume",
         "User": "User",
-        "Team": "Team"
+        "Team": "Team",
+        "You can get in touch with us at any time for 24/7 support and troubleshooting.": "You can get in touch with us at any time for 24/7 support and troubleshooting.",
+        /* user profile */
+        "First Name": "First Name",
+        "Last Name": "Last Name",
+        "Middle Name": "Middle Name",
+        "Age": "Age",
+        "Email": "Email",
+        "Phone Number": "Phone Number",
+        "English Level": "English Level",
+        "Spoken Language": "Spoken Language",
+        "Modify Basic Info": "Modify Basic Info",
+        "Update address": "Update address",
+        "Add Education or Award": "Add Education or Award",
+        "Add Experience or Skill": "Add Experience or Skill",
+        /* end of user profile */
     }
 };
 export default dict;

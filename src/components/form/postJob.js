@@ -1,23 +1,29 @@
 import React from "react";
-//import { navigate } from "gatsby"
-//import { handleLogin, isLoggedIn } from "../services/auth"
-//import Layout from "../components/layout"
 import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 import { Auth, I18n } from 'aws-amplify';
-//import "../style/postJob.css";
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
+import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
-
+import "../../style/postJob.css"
 
 const Option = Select.Option;
 const { TextArea } = Input;
+let jobType = "";
 
 class PostJob extends React.Component {
-
-    state = {
-        lan: window.localStorage.getItem('lan')
+    constructor(props) {
+        super(props);
+        this.state = {
+            lan: window.localStorage.getItem('lan'),
+            type: ""
+        };
+        this.typeUpdate = this.typeUpdate.bind(this);
     } 
+
+    typeUpdate = (value) => {
+        jobType = value;
+    }
 
     async handleSubmit () {
         let user = await Auth.currentAuthenticatedUser();
@@ -29,18 +35,22 @@ class PostJob extends React.Component {
             postalCode: postForm["postalCode"].value,
             state: postForm["state"].value
         }
-        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
+        const newAddress = await API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}));
         const CreatePostedJobInput = {
             jobTitle: postForm["jobTitle"].value,
+            jobType: jobType,
 	        description: postForm["description"].value,
 	        requirements: [postForm["requirement"].value],
 	        datePosted: postForm["postDate"].value,
-	        deadline: postForm["deadline"].value,
+            deadline: postForm["deadline"].value,
 	        clickedCounts: 0,
 	        postedJobCompanyId: attributes.sub,
-	        postedJobLocationId: newAddress.data.createAddress.id
-        }
-        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}))
+            postedJobLocationId: newAddress.data.createAddress.id,
+            searchFieldName: postForm["jobTitle"].value.toLowerCase(),
+            searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
+        };
+        const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
+        console.log('new job: ', newJob);
     }
 
     render() {
@@ -51,18 +61,7 @@ class PostJob extends React.Component {
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
-                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "80%" }} name="jobPost">
-                    {/* We don't this part */}
-                    {/* <Form.Item>
-                        <Input placeholder={I18n.get('Enter Employer Name')}
-                            prefix={<Icon type="user" />}
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the name of the employer')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                            name="companyID"
-                        />
-                    </Form.Item> */}
+                <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item>
                         <Input placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
@@ -106,8 +105,7 @@ class PostJob extends React.Component {
                         <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
                     </Form.Item>
                     <Form.Item>
-                    {/* doesn't seems to be pass correct value */}
-                        <Select placeholder={I18n.get('Job Type')} name="jobType" >
+                        <Select onChange={value => this.typeUpdate(value)} placeholder={I18n.get('Job Type')} name="jobType" >
                             <Option value="Full Time">{I18n.get('Full Time')}</Option>
                             <Option value="Part Time">{I18n.get('Part Time')}</Option>
                             <Option value="Internship">{I18n.get('Internship')}</Option>
@@ -127,17 +125,9 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Input placeholder="(###) ###-####"
-                            prefix={<Icon type="contacts" />}
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the contact number of the employer.')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                    </Form.Item>
-                    <Form.Item>
                         <Button type="primary" htmlType="submit" >{I18n.get('Submit Job')}</Button>
                     </Form.Item>
+                    <br />
                 </Form>
             </div>
         )

@@ -132,7 +132,7 @@ class NewLogin extends React.Component {
             .catch(err => console.log(err));
         }
         //console.log(sub);
-        //console.log(userInfo);
+        console.log(userInfo);
       } catch (err) {
         console.log('error in second try: ', err)
       }

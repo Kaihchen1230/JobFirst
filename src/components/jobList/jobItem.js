@@ -1,6 +1,10 @@
 import React from 'react';
 import { Card, Row, Col, Button } from 'antd';
-import { Link } from "gatsby"
+import { Link } from "gatsby";
+import * as mutations from "../../graphql/mutations";
+import { async } from 'q';
+
+
 
 const jobItem = (props) => {
     let jobItem = props.jobs.map((item, index) =>
@@ -10,7 +14,7 @@ const jobItem = (props) => {
                 <p>Post Date: {item.datePosted}</p>
                 <p>Deadline: {item.deadline}</p>
                 <div align="center">
-                    <Button type="primary" ghost>
+                    <Button type="primary" ghost >
                         <Link 
                             to={'/app/job-detail/'+item.id}
                             state={{ id: item.id}}

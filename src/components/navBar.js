@@ -33,14 +33,14 @@ const navBar = (props) => {
   const language_menu = (
     <Menu>
       <Menu.Item>
-        <Button type="primary" onClick={() => {
+        <Button id="english-button" type="primary" onClick={() => {
           window.localStorage.setItem('lan', 'es');
           window.location.reload();
         }}>ENGLISH - 英语</Button>
       </Menu.Item>
 
       <Menu.Item>
-        <Button type="primary" onClick={() => {
+        <Button id="chinese-button" type="primary" onClick={() => {
           window.localStorage.setItem('lan', 'ch');
           window.location.reload();
         }}>CHINESE - 中文</Button>
@@ -67,18 +67,22 @@ const navBar = (props) => {
             <Link to="/app/job-list"></Link>
           </Menu.Item>
 
-          <Menu.Item>
-            <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
-            <Link to="/app/postJob"></Link>
-          </Menu.Item>
+          {isLoggedIn() ? 
+            getUser()["custom:isEmployer"] === "yes" ?
+              <Menu.Item>
+                <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
+                <Link to="/app/postJob"></Link>
+              </Menu.Item>: null : null
+          }
 
-          <Menu.Item>
+          {/* <Menu.Item>
             <Icon type="bar-chart" theme="outlined" />{I18n.get('Business Profile')}
             <Link to="/app/business-profile"></Link>
-          </Menu.Item>
+          </Menu.Item> */}
 
           <Menu.Item key="contact">
             <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
+            <Link to="/app/contact"></Link>
           </Menu.Item>
 
 
@@ -92,10 +96,16 @@ const navBar = (props) => {
           }
 
           {isLoggedIn() ? (
-            <Menu.Item>
-              {state.login}
-              <Link to={`/app/user-profile/${getUser().sub}`}></Link>
-            </Menu.Item>
+            getUser()['custom:isEmployer'] ==='no' ?
+              <Menu.Item>
+                {state.login}
+                <Link to={`/app/user-profile/${getUser().sub}`}></Link>
+              </Menu.Item> :
+              <Menu.Item>
+                {/* <Icon type="bar-chart" theme="outlined" />{I18n.get('Business Profile')} */}
+                {state.login}
+                <Link to={`/app/business-profile/${getUser().sub}`}></Link>
+              </Menu.Item>
           ) : (
               <Menu.Item>
                 {state.login}
@@ -117,14 +127,14 @@ const navBar = (props) => {
 
           <Menu.Item>
             <Dropdown overlay={language_menu}>
-              <Button>{I18n.get('Language')}</Button>
+              <Button id="lanButton">{I18n.get('Language')}</Button>
             </Dropdown>
           </Menu.Item>
-
         </Menu>
       </Header>
       <div style={{ marginTop: "51px" }}>
       </div>
+
     </Layout>
   );
 }

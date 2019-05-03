@@ -5,7 +5,7 @@ import { I18n } from 'aws-amplify';
 const { Meta } = Card;
 
 const Sidebar = (props) => {
-    let { pic, firstName, lastName } = props.user;
+    let { pic, firstName, lastName, favoriteQuote } = props.user;
     if (pic == null) {
         pic = pikachiu;
     }
@@ -17,7 +17,7 @@ const Sidebar = (props) => {
             <Meta
                 avatar={<Avatar src={pic} />}
                 title={firstName}
-                description={I18n.get("This is the description")}
+                description={favoriteQuote}
             />
         </Card>
     );
