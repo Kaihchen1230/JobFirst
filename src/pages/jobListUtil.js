@@ -1,4 +1,4 @@
-export default filterTypeGen = (value) => {
+exports.filterTypeGen = (value) => {
     let newSearch = {};
     if(value == "All"){
         return {"filter":{}};
