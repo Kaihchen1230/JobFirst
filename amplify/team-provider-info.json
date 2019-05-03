@@ -1,55 +1,4 @@
 {
-    "masterenv": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190412171843-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190412171843-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190412171843-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "csc47300project-20190412171843-deployment",
-            "UnauthRoleName": "csc47300project-20190412171843-unauthRole",
-            "StackName": "csc47300project-20190412171843",
-            "StackId": "arn:aws:cloudformation:us-east-1:877372251133:stack/csc47300project-20190412171843/8ce683d0-5d68-11e9-9820-12a3b4ca1ea2"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
-    "product": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190412181322-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190412181322-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190412181322-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "csc47300project-20190412181322-deployment",
-            "UnauthRoleName": "csc47300project-20190412181322-unauthRole",
-            "StackName": "csc47300project-20190412181322",
-            "StackId": "arn:aws:cloudformation:us-east-1:877372251133:stack/csc47300project-20190412181322/2f72be00-5d70-11e9-922e-0a6d3ce3777a"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
-    "develop": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190412132316-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190412132316-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190412132316-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "csc47300project-20190412132316-deployment",
-            "UnauthRoleName": "csc47300project-20190412132316-unauthRole",
-            "StackName": "csc47300project-20190412132316",
-            "StackId": "arn:aws:cloudformation:us-east-1:877372251133:stack/csc47300project-20190412132316/aa9abe80-5d47-11e9-bbef-0aad1b9980b2"
-        },
-        "categories": {
-            "auth": {
-                "cognitocce04566": {}
-            }
-        }
-    },
     "sidenv": {
         "awscloudformation": {
             "AuthRoleName": "csc47300project-20190412193852-authRole",
@@ -84,23 +33,6 @@
             }
         }
     },
-    "kailocal": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190422192631-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190422192631-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190422192631-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "csc47300project-20190422192631-deployment",
-            "UnauthRoleName": "csc47300project-20190422192631-unauthRole",
-            "StackName": "csc47300project-20190422192631",
-            "StackId": "arn:aws:cloudformation:us-east-1:877372251133:stack/csc47300project-20190422192631/0f8ef250-6556-11e9-abec-0eee516a945a"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
     "gongenv": {
         "awscloudformation": {
             "AuthRoleName": "csc47300project-20190424051914-authRole",
@@ -118,23 +50,7 @@
             }
         }
     },
-    "local": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190425173211-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190425173211-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190425173211-authRole",
-            "Region": "us-east-2",
-            "DeploymentBucketName": "csc47300project-20190425173211-deployment",
-            "UnauthRoleName": "csc47300project-20190425173211-unauthRole",
-            "StackName": "csc47300project-20190425173211",
-            "StackId": "arn:aws:cloudformation:us-east-2:877372251133:stack/csc47300project-20190425173211/960cfd20-67a1-11e9-98c4-0a2103992610"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
+    
     "alanenvvv": {
         "awscloudformation": {
             "AuthRoleName": "csc47300project-20190430171312-authRole",
@@ -145,23 +61,6 @@
             "UnauthRoleName": "csc47300project-20190430171312-unauthRole",
             "StackName": "csc47300project-20190430171312",
             "StackId": "arn:aws:cloudformation:us-east-1:163683266096:stack/csc47300project-20190430171312/c3046770-6b8c-11e9-a332-0a262823b4fe"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
-    "kaideven": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190502100137-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190502100137-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190502100137-authRole",
-            "Region": "us-west-2",
-            "DeploymentBucketName": "csc47300project-20190502100137-deployment",
-            "UnauthRoleName": "csc47300project-20190502100137-unauthRole",
-            "StackName": "csc47300project-20190502100137",
-            "StackId": "arn:aws:cloudformation:us-west-2:877372251133:stack/csc47300project-20190502100137/cde47160-6ce2-11e9-a016-0699096663d0"
         },
         "categories": {
             "auth": {
