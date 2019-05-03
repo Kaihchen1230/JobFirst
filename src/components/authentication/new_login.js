@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import './login.css';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import * as mutations from '../../graphql/mutations';
+import config from '../..//aws-exports';
 
 const LoginForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
@@ -74,7 +75,12 @@ class NewLogin extends React.Component {
       try {
         await Auth.signIn(userName, password)
         const user = await Auth.currentAuthenticatedUser();
-        //console.log("user data is", user);
+        console.log('config',config);
+        console.log("user data is", user);
+        let key = config.aws_cognito_identity_pool_id;
+        let identityIDKey = `aws.cognito.identity-id.${key}`;
+        let identityID = user.storage[identityIDKey];
+        console.log(identityID);
         const userInfo = {
           ...user.attributes,
           username: user.username,
@@ -92,7 +98,7 @@ class NewLogin extends React.Component {
         const userInfo = getUser();
         const { email, name, phone_number, sub, username} = userInfo
         const profileExist = userInfo['custom:isProfile'];
-        console.log("userInfo",userInfo);
+        //console.log("userInfo",userInfo);
         if (profileExist === 'no') {
           if(userInfo['custom:isEmployer'] === 'no'){
             let data = {
@@ -132,7 +138,7 @@ class NewLogin extends React.Component {
             .catch(err => console.log(err));
         }
         //console.log(sub);
-        console.log(userInfo);
+        //console.log(userInfo);
       } catch (err) {
         console.log('error in second try: ', err)
       }
