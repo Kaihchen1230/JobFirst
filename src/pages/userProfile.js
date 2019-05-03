@@ -89,6 +89,8 @@ class Profile extends React.Component {
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
             console.log("Education Results: ", educationResults);
+            const temp = educationResults.data.getEmployee.education.items;
+            this.setState({ education: temp });
         } catch (err) {
             console.log("couldn't get education: ", err);
         }
@@ -148,9 +150,10 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information 
-                    user={this.state.user} 
-                    jobs={this.state.jobs}
+                    <Information
+                        user={this.state.user}
+                        jobs={this.state.jobs}
+                        education={this.state.education}
                     />
                 </Content>
             </Layout>
