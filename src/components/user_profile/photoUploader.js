@@ -12,7 +12,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
         render() {
             const {
                 visible, onCancel, onCreate, form,
-                onFormCancel, onFormPreview, onFormChange,
+                onFormCancel, onFormPreview, onFormChange, onFormDummy,
                 formPreviewVisible, formPreviewImage, formFileList
             } = this.props;
             const { getFieldDecorator } = form;
@@ -31,24 +31,22 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
-                    <Form layout="vertical">
+                    {/* <Form layout="vertical">
                         <Form.Item label="Photo">
                             {getFieldDecorator('file', {
                                 initialValue: formFileList && formPreviewImage ? formPreviewImage : [],
-                                valuePropName: 'formFileList',
+                                valuePropName: 'fileList',
                                 getValueFromEvent: onFormChange,
                                 rules: [{ required: true, message: 'Please upload a photo!' }],
-
                             })(
                                 <div className="clearfix">
                                     <Upload
-                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                         listType="picture-card"
-                                        fileList={formFileList}
                                         onPreview={onFormPreview}
-                                        onChange={onFormChange}
+                                        customRequest={onFormDummy}
                                     >
-                                        {formFileList.length >= 1 ? null : uploadButton}
+                                        {/* {formFileList.length >= 1 ? null : uploadButton} 
+                                        {uploadButton}
                                     </Upload>
                                     <Modal visible={formPreviewVisible} footer={null} onCancel={onFormCancel}>
                                         <img alt="example" style={{ width: '100%' }} src={formPreviewImage} />
@@ -56,7 +54,21 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                                 </div>
                             )}
                         </Form.Item>
-                    </Form>
+                    </Form> */}
+                    <div className="clearfix">
+                        <Upload
+                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                            listType="picture-card"
+                            fileList={formFileList}
+                            onPreview={onFormPreview}
+                            onChange={onFormChange}
+                        >
+                            {formFileList.length >= 1 ? null : uploadButton}
+                        </Upload>
+                        <Modal visible={formPreviewVisible} footer={null} onCancel={onFormCancel}>
+                            <img alt="example" style={{ width: '100%' }} src={formPreviewImage} />
+                        </Modal>
+                    </div>
                 </Modal>
             );
         }
@@ -71,6 +83,10 @@ class UploadPage extends React.Component {
         fileList: [],
     };
     // for the form
+    handleDummy = () => {
+        console.log('this is dummy');
+    }
+
     handleFormCancel = () => this.setState({ previewVisible: false })
 
     handleFormPreview = (file) => {
@@ -80,7 +96,10 @@ class UploadPage extends React.Component {
         });
     }
 
-    handleFormChange = ({ fileList }) => this.setState({ fileList })
+    handleFormChange = ({ file, fileList }) => {
+        console.log('file', file);
+        this.setState({ fileList })
+    }
     // end for the form
 
     showModal = () => {
@@ -119,7 +138,8 @@ class UploadPage extends React.Component {
                     onCreate={this.handleCreate}
                     onFormCancel={this.handleFormCancel}
                     onFormPreview={this.handleFormPreview}
-                    onFormCancel={this.handleFormCancel}
+                    onFormChange={this.handleFormChange}
+                    onFormDummy={this.handleDummy}
                     formPreviewVisble={this.state.previewVisible}
                     formPreviewImage={this.state.previewImage}
                     formFileList={this.state.fileList}
