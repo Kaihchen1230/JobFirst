@@ -72,6 +72,7 @@ type Employer @model {
   companyName: String
   companyEmail: String
   companyPhone: String
+  videoURL: String
   companyAddress: Address @connection
   companyWebsite: String
   companyType:String
