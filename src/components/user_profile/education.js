@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Table, Button, Progress, Card } from 'antd';
+import { Tabs, Table, Button, Progress, Card, Icon } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 
@@ -33,15 +33,17 @@ const Education = (props) => {
 
     let educationList = [...props.education];
     let display = educationList.map(item =>
-        <div>
+        <div align="center">
             <Card
                 size="default"
                 title={item.schoolName}
-                style={{ border: "solid", height: 210 }}
+                style={{ width: "80%" }}
             >
-                <br />
-                <p className="description">{item.degree}</p>
-            </Card>,
+                <p className="description" align="left"><Icon type="book" /><b> Degree: </b> {item.degree}</p>
+                <p className="description" align="left"><Icon type="home" /><b> Location: </b>{item.city}, {item.country}</p>
+                <p className="description" align="left"><b> Start Year: </b>{item.startYear}</p>
+                <p className="description" align="left"><b> End Year: </b>{item.endYear}</p>
+            </Card>
             <br />
         </div>
     )
