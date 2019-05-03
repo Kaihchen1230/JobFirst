@@ -21,7 +21,7 @@ class Profile extends React.Component {
             userID: this.props.userID,
             loading: true,
             collapsed: false,
-            theJobs: []
+            education: []
         }
     }
 
@@ -42,6 +42,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
+        // fetch the employee's applied jobs
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
             const temp = testing.data.getEmployee.appliedJob.items;
@@ -69,6 +70,33 @@ class Profile extends React.Component {
         this.setState({
             loading: false
         })
+        /*
+        const fakeEducationObj = {
+            id: "21nv6f71-cd78-4bgd-b11b-a9da2d982fde",
+            startYear: "2011",
+            endYear: "2015",
+            degree: "high school",
+            schoolName: "nestm",
+            country: "USA",
+            city: "NYC",
+            educationWhoseId: "71fc2f71-cd78-4acd-a11a-a5da2d684fde"
+        }
+
+        try {
+            const newEduc = await API.graphql(graphqlOperation(mutations.createEducation, { input: fakeEducationObj}))
+        } catch(err) {
+            console.log("couldn't add education", err);
+        }*/
+
+        // fetch the employee's education
+        try {
+            const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
+            console.log("Education Results: ", educationResults);
+            const temp = educationResults.data.getEmployee.education.items;
+            this.setState({ education: temp });
+        } catch (err) {
+            console.log("couldn't get education: ", err);
+        }
 
     }
 
@@ -126,9 +154,10 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information 
-                    user={this.state.user} 
-                    jobs={this.state.jobs}
+                    <Information
+                        user={this.state.user}
+                        jobs={this.state.jobs}
+                        education={this.state.education}
                     />
                 </Content>
             </Layout>
