@@ -4,19 +4,18 @@ import { relative } from 'path';
 
 
 let imageStyle = {
-    width:'10%',
     padddingLeft:"0px",
     position:"relative",
-    left:"10%",
-    top:"15%"
-
+    left:"40%",
+    top:"-20%",
+    border:"2px solid white"
 };
 
 const profileCard = (props) => {
     return (
-            <div style={imageStyle}  >
-                <Avatar size={100} src = {props.companyPic} >
-                </Avatar>   
+            <div  >
+                <img   style={imageStyle} width ="200" src = {props.companyPic} >
+                </img>   
             </div>
     )
 }

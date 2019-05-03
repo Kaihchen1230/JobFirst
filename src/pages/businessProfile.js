@@ -9,7 +9,6 @@ import CeoPic from '../components/business_profile/ceoPic'
 import BriefInfo from "../components/business_profile/briefInfo";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n } from "aws-amplify";
-import HorizontalTimeline from "react-horizontal-timeline";
 import '../style/businessProfile.css';
 
 
@@ -28,7 +27,6 @@ let bodyStyle = {
 
 class businessProfile extends React.Component {
   state = {
-//     lan: window.localStorage.getItem('lan'), 
     visible: false,
     jobList: [],
     companyID: "",
@@ -39,6 +37,7 @@ class businessProfile extends React.Component {
     companyAddress: {
       addressLine1: "",
       addressLine2: "",
+      city:"",
       state: "",
       postalCode: ""
     },
@@ -62,17 +61,6 @@ class businessProfile extends React.Component {
     let employerData = await API.graphql(graphqlOperation(queries.getEmployer,{id:attributes.sub}));
     this.setState({companyID:attributes.sub});
     console.log("this is employerdata: " + employerData);
-    //create some timeline data
-    // let timelineData = {
-    //   id: "105",
-    //   timelineCompanyId: attributes.sub,
-    //   date:"2019-09-10",
-    //   title:"ma yun create alibaba yu 2019 nian",
-    //   info: "hgh"
-    // }o;;o;;
-    // console.log("new timeline",timelineData);
-    // let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,{input: timelineData}));
-    // console.log("new timeline",timeline);
 
     //set up other employer info
     employerData = employerData.data.getEmployer;
@@ -91,6 +79,7 @@ class businessProfile extends React.Component {
     if (employerData.companyAddress) {
       let addressLine1 = employerData.companyAddress.line1;
       let addressLine2 = employerData.companyAddress.line2;
+      let city = employerData.companyAddress.city;
       let postalCode = employerData.companyAddress.postalCode;
       let state = employerData.companyAddress.state;
       let id = employerData.companyAddress.id;
@@ -98,6 +87,7 @@ class businessProfile extends React.Component {
         id,
         addressLine1,
         addressLine2,
+        city,
         postalCode,
         state
       }
@@ -127,18 +117,20 @@ class businessProfile extends React.Component {
   }
 
   render() {
-    let states = { value: 2, previous: 1 };
-    let VALUES = ["2019-09-20", "2019-09-20", "2019-09-20","2019-09-20", "2019-09-20", "2019-09-20"];
     return (
       <div >
         <div className="banner">
-          <BusinessPicture companyPic={this.state.companyPic} />
-          <div className="companyHeader">
-            <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
-            <h2 className="companyLocation">{this.state.companyAddress.addressLine1}</h2>
-          </div>
         </div>
         <div style={bodyStyle}>
+          <div className="secBanner">
+          <BusinessPicture companyPic={this.state.companyPic} />
+            <div className="companyHeader">
+              <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
+              <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
+            </div>
+          </div>
+
+
           <div style={{ padding: "20px 60px" }}>
             <Tabs defaultActiveKey="1" >
               <TabPane tab={I18n.get('Profile')} key="1" >
