@@ -153,6 +153,7 @@ class Profile extends React.Component {
                         user={this.state.user}
                         jobs={this.state.jobs}
                         education={this.state.education}
+                        experiences={this.state.experiences}
                     />
                 </Content>
             </Layout>
