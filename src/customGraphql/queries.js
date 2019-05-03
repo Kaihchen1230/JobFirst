@@ -23,6 +23,31 @@ export const getAppliedJobEmployee =
         }
     }
 }`
+
+export const getEducationEmployee = 
+`query GetEducationEmployee(
+    $id: ID! 
+    $educationLimit: Int
+    $educationNextToken: String
+) {
+    getEmployee(id: $id) {
+        education(
+            limit: $educationLimit
+            nextToken: $educationNextToken
+        ) {
+            items {
+                startYear
+                endYear
+                degree
+                schoolName
+                country
+                city
+            }
+            nextToken
+        }
+    }
+}`
+
 // for testing purpose
 export const getUsernameEmployee =
 `query GetEmployee($id: ID!) {
