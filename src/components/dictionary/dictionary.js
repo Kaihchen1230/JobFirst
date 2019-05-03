@@ -91,6 +91,10 @@ let dict = {
         "Add Education or Award": "添加教育或奖项",
         "Add Experience or Skill": "添加经验或技能",
         /* end of user profile */
+        "Degree": "学位",
+        "Location": "地点",
+        "Years": "年份",
+        "Education": "教育"
 
     },
     'es': {
@@ -185,6 +189,10 @@ let dict = {
         "Add Education or Award": "Add Education or Award",
         "Add Experience or Skill": "Add Experience or Skill",
         /* end of user profile */
+        "Degree": "Degree",
+        "Location": "Location",
+        "Years": "Years",
+        "Education": "Education"
     }
 };
 export default dict;

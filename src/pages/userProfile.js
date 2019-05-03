@@ -70,23 +70,6 @@ class Profile extends React.Component {
         this.setState({
             loading: false
         })
-        /*
-        const fakeEducationObj = {
-            id: "21nv6f71-cd78-4bgd-b11b-a9da2d982fde",
-            startYear: "2011",
-            endYear: "2015",
-            degree: "high school",
-            schoolName: "nestm",
-            country: "USA",
-            city: "NYC",
-            educationWhoseId: "71fc2f71-cd78-4acd-a11a-a5da2d684fde"
-        }
-
-        try {
-            const newEduc = await API.graphql(graphqlOperation(mutations.createEducation, { input: fakeEducationObj}))
-        } catch(err) {
-            console.log("couldn't add education", err);
-        }*/
 
         // fetch the employee's education
         try {
