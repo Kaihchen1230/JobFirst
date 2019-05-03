@@ -66,6 +66,7 @@ export const onCreateEmployee = `subscription OnCreateEmployee {
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -134,6 +135,7 @@ export const onUpdateEmployee = `subscription OnUpdateEmployee {
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -202,6 +204,7 @@ export const onDeleteEmployee = `subscription OnDeleteEmployee {
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -246,6 +249,7 @@ export const onCreateAssociation = `subscription OnCreateAssociation {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -291,6 +295,7 @@ export const onUpdateAssociation = `subscription OnUpdateAssociation {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -336,6 +341,7 @@ export const onDeleteAssociation = `subscription OnDeleteAssociation {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -385,6 +391,7 @@ export const onCreateExperience = `subscription OnCreateExperience {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -434,6 +441,7 @@ export const onUpdateExperience = `subscription OnUpdateExperience {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -483,6 +491,7 @@ export const onDeleteExperience = `subscription OnDeleteExperience {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -532,6 +541,7 @@ export const onCreateEducation = `subscription OnCreateEducation {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -581,6 +591,7 @@ export const onUpdateEducation = `subscription OnUpdateEducation {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -630,6 +641,7 @@ export const onDeleteEducation = `subscription OnDeleteEducation {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -706,6 +718,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -723,6 +736,7 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -789,6 +803,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -806,6 +821,7 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -872,6 +888,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -889,6 +906,7 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -963,6 +981,7 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -1013,6 +1032,7 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -1063,6 +1083,7 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -1097,6 +1118,7 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -1157,6 +1179,7 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -1217,6 +1240,7 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -1277,6 +1301,7 @@ export const onCreateTimeline = `subscription OnCreateTimeline {
       job {
         nextToken
       }
+      identityID
     }
     date
     title
@@ -1315,6 +1340,7 @@ export const onUpdateTimeline = `subscription OnUpdateTimeline {
       job {
         nextToken
       }
+      identityID
     }
     date
     title
@@ -1353,6 +1379,7 @@ export const onDeleteTimeline = `subscription OnDeleteTimeline {
       job {
         nextToken
       }
+      identityID
     }
     date
     title

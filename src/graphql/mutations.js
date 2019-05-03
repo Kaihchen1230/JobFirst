@@ -66,6 +66,7 @@ export const createEmployee = `mutation CreateEmployee($input: CreateEmployeeInp
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -134,6 +135,7 @@ export const updateEmployee = `mutation UpdateEmployee($input: UpdateEmployeeInp
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -202,6 +204,7 @@ export const deleteEmployee = `mutation DeleteEmployee($input: DeleteEmployeeInp
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -246,6 +249,7 @@ export const createAssociation = `mutation CreateAssociation($input: CreateAssoc
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -291,6 +295,7 @@ export const updateAssociation = `mutation UpdateAssociation($input: UpdateAssoc
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -336,6 +341,7 @@ export const deleteAssociation = `mutation DeleteAssociation($input: DeleteAssoc
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -385,6 +391,7 @@ export const createExperience = `mutation CreateExperience($input: CreateExperie
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -434,6 +441,7 @@ export const updateExperience = `mutation UpdateExperience($input: UpdateExperie
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -483,6 +491,7 @@ export const deleteExperience = `mutation DeleteExperience($input: DeleteExperie
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -532,6 +541,7 @@ export const createEducation = `mutation CreateEducation($input: CreateEducation
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -581,6 +591,7 @@ export const updateEducation = `mutation UpdateEducation($input: UpdateEducation
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -630,6 +641,7 @@ export const deleteEducation = `mutation DeleteEducation($input: DeleteEducation
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -706,6 +718,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -723,6 +736,7 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -789,6 +803,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -806,6 +821,7 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -872,6 +888,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -889,6 +906,7 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -963,6 +981,7 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -1013,6 +1032,7 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -1063,6 +1083,7 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -1097,6 +1118,7 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -1157,6 +1179,7 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -1217,6 +1240,7 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -1277,6 +1301,7 @@ export const createTimeline = `mutation CreateTimeline($input: CreateTimelineInp
       job {
         nextToken
       }
+      identityID
     }
     date
     title
@@ -1315,6 +1340,7 @@ export const updateTimeline = `mutation UpdateTimeline($input: UpdateTimelineInp
       job {
         nextToken
       }
+      identityID
     }
     date
     title
@@ -1353,6 +1379,7 @@ export const deleteTimeline = `mutation DeleteTimeline($input: DeleteTimelineInp
       job {
         nextToken
       }
+      identityID
     }
     date
     title
