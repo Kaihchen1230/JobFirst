@@ -31,20 +31,20 @@ const Education = (props) => {
         key: 'endYear'
     }];
 
-    const educationList = [...props.education];
-    console.log("length: ", educationList.length)
-    const display = educationList.map(item => {
-        console.log(item);
-        <Card
-            size="default"
-            title={item.schoolName}
-            style={{ border: "solid", height: 210 }}
-        >
+    let educationList = [...props.education];
+    let display = educationList.map(item =>
+        <div>
+            <Card
+                size="default"
+                title={item.schoolName}
+                style={{ border: "solid", height: 210 }}
+            >
+                <br />
+                <p className="description">{item.degree}</p>
+            </Card>,
             <br />
-            <p className="description">{item.degree}</p>
-        </Card>
-    })
-
+        </div>
+    )
     return display;
 }
 

@@ -42,7 +42,7 @@ const Information = (props) => {
 
                 </TabPane>
 
-                <TabPane tab={I18n.get("Education and Awards")} key="2">Content of Tab Pane 2
+                <TabPane tab={I18n.get("Education and Awards")} key="2">
                     <h1 align="center">{I18n.get("Education")}</h1>
                     {props.education.length > 0 ? (
                         <Education education={props.education} />
