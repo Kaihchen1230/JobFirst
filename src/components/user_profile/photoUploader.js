@@ -27,7 +27,8 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                 <Modal
                     visible={visible}
                     title="Upload A New Profile Picture"
-                    okText="Upload"
+                    okText="Done"
+                    cancelText="Back to Default"
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
@@ -57,7 +58,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                     </Form> */}
                     <div className="clearfix">
                         <Upload
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76" // TODO thsi is mocking action
                             listType="picture-card"
                             fileList={formFileList}
                             onPreview={onFormPreview}
@@ -97,7 +98,7 @@ class UploadPage extends React.Component {
     }
 
     handleFormChange = ({ file, fileList }) => {
-        console.log('file', file);
+        // console.log('file', file);
         this.setState({ fileList })
     }
     // end for the form
@@ -105,11 +106,12 @@ class UploadPage extends React.Component {
     showModal = () => {
         this.setState({ visible: true });
     }
-
+    // TODO should make this set back to default
     handleCancel = () => {
         this.setState({ visible: false });
     }
-
+    // this below function will pretty much useless
+    // TODO need to write another upload function
     handleCreate = () => {
         const form = this.formRef.props.form;
         form.validateFields((err, values) => {
