@@ -8,11 +8,11 @@ export default filterTypeGen = (value) => {
     }
 }
 
-export default filterDateGen = (value) =>{
+exports.filterDateGen = (value) =>{
 
 }
 
-export default searchByNameGen = (value, search) => {
+exports.searchByNameGen = (value, search) => {
     let newSearch = {};
     if(value == ""){
         return {};
