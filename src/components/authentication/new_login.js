@@ -72,6 +72,7 @@ class NewLogin extends React.Component {
       // console.log('Received values of form: ', values);
       const { userName, password } = values;
       // console.log(userName, password);
+      // ! Authenticate the user
       try {
         await Auth.signIn(userName, password)
         const user = await Auth.currentAuthenticatedUser();
@@ -84,7 +85,8 @@ class NewLogin extends React.Component {
         const userInfo = {
           ...user.attributes,
           username: user.username,
-          language: "es"
+          language: "es",
+          identityID: identityID,
         }
         // const test = await Auth.userAttributes(user);
         //console.log(test)
@@ -94,6 +96,7 @@ class NewLogin extends React.Component {
         this.setState({ error: err })
         console.log('error....: ', err)
       }
+      //! add entry into dynamodb
       try {
         const userInfo = getUser();
         const { email, name, phone_number, sub, username} = userInfo
