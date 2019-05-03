@@ -15,7 +15,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lan: window.localStorage.getItem('lan'),
+            // lan: window.localStorage.getItem('lan'),
             userID: this.props.userID,
             loading: true,
             collapsed: false,
@@ -77,7 +77,7 @@ class Profile extends React.Component {
             );
         }
         I18n.putVocabularies(dict);
-        I18n.setLanguage(this.state.lan);
+        // I18n.setLanguage(this.state.lan);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
