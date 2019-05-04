@@ -11,6 +11,7 @@ class Signup extends React.Component {
     state = {
         username: '',
         password: '',
+        // rePassword: '',
         email: '',
         name: '',
         phone_number: '',
@@ -36,14 +37,20 @@ class Signup extends React.Component {
     }
 
     signUp = async () => {
-        const { username, password, email, name, phone_number, isEmployer, isProfile } = this.state;
-        try {
-            await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer': isEmployer, 'custom:isProfile': isProfile } })
-            this.setState({ stage: 1 })
-        } catch (err) {
-            this.setState({ error: err })
-            console.log('error signing up...', err)
+        let { username, password, rePassword,email, name, phone_number, isEmployer, isProfile } = this.state;
+        phone_number = "+1" + phone_number;
+        //need to change to check psw latter
+        if(true){
+            try {
+                await Auth.signUp({ username, password, attributes: { email, name, phone_number, 'custom:isEmployer': isEmployer, 'custom:isProfile': isProfile } })
+                this.setState({ stage: 1,error:null })
+            } catch (err) {
+                console.log(err.message);
+                this.setState({ error: err.message })
+            }
         }
+        else
+            this.setState({ error: "Your passwords are not the same" })
     }
 
     confirmSignUp = async () => {
@@ -53,7 +60,7 @@ class Signup extends React.Component {
             alert('Successfully signed up!')
             navigate("/app/login")
         } catch (err) {
-            this.setState({ error: err })
+            this.setState({ error: err.message })
             console.log('error confirming signing up...', err)
         }
     }
@@ -110,7 +117,7 @@ class Signup extends React.Component {
                                     />
                                 </Form.Item>
                                 <Form.Item>
-                                    <Input placeholder={I18n.get('Enter Phone Number')}
+                                    <Input placeholder={I18n.get('Enter 10 digits Phone Number  EX:0123456789')}
                                         prefix={<Icon type="phone" />}
                                         name='phone_number'
                                         value={this.state.phone_number}
@@ -120,7 +127,7 @@ class Signup extends React.Component {
                                 <Form.Item>
                                     <RadioGroup onChange={this.handleRadio}>
                                         <Radio value={'yes'}>{I18n.get('I Want to Hire')}</Radio>
-                                        <Radio value={'no'}>{I18n.get('I Want to Work')}</Radio>
+                                        <Radio checked="checked" value={'no'}>{I18n.get('I Want to Work')}</Radio>
                                     </RadioGroup>
                                 </Form.Item>
                                 <Button onClick={this.signUp} type="primary">
