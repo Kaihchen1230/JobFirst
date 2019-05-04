@@ -81,7 +81,7 @@
 		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190503214408-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": true,
@@ -139,14 +139,14 @@
 							"Arn"
 						]
 					},
-					"env": "jielan"
+					"env": "kailocal"
 				}
 			}
 		},
 		"apicsc47300project": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190503214408-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "csc47300project",
 					"DynamoDBBillingMode": "PAY_PER_REQUEST",
@@ -156,16 +156,16 @@
 							"Outputs.UserPoolId"
 						]
 					},
-					"S3DeploymentBucket": "csc47300project-20190413183412-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/d53d2b032b2b809a1955d206fd8dd21d904dc0eb",
-					"env": "jielan"
+					"S3DeploymentBucket": "csc47300project-20190503214408-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/c5772451b7113ba6293398535dc1949842b6720f",
+					"env": "kailocal"
 				}
 			}
 		},
 		"storagecsc473storage": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190503214408-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"Parameters": {
 					"bucketName": "csc47300projectf1ac5b6f1cbf4f8b96255042ef8d3168",
 					"authPolicyName": "s3_amplify_94abeeab",
@@ -178,7 +178,7 @@
 					},
 					"authPermissions": "rw",
 					"unauthPermissions": "r",
-					"env": "jielan"
+					"env": "kailocal"
 				}
 			}
 		}
