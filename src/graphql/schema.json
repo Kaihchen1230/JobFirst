@@ -7489,7 +7489,6 @@
         "onFragment" : false,
         "onField" : false
       }, {
-<<<<<<< HEAD
         "name" : "aws_cognito_user_pools",
         "description" : "Tells the service this field/object has access authorized by a Cognito User Pools token.",
         "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
@@ -7506,7 +7505,11 @@
             }
           },
           "defaultValue" : null
-=======
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
         "name" : "deprecated",
         "description" : null,
         "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
@@ -7519,7 +7522,6 @@
             "ofType" : null
           },
           "defaultValue" : "\"No longer supported\""
->>>>>>> a56958b2a434e85e8838873a6104bda0843d7db0
         } ],
         "onOperation" : false,
         "onFragment" : false,
@@ -7545,7 +7547,6 @@
         "onOperation" : false,
         "onFragment" : false,
         "onField" : false
-<<<<<<< HEAD
       }, {
         "name" : "aws_oidc",
         "description" : "Tells the service this field/object has access authorized by an OIDC token.",
@@ -7570,25 +7571,6 @@
         "onOperation" : false,
         "onFragment" : false,
         "onField" : false
-      }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
-        } ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-=======
->>>>>>> a56958b2a434e85e8838873a6104bda0843d7db0
       } ]
     }
   }
