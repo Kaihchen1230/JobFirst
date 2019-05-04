@@ -7,8 +7,9 @@ import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
-import { Layout, Skeleton, Menu, Icon } from 'antd';
+import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
+import ResumeUploader from '../components/user_profile/resumeUploader';
 
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -107,6 +108,17 @@ class Profile extends React.Component {
         })
     }
 
+    onChange(info) {
+        if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
+    }
+
     render() {
         if (this.state.loading) {
             return (
@@ -154,8 +166,7 @@ class Profile extends React.Component {
                             </Menu.Item>
 
                             <Menu.Item key="9">
-                                <Icon type="file" />
-                                <span>{I18n.get('Upload a Resume')}</span>
+                                <ResumeUploader onChange={this.onChange} />
                             </Menu.Item>
                         </Menu>) : null
                     }
