@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import './login.css';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import * as mutations from '../../graphql/mutations';
+import config from '../..//aws-exports';
 
 const LoginForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
@@ -71,14 +72,21 @@ class NewLogin extends React.Component {
       // console.log('Received values of form: ', values);
       const { userName, password } = values;
       // console.log(userName, password);
+      // ! Authenticate the user
       try {
         await Auth.signIn(userName, password)
         const user = await Auth.currentAuthenticatedUser();
-        //console.log("user data is", user);
+        console.log('config',config);
+        console.log("user data is", user);
+        let key = config.aws_cognito_identity_pool_id;
+        let identityIDKey = `aws.cognito.identity-id.${key}`;
+        let identityID = user.storage[identityIDKey];
+        console.log(identityID);
         const userInfo = {
           ...user.attributes,
           username: user.username,
-          language: "es"
+          language: "es",
+          identityID: identityID,
         }
         // const test = await Auth.userAttributes(user);
         //console.log(test)
@@ -88,11 +96,12 @@ class NewLogin extends React.Component {
         this.setState({ error: err })
         console.log('error....: ', err)
       }
+      //! add entry into dynamodb
       try {
         const userInfo = getUser();
-        const { email, name, phone_number, sub, username} = userInfo
+        const { email, name, phone_number, sub, username, identityID} = userInfo
         const profileExist = userInfo['custom:isProfile'];
-        console.log("userInfo",userInfo);
+        //console.log("userInfo",userInfo);
         if (profileExist === 'no') {
           if(userInfo['custom:isEmployer'] === 'no'){
             let data = {
@@ -101,6 +110,7 @@ class NewLogin extends React.Component {
               firstName: name,
               phone: phone_number,
               email: email,
+              identityID: identityID,
             }
             const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
             console.log("new employee", newEmployee);
@@ -118,6 +128,7 @@ class NewLogin extends React.Component {
               employerCompanyAddressId:newAddress.data.createAddress.id,
               companyName: username,
               companyEmail: email,
+              identityID: identityID,
             }
             const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: employerData })); 
             console.log("new employer",newEmployeer);            
@@ -132,7 +143,7 @@ class NewLogin extends React.Component {
             .catch(err => console.log(err));
         }
         //console.log(sub);
-        console.log(userInfo);
+        //console.log(userInfo);
       } catch (err) {
         console.log('error in second try: ', err)
       }

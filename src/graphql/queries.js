@@ -66,6 +66,7 @@ export const getEmployee = `query GetEmployee($id: ID!) {
     language
     englishLevel
     favoriteQuote
+    identityID
   }
 }
 `;
@@ -111,6 +112,7 @@ export const listEmployees = `query ListEmployees(
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     nextToken
   }
@@ -157,6 +159,7 @@ export const getAssociation = `query GetAssociation($id: ID!) {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -187,6 +190,7 @@ export const listAssociations = `query ListAssociations(
         language
         englishLevel
         favoriteQuote
+        identityID
       }
     }
     nextToken
@@ -238,6 +242,7 @@ export const getExperience = `query GetExperience($id: ID!) {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -272,6 +277,7 @@ export const listExperiences = `query ListExperiences(
         language
         englishLevel
         favoriteQuote
+        identityID
       }
     }
     nextToken
@@ -323,6 +329,7 @@ export const getEducation = `query GetEducation($id: ID!) {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
   }
 }
@@ -357,6 +364,7 @@ export const listEducations = `query ListEducations(
         language
         englishLevel
         favoriteQuote
+        identityID
       }
     }
     nextToken
@@ -431,6 +439,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
       language
       englishLevel
       favoriteQuote
+      identityID
     }
     Job {
       id
@@ -441,6 +450,9 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         companyPhone
         companyWebsite
         companyType
+        videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -448,6 +460,7 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -499,6 +512,7 @@ export const listAppliedJobs = `query ListAppliedJobs(
         language
         englishLevel
         favoriteQuote
+        identityID
       }
       Job {
         id
@@ -535,6 +549,9 @@ export const getEmployer = `query GetEmployer($id: ID!) {
     }
     companyWebsite
     companyType
+    videoURL
+    videoPic
+    bannerPic
     headquarter
     ceo
     ceoPic
@@ -566,6 +583,7 @@ export const getEmployer = `query GetEmployer($id: ID!) {
       }
       nextToken
     }
+    identityID
   }
 }
 `;
@@ -590,6 +608,9 @@ export const listEmployers = `query ListEmployers(
       }
       companyWebsite
       companyType
+      videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -603,6 +624,7 @@ export const listEmployers = `query ListEmployers(
       job {
         nextToken
       }
+      identityID
     }
     nextToken
   }
@@ -626,6 +648,9 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       }
       companyWebsite
       companyType
+      videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -639,6 +664,7 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       job {
         nextToken
       }
+      identityID
     }
     jobTitle
     jobType
@@ -683,6 +709,9 @@ export const listPostedJobs = `query ListPostedJobs(
         companyPhone
         companyWebsite
         companyType
+        videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -690,6 +719,7 @@ export const listPostedJobs = `query ListPostedJobs(
         revenue
         companyPic
         description
+        identityID
       }
       jobTitle
       jobType
@@ -734,6 +764,9 @@ export const getTimeline = `query GetTimeline($id: ID!) {
       }
       companyWebsite
       companyType
+      videoURL
+      videoPic
+      bannerPic
       headquarter
       ceo
       ceoPic
@@ -747,6 +780,7 @@ export const getTimeline = `query GetTimeline($id: ID!) {
       job {
         nextToken
       }
+      identityID
     }
     date
     title
@@ -769,6 +803,9 @@ export const listTimelines = `query ListTimelines(
         companyPhone
         companyWebsite
         companyType
+        videoURL
+        videoPic
+        bannerPic
         headquarter
         ceo
         ceoPic
@@ -776,6 +813,7 @@ export const listTimelines = `query ListTimelines(
         revenue
         companyPic
         description
+        identityID
       }
       date
       title

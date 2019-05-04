@@ -1,13 +1,15 @@
 import React from 'react';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
-import Amplify, { API, graphqlOperation, I18n } from "aws-amplify";
+import Amplify, { API, graphqlOperation, I18n, Storage } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon } from 'antd';
+import UploadPage from '../components/user_profile/photoUploader';
+
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 
@@ -19,7 +21,8 @@ class Profile extends React.Component {
             userID: this.props.userID,
             loading: true,
             collapsed: false,
-            theJobs: []
+            education: [],
+            experiences: []
         }
     }
 
@@ -40,10 +43,13 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
+
+        // fetch the employee's applied jobs
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
+            console.log("Applied Job Results: ", testing)
             const temp = testing.data.getEmployee.appliedJob.items;
-            console.log(temp)
+            //console.log(temp)
             const transformJob = temp.map(item => {
                 const jobID = item.Job.id
                 const { datePosted, deadline, jobTitle } = item.Job
@@ -60,14 +66,45 @@ class Profile extends React.Component {
             this.setState({
                 jobs: transformJob
             })
-            console.log(this.state.jobs);
+            //console.log(this.state.jobs);
         } catch (err) {
             console.log("custom queries failed", err);
+        }
+        // fetch the employee's education
+        try {
+            const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
+            //console.log("Education Results: ", educationResults);
+            const temp = educationResults.data.getEmployee.education.items;
+            this.setState({ education: temp });
+        } catch (err) {
+            console.log("couldn't get education: ", err);
+        }
+        // fetch the employee's experiences
+        try {
+            const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
+            //console.log("Experience Results: ", experienceResults);
+            const temp = experienceResults.data.getEmployee.experience.items;
+            this.setState({ experiences: temp });
+        } catch (err) {
+            console.log("couldn't get experience: ", err);
+        }
+        // fetch photo
+        if (this.state.user.pic === 'yes') {
+            Storage.get('profilePic', {
+                level: 'protected',
+                identityId: this.state.user.identityID// the identityId of that user
+            })
+                .then(result => {
+                    console.log(result);
+                    let user = this.state.user;
+                    user.pic = result;
+                    this.setState({ user: user });
+                })
+                .catch(err => console.log(err));
         }
         this.setState({
             loading: false
         })
-
     }
 
     render() {
@@ -111,8 +148,9 @@ class Profile extends React.Component {
                             </SubMenu>
 
                             <Menu.Item key="2">
-                                <Icon type="picture" />
-                                <span>{I18n.get('Change Profile Picture')}</span>
+                                <UploadPage />
+
+                                {/* <span>{I18n.get('Change Profile Picture')}</span> */}
                             </Menu.Item>
 
                             <Menu.Item key="9">
@@ -123,9 +161,11 @@ class Profile extends React.Component {
                     }
                 </Sider>
                 <Content>
-                    <Information 
-                    user={this.state.user} 
-                    jobs={this.state.jobs}
+                    <Information
+                        user={this.state.user}
+                        jobs={this.state.jobs}
+                        education={this.state.education}
+                        experiences={this.state.experiences}
                     />
                 </Content>
             </Layout>

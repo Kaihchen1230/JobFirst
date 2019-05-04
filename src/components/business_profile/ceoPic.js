@@ -4,19 +4,21 @@ import React from 'react';
 let mainStyle = {
     padddingLeft:"0px",
     position:"relative",
-    left:"20%",
+    left:"39%",
     fontSize:"1.2em",
     letterSpacing: "1px",
     lineHeight:"1.8em",
-    border:"solid 1px",
-    width:"30%",
-    height:"70%",
+    width:"60%",
+    height:"50%",
     textAlign: "center",
-    marginTop:"2%"
+    margin:"2% 1%",
+
 };
 
 let infoStyle = {
-    padding:"8%"
+    padding:"8%",
+    border:"1px solid black",
+    borderRadius: "10px",
 }
 
 
@@ -24,7 +26,7 @@ const ceoPic = (props) => {
     return (
         <div style={mainStyle}  >
             <div style={infoStyle}>
-                <Avatar size={200} src = {props.ceoPic} /> 
+                <Avatar size={200} src = {props.ceoPic} />   
                 <br/>     
                 {props.ceo}
                 <h2>CEO</h2>  

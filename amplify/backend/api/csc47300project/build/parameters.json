@@ -1,5 +1,11 @@
 {
     "AppSyncApiName": "csc47300project",
-    "S3DeploymentBucket": "csc47300project-20190503003411-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/414e1cef0588e2bcd5df4c09e0d22f8b4eeeb0d0"
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitoed11de21",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "csc47300project-20190503214408-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/08f5474788434fc802c6d55445b3681b0e520f1d"
 }

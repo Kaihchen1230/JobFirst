@@ -19,6 +19,7 @@ type Employee {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
 }
 
 type Association {
@@ -75,6 +76,9 @@ type Employer {
   companyAddress: Address
   companyWebsite: String
   companyType: String
+  videoURL: String
+  videoPic: String
+  bannerPic: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -84,6 +88,7 @@ type Employer {
   companyPic: String
   description: String
   job(filter: ModelPostedJobFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelPostedJobConnection
+  identityID: String
 }
 
 type PostedJob {
@@ -191,6 +196,7 @@ input ModelEmployeeFilterInput {
   language: ModelStringFilterInput
   englishLevel: ModelStringFilterInput
   favoriteQuote: ModelStringFilterInput
+  identityID: ModelStringFilterInput
   and: [ModelEmployeeFilterInput]
   or: [ModelEmployeeFilterInput]
   not: ModelEmployeeFilterInput
@@ -233,6 +239,7 @@ input CreateEmployeeInput {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
   employeeAddressId: ID
 }
 
@@ -252,6 +259,7 @@ input UpdateEmployeeInput {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
   employeeAddressId: ID
 }
 
@@ -524,6 +532,9 @@ input ModelEmployerFilterInput {
   companyPhone: ModelStringFilterInput
   companyWebsite: ModelStringFilterInput
   companyType: ModelStringFilterInput
+  videoURL: ModelStringFilterInput
+  videoPic: ModelStringFilterInput
+  bannerPic: ModelStringFilterInput
   headquarter: ModelStringFilterInput
   ceo: ModelStringFilterInput
   ceoPic: ModelStringFilterInput
@@ -531,6 +542,7 @@ input ModelEmployerFilterInput {
   revenue: ModelStringFilterInput
   companyPic: ModelStringFilterInput
   description: ModelStringFilterInput
+  identityID: ModelStringFilterInput
   and: [ModelEmployerFilterInput]
   or: [ModelEmployerFilterInput]
   not: ModelEmployerFilterInput
@@ -543,6 +555,9 @@ input CreateEmployerInput {
   companyPhone: String
   companyWebsite: String
   companyType: String
+  videoURL: String
+  videoPic: String
+  bannerPic: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -550,6 +565,7 @@ input CreateEmployerInput {
   revenue: String
   companyPic: String
   description: String
+  identityID: String
   employerCompanyAddressId: ID
 }
 
@@ -560,6 +576,9 @@ input UpdateEmployerInput {
   companyPhone: String
   companyWebsite: String
   companyType: String
+  videoURL: String
+  videoPic: String
+  bannerPic: String
   headquarter: String
   ceo: String
   ceoPic: String
@@ -567,6 +586,7 @@ input UpdateEmployerInput {
   revenue: String
   companyPic: String
   description: String
+  identityID: String
   employerCompanyAddressId: ID
 }
 
