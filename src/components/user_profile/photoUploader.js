@@ -14,7 +14,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
         render() {
             const {
                 visible, onCancel, onCreate, form,
-                onFormCancel, onFormPreview, onFormChange, onFormDummy, onFormUpload,
+                onFormCancel, onFormPreview, onFormChange, onFormDummy, onFormUpload, onReset,
                 formPreviewVisible, formPreviewImage, formFileList
             } = this.props;
             const { getFieldDecorator } = form;
@@ -30,7 +30,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                     visible={visible}
                     title="Upload A New Profile Picture"
                     okText="Done"
-                    cancelText="Back to Default"
+                    cancelText="Cancel"
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
@@ -69,6 +69,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                         >
                             {formFileList.length >= 1 ? null : uploadButton}
                         </Upload>
+                        <Button type="primary" onClick={onReset}>Reset To Default</Button>
                         <Modal visible={formPreviewVisible} footer={null} onCancel={onFormCancel}>
                             <img alt="example" style={{ width: '100%' }} src={formPreviewImage} />
                         </Modal>
@@ -102,23 +103,23 @@ class UploadPage extends React.Component {
                 console.log(result)
                 let tempfileList = this.state.fileList;
                 tempfileList[0].status = 'done';
-                this.setState({fileList: tempfileList})
+                this.setState({ fileList: tempfileList })
                 //console.log('fileList', this.state.fileList)
                 const user = getUser();
                 const isEmployer = user['custom:isEmployer'];
                 const uid = user.sub
-                if(isEmployer === 'no'){
-                    API.graphql(graphqlOperation(mutations.updateEmployee, {input: { id: uid, pic:'yes' }}))
-                    .then((result) => {
-                        console.log('success to update employee', result);
-                    })
-                    .catch(err => console.log('error in update employee', err));
-                }else {
-                    API.graphql(graphqlOperation(mutations.updateEmployer, {input: { id: uid, ceoPic:'yes' }}))
-                    .then((result) => {
-                        console.log('success to update employer', result);
-                    })
-                    .catch(err => console.log('error in update employer', err));
+                if (isEmployer === 'no') {
+                    API.graphql(graphqlOperation(mutations.updateEmployee, { input: { id: uid, pic: 'yes' } }))
+                        .then((result) => {
+                            console.log('success to update employee', result);
+                        })
+                        .catch(err => console.log('error in update employee', err));
+                } else {
+                    API.graphql(graphqlOperation(mutations.updateEmployer, { input: { id: uid, ceoPic: 'yes' } }))
+                        .then((result) => {
+                            console.log('success to update employer', result);
+                        })
+                        .catch(err => console.log('error in update employer', err));
                 }
             })
             .catch(err => console.log(err));
@@ -140,6 +141,26 @@ class UploadPage extends React.Component {
         this.setState({ fileList })
     }
     // end for the form
+
+    handleReset = () => {
+        const user = getUser();
+        const isEmployer = user['custom:isEmployer'];
+        const uid = user.sub
+        if (isEmployer === 'no') {
+            API.graphql(graphqlOperation(mutations.updateEmployee, { input: { id: uid, pic: 'no' } }))
+                .then((result) => {
+                    console.log('success to update employee', result);
+                })
+                .catch(err => console.log('error in update employee', err));
+        } else {
+            API.graphql(graphqlOperation(mutations.updateEmployer, { input: { id: uid, ceoPic: 'no' } }))
+                .then((result) => {
+                    console.log('success to update employer', result);
+                })
+                .catch(err => console.log('error in update employer', err));
+        }
+        this.setState({ visible: false });
+    }
 
     showModal = () => {
         this.setState({ visible: true });
@@ -170,7 +191,7 @@ class UploadPage extends React.Component {
     render() {
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>Upload A New Profile Picture</Button>
+                <Button ghost type='ghost' onClick={this.showModal}>Upload A New Profile Picture</Button>
                 <UploadForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
@@ -184,6 +205,7 @@ class UploadPage extends React.Component {
                     formPreviewVisble={this.state.previewVisible}
                     formPreviewImage={this.state.previewImage}
                     formFileList={this.state.fileList}
+                    onReset={this.handleReset}
                 />
             </div>
         );
