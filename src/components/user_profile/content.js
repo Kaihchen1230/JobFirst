@@ -5,6 +5,7 @@ import { I18n } from 'aws-amplify';
 import AppliedJob from "./appliedJob";
 import Education from "./education";
 import Experiences from "./experiences";
+import General from "./general";
 
 const TabPane = Tabs.TabPane;
 
@@ -20,24 +21,7 @@ const Information = (props) => {
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
-                    <div align="center">
-                        <h1>{I18n.get('Profile Completion')}:</h1>
-                        <Progress type="circle" percent={60} format={percent => (percent == 100) ? "Complete" : `${percent} %`} />
-                        <br /><br />
-                        <Card
-                            size="default"
-                            title={I18n.get('User Information')}
-                            style={{ width: "80%" }}
-                        >
-                            <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Full Name')}: </b> {user.name + " " + user.middleName + " " + user.lastName}</p>
-                            <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Age')}: </b>{user.age}</p>
-                            <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('English Level')}: </b>{user.englishLevel}</p>
-                            <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Spoken Language')}: </b>{user.language}</p>
-                            <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Email')}: </b>{user.email}</p>
-                            <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Phone')}: </b>{user.phone}</p>
-                        </Card>
-                    </div>
-
+                    <General user={user} />
                 </TabPane>
 
                 <TabPane tab={I18n.get("Education and Awards")} key="2">
