@@ -23,18 +23,17 @@ class Signup extends React.Component {
     }
 
     handleUpdate = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({
             [event.target.name]: event.target.value,
         })
     }
 
     handleRadio = (e) => {
-        console.log('radio checked', e.target.value);
+        // console.log('radio checked', e.target.value);
         this.setState({
             isEmployer: e.target.value,
         });
-        console.log("this state", this.state);
     }
 
     signUp = async () => {
