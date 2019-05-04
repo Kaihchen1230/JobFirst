@@ -76,6 +76,9 @@ type Employer @model {
   companyAddress: Address @connection
   companyWebsite: String
   companyType:String
+  videoURL:String
+  videoPic:String
+  bannerPic:String
   headquarter: String
   ceo:String
   ceoPic:String
