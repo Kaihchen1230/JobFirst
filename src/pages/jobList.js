@@ -6,7 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
-import * as Util from './jobListUtil';
+import * as Util from '../jobUtil/jobListUtil';
 
 const {
     Header, Footer, Sider, Content,
