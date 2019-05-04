@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Link, navigate } from "gatsby";
+import { Row, Col, Button } from 'antd';
 
 const companyDetail = (props) => {
     let companyInfo = {...props.companyInfo};
