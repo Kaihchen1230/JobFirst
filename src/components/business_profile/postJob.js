@@ -12,28 +12,36 @@ const { Meta } = Card;
 
 const JobItem = (props) => {
     let imgArray = [
-        image0,image1,image2,image3,image4
+        image0, image1, image2, image3, image4
     ];
     console.log(props);
-    let jobItem = props.jobs.map((item, index) =>
-        <Col key={index} span={8} style={{ margin: '10px 0' }}>
-            <Card title={item.campanyName} bordered={true}
-                style={{ width: 300, margin:"auto"}}
-                cover={<img alt="example" src={imgArray[index%4]}/>}
-            >
-                <Meta
-                    avatar={<Avatar src={props.companyPic} />}
-                    title={item.jobTitle}
-                    description={item.description}
-                />
-                <p></p>
-                <div align="center">
-                    <Button type="primary" ghost>
-                        <Link to="/app/job-detail/id">Learn More</Link>
-                    </Button>
-                </div>
-            </Card>
-        </Col>
+    let jobItem = props.jobs.map((item, index) => {
+        let jobLink = "/app/job-detail/" + item.id;
+        return (
+            <Col key={index} span={8} style={{ margin: '10px 0' }}>
+                <Card title={item.campanyName} bordered={true}
+                    style={{ width: 300, margin: "auto" }}
+                    cover={<img alt="example" src={imgArray[index % 4]} />}
+                >
+                    <Meta
+                        avatar={<Avatar src={props.companyPic} />}
+                        title={item.jobTitle}
+                        description={item.description}
+                    />
+                    <p></p>
+                    <div align="center">
+                        <Button type="primary" ghost>
+                            <Link 
+                                to={jobLink}
+                                state={{ id: item.id}}>
+                                Learn More
+                            </Link>
+                        </Button>
+                    </div>
+                </Card>
+            </Col>)
+    }
+
     );
     return (
         <div style={{ background: '#ECECEC', padding: '30px' }}>
@@ -49,10 +57,10 @@ const postJob = (props) => {
     return (
         <Layout>
             <Content>
-                <JobItem 
-                jobs={props.jobList}
-                companyPic = {props.companyPic}
-                 />
+                <JobItem
+                    jobs={props.jobList}
+                    companyPic={props.companyPic}
+                />
             </Content>
         </Layout>
     )
