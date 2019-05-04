@@ -258,8 +258,6 @@ class JobDescription extends React.Component{
           )
         }
 
-        console.log('this is isVisible in render: ', this.state.isVisible);
-        
         return(
             
           <div>
@@ -297,7 +295,8 @@ class JobDescription extends React.Component{
                       
                   </TabPane>
 
-                  {this.state.isEmployer? <TabPane tab="Applicant List" key="4">
+                  {this.state.isEmployer?
+                  <TabPane tab="Applicant List" key="4">
                       <div>
                             <ApplicantList applicant={this.state.applicant}></ApplicantList>
                       </div>

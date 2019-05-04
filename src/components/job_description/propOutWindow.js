@@ -24,6 +24,7 @@ class PopOutWindow extends React.Component{
             
             <div>
                 <Modal
+                    style = {{top: 150}}
                     visible={this.state.show}
                     onOk = {() => {
                         this.setState({

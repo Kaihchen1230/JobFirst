@@ -8,6 +8,11 @@ const companyDetail = (props) => {
     let companyInfoPiece = (
         <div>
             <h2>Overview: </h2>
+            <Button>
+                <Link to="/app/business-profile/ba65f328-b89a-43be-beb8-aa30b39dc313">
+                    Learn more
+                </Link>
+            </Button>
             <Row gutter={12}>
             <Col span={2}>
                 <div className="gutter-box">Headquarters</div>
