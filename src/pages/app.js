@@ -15,7 +15,6 @@ import SignUp from '../components/authentication/signup';
 import TalentList from '../pages/talentsList';
 import Photo from './photo.js';
 import "antd/dist/antd.css";
-import 'video-react/dist/video-react.css';
 
 
 const App = () => (
