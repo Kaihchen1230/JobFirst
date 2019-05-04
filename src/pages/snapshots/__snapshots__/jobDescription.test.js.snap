@@ -9,24 +9,82 @@ exports[`Job Description screenshot test Job Description page should render corr
       }
     }
   >
-    Software Engineer Intern
+    
   </h2>
-  <h4>
-    Alibaba
-  </h4>
-  <Button
-    block={false}
-    ghost={true}
-    htmlType="button"
-    loading={false}
-    type="primary"
+  <Popover
+    mouseEnterDelay={0.1}
+    mouseLeaveDelay={0.1}
+    overlayStyle={Object {}}
+    placement="top"
+    transitionName="zoom-big"
+    trigger="hover"
   >
-    <ForwardRef
-      to="/app/application"
+    <div>
+       - 
+    </div>
+  </Popover>
+  <Popover
+    content="We will use your default information to apply to the job"
+    mouseEnterDelay={0.1}
+    mouseLeaveDelay={0.1}
+    overlayStyle={Object {}}
+    placement="top"
+    transitionName="zoom-big"
+    trigger="hover"
+  >
+    <Button
+      block={false}
+      ghost={false}
+      htmlType="button"
+      loading={false}
+      onClick={[Function]}
+      type="primary"
     >
       Apply Now
-    </ForwardRef>
-  </Button>
+    </Button>
+  </Popover>
+  <div>
+    <Modal
+      cancelButtonDisabled={false}
+      cancelText="Cancel"
+      confirmLoading={false}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okText="Okay"
+      okType="primary"
+      onCancel={[Function]}
+      onOk={[Function]}
+      title="Modal"
+      transitionName="zoom"
+      visible={false}
+      width={520}
+    >
+      <p>
+        You Already Applied...
+      </p>
+    </Modal>
+  </div>
+  <div>
+    <Modal
+      cancelButtonDisabled={false}
+      cancelText="Cancel"
+      confirmLoading={false}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okText="Okay"
+      okType="primary"
+      onCancel={[Function]}
+      onOk={[Function]}
+      title="Modal"
+      transitionName="zoom"
+      visible={false}
+      width={520}
+    >
+      <p>
+        Thanks for applied to xxxx, Employer will contact you in shortly
+      </p>
+    </Modal>
+  </div>
   <Tabs
     defaultActiveKey="1"
     hideAdd={false}
@@ -39,19 +97,13 @@ exports[`Job Description screenshot test Job Description page should render corr
       <div>
         <jobDetails
           jobInfo={
-            Array [
-              Object {
-                "description": "Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.Proident culpa ex commodo enim dolore sint. Aute nulla amet anim consectetur proident amet laboris quis. Incididunt proident commodo fugiat nulla aliquip incididunt dolor. Aliquip ipsum laborum anim laboris cupidatat incididunt mollit velit pariatur in.",
-                "location": "New York",
-                "responsibilities": Array [
-                  "Proficient in Python and SQL",
-                  "Familiarity with working using Machine Learning techniques.",
-                  "Naturally curious, detail oriented, passionate about data quality and statistical methods, ability to drive a project to completion.",
-                  "Availability full-time June - August 2019 in NYC",
-                ],
-                "title": "Software Engineer Intern",
-              },
-            ]
+            Object {
+              "clickedCount": 0,
+              "description": "",
+              "requirements": Array [],
+              "title": "",
+              "type": "",
+            }
           }
         />
       </div>
@@ -62,18 +114,7 @@ exports[`Job Description screenshot test Job Description page should render corr
     >
       <div>
         <companyDetail
-          companyInfo={
-            Array [
-              Object {
-                "founded": "1923",
-                "headquarter": "Hanzhou, China",
-                "industry": "Enterprise Software & Network",
-                "name": "Alibaba",
-                "revenue": "$5 to $10 billion(USD)",
-                "size": "10000+ Employees",
-              },
-            ]
-          }
+          companyInfo={Object {}}
         />
       </div>
     </TabPane>
@@ -81,18 +122,96 @@ exports[`Job Description screenshot test Job Description page should render corr
       placeholder={null}
       tab="Location"
     >
-      <location
-        locationInfo={
-          Array [
-            Object {
-              "city": "New York",
-              "state": "NY",
-              "street1": "85 Broad Street",
-              "zipCode": 11225,
-            },
-          ]
-        }
-      />
+      <div>
+        <location
+          locationInfo={Object {}}
+        />
+      </div>
+    </TabPane>
+    <TabPane
+      placeholder={null}
+      tab="Applicant List"
+    >
+      <div>
+        <applicantList
+          applicant={
+            Array [
+              Object {
+                "address": "New York No. 1 Lake Park",
+                "degree": "Associate degree in computer science",
+                "key": "1",
+                "name": "John Brown",
+              },
+              Object {
+                "address": "London No. 2 Lake Park",
+                "degree": "Associate degree in computer science",
+                "key": "2",
+                "name": "Joe Black",
+              },
+              Object {
+                "address": "Sidney No. 3 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "3",
+                "name": "Jim Green",
+              },
+              Object {
+                "address": "London No. 4 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "4",
+                "name": "Jim Red",
+              },
+              Object {
+                "address": "New York No. 5 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "1",
+                "name": "John Brown",
+              },
+              Object {
+                "address": "London No. 6 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "2",
+                "name": "Joe Black",
+              },
+              Object {
+                "address": "Sidney No. 7 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "3",
+                "name": "Jim Green",
+              },
+              Object {
+                "address": "London No. 8 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "4",
+                "name": "Jim Red",
+              },
+              Object {
+                "address": "New York No. 9 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "1",
+                "name": "John Brown",
+              },
+              Object {
+                "address": "London No. 10 Lake Park",
+                "degree": "Associate degree in math education",
+                "key": "2",
+                "name": "Joe Black",
+              },
+              Object {
+                "address": "Sidney No. 11 Lake Park",
+                "degree": "Associate degree in math",
+                "key": "3",
+                "name": "Jim Green",
+              },
+              Object {
+                "address": "London No. 12 Lake Park",
+                "degree": "Associate degree in computer information system",
+                "key": "4",
+                "name": "Jim Red",
+              },
+            ]
+          }
+        />
+      </div>
     </TabPane>
   </Tabs>
 </div>

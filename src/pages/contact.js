@@ -9,8 +9,7 @@ class Contact extends React.Component {
 
     render() {
         return (
-
-            <div align="center" className="mainDiv" style={{ backgroundImage: `url(${officeImage})` }}>
+            <div align="center" className="mainDiv" style={{ backgroundImage: `url('${officeImage}')`, backgroundSize: "cover" }}>
                 <br />
                 <h1 className="title" align="center">{I18n.get('Contact Us')}</h1>
                 <br />
