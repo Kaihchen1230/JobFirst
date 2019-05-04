@@ -131,7 +131,7 @@ const { Column, ColumnGroup } = Table;
 // }];
 
 
-constapplicantList = (props)=>{
+const applicantList = (props)=>{
 
   const data = props.applicants;
   console.log('this is the data: ', data);
@@ -140,8 +140,8 @@ constapplicantList = (props)=>{
   <Table dataSource={data}>
       <Column
         title="Name"
-        dataIndex="lastName"
-        key="lastName"
+        dataIndex="name"
+        key="name"
       />
     <Column
       title="Age"
@@ -152,28 +152,6 @@ constapplicantList = (props)=>{
       title="Address"
       dataIndex="address"
       key="address"
-    />
-    <Column
-      title="Tags"
-      dataIndex="tags"
-      key="tags"
-      render={tags => (
-        <span>
-          {tags.map(tag => <Tag color="blue" key={tag}>{tag}</Tag>)}
-        </span>
-      )}
-    />
-    <Column
-      title="Action"
-      key="action"
-      render={(text, record) => (
-        <span>
-            {/* we can send out an email here to inform the user for interview or reject */}
-          <a href="javascript:;">Invite {record.lastName}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Reject</a>
-        </span>
-      )}
     />
   </Table>
 )};
