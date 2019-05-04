@@ -14,7 +14,7 @@ import config from '../..//aws-exports';
 class Login extends React.Component {
   state = {
     error: ``,
-    language: window.localStorage.getItem('lan')
+    // language: window.localStorage.getItem('lan')
   }
 
   handleSubmit = async (e) => {
