@@ -98,6 +98,7 @@ class Profile extends React.Component {
                     console.log(result);
                     let user = this.state.user;
                     user.pic = result;
+                    console.log("state is",this.state);
                     this.setState({ user: user });
                 })
                 .catch(err => console.log(err));

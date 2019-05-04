@@ -47,7 +47,7 @@ class businessProfile extends React.Component {
       ceo: "",
       size: "",
       revenue: "",
-      timeline: [{ info: "3" }],
+      timeline: [{ info: "create",title:"create" }],
       jobAmount: 0,
       description: "",
       companyPic: "",
@@ -82,9 +82,13 @@ class businessProfile extends React.Component {
     }
 
     //set up other employer info within nested object
-    this.setState({ timeline: employerData.timeline.items });
-    this.setState({ jobList: employerData.job.items });
-    this.setState({ jobAmount: employerData.job.items.length })
+    if(employerData.timeline.items.length >= 1)
+      this.setState({ timeline: employerData.timeline.items });
+    if(employerData.job.items.length >= 1){
+      this.setState({ jobList: employerData.job.items });
+      this.setState({ jobAmount: employerData.job.items.length })
+    }
+
 
     //set up the address data
     if (employerData.companyAddress) {

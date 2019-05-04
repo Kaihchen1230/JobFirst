@@ -125,9 +125,9 @@ class Signup extends React.Component {
                                     />
                                 </Form.Item>
                                 <Form.Item>
-                                    <RadioGroup onChange={this.handleRadio}>
+                                    <RadioGroup onChange={this.handleRadio} defaultValue={'no'}>
                                         <Radio value={'yes'}>{I18n.get('I Want to Hire')}</Radio>
-                                        <Radio checked="checked" value={'no'}>{I18n.get('I Want to Work')}</Radio>
+                                        <Radio value={'no'}>{I18n.get('I Want to Work')}</Radio>
                                     </RadioGroup>
                                 </Form.Item>
                                 <Button onClick={this.signUp} type="primary">
