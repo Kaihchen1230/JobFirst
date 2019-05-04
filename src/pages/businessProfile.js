@@ -12,8 +12,6 @@ import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n } from "aws-amplify";
 import '../style/businessProfile.css';
 
-
-
 const TabPane = Tabs.TabPane;
 
 let bodyStyle = {
@@ -28,41 +26,52 @@ let bodyStyle = {
 }
 
 class businessProfile extends React.Component {
-  state = {
-    visible: false,
-    jobList: [],
-    companyID: "",
-    companyName: "",
-    companyWebsite: "",
-    companyType: "",
-    headquarter: "",
-    companyAddress: {
-      addressLine1: "",
-      addressLine2: "",
-      city: "",
-      state: "",
-      postalCode: ""
-    },
-    ceoPic: "",
-    ceo: "",
-    size: "",
-    revenue: "",
-    timeline: [{ info: "3" }],
-    jobAmount: 0,
-    description: "",
-    companyPic: "",
-    value: 0
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      jobList: [],
+      companyID: "",
+      companyName: "",
+      companyWebsite: "",
+      companyType: "",
+      headquarter: "",
+      companyAddress: {
+        addressLine1: "",
+        addressLine2: "",
+        city: "",
+        state: "",
+        postalCode: ""
+      },
+      ceoPic: "",
+      ceo: "",
+      size: "",
+      revenue: "",
+      timeline: [{ info: "3" }],
+      jobAmount: 0,
+      description: "",
+      companyPic: "",
+      value: 0,
+      allowEdit: false
+    }
   }
+
 
   //Download businessProfile data from AWS
   componentWillMount = async () => {
 
+    //check if the visitor is the page owner
+    let companyID = this.props.userID;
+    let currentUser = await Auth.currentAuthenticatedUser();
+    const { attributes } = currentUser;
+    if (companyID === attributes.sub)
+      this.setState({ allowEdit: true });
+    else
+      this.setState({ allowEdit: false });
+
     //set up companyID
-    let user = await Auth.currentAuthenticatedUser();
-    const { attributes } = user;
-    let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: attributes.sub }));
-    this.setState({ companyID: attributes.sub });
-    console.log("this is employerdata: " + employerData);
+    let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: companyID }));
+    this.setState({ companyID: companyID });
 
     //set up other employer info
     employerData = employerData.data.getEmployer;
@@ -72,8 +81,7 @@ class businessProfile extends React.Component {
       }
     }
 
-    //set up other employer info with nested object
-    
+    //set up other employer info within nested object
     this.setState({ timeline: employerData.timeline.items });
     this.setState({ jobList: employerData.job.items });
     this.setState({ jobAmount: employerData.job.items.length })
@@ -131,9 +139,11 @@ class businessProfile extends React.Component {
               <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
               <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
             </div>
-            <Button className="editButton" type="primary" onClick={this.showModal}>
+            {this.state.allowEdit ?
+              <Button className="editButton" type="primary" onClick={this.showModal}>
                 {I18n.get('Edit Profile')}
-              </Button>
+              </Button> : null
+            }
           </div>
 
           <div style={{ padding: "0px 60px" }}>
@@ -171,7 +181,7 @@ class businessProfile extends React.Component {
                         ceoPic={this.state.ceoPic}
                       />
                       <CompanyVideo />
-    
+
                     </div>
 
                   </div>

@@ -24,7 +24,7 @@ const timeLine = (props) => {
     let Events = () => {
         return timelines.map((element, index) => {
             return (
-                <div>
+                <div key = {index}>
                     <TimelineEvent
                         bubbleStyle={{ border: "2px solid #1890ff"} }
                         icon ={<img style={iconStyle} src="https://i.gifer.com/YYe6.gif"></img>}
