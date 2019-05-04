@@ -34,6 +34,7 @@ class Signup extends React.Component {
         this.setState({
             isEmployer: e.target.value,
         });
+        console.log("this state", this.state);
     }
 
     signUp = async () => {

@@ -1,11 +1,12 @@
 {
     "AppSyncApiName": "csc47300project",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
             "authcognitoed11de21",
             "Outputs.UserPoolId"
         ]
     },
-    "S3DeploymentBucket": "csc47300project-20190503214408-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/08f5474788434fc802c6d55445b3681b0e520f1d"
+    "S3DeploymentBucket": "csc47300project-20190413183412-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/31c9196afe93c4ec4d4b42129e8036483f0a5d5a"
 }

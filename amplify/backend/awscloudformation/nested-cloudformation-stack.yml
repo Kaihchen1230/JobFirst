@@ -81,7 +81,7 @@
 		"authcognitoed11de21": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190503214408-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/auth/cognitoed11de21-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "csc47300projected11de21_identitypool_ed11de21",
 					"allowUnauthenticatedIdentities": true,
@@ -139,32 +139,33 @@
 							"Arn"
 						]
 					},
-					"env": "kailocal"
+					"env": "jielan"
 				}
 			}
 		},
 		"apicsc47300project": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190503214408-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "csc47300project",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
 					"AuthCognitoUserPoolId": {
 						"Fn::GetAtt": [
 							"authcognitoed11de21",
 							"Outputs.UserPoolId"
 						]
 					},
-					"S3DeploymentBucket": "csc47300project-20190503214408-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/08f5474788434fc802c6d55445b3681b0e520f1d",
-					"env": "kailocal"
+					"S3DeploymentBucket": "csc47300project-20190413183412-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/31c9196afe93c4ec4d4b42129e8036483f0a5d5a",
+					"env": "jielan"
 				}
 			}
 		},
 		"storagecsc473storage": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190503214408-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/csc47300project-20190413183412-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"Parameters": {
 					"bucketName": "csc47300projectf1ac5b6f1cbf4f8b96255042ef8d3168",
 					"authPolicyName": "s3_amplify_94abeeab",
@@ -177,7 +178,7 @@
 					},
 					"authPermissions": "rw",
 					"unauthPermissions": "r",
-					"env": "kailocal"
+					"env": "jielan"
 				}
 			}
 		}
