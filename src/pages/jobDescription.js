@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import { Tabs, Button, Popover, Modal, Spin } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/locationDetail';
@@ -256,7 +256,7 @@ class JobDescription extends React.Component{
               
               <div>
                 <Modal
-                  title="Modal"
+                  
                   visible={this.state.alreadyAppliedvisible}
                   onOk={() => {
                     this.setState({
