@@ -5,6 +5,7 @@ import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
+import PopOutWindow from '../components/job_description/propOutWindow';
 import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { isLoggedIn, setUser, getUser, logout } from "../services/auth";
 import * as queries from '../graphql/queries';
@@ -28,8 +29,7 @@ class JobDescription extends React.Component{
         },
         companyInfo: {},
         location: {},
-        alreadyAppliedvisible: false,
-        newUserAppliedVisible: false,
+        isVisible: false,
         applied: false,
         loading: false,
         'applicant': [{
@@ -176,6 +176,7 @@ class JobDescription extends React.Component{
               this.setState({
                 applied: true
               })
+              break;
           }
         }
         if(!this.state.applied){
@@ -199,14 +200,18 @@ class JobDescription extends React.Component{
             const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
             console.log(' this is the newAppliedJob: ', newAppliedJob);
             this.setState({
-              newUserAppliedVisible: true
-            })
+              isVisible: true
+              
+            });
+            console.log('this is isVisible in the if: ', this.state.isVisible);
 
           }catch(err){
             console.log('there is an eeror updating the applied job table: ', err);
           }
         }else{
-          this.setState({alreadyAppliedvisible: true});
+          
+          this.setState({isVisible: true});
+          console.log('this is isVisible in the else: ', this.state.isVisible);
         }
 
         
@@ -214,9 +219,20 @@ class JobDescription extends React.Component{
       }catch(err){
         console.log('there is an error to fetch the data for applied job: ', err);
       }
+    }  
+    
+    loadingStatus = (status) => {
+      this.setState({
+        loading: status
+      })
+    }
 
-      
-    }    
+    visibleStatus = (status) => {
+      this.setState({
+        isVisible: status
+      })
+    }
+    
     render(){
         // console.log("this is the job id: ", this.state.jobId);
         // console.log('this is the postjob info: ', this.state.postJobInfo);
@@ -242,94 +258,53 @@ class JobDescription extends React.Component{
           )
         }
 
+        console.log('this is isVisible in render: ', this.state.isVisible);
         
         return(
             
-            <div>
-              <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
+          <div>
+            <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
                 <Popover content={"We will use your default information to apply to the job"} >
                 
                 <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>
               </Popover>
-              
-              <div>
-                <Modal
-                  
-                  visible={this.state.alreadyAppliedvisible}
-                  onOk={() => {
-                    this.setState({
-                      alreadyAppliedvisible: false,
-                      loading: false
-                    });
-                    navigate("/app/user-profile/"+this.state.userId)
-                  }}
-                  onCancel={() => {
-                    this.setState({
-                      alreadyAppliedvisible: false,
-                      loading: false
-                    })
-                  }}
-                  okText="Go to profile page"
-                  cancelText="Stay here"
-                >
-                 <p>
-                   You Already Applied...
-                 </p>
-                </Modal>
-               </div>
-               <div>
-                <Modal
-                  title="Modal"
-                  visible={this.state.newUserAppliedVisible}
-                  onOk={() => {
-                    this.setState({
-                      newUserAppliedVisible: false,
-                      loading: false
-                    });
-                    navigate("/app/user-profile/"+this.state.userId)
-                  }}
-                  onCancel={() => {
-                    this.setState({
-                      newUserAppliedVisible: false,
-                      loading: false
-                    })
-                  }}
-                  okText="Go to profile page"
-                  cancelText="Stay here"
-                >
-                 <p>
-                   Thanks for applied to xxxx, Employer will contact you in shortly
-                 </p>
-                </Modal>
-              </div>
-                <Tabs defaultActiveKey="1" > 
-                    <TabPane tab="Job" key="1" >
-                        <div>
-                            <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
-                        </div>
-            
-                    </TabPane>
-                    <TabPane tab="Company" key="2">
-                        <div>
-                        <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
-                        </div>
-                    </TabPane>
+              <PopOutWindow
+                userId = {this.state.userId}
+                show = {this.state.isVisible}
+                isVisible = {this.visibleStatus}
+                isLoading = {this.loadingStatus}
+                okText = "Go to profile page"
+                cancelText = "Stay here"
+                content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
+              />
+              <Tabs defaultActiveKey="1" > 
+                  <TabPane tab="Job" key="1" >
+                      <div>
+                          <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
+                      </div>
+          
+                  </TabPane>
+                  <TabPane tab="Company" key="2">
+                      <div>
+                      <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
+                      </div>
+                  </TabPane>
 
-                    <TabPane tab="Location" key="3">
-                         <div><Location locationInfo = {this.state.location}></Location></div>
-                        
-                    </TabPane>
+                  <TabPane tab="Location" key="3">
+                        <div><Location locationInfo = {this.state.location}></Location></div>
+                      
+                  </TabPane>
 
-                    {this.state.isEmployer? <TabPane tab="Applicant List" key="4">
-                        <div>
-                             <ApplicantList applicant={this.state.applicant}></ApplicantList>
-                        </div>
-                    </TabPane>: null}
-                </Tabs>
-                </Spin>
-            </div>
+                  {this.state.isEmployer? <TabPane tab="Applicant List" key="4">
+                      <div>
+                            <ApplicantList applicant={this.state.applicant}></ApplicantList>
+                      </div>
+                  </TabPane>: null}
+              </Tabs>
+            </Spin>
+          </div>
         )
     }
 }
