@@ -9,12 +9,13 @@ class Contact extends React.Component {
 
     render() {
         return (
-            <div align="center" className="mainDiv" style={{ backgroundImage: `url('${officeImage}')`, backgroundSize: "cover" }}>
+            <div align="center" className="mainDiv" style={{ backgroundImage: `url('https://images.pexels.com/photos/990818/pexels-photo-990818.jpeg?cs=srgb&dl=agenda-analysis-business-plan-990818.jpg&fm=jpg')`, backgroundSize: "cover" }}>
                 <br />
-                <h1 className="title" align="center">{I18n.get('Contact Us')}</h1>
+                <h1 className="title" style={{color:"white", fontSize:"3em"}}  align="center">{I18n.get('Contact Us')}</h1>
                 <br />
-                <p className="description" align="center">{I18n.get('You can get in touch with us at any time for 24/7 support and troubleshooting.')}</p>
-                <br /><br />
+                {/* <p className="description" style={{color:"white", fontWeight:"normal"}} align="center">{I18n.get('You can get in touch with us at any time for 24/7 support and troubleshooting.')}</p> */}
+                
+                <br />
                 <Column flexGrow={1}>
                     <Row vertical='center'>
                         <Column flexGrow={1} horizontal='center'>
