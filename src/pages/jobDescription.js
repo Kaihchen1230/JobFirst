@@ -10,6 +10,7 @@ import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { isLoggedIn, setUser, getUser, logout } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
+import * as customQueries from '../customGraphql/queries';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -32,70 +33,9 @@ class JobDescription extends React.Component{
         isVisible: false,
         applied: false,
         loading: false,
-        'applicant': [{
-            key: '1',
-            name: 'John Brown',
-            degree: "Associate degree in computer science",
-            address: 'New York No. 1 Lake Park',
-          }, {
-            key: '2',
-            name: 'Joe Black',
-            degree: "Associate degree in computer science",
-            address: 'London No. 2 Lake Park',
-          }, {
-            key: '3',
-            name: 'Jim Green',
-            degree: "Associate degree in computer information system",
-            address: 'Sidney No. 3 Lake Park',
-          }, {
-            key: '4',
-            name: 'Jim Red',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 4 Lake Park',
-          },
-          {
-            key: '1',
-            name: 'John Brown',
-            degree: "Associate degree in computer information system",
-            address: 'New York No. 5 Lake Park',
-          }, {
-            key: '2',
-            name: 'Joe Black',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 6 Lake Park',
-          }, {
-            key: '3',
-            name: 'Jim Green',
-            degree: "Associate degree in computer information system",
-            address: 'Sidney No. 7 Lake Park',
-          }, {
-            key: '4',
-            name: 'Jim Red',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 8 Lake Park',
-          },
-          {
-            key: '1',
-            name: 'John Brown',
-            degree: "Associate degree in computer information system",
-            address: 'New York No. 9 Lake Park',
-          }, {
-            key: '2',
-            name: 'Joe Black',
-            degree: "Associate degree in math education",
-            address: 'London No. 10 Lake Park',
-          }, {
-            key: '3',
-            name: 'Jim Green',
-            degree: "Associate degree in math",
-            address: 'Sidney No. 11 Lake Park',
-          }, {
-            key: '4',
-            name: 'Jim Red',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 12 Lake Park',
-          }
-        ],
+        display: false,
+        count: 0,
+        applicants: []
 
     }
     componentDidMount = async () => {
@@ -109,7 +49,7 @@ class JobDescription extends React.Component{
       // get the current job info
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
-        console.log('this is currentJobInfo: ', currentJobInfo);
+       
         let incomingJobInfo = {...this.state.jobInfo};
         incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
         incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
@@ -124,7 +64,7 @@ class JobDescription extends React.Component{
           companyInfo: currentJobInfo.data.getPostedJob.company,
           location: currentJobInfo.data.getPostedJob.location
         });
-        // console.log('this is the clickcount: ', this.state.jobInfo.clickedCount);
+
       }catch(err){
         console.log('there is an error fetching data...', err);
       }
@@ -132,24 +72,44 @@ class JobDescription extends React.Component{
       // update posted job click count
       try{
         let currentJobClickedCounts = this.state.jobInfo.clickedCount;
-        // console.log('this is !!!clickcount: ', currentJobClickedCounts);
-        // console.log('this is !!!!!! current id: ', currentId);
         const updatePostedJobInput = {
           id: currentId,
           clickedCounts: currentJobClickedCounts + 1
         };
         await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
-        // const newUpdatePostJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
-        // console.log(' this is the newUpdatePostJob: ', newUpdatePostJob);
 
       }catch(err){
         console.log('there is an error updating click count: ', err);
       }
 
-      getUser()["custom:isEmployer"] === "yes" ? this.setState({isEmployer: true}) : this.setState({isEmployer: false});
-      console.log('this is geUser: ', this.state.isEmployer);      
-      // console.log('this is attribute: ', currentUserId);
-      // console.log('this is attr: ', {attributes});
+      getUser()["custom:isEmployer"] === "yes" ? this.setState({isEmployer: true, display: true}) : this.setState({isEmployer: false});
+
+      // get employees who applied to this job
+      try{
+        const getEmployeeAppliedCurrentJob = await API.graphql(graphqlOperation (customQueries.getEmployeeAppliedSameJob, {id: currentId}));
+        console.log('this is the testing: ', getEmployeeAppliedCurrentJob);
+        const getApplicants = getEmployeeAppliedCurrentJob.data.getPostedJob.applied.items;
+        // console.log('this is the employeeAppliedCurrentJob: ', employeeAppliedCurrentJob, " and its tpye: is array ", Array.isArray(employeeAppliedCurrentJob));
+
+        let applicantsInfo = [];
+
+        for(let i = 0; i < getApplicants.length; i++){
+          applicantsInfo.push({
+            key: getApplicants[i].Employee.id,
+            name: getApplicants[i].Employee.firstName,
+            age: getApplicants[i].Employee.age,
+            address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
+            + getApplicants[i].Employee.address.postalCode
+          })
+        }
+
+        this.setState({
+          applicants: applicantsInfo
+        });
+
+      }catch(err){
+        console.log('there is an error fetching the data for employees who applied the job ', err);
+      }
     }
 
     applyJob = async () => {
@@ -258,6 +218,14 @@ class JobDescription extends React.Component{
           )
         }
 
+        // if(this.state.display && !this.state.count == 0){
+        //   this.setState({
+        //     display : false,
+        //     count : 1
+        //   })
+        // }
+        console.log('this is display: ', this.state.display); 
+
         return(
             
           <div>
@@ -298,7 +266,7 @@ class JobDescription extends React.Component{
                   {this.state.isEmployer?
                   <TabPane tab="Applicant List" key="4">
                       <div>
-                            <ApplicantList applicant={this.state.applicant}></ApplicantList>
+                            <ApplicantList applicants={this.state.applicants}></ApplicantList>
                       </div>
                   </TabPane>: null}
               </Tabs>
