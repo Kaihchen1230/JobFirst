@@ -20,24 +20,10 @@ const Information = (props) => {
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
-                    <Progress type="circle" percent={75} format={percent => `${percent} Completed`} />
                     <div align="center">
-                        <h1>{I18n.get("Full Name")}: {user.name + " " + user.lastName}</h1>
-                        <br />
-                        {I18n.get("Last Name")}: {user.lastName}
-                        <br />
-                        {I18n.get("Middle Name")}: {user.middleName}
-                        <br />
-                        {I18n.get("Age")}: {user.age}
-                        <br />
-                        {I18n.get("Email")}: {user.email}
-                        <br />
-                        {I18n.get("Phone Number")}: {user.phone}
-                        <br />
-                        {I18n.get("English Level")}: {user.englishLevel}
-                        <br />
-                        {I18n.get("Spoken Language")}: {user.language}
-                        <br />
+                        <h1>Profile Completion:</h1>
+                        <Progress type="circle" percent={100} width="90" format={percent => (percent == 100) ? "Complete" : `${percent} %`} />
+                        <br /><br />
                         <Card
                             size="default"
                             title="User Information"
