@@ -6,10 +6,21 @@ import dict from "../dictionary/dictionary"
 
 const General = (props) => {
 
+    let total = 7;
+    let count = 0;
+    if (props.user.name) { ++count }
+    if (props.user.lastName) { ++count }
+    if (props.user.age) { ++count }
+    if (props.user.englishLevel) { ++count }
+    if (props.user.language) { ++count }
+    if (props.user.email) { ++count }
+    if (props.user.phone) { ++count }
+    let per = Math.ceil(count / total);
+
     return (
         <div align="center">
             <h1>{I18n.get('Profile Completion')}:</h1>
-            <Progress type="circle" percent={60} format={percent => (percent == 100) ? "Complete" : `${percent} %`} />
+            <Progress type="circle" percent={per} format={percent => (percent == 100) ? "Complete" : `${percent} %`} />
             <br /><br />
             <Card
                 size="default"
