@@ -6,7 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
-import * as Util from '../jobListUtil';
+import * as Util from './jobListUnitTest/jobListUtil';
 
 const {
     Header, Footer, Sider, Content,
@@ -17,6 +17,7 @@ const InputGroup = Input.Group;
 // let lan = window.localStorage.getItem('lan');
 // I18n.putVocabularies(dict);
 // I18n.setLanguage(lan);
+
 class JobList extends React.Component {
 
     state = {
