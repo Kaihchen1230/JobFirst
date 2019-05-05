@@ -1,7 +1,7 @@
 exports.filterTypeGen = (value) => {
     let newSearch = {};
     if(value == "All"){
-        return {"filter":{}};
+        return {};
     }else{
         newSearch = {"filter":{"jobType":{"contains":value}}};
         return newSearch;
@@ -9,7 +9,18 @@ exports.filterTypeGen = (value) => {
 }
 
 exports.filterDateGen = (value) =>{
-
+    if(value == "All"){
+        return {};
+    }
+    let timeDifference = (value * 60 * 60 * 24 * 1000);
+    let currentTime = new Date();
+    let setDate = currentTime.getTime() - timeDifference;
+    setDate = new Date(setDate);
+    let setYear = setDate.getFullYear();
+    let setMonth = setDate.getMonth() + 1;
+    let setDay = setDate.getDate();
+    let result = {"filter":{"datePosted":{"ge": setYear + "-" + setMonth + "-" + setDay}}};
+    return result;
 }
 
 exports.searchByNameGen = (value, search) => {
