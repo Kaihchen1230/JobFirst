@@ -15,10 +15,10 @@ class ModalForm extends React.Component {
     this.state = { ...data };
     this.state.addressLine1 = data.companyAddress.addressLine1;
     this.state.addressLine2 = data.companyAddress.addressLine2;
+    this.state.city = data.companyAddress.city;
     this.state.postalCode = data.companyAddress.postalCode;
     this.state.state = data.companyAddress.state;
     this.state.addressID = data.companyAddress.id;
-    // this.state.lan = window.localStorage.getItem('lan');
     this.state.timelineNum = data.timeline.length;
     this.state.originalTimeline = data.timeline;
   }
@@ -28,6 +28,7 @@ class ModalForm extends React.Component {
     this.setState({ ...data });
     this.setState({ addressLine1: data.companyAddress.addressLine1 });
     this.setState({ addressLine2: data.companyAddress.addressLine2 });
+    this.setState({ city: data.companyAddress.city});
     this.setState({ postalCode: data.companyAddress.postalCode });
     this.setState({ state: data.companyAddress.state });
     this.setState({ addressID: data.companyAddress.id });
@@ -38,6 +39,7 @@ class ModalForm extends React.Component {
 
 
   handleUpdate = (event) => {
+    console.log("change",event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -94,6 +96,7 @@ class ModalForm extends React.Component {
       revenue: this.state.revenue,
       ceo: this.state.ceo,
       ceoPic: this.state.ceoPic,
+      videoURL:this.state.videoURL,
       companyType: this.state.companyType,
       description: this.state.description,
       headquarter: this.state.headquarter,
@@ -108,6 +111,7 @@ class ModalForm extends React.Component {
       id: this.state.addressID,
       line1: this.state.addressLine1,
       line2: this.state.addressLine2,
+      city:this.state.city,
       postalCode: this.state.postalCode,
       state: this.state.state
     }
@@ -304,6 +308,17 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               required />
           </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="Youtube Video"
+          >
+            <Input
+              value={this.state.videoURL}
+              style={{ width: "60%" }}
+              name="videoURL"
+              onChange={(event) => { this.handleUpdate(event) }}
+              required />
+          </FormItem>
 
           <h2 style={{ marginLeft: "20%" }}>Address:</h2>
           <FormItem
@@ -324,6 +339,26 @@ class ModalForm extends React.Component {
             <Input
               value={this.state.addressLine2}
               name="addressLine2"
+              onChange={(event) => { this.handleUpdate(event) }}
+              style={{ width: "60%" }} />
+          </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="City"
+          >
+            <Input
+              value={this.state.city}
+              name="city"
+              onChange={(event) => { this.handleUpdate(event) }}
+              style={{ width: "60%" }} />
+          </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="postalCode"
+          >
+            <Input
+              value={this.state.postalCode}
+              name="postalCode"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
           </FormItem>

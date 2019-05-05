@@ -58,3 +58,6 @@ ___
 
 ### Testing:
 ```npm test``` or ```npm test -- -- watch```
+
+### Document:
+```put all docs file under docs folder``` and ```npm run docz:dev```

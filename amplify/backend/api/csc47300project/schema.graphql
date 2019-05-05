@@ -19,6 +19,7 @@ type Employee @model {
   language: [String]
   englishLevel: String
   favoriteQuote: String
+  identityID: String
 }
 
 type Association @model {
@@ -75,6 +76,9 @@ type Employer @model {
   companyAddress: Address @connection
   companyWebsite: String
   companyType:String
+  videoURL:String
+  videoPic:String
+  bannerPic:String
   headquarter: String
   ceo:String
   ceoPic:String
@@ -84,6 +88,7 @@ type Employer @model {
   companyPic: String
   description: String
   job: [PostedJob] @connection(name:"job")
+  identityID: String
 }
 
 type PostedJob @model {

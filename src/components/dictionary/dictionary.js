@@ -65,7 +65,7 @@ let dict = {
         "Logout": "登出",
         "General Info": "基本信息",
         "Education and Awards": "教育和奖励",
-        "Experience and Skills": "经验和技能",
+        "Experiences and Skills": "经验和技能",
         "Applied Jobs": "应用工作",
         "Job": "工作",
         "Date Applied": "申请日期",
@@ -80,6 +80,10 @@ let dict = {
         /* user profile */
         "First Name": "名字",
         "Last Name": "姓名",
+        "Full Name": "全名",
+        "Phone": "电话",
+        "User Information": "用户信息",
+        "Profile Completion": "配置文件完成",
         "Middle Name": "中间名",
         "Age": "年龄",
         "Email": "电邮",
@@ -91,6 +95,10 @@ let dict = {
         "Add Education or Award": "添加教育或奖项",
         "Add Experience or Skill": "添加经验或技能",
         /* end of user profile */
+        "Degree": "学位",
+        "Location": "地点",
+        "Years": "年份",
+        "Education": "教育"
 
     },
     'es': {
@@ -159,7 +167,7 @@ let dict = {
         "Logout": "Logout",
         "General Info": "General Info",
         "Education and Awards": "Education and Awards",
-        "Experience and Skills": "Experience and Skills",
+        "Experiences and Skills": "Experiences and Skills",
         "Applied Jobs": "Applied Jobs",
         "Job": "Job",
         "Date Applied": "Date Applied",
@@ -174,6 +182,10 @@ let dict = {
         /* user profile */
         "First Name": "First Name",
         "Last Name": "Last Name",
+        "Full Name": "Full Name",
+        "Phone": "Phone",
+        "User Information": "User Information",
+        "Profile Completion": "Profile Completion",
         "Middle Name": "Middle Name",
         "Age": "Age",
         "Email": "Email",
@@ -185,6 +197,10 @@ let dict = {
         "Add Education or Award": "Add Education or Award",
         "Add Experience or Skill": "Add Experience or Skill",
         /* end of user profile */
+        "Degree": "Degree",
+        "Location": "Location",
+        "Years": "Years",
+        "Education": "Education"
     }
 };
 export default dict;

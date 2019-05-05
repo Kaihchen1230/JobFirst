@@ -65,7 +65,7 @@ class PostJob extends React.Component {
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item>
-                        <Input placeholder={I18n.get('Enter the Job Title')} 
+                        <Input  placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
                             suffix={
                                 <Tooltip title={I18n.get('Enter the name of the job')}>

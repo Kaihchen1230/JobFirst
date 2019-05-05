@@ -16,6 +16,7 @@ import TalentList from '../pages/talentsList';
 import Photo from './photo.js';
 import "antd/dist/antd.css";
 
+
 const App = () => (
   <Layout>
     <Router>

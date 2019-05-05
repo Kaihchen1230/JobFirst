@@ -9,11 +9,12 @@ import 'antd/dist/antd.css';
 import './login.css';
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import * as mutations from '../../graphql/mutations';
+import config from '../..//aws-exports';
 
 class Login extends React.Component {
   state = {
     error: ``,
-    language: window.localStorage.getItem('lan')
+    // language: window.localStorage.getItem('lan')
   }
 
   handleSubmit = async (e) => {
@@ -28,12 +29,17 @@ class Login extends React.Component {
       try {
         await Auth.signIn(userName, password)
         const user = await Auth.currentAuthenticatedUser();
+        let key = config.aws_cognito_identity_pool_id;
+        let identityIDKey = `aws.cognito.identity-id.${key}`;
+        let identityID = user.storage[identityIDKey];
         const userInfo = {
           ...user.attributes,
-          username: user.username
+          username: user.username,
+          language: "es",
+          identityID: identityID,
         }
         setUser(userInfo)
-        //! the next line must not be deleted and I don't know why
+        //! the next line MUST NOT be deleted and I don't know why
         console.log(userInfo);
         //(userInfo['custom:isEmployer'] === 'no') ? navigate("/app/user-profile/" + userInfo.username) : navigate("/app/business-profile")
         navigate("/")
@@ -44,7 +50,7 @@ class Login extends React.Component {
       try {
         const userInfo = getUser();
         console.log("userInfo",userInfo);
-        const { email, name, phone_number, sub, username } = userInfo
+        const { email, name, phone_number, sub, username, identityID } = userInfo
         const profileExist = userInfo['custom:isProfile'];
         if (profileExist === 'no') {
             if(userInfo['custom:isEmployer'] == 'no'){
@@ -54,6 +60,7 @@ class Login extends React.Component {
                 firstName: name,
                 phone: phone_number,
                 email: email,
+                identityID: identityID,
               }
               const newEmployee = await API.graphql(graphqlOperation(mutations.createEmployee, {input: data}));
               console.log("new employee", newEmployee);
@@ -71,6 +78,7 @@ class Login extends React.Component {
                 employerCompanyAddressId:newAddress.data.createAddress.id,
                 companyName: username,
                 companyEmail: email,
+                identityID: identityID,
               }
               const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: employerData })); 
               console.log("new employer",newEmployeer);           
