@@ -6,7 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
-import * as Util from './jobListUnitTest/jobListUtil';
+import * as Util from '../util/jobListUtil';
 
 const {
     Header, Footer, Sider, Content,
@@ -31,7 +31,7 @@ class JobList extends React.Component {
     }
 
     filterDate = (value) =>{
-
+        this.setState({"filter": Util.filterDateGen(value)});
     }
 
     selectSearch = (value) => {
