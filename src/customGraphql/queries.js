@@ -99,7 +99,7 @@ export const getEmployeeAppliedSameJob =
                     Employee{
                         id
                         firstName
-                        age
+                        englishLevel
                         address{
                             line1
                             line2

@@ -95,10 +95,18 @@ class JobDescription extends React.Component{
         console.log('this is getApplicants: ', getApplicants);
 
         for(let i = 0; i < getApplicants.length; i++){
+
+          let temp = getApplicants[i].Employee.englishLevel;
+          let currentEnglishLevel;
+          if(temp === null){
+            currentEnglishLevel = "N/A"
+          }else{
+            currentEnglishLevel = temp
+          }
           applicantsInfo.push({
             key: getApplicants[i].Employee.id,
             name: getApplicants[i].Employee.firstName,
-            age: getApplicants[i].Employee.age,
+            englishLevel: currentEnglishLevel,
             address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
             + getApplicants[i].Employee.address.postalCode,
             appliedJobId: getApplicants[i].id,
@@ -195,6 +203,8 @@ class JobDescription extends React.Component{
         isVisible: status
       })
     }
+
+  
     
     render(){
         // console.log("this is the job id: ", this.state.jobId);
@@ -237,7 +247,8 @@ class JobDescription extends React.Component{
                 {viewCompanyInfo}
                 <Popover content={"We will use your default information to apply to the job"} >
                 
-                <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>
+                {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
+                
               </Popover>
               <PopOutWindow
                 userId = {this.state.userId}
