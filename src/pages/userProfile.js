@@ -7,8 +7,9 @@ import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
-import { Layout, Skeleton, Menu, Icon } from 'antd';
+import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
+import ResumeUploader from '../components/user_profile/resumeUploader';
 
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -80,6 +81,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("custom queries failed", err);
         }
+        
         // fetch the employee's education
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
@@ -89,6 +91,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get education: ", err);
         }
+
         // fetch the employee's experiences
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
@@ -98,6 +101,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get experience: ", err);
         }
+        
         // fetch photo
         if (this.state.user.pic === 'yes') {
             Storage.get('profilePic', {
@@ -118,7 +122,28 @@ class Profile extends React.Component {
         })
     }
 
-    deleteEducation = (key, e) => {
+    onChange(info) {
+        if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
+    }
+    
+    deleteEducation = async (key, e) => {
+        // call API to delete
+        let deleteId = {
+            id: key
+        }
+        try {
+            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: deleteId }));
+            console.log("this item was deleted: ", delEdu);
+        } catch (err) {
+            console.log("error - ", err);
+        }
         let edu = [...this.state.education];
         let deleteIndex = edu.findIndex((item) => item.id === key);
         let willDelete = false;
@@ -133,7 +158,18 @@ class Profile extends React.Component {
         }
     }
 
-    deleteExperience = (key, e) => {
+    deleteExperience = async (key, e) => {
+        // call API to delete
+        let deleteId = {
+            id: key
+        }
+        try {
+            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: deleteId }));
+            console.log("this item was deleted: ", delExp);
+        } catch (err) {
+            console.log("error - ", err);
+        }
+        // remove it from the page
         let exp = [...this.state.experiences];
         let deleteIndex = exp.findIndex((item) => item.id === key);
         let willDelete = false;
@@ -195,8 +231,7 @@ class Profile extends React.Component {
                             </Menu.Item>
 
                             <Menu.Item key="9">
-                                <Icon type="file" />
-                                <span>{I18n.get('Upload a Resume')}</span>
+                                <ResumeUploader onChange={this.onChange} />
                             </Menu.Item>
                         </Menu>) : null
                     }
