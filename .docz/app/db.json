@@ -1,0 +1,224 @@
+{
+  "config": {
+    "title": "Job First Project",
+    "description": "A simplified bare-bones starter for Gatsby",
+    "menu": [],
+    "version": "0.1.0",
+    "repository": "https://github.com/Kaihchen1230/csc47300Project",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {},
+    "separator": "-"
+  },
+  "props": [
+    {
+      "key": "src\\components\\authentication\\Error.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Error",
+          "methods": [],
+          "actualName": "Error"
+        }
+      ]
+    },
+    {
+      "key": "src\\components\\business_profile\\Timeline.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "timeLine",
+          "methods": [],
+          "actualName": "timeLine"
+        }
+      ]
+    },
+    {
+      "key": "src\\components\\business_profile\\EditProfileForm.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "ModalForm",
+          "methods": [
+            {
+              "name": "componentWillReceiveProps",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "nextProps",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "handleUpdate",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "event",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "updateTimeline",
+              "docblock": null,
+              "modifiers": [
+                "async"
+              ],
+              "params": [],
+              "returns": null
+            },
+            {
+              "name": "handleSubmit",
+              "docblock": null,
+              "modifiers": [
+                "async"
+              ],
+              "params": [],
+              "returns": null
+            },
+            {
+              "name": "handleAddTimeline",
+              "docblock": null,
+              "modifiers": [],
+              "params": [],
+              "returns": null
+            },
+            {
+              "name": "handleDeleteTimeline",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "index",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "handleTitleUpdate",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "e",
+                  "type": null
+                },
+                {
+                  "name": "index",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "handleDateUpdate",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "dateString",
+                  "type": null
+                },
+                {
+                  "name": "index",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "handleInfoUpdate",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "e",
+                  "type": null
+                },
+                {
+                  "name": "index",
+                  "type": null
+                }
+              ],
+              "returns": null
+            }
+          ],
+          "actualName": "ModalForm"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "key": "docs/index.mdx",
+      "value": {
+        "name": "Getting Started",
+        "route": "/",
+        "id": "73498ad0e1e62a714b08085d318f9de1",
+        "filepath": "docs/index.mdx",
+        "link": "https://github.com/gatsbyjs/gatsby-starter-hello-world\\edit\\master\\docs/index.mdx",
+        "slug": "docs-index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "getting-started",
+            "depth": 1,
+            "value": "Getting Started"
+          },
+          {
+            "slug": "csc473-project-under-construction",
+            "depth": 1,
+            "value": "CSC473 Project (Under Construction)"
+          },
+          {
+            "slug": "jobfirst",
+            "depth": 1,
+            "value": "JobFirst"
+          },
+          {
+            "slug": "about",
+            "depth": 2,
+            "value": "About:"
+          },
+          {
+            "slug": "refer-here-for-our-weekly-meeting-status",
+            "depth": 2,
+            "value": "Refer here for our weekly meeting status"
+          },
+          {
+            "slug": "for-the-developers",
+            "depth": 2,
+            "value": "For the developers:"
+          },
+          {
+            "slug": "fresh-start-recommended",
+            "depth": 3,
+            "value": "Fresh start: (RECOMMENDED)"
+          },
+          {
+            "slug": "adding-new-amplify-service",
+            "depth": 3,
+            "value": "Adding new Amplify service:"
+          },
+          {
+            "slug": "testing",
+            "depth": 3,
+            "value": "Testing:"
+          },
+          {
+            "slug": "document",
+            "depth": 3,
+            "value": "Document:"
+          }
+        ]
+      }
+    }
+  ]
+}
