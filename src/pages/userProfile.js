@@ -94,12 +94,7 @@ class Profile extends React.Component {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
             //console.log("Experience Results: ", experienceResults);
             const temp = experienceResults.data.getEmployee.experience.items;
-            temp.forEach(item => {
-                item.key = item.id;
-            })
-            console.log("temp: ", temp);
             this.setState({ experiences: temp });
-            //console.log("sample id: ", this.state.experiences[0].id);
         } catch (err) {
             console.log("couldn't get experience: ", err);
         }
@@ -121,6 +116,21 @@ class Profile extends React.Component {
         this.setState({
             loading: false
         })
+    }
+
+    deleteEducation = (key, e) => {
+        let edu = [...this.state.education];
+        let deleteIndex = edu.findIndex((item) => item.id === key);
+        let willDelete = false;
+        edu.forEach(item => {
+            if (item.id === key) {
+                willDelete = true;
+            }
+        })
+        if (willDelete) {
+            edu.splice(deleteIndex, 1);
+            this.setState({ education: edu });
+        }
     }
 
     deleteExperience = (key, e) => {
@@ -198,6 +208,7 @@ class Profile extends React.Component {
                         education={this.state.education}
                         experiences={this.state.experiences}
                         allowEdit={this.state.allowEdit}
+                        deleteEdu={this.deleteEducation}
                         deleteExp={this.deleteExperience}
                     />
                 </Content>

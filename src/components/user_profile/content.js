@@ -27,7 +27,7 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Education and Awards")} key="2">
                     <h1 align="center"><b>{I18n.get("Education")}</b></h1>
                     {props.education.length > 0 ? (
-                        <Education education={props.education} />
+                        <Education education={props.education} allowEdit={props.allowEdit} deleteEdu={props.deleteEdu} />
                     ) : <h1 align="center">You haven't added your past education yet.</h1>
                     }
                 </TabPane>
