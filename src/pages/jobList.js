@@ -31,7 +31,7 @@ class JobList extends React.Component {
     }
 
     filterDate = (value) =>{
-
+        this.setState({"filter": Util.filterDateGen(value)});
     }
 
     selectSearch = (value) => {
