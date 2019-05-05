@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
-import BusinessProfile from '../businessProfile';
+import BusinessProfile from '../../pages/businessProfile';
 
 describe('Business profile screenshot test', () => {
     test('Business profile should render correctly', () => {
