@@ -24,6 +24,7 @@ class PopOutWindow extends React.Component{
             
             <div>
                 <Modal
+                    style = {{top: 150}}
                     visible={this.state.show}
                     onOk = {() => {
                         this.setState({
@@ -32,7 +33,7 @@ class PopOutWindow extends React.Component{
                         })
                         this.props.isLoading(false);
                         this.props.isVisible(false);
-                        navigate("/app/user-profile/"+this.props.userId);
+                        navigate(this.props.link+this.props.userId);
                     }}
                     onCancel = {() => {
                         this.setState({
