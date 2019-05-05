@@ -6,7 +6,11 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
+<<<<<<< HEAD
 import * as Util from './jobListUnitTest/jobListUtil';
+=======
+import * as Util from '../jobUtil/jobListUtil';
+>>>>>>> master
 
 const {
     Header, Footer, Sider, Content,
@@ -17,6 +21,7 @@ const InputGroup = Input.Group;
 // let lan = window.localStorage.getItem('lan');
 // I18n.putVocabularies(dict);
 // I18n.setLanguage(lan);
+
 class JobList extends React.Component {
 
     state = {
@@ -31,7 +36,7 @@ class JobList extends React.Component {
     }
 
     filterDate = (value) =>{
-
+        this.setState({"filter": Util.filterDateGen(value)});
     }
 
     selectSearch = (value) => {

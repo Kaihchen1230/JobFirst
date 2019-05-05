@@ -4,7 +4,7 @@ import * as mutations from '../../graphql/mutations';
 import PopOutWindow from './popOutWindow';
 import { async } from 'q';
 import { API, graphqlOperation } from 'aws-amplify';
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 const { Column } = Table;
 
 
@@ -106,13 +106,17 @@ class ApplicantList extends React.Component{
         <Table dataSource={this.state.applicants}>
             <Column
               title="Name"
-              dataIndex="name"
               key="name"
+              render = {(text, record) => (
+                <Link to={"/app/user-profile/"+record.key}> 
+                  {record.name}
+                </Link>
+              )}
             />
           <Column
-            title="Age"
-            dataIndex="age"
-            key="age"
+            title="English Level"
+            dataIndex="englishLevel"
+            key="englishLevel"
           />
           <Column
             title="Address"

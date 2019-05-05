@@ -19,7 +19,9 @@ class JobDescription extends React.Component{
     state = {
         userId: "",
         jobId: "",
+        employerId: "",
         isEmployer: false,
+        isCorrectEmployer: false,
         postJobInfo: {},
         jobInfo: {
           title: "",
@@ -39,6 +41,7 @@ class JobDescription extends React.Component{
 
     }
     componentDidMount = async () => {
+      // current job id
       let currentId = window.history.state.id;
       let user = await Auth.currentAuthenticatedUser();
       console.log("this is the user: ", user);
@@ -56,6 +59,7 @@ class JobDescription extends React.Component{
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
         incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
+        console.log('this is the currentJobInfo: ', currentJobInfo);
         this.setState({
           userId: currentUserId,
           jobId: currentId,
@@ -82,23 +86,44 @@ class JobDescription extends React.Component{
         console.log('there is an error updating click count: ', err);
       }
 
+      // checking if the current user is an Er or Ee
       getUser()["custom:isEmployer"] === "yes" ? this.setState({isEmployer: true, display: true}) : this.setState({isEmployer: false});
 
-      // get employees who applied to this job
+      // check if the current user is the company who posted the job
+
+      if(this.state.userId === this.state.companyInfo.id){
+        console.log('this is the current userid: ', this.state.userId, ' and this is the companyId: ', this.state.companyInfo.id);
+        this.setState({
+          isCorrectEmployer: true
+        })
+      }
+
+      // get applicants for the current job post
       try{
         const getEmployeeAppliedCurrentJob = await API.graphql(graphqlOperation (customQueries.getEmployeeAppliedSameJob, {id: currentId}));
         // console.log('this is the testing: ', getEmployeeAppliedCurrentJob);
-        const getApplicants = getEmployeeAppliedCurrentJob.data.getPostedJob.applied.items;
+        let getApplicants = getEmployeeAppliedCurrentJob.data.getPostedJob.applied.items;
         // console.log('this is the employeeAppliedCurrentJob: ', employeeAppliedCurrentJob, " and its tpye: is array ", Array.isArray(employeeAppliedCurrentJob));
 
         let applicantsInfo = [];
-        console.log('this is getApplicants: ', getApplicants);
-
+        console.log('this is getApplicants: ', getApplicants, ' and this is the length: ', getApplicants.length);
+        
+        
         for(let i = 0; i < getApplicants.length; i++){
+
+          let temp = getApplicants[i].Employee.englishLevel;
+          console.log('this is getApplicants[i].Employee.englishLevel: ', getApplicants[i].Employee.englishLevel);
+          let currentEnglishLevel;
+          if(temp == null){
+            currentEnglishLevel = "N/A"
+          }else{
+            currentEnglishLevel = temp
+          }
+          console.log('this is currentEnglishLevel: ', currentEnglishLevel);
           applicantsInfo.push({
             key: getApplicants[i].Employee.id,
             name: getApplicants[i].Employee.firstName,
-            age: getApplicants[i].Employee.age,
+            englishLevel: currentEnglishLevel,
             address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
             + getApplicants[i].Employee.address.postalCode,
             appliedJobId: getApplicants[i].id,
@@ -195,6 +220,8 @@ class JobDescription extends React.Component{
         isVisible: status
       })
     }
+
+  
     
     render(){
         // console.log("this is the job id: ", this.state.jobId);
@@ -237,7 +264,8 @@ class JobDescription extends React.Component{
                 {viewCompanyInfo}
                 <Popover content={"We will use your default information to apply to the job"} >
                 
-                <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>
+                {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
+                
               </Popover>
               <PopOutWindow
                 userId = {this.state.userId}
@@ -267,7 +295,7 @@ class JobDescription extends React.Component{
                       
                   </TabPane>
 
-                  {this.state.isEmployer?
+                  {this.state.isEmployer && this.state.isCorrectEmployer ?
                   <TabPane tab="Applicant List" key="4">
                       <div>
                             <ApplicantList applicants={this.state.applicants}
