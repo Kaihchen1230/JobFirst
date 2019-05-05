@@ -28,7 +28,7 @@ const ceoPic = (props) => {
             <div style={infoStyle}>
                 <Avatar size={200} src = {props.ceoPic} />   
                 <br/>     
-                {props.ceo}
+                <span>{props.ceo}</span>
                 <h2>CEO</h2>  
             </div>
         </div>

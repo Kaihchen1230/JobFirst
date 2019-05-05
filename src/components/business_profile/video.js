@@ -10,12 +10,13 @@ export default props => {
     return (
         <div style={mainStyle} >
             <iframe 
+                data-testid="comVideo"
                 width="580"
                 height="330" 
                 src= {props.videoURL}
-                frameborder="0" 
+                frameBorder="0" 
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen = "true">
+                allowFullscreen = "true">
             </iframe>
         </div>
     );
