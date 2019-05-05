@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon } from 'antd';
+import { Card, Icon, Button } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary"
@@ -12,6 +12,7 @@ const Experiences = (props) => {
             <Card
                 size="default"
                 title={item.companyName}
+                extra={<Button type="danger">Delete</Button>}
                 style={{ width: "80%" }}
                 key={item.id}
             >
