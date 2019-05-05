@@ -6,11 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
-<<<<<<< HEAD
-import * as Util from './jobListUnitTest/jobListUtil';
-=======
-import * as Util from '../jobUtil/jobListUtil';
->>>>>>> master
+import * as Util from '../jobListUnitTest/jobListUtil';
 
 const {
     Header, Footer, Sider, Content,
