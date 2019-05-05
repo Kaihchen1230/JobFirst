@@ -24,7 +24,7 @@ class Home extends React.Component {
             prevEnter: false,
             nextEnter: false,
             thumbEnter: false,
-            lan: window.localStorage.getItem('lan')
+            // lan: window.localStorage.getItem('lan')
         };
         [
             'onChange', //
@@ -96,7 +96,7 @@ class Home extends React.Component {
 
     render() {
         I18n.putVocabularies(dict);
-        I18n.setLanguage(this.state.lan);
+        // I18n.setLanguage(this.state.lan);
 
         const intArray = this.getNextPrevNumber();
         const thumbChildren = this.imgArray.map((img, i) =>
