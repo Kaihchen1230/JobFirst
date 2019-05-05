@@ -94,6 +94,7 @@ export const getEmployeeAppliedSameJob =
                 nextToken: $employeeAppliedSameJobNextToken
             ){
                 items{
+                    id
                     status
                     Employee{
                         id
@@ -113,5 +114,4 @@ export const getEmployeeAppliedSameJob =
             }
         }
     }
-    
     `

@@ -1,6 +1,10 @@
 import React from 'react';
-import { Table, Menu, Form, Button, Divider, Icon, Select } from 'antd';
+import { Table, Modal, Divider} from 'antd';
 import * as mutations from '../../graphql/mutations';
+import PopOutWindow from './popOutWindow';
+import { async } from 'q';
+import { API, graphqlOperation } from 'aws-amplify';
+import { navigate } from 'gatsby';
 const { Column } = Table;
 
 
@@ -10,26 +14,56 @@ class ApplicantList extends React.Component{
   state = {
     applicants: this.props.applicants,
     visible: false,
-    currentEmployeeId: ""
+    currentAppliedJobId: "",
+    status: ""
   }
 
-  handleAccpet = (id, e) => {
+  handleAccpet = async (id, e) => {
     console.log('handle accept is click with this id: ', id);
 
     const currentId = id;
     this.setState({
-      currentEmployeeId: currentId
+      currentAppliedJobId: currentId,
+      visible: true
     });
+
+    // update the employee's job status to accept
+    try{
+      const updateAppliedJobInput = {
+        id: currentId,
+        status: "Accept"
+      }
+      const updatedAppliedJob = await API.graphql(graphqlOperation(mutations.updateAppliedJob, {input: updateAppliedJobInput}));
+      console.log('this is the updatedAppliedJob: ', updatedAppliedJob);
+
+    }catch(err){
+      console.log('there is an error to change the status of the employee: ', err);
+    }
+  }
+
+  handleReject = async (id, e) => {
+    console.log('handle accept is click with this id: ', id);
+
+    const currentId = id;
+    this.setState({
+      currentAppliedJobId: currentId,
+      visible: true
+    });
+
+    // update the employee's job status to reject
+    try{
+      const updateAppliedJobInput = {
+        id: currentId,
+        status: "Reject"
+      }
+      const updatedAppliedJob = await API.graphql(graphqlOperation(mutations.updateAppliedJob, {input: updateAppliedJobInput}));
+      console.log('this is the updatedAppliedJob: ', updatedAppliedJob);
+
+    }catch(err){
+      console.log('there is an error to change the status of the employee: ', err);
+    }
+
     
-  }
-
-  handleReject = (id, e) => {
-    console.log('handle accept is click with this id: ', id);
-
-    const currentId = id;
-    this.setState({
-      currentEmployeeId: currentId
-    });
   }
 
   render(){
@@ -39,43 +73,60 @@ class ApplicantList extends React.Component{
     console.log('this is the id: ', this.state.currentEmployeeId);
 
     return(
-      
-      <Table dataSource={this.state.applicants}>
+      <div>
+        <Table dataSource={this.state.applicants}>
+            <Column
+              title="Name"
+              dataIndex="name"
+              key="name"
+            />
           <Column
-            title="Name"
-            dataIndex="name"
-            key="name"
+            title="Age"
+            dataIndex="age"
+            key="age"
           />
-        <Column
-          title="Age"
-          dataIndex="age"
-          key="age"
-        />
-        <Column
-          title="Address"
-          dataIndex="address"
-          key="address"
-        />
+          <Column
+            title="Address"
+            dataIndex="address"
+            key="address"
+          />
 
-        <Column
-          style = {{marginTop: "15px"}}
-          title="Status"
-          key={"status" + Math.random()} 
-          dataIndex = "status"
-        />
-        <Column
-          style = {{marginTop: "15px"}}
-          title ="Actions"
-          render = {(text, record) => (
-            <span>
-              <a onClick = {(e) => this.handleAccpet(record.key, e)
-              }>Accpet</a>
-              <Divider type="vertical" style={{background: "green"}}/>
-              <a onClick = {(e) => this.handleReject(record.key, e) }>Reject</a>
-            </span>
-          )}
-        />
-      </Table>
+          <Column
+            style = {{marginTop: "15px"}}
+            title="Status"
+            key={"status" + Math.random()} 
+            dataIndex = "status"
+          />
+          <Column
+            style = {{marginTop: "15px"}}
+            title ="Actions"
+            render = {(text, record) => (
+              <span>
+                <a onClick = {(e) => this.handleAccpet(record.appliedJobId, e)
+                }>Accpet</a>
+                <Divider type="vertical" style={{background: "green"}}/>
+                <a onClick = {(e) => this.handleReject(record.appliedJobId, e) }>Reject</a>
+              </span>
+            )}
+          />
+        </Table>
+        <Modal 
+          
+          visible={this.state.visible}
+          onOk = {() => {
+            this.setState({
+              visible: false
+            })
+            
+            window.location.reload(); 
+          }}
+        >
+          <p>
+            pop out
+          </p>
+        </Modal>
+      </div>
+      
     )
   }
 }

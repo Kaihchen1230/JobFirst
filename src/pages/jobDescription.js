@@ -5,7 +5,7 @@ import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
-import PopOutWindow from '../components/job_description/propOutWindow';
+import PopOutWindow from '../components/job_description/popOutWindow';
 import { Auth, API, graphqlOperation } from 'aws-amplify';
 import { isLoggedIn, setUser, getUser, logout } from "../services/auth";
 import * as queries from '../graphql/queries';
@@ -101,6 +101,7 @@ class JobDescription extends React.Component{
             age: getApplicants[i].Employee.age,
             address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
             + getApplicants[i].Employee.address.postalCode,
+            appliedJobId: getApplicants[i].id,
             status: getApplicants[i].status
           })
         }
@@ -245,6 +246,7 @@ class JobDescription extends React.Component{
                 isLoading = {this.loadingStatus}
                 okText = "Go to profile page"
                 cancelText = "Stay here"
+                link = "/app/user-profile/"
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
               <Tabs defaultActiveKey="1" > 
@@ -268,7 +270,8 @@ class JobDescription extends React.Component{
                   {this.state.isEmployer?
                   <TabPane tab="Applicant List" key="4">
                       <div>
-                            <ApplicantList applicants={this.state.applicants}></ApplicantList>
+                            <ApplicantList applicants={this.state.applicants}
+                            ></ApplicantList>
                       </div>
                   </TabPane>: null}
               </Tabs>
