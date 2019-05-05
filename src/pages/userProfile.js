@@ -80,6 +80,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("custom queries failed", err);
         }
+        
         // fetch the employee's education
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
@@ -89,6 +90,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get education: ", err);
         }
+
         // fetch the employee's experiences
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
@@ -98,6 +100,7 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get experience: ", err);
         }
+        
         // fetch photo
         if (this.state.user.pic === 'yes') {
             Storage.get('profilePic', {
@@ -118,7 +121,17 @@ class Profile extends React.Component {
         })
     }
 
-    deleteEducation = (key, e) => {
+    deleteEducation = async (key, e) => {
+        // call API to delete
+        let deleteId = {
+            id: key
+        }
+        try {
+            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: deleteId }));
+            console.log("this item was deleted: ", delEdu);
+        } catch (err) {
+            console.log("error - ", err);
+        }
         let edu = [...this.state.education];
         let deleteIndex = edu.findIndex((item) => item.id === key);
         let willDelete = false;
