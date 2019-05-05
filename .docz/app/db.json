@@ -1,38 +1,16 @@
 {
   "config": {
-    "title": "Job First Project",
+    "title": "Gatsby Starter Hello World",
     "description": "A simplified bare-bones starter for Gatsby",
     "menu": [],
     "version": "0.1.0",
-    "repository": "https://github.com/Kaihchen1230/csc47300Project",
+    "repository": "https://github.com/gatsbyjs/gatsby-starter-hello-world",
     "native": false,
     "codeSandbox": true,
     "themeConfig": {},
     "separator": "-"
   },
   "props": [
-    {
-      "key": "src\\components\\authentication\\Error.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Error",
-          "methods": [],
-          "actualName": "Error"
-        }
-      ]
-    },
-    {
-      "key": "src\\components\\business_profile\\Timeline.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "timeLine",
-          "methods": [],
-          "actualName": "timeLine"
-        }
-      ]
-    },
     {
       "key": "src\\components\\business_profile\\EditProfileForm.js",
       "value": [
@@ -153,13 +131,35 @@
           "actualName": "ModalForm"
         }
       ]
+    },
+    {
+      "key": "src\\components\\business_profile\\Timeline.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "timeLine",
+          "methods": [],
+          "actualName": "timeLine"
+        }
+      ]
+    },
+    {
+      "key": "src\\components\\authentication\\Error.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Error",
+          "methods": [],
+          "actualName": "Error"
+        }
+      ]
     }
   ],
   "entries": [
     {
       "key": "docs/index.mdx",
       "value": {
-        "name": "Getting Started",
+        "name": "Start A Project",
         "route": "/",
         "id": "73498ad0e1e62a714b08085d318f9de1",
         "filepath": "docs/index.mdx",
@@ -173,9 +173,9 @@
             "value": "Getting Started"
           },
           {
-            "slug": "csc473-project-under-construction",
+            "slug": "csc473-project-developer-document",
             "depth": 1,
-            "value": "CSC473 Project (Under Construction)"
+            "value": "CSC473 Project Developer Document"
           },
           {
             "slug": "jobfirst",
