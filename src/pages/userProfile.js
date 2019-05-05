@@ -94,6 +94,10 @@ class Profile extends React.Component {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
             //console.log("Experience Results: ", experienceResults);
             const temp = experienceResults.data.getEmployee.experience.items;
+            temp.forEach(item => {
+                item.key = item.id;
+            })
+            console.log("temp: ", temp);
             this.setState({ experiences: temp });
             //console.log("sample id: ", this.state.experiences[0].id);
         } catch (err) {

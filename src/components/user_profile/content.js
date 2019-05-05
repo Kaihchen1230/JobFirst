@@ -35,7 +35,7 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Experiences and Skills")} key="3">
                     <h1 align="center"><b>{I18n.get("Experiences")}</b></h1>
                     {props.experiences.length > 0 ? (
-                        <Experiences experiences={props.experiences} allowEdit={props.allowEdit} deleteExp={props.deleteExperience} />
+                        <Experiences experiences={props.experiences} allowEdit={props.allowEdit} deleteExp={props.deleteExp} />
                     ) : <h1 align="center">You haven't added your past experiences yet.</h1>
                     }
                 </TabPane>
