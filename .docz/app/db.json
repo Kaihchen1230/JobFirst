@@ -153,6 +153,71 @@
           "actualName": "timeLine"
         }
       ]
+    },
+    {
+      "key": "src\\pages\\userProfile.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Profile",
+          "methods": [
+            {
+              "name": "onCollapse",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "collapsed",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "componentDidMount",
+              "docblock": null,
+              "modifiers": [
+                "async"
+              ],
+              "params": [],
+              "returns": null
+            },
+            {
+              "name": "deleteEducation",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "key",
+                  "type": null
+                },
+                {
+                  "name": "e",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "deleteExperience",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "key",
+                  "type": null
+                },
+                {
+                  "name": "e",
+                  "type": null
+                }
+              ],
+              "returns": null
+            }
+          ],
+          "actualName": "Profile"
+        }
+      ]
     }
   ],
   "entries": [
