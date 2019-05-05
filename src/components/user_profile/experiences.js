@@ -6,13 +6,15 @@ import dict from "../dictionary/dictionary"
 
 const Experiences = (props) => {
 
+    const renderButton = props.allowEdit ? <Button type="danger">Delete</Button> : null;
+
     let experiencesList = [...props.experiences];
     let display = experiencesList.map(item =>
         <div align="center">
             <Card
                 size="default"
                 title={item.companyName}
-                extra={<Button type="danger">Delete</Button>}
+                extra={renderButton}
                 style={{ width: "80%" }}
                 key={item.id}
             >

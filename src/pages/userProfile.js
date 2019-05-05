@@ -41,6 +41,7 @@ class Profile extends React.Component {
         else {
             this.setState({ allowEdit: false });
         }
+        console.log("allowEdit: ", this.state.allowEdit);
         // fetch the user info
         try {
             // console.log(this.props.userID);
@@ -94,6 +95,7 @@ class Profile extends React.Component {
             //console.log("Experience Results: ", experienceResults);
             const temp = experienceResults.data.getEmployee.experience.items;
             this.setState({ experiences: temp });
+            //console.log("sample id: ", this.state.experiences[0].id);
         } catch (err) {
             console.log("couldn't get experience: ", err);
         }
@@ -115,6 +117,21 @@ class Profile extends React.Component {
         this.setState({
             loading: false
         })
+    }
+
+    deleteExperience = (key, e) => {
+        let exp = [...this.state.experiences];
+        let deleteIndex = exp.findIndex((item) => item.id === key);
+        let willDelete = false;
+        exp.forEach(item => {
+            if (item.id === key) {
+                willDelete = true;
+            }
+        })
+        if (willDelete) {
+            exp.splice(deleteIndex, 1);
+            this.setState({ experiences: exp });
+        }
     }
 
     render() {
@@ -177,6 +194,7 @@ class Profile extends React.Component {
                         education={this.state.education}
                         experiences={this.state.experiences}
                         allowEdit={this.state.allowEdit}
+                        deleteExp={this.deleteExperience}
                     />
                 </Content>
             </Layout>
