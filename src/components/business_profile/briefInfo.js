@@ -25,9 +25,9 @@ const briefInfo = (props) => {
             <div style={mainStyle}  >
                 <div style={infoStyle}>
                     <h2>{I18n.get('Brief Info')}</h2> 
-                    {props.companyType}
+                    <span>{props.companyType}</span>
                     <br/>
-                    <Icon type="home" theme="twoTone" style={{ fontSize: '20px' }}  /> Headquarter:{props.headquarter}
+                    <Icon type="home" theme="twoTone" style={{ fontSize: '20px' }}  /> Headquarter:<span>{props.headquarter}</span>
                     <br/>    
                     <Icon type="pie-chart" theme="twoTone" style={{ fontSize: '20px' }}  /> Size:{props.size}
                     <br/>   
