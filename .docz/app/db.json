@@ -12,6 +12,17 @@
   },
   "props": [
     {
+      "key": "src\\components\\authentication\\Error.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Error",
+          "methods": [],
+          "actualName": "Error"
+        }
+      ]
+    },
+    {
       "key": "src\\components\\business_profile\\EditProfileForm.js",
       "value": [
         {
@@ -142,20 +153,48 @@
           "actualName": "timeLine"
         }
       ]
-    },
-    {
-      "key": "src\\components\\authentication\\Error.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Error",
-          "methods": [],
-          "actualName": "Error"
-        }
-      ]
     }
   ],
   "entries": [
+    {
+      "key": "docs/businessProfile.mdx",
+      "value": {
+        "name": "BusinessProfile",
+        "route": "/businessProfile",
+        "id": "8786f1ad3a5ec0e21c0973bc71a8884b",
+        "filepath": "docs/businessProfile.mdx",
+        "link": "https://github.com/gatsbyjs/gatsby-starter-hello-world\\edit\\master\\docs/businessProfile.mdx",
+        "slug": "docs-business-profile",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "csc473-project-developer-document",
+            "depth": 1,
+            "value": "CSC473 Project Developer Document"
+          },
+          {
+            "slug": "business-profile",
+            "depth": 1,
+            "value": "Business Profile"
+          },
+          {
+            "slug": "description",
+            "depth": 2,
+            "value": "Description"
+          },
+          {
+            "slug": "view-the-page",
+            "depth": 2,
+            "value": "View The Page"
+          },
+          {
+            "slug": "edit-business-profile",
+            "depth": 2,
+            "value": "Edit Business Profile"
+          }
+        ]
+      }
+    },
     {
       "key": "docs/index.mdx",
       "value": {
