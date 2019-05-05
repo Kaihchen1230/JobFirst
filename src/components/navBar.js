@@ -19,7 +19,11 @@ const navBar = (props) => {
   if (isLoggedIn()) { // if logged in we can display the username
     state.login =
       <span>
-        <Avatar shape="square" size="large" icon="user" />
+        <Avatar 
+          style={{ marginBottom:"5px" }}
+          shape="square" 
+          size={38} 
+          src ="https://gifimage.net/wp-content/uploads/2018/11/user-gif-4.gif" />
         <span>{"   " + getUser().username}</span>
       </span>
   }

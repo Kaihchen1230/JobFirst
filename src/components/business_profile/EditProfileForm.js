@@ -96,6 +96,7 @@ class ModalForm extends React.Component {
       revenue: this.state.revenue,
       ceo: this.state.ceo,
       ceoPic: this.state.ceoPic,
+      videoURL:this.state.videoURL,
       companyType: this.state.companyType,
       description: this.state.description,
       headquarter: this.state.headquarter,
@@ -304,6 +305,17 @@ class ModalForm extends React.Component {
               value={this.state.ceoPic}
               style={{ width: "60%" }}
               name="ceoPic"
+              onChange={(event) => { this.handleUpdate(event) }}
+              required />
+          </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="Youtube Video"
+          >
+            <Input
+              value={this.state.videoURL}
+              style={{ width: "60%" }}
+              name="videoURL"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
           </FormItem>

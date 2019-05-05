@@ -15,7 +15,6 @@ import SignUp from '../components/authentication/signup';
 import TalentList from '../pages/talentsList';
 import Photo from './photo.js';
 import "antd/dist/antd.css";
-import 'video-react/dist/video-react.css';
 
 
 const App = () => (
@@ -28,10 +27,10 @@ const App = () => (
       <PostJob      path="/app/postJob" />
       <Login        path="/app/login" />
       <SignUp       path="/app/signup" />
-      <JobList      path="/app/job-list" />
+      <PrivateRoute      path="/app/job-list"  component={JobList}/>
       <TalentList      path="/app/talent-list" />
       <Home         path="/" />
-      <JobDescription path="/app/job-detail/:jobID" />
+      <PrivateRoute path="/app/job-detail/:jobID"  component={JobDescription}/>
       <Contact        path="/app/contact" />
     </Router>
   </Layout>

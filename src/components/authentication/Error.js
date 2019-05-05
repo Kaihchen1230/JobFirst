@@ -1,16 +1,13 @@
 import React from 'react';
 
+let errorStyle={
+    color:"red",
+    fontSize:"1.5em"
+}
+
 const Error = props => (
-    <div>
-        {Object.entries(props).map(([err, val]) => (
-            <pre err={err}>
-            <strong>{err}: </strong>
-            {JSON.stringify(val, '', ' ')}
-            <br/>
-            <a
-            href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html">AWS Cognito User Pool documentation.</a>
-            </pre>
-        ))}
+    <div style={errorStyle}>
+        {props.errorMessage}
     </div>
 );
 

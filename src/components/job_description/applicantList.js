@@ -1,175 +1,198 @@
 import React from 'react';
-// import {  Table, Input, Button, Icon, } from 'antd';
-// import Highlighter from 'react-highlight-words';
+import { Table, Modal, Divider} from 'antd';
+import * as mutations from '../../graphql/mutations';
+import PopOutWindow from './popOutWindow';
+import { async } from 'q';
+import { API, graphqlOperation } from 'aws-amplify';
+import { Link, navigate } from 'gatsby';
+const { Column } = Table;
 
 
-//   class applicantList extends React.Component {
-//       constructor(props){
-//         super(props);
-//         this.state = {
-//             searchText: '',
-//             applicant: props.applicant
-//           };
-//       }
-
-    
-//     getColumnSearchProps = (dataIndex) => ({
-//       filterDropdown: ({
-//         setSelectedKeys, selectedKeys, confirm, clearFilters,
-//       }) => (
-//         <div style={{ padding: 8 }}>
-//           <Input
-//             ref={node => { this.searchInput = node; }}
-//             placeholder={`Search ${dataIndex}`}
-//             value={selectedKeys[0]}
-//             onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-//             onPressEnter={() => this.handleSearch(selectedKeys, confirm)}
-//             style={{ width: 90, marginBottom: 8, display: 'block' }}
-//           />
-//           <Button
-//             type="primary"
-//             onClick={() => this.handleSearch(selectedKeys, confirm)}
-//             icon="search"
-//             size="small"
-//             style={{ width: 90, marginRight: 8 }}
-//           >
-//             Search
-//           </Button>
-//           <Button
-//             onClick={() => this.handleReset(clearFilters)}
-//             size="small"
-//             style={{ width: 90 }}
-//           >
-//             Reset
-//           </Button>
-//         </div>
-//       ),
-//       filterIcon: filtered => <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />,
-//       onFilter: (value, record) => record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-//       onFilterDropdownVisibleChange: (visible) => {
-//         if (visible) {
-//           setTimeout(() => this.searchInput.select());
-//         }
-//       },
-//       render: (text) => (
-//         <Highlighter
-//           highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-//           searchWords={[this.state.searchText]}
-//           autoEscape
-//           textToHighlight={text.toString()}
-//         />
-//       ),
-//     })
-  
-//     handleSearch = (selectedKeys, confirm) => {
-//       confirm();
-//       this.setState({ searchText: selectedKeys[0] });
-//     }
-  
-//     handleReset = (clearFilters) => {
-//       clearFilters();
-//       this.setState({ searchText: '' });
-//     }
-  
-//     render() {
-        
-//       const columns = [{
-//         title: 'Name',
-//         dataIndex: 'name',
-//         key: 'name',
-//         width: '20%',
-//         ...this.getColumnSearchProps('name'),
-//       }, {
-//         title: 'Degree',
-//         dataIndex: 'degree',
-//         key: 'degree',
-//         width: '20%',
+class ApplicantList extends React.Component{
 
 
+  state = {
+    applicants: this.props.applicants,
+    visible: false,
+    employeeName: "",
+    currentAppliedJobId: "",
+    status: ""
+  }
 
-//         ...this.getColumnSearchProps('degree'),
-//       }, {
-//         title: 'Address',
-//         dataIndex: 'address',
-//         key: 'address',
-//         width: '20%',
-//         ...this.getColumnSearchProps('address'),
-//       }];
-//       return <Table columns={columns} dataSource={this.state.applicant} />;
-//     }
-//   }
-// export default applicantList;
+  handleAccpet = async (id, name, e) => {
+    console.log('handle accept is click with this id: ', id);
+
+    const currentId = id;
+    const currentName = name;
+    this.setState({
+      currentAppliedJobId: currentId,
+      employeeName: currentName,
+      visible: true
+    })
+
+    // update the employee's job status to accept
+    try{
+      const updateAppliedJobInput = {
+        id: currentId,
+        status: "Accept"
+      }
+      const updatedAppliedJob = await API.graphql(graphqlOperation(mutations.updateAppliedJob, {input: updateAppliedJobInput}));
+      console.log('this is the updatedAppliedJob: ', updatedAppliedJob);
+
+    }catch(err){
+      console.log('there is an error to change the status of the employee: ', err);
+    }
+  }
+
+  handlePending = async (id, name, e) => {
+    console.log('handle accept is click with this id: ', id);
+
+    const currentId = id;
+    const currentName = name;
+    this.setState({
+      currentAppliedJobId: currentId,
+      employeeName: currentName,
+      visible: true
+    });
+
+    // update the employee's job status to pending
+    try{
+      const updateAppliedJobInput = {
+        id: currentId,
+        status: "Pending"
+      }
+      const updatedAppliedJob = await API.graphql(graphqlOperation(mutations.updateAppliedJob, {input: updateAppliedJobInput}));
+      console.log('this is the updatedAppliedJob: ', updatedAppliedJob);
+
+    }catch(err){
+      console.log('there is an error to change the status of the employee: ', err);
+    }
+  }
 
 
+  handleReject = async (id, name, e) => {
+    console.log('handle accept is click with this id: ', id);
+
+    const currentId = id;
+    const currentName = name;
+    this.setState({
+      currentAppliedJobId: currentId,
+      employeeName: currentName,
+      visible: true
+    });
+
+    // update the employee's job status to reject
+    try{
+      const updateAppliedJobInput = {
+        id: currentId,
+        status: "Reject"
+      }
+      const updatedAppliedJob = await API.graphql(graphqlOperation(mutations.updateAppliedJob, {input: updateAppliedJobInput}));
+      console.log('this is the updatedAppliedJob: ', updatedAppliedJob);
+
+    }catch(err){
+      console.log('there is an error to change the status of the employee: ', err);
+    }
+  }
+
+  render(){
+    console.log('this is the applicants: ', this.state.applicants);
 
 
-import { Table, Divider, Tag } from 'antd';
+    console.log('this is the id: ', this.state.currentEmployeeId);
 
-const { Column, ColumnGroup } = Table;
-
-const data = [{
-  key: '1',
-  firstName: 'John',
-  lastName: 'Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-  tags: ['nice', 'developer'],
-}, {
-  key: '2',
-  firstName: 'Jim',
-  lastName: 'Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-  tags: ['loser'],
-}, {
-  key: '3',
-  firstName: 'Joe',
-  lastName: 'Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
-  tags: ['cool', 'teacher'],
-}];
-let  applicantList = ()=>{
     return(
-  <Table dataSource={data}>
-      <Column
-        title="Name"
-        dataIndex="lastName"
-        key="lastName"
-      />
-    <Column
-      title="Age"
-      dataIndex="age"
-      key="age"
-    />
-    <Column
-      title="Address"
-      dataIndex="address"
-      key="address"
-    />
-    <Column
-      title="Tags"
-      dataIndex="tags"
-      key="tags"
-      render={tags => (
-        <span>
-          {tags.map(tag => <Tag color="blue" key={tag}>{tag}</Tag>)}
-        </span>
-      )}
-    />
-    <Column
-      title="Action"
-      key="action"
-      render={(text, record) => (
-        <span>
-            {/* we can send out an email here to inform the user for interview or reject */}
-          <a href="javascript:;">Invite {record.lastName}</a>
-          <Divider type="vertical" />
-          <a href="javascript:;">Reject</a>
-        </span>
-      )}
-    />
-  </Table>
-)};
+      <div>
+        <Table dataSource={this.state.applicants}>
+            <Column
+              title="Name"
+              key="name"
+              render = {(text, record) => (
+                <Link to={"/app/user-profile/"+record.key}> 
+                  {record.name}
+                </Link>
+              )}
+            />
+          <Column
+            title="English Level"
+            dataIndex="englishLevel"
+            key="englishLevel"
+          />
+          <Column
+            title="Address"
+            dataIndex="address"
+            key="address"
+          />
 
-export default applicantList;
+          <Column
+            style = {{marginTop: "15px"}}
+            title="Status"
+            key={"status" + Math.random()} 
+            dataIndex = "status"
+          />
+          <Column
+            style = {{marginTop: "15px"}}
+            title ="Actions"
+            render = {(text, record) => (
+              <span>
+                <a onClick = {(e) => this.handleAccpet(record.appliedJobId, record.name, e)
+                }>Accpet</a>
+                <Divider type="vertical" style={{background: "green"}}/>
+                <a onClick = {(e) => this.handlePending(record.appliedJobId, record.name, e) }>Pending</a>
+                <Divider type="vertical" style={{background: "green"}}/>
+                <a onClick = {(e) => this.handleReject(record.appliedJobId, record.name, e) }>Reject</a>
+              </span>
+            )}
+          />
+        </Table>
+        <Modal 
+          
+          visible={this.state.visible}
+          onOk = {() => {
+            this.setState({
+              visible: false
+            })
+            
+            window.location.reload(); 
+          }}
+        >
+          <p>
+            Update {this.state.employeeName}'s status successfully
+          </p>
+        </Modal>
+      </div>
+      
+    )
+  }
+}
+    
+
+export default ApplicantList;
+
+{/* <Column
+title="Tags"
+dataIndex="tags"
+key="tags"
+render={tags => (
+  <span>
+    {tags.map(tag => <Tag color="blue" key={tag}>{tag}</Tag>)}
+  </span>
+)}
+/>
+<Column
+title="Action"
+key="action"
+render={(text, record) => (
+  <span>
+      {/* we can send out an email here to inform the user for interview or reject */}
+//     <a href="javascript:;">Invite {record.lastName}</a>
+//     <Divider type="vertical" />
+//     <a href="javascript:;">Reject</a>
+//   </span>
+// )}
+// />
+{/* <span>
+              <Button onClick={this.inviteHandler}>Invite for interview</Button>
+              <Divider type="vertical" style={{background: "green"}}/>
+              <Button onClick={this.rejectHandler}>Reject</Button>
+            </span> */}

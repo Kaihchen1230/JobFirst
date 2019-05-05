@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job Description screenshot test Job Description page should render correctly 1`] = `
+<div>
+  <Spin
+    size="default"
+    spinning={false}
+    tip="Please wait for a moment"
+    wrapperClassName=""
+  >
+    <h2
+      style={
+        Object {
+          "margin": "10px 0",
+        }
+      }
+    >
+      
+    </h2>
+    <Popover
+      mouseEnterDelay={0.1}
+      mouseLeaveDelay={0.1}
+      overlayStyle={Object {}}
+      placement="top"
+      transitionName="zoom-big"
+      trigger="hover"
+    >
+      <div>
+         - 
+      </div>
+    </Popover>
+    <Popover
+      content="We will use your default information to apply to the job"
+      mouseEnterDelay={0.1}
+      mouseLeaveDelay={0.1}
+      overlayStyle={Object {}}
+      placement="top"
+      transitionName="zoom-big"
+      trigger="hover"
+    >
+      <Button
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+        type="primary"
+      >
+        Apply Now
+      </Button>
+    </Popover>
+    <PopOutWindow
+      cancelText="Stay here"
+      content="Thanks for applying to this job, you will be heard back from the employer shortly."
+      isLoading={[Function]}
+      isVisible={[Function]}
+      okText="Go to profile page"
+      show={false}
+      userId=""
+    />
+    <Tabs
+      defaultActiveKey="1"
+      hideAdd={false}
+      tabPosition="top"
+    >
+      <TabPane
+        placeholder={null}
+        tab="Job"
+      >
+        <div>
+          <jobDetails
+            jobInfo={
+              Object {
+                "clickedCount": 0,
+                "description": "",
+                "requirements": Array [],
+                "title": "",
+                "type": "",
+              }
+            }
+          />
+        </div>
+      </TabPane>
+      <TabPane
+        placeholder={null}
+        tab="Company"
+      >
+        <div>
+          <companyDetail
+            companyInfo={Object {}}
+          />
+        </div>
+      </TabPane>
+      <TabPane
+        placeholder={null}
+        tab="Location"
+      >
+        <div>
+          <location
+            locationInfo={Object {}}
+          />
+        </div>
+      </TabPane>
+    </Tabs>
+  </Spin>
+</div>
+`;

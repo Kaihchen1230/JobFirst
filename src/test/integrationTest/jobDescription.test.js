@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
-import JobDescription from '../jobDescription';
+import JobDescription from '../../pages/jobDescription';
 
 describe('Job Description screenshot test', () => {
     test('Job Description page should render correctly', () => {
