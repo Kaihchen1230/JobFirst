@@ -81,3 +81,37 @@ export const getUsernameEmployee =
         username
     }
 }`
+
+export const getEmployeeAppliedSameJob = 
+    `query EmployeeAppliedSameJob(
+        $id: ID!
+        $employeeAppliedSameJobimit: Int
+        $employeeAppliedSameJobNextToken: String
+    ){
+        getPostedJob(id: $id){
+            applied(
+                limit: $employeeAppliedSameJobimit
+                nextToken: $employeeAppliedSameJobNextToken
+            ){
+                items{
+                    id
+                    status
+                    Employee{
+                        id
+                        firstName
+                        age
+                        address{
+                            line1
+                            line2
+                            city
+                            state
+                            postalCode
+                        }
+                        
+                    }
+                }
+                nextToken
+            }
+        }
+    }
+    `
