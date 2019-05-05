@@ -133,7 +133,18 @@ class Profile extends React.Component {
         }
     }
 
-    deleteExperience = (key, e) => {
+    deleteExperience = async (key, e) => {
+        // call API to delete
+        let deleteId = {
+            id: key
+        }
+        try {
+            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: deleteId }));
+            console.log("this item was deleted: ", delExp);
+        } catch (err) {
+            console.log("error - ", err);
+        }
+        // remove it from the page
         let exp = [...this.state.experiences];
         let deleteIndex = exp.findIndex((item) => item.id === key);
         let willDelete = false;
