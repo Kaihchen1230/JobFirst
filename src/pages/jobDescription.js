@@ -87,11 +87,12 @@ class JobDescription extends React.Component{
       // get employees who applied to this job
       try{
         const getEmployeeAppliedCurrentJob = await API.graphql(graphqlOperation (customQueries.getEmployeeAppliedSameJob, {id: currentId}));
-        console.log('this is the testing: ', getEmployeeAppliedCurrentJob);
+        // console.log('this is the testing: ', getEmployeeAppliedCurrentJob);
         const getApplicants = getEmployeeAppliedCurrentJob.data.getPostedJob.applied.items;
         // console.log('this is the employeeAppliedCurrentJob: ', employeeAppliedCurrentJob, " and its tpye: is array ", Array.isArray(employeeAppliedCurrentJob));
 
         let applicantsInfo = [];
+        console.log('this is getApplicants: ', getApplicants);
 
         for(let i = 0; i < getApplicants.length; i++){
           applicantsInfo.push({
@@ -99,10 +100,11 @@ class JobDescription extends React.Component{
             name: getApplicants[i].Employee.firstName,
             age: getApplicants[i].Employee.age,
             address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
-            + getApplicants[i].Employee.address.postalCode
+            + getApplicants[i].Employee.address.postalCode,
+            status: getApplicants[i].status
           })
         }
-
+        // console.log('this is applicantInfo: ', applicantsInfo);
         this.setState({
           applicants: applicantsInfo
         });
@@ -224,7 +226,7 @@ class JobDescription extends React.Component{
         //     count : 1
         //   })
         // }
-        console.log('this is display: ', this.state.display); 
+        console.log('this is applicants: ', this.state.applicants); 
 
         return(
             

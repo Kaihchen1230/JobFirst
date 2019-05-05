@@ -94,6 +94,7 @@ export const getEmployeeAppliedSameJob =
                 nextToken: $employeeAppliedSameJobNextToken
             ){
                 items{
+                    status
                     Employee{
                         id
                         firstName
@@ -105,6 +106,7 @@ export const getEmployeeAppliedSameJob =
                             state
                             postalCode
                         }
+                        
                     }
                 }
                 nextToken
