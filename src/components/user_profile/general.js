@@ -15,7 +15,7 @@ const General = (props) => {
     if (props.user.language) { ++count }
     if (props.user.email) { ++count }
     if (props.user.phone) { ++count }
-    let per = Math.ceil(count / total);
+    let per = Math.ceil(count / total * 100);
 
     return (
         <div align="center">
