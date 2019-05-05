@@ -1,13 +1,16 @@
 import React from 'react';
-import { Link, navigate } from "gatsby"
-import { Tabs, Button, Popover, Modal } from 'antd';
+import { navigate } from "gatsby";
+import { Tabs, Button, Popover, Modal, Spin } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
-import Location from '../components/job_description/location';
+import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
+import PopOutWindow from '../components/job_description/popOutWindow';
 import { Auth, API, graphqlOperation } from 'aws-amplify';
+import { isLoggedIn, setUser, getUser, logout } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
+import * as customQueries from '../customGraphql/queries';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -16,6 +19,9 @@ class JobDescription extends React.Component{
     state = {
         userId: "",
         jobId: "",
+        employerId: "",
+        isEmployer: false,
+        isCorrectEmployer: false,
         postJobInfo: {},
         jobInfo: {
           title: "",
@@ -26,76 +32,16 @@ class JobDescription extends React.Component{
         },
         companyInfo: {},
         location: {},
-        alreadyAppliedvisible: false,
-        newUserAppliedVisible: false,
+        isVisible: false,
         applied: false,
-        'applicant': [{
-            key: '1',
-            name: 'John Brown',
-            degree: "Associate degree in computer science",
-            address: 'New York No. 1 Lake Park',
-          }, {
-            key: '2',
-            name: 'Joe Black',
-            degree: "Associate degree in computer science",
-            address: 'London No. 2 Lake Park',
-          }, {
-            key: '3',
-            name: 'Jim Green',
-            degree: "Associate degree in computer information system",
-            address: 'Sidney No. 3 Lake Park',
-          }, {
-            key: '4',
-            name: 'Jim Red',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 4 Lake Park',
-          },
-          {
-            key: '1',
-            name: 'John Brown',
-            degree: "Associate degree in computer information system",
-            address: 'New York No. 5 Lake Park',
-          }, {
-            key: '2',
-            name: 'Joe Black',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 6 Lake Park',
-          }, {
-            key: '3',
-            name: 'Jim Green',
-            degree: "Associate degree in computer information system",
-            address: 'Sidney No. 7 Lake Park',
-          }, {
-            key: '4',
-            name: 'Jim Red',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 8 Lake Park',
-          },
-          {
-            key: '1',
-            name: 'John Brown',
-            degree: "Associate degree in computer information system",
-            address: 'New York No. 9 Lake Park',
-          }, {
-            key: '2',
-            name: 'Joe Black',
-            degree: "Associate degree in math education",
-            address: 'London No. 10 Lake Park',
-          }, {
-            key: '3',
-            name: 'Jim Green',
-            degree: "Associate degree in math",
-            address: 'Sidney No. 11 Lake Park',
-          }, {
-            key: '4',
-            name: 'Jim Red',
-            degree: "Associate degree in computer information system",
-            address: 'London No. 12 Lake Park',
-          }
-        ],
+        loading: false,
+        display: false,
+        count: 0,
+        applicants: []
 
     }
     componentDidMount = async () => {
+      // current job id
       let currentId = window.history.state.id;
       let user = await Auth.currentAuthenticatedUser();
       console.log("this is the user: ", user);
@@ -106,13 +52,14 @@ class JobDescription extends React.Component{
       // get the current job info
       try{
         const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
-        console.log('this is currentJobInfo: ', currentJobInfo);
+       
         let incomingJobInfo = {...this.state.jobInfo};
         incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
         incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
         incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
+        console.log('this is the currentJobInfo: ', currentJobInfo);
         this.setState({
           userId: currentUserId,
           jobId: currentId,
@@ -121,7 +68,7 @@ class JobDescription extends React.Component{
           companyInfo: currentJobInfo.data.getPostedJob.company,
           location: currentJobInfo.data.getPostedJob.location
         });
-        // console.log('this is the clickcount: ', this.state.jobInfo.clickedCount);
+
       }catch(err){
         console.log('there is an error fetching data...', err);
       }
@@ -129,22 +76,68 @@ class JobDescription extends React.Component{
       // update posted job click count
       try{
         let currentJobClickedCounts = this.state.jobInfo.clickedCount;
-        // console.log('this is !!!clickcount: ', currentJobClickedCounts);
-        // console.log('this is !!!!!! current id: ', currentId);
         const updatePostedJobInput = {
           id: currentId,
           clickedCounts: currentJobClickedCounts + 1
         };
         await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
-        // const newUpdatePostJob = await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
-        // console.log(' this is the newUpdatePostJob: ', newUpdatePostJob);
 
       }catch(err){
         console.log('there is an error updating click count: ', err);
       }
-      
-      // console.log('this is attribute: ', currentUserId);
-      // console.log('this is attr: ', {attributes});
+
+      // checking if the current user is an Er or Ee
+      getUser()["custom:isEmployer"] === "yes" ? this.setState({isEmployer: true, display: true}) : this.setState({isEmployer: false});
+
+      // check if the current user is the company who posted the job
+
+      if(this.state.userId === this.state.companyInfo.id){
+        console.log('this is the current userid: ', this.state.userId, ' and this is the companyId: ', this.state.companyInfo.id);
+        this.setState({
+          isCorrectEmployer: true
+        })
+      }
+
+      // get applicants for the current job post
+      try{
+        const getEmployeeAppliedCurrentJob = await API.graphql(graphqlOperation (customQueries.getEmployeeAppliedSameJob, {id: currentId}));
+        // console.log('this is the testing: ', getEmployeeAppliedCurrentJob);
+        let getApplicants = getEmployeeAppliedCurrentJob.data.getPostedJob.applied.items;
+        // console.log('this is the employeeAppliedCurrentJob: ', employeeAppliedCurrentJob, " and its tpye: is array ", Array.isArray(employeeAppliedCurrentJob));
+
+        let applicantsInfo = [];
+        console.log('this is getApplicants: ', getApplicants, ' and this is the length: ', getApplicants.length);
+        
+        
+        for(let i = 0; i < getApplicants.length; i++){
+
+          let temp = getApplicants[i].Employee.englishLevel;
+          console.log('this is getApplicants[i].Employee.englishLevel: ', getApplicants[i].Employee.englishLevel);
+          let currentEnglishLevel;
+          if(temp == null){
+            currentEnglishLevel = "N/A"
+          }else{
+            currentEnglishLevel = temp
+          }
+          console.log('this is currentEnglishLevel: ', currentEnglishLevel);
+          applicantsInfo.push({
+            key: getApplicants[i].Employee.id,
+            name: getApplicants[i].Employee.firstName,
+            englishLevel: currentEnglishLevel,
+            address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
+            + getApplicants[i].Employee.address.postalCode,
+            appliedJobId: getApplicants[i].id,
+            status: getApplicants[i].status
+          })
+        }
+        // console.log('this is applicantInfo: ', applicantsInfo);
+        this.setState({
+          applicants: applicantsInfo
+        });
+
+      }catch(err){
+        console.log('there is an error fetching the data for employees who applied the job ', err);
+      }
     }
 
     applyJob = async () => {
@@ -160,7 +153,9 @@ class JobDescription extends React.Component{
         // console.log('this is the item: ', applied.items);
         // console.log('this is the type of applied.items: ', typeof(applied.items));
         // console.log('this is the size: ', applied.items.length);
-        
+        this.setState({
+          loading: true
+        })
         for(let i = 0; i < applied.items.length; i++){
           let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
           console.log('this is the getAppliedJob: ', getAppliedJob);
@@ -169,6 +164,7 @@ class JobDescription extends React.Component{
               this.setState({
                 applied: true
               })
+              break;
           }
         }
         if(!this.state.applied){
@@ -192,22 +188,41 @@ class JobDescription extends React.Component{
             const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
             console.log(' this is the newAppliedJob: ', newAppliedJob);
             this.setState({
-              newUserAppliedVisible: true
-            })
+              isVisible: true
+              
+            });
+            console.log('this is isVisible in the if: ', this.state.isVisible);
 
           }catch(err){
             console.log('there is an eeror updating the applied job table: ', err);
           }
         }else{
-          this.setState({alreadyAppliedvisible: true});
+          
+          this.setState({isVisible: true});
+          console.log('this is isVisible in the else: ', this.state.isVisible);
         }
+
+        
 
       }catch(err){
         console.log('there is an error to fetch the data for applied job: ', err);
       }
+    }  
+    
+    loadingStatus = (status) => {
+      this.setState({
+        loading: status
+      })
+    }
 
-      
-    }    
+    visibleStatus = (status) => {
+      this.setState({
+        isVisible: status
+      })
+    }
+
+  
+    
     render(){
         // console.log("this is the job id: ", this.state.jobId);
         // console.log('this is the postjob info: ', this.state.postJobInfo);
@@ -233,86 +248,63 @@ class JobDescription extends React.Component{
           )
         }
 
-        
+        // if(this.state.display && !this.state.count == 0){
+        //   this.setState({
+        //     display : false,
+        //     count : 1
+        //   })
+        // }
+        console.log('this is applicants: ', this.state.applicants); 
+
         return(
             
-            <div>
+          <div>
+            <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
                 <Popover content={"We will use your default information to apply to the job"} >
-                <Button type="primary" onClick={this.applyJob}>Apply Now</Button>
+                
+                {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
+                
               </Popover>
-              <div>
-                <Modal
-                  title="Modal"
-                  visible={this.state.alreadyAppliedvisible}
-                  onOk={() => {
-                    this.setState({
-                      alreadyAppliedvisible: false,
-                    });
-                    navigate("/app/user-profile/"+this.state.userId)
-                  }}
-                  onCancel={() => {
-                    this.setState({
-                      alreadyAppliedvisible: false
-                    })
-                  }}
-                  okText="Okay"
-                  cancelText="Cancel"
-                >
-                 <p>
-                   You Already Applied...
-                 </p>
-                </Modal>
-               </div>
-               <div>
-                <Modal
-                  title="Modal"
-                  visible={this.state.newUserAppliedVisible}
-                  onOk={() => {
-                    this.setState({
-                      newUserAppliedVisible: false,
-                    });
-                    navigate("/app/user-profile/"+this.state.userId)
-                  }}
-                  onCancel={() => {
-                    this.setState({
-                      newUserAppliedVisible: false
-                    })
-                  }}
-                  okText="Okay"
-                  cancelText="Cancel"
-                >
-                 <p>
-                   Thanks for applied to xxxx, Employer will contact you in shortly
-                 </p>
-                </Modal>
-              </div>
-                <Tabs defaultActiveKey="1" > 
-                    <TabPane tab="Job" key="1" >
-                        <div>
-                            <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
-                        </div>
-            
-                    </TabPane>
-                    <TabPane tab="Company" key="2">
-                        <div>
-                        <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
-                        </div>
-                    </TabPane>
+              <PopOutWindow
+                userId = {this.state.userId}
+                show = {this.state.isVisible}
+                isVisible = {this.visibleStatus}
+                isLoading = {this.loadingStatus}
+                okText = "Go to profile page"
+                cancelText = "Stay here"
+                link = "/app/user-profile/"
+                content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
+              />
+              <Tabs defaultActiveKey="1" > 
+                  <TabPane tab="Job" key="1" >
+                      <div>
+                          <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
+                      </div>
+          
+                  </TabPane>
+                  <TabPane tab="Company" key="2">
+                      <div>
+                      <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
+                      </div>
+                  </TabPane>
 
-                    <TabPane tab="Location" key="3">
-                         <div><Location locationInfo = {this.state.location}></Location></div>
-                        
-                    </TabPane>
+                  <TabPane tab="Location" key="3">
+                        <div><Location locationInfo = {this.state.location}></Location></div>
+                      
+                  </TabPane>
 
-                    <TabPane tab="Applicant List" key="4">
-                        <div>
-                             <ApplicantList applicant={this.state.applicant}></ApplicantList>
-                        </div>
-                    </TabPane>
-                </Tabs>
-            </div>
+                  {this.state.isEmployer && this.state.isCorrectEmployer ?
+                  <TabPane tab="Applicant List" key="4">
+                      <div>
+                            <ApplicantList applicants={this.state.applicants}
+                            ></ApplicantList>
+                      </div>
+                  </TabPane>: null}
+              </Tabs>
+            </Spin>
+          </div>
         )
     }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
-import JobDescription from '../jobDescription';
+import Contact from '../../pages/contact';
 
-describe('Job Description screenshot test', () => {
-    test('Job Description page should render correctly', () => {
+describe('Contact page screenshot test', () => {
+    test('Contact page should render correctly', () => {
         const renderer = new ReactShallowRenderer();
-        renderer.render(<JobDescription />);
+        renderer.render(<Contact />);
         expect(renderer.getRenderOutput()).toMatchSnapshot();
     });
 });

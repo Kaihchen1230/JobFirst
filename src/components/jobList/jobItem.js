@@ -11,6 +11,7 @@ const jobItem = (props) => {
         <Col span={8} style={{ margin: '10px 0' }}>
             <Card title={item.jobTitle} bordered={true}>
                 <p>{item.description}</p>
+                <p>Location: {item.location.line1}</p>
                 <p>Post Date: {item.datePosted}</p>
                 <p>Deadline: {item.deadline}</p>
                 <div align="center">

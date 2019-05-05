@@ -1,10 +1,11 @@
 import React from 'react';
-import { Tabs, Table, Button, Progress } from 'antd';
+import { Tabs, Table, Button, Progress, Card, Icon } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import AppliedJob from "./appliedJob";
 import Education from "./education";
 import Experiences from "./experiences";
+import General from "./general";
 
 const TabPane = Tabs.TabPane;
 
@@ -20,33 +21,13 @@ const Information = (props) => {
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
-                    <Progress type="circle" percent={75} format={percent => `${percent} Completed`} />
-                    <div>
-                        {I18n.get("First Name")}: {user.name}
-                        <br />
-                        {I18n.get("Last Name")}: {user.lastName}
-                        <br />
-                        {I18n.get("Middle Name")}: {user.middleName}
-                        <br />
-                        {I18n.get("Age")}: {user.age}
-                        <br />
-                        {I18n.get("Email")}: {user.email}
-                        <br />
-                        {I18n.get("Phone Number")}: {user.phone}
-                        <br />
-                        {I18n.get("English Level")}: {user.englishLevel}
-                        <br />
-                        {I18n.get("Spoken Language")}: {user.language}
-                        <br />
-
-                    </div>
-
+                    <General user={user} />
                 </TabPane>
 
                 <TabPane tab={I18n.get("Education and Awards")} key="2">
                     <h1 align="center"><b>{I18n.get("Education")}</b></h1>
                     {props.education.length > 0 ? (
-                        <Education education={props.education} />
+                        <Education education={props.education} allowEdit={props.allowEdit} deleteEdu={props.deleteEdu} />
                     ) : <h1 align="center">You haven't added your past education yet.</h1>
                     }
                 </TabPane>
@@ -54,7 +35,7 @@ const Information = (props) => {
                 <TabPane tab={I18n.get("Experiences and Skills")} key="3">
                     <h1 align="center"><b>{I18n.get("Experiences")}</b></h1>
                     {props.experiences.length > 0 ? (
-                        <Experiences experiences={props.experiences} />
+                        <Experiences experiences={props.experiences} allowEdit={props.allowEdit} deleteExp={props.deleteExp} />
                     ) : <h1 align="center">You haven't added your past experiences yet.</h1>
                     }
                 </TabPane>

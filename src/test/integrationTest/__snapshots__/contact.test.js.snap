@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact page screenshot test Contact page should render correctly 1`] = `
+<div
+  align="center"
+  className="mainDiv"
+>
+  <br />
+  <h1
+    align="center"
+    className="title"
+  >
+    Contact Us
+  </h1>
+  <br />
+  <p
+    align="center"
+    className="description"
+  >
+    You can get in touch with us at any time for 24/7 support and troubleshooting.
+  </p>
+  <br />
+  <br />
+  <Column
+    flexGrow={1}
+  >
+    <Row
+      vertical="center"
+    >
+      <Column
+        flexGrow={1}
+        horizontal="center"
+      >
+        <Card
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#C2C5C4",
+              "border": "solid",
+              "borderRadius": 15,
+              "height": 210,
+            }
+          }
+          title={
+            <Icon
+              style={
+                Object {
+                  "fontSize": 25,
+                }
+              }
+              type="phone"
+            />
+          }
+        >
+          <br />
+          <p
+            className="description"
+          >
+            +1800JOBFIRST
+          </p>
+        </Card>
+      </Column>
+      <Column
+        flexGrow={1}
+        horizontal="center"
+      >
+        <Card
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#C2C5C4",
+              "border": "solid",
+              "borderRadius": 20,
+              "height": 210,
+              "width": 250,
+            }
+          }
+          title={
+            <Icon
+              style={
+                Object {
+                  "fontSize": 25,
+                }
+              }
+              type="home"
+            />
+          }
+        >
+          <p
+            className="description"
+          >
+            160 Convent Av,
+            <br />
+             New York, NY
+            <br />
+             10031
+          </p>
+        </Card>
+      </Column>
+    </Row>
+  </Column>
+</div>
+`;

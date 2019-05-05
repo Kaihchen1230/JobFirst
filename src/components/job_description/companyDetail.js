@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Link, navigate } from "gatsby";
+import { Row, Col, Button } from 'antd';
 
 const companyDetail = (props) => {
     let companyInfo = {...props.companyInfo};
@@ -7,6 +8,11 @@ const companyDetail = (props) => {
     let companyInfoPiece = (
         <div>
             <h2>Overview: </h2>
+            <Button>
+                <Link to={"/app/business-profile/"+companyInfo.id}>
+                    Learn more
+                </Link>
+            </Button>
             <Row gutter={12}>
             <Col span={2}>
                 <div className="gutter-box">Headquarters</div>

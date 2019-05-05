@@ -14,17 +14,21 @@ const navBar = (props) => {
       /* <Avatar shape="square" size="large" icon="user" /> */
       <NewLogin />
   };
-  let lan = window.localStorage.getItem('lan')
+  // let lan = window.localStorage.getItem('lan')
   // the login button should change based on the user
   if (isLoggedIn()) { // if logged in we can display the username
     state.login =
       <span>
-        <Avatar shape="square" size="large" icon="user" />
+        <Avatar 
+          style={{ marginBottom:"5px" }}
+          shape="square" 
+          size={38} 
+          src ="https://gifimage.net/wp-content/uploads/2018/11/user-gif-4.gif" />
         <span>{"   " + getUser().username}</span>
       </span>
   }
   I18n.putVocabularies(dict);
-  I18n.setLanguage(lan);
+  // I18n.setLanguage(lan);
   const style = {
     fontSize: "25px"
 
@@ -34,15 +38,15 @@ const navBar = (props) => {
     <Menu>
       <Menu.Item>
         <Button id="english-button" type="primary" onClick={() => {
-          window.localStorage.setItem('lan', 'es');
-          window.location.reload();
+          // window.localStorage.setItem('lan', 'es');
+          // window.location.reload();
         }}>ENGLISH - 英语</Button>
       </Menu.Item>
 
       <Menu.Item>
         <Button id="chinese-button" type="primary" onClick={() => {
-          window.localStorage.setItem('lan', 'ch');
-          window.location.reload();
+          // window.localStorage.setItem('lan', 'ch');
+          // window.location.reload();
         }}>CHINESE - 中文</Button>
       </Menu.Item>
     </Menu>
