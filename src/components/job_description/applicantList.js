@@ -14,18 +14,21 @@ class ApplicantList extends React.Component{
   state = {
     applicants: this.props.applicants,
     visible: false,
+    employeeName: "",
     currentAppliedJobId: "",
     status: ""
   }
 
-  handleAccpet = async (id, e) => {
+  handleAccpet = async (id, name, e) => {
     console.log('handle accept is click with this id: ', id);
 
     const currentId = id;
+    const currentName = name;
     this.setState({
       currentAppliedJobId: currentId,
+      employeeName: currentName,
       visible: true
-    });
+    })
 
     // update the employee's job status to accept
     try{
@@ -41,12 +44,40 @@ class ApplicantList extends React.Component{
     }
   }
 
-  handleReject = async (id, e) => {
+  handlePending = async (id, name, e) => {
     console.log('handle accept is click with this id: ', id);
 
     const currentId = id;
+    const currentName = name;
     this.setState({
       currentAppliedJobId: currentId,
+      employeeName: currentName,
+      visible: true
+    });
+
+    // update the employee's job status to pending
+    try{
+      const updateAppliedJobInput = {
+        id: currentId,
+        status: "Pending"
+      }
+      const updatedAppliedJob = await API.graphql(graphqlOperation(mutations.updateAppliedJob, {input: updateAppliedJobInput}));
+      console.log('this is the updatedAppliedJob: ', updatedAppliedJob);
+
+    }catch(err){
+      console.log('there is an error to change the status of the employee: ', err);
+    }
+  }
+
+
+  handleReject = async (id, name, e) => {
+    console.log('handle accept is click with this id: ', id);
+
+    const currentId = id;
+    const currentName = name;
+    this.setState({
+      currentAppliedJobId: currentId,
+      employeeName: currentName,
       visible: true
     });
 
@@ -62,8 +93,6 @@ class ApplicantList extends React.Component{
     }catch(err){
       console.log('there is an error to change the status of the employee: ', err);
     }
-
-    
   }
 
   render(){
@@ -102,10 +131,12 @@ class ApplicantList extends React.Component{
             title ="Actions"
             render = {(text, record) => (
               <span>
-                <a onClick = {(e) => this.handleAccpet(record.appliedJobId, e)
+                <a onClick = {(e) => this.handleAccpet(record.appliedJobId, record.name, e)
                 }>Accpet</a>
                 <Divider type="vertical" style={{background: "green"}}/>
-                <a onClick = {(e) => this.handleReject(record.appliedJobId, e) }>Reject</a>
+                <a onClick = {(e) => this.handlePending(record.appliedJobId, record.name, e) }>Pending</a>
+                <Divider type="vertical" style={{background: "green"}}/>
+                <a onClick = {(e) => this.handleReject(record.appliedJobId, record.name, e) }>Reject</a>
               </span>
             )}
           />
@@ -122,7 +153,7 @@ class ApplicantList extends React.Component{
           }}
         >
           <p>
-            pop out
+            Update {this.state.employeeName}'s status successfully
           </p>
         </Modal>
       </div>
