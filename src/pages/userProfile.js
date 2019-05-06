@@ -200,7 +200,7 @@ class Profile extends React.Component {
                     onCollapse={this.onCollapse}
                     width={300}
                 >
-                    <Person user={this.state.user} />
+                    <Person user={this.state.user} isBusiness = {false}/>
                     {(getUser().sub === this.state.userID) ? (
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                             <SubMenu

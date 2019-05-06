@@ -161,7 +161,7 @@ class businessProfile extends React.Component {
                 <Button className="editButton" type="primary" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button> 
-                <PhotoUpload className="uploadButton"/>
+                <PhotoUpload isBusiness = {true}/>
               </span>
               : null
             }

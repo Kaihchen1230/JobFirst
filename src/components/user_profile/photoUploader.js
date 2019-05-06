@@ -2,7 +2,6 @@ import {
     Button, Modal, Form, Input, Radio, Upload, Icon
 } from 'antd';
 import React from 'react';
-// import Photo from "./photo.js";
 import './photo.css';
 import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
@@ -87,6 +86,8 @@ class UploadPage extends React.Component {
         previewImage: '',
         fileList: [],
     };
+
+ 
     // for the form
     handleDummy = (file) => {
         console.log('this is dummy', file.file);
@@ -188,10 +189,23 @@ class UploadPage extends React.Component {
         this.formRef = formRef;
     }
 
+
     render() {
+        let buttonStyle ={
+            backgroundColor:"#1890ff",
+            color:"white",
+            position: "absolute",
+            left:"83.8%",
+            top:"6%"
+        }
+        console.log("is business",this.props.isBusiness)
         return (
             <div>
-                <Button ghost type='ghost' onClick={this.showModal}>Upload A New Profile Picture</Button>
+                {this.props.isBusiness ?
+                    <Button style ={buttonStyle} onClick={this.showModal}>Upload A New Logo</Button>:
+                    <Button ghost type='ghost' onClick={this.showModal}>Upload A New Profile Picture</Button>
+                }
+                
                 <UploadForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
