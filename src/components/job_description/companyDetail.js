@@ -9,7 +9,7 @@ const companyDetail = (props) => {
         <div>
             <h2>Overview: </h2>
             <Button>
-                <Link to="/app/business-profile/ba65f328-b89a-43be-beb8-aa30b39dc313">
+                <Link to={"/app/business-profile/"+companyInfo.id}>
                     Learn more
                 </Link>
             </Button>

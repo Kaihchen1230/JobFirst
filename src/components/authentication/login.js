@@ -79,6 +79,7 @@ class Login extends React.Component {
                 companyName: username,
                 companyEmail: email,
                 identityID: identityID,
+                companyPic: 'no' 
               }
               const newEmployeer = await API.graphql(graphqlOperation(mutations.createEmployer, {input: employerData })); 
               console.log("new employer",newEmployeer);           
