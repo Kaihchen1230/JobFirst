@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
-import Contact from '../contact';
+import Contact from '../../pages/contact';
 
 describe('Contact page screenshot test', () => {
     test('Contact page should render correctly', () => {

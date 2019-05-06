@@ -1,7 +1,7 @@
 import React from 'react';
 import Person from '../components/user_profile/sidebar';
 import Information from '../components/user_profile/content';
-import Amplify, { API, graphqlOperation, I18n, Storage } from "aws-amplify";
+import Amplify, { Auth, API, graphqlOperation, I18n, Storage } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
@@ -22,7 +22,8 @@ class Profile extends React.Component {
             loading: true,
             collapsed: false,
             education: [],
-            experiences: []
+            experiences: [],
+            allowEdit: false
         }
     }
 
@@ -32,6 +33,15 @@ class Profile extends React.Component {
     }
 
     componentDidMount = async () => {
+        let currentUser = await Auth.currentAuthenticatedUser();    // the current user
+        const { attributes } = currentUser;
+        if (this.state.userID === attributes.sub) {
+            this.setState({ allowEdit: true });
+        }
+        else {
+            this.setState({ allowEdit: false });
+        }
+        console.log("allowEdit: ", this.state.allowEdit);
         // fetch the user info
         try {
             // console.log(this.props.userID);
@@ -98,7 +108,7 @@ class Profile extends React.Component {
                     console.log(result);
                     let user = this.state.user;
                     user.pic = result;
-                    console.log("state is",this.state);
+                    console.log("state is", this.state);
                     this.setState({ user: user });
                 })
                 .catch(err => console.log(err));
@@ -106,6 +116,36 @@ class Profile extends React.Component {
         this.setState({
             loading: false
         })
+    }
+
+    deleteEducation = (key, e) => {
+        let edu = [...this.state.education];
+        let deleteIndex = edu.findIndex((item) => item.id === key);
+        let willDelete = false;
+        edu.forEach(item => {
+            if (item.id === key) {
+                willDelete = true;
+            }
+        })
+        if (willDelete) {
+            edu.splice(deleteIndex, 1);
+            this.setState({ education: edu });
+        }
+    }
+
+    deleteExperience = (key, e) => {
+        let exp = [...this.state.experiences];
+        let deleteIndex = exp.findIndex((item) => item.id === key);
+        let willDelete = false;
+        exp.forEach(item => {
+            if (item.id === key) {
+                willDelete = true;
+            }
+        })
+        if (willDelete) {
+            exp.splice(deleteIndex, 1);
+            this.setState({ experiences: exp });
+        }
     }
 
     render() {
@@ -167,6 +207,9 @@ class Profile extends React.Component {
                         jobs={this.state.jobs}
                         education={this.state.education}
                         experiences={this.state.experiences}
+                        allowEdit={this.state.allowEdit}
+                        deleteEdu={this.deleteEducation}
+                        deleteExp={this.deleteExperience}
                     />
                 </Content>
             </Layout>
