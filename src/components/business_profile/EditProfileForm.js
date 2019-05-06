@@ -1,4 +1,4 @@
-import { Form, Modal, Input, DatePicker, Tooltip, Button, Icon } from 'antd';
+import { Form, Modal, Input, DatePicker, Tooltip, Button, Icon, message } from 'antd';
 import React from 'react';
 import { generate } from 'randomstring';
 import * as mutations from '../../graphql/mutations';
@@ -21,6 +21,8 @@ class ModalForm extends React.Component {
     this.state.addressID = data.companyAddress.id;
     this.state.timelineNum = data.timeline.length;
     this.state.originalTimeline = data.timeline;
+    this.state.isTimelineChange= false;
+    this.state.isAddressChange= false;
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -35,11 +37,16 @@ class ModalForm extends React.Component {
     this.setState({ lan: window.localStorage.getItem('lan') });
     this.setState({timelineNum : data.timeline.length});
     this.setState({originalTimeline : data.timeline});
+    // console.log(this.state);
   }
 
 
   handleUpdate = (event) => {
-    console.log("change",event.target.value)
+    // console.log("change",event.target.value);
+    let name = event.target.value;
+    if(name === "addressLine1" || name === "addressLine2" || name === "city" ||
+      name === "postalCode" || name=== "state")
+      this.setState({isAddressChange:true})
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -84,45 +91,54 @@ class ModalForm extends React.Component {
   }
 
   handleSubmit = async () => {
+    try{
+        //update basic employer information
+        let employerData = {
+          id: this.state.companyID,
+          companyName: this.state.companyName,
+          companyEmail: this.state.companyEmail,
+          companyPhone: this.state.companyPhone,
+          companyWebsite: this.state.companyWebsite,
+          companyPic: this.state.companyPic,
+          revenue: this.state.revenue,
+          ceo: this.state.ceo,
+          ceoPic: this.state.ceoPic,
+          videoURL:this.state.videoURL,
+          companyType: this.state.companyType,
+          description: this.state.description,
+          headquarter: this.state.headquarter,
+          size: this.state.size
+        }
+        let newEmployer = await API.graphql(graphqlOperation(mutations.updateEmployer,
+          { input: employerData }));
+        console.log("upload new profile", newEmployer);
 
-    //update basic employer information
-    let employerData = {
-      id: this.state.companyID,
-      companyName: this.state.companyName,
-      companyEmail: this.state.companyEmail,
-      companyPhone: this.state.companyPhone,
-      companyWebsite: this.state.companyWebsite,
-      companyPic: this.state.companyPic,
-      revenue: this.state.revenue,
-      ceo: this.state.ceo,
-      ceoPic: this.state.ceoPic,
-      videoURL:this.state.videoURL,
-      companyType: this.state.companyType,
-      description: this.state.description,
-      headquarter: this.state.headquarter,
-      size: this.state.size
+        //update address if any changed
+        if(this.state.isAddressChange){
+          let addressData = {
+            id: this.state.addressID,
+            line1: this.state.addressLine1,
+            line2: this.state.addressLine2,
+            city:this.state.city,
+            postalCode: this.state.postalCode,
+            state: this.state.state
+          }
+          let newAddress = await API.graphql(graphqlOperation(mutations.updateAddress,
+            { input: addressData }));
+          console.log("upload new address", newAddress);
+        }
+
+        //update timelines if any changed
+        if(this.state.isTimelineChange)
+          this.updateTimeline();    
+        this.props.onOk();
+        message.success(`Profile Update Successfully`);
     }
-    let newEmployer = await API.graphql(graphqlOperation(mutations.updateEmployer,
-      { input: employerData }));
-    console.log("upload new profile", newEmployer);
-
-    //update address
-    let addressData = {
-      id: this.state.addressID,
-      line1: this.state.addressLine1,
-      line2: this.state.addressLine2,
-      city:this.state.city,
-      postalCode: this.state.postalCode,
-      state: this.state.state
+    catch(err){
+        this.props.onOk();
+        message.error(`Profile Update Fail`);
     }
-    let newAddress = await API.graphql(graphqlOperation(mutations.updateAddress,
-      { input: addressData }));
-    console.log("upload new address", newAddress);
-
-    //update timelines
-    this.updateTimeline();    
-    this.props.onOk();
-    // location.reload(true);
+    
   }
 
   //add one more timeline
@@ -134,14 +150,14 @@ class ModalForm extends React.Component {
       date: moment(new Date(), "YYYY-MM-DD")
     }
     timelines = [...timelines, newTimeline];
-    this.setState({ timeline: timelines });
+    this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
   //delete one timeline by index
   handleDeleteTimeline = (index) => {
     let timelines = [...this.state.timeline];
     timelines.splice(index, 1);
-    this.setState({ timeline: timelines });
+    this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
   //update the state when timeline title change
@@ -150,6 +166,7 @@ class ModalForm extends React.Component {
     let changeTimeline = timelines[index];
     changeTimeline.title = e.target.value;
     this.setState({ timeline: timelines });
+    this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
   //update the state when timeline date change
@@ -157,8 +174,7 @@ class ModalForm extends React.Component {
     let timelines = [...this.state.timeline];
     let changeTimeline = timelines[index];
     changeTimeline.date = dateString;
-    this.setState({ timeline: timelines });
-
+    this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
   //update the state when description change
@@ -166,7 +182,7 @@ class ModalForm extends React.Component {
     let timelines = [...this.state.timeline];
     let changeTimeline = timelines[index];
     changeTimeline.info = e.target.value;
-    this.setState({ timeline: timelines });
+    this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
 

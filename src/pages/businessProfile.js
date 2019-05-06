@@ -32,7 +32,6 @@ class businessProfile extends React.Component {
     this.state = {
       visible: false,
       jobList: [],
-      companyID: "",
       companyName: "Alibaba",
       companyWebsite: "alibaba.com",
       companyType: "Intenet",
