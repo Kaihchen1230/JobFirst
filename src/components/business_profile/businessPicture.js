@@ -1,7 +1,4 @@
-import { Avatar } from 'antd';
 import React from 'react';
-import { relative } from 'path';
-
 
 let imageStyle = {
     padddingLeft:"0px",
@@ -14,10 +11,10 @@ let imageStyle = {
 
 const profileCard = (props) => {
     return (
-            <div  >
-                <img data-testid="businessPic" style={imageStyle} width ="150" src = {props.companyPic} >
-                </img>   
-            </div>
+        <div  >
+            <img data-testid="businessPic" style={imageStyle} width ="150" src = {props.companyLogo} >
+            </img>   
+        </div>
     )
 }
 export default profileCard;

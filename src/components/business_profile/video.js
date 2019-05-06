@@ -16,7 +16,7 @@ export default props => {
                 src= {props.videoURL}
                 frameBorder="0" 
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullscreen = "true">
+                allowFullScreen = {true}>
             </iframe>
         </div>
     );

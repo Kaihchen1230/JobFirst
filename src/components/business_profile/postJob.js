@@ -14,7 +14,6 @@ const JobItem = (props) => {
     let imgArray = [
         image0, image1, image2, image3, image4
     ];
-    console.log(props);
     let jobItem = props.jobs.map((item, index) => {
         let jobLink = "/app/job-detail/" + item.id;
         return (
@@ -24,7 +23,7 @@ const JobItem = (props) => {
                     cover={<img alt="example" src={imgArray[index % 4]} />}
                 >
                     <Meta
-                        avatar={<Avatar src={props.companyPic} />}
+                        avatar={<Avatar src={props.companyLogo} />}
                         title={item.jobTitle}
                         description={item.description}
                     />
@@ -59,7 +58,7 @@ const postJob = (props) => {
             <Content>
                 <JobItem
                     jobs={props.jobList}
-                    companyPic={props.companyPic}
+                    companyLogo={props.companyLogo}
                 />
             </Content>
         </Layout>
