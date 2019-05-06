@@ -8,8 +8,9 @@ import About from '../components/business_profile/aboutCompany';
 import CeoPic from '../components/business_profile/ceoPic'
 import BriefInfo from "../components/business_profile/briefInfo";
 import CompanyVideo from "../components/business_profile/video";
+import PhotoUpload from "../components/user_profile/photoUploader";
 import * as queries from '../graphql/queries';
-import { API, graphqlOperation, Auth, I18n } from "aws-amplify";
+import { API, graphqlOperation, Auth, I18n, Storage } from "aws-amplify";
 import '../style/businessProfile.css';
 
 const TabPane = Tabs.TabPane;
@@ -51,7 +52,8 @@ class businessProfile extends React.Component {
       timeline: [],
       jobAmount: 0,
       description: "Alibaba Group Holding Limited (Chinese: 阿里巴巴集团控股有限公司; pinyin: Ālǐbābā Jítuán Kònggǔ Yǒuxiàn Gōngsī) is a Chinese multinational conglomerate specializing in e-commerce, retail, Internet and technology. Founded 4 April 1999, the company provides consumer-to-consumer (C2C), business-to-consumer (B2C), and business-to-business (B2B) sales services via web portals, as well as electronic payment services, shopping search engines and cloud computing services. It owns and operates a diverse array of businesses around the world in numerous sectors, and is named as one of the world's most admired companies by Fortune.[3][4]",
-      companyPic: "https://i2.wp.com/nigerianfinder.com/wp-content/uploads/2015/02/Alibaba-logo.png?resize=225%2C225",
+      companyLogo: "https://i2.wp.com/nigerianfinder.com/wp-content/uploads/2015/02/Alibaba-logo.png?resize=225%2C225",
+      companyPic:"no",
       value: 0,
       allowEdit: false
     }
@@ -73,7 +75,7 @@ class businessProfile extends React.Component {
     //set up companyID
     let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: companyID }));
     this.setState({ companyID: companyID });
-
+    console.log("employer", employerData);
     //set up other employer info
     employerData = employerData.data.getEmployer;
     for (let item in employerData) {
@@ -110,7 +112,18 @@ class businessProfile extends React.Component {
       this.setState({ companyAddress });
     }
 
-    console.log("employer", employerData);
+    // fetch photo
+    if (this.state.companyPic === 'yes') {
+      Storage.get('profilePic', {
+          level: 'protected',
+          identityId: this.state.userID// the identityId of that user
+      })
+          .then(result => {
+              console.log("pic is",result);
+              this.setState({companyLogo:result});   
+          })
+          .catch(err => console.log(err));
+    }
   }
 
   showModal = () => {
@@ -139,15 +152,19 @@ class businessProfile extends React.Component {
         </div>
         <div style={bodyStyle}>
           <div className="secBanner">
-            <BusinessPicture companyPic={this.state.companyPic} />
+            <BusinessPicture companyLogo={this.state.companyLogo} />
             <div className="companyHeader">
               <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
               <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
             </div>
             {this.state.allowEdit ?
-              <Button className="editButton" type="primary" onClick={this.showModal}>
-                {I18n.get('Edit Profile')}
-              </Button> : null
+              <span>              
+                <Button className="editButton" type="primary" onClick={this.showModal}>
+                  {I18n.get('Edit Profile')}
+                </Button> 
+                <PhotoUpload className="uploadButton"/>
+              </span>
+              : null
             }
           </div>
 
@@ -197,7 +214,7 @@ class businessProfile extends React.Component {
                 <div>
                   <PostJob
                     jobList={this.state.jobList}
-                    companyPic={this.state.companyPic} />
+                    companyLogo={this.state.companyLogo} />
                 </div>
               </TabPane>
             </Tabs>

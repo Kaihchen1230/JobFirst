@@ -229,17 +229,6 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               required />
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="Company Picture"
-          >
-            <Input
-              value={this.state.companyPic}
-              style={{ width: "60%" }}
-              name="companyPic"
-              onChange={(event) => { this.handleUpdate(event) }}
-              required />
-          </FormItem>
           <Form.Item
             {...formItemLayout}
             label="Description"

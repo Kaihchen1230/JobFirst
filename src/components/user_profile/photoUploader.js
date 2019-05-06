@@ -115,7 +115,7 @@ class UploadPage extends React.Component {
                         })
                         .catch(err => console.log('error in update employee', err));
                 } else {
-                    API.graphql(graphqlOperation(mutations.updateEmployer, { input: { id: uid, ceoPic: 'yes' } }))
+                    API.graphql(graphqlOperation(mutations.updateEmployer, { input: { id: uid, companyPic: 'yes' } }))
                         .then((result) => {
                             console.log('success to update employer', result);
                         })
@@ -153,7 +153,7 @@ class UploadPage extends React.Component {
                 })
                 .catch(err => console.log('error in update employee', err));
         } else {
-            API.graphql(graphqlOperation(mutations.updateEmployer, { input: { id: uid, ceoPic: 'no' } }))
+            API.graphql(graphqlOperation(mutations.updateEmployer, { input: { id: uid, companyPic: 'no' } }))
                 .then((result) => {
                     console.log('success to update employer', result);
                 })

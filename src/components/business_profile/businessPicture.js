@@ -15,7 +15,7 @@ let imageStyle = {
 const profileCard = (props) => {
     return (
             <div  >
-                <img data-testid="businessPic" style={imageStyle} width ="150" src = {props.companyPic} >
+                <img data-testid="businessPic" style={imageStyle} width ="150" src = {props.companyLogo} >
                 </img>   
             </div>
     )
