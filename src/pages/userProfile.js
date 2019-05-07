@@ -10,6 +10,7 @@ import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
+import UserProfileUtil from "./userProfileUnitTest/userProfileUtil";
 
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -87,6 +88,10 @@ class Profile extends React.Component {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
             //console.log("Education Results: ", educationResults);
             const temp = educationResults.data.getEmployee.education.items;
+            //console.log(UserProfileUtil.checkKeySchoolName(temp[0]));
+            //console.log(UserProfileUtil.checkKeyDegree(temp[0]));
+            //console.log(UserProfileUtil.checkKeyCity(temp[0]));
+            //console.log(UserProfileUtil.checkKeyCountry(temp[0]));
             this.setState({ education: temp });
         } catch (err) {
             console.log("couldn't get education: ", err);
@@ -97,6 +102,10 @@ class Profile extends React.Component {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
             //console.log("Experience Results: ", experienceResults);
             const temp = experienceResults.data.getEmployee.experience.items;
+            //console.log(UserProfileUtil.checkKeyCompanyName(temp[0]));
+            //console.log(UserProfileUtil.checkKeyReasonToLeave(temp[0]));
+            //console.log(UserProfileUtil.checkKeyStartYear(temp[0]));
+            //console.log(UserProfileUtil.checkKeyEndYear(temp[0]));
             this.setState({ experiences: temp });
         } catch (err) {
             console.log("couldn't get experience: ", err);
