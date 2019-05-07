@@ -7,6 +7,8 @@ import { I18n } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react'
 import NewLogin from './authentication/new_login';
 import dict from "./dictionary/dictionary";
+import { setLanguage, getLanguage } from "../services/auth";
+
 const { Header, Content, Footer } = Layout;
 const navBar = (props) => {
   const state = {
@@ -28,7 +30,7 @@ const navBar = (props) => {
       </span>
   }
   I18n.putVocabularies(dict);
-  // I18n.setLanguage(lan);
+  I18n.setLanguage(getLanguage());
   const style = {
     fontSize: "25px"
 
@@ -37,18 +39,19 @@ const navBar = (props) => {
   const language_menu = (
     <Menu>
       <Menu.Item>
-        <Button id="english-button" type="primary" onClick={() => {
-          // window.localStorage.setItem('lan', 'es');
-          // window.location.reload();
-        }}>ENGLISH - 英语</Button>
+        <Button id="english-button" type="primary" onClick={()=> {setLanguage('es')}}>ENGLISH - 英语</Button>
       </Menu.Item>
 
+      
       <Menu.Item>
+        <Button id="chinese-button" type="primary" onClick={()=> {setLanguage('ch')}}>CHINESE - 中文</Button>
+      </Menu.Item>
+      {/* <Menu.Item>
         <Button id="chinese-button" type="primary" onClick={() => {
           // window.localStorage.setItem('lan', 'ch');
           // window.location.reload();
         }}>CHINESE - 中文</Button>
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   )
 

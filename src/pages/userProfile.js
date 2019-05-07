@@ -5,7 +5,7 @@ import Amplify, { Auth, API, graphqlOperation, I18n, Storage } from "aws-amplify
 import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
-import { getUser, isLoggedIn } from '../services/auth';
+import { getUser, isLoggedIn, getLanguage } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
@@ -19,7 +19,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // lan: window.localStorage.getItem('lan'),
+            lan: getLanguage() ? getLanguage() : 'en',
             userID: this.props.userID,
             loading: true,
             collapsed: false,
@@ -200,7 +200,7 @@ class Profile extends React.Component {
             );
         }
         I18n.putVocabularies(dict);
-        // I18n.setLanguage(this.state.lan);
+        I18n.setLanguage(this.state.lan);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
