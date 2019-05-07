@@ -33,3 +33,39 @@ exports.checkKeyCountry = (value) => {
         return false;
     }
 }
+
+exports.checkKeyCompanyName = (value) => {
+    if (value.hasOwnProperty('companyName')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+exports.checkKeyReasonToLeave = (value) => {
+    if (value.hasOwnProperty('reasonToLeave')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+exports.checkKeyStartYear = (value) => {
+    if (value.hasOwnProperty('startYear')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+exports.checkKeyEndYear = (value) => {
+    if (value.hasOwnProperty('endYear')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
