@@ -1,71 +1,31 @@
 exports.checkKeySchoolName = (value) => {
-    if (value.hasOwnProperty('schoolName')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('schoolName') ? true : false;
 }
 
 exports.checkKeyDegree = (value) => {
-    if (value.hasOwnProperty('degree')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('degree') ? true : false;
 }
 
 exports.checkKeyCity = (value) => {
-    if (value.hasOwnProperty('city')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('city') ? true : false;
 }
 
 exports.checkKeyCountry = (value) => {
-    if (value.hasOwnProperty('country')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('country') ? true : false;
 }
 
 exports.checkKeyCompanyName = (value) => {
-    if (value.hasOwnProperty('companyName')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('companyName') ? true : false;
 }
 
 exports.checkKeyReasonToLeave = (value) => {
-    if (value.hasOwnProperty('reasonToLeave')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('reasonToLeave') ? true : false;
 }
 
 exports.checkKeyStartYear = (value) => {
-    if (value.hasOwnProperty('startYear')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('startYear') ? true : false;
 }
 
 exports.checkKeyEndYear = (value) => {
-    if (value.hasOwnProperty('endYear')) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return value.hasOwnProperty('endYear') ? true : false;
 }
