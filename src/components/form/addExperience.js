@@ -30,14 +30,42 @@ class AddExpForm extends React.Component {
                         <Input placeholder={I18n.get('Enter the Company Name')}
                             name="companyName"
                             suffix={
-                                <Tooltip title={I18n.get('Enter the name of the company')}>
+                                <Tooltip title={I18n.get('Enter the Company Name')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
                         <Input placeholder={I18n.get('Enter the City of the Company')}
                             name="companyCity"
                             suffix={
-                                <Tooltip title={I18n.get('Enter the city of the company')}>
+                                <Tooltip title={I18n.get('Enter the City of the Company')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Enter the Country of the Company')}
+                            name="companyCountry"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the Country of the Company')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Enter the Starting Year')}
+                            name="yearStart"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the Starting Year')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Enter the Ending Year')}
+                            name="yearEnd"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the Ending Year')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
+                        <Input placeholder={I18n.get('Enter the Reason for Leaving')}
+                            name="leaveReason"
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the Reason for Leaving')}>
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
