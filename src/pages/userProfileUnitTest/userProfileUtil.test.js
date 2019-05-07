@@ -1,6 +1,17 @@
 const { checkKeySchoolName, checkKeyDegree, checkKeyCity, checkKeyCountry } = require('./userProfileUtil');
 
-test('should give object for filter by job type', () => {
-    const obj = filterTypeGen('full time');
-    expect(obj).toEqual({ "filter": { "jobType": { "contains": 'full time' } } });
+test('should check for schoolName key', () => {
+    const testObj = {
+        schoolName: '12345',
+    }
+    const obj = checkKeySchoolName(testObj);
+    expect(obj).toEqual(true);
+});
+
+test('should check for degree key', () => {
+    const testObj = {
+        degree: '12345',
+    }
+    const obj = checkKeyDegree(testObj);
+    expect(obj).toEqual(true);
 });
