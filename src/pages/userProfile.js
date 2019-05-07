@@ -11,6 +11,7 @@ import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from "./userProfileUnitTest/userProfileUtil";
+import { Link, navigate } from "gatsby";
 
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -230,6 +231,7 @@ class Profile extends React.Component {
 
                                 <Menu.Item key="6">
                                     {I18n.get('Add Experience or Skill')}
+                                    <Link to="/app/addExpForm"></Link>
                                 </Menu.Item>
                             </SubMenu>
 
