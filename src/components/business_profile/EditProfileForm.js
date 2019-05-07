@@ -8,8 +8,10 @@ import moment from 'moment';
 
 const FormItem = Form.Item;
 
+
 class ModalForm extends React.Component {
   constructor(props) {
+    
     super(props);
     let data = this.props.data;
     this.state = { ...data };
@@ -138,7 +140,6 @@ class ModalForm extends React.Component {
         this.props.onOk();
         message.error(`Profile Update Fail`);
     }
-    
   }
 
   //add one more timeline

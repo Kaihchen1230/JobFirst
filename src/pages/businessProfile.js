@@ -202,9 +202,7 @@ class businessProfile extends React.Component {
                         ceoPic={this.state.ceoPic}
                       />
                       <CompanyVideo videoURL ={this.state.videoURL} videoPic = {this.state.videoPic}/>
-
                     </div>
-
                   </div>
                 </div>
 
