@@ -37,6 +37,7 @@ export const logout = callback => {
 export const setLanguage = (language) => {
   console.log(language);
   window.localStorage.setItem("lan", language);
+  window.location.reload();
   
 }
 
