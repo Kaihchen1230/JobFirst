@@ -7,6 +7,6 @@
             "Outputs.UserPoolId"
         ]
     },
-    "S3DeploymentBucket": "csc47300project-20190503003411-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/5812700a1c00a299d08ce2c97de01e22850e5932"
+    "S3DeploymentBucket": "csc47300project-20190424051914-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/3a33da66de114d8aa8014245d641d5004d674624"
 }
