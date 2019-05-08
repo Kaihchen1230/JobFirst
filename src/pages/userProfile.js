@@ -27,7 +27,7 @@ class Profile extends React.Component {
             collapsed: false,
             education: [],
             experiences: [],
-            allowEdit: false
+            allowEdit: this.props.userID === getUser().sub
         }
     }
 
