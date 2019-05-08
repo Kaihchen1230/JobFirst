@@ -89,7 +89,7 @@ class JobList extends React.Component {
                                     </Select>
                                 </Col>
                                 <Col span={4}>
-                                    <Select style={{ width: "80%" }} size="large" placeholder="Company Scale">
+                                    <Select style={{ width: "80%" }} size="large" placeholder="Salary">
                                         <Option value="Option1-1">Option1-1</Option>
                                         <Option value="Option1-2">Option1-2</Option>
                                     </Select>
