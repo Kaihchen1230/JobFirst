@@ -17,7 +17,8 @@ class AddEduForm extends React.Component {
         console.log("The add education form loaded");
     }
 
-    handleSubmit = async () => {
+    handleSubmit = async (event) => {
+        event.preventDefault();
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
         const educationForm = document.forms["educationPost"];
@@ -30,8 +31,9 @@ class AddEduForm extends React.Component {
             country: educationForm["schoolCountry"].value,
             educationWhoseId: attributes.sub
         }
+        console.log("the input: ", createEducationInput);
         const newEducation = await API.graphql(graphqlOperation(mutations.createEducation, { input: createEducationInput }));
-        console.log("This education was added: ", newExperience);
+        console.log("This education was added: ", newEducation);
     }
 
     render() {

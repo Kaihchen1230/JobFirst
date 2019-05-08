@@ -17,7 +17,8 @@ class AddExpForm extends React.Component {
         console.log("The add experience form loaded");
     }
 
-    handleSubmit = async () => {
+    handleSubmit = async (event) => {
+        event.preventDefault();
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
         const experienceForm = document.forms["experiencePost"];
@@ -30,6 +31,7 @@ class AddExpForm extends React.Component {
             country: experienceForm["companyCountry"].value,
             experienceWhoseId: attributes.sub
         }
+        console.log("the input: ", createExperienceInput);
         const newExperience = await API.graphql(graphqlOperation(mutations.createExperience, {input: createExperienceInput}));
         console.log("This experience was added: ", newExperience);
     }
