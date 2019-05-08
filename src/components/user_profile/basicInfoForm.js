@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Button, Modal, Form, Input, Radio,
+    Button, Modal, Form, Input, Radio, Select,
 } from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
@@ -19,27 +19,63 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
-                    <Form layout="vertical">
-                        <Form.Item label="Title">
-                            {getFieldDecorator('title', {
-                                rules: [{ required: true, message: 'Please input the title of collection!' }],
+                    <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+                        <Form.Item label="First Name">
+                            {getFieldDecorator('firstName')(
+                                <Input />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label="Middle Name">
+                            {getFieldDecorator('middleName')(
+                                <Input />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label="Last Name">
+                            {getFieldDecorator('lastName')(
+                                <Input />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label="Age">
+                            {getFieldDecorator('age')(
+                                <Input />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label="English Level">
+                            {getFieldDecorator('englishLevel')(
+                                <Select
+                                    placeholder="Select what best describe your english level">
+                                    <Option value="0">Beginner</Option>
+                                    <Option value="1">Elementary</Option>
+                                    <Option value="2">Pre-intermediate</Option>
+                                    <Option value="3">Intermediate</Option>
+                                    <Option value="4">Upper-intermediate</Option>
+                                    <Option value="5">Advanced</Option>
+                                </Select>
+                            )}
+                        </Form.Item>
+
+                        {/* spoken langauge */}
+
+                        <Form.Item label="Email">
+                            {getFieldDecorator('email', {
+                                rules: [{
+                                    type: 'email', message: 'The input is not valid E-mail!',
+                                }]
                             })(
                                 <Input />
                             )}
                         </Form.Item>
-                        <Form.Item label="Description">
-                            {getFieldDecorator('description')(<Input type="textarea" />)}
-                        </Form.Item>
-                        <Form.Item className="collection-create-form_last-form-item">
-                            {getFieldDecorator('modifier', {
-                                initialValue: 'public',
-                            })(
-                                <Radio.Group>
-                                    <Radio value="public">Public</Radio>
-                                    <Radio value="private">Private</Radio>
-                                </Radio.Group>
+
+                        <Form.Item label="Phone">
+                            {getFieldDecorator('phone')(
+                                <Input />
                             )}
                         </Form.Item>
+
                     </Form>
                 </Modal>
             );
