@@ -219,7 +219,7 @@ class Profile extends React.Component {
                                 title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
                             >
                                 <Menu.Item key="3">
-                                    <BasicInfoForm />
+                                    <BasicInfoForm userInfo={this.state.user}/>
                                     {/* {I18n.get('Modify Basic Info')} */}
                                 </Menu.Item>
 

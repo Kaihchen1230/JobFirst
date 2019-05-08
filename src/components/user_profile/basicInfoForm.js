@@ -10,7 +10,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class extends React.Component {
         render() {
             const {
-                visible, onCancel, onCreate, form, add, remove,
+                visible, onCancel, onCreate, form, add, remove, userInfo,
             } = this.props;
             const { getFieldDecorator, getFieldValue } = form;
             const formItemLayout = {
@@ -132,6 +132,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 class BasicInfoForm extends React.Component {
     state = {
         visible: false,
+        userInfo: this.props.userInfo
     };
 
     remove = (k) => {
@@ -208,6 +209,7 @@ class BasicInfoForm extends React.Component {
                     onCreate={this.handleCreate}
                     add={this.add}
                     remove={this.remove}
+                    userInfo={this.state.userInfo}
                 />
             </div>
         );
