@@ -27,7 +27,7 @@ const timeLine = (props) => {
                 <div key = {index}>
                     <TimelineEvent
                         bubbleStyle={{ border: "2px solid #1890ff"} }
-                        icon ={<img style={iconStyle} src="https://i.gifer.com/YYe6.gif"></img>}
+                        icon ={<img style={iconStyle} src="https://i.gifer.com/YgOG.gif"></img>}
                         createdAt={element.date}
                         title={element.title}
                     >

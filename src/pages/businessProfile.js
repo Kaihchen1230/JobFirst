@@ -31,9 +31,9 @@ let bodyStyle = {
  *  Business Profile to show or edit the company information
  */
 class businessProfile extends React.Component {
-    /**
-   * @param {object} props - props no need to pass any arguments
-   */
+  /**
+ * @param {object} props - props no need to pass any arguments
+ */
   constructor(props) {
     super(props);
     this.state = {
@@ -43,23 +43,24 @@ class businessProfile extends React.Component {
       companyWebsite: "alibaba.com",
       companyType: "Intenet",
       headquarter: "New York. NY",
-      videoURL:"https://www.youtube.com/embed/9Kx8Jlz4oAY",
+      videoURL: "https://www.youtube.com/embed/9Kx8Jlz4oAY",
       companyAddress: {
         addressLine1: "2968 Avenue S",
         addressLine2: "",
         city: "New York",
         state: "NY",
         postalCode: "12345"
+        
       },
-      ceoPic: "https://res.cloudinary.com/allamerican/image/fetch/t_face_s270/https://speakerdata2.s3.amazonaws.com/photo/image/10173/100911_mayun_20da3.jpg",
+      ceoPic: "https://camo.githubusercontent.com/472c00f642bd004e55ba0771541138593eb23a53/687474703a2f2f6564756d6f74652e636f6d2f6173736574732f696d616765732f736c696465722f6e6f7464617461666f756e642e706e67",
       ceo: "Ma Yun",
       size: "2000",
       revenue: "500M",
       timeline: [],
       jobAmount: 0,
       description: "Alibaba Group Holding Limited (Chinese: 阿里巴巴集团控股有限公司; pinyin: Ālǐbābā Jítuán Kònggǔ Yǒuxiàn Gōngsī) is a Chinese multinational conglomerate specializing in e-commerce, retail, Internet and technology. Founded 4 April 1999, the company provides consumer-to-consumer (C2C), business-to-consumer (B2C), and business-to-business (B2B) sales services via web portals, as well as electronic payment services, shopping search engines and cloud computing services. It owns and operates a diverse array of businesses around the world in numerous sectors, and is named as one of the world's most admired companies by Fortune.[3][4]",
-      companyLogo: "https://i2.wp.com/nigerianfinder.com/wp-content/uploads/2015/02/Alibaba-logo.png?resize=225%2C225",
-      companyPic:"no",
+      companyLogo: "https://camo.githubusercontent.com/472c00f642bd004e55ba0771541138593eb23a53/687474703a2f2f6564756d6f74652e636f6d2f6173736574732f696d616765732f736c696465722f6e6f7464617461666f756e642e706e67",
+      companyPic: "no",
       value: 0,
       allowEdit: false
     }
@@ -81,23 +82,28 @@ class businessProfile extends React.Component {
       this.setState({ allowEdit: false });
 
     //set up companyID
-    let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: companyID }));
-    this.setState({ companyID: companyID });
-    console.log("employer", employerData);
-    //set up other employer info
-    employerData = employerData.data.getEmployer;
-    for (let item in employerData) {
-      if (employerData[item] && item != "timeline" && item != "companyAddress" && item != "job" && item != "id") {
-        this.setState({ [item]: employerData[item] });
+    let employerData;
+    try {
+      employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: companyID }));
+      this.setState({ companyID: companyID });
+      console.log("employer", employerData);
+      //set up other employer info
+      employerData = employerData.data.getEmployer;
+      for (let item in employerData) {
+        if (employerData[item] && item != "timeline" && item != "companyAddress" && item != "job" && item != "id") {
+          this.setState({ [item]: employerData[item] });
+        }
       }
+    } catch (err) {
+      console.log("couldn't get employer data: ", err);
     }
 
     /**
      * set up other employer info within nested object
      *  */
-    if(employerData.timeline.items.length >= 1)
+    if (employerData.timeline.items.length >= 1)
       this.setState({ timeline: employerData.timeline.items });
-    if(employerData.job.items.length >= 1){
+    if (employerData.job.items.length >= 1) {
       this.setState({ jobList: employerData.job.items });
       this.setState({ jobAmount: employerData.job.items.length })
     }
@@ -123,18 +129,25 @@ class businessProfile extends React.Component {
     }
 
     // fetch photo
-    if (this.state.companyPic === 'yes') {
-      Storage.get('profilePic', {
+    try {
+      if (this.state.companyPic === 'yes') {
+        Storage.get('profilePic', {
           level: 'protected',
           identityId: this.state.userID// the identityId of that user
-      })
+        })
           .then(result => {
-              console.log("pic is",result);
-              this.setState({companyLogo:result});   
+            console.log("pic is", result);
+            this.setState({ companyLogo: result });
           })
           .catch(err => console.log(err));
+      }
+    } catch (err) {
+      console.log("couldn't get photo: ", err);
     }
+
+    this.setState({memory:true});
   }
+
   /**
    * set show modal to true
    */
@@ -143,6 +156,7 @@ class businessProfile extends React.Component {
       visible: true,
     });
   }
+
   /**
    * set visible to false for the modal component, when click ok
    */
@@ -151,6 +165,7 @@ class businessProfile extends React.Component {
       visible: false,
     });
   }
+
   /**
    * set visible to false for the modal component,when click cancel
    */
@@ -162,6 +177,10 @@ class businessProfile extends React.Component {
   }
 
   render() {
+    if(!this.state.memory){
+      // Just wait for the memory to be available
+      return null;
+    }
     return (
       <div >
         <div className="banner">
@@ -174,11 +193,11 @@ class businessProfile extends React.Component {
               <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
             </div>
             {this.state.allowEdit ?
-              <span>              
+              <span>
                 <Button className="editButton" type="primary" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
-                </Button> 
-                <PhotoUpload isBusiness = {true}/>
+                </Button>
+                <PhotoUpload isBusiness={true} />
               </span>
               : null
             }
@@ -218,7 +237,7 @@ class businessProfile extends React.Component {
                         ceo={this.state.ceo}
                         ceoPic={this.state.ceoPic}
                       />
-                      <CompanyVideo videoURL ={this.state.videoURL} videoPic = {this.state.videoPic}/>
+                      <CompanyVideo videoURL={this.state.videoURL} videoPic={this.state.videoPic} />
                     </div>
                   </div>
                 </div>
