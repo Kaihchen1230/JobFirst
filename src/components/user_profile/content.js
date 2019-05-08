@@ -15,13 +15,11 @@ const callback = (key) => {
 
 const Information = (props) => {
 
-    const user = getUser();
-
     return (
         <div>
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
-                    <General user={user} />
+                    <General user={props.user} />
                 </TabPane>
 
                 <TabPane tab={I18n.get("Education and Awards")} key="2">
