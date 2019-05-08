@@ -227,6 +227,7 @@ class Profile extends React.Component {
 
                                 <Menu.Item key="5">
                                     {I18n.get('Add Education or Award')}
+                                    <Link to="/app/addEduForm"></Link>
                                 </Menu.Item>
 
                                 <Menu.Item key="6">

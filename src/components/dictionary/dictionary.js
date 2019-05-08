@@ -104,7 +104,9 @@ let dict = {
         "Enter the Country of the Company": "输入公司所在国家/地区",
         "Enter the Starting Year": "输入起始年份",
         "Enter the Ending Year": "输入结束年份",
-        "Enter the Reason for Leaving": "输入离开原因"
+        "Enter the Reason for Leaving": "输入离开原因",
+        "Add an Experience": "添加经验",
+        "Submit New Experience": "提交新体验"
     },
     'es': {
         'Sign In': "Sign In",
@@ -211,7 +213,9 @@ let dict = {
         "Enter the Country of the Company": "Enter the Country of the Company",
         "Enter the Starting Year": "Enter the Starting Year",
         "Enter the Ending Year": "Enter the Ending Year",
-        "Enter the Reason for Leaving": "Enter the Reason for Leaving"
+        "Enter the Reason for Leaving": "Enter the Reason for Leaving",
+        "Add an Experience": "Add an Experience",
+        "Submit New Experience": "Submit New Experience"
     }
 };
 export default dict;
