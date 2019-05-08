@@ -60,4 +60,5 @@ ___
 ```npm test``` or ```npm test -- -- watch```
 
 ### Document:
-```put all docs file under docs folder``` and ```npm run docz:dev```
+```npm run doc``` All docs are inside the docs folder
+[Refer here for how to write jsdoc](https://www.akshatsharma.com/posts/how%20to%20jsdoc/index.html#simian-toc-8)
