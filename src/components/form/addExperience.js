@@ -14,7 +14,6 @@ class AddExpForm extends React.Component {
             type: ""
         };
         console.log("The add experience form loaded");
-        //this.typeUpdate = this.typeUpdate.bind(this);
     }
 
     handleSubmit = async () => {
