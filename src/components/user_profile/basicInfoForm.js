@@ -2,6 +2,8 @@ import React from 'react';
 import {
     Button, Modal, Form, Input, Radio, Select, InputNumber, Icon
 } from 'antd';
+import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
+import * as mutations from '../../graphql/mutations';
 
 let id = 0;
 
@@ -29,7 +31,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                     sm: { span: 20, offset: 4 },
                 },
             };
-            getFieldDecorator('keys', { initialValue: [] });
+            getFieldDecorator('keys', { initialValue: userInfo.language ? userInfo.language:[]});
             const keys = getFieldValue('keys');
             const formItems = keys.map((k, index) => (
                 <Form.Item
@@ -61,39 +63,39 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                 >
                     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
                         <Form.Item label="First Name">
-                            {getFieldDecorator('firstName')(
-                                <Input />
+                            {getFieldDecorator('firstName', { initialValue: userInfo.firstName })(
+                                <Input placeholder={userInfo.firstName}/>
                             )}
                         </Form.Item>
 
                         <Form.Item label="Middle Name">
-                            {getFieldDecorator('middleName')(
-                                <Input />
+                            {getFieldDecorator('middleName', { initialValue: userInfo.middleName })(
+                                <Input placeholder={userInfo.middleName}/>
                             )}
                         </Form.Item>
 
                         <Form.Item label="Last Name">
-                            {getFieldDecorator('lastName')(
-                                <Input />
+                            {getFieldDecorator('lastName',{ initialValue: userInfo.lastName })(
+                                <Input placeholder={userInfo.lastName}/>
                             )}
                         </Form.Item>
 
                         <Form.Item label="Age">
-                            {getFieldDecorator('age', { initialValue: 15 })(
+                            {getFieldDecorator('age', { initialValue: userInfo.age })(
                                 <InputNumber min={15} max={100} />
                             )}
                         </Form.Item>
 
                         <Form.Item label="English Level">
-                            {getFieldDecorator('englishLevel')(
+                            {getFieldDecorator('englishLevel', { initialValue: userInfo.englishLevel })(
                                 <Select
                                     placeholder="Select what best describe your english level">
-                                    <Option value="0">Beginner</Option>
-                                    <Option value="1">Elementary</Option>
-                                    <Option value="2">Pre-intermediate</Option>
-                                    <Option value="3">Intermediate</Option>
-                                    <Option value="4">Upper-intermediate</Option>
-                                    <Option value="5">Advanced</Option>
+                                    <Option value="Beginner">Beginner</Option>
+                                    <Option value="Elementary">Elementary</Option>
+                                    <Option value="Pre-intermediate">Pre-intermediate</Option>
+                                    <Option value="Intermediate">Intermediate</Option>
+                                    <Option value="Upper-intermediate">Upper-intermediate</Option>
+                                    <Option value="Advanced">Advanced</Option>
                                 </Select>
                             )}
                         </Form.Item>
@@ -105,8 +107,9 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 <Icon type="plus" /> Add language
                             </Button>
                         </Form.Item>
-
-                        <Form.Item label="Email">
+                        
+                        {/* dont allow user to change the email account */}
+                        {/* <Form.Item label="Email">
                             {getFieldDecorator('email', {
                                 rules: [{
                                     type: 'email', message: 'The input is not valid E-mail!',
@@ -114,11 +117,11 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             })(
                                 <Input />
                             )}
-                        </Form.Item>
+                        </Form.Item> */}
 
                         <Form.Item label="Phone">
-                            {getFieldDecorator('phone')(
-                                <Input />
+                            {getFieldDecorator('phone', { initialValue: userInfo.phone })(
+                                <Input placeholder={userInfo.phone}/>
                             )}
                         </Form.Item>
 
@@ -181,14 +184,29 @@ class BasicInfoForm extends React.Component {
         this.setState({ visible: false });
     }
 
-    handleCreate = () => {
+    handleCreate = async() => {
         const form = this.formRef.props.form;
-        form.validateFields((err, values) => {
+        form.validateFields(async(err, values) => {
             if (err) {
                 return;
             }
-
             console.log('Received values of form: ', values);
+            const userId = this.state.userInfo.id;
+            const data = {
+                id: userId,
+                age: values.age,
+                englishLevel: values.englishLevel,
+                firstName: values.firstName,
+                language: values.languages,
+                lastName: values.lastName,
+                middleName: values.middleName,
+                phone: values.phone
+            }
+            try {
+                const newEmployee = await API.graphql(graphqlOperation(mutations.updateEmployee, {input: data}));
+            } catch(err) {
+                console.log("error in updating employee's info", err);
+            }
             form.resetFields();
             this.setState({ visible: false });
         });
