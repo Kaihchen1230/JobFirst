@@ -98,8 +98,13 @@ let dict = {
         "Degree": "学位",
         "Location": "地点",
         "Years": "年份",
-        "Education": "教育"
-
+        "Education": "教育",
+        "Enter the Company Name": "输入公司名称",
+        "Enter the City of the Company": "进入公司城市",
+        "Enter the Country of the Company": "输入公司所在国家/地区",
+        "Enter the Starting Year": "输入起始年份",
+        "Enter the Ending Year": "输入结束年份",
+        "Enter the Reason for Leaving": "输入离开原因"
     },
     'es': {
         'Sign In': "Sign In",
@@ -200,7 +205,13 @@ let dict = {
         "Degree": "Degree",
         "Location": "Location",
         "Years": "Years",
-        "Education": "Education"
+        "Education": "Education",
+        "Enter the Company Name": "Enter the Company Name",
+        "Enter the City of the Company": "Enter the City of the Company",
+        "Enter the Country of the Company": "Enter the Country of the Company",
+        "Enter the Starting Year": "Enter the Starting Year",
+        "Enter the Ending Year": "Enter the Ending Year",
+        "Enter the Reason for Leaving": "Enter the Reason for Leaving"
     }
 };
 export default dict;
