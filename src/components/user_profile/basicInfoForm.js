@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Button, Modal, Form, Input, Radio, Select,
+    Button, Modal, Form, Input, Radio, Select, InputNumber, Icon
 } from 'antd';
 
 let id = 0;
@@ -34,35 +34,28 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             const formItems = keys.map((k, index) => (
                 <Form.Item
                     {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={index === 0 ? 'Passengers' : ''}
+                    label={index === 0 ? 'Languages' : ''}
                     required={false}
                     key={k}
                 >
-                    {getFieldDecorator(`names[${k}]`, {
-                        validateTrigger: ['onChange', 'onBlur'],
-                        rules: [{
-                            required: true,
-                            whitespace: true,
-                            message: "Please input passenger's name or delete this field.",
-                        }],
-                    })(
-                        <Input placeholder="passenger name" style={{ width: '60%', marginRight: 8 }} />
+                    {getFieldDecorator(`languages[${k}]`)(
+                        <Input placeholder="Language" style={{ width: '60%', marginRight: 8 }} />
                     )}
                     {keys.length > 1 ? (
                         <Icon
                             className="dynamic-delete-button"
                             type="minus-circle-o"
-                            onClick={() => this.remove(k)}
+                            onClick={() => remove(k)}
                         />
                     ) : null}
                 </Form.Item>
             ));
-            
+
             return (
                 <Modal
                     visible={visible}
-                    title="Create a new collection"
-                    okText="Create"
+                    title="Modify Basic Info"
+                    okText="Done"
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
@@ -106,6 +99,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         </Form.Item>
 
                         {/* spoken langauge */}
+                        {formItems}
+                        <Form.Item label="Language">
+                            <Button type="dashed" onClick={add} style={{ width: '60%' }}>
+                                <Icon type="plus" /> Add language
+                            </Button>
+                        </Form.Item>
 
                         <Form.Item label="Email">
                             {getFieldDecorator('email', {
@@ -201,7 +200,7 @@ class BasicInfoForm extends React.Component {
     render() {
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>New Collection</Button>
+                <Button ghost onClick={this.showModal}>Modify Basic Info</Button>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
