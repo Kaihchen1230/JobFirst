@@ -10,7 +10,8 @@ import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
-import UserProfileUtil from "./userProfileUnitTest/userProfileUtil";
+import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
+import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -228,10 +229,12 @@ class Profile extends React.Component {
 
                                 <Menu.Item key="5">
                                     {I18n.get('Add Education or Award')}
+                                    <Link to="/app/addEduForm"></Link>
                                 </Menu.Item>
 
                                 <Menu.Item key="6">
                                     {I18n.get('Add Experience or Skill')}
+                                    <Link to="/app/addExpForm"></Link>
                                 </Menu.Item>
                             </SubMenu>
 

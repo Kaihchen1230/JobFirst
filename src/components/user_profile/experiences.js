@@ -6,8 +6,6 @@ import dict from "../dictionary/dictionary"
 
 const Experiences = (props) => {
 
-    //const renderButton = props.allowEdit ? <Button type="danger" onClick="">Delete</Button> : null;
-
     let experiencesList = [...props.experiences];
     let display = experiencesList.map(item =>
         <div align="center">
