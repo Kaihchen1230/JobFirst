@@ -1,4 +1,32 @@
-/** Class representing a point. */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/businessProfile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/businessProfile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Class representing a point. */
 import React from "react"
 import { Button, Tabs } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
@@ -87,7 +115,7 @@ class businessProfile extends React.Component {
     //set up other employer info
     employerData = employerData.data.getEmployer;
     for (let item in employerData) {
-      if (employerData[item] && item != "timeline" && item != "companyAddress" && item != "job" && item != "id") {
+      if (employerData[item] &amp;&amp; item != "timeline" &amp;&amp; item != "companyAddress" &amp;&amp; item != "job" &amp;&amp; item != "id") {
         this.setState({ [item]: employerData[item] });
       }
     }
@@ -163,46 +191,46 @@ class businessProfile extends React.Component {
 
   render() {
     return (
-      <div >
-        <div className="banner">
-        </div>
-        <div style={bodyStyle}>
-          <div className="secBanner">
-            <BusinessPicture companyLogo={this.state.companyLogo} />
-            <div className="companyHeader">
-              <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
-              <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
-            </div>
+      &lt;div >
+        &lt;div className="banner">
+        &lt;/div>
+        &lt;div style={bodyStyle}>
+          &lt;div className="secBanner">
+            &lt;BusinessPicture companyLogo={this.state.companyLogo} />
+            &lt;div className="companyHeader">
+              &lt;h1 style={{ fontSize: "4em" }}>{this.state.companyName}&lt;/h1>
+              &lt;h2 className="companyLocation">{this.state.companyAddress.city}&lt;/h2>
+            &lt;/div>
             {this.state.allowEdit ?
-              <span>              
-                <Button className="editButton" type="primary" onClick={this.showModal}>
+              &lt;span>              
+                &lt;Button className="editButton" type="primary" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
-                </Button> 
-                <PhotoUpload isBusiness = {true}/>
-              </span>
+                &lt;/Button> 
+                &lt;PhotoUpload isBusiness = {true}/>
+              &lt;/span>
               : null
             }
-          </div>
+          &lt;/div>
 
-          <div style={{ padding: "0px 60px" }}>
-            <Tabs defaultActiveKey="1" >
-              <TabPane tab={I18n.get('Profile')} key="1" >
-                <div>
-                  <div >
-                    <EditProfileForm
+          &lt;div style={{ padding: "0px 60px" }}>
+            &lt;Tabs defaultActiveKey="1" >
+              &lt;TabPane tab={I18n.get('Profile')} key="1" >
+                &lt;div>
+                  &lt;div >
+                    &lt;EditProfileForm
                       data={this.state}
                       visible={this.state.visible}
                       onOk={this.handleOk}
                       onCancel={this.handleCancel}
                     />
-                  </div>
-                  <div className="row1">
-                    <div style={{ width: "65%" }}>
-                      <About
+                  &lt;/div>
+                  &lt;div className="row1">
+                    &lt;div style={{ width: "65%" }}>
+                      &lt;About
                         description={this.state.description}
                       />
-                    </div>
-                    <BriefInfo
+                    &lt;/div>
+                    &lt;BriefInfo
                       companyWebsite={this.state.companyWebsite}
                       size={this.state.size}
                       revenue={this.state.revenue}
@@ -210,35 +238,58 @@ class businessProfile extends React.Component {
                       companyType={this.state.companyType}
                       headquarter={this.state.headquarter}
                     />
-                  </div>
-                  <div className="row2">
-                    <Timeline timeline={this.state.timeline} />
-                    <div style={{ width: "50%" }}>
-                      <CeoPic
+                  &lt;/div>
+                  &lt;div className="row2">
+                    &lt;Timeline timeline={this.state.timeline} />
+                    &lt;div style={{ width: "50%" }}>
+                      &lt;CeoPic
                         ceo={this.state.ceo}
                         ceoPic={this.state.ceoPic}
                       />
-                      <CompanyVideo videoURL ={this.state.videoURL} videoPic = {this.state.videoPic}/>
-                    </div>
-                  </div>
-                </div>
+                      &lt;CompanyVideo videoURL ={this.state.videoURL} videoPic = {this.state.videoPic}/>
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
 
-              </TabPane>
-              <TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
-                <div>
-                  <PostJob
+              &lt;/TabPane>
+              &lt;TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
+                &lt;div>
+                  &lt;PostJob
                     jobList={this.state.jobList}
                     companyLogo={this.state.companyLogo} />
-                </div>
-              </TabPane>
-            </Tabs>
-          </div>
+                &lt;/div>
+              &lt;/TabPane>
+            &lt;/Tabs>
+          &lt;/div>
 
-        </div>
-      </div>
+        &lt;/div>
+      &lt;/div>
     );
   }
 }
 
 
 export default businessProfile;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.1</a> on Tue May 07 2019 21:58:17 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

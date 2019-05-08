@@ -1,4 +1,32 @@
-/** Class representing a point. */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/business_profile/EditProfileForm.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/business_profile/EditProfileForm.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Class representing a point. */
 import { Form, Modal, Input, DatePicker, Tooltip, Button, Icon, message } from 'antd';
 import React from 'react';
 import * as mutations from '../../graphql/mutations';
@@ -118,8 +146,8 @@ class ModalForm extends React.Component {
     let timelines = this.state.timeline;
 
     //update events
-    let updateNum = originalLen < newLength? originalLen : newLength;
-    for(let index = 0; index < updateNum; index++){
+    let updateNum = originalLen &lt; newLength? originalLen : newLength;
+    for(let index = 0; index &lt; updateNum; index++){
       let timelineData = timelines[index]
       timelineData.timelineCompanyId = this.state.companyID;
       let timeline = await API.graphql(graphqlOperation(mutations.updateTimeline,
@@ -128,8 +156,8 @@ class ModalForm extends React.Component {
     }
     
     //create new event
-    if(originalLen < newLength){
-      for(let index = originalLen; index < newLength; index++){
+    if(originalLen &lt; newLength){
+      for(let index = originalLen; index &lt; newLength; index++){
         let timelineData =timelines[index];
         timelineData.timelineCompanyId = this.state.companyID;
         let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,
@@ -139,7 +167,7 @@ class ModalForm extends React.Component {
     }
     //delete extra event
     else if(originalLen > newLength){
-      for(let index = newLength; index < originalLen; index++){
+      for(let index = newLength; index &lt; originalLen; index++){
         let timelineData= {};
         timelineData.id = this.state.originalTimeline[index].id;
         let timeline = await API.graphql(graphqlOperation(mutations.deleteTimeline,
@@ -274,7 +302,7 @@ class ModalForm extends React.Component {
     };
        
     return (
-      <Modal
+      &lt;Modal
         title="Edit Company Information"
         okText={"Save"}
         visible={this.props.visible}
@@ -282,190 +310,190 @@ class ModalForm extends React.Component {
         onCancel={this.props.onCancel}
         width={800}
       >
-        <Form 
+        &lt;Form 
           className="login-form">
-          <br />
-          <h2 style={{ marginLeft: "7%" }}>Base Information:</h2>
-          <FormItem
+          &lt;br />
+          &lt;h2 style={{ marginLeft: "7%" }}>Base Information:&lt;/h2>
+          &lt;FormItem
             {...formItemLayout}
             label="Company Name"
           >
-            <Input
+            &lt;Input
               value={this.state.companyName}
               style={{ width: "60%" }}
               name="companyName"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="Website"
           >
-            <Input
+            &lt;Input
               value={this.state.companyWebsite}
               name="companyWebsite"
               style={{ width: "60%" }}
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="Company Tpye"
           >
-            <Input
+            &lt;Input
               value={this.state.companyType}
               style={{ width: "60%" }}
               name="companyType"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <Form.Item
+          &lt;/FormItem>
+          &lt;Form.Item
             {...formItemLayout}
             label="Description"
           >
-            <Input.TextArea
+            &lt;Input.TextArea
               value={this.state.description}
               style={{ width: "70%" }}
               rows={6}
               name="description"
               onChange={(event) => { this.handleUpdate(event) }}
               placeholder="description" />
-          </Form.Item>
-          <h2 style={{ marginLeft: "20%" }}>Details:</h2>
-          <FormItem
+          &lt;/Form.Item>
+          &lt;h2 style={{ marginLeft: "20%" }}>Details:&lt;/h2>
+          &lt;FormItem
             {...formItemLayout}
             label="Headquarter"
           >
-            <Input
+            &lt;Input
               value={this.state.headquarter}
               style={{ width: "60%" }}
               name="headquarter"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="Size"
           >
-            <Input
+            &lt;Input
               value={this.state.size}
               style={{ width: "60%" }}
               name="size"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="revenue"
           >
-            <Input
+            &lt;Input
               value={this.state.revenue}
               style={{ width: "60%" }}
               name="revenue"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="CEO name"
           >
-            <Input
+            &lt;Input
               value={this.state.ceo}
               name="ceo"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="CEO Picture"
           >
-            <Input
+            &lt;Input
               value={this.state.ceoPic}
               style={{ width: "60%" }}
               name="ceoPic"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="Youtube Video"
           >
-            <Input
+            &lt;Input
               value={this.state.videoURL}
               style={{ width: "60%" }}
               name="videoURL"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
+          &lt;/FormItem>
 
-          <h2 style={{ marginLeft: "20%" }}>Address:</h2>
-          <FormItem
+          &lt;h2 style={{ marginLeft: "20%" }}>Address:&lt;/h2>
+          &lt;FormItem
             {...formItemLayout}
             label="Address Line 1"
           >
-            <Input
+            &lt;Input
               value={this.state.addressLine1}
               style={{ width: "60%" }}
               name="addressLine1"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="Address Line 2"
           >
-            <Input
+            &lt;Input
               value={this.state.addressLine2}
               name="addressLine2"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="City"
           >
-            <Input
+            &lt;Input
               value={this.state.city}
               name="city"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="postalCode"
           >
-            <Input
+            &lt;Input
               value={this.state.postalCode}
               name="postalCode"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
-          </FormItem>
-          <FormItem
+          &lt;/FormItem>
+          &lt;FormItem
             {...formItemLayout}
             label="State"
           >
-            <Input
+            &lt;Input
               value={this.state.state}
               style={{ width: "60%" }}
               name="state"
               onChange={(event) => { this.handleUpdate(event) }}
               required />
-          </FormItem>
-          <h2 style={{ marginLeft: "20%" }}>Timeline:</h2>
+          &lt;/FormItem>
+          &lt;h2 style={{ marginLeft: "20%" }}>Timeline:&lt;/h2>
 
           {/* timelines component */}
           {this.state.timeline.map(
             (element, index) => {
               index;
               return (
-                <FormItem
+                &lt;FormItem
                   {...formItemLayout}
                   key={index}
                   label={"Event" + " " + (index + 1)}
                 >
                   {/* title input */}
-                  <Input value={element.title}
+                  &lt;Input value={element.title}
                     required
                     id={index + "title"}
                     placeholder="Title"
@@ -473,16 +501,16 @@ class ModalForm extends React.Component {
                     onChange={(event) => { this.handleTitleUpdate(event, index) }}
                     style={{ width: "60%" }}
                     required >
-                  </Input>
-                  <Tooltip title="Delete">
-                    <Button
+                  &lt;/Input>
+                  &lt;Tooltip title="Delete">
+                    &lt;Button
                       onClick={() => { this.handleDeleteTimeline(index) }}>
-                      <Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
-                    </Button>
-                  </Tooltip>
+                      &lt;Icon style={{ fontSize: "15px", marginLeft: "1%" }} type="delete" />
+                    &lt;/Button>
+                  &lt;/Tooltip>
 
                   {/* textArea*/}
-                  <Input.TextArea
+                  &lt;Input.TextArea
                     required
                     value={element.info}
                     style={{ width: "60%" }}
@@ -490,29 +518,52 @@ class ModalForm extends React.Component {
                     onChange={(event) => { this.handleInfoUpdate(event, index) }}
                     name="description"
                     placeholder="Description" />
-                  <br />
+                  &lt;br />
 
                   {/* datepicker */}
-                  <DatePicker
+                  &lt;DatePicker
                     required
                     onChange={(date,dateString) => { this.handleDateUpdate(dateString, index) }}
                     defaultValue={moment(element.date, 'YYYY-MM-DD')}
                     placeholder={I18n.get('Event Date')}
                     name="postDate" />
-                </FormItem>)
+                &lt;/FormItem>)
             })}
-          <div style={{ textAlign: "center" }} >
-            <Button
+          &lt;div style={{ textAlign: "center" }} >
+            &lt;Button
               onClick ={this.handleAddTimeline}>
-              <Icon type="plus" />
+              &lt;Icon type="plus" />
               Add More Events
-            </Button>
-          </div>
-        </Form>
-      </Modal>
+            &lt;/Button>
+          &lt;/div>
+        &lt;/Form>
+      &lt;/Modal>
     );
   }
 }
 
 export default ModalForm;
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.1</a> on Tue May 07 2019 21:58:17 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
