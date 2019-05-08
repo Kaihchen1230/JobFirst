@@ -5,7 +5,7 @@ import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
-import { setLanguage, getLanguage } from "../../services/auth";
+import { getLanguage } from "../../services/auth";
 
 class AddExpForm extends React.Component {
     constructor(props) {
