@@ -5,12 +5,13 @@ import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
+import { getLanguage } from "../../services/auth";
 
 class AddExpForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //lan: window.localStorage.getItem('lan'),
+            lan: getLanguage(),
             type: ""
         };
         console.log("The add experience form loaded");
@@ -34,6 +35,9 @@ class AddExpForm extends React.Component {
     }
 
     render() {
+        console.log("language", this.state.lan);
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
         return (
             <div align="center">
                 <br />
