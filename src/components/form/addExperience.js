@@ -17,7 +17,17 @@ class AddExpForm extends React.Component {
     }
 
     handleSubmit = async () => {
-
+        let user = await Auth.currentAuthenticatedUser();
+        const { attributes } = user;
+        const experienceForm = document.forms["experiencePost"];
+        const createExperienceInput = {
+            startYear: experienceForm["yearStart"].value,
+            endYear: experienceForm["yearEnd"].value,
+            companyName: experienceForm["companyName"].value,
+            reasonToLeave: experienceForm["leaveReason"].value,
+            city: experienceForm["companyCity"].value,
+            country: experienceForm["companyCountry"].value
+        }
     }
 
     render() {
@@ -69,6 +79,9 @@ class AddExpForm extends React.Component {
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit" >{I18n.get('Submit New Experience')}</Button>
                     </Form.Item>
                 </Form>
             </div>
