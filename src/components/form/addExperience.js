@@ -13,6 +13,7 @@ class AddExpForm extends React.Component {
             //lan: window.localStorage.getItem('lan'),
             type: ""
         };
+        console.log("The add experience form loaded");
         //this.typeUpdate = this.typeUpdate.bind(this);
     }
 
@@ -26,8 +27,11 @@ class AddExpForm extends React.Component {
             companyName: experienceForm["companyName"].value,
             reasonToLeave: experienceForm["leaveReason"].value,
             city: experienceForm["companyCity"].value,
-            country: experienceForm["companyCountry"].value
+            country: experienceForm["companyCountry"].value,
+            experienceWhoseId: attributes.sub
         }
+        const newExperience = await API.graphql(graphqlOperation(mutations.createExperience, {input: createExperienceInput}));
+        console.log("This experience was added: ", newExperience);
     }
 
     render() {
