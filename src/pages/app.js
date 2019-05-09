@@ -1,8 +1,9 @@
 import React from "react"
-import { Router } from "@reach/router"
+// import { Router } from "@reach/router"
+import { BrowserRouter } from 'react-router-dom';
 import Layout from "../components/layout"
-import PrivateRoute from "../components/authentication/privateRoute"
-import Login from "../components/authentication/login"
+import PrivateRoute from "../components/authentication/privateRoute";
+import Login from "../components/authentication/login";
 import businessProfile from "./businessProfile"
 import PostJob from "../components/form/postJob";
 import Home from '../components/Home/home';
