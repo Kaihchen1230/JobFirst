@@ -12,7 +12,7 @@ const Education = (props) => {
             <Card
                 size="default"
                 title={item.schoolName}
-                extra={props.allowEdit ? <Button type="danger" onClick={props.deleteEdu.bind(null, item.id)}>Delete</Button> : null}
+                extra={props.allowEdit ? <Button type="danger" onClick={props.deleteEdu.bind(null, item.id)}>{I18n.get('Delete')}</Button> : null}
                 style={{ width: "80%" }}
                 key={item.id}
             >

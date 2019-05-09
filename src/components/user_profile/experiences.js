@@ -12,7 +12,7 @@ const Experiences = (props) => {
             <Card
                 size="default"
                 title={item.companyName}
-                extra={props.allowEdit ? <Button type="danger" onClick={props.deleteExp.bind(null, item.id)}>Delete</Button> : null}
+                extra={props.allowEdit ? <Button type="danger" onClick={props.deleteExp.bind(null, item.id)}>{I18n.get('Delete')}</Button> : null}
                 style={{ width: "80%" }}
                 key={item.id}
             >

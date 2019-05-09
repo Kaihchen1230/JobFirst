@@ -27,7 +27,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Upload A New Profile Picture"
+                    title={I18n.get("Upload A New Profile Picture")}
                     okText="Done"
                     cancelText="Cancel"
                     onCancel={onCancel}
@@ -202,8 +202,8 @@ class UploadPage extends React.Component {
         return (
             <div>
                 {this.props.isBusiness ?
-                    <Button style ={buttonStyle} onClick={this.showModal}>Upload A New Logo</Button>:
-                    <Button ghost type='ghost' onClick={this.showModal}>Upload A New Profile Picture</Button>
+                    <Button style ={buttonStyle} onClick={this.showModal}>{I18n.get('Upload A New Logo')}</Button>:
+                    <Button ghost type='ghost' onClick={this.showModal}>{I18n.get('Upload A New Profile Picture')}</Button>
                 }
                 
                 <UploadForm
