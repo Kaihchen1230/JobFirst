@@ -23,7 +23,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                     onOk={onUpdate}
                 >
                     <Form layout="vertical">
-                        <Form.Item>
+                        <Form.Item label="line1">
                             {getFieldDecorator('line1')(
                                 <Input placeholder={I18n.get('Street Address Line 1')}
                                     name="line1"
@@ -34,7 +34,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item>
+                        <Form.Item label="line2">
                             {getFieldDecorator('line2')(
                                 <Input placeholder={I18n.get('Street Address Line 2')}
                                     name="line2"
@@ -45,7 +45,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item>
+                        <Form.Item label="city">
                             {getFieldDecorator('city')(
                                 <Input placeholder={I18n.get('City')}
                                     name="city"
@@ -56,7 +56,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item>
+                        <Form.Item label="postalCode">
                             {getFieldDecorator('postalCode')(
                                 <Input placeholder={I18n.get('Postal Code')}
                                     name="postalCode"
@@ -67,7 +67,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item>
+                        <Form.Item label="state">
                             {getFieldDecorator('state')(
                                 <Input placeholder={I18n.get('State')}
                                     name="state"
@@ -103,6 +103,22 @@ class UpdateAddressForm extends React.Component {
     }
 
     // api call to update address function
+    handleUpdate = async () => {
+        const form = this.formRef.props.form;
+        form.validateFields(async (err, values) => {
+            if (err) return;
+            let user = await Auth.currentAuthenticatedUser();
+            const { attributes } = user;
+            console.log("These values were entered: ", values);
+            const updateAddInput = {
+                line1: values["line1"],
+                line2: values["line2"],
+                city: values["city"],
+                postalCode: values["postalCode"],
+                state: values["state"]
+            }
+        })
+    }
 
     saveFormRef = (formRef) => {
         this.formRef = formRef;
