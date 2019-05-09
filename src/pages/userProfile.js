@@ -15,6 +15,7 @@ import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
 import AddEduForm from "../components/form/addEducation";
 import AddExpForm from "../components/form/addExperience";
+import UpdateAddressForm from "../components/form/updateAddress";
 
 // Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
@@ -227,6 +228,7 @@ class Profile extends React.Component {
 
                                 <Menu.Item key="4">
                                     {I18n.get('Update address')}
+                                    <UpdateAddressForm />
                                 </Menu.Item>
 
                                 <Menu.Item key="5">
