@@ -1,6 +1,6 @@
 import React from 'react';
 import Person from '../components/user_profile/person';
-import Information from '../components/user_profile/content';
+import Information from '../components/user_profile/information';
 import Amplify, { Auth, API, graphqlOperation, I18n, Storage } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
@@ -8,7 +8,7 @@ import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn, getLanguage } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon, message } from 'antd';
-import UploadPage from '../components/user_profile/photoUploader';
+import PhotoUploader from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
@@ -239,7 +239,7 @@ class Profile extends React.Component {
                             </SubMenu>
 
                             <Menu.Item key="2">
-                                <UploadPage />
+                                <PhotoUploader />
 
                                 {/* <span>{I18n.get('Change Profile Picture')}</span> */}
                             </Menu.Item>

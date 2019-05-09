@@ -5,7 +5,7 @@ import { Card, Icon, Avatar } from 'antd';
 import { I18n, Storage } from 'aws-amplify';
 const { Meta } = Card;
 
-const Sidebar = (props) => {
+const Person = (props) => {
     let { pic, firstName, lastName, favoriteQuote, identityID } = props.user;
     if (pic == null || pic ==='no') {
         pic = pikachiu;
@@ -26,4 +26,4 @@ const Sidebar = (props) => {
 
 }
 
-export default Sidebar;
+export default Person;
