@@ -2,7 +2,7 @@ import React from 'react';
 let mainStyle = {
     position:"relative",
     left:"7%",
-    marginTop:"-5%",
+    marginTop:"0%",
     marginBottom:"10%",
 };
 
@@ -24,7 +24,7 @@ export default props => {
                 data-testid="comVideo"
                 width="580"
                 height="330" 
-                src= {props.videoURL+"&output=embed"}
+                src= {props.videoURL}
                 frameBorder="0" 
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen = {true}>

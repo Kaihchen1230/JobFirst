@@ -1,6 +1,6 @@
 /** Class representing a point. */
 import React from "react"
-import { Button, Tabs } from 'antd';
+import { Button, Tabs,Spin } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
@@ -39,10 +39,10 @@ class businessProfile extends React.Component {
     this.state = {
       visible: false,
       jobList: [],
-      companyName: "Alibaba",
-      companyWebsite: "alibaba.com",
-      companyType: "Intenet",
-      headquarter: "New York. NY",
+      companyName: "",
+      companyWebsite: "",
+      companyType: "",
+      headquarter: "",
       videoURL: "",
       companyAddress: {
         addressLine1: "2968 Avenue S",
@@ -53,12 +53,12 @@ class businessProfile extends React.Component {
         
       },
       ceoPic: "https://camo.githubusercontent.com/472c00f642bd004e55ba0771541138593eb23a53/687474703a2f2f6564756d6f74652e636f6d2f6173736574732f696d616765732f736c696465722f6e6f7464617461666f756e642e706e67",
-      ceo: "Ma Yun",
-      size: "2000",
-      revenue: "500M",
+      ceo: "",
+      size: "",
+      revenue: "",
       timeline: [],
       jobAmount: 0,
-      description: "Alibaba Group Holding Limited (Chinese: 阿里巴巴集团控股有限公司; pinyin: Ālǐbābā Jítuán Kònggǔ Yǒuxiàn Gōngsī) is a Chinese multinational conglomerate specializing in e-commerce, retail, Internet and technology. Founded 4 April 1999, the company provides consumer-to-consumer (C2C), business-to-consumer (B2C), and business-to-business (B2B) sales services via web portals, as well as electronic payment services, shopping search engines and cloud computing services. It owns and operates a diverse array of businesses around the world in numerous sectors, and is named as one of the world's most admired companies by Fortune.[3][4]",
+      description: "",
       companyLogo: "https://camo.githubusercontent.com/472c00f642bd004e55ba0771541138593eb23a53/687474703a2f2f6564756d6f74652e636f6d2f6173736574732f696d616765732f736c696465722f6e6f7464617461666f756e642e706e67",
       companyPic: "no",
       value: 0,
@@ -93,16 +93,19 @@ class businessProfile extends React.Component {
           this.setState({ [item]: employerData[item] });
         }
       }
-          /**
+
+       /**
        * set up other employer info within nested object
        *  */
       console.log("employer", employerData);
       if (employerData.timeline.items.length >= 1)
         this.setState({ timeline: employerData.timeline.items });
+
       if (employerData.job.items.length >= 1) {
         this.setState({ jobList: employerData.job.items });
         this.setState({ jobAmount: employerData.job.items.length })
       }
+
       //set up the address data
       if (employerData.companyAddress) {
         let addressLine1 = employerData.companyAddress.line1;
@@ -120,19 +123,22 @@ class businessProfile extends React.Component {
           state
         }
         this.setState({ companyAddress });
-
-        //fetch company logo pic
-        if (this.state.companyPic === 'yes') {
-          Storage.get('profilePic', {
-            level: 'protected',
-            identityId: this.state.userID// the identityId of that user
-          })
-            .then(result => {
-              this.setState({ companyLogo: result,memory:true });
-            })
-            .catch(err => console.log(err));
-        }
       }
+
+      //fetch company logo pic
+      if (this.state.companyPic === 'yes') {
+        Storage.get('profilePic', {
+          level: 'protected',
+          identityId: this.state.userID// the identityId of that user
+        })
+          .then(result => {
+            this.setState({ companyLogo: result,memory:true });
+          })
+          .catch(err => console.log(err));
+      }
+      else
+        this.setState({memory:true})
+      
     } catch (err) {
       console.log("couldn't get employer data: ", err);
     }
@@ -170,10 +176,11 @@ class businessProfile extends React.Component {
   render() {
     if(!this.state.memory){
       // Just wait for the memory to be available
-      return null;
+      return <Spin style={{position:"absolute",left:"45%",top:"30%"}} tip="Please wait for a moment"/> ;
     }
     return (
       <div >
+        
         <div className="banner">
         </div>
         <div style={bodyStyle}>
@@ -186,7 +193,7 @@ class businessProfile extends React.Component {
             {this.state.allowEdit ?
               <div style ={{ position:"relative", 
                             marginTop:"1%", left:"53%"}}>
-                <Button style={{marginLeft:"56%", marginBottom:"10%"}} type="primary" onClick={this.showModal}>
+                <Button style={{marginLeft:"37%", marginBottom:"10%"}} type="primary" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button>
                 <PhotoUpload isBusiness={true} />
