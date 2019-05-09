@@ -4,7 +4,7 @@ jest.setTimeout(70000);
 
 test('should able to login as an Employee and search backend engineer job and apply', async () => {
     const browser = await puppeteer.launch({
-        headless: false
+        headless: true
     });
     const page = await browser.newPage();
     await page.goto(

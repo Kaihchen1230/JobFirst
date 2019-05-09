@@ -4,7 +4,7 @@ const VIEWPORT = { width: 1300, height: 800 };
 jest.setTimeout(10000);
 test('should able to see the translated page', async () => {
     const browser = await puppeteer.launch({
-        headless: false
+        headless: true
     });
     const page = await browser.newPage();
     await page.goto(
