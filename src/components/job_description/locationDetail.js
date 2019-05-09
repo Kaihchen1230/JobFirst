@@ -1,6 +1,7 @@
 import React from 'react';
 import Geocode from "react-geocode";
 import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
+
 // the google map api key is inside of env.local
 function Map(){
     return <GoogleMap 
@@ -11,13 +12,13 @@ function Map(){
 }
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
-console.log('this is the api key: ', process.env.REACT_APP_WEATHER_API_KEY);
+
 const location = (props) => {
     let locationInfo = {...props.locationInfo};
 
 
     console.log('this is the locationInfo: ', locationInfo);
-
+    // console.log('this is the api key: ', process.env.API_KEY);
     // Get latidude & longitude from address.
 
     // const geocode = () => {
@@ -45,7 +46,7 @@ const location = (props) => {
             {locationInfoPiece}
             <div style={{width: "100vw", height:"100vh"}}>
             <WrappedMap
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E"
                 loadingElement={<div style={{height: "100%"}} />}
                 loadingElement={<div style={{height: "100%"}}/>}
                 containerElement={<div style={{height: "100%"}} />}
