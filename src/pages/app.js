@@ -15,7 +15,6 @@ import SignUp from '../components/authentication/signup';
 import TalentList from '../pages/talentsList';
 import Photo from './photo.js';
 import "antd/dist/antd.css";
-import AddExpForm from "../components/form/addExperience";
 
 
 const App = () => (
@@ -33,7 +32,6 @@ const App = () => (
       <Home         path="/" />
       <PrivateRoute path="/app/job-detail/:jobID"  component={JobDescription}/>
       <Contact        path="/app/contact" />
-      <AddExpForm     path="/app/addExpForm" />
     </Router>
   </Layout>
 );
