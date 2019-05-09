@@ -10,6 +10,7 @@ import "../../style/postJob.css"
 const Option = Select.Option;
 const { TextArea } = Input;
 let jobType = "";
+let CreateAddressInput = {};
 
 class PostJob extends React.Component {
     constructor(props) {
@@ -22,19 +23,26 @@ class PostJob extends React.Component {
     } 
 
     typeUpdate = (value) => {
+        console.log(value);
         jobType = value;
+    }
+
+    addressUpdate = (field) => {
+        const postForm = document.forms["jobPost"];
+        CreateAddressInput[field] = postForm[field].value;
+        // console.log(CreateAddressInput);
     }
 
     async handleSubmit () {
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
         const postForm = document.forms["jobPost"];
-        const CreateAddressInput = {
-            line1: postForm["line1"].value,
-            line2: postForm["line2"].value,
-            postalCode: postForm["postalCode"].value,
-            state: postForm["state"].value
-        }
+        // const CreateAddressInput = {
+        //     line1: postForm["line1"].value,
+        //     line2: postForm["line2"].value,
+        //     postalCode: postForm["postalCode"].value,
+        //     state: postForm["state"].value
+        // }
         API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
             .then(async (address)=>{
                 const CreatePostedJobInput = {
@@ -74,6 +82,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('Address Line 1')} 
                             name="line1"
+                            onBlur={value => this.addressUpdate("line1")}
                             suffix={
                                 <Tooltip title={I18n.get('Line 1 of job address')}>
                                     <Icon type="info-circle" />
@@ -81,6 +90,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('Address Line 2')} 
                             name="line2"
+                            onBlur={value => this.addressUpdate('line2')}
                             suffix={
                                 <Tooltip title={I18n.get('Line 2 of job address')}>
                                     <Icon type="info-circle" />
@@ -88,6 +98,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('Postal Code')}
                             name="postalCode"
+                            onBlur={value => this.addressUpdate('postalCode')}
                             suffix={
                                 <Tooltip title={I18n.get('Enter the postal code of the job location')}>
                                     <Icon type="info-circle" />
@@ -95,6 +106,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('State')} 
                             name="state"
+                            onBlur={value => this.addressUpdate('state')}
                             suffix={
                                 <Tooltip title={I18n.get('Enter the state of the job location')}>
                                     <Icon type="info-circle" />
