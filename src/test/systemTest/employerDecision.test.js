@@ -1,8 +1,6 @@
 const puppeteer = require('puppeteer');
 const VIEWPORT = { width: 1300, height: 1000 };
 jest.setTimeout(70000);
-
-
 test('should able to login as an Employeer and accept the applicant', async () => {
     const browser = await puppeteer.launch({
         headless: false
