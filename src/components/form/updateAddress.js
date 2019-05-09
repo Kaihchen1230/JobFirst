@@ -117,6 +117,14 @@ class UpdateAddressForm extends React.Component {
                 postalCode: values["postalCode"],
                 state: values["state"]
             }
+            try {
+                const updateAddress = await API.graphql(graphqlOperation(mutations.updateAddress, { input: updateAddInput }));
+            }
+            catch (err) {
+                console.log("error in updating address");
+            }
+            form.resetFields();
+            this.setState({ visible: false })
         })
     }
 
