@@ -8,7 +8,7 @@ const General = (props) => {
 
     let total = 7;
     let count = 0;
-    if (props.user.name) { ++count }
+    if (props.user.firstName) { ++count }
     if (props.user.lastName) { ++count }
     if (props.user.age) { ++count }
     if (props.user.englishLevel) { ++count }
@@ -27,7 +27,9 @@ const General = (props) => {
                 title={I18n.get('User Information')}
                 style={{ width: "80%" }}
             >
-                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Full Name')}: </b> {props.user.name + " " + props.user.middleName + " " + props.user.lastName}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('First Name')}: </b> {props.user.firstName}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Middle Name')}: </b> {props.user.middleName}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Last Name')}: </b> {props.user.lastName}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Age')}: </b>{props.user.age}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('English Level')}: </b>{props.user.englishLevel}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Spoken Language')}: </b>{props.user.language}</p>
