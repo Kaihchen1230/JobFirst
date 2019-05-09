@@ -23,8 +23,7 @@ class JobList extends React.Component {
     state = {
         "filter":{
 
-        },
-        "search": "Name"
+        }
     }
 
     filterType = (value) => {

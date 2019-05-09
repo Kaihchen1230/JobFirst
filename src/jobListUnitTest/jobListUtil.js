@@ -9,7 +9,19 @@ exports.filterTypeGen = (value) => {
 }
 
 exports.filterDateGen = (value) =>{
-
+    let newSearch = {};
+    if(value != "All"){
+        let diff = value * 24 * 60 * 60 * 1000; //convert to milliseconds
+        let current = new Date();
+        let setTime = current - diff;
+        setTime = new Date(setTime);
+        let Year = setTime.getFullYear();
+        let Month = setTime.getMonth() + 1;
+        let Day = setTime.getDate();
+        let setDay = Year + "-" + Month + "-" + Day;
+        newSearch = {"filter":{"datePosted":{"ge":setDay}}}
+    }
+    return newSearch;
 }
 
 exports.searchByNameGen = (value, search) => {
