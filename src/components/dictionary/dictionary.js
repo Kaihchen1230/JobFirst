@@ -112,7 +112,17 @@ let dict = {
         "Enter the City of the School": "进入学校之城",
         "Enter the Country of the School": "输入学校的国家",
         "Submit New Education": "提交新教育",
-        "Add Education": "添加教育"
+        "Add Education": "添加教育",
+        "You haven't added your past education yet.": "您还没有添加过去的教育。",
+        "You haven't added your past experiences yet.": "您还没有添加过去的经历。",
+        "You haven't applied to any jobs yet.": "您尚未申请任何工作。",
+        "Reason for Leaving": "离开的原因",
+        "Delete": "删除",
+        "Experiences": "经验",
+        "Complete": "完成",
+        "Upload A Resume": "上传简历",
+        "Upload A New Profile Picture": "上传新的个人资料图片",
+        "Upload A New Logo": "上传新徽标"
     },
     'es': {
         'Sign In': "Sign In",
@@ -227,7 +237,17 @@ let dict = {
         "Enter the City of the School": "Enter the City of the School",
         "Enter the Country of the School": "Enter the Country of the School",
         "Submit New Education": "Submit New Education",
-        "Add Education": "Add Education"
+        "Add Education": "Add Education",
+        "You haven't added your past education yet.": "You haven't added your past education yet.",
+        "You haven't added your past experiences yet.": "You haven't added your past experiences yet.",
+        "You haven't applied to any jobs yet.": "You haven't applied to any jobs yet.",
+        "Reason for Leaving": "Reason for Leaving",
+        "Delete": "Delete",
+        "Experiences": "Experiences",
+        "Complete": "Complete",
+        "Upload A Resume": "Upload A Resume",
+        "Upload A New Profile Picture": "Upload A New Profile Picture",
+        "Upload A New Logo": "Upload A New Logo"
     }
 };
 export default dict;

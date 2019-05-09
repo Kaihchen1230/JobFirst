@@ -21,7 +21,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lan: getLanguage() ? getLanguage() : 'en',
+            lan: getLanguage() ? getLanguage() : 'es',
             userID: this.props.userID,
             loading: true,
             collapsed: false,
