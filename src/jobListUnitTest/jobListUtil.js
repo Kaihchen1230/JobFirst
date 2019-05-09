@@ -1,4 +1,4 @@
-exports.filterTypeGen = (value) => {
+export function filterTypeGen (value) {
     let newSearch = {};
     if(value == "All"){
         return {"filter":{}};
@@ -6,13 +6,22 @@ exports.filterTypeGen = (value) => {
         newSearch = {"filter":{"jobType":{"contains":value}}};
         return newSearch;
     }
+};
+
+export function filterDateGen (value){
+    var moment = require('moment');
+    let newSearch = {};
+    if(value != "All"){
+        let diff = value * 24 * 60 * 60 * 1000; //convert to milliseconds
+        let current = new Date();
+        let setTime = current - diff;
+        let setDate = moment(setTime).format('YYYY-MM-DD');
+        newSearch = {"filter":{"datePosted":{"ge":setDate}}};
+    }
+    return newSearch;
 }
 
-exports.filterDateGen = (value) =>{
-
-}
-
-exports.searchByNameGen = (value, search) => {
+export function searchByNameGen (value, search) {
     let newSearch = {};
     if(value == ""){
         return {};
@@ -25,6 +34,6 @@ exports.searchByNameGen = (value, search) => {
     }
 }
 
-exports.resetGen = () => {
+export function resetGen () {
     return {};
 }
