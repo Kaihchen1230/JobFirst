@@ -94,10 +94,13 @@ type Employer {
 type PostedJob {
   id: ID!
   company: Employer
+  jobCategory: String
   jobTitle: String
   jobType: String
   description: String
+  education: String
   requirements: [String]
+  salary: Float
   datePosted: AWSDate
   deadline: AWSDate
   location: Address
@@ -601,10 +604,13 @@ type ModelPostedJobConnection {
 
 input ModelPostedJobFilterInput {
   id: ModelIDFilterInput
+  jobCategory: ModelStringFilterInput
   jobTitle: ModelStringFilterInput
   jobType: ModelStringFilterInput
   description: ModelStringFilterInput
+  education: ModelStringFilterInput
   requirements: ModelStringFilterInput
+  salary: ModelFloatFilterInput
   datePosted: ModelStringFilterInput
   deadline: ModelStringFilterInput
   searchFieldName: ModelStringFilterInput
@@ -617,10 +623,13 @@ input ModelPostedJobFilterInput {
 
 input CreatePostedJobInput {
   id: ID
+  jobCategory: String
   jobTitle: String
   jobType: String
   description: String
+  education: String
   requirements: [String]
+  salary: Float
   datePosted: AWSDate
   deadline: AWSDate
   searchFieldName: String
@@ -632,10 +641,13 @@ input CreatePostedJobInput {
 
 input UpdatePostedJobInput {
   id: ID!
+  jobCategory: String
   jobTitle: String
   jobType: String
   description: String
+  education: String
   requirements: [String]
+  salary: Float
   datePosted: AWSDate
   deadline: AWSDate
   searchFieldName: String

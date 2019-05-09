@@ -741,10 +741,13 @@ export const onCreateAppliedJob = `subscription OnCreateAppliedJob {
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -829,10 +832,13 @@ export const onUpdateAppliedJob = `subscription OnUpdateAppliedJob {
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -917,10 +923,13 @@ export const onDeleteAppliedJob = `subscription OnDeleteAppliedJob {
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -981,10 +990,13 @@ export const onCreateEmployer = `subscription OnCreateEmployer {
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -1035,10 +1047,13 @@ export const onUpdateEmployer = `subscription OnUpdateEmployer {
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -1089,10 +1104,13 @@ export const onDeleteEmployer = `subscription OnDeleteEmployer {
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -1141,10 +1159,13 @@ export const onCreatePostedJob = `subscription OnCreatePostedJob {
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {
@@ -1205,10 +1226,13 @@ export const onUpdatePostedJob = `subscription OnUpdatePostedJob {
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {
@@ -1269,10 +1293,13 @@ export const onDeletePostedJob = `subscription OnDeletePostedJob {
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {
