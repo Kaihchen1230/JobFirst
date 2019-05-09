@@ -13,6 +13,7 @@ import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
+import AddEduForm from "../components/form/addEducation";
 
 // Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
@@ -203,8 +204,8 @@ class Profile extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item key="5">
-                                    {I18n.get('Add Education or Award')}
-                                    <Link to="/app/addEduForm"></Link>
+                                    <AddEduForm />
+                                    {/* {I18n.get('Add Education or Award')} */}
                                 </Menu.Item>
 
                                 <Menu.Item key="6">
