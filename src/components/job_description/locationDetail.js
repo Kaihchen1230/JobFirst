@@ -18,7 +18,7 @@ const location = (props) => {
 
 
     console.log('this is the locationInfo: ', locationInfo);
-    // console.log('this is the api key: ', process.env.API_KEY);
+    console.log('this is the api key: ', process.env.API_KEY);
     // Get latidude & longitude from address.
 
     // const geocode = () => {
@@ -46,7 +46,7 @@ const location = (props) => {
             {locationInfoPiece}
             <div style={{width: "100vw", height:"100vh"}}>
             <WrappedMap
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E"
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.API_KEY}`}
                 loadingElement={<div style={{height: "100%"}} />}
                 loadingElement={<div style={{height: "100%"}}/>}
                 containerElement={<div style={{height: "100%"}} />}
