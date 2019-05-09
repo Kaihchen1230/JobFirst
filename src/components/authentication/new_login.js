@@ -1,4 +1,4 @@
-import { Button, Modal, Form, Input, Radio, Icon } from 'antd';
+import { Button, Modal, Form, Input, message, Icon } from 'antd';
 import React from 'react';
 import { navigate, Link } from "gatsby"
 import { isLoggedIn, setUser, getUser } from "../../services/auth"
@@ -95,6 +95,7 @@ class NewLogin extends React.Component {
       } catch (err) {
         this.setState({ error: err })
         console.log('error....: ', err)
+        message.error(`Error: ${err.message}`);
       }
       //! add entry into dynamodb
       try {
