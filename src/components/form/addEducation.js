@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Icon, Input, Button, Tooltip, Modal, Select } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, Modal, message } from 'antd';
 import { Auth, I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
@@ -140,8 +140,10 @@ class AddEduForm extends React.Component {
             try {
                 const newEducation = await API.graphql(graphqlOperation(mutations.createEducation, { input: createEducationInput }));
                 console.log('success adding an education');
+                message.success(`Success adding an education`);
             } catch (err) {
                 console.log('error in adding an education', err);
+                message.error(`Error in adding an education: ${err.message}`);
             }
             form.resetFields();
             this.setState({ visible: false });
