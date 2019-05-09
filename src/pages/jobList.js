@@ -63,6 +63,7 @@ class JobList extends React.Component {
                                 enterButton="Search"
                                 size="large"
                                 onSearch={value => this.searchByName(value)}
+                                id="search"
                             />
                         </InputGroup>
                         <InputGroup compact>
