@@ -7,7 +7,7 @@ import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getLanguage } from "../../services/auth";
 
-const CollectionCreateForm = Form.create({name: 'form_in_modal'}) (
+const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class extends React.Component {
         render() {
             const {
@@ -15,13 +15,73 @@ const CollectionCreateForm = Form.create({name: 'form_in_modal'}) (
             } = this.props;
             const { getFieldDecorator } = form;
             return (
-                <Modal 
-                    visible = {visible}
-                    title = "Update Address"
-                    okText = "Update"
-                    onCancel = {onCancel}
-                    onOk = {onUpdate}
-                />
+                <Modal
+                    visible={visible}
+                    title="Update Your Address"
+                    okText="Update"
+                    onCancel={onCancel}
+                    onOk={onUpdate}
+                >
+                    <Form layout="vertical">
+                        <Form.Item>
+                            {getFieldDecorator('line1')(
+                                <Input placeholder={I18n.get('Street Address Line 1')}
+                                    name="line1"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the first line of the street address.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('line2')(
+                                <Input placeholder={I18n.get('Street Address Line 2')}
+                                    name="line2"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the second line of the street address.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('city')(
+                                <Input placeholder={I18n.get('City')}
+                                    name="city"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the name of the city.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('postalCode')(
+                                <Input placeholder={I18n.get('Postal Code')}
+                                    name="postalCode"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the postal code.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('state')(
+                                <Input placeholder={I18n.get('State')}
+                                    name="state"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the name of the state.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+
+                    </Form>
+                </Modal>
             )
         }
     }
@@ -54,7 +114,7 @@ class UpdateAddressForm extends React.Component {
         return (
             <div>
                 <Button ghost onClick={this.showModal}>{I18n.get('Update Address')}</Button>
-                <CollectionCreateForm 
+                <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
