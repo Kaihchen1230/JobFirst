@@ -33,18 +33,6 @@ body{
     width:20%;
 }
 
-.editButton{
-    position: absolute;
-    left:88%;
-    top:2%;
-}
-
-.uploadButton{
-    position: absolute;
-    left:188%;
-    top:2%;
-}
-
 .row1,.row2{
     display: -webkit-flex; /* Safari */
     display: flex;   
