@@ -1,5 +1,6 @@
 import React from 'react';
 import pikachiu from '../../../static/pik.jpg';
+//const pikachiu = require('../../../static/pik.jpg');
 import { Card, Icon, Avatar } from 'antd';
 import { I18n, Storage } from 'aws-amplify';
 const { Meta } = Card;
@@ -11,6 +12,7 @@ const Sidebar = (props) => {
     }
     return (
         <Card
+            data-testid="card-contain-user-info" // for testing purpose
             hoverable={true}
             cover={<img alt="default" src={pic} />}
         >

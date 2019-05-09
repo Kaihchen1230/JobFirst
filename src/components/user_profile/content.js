@@ -16,7 +16,7 @@ const callback = (key) => {
 const Information = (props) => {
 
     return (
-        <div>
+        <div data-testid="div-information" >
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
                     <General user={props.user} />

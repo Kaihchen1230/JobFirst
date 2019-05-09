@@ -13,44 +13,37 @@ import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
+import AddEduForm from "../components/form/addEducation";
+import AddExpForm from "../components/form/addExperience";
 
+// Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 
+// The profile page of a user
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lan: getLanguage() ? getLanguage() : 'es',
-            userID: this.props.userID,
-            loading: true,
-            collapsed: false,
-            education: [],
-            experiences: [],
-            allowEdit: false
+            lan: getLanguage() ? getLanguage() : 'es',      // if the language is not chose, the default will be english
+            userID: this.props.userID,                      // the userID will be passed from the query params
+            loading: true,                                  // true when fetching data
+            collapsed: false,                               // hide the sidebar
+            education: [],                                  // education of the user
+            experiences: [],                                // experince of the user
+            allowEdit: this.props.userID === getUser().sub  // check if the user is viewing his own profile
         }
     }
-
+    // hide the sidebar
     onCollapse = (collapsed) => {
         console.log(collapsed);
         this.setState({ collapsed });
     }
-
+    // where all the data fetching happen
     componentDidMount = async () => {
-        let currentUser = await Auth.currentAuthenticatedUser();    // the current user
-        const { attributes } = currentUser;
-        if (this.state.userID === attributes.sub) {
-            this.setState({ allowEdit: true });
-        }
-        else {
-            this.setState({ allowEdit: false });
-        }
-        console.log("allowEdit: ", this.state.allowEdit);
         // fetch the user info
         try {
-            // console.log(this.props.userID);
             const user = await API.graphql(graphqlOperation(queries.getEmployee, { id: this.state.userID }));
-            console.log(user);
             this.setState({
                 user: user.data.getEmployee,
             })
@@ -61,9 +54,7 @@ class Profile extends React.Component {
         // fetch the employee's applied jobs
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
-            console.log("Applied Job Results: ", testing)
             const temp = testing.data.getEmployee.appliedJob.items;
-            //console.log(temp)
             const transformJob = temp.map(item => {
                 const jobID = item.Job.id
                 const { datePosted, deadline, jobTitle } = item.Job
@@ -80,7 +71,6 @@ class Profile extends React.Component {
             this.setState({
                 jobs: transformJob
             })
-            //console.log(this.state.jobs);
         } catch (err) {
             console.log("custom queries failed", err);
         }
@@ -88,12 +78,7 @@ class Profile extends React.Component {
         // fetch the employee's education
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
-            //console.log("Education Results: ", educationResults);
             const temp = educationResults.data.getEmployee.education.items;
-            //console.log(UserProfileUtil.checkKeySchoolName(temp[0]));
-            //console.log(UserProfileUtil.checkKeyDegree(temp[0]));
-            //console.log(UserProfileUtil.checkKeyCity(temp[0]));
-            //console.log(UserProfileUtil.checkKeyCountry(temp[0]));
             this.setState({ education: temp });
         } catch (err) {
             console.log("couldn't get education: ", err);
@@ -102,12 +87,7 @@ class Profile extends React.Component {
         // fetch the employee's experiences
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
-            //console.log("Experience Results: ", experienceResults);
             const temp = experienceResults.data.getEmployee.experience.items;
-            //console.log(UserProfileUtil.checkKeyCompanyName(temp[0]));
-            //console.log(UserProfileUtil.checkKeyReasonToLeave(temp[0]));
-            //console.log(UserProfileUtil.checkKeyStartYear(temp[0]));
-            //console.log(UserProfileUtil.checkKeyEndYear(temp[0]));
             this.setState({ experiences: temp });
         } catch (err) {
             console.log("couldn't get experience: ", err);
@@ -132,7 +112,7 @@ class Profile extends React.Component {
             loading: false
         })
     }
-
+    // TODO function for uploading resume
     onChange(info) {
         if (info.file.status !== 'uploading') {
             console.log(info.file, info.fileList);
@@ -143,14 +123,12 @@ class Profile extends React.Component {
             message.error(`${info.file.name} file upload failed.`);
         }
     }
-    
+
+    // delete education
     deleteEducation = async (key, e) => {
-        // call API to delete
-        let deleteId = {
-            id: key
-        }
+        // call API to delete education
         try {
-            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: deleteId }));
+            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: {id: key} }));
             console.log("this item was deleted: ", delEdu);
         } catch (err) {
             console.log("error - ", err);
@@ -171,11 +149,8 @@ class Profile extends React.Component {
 
     deleteExperience = async (key, e) => {
         // call API to delete
-        let deleteId = {
-            id: key
-        }
         try {
-            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: deleteId }));
+            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: {id: key} }));
             console.log("this item was deleted: ", delExp);
         } catch (err) {
             console.log("error - ", err);
@@ -196,11 +171,13 @@ class Profile extends React.Component {
     }
 
     render() {
+        // if the fetching is not done
         if (this.state.loading) {
             return (
                 <Skeleton active />
             );
         }
+        // setup the dictionary
         I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);
         return (
@@ -228,13 +205,13 @@ class Profile extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item key="5">
-                                    {I18n.get('Add Education or Award')}
-                                    <Link to="/app/addEduForm"></Link>
+                                    <AddEduForm />
+                                    {/* {I18n.get('Add Education or Award')} */}
                                 </Menu.Item>
 
                                 <Menu.Item key="6">
-                                    {I18n.get('Add Experience or Skill')}
-                                    <Link to="/app/addExpForm"></Link>
+                                    <AddExpForm />
+                                    {/* {I18n.get('Add Experience or Skill')} */}
                                 </Menu.Item>
                             </SubMenu>
 
