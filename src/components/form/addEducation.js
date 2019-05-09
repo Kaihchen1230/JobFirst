@@ -119,7 +119,7 @@ class AddEduForm extends React.Component {
         this.setState({ visible: false });
     }
 
-    handleCreate = async() => {
+    handleCreate = async () => {
         const form = this.formRef.props.form;
         form.validateFields(async(err, values) => {
             if (err) {
