@@ -741,10 +741,13 @@ export const createAppliedJob = `mutation CreateAppliedJob($input: CreateApplied
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -829,10 +832,13 @@ export const updateAppliedJob = `mutation UpdateAppliedJob($input: UpdateApplied
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -917,10 +923,13 @@ export const deleteAppliedJob = `mutation DeleteAppliedJob($input: DeleteApplied
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -981,10 +990,13 @@ export const createEmployer = `mutation CreateEmployer($input: CreateEmployerInp
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -1035,10 +1047,13 @@ export const updateEmployer = `mutation UpdateEmployer($input: UpdateEmployerInp
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -1089,10 +1104,13 @@ export const deleteEmployer = `mutation DeleteEmployer($input: DeleteEmployerInp
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -1141,10 +1159,13 @@ export const createPostedJob = `mutation CreatePostedJob($input: CreatePostedJob
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {
@@ -1205,10 +1226,13 @@ export const updatePostedJob = `mutation UpdatePostedJob($input: UpdatePostedJob
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {
@@ -1269,10 +1293,13 @@ export const deletePostedJob = `mutation DeletePostedJob($input: DeletePostedJob
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {

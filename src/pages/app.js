@@ -21,7 +21,7 @@ import AddEduForm from "../components/form/addEducation";
 
 const App = () => (
   <Layout>
-    <Router>
+    <BrowserRouter>
       <PrivateRoute path="/app/business-profile/:userID" component={businessProfile} />
       <PrivateRoute path="/app/user-profile/:userID"     component={Profile} /> 
       <PrivateRoute path="/app/application"      component={Application} />
@@ -36,7 +36,7 @@ const App = () => (
       <Contact        path="/app/contact" />
       <AddExpForm     path="/app/addExpForm" />
       <AddEduForm      path="/app/addEduForm" />
-    </Router>
+      </BrowserRouter>
   </Layout>
 );
 
