@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Icon, Input, Button, Tooltip, DatePicker, Select, Modal } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, message, Modal } from 'antd';
 import { Auth, I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
@@ -141,8 +141,10 @@ class AddExpForm extends React.Component {
             try {
                 const newExperience = await API.graphql(graphqlOperation(mutations.createExperience, { input: createExperienceInput }));
                 console.log('success adding an experience');
+                message.success(`Success adding an experience`);
             } catch (err) {
                 console.log('error in adding an experience', err);
+                message.error(`Error in adding an experience`);
             }
             form.resetFields();
             this.setState({ visible: false });

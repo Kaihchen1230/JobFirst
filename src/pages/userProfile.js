@@ -1,5 +1,5 @@
 import React from 'react';
-import Person from '../components/user_profile/sidebar';
+import Person from '../components/user_profile/person';
 import Information from '../components/user_profile/content';
 import Amplify, { Auth, API, graphqlOperation, I18n, Storage } from "aws-amplify";
 import * as queries from '../graphql/queries';
@@ -7,7 +7,7 @@ import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn, getLanguage } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
-import { Layout, Skeleton, Menu, Icon, Button, message } from 'antd';
+import { Layout, Skeleton, Menu, Icon, message } from 'antd';
 import UploadPage from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
@@ -39,9 +39,8 @@ class Profile extends React.Component {
         console.log(collapsed);
         this.setState({ collapsed });
     }
-    // where all the data fetching happen
-    componentDidMount = async () => {
-        // fetch the user info
+
+    fetchUserInfo = async () => {
         try {
             const user = await API.graphql(graphqlOperation(queries.getEmployee, { id: this.state.userID }));
             this.setState({
@@ -50,8 +49,9 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
+    }
 
-        // fetch the employee's applied jobs
+    fetchAppliedJob = async () => {
         try {
             const testing = await API.graphql(graphqlOperation(customQueries.getAppliedJobEmployee, { id: this.state.userID }));
             const temp = testing.data.getEmployee.appliedJob.items;
@@ -74,8 +74,9 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("custom queries failed", err);
         }
-        
-        // fetch the employee's education
+    }
+
+    fetchEducation = async() => {
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
             const temp = educationResults.data.getEmployee.education.items;
@@ -83,8 +84,9 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get education: ", err);
         }
+    }
 
-        // fetch the employee's experiences
+    fetchExperience = async() => {
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
             const temp = experienceResults.data.getEmployee.experience.items;
@@ -92,8 +94,9 @@ class Profile extends React.Component {
         } catch (err) {
             console.log("couldn't get experience: ", err);
         }
-        
-        // fetch photo
+    }
+
+    fetchPhoto = async() => {
         if (this.state.user.pic === 'yes') {
             Storage.get('profilePic', {
                 level: 'protected',
@@ -108,6 +111,24 @@ class Profile extends React.Component {
                 })
                 .catch(err => console.log(err));
         }
+    }
+    // where all the data fetching happen
+    componentDidMount = async () => {
+        // fetch the user info
+        this.fetchUserInfo();
+
+        // fetch the employee's applied jobs
+        this.fetchAppliedJob();
+
+        // fetch the employee's education
+        this.fetchEducation();
+
+        // fetch the employee's experiences
+        this.fetchExperience();
+
+        // fetch photo
+        this.fetchPhoto();
+
         this.setState({
             loading: false
         })
@@ -128,10 +149,12 @@ class Profile extends React.Component {
     deleteEducation = async (key, e) => {
         // call API to delete education
         try {
-            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: {id: key} }));
+            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: { id: key } }));
             console.log("this item was deleted: ", delEdu);
+            message.success(`Education deleted`);
         } catch (err) {
             console.log("error - ", err);
+            message.error(`Fail to delete education`);
         }
         let edu = [...this.state.education];
         let deleteIndex = edu.findIndex((item) => item.id === key);
@@ -150,10 +173,12 @@ class Profile extends React.Component {
     deleteExperience = async (key, e) => {
         // call API to delete
         try {
-            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: {id: key} }));
+            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: { id: key } }));
             console.log("this item was deleted: ", delExp);
+            message.success(`Experince deleted`);
         } catch (err) {
             console.log("error - ", err);
+            message.error(`Fail to delete experience`);
         }
         // remove it from the page
         let exp = [...this.state.experiences];
@@ -188,7 +213,7 @@ class Profile extends React.Component {
                     onCollapse={this.onCollapse}
                     width={300}
                 >
-                    <Person user={this.state.user} isBusiness = {false}/>
+                    <Person user={this.state.user} isBusiness={false} />
                     {(getUser().sub === this.state.userID) ? (
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                             <SubMenu
@@ -196,7 +221,7 @@ class Profile extends React.Component {
                                 title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
                             >
                                 <Menu.Item key="3">
-                                    <BasicInfoForm userInfo={this.state.user}/>
+                                    <BasicInfoForm userInfo={this.state.user} />
                                     {/* {I18n.get('Modify Basic Info')} */}
                                 </Menu.Item>
 
@@ -206,12 +231,10 @@ class Profile extends React.Component {
 
                                 <Menu.Item key="5">
                                     <AddEduForm />
-                                    {/* {I18n.get('Add Education or Award')} */}
                                 </Menu.Item>
 
                                 <Menu.Item key="6">
                                     <AddExpForm />
-                                    {/* {I18n.get('Add Experience or Skill')} */}
                                 </Menu.Item>
                             </SubMenu>
 
