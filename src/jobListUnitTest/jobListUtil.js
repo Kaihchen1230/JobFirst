@@ -1,11 +1,11 @@
 export function filterTypeGen (value) {
     let newSearch = {};
     if(value == "All"){
-        return {"filter":{}};
+
     }else{
         newSearch = {"filter":{"jobType":{"contains":value}}};
-        return newSearch;
     }
+    return newSearch;
 };
 
 export function filterDateGen (value){
@@ -24,14 +24,13 @@ export function filterDateGen (value){
 export function searchByNameGen (value, search) {
     let newSearch = {};
     if(value == ""){
-        return {};
+        
     }else if(search == "Name"){
         newSearch = {"filter":{"searchFieldName":{"contains":value.toLowerCase()}}};
-        return newSearch;
     }else {
         newSearch = {"filter":{"searchFieldLocation":{"contains":value.toLowerCase()}}};
-        return newSearch;
     }
+    return newSearch;
 }
 
 export function resetGen () {
