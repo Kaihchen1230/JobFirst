@@ -45,7 +45,7 @@ class ApplicantList extends React.Component{
   }
 
   handlePending = async (id, name, e) => {
-    console.log('handle accept is click with this id: ', id);
+    console.log('handle pending is click with this id in handle pending: ', id);
 
     const currentId = id;
     const currentName = name;
