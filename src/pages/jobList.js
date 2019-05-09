@@ -7,6 +7,7 @@ import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
 import * as Util from '../jobListUnitTest/jobListUtil';
+import { moment } from 'moment';
 
 const {
     Header, Footer, Sider, Content,
@@ -23,8 +24,7 @@ class JobList extends React.Component {
     state = {
         "filter":{
 
-        },
-        "search": "Name"
+        }
     }
 
     filterType = (value) => {
@@ -63,6 +63,7 @@ class JobList extends React.Component {
                                 enterButton="Search"
                                 size="large"
                                 onSearch={value => this.searchByName(value)}
+                                id="search"
                             />
                         </InputGroup>
                         <InputGroup compact>
@@ -89,7 +90,7 @@ class JobList extends React.Component {
                                     </Select>
                                 </Col>
                                 <Col span={4}>
-                                    <Select style={{ width: "80%" }} size="large" placeholder="Company Scale">
+                                    <Select style={{ width: "80%" }} size="large" placeholder="Salary">
                                         <Option value="Option1-1">Option1-1</Option>
                                         <Option value="Option1-2">Option1-2</Option>
                                     </Select>

@@ -10,6 +10,8 @@ import "../../style/postJob.css"
 const Option = Select.Option;
 const { TextArea } = Input;
 let jobType = "";
+let CreateAddressInput = {};
+let CreatePostedJobInput = {};
 
 class PostJob extends React.Component {
     constructor(props) {
@@ -19,37 +21,56 @@ class PostJob extends React.Component {
             type: ""
         };
         this.typeUpdate = this.typeUpdate.bind(this);
+        this.addressUpdate = this.addressUpdate.bind(this);
+        this.jobUpdate = this.jobUpdate.bind(this);
     } 
 
     typeUpdate = (value) => {
-        jobType = value;
+        CreatePostedJobInput["jobType"] = value;
+        // console.log(value);
+    }
+
+    addressUpdate = (field) => {
+        const postForm = document.forms["jobPost"];
+        CreateAddressInput[field] = postForm[field].value;
+        // console.log(CreateAddressInput);
+    }
+
+    jobUpdate = (field) => {
+        const postForm = document.forms["jobPost"];
+        CreatePostedJobInput[field] = postForm[field].value;
     }
 
     async handleSubmit () {
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
         const postForm = document.forms["jobPost"];
-        const CreateAddressInput = {
-            line1: postForm["line1"].value,
-            line2: postForm["line2"].value,
-            postalCode: postForm["postalCode"].value,
-            state: postForm["state"].value
-        }
+        // const CreateAddressInput = {
+        //     line1: postForm["line1"].value,
+        //     line2: postForm["line2"].value,
+        //     postalCode: postForm["postalCode"].value,
+        //     state: postForm["state"].value
+        // }
         API.graphql(graphqlOperation(mutations.createAddress, {input: CreateAddressInput}))
             .then(async (address)=>{
-                const CreatePostedJobInput = {
-                    jobTitle: postForm["jobTitle"].value,
-                    jobType: jobType,
-                    description: postForm["description"].value,
-                    requirements: [postForm["requirement"].value],
-                    datePosted: postForm["postDate"].value,
-                    deadline: postForm["deadline"].value,
-                    clickedCounts: 0,
-                    postedJobCompanyId: attributes.sub,
-                    postedJobLocationId: address.data.createAddress.id,
-                    searchFieldName: postForm["jobTitle"].value.toLowerCase(),
-                    searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
-                };
+                CreatePostedJobInput['postedJobCompanyId'] = attributes.sub;
+                CreatePostedJobInput['postedJobLocationId'] = address.data.createAddress.id;
+                CreatePostedJobInput['clickedCounts'] = 0;
+                CreatePostedJobInput['searchFieldName'] = postForm["jobTitle"].value.toLowerCase();
+                CreatePostedJobInput['searchFieldLocation'] = postForm["line1"].value.toLowerCase();
+                // const CreatePostedJobInput = {
+                //     jobTitle: postForm["jobTitle"].value,
+                //     jobType: jobType,
+                //     description: postForm["description"].value,
+                //     requirements: [postForm["requirement"].value],
+                //     datePosted: postForm["postDate"].value,
+                //     deadline: postForm["deadline"].value,
+                //     clickedCounts: 0,
+                //     postedJobCompanyId: attributes.sub,
+                //     postedJobLocationId: address.data.createAddress.id,
+                //     searchFieldName: postForm["jobTitle"].value.toLowerCase(),
+                //     searchFieldLocation: postForm["line1"].value.toLowerCase() + postForm["line2"].value.toLowerCase(),
+                // };
                 const newJob = await API.graphql(graphqlOperation(mutations.createPostedJob, {input: CreatePostedJobInput}));
                 console.log(newJob);
             });
@@ -67,6 +88,7 @@ class PostJob extends React.Component {
                     <Form.Item>
                         <Input  placeholder={I18n.get('Enter the Job Title')} 
                             name="jobTitle"
+                            onBlur={value => this.jobUpdate("jobTitle")}
                             suffix={
                                 <Tooltip title={I18n.get('Enter the name of the job')}>
                                     <Icon type="info-circle" />
@@ -74,6 +96,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('Address Line 1')} 
                             name="line1"
+                            onBlur={value => this.addressUpdate("line1")}
                             suffix={
                                 <Tooltip title={I18n.get('Line 1 of job address')}>
                                     <Icon type="info-circle" />
@@ -81,6 +104,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('Address Line 2')} 
                             name="line2"
+                            onBlur={value => this.addressUpdate('line2')}
                             suffix={
                                 <Tooltip title={I18n.get('Line 2 of job address')}>
                                     <Icon type="info-circle" />
@@ -88,6 +112,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('Postal Code')}
                             name="postalCode"
+                            onBlur={value => this.addressUpdate('postalCode')}
                             suffix={
                                 <Tooltip title={I18n.get('Enter the postal code of the job location')}>
                                     <Icon type="info-circle" />
@@ -95,6 +120,7 @@ class PostJob extends React.Component {
                         />
                         <Input placeholder={I18n.get('State')} 
                             name="state"
+                            onBlur={value => this.addressUpdate('state')}
                             suffix={
                                 <Tooltip title={I18n.get('Enter the state of the job location')}>
                                     <Icon type="info-circle" />
@@ -102,9 +128,15 @@ class PostJob extends React.Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <DatePicker placeholder={I18n.get('Date Posted On')} name="postDate" />
+                        <DatePicker 
+                            onBlur={value => this.jobUpdate("datePosted")}
+                            placeholder={I18n.get('Date Posted On')} 
+                            name="datePosted" />
                         <br />
-                        <DatePicker placeholder={I18n.get('Deadline')} name="deadline" />
+                        <DatePicker 
+                            onBlur={value => this.jobUpdate("deadline")}
+                            placeholder={I18n.get('Deadline')} 
+                            name="deadline" />
                     </Form.Item>
                     <Form.Item>
                         <Select onChange={value => this.typeUpdate(value)} placeholder={I18n.get('Job Type')} name="jobType" >
@@ -116,14 +148,16 @@ class PostJob extends React.Component {
                     </Form.Item>
                     <Form.Item>
                         <TextArea
+                            onBlur={value => this.jobUpdate("description")}
                             placeholder={I18n.get('Enter Job Description')} 
                             autosize={{ minRows: 2, maxRows: 6 }}
                             name="description"
                         />
                         <TextArea
+                            onBlur={value => this.jobUpdate("requirements")}
                             placeholder={I18n.get('Enter Job Requirements')} 
                             autosize={{ minRows: 2, maxRows: 6 }}
-                            name="requirement"
+                            name="requirements"
                         />
                     </Form.Item>
                     <Form.Item>

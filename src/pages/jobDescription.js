@@ -1,16 +1,16 @@
 import React from 'react';
-import { navigate } from "gatsby";
-import { Tabs, Button, Popover, Modal, Spin } from 'antd';
+import { Tabs, Button, Popover, Spin, Skeleton } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
 import PopOutWindow from '../components/job_description/popOutWindow';
 import { Auth, API, graphqlOperation } from 'aws-amplify';
-import { isLoggedIn, setUser, getUser, logout } from "../services/auth";
+import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as customQueries from '../customGraphql/queries';
+import * as Util from '../jobDescriptionUnitTest/jobDescriptionUtil';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -34,13 +34,16 @@ class JobDescription extends React.Component{
         location: {},
         isVisible: false,
         applied: false,
-        loading: false,
+        loading: true,
         display: false,
         count: 0,
         applicants: []
 
     }
     componentDidMount = async () => {
+
+
+      console.log('it comes to componentDidMount first');
       // current job id
       let currentId = window.history.state.id;
       let user = await Auth.currentAuthenticatedUser();
@@ -111,23 +114,49 @@ class JobDescription extends React.Component{
         
         for(let i = 0; i < getApplicants.length; i++){
 
-          let temp = getApplicants[i].Employee.englishLevel;
+          let tempEnglishLevel = getApplicants[i].Employee.englishLevel;
           console.log('this is getApplicants[i].Employee.englishLevel: ', getApplicants[i].Employee.englishLevel);
-          let currentEnglishLevel;
-          if(temp == null){
-            currentEnglishLevel = "N/A"
+          let currentEnglishLevel = '';
+          if(tempEnglishLevel === null){
+            currentEnglishLevel = 'N/A'
           }else{
-            currentEnglishLevel = temp
+            currentEnglishLevel = tempEnglishLevel
           }
+
+          let tempName = getApplicants[i].Employee.firstName;
+          console.log('this is getApplicants[i].Employee.name: ', getApplicants[i].Employee.firstName);
+
+          let currentName;
+          tempName === null? currentName = 'N/A' : currentName = tempName;
+
+          let tempAddress = getApplicants[i].Employee.address;
+          console.log('this is getApplicants[i].Employee.address: ', getApplicants[i].Employee.address);
+          
+          let currentAddress = '';
+          if(tempAddress === null){
+            currentAddress = 'N/A'
+          }else{
+            currentAddress = tempAddress.line1 + ' ' + tempAddress.line2 + ', ' + tempAddress.city + ' ' + tempAddress.state + ', '
+            + tempAddress.postalCode
+          }
+
+          let tempAppliedJobId = getApplicants[i].id;
+          let currentAppliedJobId = '';
+          tempAppliedJobId === null? currentAppliedJobId = 'N/A' : currentAppliedJobId = tempAppliedJobId;
+
+          let tempStatus = getApplicants[i].status;
+          let currentStatus = '';
+          tempStatus === null ? currentStatus = 'N/A' : currentStatus = tempStatus;
+
+
           console.log('this is currentEnglishLevel: ', currentEnglishLevel);
           applicantsInfo.push({
             key: getApplicants[i].Employee.id,
-            name: getApplicants[i].Employee.firstName,
+            name: currentName,
             englishLevel: currentEnglishLevel,
-            address: getApplicants[i].Employee.address.line1 + ' ' + getApplicants[i].Employee.address.line2 + ', ' + getApplicants[i].Employee.address.city + ' ' + getApplicants[i].Employee.address.state + ', '
-            + getApplicants[i].Employee.address.postalCode,
-            appliedJobId: getApplicants[i].id,
-            status: getApplicants[i].status
+            address: currentAddress,
+            appliedJobId: currentAppliedJobId,
+            status: currentStatus
           })
         }
         // console.log('this is applicantInfo: ', applicantsInfo);
@@ -138,6 +167,10 @@ class JobDescription extends React.Component{
       }catch(err){
         console.log('there is an error fetching the data for employees who applied the job ', err);
       }
+
+      this.setState({
+        loading: false
+      })
     }
 
     applyJob = async () => {
@@ -167,6 +200,7 @@ class JobDescription extends React.Component{
               break;
           }
         }
+        // user hasn't applied to the job yet
         if(!this.state.applied){
           const newDate = new Date()
           const date = newDate.getDate();
@@ -211,26 +245,26 @@ class JobDescription extends React.Component{
     
     loadingStatus = (status) => {
       this.setState({
-        loading: status
+        loading: Util.loadingStatus(status)
       })
     }
 
     visibleStatus = (status) => {
       this.setState({
-        isVisible: status
+        isVisible: Util.visibleStatus(status)
       })
     }
 
   
     
     render(){
-        // console.log("this is the job id: ", this.state.jobId);
-        // console.log('this is the postjob info: ', this.state.postJobInfo);
-        // console.log('this is the job info: ', this.state.jobInfo);        
-        // console.log('this is the company: ', this.state.companyInfo);
-        // console.log('this is the location: ', this.state.location);
-        // console.log('this is the city: ', this.state.location.city);
 
+        if(this.state.loading){
+          <Skeleton active />
+        }
+
+        console.log('it comes to render first');
+        console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
           let content = this.state.companyInfo.description;
@@ -254,7 +288,7 @@ class JobDescription extends React.Component{
         //     count : 1
         //   })
         // }
-        console.log('this is applicants: ', this.state.applicants); 
+        console.log('this is location: ', this.state.location); 
 
         return(
             

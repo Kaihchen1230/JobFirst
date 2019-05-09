@@ -94,10 +94,13 @@ type Employer @model {
 type PostedJob @model {
   id: ID!
   company: Employer @connection(name:"job")
+  jobCategory: String
   jobTitle: String
   jobType: String
   description: String
+  education: String
   requirements: [String]
+  salary:  Float
   datePosted: AWSDate
   deadline: AWSDate
   location: Address @connection
