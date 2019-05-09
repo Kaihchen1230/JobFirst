@@ -462,10 +462,13 @@ export const getAppliedJob = `query GetAppliedJob($id: ID!) {
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
@@ -516,10 +519,13 @@ export const listAppliedJobs = `query ListAppliedJobs(
       }
       Job {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -571,10 +577,13 @@ export const getEmployer = `query GetEmployer($id: ID!) {
     job {
       items {
         id
+        jobCategory
         jobTitle
         jobType
         description
+        education
         requirements
+        salary
         datePosted
         deadline
         searchFieldName
@@ -666,10 +675,13 @@ export const getPostedJob = `query GetPostedJob($id: ID!) {
       }
       identityID
     }
+    jobCategory
     jobTitle
     jobType
     description
+    education
     requirements
+    salary
     datePosted
     deadline
     location {
@@ -721,10 +733,13 @@ export const listPostedJobs = `query ListPostedJobs(
         description
         identityID
       }
+      jobCategory
       jobTitle
       jobType
       description
+      education
       requirements
+      salary
       datePosted
       deadline
       location {
