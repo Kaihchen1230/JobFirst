@@ -1,9 +1,8 @@
 import React from "react"
-// import { Router } from "@reach/router"
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from "@reach/router"
 import Layout from "../components/layout"
-import PrivateRoute from "../components/authentication/privateRoute";
-import Login from "../components/authentication/login";
+import PrivateRoute from "../components/authentication/privateRoute"
+import Login from "../components/authentication/login"
 import businessProfile from "./businessProfile"
 import PostJob from "../components/form/postJob";
 import Home from '../components/Home/home';
@@ -22,7 +21,7 @@ import AddEduForm from "../components/form/addEducation";
 
 const App = () => (
   <Layout>
-    <BrowserRouter>
+    <Router>
       <PrivateRoute path="/app/business-profile/:userID" component={businessProfile} />
       <PrivateRoute path="/app/user-profile/:userID"     component={Profile} /> 
       <PrivateRoute path="/app/application"      component={Application} />
@@ -37,7 +36,7 @@ const App = () => (
       <Contact        path="/app/contact" />
       <AddExpForm     path="/app/addExpForm" />
       <AddEduForm      path="/app/addEduForm" />
-      </BrowserRouter>
+    </Router>
   </Layout>
 );
 
