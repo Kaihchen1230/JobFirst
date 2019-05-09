@@ -14,28 +14,30 @@ import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
 
+// Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 
+// The profile page of a user
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lan: getLanguage() ? getLanguage() : 'en',
-            userID: this.props.userID,
-            loading: true,
-            collapsed: false,
-            education: [],
-            experiences: [],
-            allowEdit: this.props.userID === getUser().sub
+            lan: getLanguage() ? getLanguage() : 'es',      // if the language is not chose, the default will be english
+            userID: this.props.userID,                      // the userID will be passed from the query params
+            loading: true,                                  // true when fetching data
+            collapsed: false,                               // hide the sidebar
+            education: [],                                  // education of the user
+            experiences: [],                                // experince of the user
+            allowEdit: this.props.userID === getUser().sub  // check if the user is viewing his own profile
         }
     }
-
+    // hide the sidebar
     onCollapse = (collapsed) => {
         console.log(collapsed);
         this.setState({ collapsed });
     }
-
+    // where all the data fetching happen
     componentDidMount = async () => {
         // fetch the user info
         try {
@@ -108,7 +110,7 @@ class Profile extends React.Component {
             loading: false
         })
     }
-
+    // TODO function for uploading resume
     onChange(info) {
         if (info.file.status !== 'uploading') {
             console.log(info.file, info.fileList);
@@ -119,14 +121,12 @@ class Profile extends React.Component {
             message.error(`${info.file.name} file upload failed.`);
         }
     }
-    
+
+    // delete education
     deleteEducation = async (key, e) => {
-        // call API to delete
-        let deleteId = {
-            id: key
-        }
+        // call API to delete education
         try {
-            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: deleteId }));
+            const delEdu = await API.graphql(graphqlOperation(mutations.deleteEducation, { input: {id: key} }));
             console.log("this item was deleted: ", delEdu);
         } catch (err) {
             console.log("error - ", err);
@@ -147,11 +147,8 @@ class Profile extends React.Component {
 
     deleteExperience = async (key, e) => {
         // call API to delete
-        let deleteId = {
-            id: key
-        }
         try {
-            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: deleteId }));
+            const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: {id: key} }));
             console.log("this item was deleted: ", delExp);
         } catch (err) {
             console.log("error - ", err);
@@ -172,11 +169,13 @@ class Profile extends React.Component {
     }
 
     render() {
+        // if the fetching is not done
         if (this.state.loading) {
             return (
                 <Skeleton active />
             );
         }
+        // setup the dictionary
         I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);
         return (
