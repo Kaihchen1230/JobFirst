@@ -12,6 +12,7 @@ import UploadPage from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
+import BasicInfoForm from "../components/user_profile/basicInfoForm";
 
 const { Header, Footer, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -218,7 +219,8 @@ class Profile extends React.Component {
                                 title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
                             >
                                 <Menu.Item key="3">
-                                    {I18n.get('Modify Basic Info')}
+                                    <BasicInfoForm userInfo={this.state.user}/>
+                                    {/* {I18n.get('Modify Basic Info')} */}
                                 </Menu.Item>
 
                                 <Menu.Item key="4">
@@ -227,6 +229,7 @@ class Profile extends React.Component {
 
                                 <Menu.Item key="5">
                                     {I18n.get('Add Education or Award')}
+                                    <Link to="/app/addEduForm"></Link>
                                 </Menu.Item>
 
                                 <Menu.Item key="6">

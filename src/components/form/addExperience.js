@@ -5,18 +5,20 @@ import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
+import { getLanguage } from "../../services/auth";
 
 class AddExpForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //lan: window.localStorage.getItem('lan'),
+            lan: getLanguage(),
             type: ""
         };
         console.log("The add experience form loaded");
     }
 
-    handleSubmit = async () => {
+    handleSubmit = async (event) => {
+        event.preventDefault();
         let user = await Auth.currentAuthenticatedUser();
         const { attributes } = user;
         const experienceForm = document.forms["experiencePost"];
@@ -29,11 +31,15 @@ class AddExpForm extends React.Component {
             country: experienceForm["companyCountry"].value,
             experienceWhoseId: attributes.sub
         }
+        console.log("the input: ", createExperienceInput);
         const newExperience = await API.graphql(graphqlOperation(mutations.createExperience, {input: createExperienceInput}));
         console.log("This experience was added: ", newExperience);
     }
 
     render() {
+        console.log("language", this.state.lan);
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
         return (
             <div align="center">
                 <br />

@@ -10,7 +10,7 @@ const ResumeUploader = (props) => {
     return (
         <Upload {...props}>
             <Button ghost>
-                <Icon type="upload" /> Click to Upload
+                <Icon type="upload" /> Upload A Resume
             </Button>
         </Upload>
     );

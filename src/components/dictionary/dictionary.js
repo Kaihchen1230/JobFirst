@@ -104,7 +104,15 @@ let dict = {
         "Enter the Country of the Company": "输入公司所在国家/地区",
         "Enter the Starting Year": "输入起始年份",
         "Enter the Ending Year": "输入结束年份",
-        "Enter the Reason for Leaving": "输入离开原因"
+        "Enter the Reason for Leaving": "输入离开原因",
+        "Add an Experience": "添加经验",
+        "Submit New Experience": "提交新体验",
+        "Enter the School Name": "输入学校名称",
+        "Enter the Name of the Degree": "输入学位的名称",
+        "Enter the City of the School": "进入学校之城",
+        "Enter the Country of the School": "输入学校的国家",
+        "Submit New Education": "提交新教育",
+        "Add Education": "添加教育"
     },
     'es': {
         'Sign In': "Sign In",
@@ -211,7 +219,15 @@ let dict = {
         "Enter the Country of the Company": "Enter the Country of the Company",
         "Enter the Starting Year": "Enter the Starting Year",
         "Enter the Ending Year": "Enter the Ending Year",
-        "Enter the Reason for Leaving": "Enter the Reason for Leaving"
+        "Enter the Reason for Leaving": "Enter the Reason for Leaving",
+        "Add an Experience": "Add an Experience",
+        "Submit New Experience": "Submit New Experience",
+        "Enter the School Name": "Enter the School Name",
+        "Enter the Name of the Degree": "Enter the Name of the Degree",
+        "Enter the City of the School": "Enter the City of the School",
+        "Enter the Country of the School": "Enter the Country of the School",
+        "Submit New Education": "Submit New Education",
+        "Add Education": "Add Education"
     }
 };
 export default dict;
