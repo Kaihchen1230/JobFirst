@@ -10,6 +10,7 @@ import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as customQueries from '../customGraphql/queries';
+import * as Util from '../jobDescriptionUnitTest/jobDescriptionUtil';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -199,6 +200,7 @@ class JobDescription extends React.Component{
               break;
           }
         }
+        // user hasn't applied to the job yet
         if(!this.state.applied){
           const newDate = new Date()
           const date = newDate.getDate();
@@ -243,13 +245,13 @@ class JobDescription extends React.Component{
     
     loadingStatus = (status) => {
       this.setState({
-        loading: status
+        loading: Util.loadingStatus(status)
       })
     }
 
     visibleStatus = (status) => {
       this.setState({
-        isVisible: status
+        isVisible: Util.visibleStatus(status)
       })
     }
 
@@ -260,7 +262,6 @@ class JobDescription extends React.Component{
         if(this.state.loading){
           <Skeleton active />
         }
-
 
         console.log('it comes to render first');
         console.log('this is the loading: ', this.state.loading);
