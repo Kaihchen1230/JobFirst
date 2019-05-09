@@ -5,6 +5,15 @@ test('should give object for filter by job type', () => {
     expect(obj).toEqual({ "filter": { "jobType": { "contains": 'full time' } } });
 });
 
+test('should give the date by minus current date to give value', () => {
+    const obj = filterDateGen(10);
+    let diff = value * 24 * 60 * 60 * 1000; //convert to milliseconds
+    let current = new Date();
+    let setTime = current - diff;
+    let setDate = moment(setTime).format('YYYY-MM-DD');
+    expect(obj).toEqual({"filter": { "jobType": { "contains": setDate } }})
+})
+
 test('should give object for search by title', () => {
     const obj = searchByNameGen('computer', 'Name');
     expect(obj).toEqual({ "filter": { "searchFieldName": { "contains": 'computer' } } });
