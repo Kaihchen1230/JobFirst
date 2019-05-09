@@ -18,24 +18,25 @@ const location = (props) => {
 
 
     console.log('this is the locationInfo: ', locationInfo);
-    console.log('this is the api key: ', process.env.API_KEY);
+    
     // Get latidude & longitude from address.
+    const geocode = () => {
+        const location = '22 Main st Boston MA';
+        axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+            params:{
+                address: location,
+                key: process.env.API_KEY
+            }
+        })
+        .then((response) => {
+            console.log('this is the response: ', response);
+        })
+        .catch((err) => {
+            console.log('there is an error: ', err);
+        })
+    }
 
-    // const geocode = () => {
-    //     const location = '22 Main st Boston MA';
-    //     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
-    //         params:{
-    //             address: location,
-    //             key: "AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E"
-    //         }
-    //     })
-    //     .then((response) => {
-    //         console.log('this is the response: ', response);
-    //     })
-    //     .catch((err) => {
-    //         console.log('there is an error: ', err);
-    //     })
-    // }
+    console.log('this is the gencode: ', geocode);
     
     let locationInfoPiece = ( 
         <h3>{locationInfo.line1} {locationInfo.line2} {locationInfo.city} {locationInfo.state} {locationInfo.postalCode}</h3>
