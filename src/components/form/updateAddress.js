@@ -7,6 +7,27 @@ import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getLanguage } from "../../services/auth";
 
+const CollectionCreateForm = Form.create({name: 'form_in_modal'}) (
+    class extends React.Component {
+        render() {
+            const {
+                visible, onUpdate, onCancel, form
+            } = this.props;
+            const { getFieldDecorator } = form;
+            return (
+                <Modal 
+                    visible = {visible}
+                    title = "Update Address"
+                    okText = "Update"
+                    onCancel = {onCancel}
+                    onOk = {onUpdate}
+                />
+            )
+        }
+    }
+)
+
+
 class UpdateAddressForm extends React.Component {
     state = {
         visible: false,
@@ -37,7 +58,7 @@ class UpdateAddressForm extends React.Component {
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
+                    onUpdate={this.handleUpdate}
                 />
             </div>
         )
