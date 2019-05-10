@@ -16,6 +16,7 @@ import BasicInfoForm from "../components/user_profile/basicInfoForm";
 import AddEduForm from "../components/form/addEducation";
 import AddExpForm from "../components/form/addExperience";
 import UpdateAddressForm from "../components/form/updateAddress";
+import CreateAddressForm from "../components/form/createAddress";
 
 // Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
@@ -228,14 +229,19 @@ class Profile extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item key="4">
-                                    <UpdateAddressForm />
+                                    {// update address
+                                    }
                                 </Menu.Item>
 
                                 <Menu.Item key="5">
-                                    <AddEduForm />
+                                    <UpdateAddressForm />
                                 </Menu.Item>
 
                                 <Menu.Item key="6">
+                                    <AddEduForm />
+                                </Menu.Item>
+
+                                <Menu.Item key="7">
                                     <AddExpForm />
                                 </Menu.Item>
                             </SubMenu>
