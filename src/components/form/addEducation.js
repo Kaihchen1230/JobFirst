@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, Modal, message } from 'antd';
 import { Auth, I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
@@ -7,95 +7,171 @@ import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getLanguage } from "../../services/auth";
 
-class AddEduForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            lan: getLanguage(),
-            type: ""
+const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
+    // eslint-disable-next-line
+    class extends React.Component {
+        render() {
+            const {
+                visible, onCancel, onCreate, form,
+            } = this.props;
+            const { getFieldDecorator } = form;
+            return (
+                <Modal
+                    visible={visible}
+                    title={I18n.get("Add Education or Award")}
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
+                    onCancel={onCancel}
+                    onOk={onCreate}
+                >
+                    <Form layout="vertical">
+                        <Form.Item label={I18n.get("School Name")}>
+                            {getFieldDecorator('schoolName')(
+                                <Input placeholder={I18n.get('Enter the School Name')}
+                                    name="schoolName"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the School Name')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label={I18n.get("Degree Name")}>
+                            {getFieldDecorator('degreeName')(
+                                <Input placeholder={I18n.get('Enter the Name of the Degree')}
+                                    name="degreeName"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the Name of the Degree')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label={I18n.get("School City")}>
+                            {getFieldDecorator('schoolCity')(
+                                <Input placeholder={I18n.get('Enter the City of the School')}
+                                    name="schoolCity"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the City of the School')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label={I18n.get("School Country")}>
+                            {getFieldDecorator('schoolCountry')(
+                                <Input placeholder={I18n.get('Enter the Country of the School')}
+                                    name="schoolCountry"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the Country of the School')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label={I18n.get("Starting Year")}>
+                            {getFieldDecorator('yearStart')(
+                                <Input placeholder={I18n.get('Enter the Starting Year')}
+                                    name="yearStart"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the Starting Year')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+                        <Form.Item label={I18n.get("Ending Year")}>
+                            {getFieldDecorator('yearEnd')(
+                                <Input placeholder={I18n.get('Enter the Ending Year')}
+                                    name="yearEnd"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the Ending Year')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+
+                    </Form>
+                </Modal>
+            );
         }
-        console.log("The add education form loaded");
+    }
+);
+
+class AddEduForm extends React.Component {
+    state = {
+        visible: false,
+        lan: getLanguage()
+
+    };
+
+    showModal = () => {
+        console.log("clicked")
+        this.setState({ visible: true });
     }
 
-    handleSubmit = async (event) => {
-        event.preventDefault();
-        let user = await Auth.currentAuthenticatedUser();
-        const { attributes } = user;
-        const educationForm = document.forms["educationPost"];
-        const createEducationInput = {
-            startYear: educationForm["yearStart"].value,
-            endYear: educationForm["yearEnd"].value,
-            degree: educationForm["degreeName"].value,
-            schoolName: educationForm["schoolName"].value,
-            city: educationForm["schoolCity"].value,
-            country: educationForm["schoolCountry"].value,
-            educationWhoseId: attributes.sub
-        }
-        console.log("the input: ", createEducationInput);
-        const newEducation = await API.graphql(graphqlOperation(mutations.createEducation, { input: createEducationInput }));
-        console.log("This education was added: ", newEducation);
+    handleCancel = () => {
+        this.setState({ visible: false });
+    }
+
+    handleCreate = async () => {
+        const form = this.formRef.props.form;
+        form.validateFields(async(err, values) => {
+            if (err) {
+                return;
+            }
+            let user = await Auth.currentAuthenticatedUser();
+            const { attributes } = user;
+            console.log('Received values of form: ', values);
+            const createEducationInput = {
+                startYear: values["yearStart"],
+                endYear: values["yearEnd"],
+                degree: values["degreeName"],
+                schoolName: values["schoolName"],
+                city: values["schoolCity"],
+                country: values["schoolCountry"],
+                educationWhoseId: attributes.sub
+            }
+            try {
+                const newEducation = await API.graphql(graphqlOperation(mutations.createEducation, { input: createEducationInput }));
+                console.log('success adding an education');
+                message.success(`Success adding an education`);
+            } catch (err) {
+                console.log('error in adding an education', err);
+                message.error(`Error in adding an education: ${err.message}`);
+            }
+            form.resetFields();
+            this.setState({ visible: false });
+        });
+    }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
     }
 
     render() {
-        console.log("language", this.state.lan);
         I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);
         return (
-            <div align="center">
-                <br />
-                <h1>{I18n.get('Add Education')}</h1>
-                <Form onSubmit={this.handleSubmit} style={{ "width": "50%" }} name="educationPost">
-                    <Form.Item>
-                        <Input placeholder={I18n.get('Enter the School Name')}
-                            name="schoolName"
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the School Name')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                        <Input placeholder={I18n.get('Enter the Name of the Degree')}
-                            name="degreeName"
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the Name of the Degree')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                        <Input placeholder={I18n.get('Enter the City of the School')}
-                            name="schoolCity"
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the City of the School')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                        <Input placeholder={I18n.get('Enter the Country of the School')}
-                            name="schoolCountry"
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the Country of the School')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                        <Input placeholder={I18n.get('Enter the Starting Year')}
-                            name="yearStart"
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the Starting Year')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                        <Input placeholder={I18n.get('Enter the Ending Year')}
-                            name="yearEnd"
-                            suffix={
-                                <Tooltip title={I18n.get('Enter the Ending Year')}>
-                                    <Icon type="info-circle" />
-                                </Tooltip>}
-                        />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" >{I18n.get('Submit New Education')}</Button>
-                    </Form.Item>
-                </Form>
+            <div>
+                <Button ghost onClick={this.showModal}>{I18n.get('Add Education or Award')}</Button>
+                <CollectionCreateForm
+                    wrappedComponentRef={this.saveFormRef}
+                    visible={this.state.visible}
+                    onCancel={this.handleCancel}
+                    onCreate={this.handleCreate}
+                />
             </div>
-        )
+        );
     }
 }
+
+
 
 export default AddEduForm;

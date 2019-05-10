@@ -16,7 +16,7 @@ const callback = (key) => {
 const Information = (props) => {
 
     return (
-        <div>
+        <div data-testid="div-information" >
             <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab={I18n.get("General Info")} key="1">
                     <General user={props.user} />
@@ -26,7 +26,7 @@ const Information = (props) => {
                     <h1 align="center"><b>{I18n.get("Education")}</b></h1>
                     {props.education.length > 0 ? (
                         <Education education={props.education} allowEdit={props.allowEdit} deleteEdu={props.deleteEdu} />
-                    ) : <h1 align="center">You haven't added your past education yet.</h1>
+                    ) : <h1 align="center">{I18n.get('You haven\'t added your past education yet.')}</h1>
                     }
                 </TabPane>
 
@@ -34,7 +34,7 @@ const Information = (props) => {
                     <h1 align="center"><b>{I18n.get("Experiences")}</b></h1>
                     {props.experiences.length > 0 ? (
                         <Experiences experiences={props.experiences} allowEdit={props.allowEdit} deleteExp={props.deleteExp} />
-                    ) : <h1 align="center">You haven't added your past experiences yet.</h1>
+                    ) : <h1 align="center">{I18n.get('You haven\'t added your past experiences yet.')}</h1>
                     }
                 </TabPane>
 
@@ -42,7 +42,7 @@ const Information = (props) => {
                     <h1 align="center"><b>{I18n.get("Applied Jobs")}</b></h1>
                     {props.jobs.length > 0 ? (
                         <AppliedJob jobs={props.jobs} />
-                    ) : <h1 align="center">You haven't applied to any jobs yet.</h1>
+                    ) : <h1 align="center">{I18n.get('You haven\'t applied to any jobs yet.')}</h1>
                     }
                 </TabPane>
             </Tabs>

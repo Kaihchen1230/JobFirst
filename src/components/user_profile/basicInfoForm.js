@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Button, Modal, Form, Input, Radio, Select, InputNumber, Icon
+    Button, Modal, Form, Input, Radio, Select, InputNumber, Icon, message
 } from 'antd';
 import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
@@ -204,8 +204,10 @@ class BasicInfoForm extends React.Component {
             }
             try {
                 const newEmployee = await API.graphql(graphqlOperation(mutations.updateEmployee, {input: data}));
+                message.success("Success Modifying Basic Info!");
             } catch(err) {
                 console.log("error in updating employee's info", err);
+                message.error("Error in Modifying Basic Info");
             }
             form.resetFields();
             this.setState({ visible: false });
