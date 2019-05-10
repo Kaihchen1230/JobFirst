@@ -18,7 +18,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Add a new education"
+                    title="Add a New Education"
                     okText="Add"
                     onCancel={onCancel}
                     onOk={onCreate}
@@ -106,7 +106,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 class AddEduForm extends React.Component {
     state = {
         visible: false,
-        lan: getLanguage(),
+        lan: getLanguage()
 
     };
 
@@ -119,7 +119,7 @@ class AddEduForm extends React.Component {
         this.setState({ visible: false });
     }
 
-    handleCreate = async() => {
+    handleCreate = async () => {
         const form = this.formRef.props.form;
         form.validateFields(async(err, values) => {
             if (err) {

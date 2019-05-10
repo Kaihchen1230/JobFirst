@@ -79,7 +79,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
     }
 );
 
-class UploadPage extends React.Component {
+class PhotoUploader extends React.Component {
     state = {
         visible: false,
         previewVisible: false,
@@ -222,4 +222,4 @@ class UploadPage extends React.Component {
     }
 }
 
-export default UploadPage;
+export default PhotoUploader;

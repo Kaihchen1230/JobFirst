@@ -1,6 +1,6 @@
 import React from 'react';
 import Person from '../components/user_profile/person';
-import Information from '../components/user_profile/content';
+import Information from '../components/user_profile/information';
 import Amplify, { Auth, API, graphqlOperation, I18n, Storage } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import * as customQueries from '../customGraphql/queries';
@@ -8,13 +8,14 @@ import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn, getLanguage } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon, message } from 'antd';
-import UploadPage from '../components/user_profile/photoUploader';
+import PhotoUploader from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
 import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
 import AddEduForm from "../components/form/addEducation";
 import AddExpForm from "../components/form/addExperience";
+import UpdateAddressForm from "../components/form/updateAddress";
 
 // Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
@@ -46,6 +47,7 @@ class Profile extends React.Component {
             this.setState({
                 user: user.data.getEmployee,
             })
+            console.log(user.data.getEmployee);
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
         }
@@ -115,19 +117,19 @@ class Profile extends React.Component {
     // where all the data fetching happen
     componentDidMount = async () => {
         // fetch the user info
-        this.fetchUserInfo();
+        await this.fetchUserInfo();
 
         // fetch the employee's applied jobs
-        this.fetchAppliedJob();
+        await this.fetchAppliedJob();
 
         // fetch the employee's education
-        this.fetchEducation();
+        await this.fetchEducation();
 
         // fetch the employee's experiences
-        this.fetchExperience();
+        await this.fetchExperience();
 
         // fetch photo
-        this.fetchPhoto();
+        await this.fetchPhoto();
 
         this.setState({
             loading: false
@@ -196,15 +198,15 @@ class Profile extends React.Component {
     }
 
     render() {
+        // setup the dictionary
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
         // if the fetching is not done
         if (this.state.loading) {
             return (
                 <Skeleton active />
             );
         }
-        // setup the dictionary
-        I18n.putVocabularies(dict);
-        I18n.setLanguage(this.state.lan);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
@@ -213,7 +215,7 @@ class Profile extends React.Component {
                     onCollapse={this.onCollapse}
                     width={300}
                 >
-                    <Person user={this.state.user} isBusiness={false} />
+                    <Person user={this.state.user} />
                     {(getUser().sub === this.state.userID) ? (
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                             <SubMenu
@@ -226,7 +228,7 @@ class Profile extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item key="4">
-                                    {I18n.get('Update address')}
+                                    <UpdateAddressForm />
                                 </Menu.Item>
 
                                 <Menu.Item key="5">
@@ -239,7 +241,7 @@ class Profile extends React.Component {
                             </SubMenu>
 
                             <Menu.Item key="2">
-                                <UploadPage />
+                                <PhotoUploader />
 
                                 {/* <span>{I18n.get('Change Profile Picture')}</span> */}
                             </Menu.Item>

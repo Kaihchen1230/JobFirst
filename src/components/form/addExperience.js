@@ -19,7 +19,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Add a new education"
+                    title="Add a New Experience"
                     okText="Add"
                     onCancel={onCancel}
                     onOk={onCreate}
@@ -107,7 +107,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 class AddExpForm extends React.Component {
     state = {
         visible: false,
-        lan: getLanguage(),
+        lan: getLanguage()
 
     };
 
