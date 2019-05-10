@@ -122,7 +122,19 @@ let dict = {
         "Complete": "完成",
         "Upload A Resume": "上传简历",
         "Upload A New Profile Picture": "上传新的个人资料图片",
-        "Upload A New Logo": "上传新徽标"
+        "Upload A New Logo": "上传新徽标",
+        "Add Experience or Skill": "添加经验或技能",
+        "Company Name": "公司名",
+        "Company City": "公司城市",
+        "Company Country": "公司国家",
+        "Starting Year": "开始的一年",
+        "Ending Year": "结束年份",
+        "Cancel": "取消",
+        "Add": "加",
+        "School Name": "学校名称",
+        "Degree Name": "学位名称",
+        "School City": "学校城市",
+        "School Country": "学校国家"
     },
     'es': {
         'Sign In': "Sign In",
@@ -247,7 +259,19 @@ let dict = {
         "Complete": "Complete",
         "Upload A Resume": "Upload A Resume",
         "Upload A New Profile Picture": "Upload A New Profile Picture",
-        "Upload A New Logo": "Upload A New Logo"
+        "Upload A New Logo": "Upload A New Logo",
+        "Add Experience or Skill": "Add Experience or Skill",
+        "Company Name": "Company Name",
+        "Company City": "Company City",
+        "Company Country": "Company Country",
+        "Starting Year": "Starting Year",
+        "Ending Year": "Ending Year",
+        "Cancel": "Cancel",
+        "Add": "Add",
+        "School Name": "School Name",
+        "Degree Name": "Degree Name",
+        "School City": "School City",
+        "School Country": "School Country"
     }
 };
 export default dict;

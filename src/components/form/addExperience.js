@@ -19,13 +19,14 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Add a New Experience"
-                    okText="Add"
+                    title={I18n.get("Add Experience or Skill")}
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Company Name">
+                        <Form.Item label={I18n.get("Company Name")}>
                             {getFieldDecorator('companyName')(
                                 <Input placeholder={I18n.get('Enter the Company Name')}
                                     name="companyName"
@@ -37,7 +38,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Company City">
+                        <Form.Item label={I18n.get("Company City")}>
                             {getFieldDecorator('companyCity')(
                                 <Input placeholder={I18n.get('Enter the City of the Company')}
                                     name="companyCity"
@@ -49,7 +50,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Company Country">
+                        <Form.Item label={I18n.get("Company Country")}>
                             {getFieldDecorator('companyCountry')(
                                 <Input placeholder={I18n.get('Enter the Country of the Company')}
                                     name="companyCountry"
@@ -61,7 +62,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Year Start">
+                        <Form.Item label={I18n.get("Starting Year")}>
                             {getFieldDecorator('yearStart')(
                                 <Input placeholder={I18n.get('Enter the Starting Year')}
                                     name="yearStart"
@@ -73,7 +74,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Ending Year">
+                        <Form.Item label={I18n.get("Ending Year")}>
                             {getFieldDecorator('yearEnd')(
                                 <Input placeholder={I18n.get('Enter the Ending Year')}
                                     name="yearEnd"
@@ -85,7 +86,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Reason for Leaving">
+                        <Form.Item label={I18n.get("Reason for Leaving")}>
                             {getFieldDecorator('leaveReason')(
                                 <Input placeholder={I18n.get('Enter the Reason for Leaving')}
                                     name="leaveReason"
