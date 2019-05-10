@@ -1,6 +1,8 @@
 import React from "react";
-import { Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
+import moment from 'moment';
 import { Auth, I18n } from 'aws-amplify';
+import { getUser } from '../../services/auth';
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
@@ -13,14 +15,29 @@ let id = 0;
 function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
-var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+function disabledDate(current) {
+    // Can not select days before today and today
+    return current && current < moment().endOf('day');
+}
+
+function formatDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 class PostJobForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            today: date,
+
         }
     }
 
@@ -57,16 +74,59 @@ class PostJobForm extends React.Component {
     }
 
     handleSubmit = (e) => {
+        let date = formatDate();
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                //console.log('Received values of form: ', values);
+                if (values.salary === 0) {
+                    message.error("Salary cannot be equal or less than zero, please leave blank or input a greater number")
+                    return
+                }
+                const AddressInput = {
+                    line1: values.line1,
+                    line2: values.line2,
+                    city: values.city,
+                    postalCode: values.postalCode,
+                    state: values.state,
+                }
+                //console.log("input for address: ", AddressInput);
+                API.graphql(graphqlOperation(mutations.createAddress, { input: AddressInput }))
+                    .then((address) => {
+                        const addID = address.data.createAddress.id;
+                        const PostedJobInput = {
+                            postedJobCompanyId: getUser().sub,
+                            jobTitle: values.jobTitle,
+                            jobType: values.jobType,
+                            description: values.description,
+                            requirements: values.requirement ? values.requirement : null,
+                            salary: values.salary ? values.salary : null,
+                            datePosted: date,
+                            deadline: values.deadline.format('YYYY-MM-DD'),
+                            postedJobLocationId: addID,
+                            searchFieldName: values.jobTitle.toLowerCase(),
+                            searchFieldLocation: values.line1.toLowerCase(),
+                            clickedCounts: 0,
+                            jobCategory: null, //TODO
+                            education: null, //TODO
+                        }
+                        console.log(PostedJobInput);
+                        API.graphql(graphqlOperation(mutations.createPostedJob, { input: PostedJobInput }))
+                            .then(postedJob => {
+                                message.success("Successfully Posted A New Job");
+                            }).catch(err => {
+                                console.log("Error in posting job", err)
+                                message.error("Error in posting a new job");
+                            })
+                    }).catch((err) => {
+                        console.log("Error in creating address", err)
+                        message.error("Error in creating address");
+                    })
             }
         });
     }
 
     render() {
-        console.log(this.state.today);
         const {
             getFieldDecorator, getFieldValue, getFieldsError, getFieldError, isFieldTouched,
         } = this.props.form;
@@ -83,7 +143,7 @@ class PostJobForm extends React.Component {
         const formItemLayoutWithOutLabel = {
             wrapperCol: {
                 xs: { span: 24, offset: 0 },
-                sm: { span: 20, offset: 4 },
+                sm: { span: 20, offset: 3 },
             },
         };
         getFieldDecorator('keys', { initialValue: [] });
@@ -91,21 +151,14 @@ class PostJobForm extends React.Component {
         const formItems = keys.map((k, index) => (
             <Form.Item
                 {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                label={index === 0 ? 'Requirement' : ''}
+                label={index === 0 ? 'Requirements' : ''}
                 required={false}
                 key={k}
             >
-                {getFieldDecorator(`names[${k}]`, {
-                    validateTrigger: ['onChange', 'onBlur'],
-                    rules: [{
-                        required: true,
-                        whitespace: true,
-                        message: "Please enter the requirement for the job.",
-                    }],
-                })(
+                {getFieldDecorator(`requirement[${k}]`)(
                     <Input placeholder="requirement" style={{ width: '60%', marginRight: 8 }} />
                 )}
-                {keys.length > 1 ? (
+                {keys.length > 0 ? (
                     <Icon
                         className="dynamic-delete-button"
                         type="minus-circle-o"
@@ -124,13 +177,14 @@ class PostJobForm extends React.Component {
         const jobTypeError = isFieldTouched('jobType') && getFieldError('jobType');
         const descriptionError = isFieldTouched('description') && getFieldError('description');
 
-
         return (
             <div align="center">
                 <br />
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item
+                        label="Job Title"
+                        required={true}
                         validateStatus={jobTitleError ? 'error' : ''}
                         help={jobTitleError || ''}>
                         {getFieldDecorator('jobTitle', {
@@ -147,6 +201,8 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
+                        label="line 1"
+                        required={true}
                         validateStatus={line1Error ? 'error' : ''}
                         help={line1Error || ''}>
                         {getFieldDecorator('line1', {
@@ -162,7 +218,9 @@ class PostJobForm extends React.Component {
                         )}
                     </Form.Item>
 
-                    <Form.Item>
+                    <Form.Item
+                        label="line 2"
+                        required={false}>
                         {getFieldDecorator('line2', {
                             rules: [{ required: false, message: 'Please enter the address line 2!' }]
                         })(
@@ -177,6 +235,8 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
+                        label="City"
+                        required={true}
                         validateStatus={cityError ? 'error' : ''}
                         help={cityError || ''}>
                         {getFieldDecorator('city', {
@@ -193,6 +253,8 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
+                        label="Postal Code"
+                        required={true}
                         validateStatus={postalCodeError ? 'error' : ''}
                         help={postalCodeError || ''}>
                         {getFieldDecorator('postalCode', {
@@ -209,6 +271,8 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
+                        label="State"
+                        required={true}
                         validateStatus={stateError ? 'error' : ''}
                         help={stateError || ''}>
                         {getFieldDecorator('state', {
@@ -225,18 +289,24 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
+                        label="Deadline"
+                        required={true}
                         validateStatus={deadlineError ? 'error' : ''}
                         help={deadlineError || ''}>
                         {getFieldDecorator('deadline', {
                             rules: [{ required: true, message: 'Please enter the deadline!' }]
                         })(
                             <DatePicker
+                                format="YYYY-MM-DD"
+                                disabledDate={disabledDate}
                                 placeholder={I18n.get('Deadline')}
                                 name="deadline" />
                         )}
                     </Form.Item>
 
                     <Form.Item
+                        label="Job Type"
+                        required={true}
                         validateStatus={jobTypeError ? 'error' : ''}
                         help={jobTypeError || ''}>
                         {getFieldDecorator('jobType', {
@@ -252,6 +322,8 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
+                        label="Job Description"
+                        required={true}
                         validateStatus={descriptionError ? 'error' : ''}
                         help={descriptionError || ''}>
                         {getFieldDecorator('description', {
@@ -284,7 +356,7 @@ class PostJobForm extends React.Component {
                         <Button
                             type="primary"
                             htmlType="submit"
-                            disabled={hasErrors(getFieldsError())}
+                        // disabled={hasErrors(getFieldsError())}
                         >
                             {I18n.get('Submit Job')}
                         </Button>
