@@ -193,7 +193,8 @@ class businessProfile extends React.Component {
             <BusinessPicture companyLogo={this.state.companyLogo} />
             <div className="companyHeader">
               <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
-              <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
+              <h2 className="companyLocation">{this.state.companyAddress.city + 
+                  " " + this.state.companyAddress.state}</h2>
             </div>
             {this.state.allowEdit ?
               <div style ={{ position:"relative", 
