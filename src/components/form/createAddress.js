@@ -17,13 +17,13 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Update Your Address"
-                    okText="Update"
+                    title="Add Your Address"
+                    okText="Add"
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="line1">
+                        <Form.Item label="Line 1">
                             {getFieldDecorator('line1')(
                                 <Input placeholder={I18n.get('Street Address Line 1')}
                                     name="line1"
@@ -34,7 +34,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="line2">
+                        <Form.Item label="Line 2">
                             {getFieldDecorator('line2')(
                                 <Input placeholder={I18n.get('Street Address Line 2')}
                                     name="line2"
@@ -45,7 +45,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="city">
+                        <Form.Item label="City">
                             {getFieldDecorator('city')(
                                 <Input placeholder={I18n.get('City')}
                                     name="city"
@@ -56,7 +56,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="postalCode">
+                        <Form.Item label="Postal Code">
                             {getFieldDecorator('postalCode')(
                                 <Input placeholder={I18n.get('Postal Code')}
                                     name="postalCode"
@@ -67,7 +67,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="state">
+                        <Form.Item label="State">
                             {getFieldDecorator('state')(
                                 <Input placeholder={I18n.get('State')}
                                     name="state"
@@ -119,7 +119,7 @@ class CreateAddressForm extends React.Component {
             }
             try {
                 const createAddress = await API.graphql(graphqlOperation(mutations.createAddress, { input: createAddInput }));
-                console.log('success creating address');
+                console.log('success creating address', createAddress);
                 message.success('Success in Adding Address!');
             }
             catch (err) {

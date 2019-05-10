@@ -122,7 +122,10 @@ let dict = {
         "Complete": "完成",
         "Upload A Resume": "上传简历",
         "Upload A New Profile Picture": "上传新的个人资料图片",
-        "Upload A New Logo": "上传新徽标"
+        "Upload A New Logo": "上传新徽标",
+        "Add Experience or Skill": "添加经验或技能",
+        "Company Name": "公司名",
+        "Company City": "公司城市"
     },
     'es': {
         'Sign In': "Sign In",
@@ -247,7 +250,10 @@ let dict = {
         "Complete": "Complete",
         "Upload A Resume": "Upload A Resume",
         "Upload A New Profile Picture": "Upload A New Profile Picture",
-        "Upload A New Logo": "Upload A New Logo"
+        "Upload A New Logo": "Upload A New Logo",
+        "Add Experience or Skill": "Add Experience or Skill",
+        "Company Name": "Company Name",
+        "Company City": "Company City"
     }
 };
 export default dict;

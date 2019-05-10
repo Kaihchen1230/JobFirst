@@ -19,13 +19,13 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Add a New Experience"
+                    title={I18n.get("Add Experience or Skill")}
                     okText="Add"
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Company Name">
+                        <Form.Item label={I18n.get("Company Name")}>
                             {getFieldDecorator('companyName')(
                                 <Input placeholder={I18n.get('Enter the Company Name')}
                                     name="companyName"
@@ -37,7 +37,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Company City">
+                        <Form.Item label={I18n.get("Company City")}>
                             {getFieldDecorator('companyCity')(
                                 <Input placeholder={I18n.get('Enter the City of the Company')}
                                     name="companyCity"
