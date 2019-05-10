@@ -5,7 +5,6 @@ import { I18n } from 'aws-amplify';
 const timeLine = (props) => {
     let mainStyle = {
         padddingLeft: "0px",
-        marginTop: "20px",
         fontSize: "1.1em",
         letterSpacing: "1px",
         lineHeight: "1.8em",
@@ -27,8 +26,8 @@ const timeLine = (props) => {
                 <div key = {index}>
                     <TimelineEvent
                         bubbleStyle={{ border: "2px solid #1890ff"} }
-                        icon ={<img style={iconStyle} src="https://i.gifer.com/YYe6.gif"></img>}
-                        createdAt={element.date}
+                        icon ={<img style={iconStyle} src="https://i.gifer.com/YgOG.gif"></img>}
+                        createdAt={element.date.substring(0,10)}
                         title={element.title}
                     >
                         {element.info}
@@ -41,9 +40,11 @@ const timeLine = (props) => {
     return (
         <div style={mainStyle}>
             <h1>{I18n.get('Timeline')}</h1>
+            {timelines.length > 0 &&            
             <Timeline style={timelineStyle}>
                 <Events/>
-            </Timeline>
+            </Timeline>      
+             }
         </div>
     )
 }

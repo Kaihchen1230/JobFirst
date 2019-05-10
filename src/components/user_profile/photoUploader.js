@@ -28,8 +28,8 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                 <Modal
                     visible={visible}
                     title={I18n.get("Upload A New Profile Picture")}
-                    okText="Done"
-                    cancelText="Cancel"
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
@@ -68,7 +68,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                         >
                             {formFileList.length >= 1 ? null : uploadButton}
                         </Upload>
-                        <Button type="primary" onClick={onReset}>Reset To Default</Button>
+                        <Button type="primary" onClick={onReset}>{I18n.get("Reset to Default")}</Button>
                         <Modal visible={formPreviewVisible} footer={null} onCancel={onFormCancel}>
                             <img alt="example" style={{ width: '100%' }} src={formPreviewImage} />
                         </Modal>
@@ -194,11 +194,7 @@ class PhotoUploader extends React.Component {
         let buttonStyle ={
             backgroundColor:"#1890ff",
             color:"white",
-            position: "absolute",
-            left:"83.8%",
-            top:"6%"
         }
-        console.log("is business",this.props.isBusiness)
         return (
             <div>
                 {this.props.isBusiness ?

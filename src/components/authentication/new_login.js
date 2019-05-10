@@ -161,7 +161,7 @@ class NewLogin extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>{I18n.get('Log in')}</Button>
+        <Button style={{backgroundColor:"#1BB28B", color:"white", border:"1px solid #1BB28B"}} type="primary" onClick={this.showModal}>{I18n.get('Log in')}</Button>
         <LoginForm
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}

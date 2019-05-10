@@ -11,17 +11,17 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class extends React.Component {
         render() {
             const {
-                visible, onUpdate, onCancel, form
+                visible, onCreate, onCancel, form
             } = this.props;
             const { getFieldDecorator } = form;
             return (
                 <Modal
                     visible={visible}
-                    title={I18n.get("Update Your Address")}
-                    okText={I18n.get("Update")}
+                    title={I18n.get("Add Your Address")}
+                    okText={I18n.get("Add")}
                     cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
-                    onOk={onUpdate}
+                    onOk={onCreate}
                 >
                     <Form layout="vertical">
                         <Form.Item label={I18n.get("Line 1")}>
@@ -86,8 +86,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     }
 )
 
-
-class UpdateAddressForm extends React.Component {
+class CreateAddressForm extends React.Component {
     state = {
         visible: false,
         lan: getLanguage()
@@ -101,8 +100,8 @@ class UpdateAddressForm extends React.Component {
         this.setState({ visible: false })
     }
 
-    // api call to update address function
-    handleUpdate = async () => {
+    // api call to create address function
+    handleCreate = async () => {
         const form = this.formRef.props.form;
         form.validateFields(async (err, values) => {
             if (err) {
@@ -111,7 +110,7 @@ class UpdateAddressForm extends React.Component {
             let user = await Auth.currentAuthenticatedUser();
             const { attributes } = user;
             console.log("These values were entered: ", values);
-            const updateAddInput = {
+            const createAddInput = {
                 id: attributes.sub,
                 line1: values["line1"],
                 line2: values["line2"],
@@ -120,20 +119,19 @@ class UpdateAddressForm extends React.Component {
                 state: values["state"]
             }
             try {
-                const updateAddress = await API.graphql(graphqlOperation(mutations.updateAddress, { input: updateAddInput }));
-                console.log('success updating address', updateAddress);
-                message.success(`Success Updating Address!`);
+                const createAddress = await API.graphql(graphqlOperation(mutations.createAddress, { input: createAddInput }));
+                console.log('success creating address', createAddress);
+                message.success('Success in Adding Address!');
             }
             catch (err) {
-                console.log("error in updating address");
-                message.error("Error in Updating Address");
+                console.log("error in creating address");
+                message.error('Error in Adding Address');
             }
             form.resetFields();
-            this.setState({ visible: false })
+            this.setState({ visible: false });
         })
     }
-
-    saveFormRef = (formRef) => {
+    saveFormRef= (formRef) => {
         this.formRef = formRef;
     }
 
@@ -142,16 +140,16 @@ class UpdateAddressForm extends React.Component {
         I18n.setLanguage(this.state.lan);
         return (
             <div>
-                <Button ghost onClick={this.showModal}>{I18n.get('Update Your Address')}</Button>
-                <CollectionCreateForm
+                <Button ghost onClick={this.showModal}>{I18n.get('Add Your Address')}</Button>
+                <CollectionCreateForm 
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
-                    onUpdate={this.handleUpdate}
+                    onCreate={this.handleCreate}
                 />
             </div>
         )
     }
 }
 
-export default UpdateAddressForm;
+export default CreateAddressForm;
