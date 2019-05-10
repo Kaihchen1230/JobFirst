@@ -17,62 +17,63 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Update Your Address"
-                    okText="Update"
+                    title={I18n.get("Update Your Address")}
+                    okText={I18n.get("Update")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onUpdate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Line 1">
+                        <Form.Item label={I18n.get("Line 1")}>
                             {getFieldDecorator('line1')(
-                                <Input placeholder={I18n.get('Street Address Line 1')}
+                                <Input placeholder={I18n.get('Enter the first line of the street address')}
                                     name="line1"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the first line of the street address.')}>
+                                        <Tooltip title={I18n.get('Enter the first line of the street address')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="Line 2">
+                        <Form.Item label={I18n.get("Line 2")}>
                             {getFieldDecorator('line2')(
-                                <Input placeholder={I18n.get('Street Address Line 2')}
+                                <Input placeholder={I18n.get('Enter the second line of the street address')}
                                     name="line2"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the second line of the street address.')}>
+                                        <Tooltip title={I18n.get('Enter the second line of the street address')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="City">
+                        <Form.Item label={I18n.get("City")}>
                             {getFieldDecorator('city')(
-                                <Input placeholder={I18n.get('City')}
+                                <Input placeholder={I18n.get('Enter the name of the city')}
                                     name="city"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the name of the city.')}>
+                                        <Tooltip title={I18n.get('Enter the name of the city')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="Postal Code">
+                        <Form.Item label={I18n.get("Postal Code")}>
                             {getFieldDecorator('postalCode')(
-                                <Input placeholder={I18n.get('Postal Code')}
+                                <Input placeholder={I18n.get('Enter the postal code')}
                                     name="postalCode"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the postal code.')}>
+                                        <Tooltip title={I18n.get('Enter the postal code')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="State">
+                        <Form.Item label={I18n.get("State")}>
                             {getFieldDecorator('state')(
-                                <Input placeholder={I18n.get('State')}
+                                <Input placeholder={I18n.get('Enter the name of the state')}
                                     name="state"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the name of the state.')}>
+                                        <Tooltip title={I18n.get('Enter the name of the state')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
