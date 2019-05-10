@@ -123,11 +123,11 @@ class UpdateAddressForm extends React.Component {
             try {
                 const updateAddress = await API.graphql(graphqlOperation(mutations.updateAddress, { input: updateAddInput }));
                 console.log('success updating address');
-                message.success(`Success updating address`);
+                message.success(`Success Updating Address!`);
             }
             catch (err) {
                 console.log("error in updating address");
-                message.error("error in updating address");
+                message.error("Error in Updating Address");
             }
             form.resetFields();
             this.setState({ visible: false })

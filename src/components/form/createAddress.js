@@ -20,7 +20,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                     title="Update Your Address"
                     okText="Update"
                     onCancel={onCancel}
-                    onOk={onUpdate}
+                    onOk={onCreate}
                 >
                     <Form layout="vertical">
                         <Form.Item label="line1">
@@ -120,11 +120,35 @@ class CreateAddressForm extends React.Component {
             try {
                 const createAddress = await API.graphql(graphqlOperation(mutations.createAddress, { input: createAddInput }));
                 console.log('success creating address');
+                message.success('Success in Adding Address!');
             }
             catch (err) {
                 console.log("error in creating address");
+                message.error('Error in Adding Address');
             }
             form.resetFields();
-            this.setState({visible: false});
+            this.setState({ visible: false });
+        })
+    }
+    saveFormRef= (formRef) => {
+        this.formRef = formRef;
+    }
+
+    render() {
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
+        return (
+            <div>
+                <Button ghost onClick={this.showModal}>{I18n.get('Add Your Address')}</Button>
+                <CollectionCreateForm 
+                    wrappedComponentRef={this.saveFormRef}
+                    visible={this.state.visible}
+                    onCancel={this.handleCancel}
+                    onCreate={this.handleCreate}
+                />
+            </div>
+        )
     }
 }
+
+export default CreateAddressForm;
