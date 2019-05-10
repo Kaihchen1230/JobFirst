@@ -1,5 +1,5 @@
 import React from 'react';
-
+import nodataImg from '../../../static/nodata.png';
 let imageStyle = {
     padddingLeft:"0px",
     position:"relative",
@@ -10,9 +10,10 @@ let imageStyle = {
 };
 
 const profileCard = (props) => {
+    let source = props.companyLogo ? props.companyLogo : nodataImg;
     return (
         <div  >
-            <img data-testid="businessPic" style={imageStyle} width ="150" src = {props.companyLogo} >
+            <img data-testid="businessPic" style={imageStyle} width ="150" height="auto" src = {source} >
             </img>   
         </div>
     )

@@ -38,4 +38,8 @@ body{
     display: flex;   
 }
 
+.ant-layout-content{
+    background-color: white;
+}
+
 

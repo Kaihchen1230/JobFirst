@@ -1,6 +1,6 @@
 import { Avatar } from 'antd';
 import React from 'react';
-
+import nodataImg from '../../../static/nodata.png';
 let mainStyle = {
     padddingLeft:"0px",
     position:"relative",
@@ -21,12 +21,12 @@ let infoStyle = {
     borderRadius: "10px",
 }
 
-
 const ceoPic = (props) => {
+    let source = props.ceoPic ? props.ceoPic : nodataImg
     return (
         <div style={mainStyle}  >
             <div style={infoStyle}>
-                <Avatar size={180} src = {props.ceoPic} />   
+                <Avatar size={180} src = {source} />   
                 <br/>     
                 <span>{props.ceo}</span>
                 <h2>CEO</h2>  

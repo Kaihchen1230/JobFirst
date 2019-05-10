@@ -12,6 +12,7 @@ import CompanyVideo from "../components/business_profile/video";
 import PhotoUpload from "../components/user_profile/photoUploader";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n, Storage } from "aws-amplify";
+import nodataImg from '../../static/nodata.png';
 import '../style/businessProfile.css';
 
 const TabPane = Tabs.TabPane;
@@ -52,14 +53,14 @@ class businessProfile extends React.Component {
         postalCode: "12345"
         
       },
-      ceoPic: "https://camo.githubusercontent.com/472c00f642bd004e55ba0771541138593eb23a53/687474703a2f2f6564756d6f74652e636f6d2f6173736574732f696d616765732f736c696465722f6e6f7464617461666f756e642e706e67",
+      ceoPic: null,
       ceo: "",
       size: "",
       revenue: "",
       timeline: [],
       jobAmount: 0,
       description: "",
-      companyLogo: "https://camo.githubusercontent.com/472c00f642bd004e55ba0771541138593eb23a53/687474703a2f2f6564756d6f74652e636f6d2f6173736574732f696d616765732f736c696465722f6e6f7464617461666f756e642e706e67",
+      companyLogo: null,
       companyPic: "no",
       value: 0,
       allowEdit: false
@@ -132,7 +133,9 @@ class businessProfile extends React.Component {
           identityId: this.state.userID// the identityId of that user
         })
           .then(result => {
+            
             this.setState({ companyLogo: result,memory:true });
+            console.log("set up",this.state);
           })
           .catch(err => console.log(err));
       }
@@ -243,7 +246,7 @@ class businessProfile extends React.Component {
 
               </TabPane>
               <TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
-                <div>
+                <div > 
                   <PostJob
                     jobList={this.state.jobList}
                     companyLogo={this.state.companyLogo} />
