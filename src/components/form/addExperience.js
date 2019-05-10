@@ -107,7 +107,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 class AddExpForm extends React.Component {
     state = {
         visible: false,
-        lan: getLanguage(),
+        lan: getLanguage()
 
     };
 
