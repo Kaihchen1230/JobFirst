@@ -31,7 +31,7 @@ class JobDescription extends React.Component{
           clickedCount: 0
         },
         companyInfo: {},
-        location: {},
+        locationInfo: {},
         isVisible: false,
         applied: false,
         loading: true,
@@ -69,7 +69,7 @@ class JobDescription extends React.Component{
           postJobInfo: currentJobInfo,
           jobInfo: incomingJobInfo,
           companyInfo: currentJobInfo.data.getPostedJob.company,
-          location: currentJobInfo.data.getPostedJob.location
+          locationInfo: currentJobInfo.data.getPostedJob.location
         });
 
       }catch(err){
@@ -288,7 +288,7 @@ class JobDescription extends React.Component{
         //     count : 1
         //   })
         // }
-        console.log('this is location: ', this.state.location); 
+        console.log('this is location: ', this.state.locationInfo); 
 
         return(
             
@@ -325,7 +325,7 @@ class JobDescription extends React.Component{
                   </TabPane>
 
                   <TabPane tab="Location" key="3">
-                        <div><Location locationInfo = {this.state.location}></Location></div>
+                        <div><Location locationInfo = {this.state.locationInfo}></Location></div>
                       
                   </TabPane>
 
