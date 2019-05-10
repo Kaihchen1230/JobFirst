@@ -3,7 +3,7 @@ packages/*/package-lock.json
 
 
 #system variable
-.env
+.env.development
 
 # Logs
 logs
