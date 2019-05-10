@@ -90,4 +90,41 @@ class CreateAddressForm extends React.Component {
         visible: false,
         lan: getLanguage()
     }
+
+    showModal = () => {
+        this.setState({ visible: true })
+    }
+
+    handleCancel = () => {
+        this.setState({ visible: false })
+    }
+
+    // api call to create address function
+    handleCreate = async () => {
+        const form = this.formRef.props.form;
+        form.validateFields(async (err, values) => {
+            if (err) {
+                return;
+            }
+            let user = await Auth.currentAuthenticatedUser();
+            const { attributes } = user;
+            console.log("These values were entered: ", values);
+            const createAddInput = {
+                id: attributes.sub,
+                line1: values["line1"],
+                line2: values["line2"],
+                city: values["city"],
+                postalCode: values["postalCode"],
+                state: values["state"]
+            }
+            try {
+                const createAddress = await API.graphql(graphqlOperation(mutations.createAddress, { input: createAddInput }));
+                console.log('success creating address');
+            }
+            catch (err) {
+                console.log("error in creating address");
+            }
+            form.resetFields();
+            this.setState({visible: false});
+    }
 }
