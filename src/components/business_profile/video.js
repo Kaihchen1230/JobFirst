@@ -11,7 +11,7 @@ export default props => {
     //check if a valid youtube URL, if the URL is invalid, it wont show the video 
     let matchYoutubeUrl =(url)=> {
         var p = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-        if(url.match(p)){
+        if(url && url.match(p)){
             return url.match(p)[1];
         }
         return false;
