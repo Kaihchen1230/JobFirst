@@ -35,11 +35,11 @@ const jobItem = (props) => {
                     Deadline: {item.deadline}
                 </p>
                 <div align="center" >
-                    <Button type="primary" size ="large" style={{width:"23%", backgroundColor:'#1BB28B'}} >
+                    <Button type="primary" size ="large" style={{ backgroundColor:'#1BB28B'}} >
                         <Link 
                             to={'/app/job-detail/'+item.id}
                             state={{ id: item.id}}
-                        >  Apply  </Link>
+                        >  Learn More </Link>
                     </Button>
                 </div>
             </Card>
