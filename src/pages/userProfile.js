@@ -228,7 +228,6 @@ class Profile extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item key="4">
-                                    {I18n.get('Update address')}
                                     <UpdateAddressForm />
                                 </Menu.Item>
 
