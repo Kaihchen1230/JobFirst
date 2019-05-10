@@ -106,7 +106,9 @@ class UpdateAddressForm extends React.Component {
     handleUpdate = async () => {
         const form = this.formRef.props.form;
         form.validateFields(async (err, values) => {
-            if (err) return;
+            if (err) {
+                return;
+            }
             let user = await Auth.currentAuthenticatedUser();
             const { attributes } = user;
             console.log("These values were entered: ", values);
@@ -119,9 +121,12 @@ class UpdateAddressForm extends React.Component {
             }
             try {
                 const updateAddress = await API.graphql(graphqlOperation(mutations.updateAddress, { input: updateAddInput }));
+                console.log('success updating address');
+                message.success(`Success updating address`);
             }
             catch (err) {
                 console.log("error in updating address");
+                message.error("error in updating address");
             }
             form.resetFields();
             this.setState({ visible: false })
