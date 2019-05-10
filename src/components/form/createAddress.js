@@ -23,13 +23,71 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                     onOk={onUpdate}
                 >
                     <Form layout="vertical">
-                    
+                        <Form.Item label="line1">
+                            {getFieldDecorator('line1')(
+                                <Input placeholder={I18n.get('Street Address Line 1')}
+                                    name="line1"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the first line of the street address.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item label="line2">
+                            {getFieldDecorator('line2')(
+                                <Input placeholder={I18n.get('Street Address Line 2')}
+                                    name="line2"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the second line of the street address.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item label="city">
+                            {getFieldDecorator('city')(
+                                <Input placeholder={I18n.get('City')}
+                                    name="city"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the name of the city.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item label="postalCode">
+                            {getFieldDecorator('postalCode')(
+                                <Input placeholder={I18n.get('Postal Code')}
+                                    name="postalCode"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the postal code.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
+                        <Form.Item label="state">
+                            {getFieldDecorator('state')(
+                                <Input placeholder={I18n.get('State')}
+                                    name="state"
+                                    suffix={
+                                        <Tooltip title={I18n.get('Enter the name of the state.')}>
+                                            <Icon type="info-circle" />
+                                        </Tooltip>}
+                                />
+                            )}
+                        </Form.Item>
                     </Form>
-                
-                
                 </Modal>
             )
         }
     }
+)
 
+class CreateAddressForm extends React.Component {
+    state = {
+        visible: false,
+        lan: getLanguage()
+    }
 }
