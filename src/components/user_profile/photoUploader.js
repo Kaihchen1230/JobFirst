@@ -194,11 +194,7 @@ class PhotoUploader extends React.Component {
         let buttonStyle ={
             backgroundColor:"#1890ff",
             color:"white",
-            position: "absolute",
-            left:"83.8%",
-            top:"6%"
         }
-        console.log("is business",this.props.isBusiness)
         return (
             <div>
                 {this.props.isBusiness ?
