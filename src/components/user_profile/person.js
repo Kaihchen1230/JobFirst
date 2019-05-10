@@ -6,18 +6,19 @@ import { I18n, Storage } from 'aws-amplify';
 const { Meta } = Card;
 
 const Person = (props) => {
-    let { pic, firstName, lastName, favoriteQuote, identityID } = props.user;
-    if (pic == null || pic ==='no') {
-        pic = pikachiu;
+    let picture = props.user.pic;
+    const { firstName, favoriteQuote } = props.user;
+    if (picture == null || picture ==='no') {
+        picture = pikachiu;
     }
     return (
         <Card
             data-testid="card-contain-user-info" // for testing purpose
             hoverable={true}
-            cover={<img alt="default" src={pic} />}
+            cover={<img alt="default" src={picture} />}
         >
             <Meta
-                avatar={<Avatar src={pic} />}
+                avatar={<Avatar src={picture} />}
                 title={firstName}
                 description={favoriteQuote}
             />
