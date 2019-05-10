@@ -312,7 +312,7 @@ class JobDescription extends React.Component{
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
               <Tabs defaultActiveKey="1" > 
-                  <TabPane tab="Job" key="1" >
+                  <TabPane tab="Job" key="1" style={{display: "flex", width: "100%"}}>
                       <div>
                           <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                       </div>
