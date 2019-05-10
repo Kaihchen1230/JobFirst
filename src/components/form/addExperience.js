@@ -20,7 +20,8 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                 <Modal
                     visible={visible}
                     title={I18n.get("Add Experience or Skill")}
-                    okText="Add"
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
@@ -49,7 +50,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Company Country">
+                        <Form.Item label={I18n.get("Company Country")}>
                             {getFieldDecorator('companyCountry')(
                                 <Input placeholder={I18n.get('Enter the Country of the Company')}
                                     name="companyCountry"
@@ -61,7 +62,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Year Start">
+                        <Form.Item label={I18n.get("Starting Year")}>
                             {getFieldDecorator('yearStart')(
                                 <Input placeholder={I18n.get('Enter the Starting Year')}
                                     name="yearStart"
@@ -73,7 +74,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Ending Year">
+                        <Form.Item label={I18n.get("Ending Year")}>
                             {getFieldDecorator('yearEnd')(
                                 <Input placeholder={I18n.get('Enter the Ending Year')}
                                     name="yearEnd"
@@ -85,7 +86,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Reason for Leaving">
+                        <Form.Item label={I18n.get("Reason for Leaving")}>
                             {getFieldDecorator('leaveReason')(
                                 <Input placeholder={I18n.get('Enter the Reason for Leaving')}
                                     name="leaveReason"
