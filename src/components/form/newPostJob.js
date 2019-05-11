@@ -5,7 +5,6 @@ import { Auth, I18n } from 'aws-amplify';
 import { getUser } from '../../services/auth';
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
-import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 
 const Option = Select.Option;
@@ -108,7 +107,7 @@ class PostJobForm extends React.Component {
                             searchFieldLocation: values.line1.toLowerCase(),
                             clickedCounts: 0,
                             jobCategory: values.jobCategory, //TODO
-                            education: null, //TODO
+                            education: values.education, //TODO
                         }
                         console.log(PostedJobInput);
                         API.graphql(graphqlOperation(mutations.createPostedJob, { input: PostedJobInput }))

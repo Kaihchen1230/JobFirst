@@ -17,7 +17,6 @@ const {
 const Search = Input.Search;
 const Option = Select.Option;
 const InputGroup = Input.Group;
-let filter = {};
 let searchType = "Name";
 // let lan = window.localStorage.getItem('lan');
 // I18n.putVocabularies(dict);
@@ -26,22 +25,14 @@ let searchType = "Name";
 class JobList extends React.Component {
 
     state = {
-        filter: {
-
-        },
+        "filter": { clickedCounts: { ge: 0 } },
         salary: 7,
         days: 365,
     }
 
     filterType = (value) => {
-        let newFilter = this.state.filter;
-        if( value != "All"){
-            newFilter["jobType"] = Util.filterTypeGen(value);
-            this.setState({ "filter": newFilter });
-        }else{
-            delete newFilter["jobType"];
-        }
-        
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.filterTypeGen(value, oldFilter) });
     }
 
     filterDate = (value) => {
@@ -53,12 +44,18 @@ class JobList extends React.Component {
     }
 
     searchByName = (value) => {
-        // let searchType = this.state.search;
-        // this.setState({ "filter": Util.searchByNameGen(value, searchType) });
+        let newFilter = this.state.filter;
+        if (value == "") {
+            delete newFilter[searchType];
+            this.setState({ "filter": { clickedCounts: { ge: 0 } } });
+        } else {
+            this.setState({ "filter": Util.searchByNameGen(value, searchType) });
+        }
+
     }
 
     reset = () => {
-        // this.setState({ "filter": Util.resetGen() });
+        this.setState({ "filter": { clickedCounts: { ge: 0 } } });
     }
 
     setSalary = (value) => {
@@ -70,7 +67,7 @@ class JobList extends React.Component {
     }
 
     render() {
-        const { filter, salary, days } = this.state;
+        let { filter, salary, days } = this.state;
         return (
             <Layout >
                 <Header style={{ textAlign: "center", height: "15%" }}>
@@ -93,7 +90,7 @@ class JobList extends React.Component {
                     </Row>
 
                     <InputGroup compact>
-                        <Select onChange={value => this.selectSearch(value)} size="large" defaultValue="Name" style={{ width: "10%" }}>
+                        <Select onChange={this.selectSearch} size="large" defaultValue="Name" style={{ width: "10%" }}>
                             <Option value="Name">Name</Option>
                             <Option value="Location">Location</Option>
                         </Select>
@@ -144,8 +141,9 @@ class JobList extends React.Component {
                         <div style={{ textAlign: "left", width: "20%" }}>
                             <h4>Filter By Job Type</h4>
                             <Select
-                                onChange={value => this.filterType(value)}
-                                style={{ marginLeft: "2%", width: "98%" }} size="large"
+                                onChange={this.filterType}
+                                style={{ marginLeft: "2%", width: "98%" }}
+                                size="large"
                                 defaultValue="All" >
                                 <Option value="Full Time">{I18n.get('Full Time')}</Option>
                                 <Option value="Part Time">{I18n.get('Part Time')}</Option>
@@ -155,7 +153,7 @@ class JobList extends React.Component {
                             </Select>
                         </div>
                         <div style={{ textAlign: "left", width: "20%" }}>
-                            <h4>Filter By Education Requirement</h4>  
+                            <h4>Filter By Education Requirement</h4>
                             <Select
                                 style={{ marginLeft: "2%", width: "98%" }}
                                 size="large"
@@ -178,7 +176,7 @@ class JobList extends React.Component {
                                     <Slider
                                         min={7}
                                         max={100}
-                                        onChange={this.setSalary} 
+                                        onChange={this.setSalary}
                                         value={typeof salary === 'number' ? salary : 7}
                                         step={0.5}
                                     />
@@ -222,15 +220,14 @@ class JobList extends React.Component {
                     </InputGroup>
                 </Header>
                 <Content style={{ padding: '0 2%' }}>
-                    <Breadcrumb style={{ margin: '4%' }}>
-                        <Connect query={graphqlOperation(queries.listPostedJobs, this.state.filter)}>
-                            {({ data: { listPostedJobs }, loading, error }) => {
-                                if (error) return (<h3>ERROR</h3>);
-                                if (loading || !listPostedJobs) return (<h3>Loading...</h3>);
-                                return (<JobItem jobs={listPostedJobs.items} />);
-                            }}
-                        </Connect>
-                    </Breadcrumb>
+                    <Connect query={graphqlOperation(queries.listPostedJobs, { "filter": filter })}>
+                        {({ data: { listPostedJobs }, loading, error }) => {
+                            console.log(filter);
+                            if (error) return (<h3>ERROR</h3>);
+                            if (loading || !listPostedJobs) return (<h3>Loading...</h3>);
+                            return (<JobItem jobs={listPostedJobs.items} />);
+                        }}
+                    </Connect>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
                     JobFirst ©2019 Created by JobFirst Group
