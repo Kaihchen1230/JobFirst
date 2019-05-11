@@ -1,14 +1,29 @@
 .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
-    background-color: #1BB28B;
+    background-color:#001529;
     border-radius:8px;
 }
 .ant-menu-dark.ant-menu-horizontal{
     margin-top:-5px;
-    height:3.4em;
+    height:3.2em;
     font-size: 1.3em;
     font-weight: 500
 }
 
 .home{
-    margin-left:3%
+    margin-left:38%
 }
+
+.ant-avatar-square{
+    position:relative
+}
+
+.ant-avatar > img {
+    background-size: cover;
+    background-position: 100px;
+    width:190%;
+    height:160%;
+    position:absolute;
+    top:-8px;
+    right:-16px;
+}
+

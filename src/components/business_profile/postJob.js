@@ -25,11 +25,11 @@ const JobItem = (props) => {
                     <Meta
                         avatar={<Avatar src={props.companyLogo} />}
                         title={item.jobTitle}
-                        description={item.description}
+                        description={item.description && item.description.substring(0,100)}
                     />
                     <p></p>
                     <div align="center">
-                        <Button type="primary" ghost>
+                        <Button  style={{color:"#1BB28b", border:"1px solid #1BB28b"} }ghost>
                             <Link 
                                 to={jobLink}
                                 state={{ id: item.id}}>

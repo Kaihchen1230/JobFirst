@@ -90,10 +90,10 @@ class JobList extends React.Component {
                                 to turn their ideas into reality
                             </div>
                             <div className="buttonGroup">                                                        
-                                <span className="button1">
+                                <span className="slogonButton">
                                     I want to Hire
                                 </span >                              
-                                <span className="button2">I want to Work</span>                                      
+                                <span className="slogonButton2">I want to Work</span>                                      
                             </div>
                         </Col>
                         <Col style={{ margin: "-5% 0 -5% 3%" }} span={12}>
@@ -115,7 +115,7 @@ class JobList extends React.Component {
                             id="search"
                         />
                         <Button 
-                            className="button3" 
+                            className="resetButton" 
                             style={{marginLeft: "1%", width: "6%"}} 
                             onClick={this.reset.bind(this)}>
                             <Icon type="undo" /> Reset
@@ -213,7 +213,7 @@ class JobList extends React.Component {
                         </div>
                         <div style={{ textAlign: "center", width: "15%" }}>
                             <Button 
-                                className="button1" 
+                                className="applyButton" 
                                 style={{ marginTop: "5%", width: "40%", }} 
                                 onClick={this.filterSalary}>
                                 Apply
@@ -244,7 +244,7 @@ class JobList extends React.Component {
                         </div>
                         <div style={{ textAlign: "center", width: "15%" }}>
                             <Button 
-                                className="button1" 
+                                className="applyButton" 
                                 style={{ marginTop: "5%", width: "40%", }} 
                                 onClick={this.filterDate}>
                                 Apply

@@ -199,7 +199,7 @@ class businessProfile extends React.Component {
             {this.state.allowEdit ?
               <div style ={{ position:"relative", 
                             marginTop:"1%", left:"53%"}}>
-                <Button style={{marginLeft:"37%", marginBottom:"10%"}} type="primary" onClick={this.showModal}>
+                <Button className ="busEditButton"  onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button>
                 <PhotoUpload isBusiness={true} />

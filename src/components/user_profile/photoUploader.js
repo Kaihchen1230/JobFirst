@@ -6,7 +6,7 @@ import './photo.css';
 import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
 import { getUser } from '../../services/auth';
-
+import "./photo.css";
 const UploadForm = Form.create({ name: 'upload_photo' })(
     // eslint-disable-next-line
     class extends React.Component {
@@ -192,13 +192,13 @@ class PhotoUploader extends React.Component {
 
     render() {
         let buttonStyle ={
-            backgroundColor:"#1890ff",
+            backgroundColor:"#1BB28b",
             color:"white",
         }
         return (
             <div>
                 {this.props.isBusiness ?
-                    <Button style ={buttonStyle} onClick={this.showModal}>{I18n.get('Upload A New Logo')}</Button>:
+                    <Button className = "userButton" onClick={this.showModal}>{I18n.get('Upload A New Logo')}</Button>:
                     <Button ghost type='ghost' onClick={this.showModal}>{I18n.get('Upload A New Profile Picture')}</Button>
                 }
                 
