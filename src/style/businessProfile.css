@@ -6,11 +6,8 @@ body{
     margin-top: 1%;
     background-color: rgba(219, 216, 216, 0.719);
     height:35vh;
-    display: -webkit-flex; /* Safari */
-    display: flex;
     background-image: url("../../static/banner.jpg");
     background-repeat: no-repeat;
-    background-position: center 40%;
     background-size: cover;
     background-position: center;
 }
@@ -40,5 +37,17 @@ body{
 .ant-layout-content{
     background-color: white;
 }
+.busEditButton, .busEditButton:focus{
+    margin-left:37%;
+    margin-bottom:10%;
+    background-color:#1BB28b;
+    color:white
+}
+
+.busEditButton:hover{
+    background-color:#F0BF5F;
+    color:black
+}
+
 
 

@@ -5,22 +5,23 @@
 }
 
 .ant-input-group-addon .ant-btn-primary{
-    background-color:#F0BF5F;
-    color:black
+    background-color:#1BB28b;
+    color:white
+
 }
 
 .ant-btn-primary:hover{
-    background-color:#1BB28b;
-    color:white
+    background-color:#F0BF5F;
+    color:black
 }
 
 .banner{
     margin-top: 1%;
     height:45vw;
-    width:60vw;
+    width:57vw;
     background-image: url("../../static/home.png");
     background-repeat: no-repeat;
-    background-position: 0% 50%;
+    background-position: 0% 45%;
     margin-top: 1%;
     background-color: rgba(219, 216, 216, 0.719);
     background-size: cover;

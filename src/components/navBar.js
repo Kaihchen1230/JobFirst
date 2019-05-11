@@ -24,7 +24,7 @@ const navBar = (props) => {
     state.login =
       <span>
         <Avatar 
-          style={{ marginBottom:"5px" }}
+          style={{ margin:"5px 0" }}
           shape="square" 
           size={38} 
           src ="https://gifimage.net/wp-content/uploads/2018/11/user-gif-4.gif" />

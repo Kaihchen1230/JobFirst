@@ -29,7 +29,7 @@ const JobItem = (props) => {
                     />
                     <p></p>
                     <div align="center">
-                        <Button type="primary" ghost>
+                        <Button  style={{color:"#1BB28b", border:"1px solid #1BB28b"} }ghost>
                             <Link 
                                 to={jobLink}
                                 state={{ id: item.id}}>
