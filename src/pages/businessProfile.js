@@ -186,7 +186,7 @@ class businessProfile extends React.Component {
     return (
       <div >
         
-        <div className="banner">
+        <div className="bannerOne">
         </div>
         <div style={bodyStyle}>
           <div className="secBanner">
