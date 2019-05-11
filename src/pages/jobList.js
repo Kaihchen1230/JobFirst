@@ -44,18 +44,12 @@ class JobList extends React.Component {
     }
 
     searchByName = (value) => {
-        let newFilter = this.state.filter;
-        if (value == "") {
-            delete newFilter[searchType];
-            this.setState({ "filter": { clickedCounts: { ge: 0 } } });
-        } else {
-            this.setState({ "filter": Util.searchByNameGen(value, searchType) });
-        }
-
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.searchByNameGen(value, searchType, oldFilter) });
     }
 
     reset = () => {
-        this.setState({ "filter": { clickedCounts: { ge: 0 } } });
+        this.setState({ "filter": Util.resetGen() });
     }
 
     setSalary = (value) => {
@@ -111,6 +105,7 @@ class JobList extends React.Component {
                                 showSearch
                                 optionFilterProp="children"
                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                onChange={this.filterCategory}
                                 size="large"
                                 style={{ width: "100%" }}
                                 defaultValue="All" >
@@ -222,7 +217,6 @@ class JobList extends React.Component {
                 <Content style={{ padding: '0 2%' }}>
                     <Connect query={graphqlOperation(queries.listPostedJobs, { "filter": filter })}>
                         {({ data: { listPostedJobs }, loading, error }) => {
-                            console.log(filter);
                             if (error) return (<h3>ERROR</h3>);
                             if (loading || !listPostedJobs) return (<h3>Loading...</h3>);
                             return (<JobItem jobs={listPostedJobs.items} />);

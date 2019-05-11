@@ -1,12 +1,15 @@
 export function filterTypeGen (value, old) {
     if(value == "All"){
-        console.log("All excuted");
         delete old["jobType"];
     }else{
         old["jobType"] = {"contains":value};
     }
     return old;
 };
+
+export function filterCateGen (value, old) {
+    
+}
 
 export function filterDateGen (value){
     var moment = require('moment');
@@ -21,18 +24,19 @@ export function filterDateGen (value){
     return newSearch;
 }
 
-export function searchByNameGen (value, search) {
-    let newSearch = {};
-    if(value == ""){
-        
-    }else if(search == "Name"){
-        newSearch = {"searchFieldName":{"contains":value.toLowerCase()}};
-    }else {
-        newSearch = {"searchFieldLocation":{"contains":value.toLowerCase()}};
+export function searchByNameGen (value, searchType, old) {
+    
+    if (value == "") {
+        delete old["searchFieldName"];
+        delete old["searchFieldLocation"];
+    } else if(searchType == "Name"){
+        old["searchFieldName"] = {"contains":value.toLowerCase()};
+    } else {
+        old["searchFieldLocation"] = {"contains":value.toLowerCase()};
     }
-    return newSearch;
+    return old;
 }
 
 export function resetGen () {
-    return {};
+    return { clickedCounts: { ge: 0 } };
 }
