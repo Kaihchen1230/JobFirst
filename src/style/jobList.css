@@ -16,13 +16,16 @@
 
 .banner{
     margin-top: 1%;
-    background-color: rgba(219, 216, 216, 0.719);
     height:45vw;
     width:60vw;
     background-image: url("../../static/home.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
+    margin-top: 1%;
+    background-color: rgba(219, 216, 216, 0.719);
+    background-size: cover;
 }
+
 .colOne{
     margin: 10% 0 0 5%;
     text-Align:left
