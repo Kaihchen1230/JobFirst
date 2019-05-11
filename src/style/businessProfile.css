@@ -2,7 +2,7 @@ body{
     background-color: #fcfcfc
 }
 
-.banner{
+.bannerOne{
     margin-top: 1%;
     background-color: rgba(219, 216, 216, 0.719);
     height:35vh;
@@ -14,7 +14,6 @@ body{
     background-size: cover;
     background-position: center;
 }
-
 
 .secBanner{
     display: flex;
