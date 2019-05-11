@@ -5,7 +5,6 @@ import { Auth, I18n } from 'aws-amplify';
 import { getUser } from '../../services/auth';
 import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
-import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 
 const Option = Select.Option;
@@ -107,8 +106,8 @@ class PostJobForm extends React.Component {
                             searchFieldName: values.jobTitle.toLowerCase(),
                             searchFieldLocation: values.line1.toLowerCase(),
                             clickedCounts: 0,
-                            jobCategory: null, //TODO
-                            education: null, //TODO
+                            jobCategory: values.jobCategory, //TODO
+                            education: values.education, //TODO
                         }
                         console.log(PostedJobInput);
                         API.graphql(graphqlOperation(mutations.createPostedJob, { input: PostedJobInput }))
@@ -176,6 +175,8 @@ class PostJobForm extends React.Component {
         const deadlineError = isFieldTouched('deadline') && getFieldError('deadline');
         const jobTypeError = isFieldTouched('jobType') && getFieldError('jobType');
         const descriptionError = isFieldTouched('description') && getFieldError('description');
+        const jobCategoryError = isFieldTouched('jobCategory') && getFieldError('jobCategory');
+        const educationTypeError = isFieldTouched('education') && getFieldError('education');
 
         return (
             <div align="center">
@@ -310,13 +311,52 @@ class PostJobForm extends React.Component {
                         validateStatus={jobTypeError ? 'error' : ''}
                         help={jobTypeError || ''}>
                         {getFieldDecorator('jobType', {
-                            rules: [{ required: true, message: 'Please enter the job type!' }]
+                            rules: [{ required: true, message: 'Please select the job type!' }]
                         })(
                             <Select placeholder={I18n.get('Job Type')} name="jobType" >
-                                <Option value="Full Time">{I18n.get('Full Time')}</Option>
+                                <Option value="Full Time">{I18n.get('Full Time')}</Option> 
                                 <Option value="Part Time">{I18n.get('Part Time')}</Option>
                                 <Option value="Internship">{I18n.get('Internship')}</Option>
                                 <Option value="Temporary">{I18n.get('Temporary')}</Option>
+                            </Select>
+                        )}
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Job Category"
+                        required={true}
+                        validateStatus={jobCategoryError ? 'error' : ''}
+                        help={jobCategoryError || ''}>
+                        {getFieldDecorator('jobCategory', {
+                            rules: [{ required: true, message: 'Please select the job Category!' }]
+                        })(
+                            <Select 
+                                showSearch
+                                optionFilterProp="children"
+                                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                placeholder="Job Category" 
+                                name="jobCategory" >
+                                <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
+                                <Option value="Business, consulting and management">Business, consulting and management</Option>
+                                <Option value="Charity and voluntary work">Charity and voluntary work</Option>
+                                <Option value="Creative arts and design">Creative arts and design</Option>
+                                <Option value="Energy and utilities">Energy and utilities</Option>
+                                <Option value="Engineering and manufacturing">Engineering and manufacturing</Option>
+                                <Option value="Environment and agriculture">Environment and agriculture</Option>
+                                <Option value="Healthcare">Healthcare</Option>
+                                <Option value="Information technology">Information technology</Option>
+                                <Option value="Law">Law</Option>
+                                <Option value="Marketing, advertising and PR">Marketing, advertising and PR</Option>
+                                <Option value="Media and internet">Media and internet</Option>
+                                <Option value="Property and construction">Property and construction</Option>
+                                <Option value="Public services and administration">Public services and administration</Option>
+                                <Option value="Recruitment and HR">Recruitment and HR</Option>
+                                <Option value="Retail">Retail</Option>
+                                <Option value="Sales">Sales</Option>
+                                <Option value="Science and pharmaceuticals">Science and pharmaceuticals</Option>
+                                <Option value="Social care">Social care</Option>
+                                <Option value="Teacher training and education">Teacher training and education</Option>
+                                <Option value="Transport and logistics">Transport and logistics</Option>
                             </Select>
                         )}
                     </Form.Item>
@@ -334,6 +374,24 @@ class PostJobForm extends React.Component {
                                 autosize={{ minRows: 2, maxRows: 6 }}
                                 name="description"
                             />
+                        )}
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Require Education"
+                        required={true}
+                        validateStatus={educationTypeError ? 'error' : ''}
+                        help={educationTypeError || ''}>
+                        {getFieldDecorator('education', {
+                            rules: [{ required: true, message: 'Please select the job type!' }]
+                        })(
+                            <Select placeholder="education" name="education" >
+                                <Option value="No Requirement">No Requirement</Option> 
+                                <Option value="Associate">Associate</Option>
+                                <Option value="Bachelor">Bachelor</Option>
+                                <Option value="Master">Master</Option>
+                                <Option value="Doctoral">Doctoral</Option>
+                            </Select>
                         )}
                     </Form.Item>
 
