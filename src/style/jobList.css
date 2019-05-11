@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.ant-layout-header{
+    background-color: white;
+}
+
+.ant-input-group-addon .ant-btn-primary{
+    background-color:#F0BF5F;
+    color:black
+}
+
+.ant-btn-primary:hover{
+    background-color:#1BB28b;
+    color:white
+}
+
+.banner{
+    margin-top: 1%;
+    background-color: rgba(219, 216, 216, 0.719);
+    height:45vw;
+    width:60vw;
+    background-image: url("../../static/home.png");
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+}
+.colOne{
+    margin: 5% 0 0 5%;
+    text-Align:left
+}
+
+.slogon{
+    padding-top: 5%;
+    font-weight: bold;
+    font-size: 2.2em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.slogon2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    line-height: 130%;
+}
+
+.button1{
+    background:#1BB28B;
+    color:white;
+    border:1px solid #1BB28B;
+    width:30%;
+    font-size:1.3em;
+    height:2.5em;
+    border-radius: 250px;
+}
+
+.button2{
+    margin:5%;
+    background:white;
+    color:#1BB28B;
+    border:1px solid #1BB28B;
+    width:32%;
+    font-size:1.3em;
+    height:2.5em
+}
