@@ -17,6 +17,8 @@ const {
 const Search = Input.Search;
 const Option = Select.Option;
 const InputGroup = Input.Group;
+let filter = {};
+let searchType = "Name";
 // let lan = window.localStorage.getItem('lan');
 // I18n.putVocabularies(dict);
 // I18n.setLanguage(lan);
@@ -24,7 +26,7 @@ const InputGroup = Input.Group;
 class JobList extends React.Component {
 
     state = {
-        "filter": {
+        filter: {
 
         },
         salary: 7,
@@ -32,27 +34,43 @@ class JobList extends React.Component {
     }
 
     filterType = (value) => {
-        this.setState({ "filter": Util.filterTypeGen(value) });
+        let newFilter = this.state.filter;
+        if( value != "All"){
+            newFilter["jobType"] = Util.filterTypeGen(value);
+            this.setState({ "filter": newFilter });
+        }else{
+            delete newFilter["jobType"];
+        }
+        
     }
 
     filterDate = (value) => {
-        this.setState({ "filter": Util.filterDateGen(value) });
+        // this.setState({ "filter": Util.filterDateGen(value) });
     }
 
     selectSearch = (value) => {
-        this.setState({ "search": value });
+        searchType = value;
     }
 
     searchByName = (value) => {
-        let searchType = this.state.search;
-        this.setState({ "filter": Util.searchByNameGen(value, searchType) });
+        // let searchType = this.state.search;
+        // this.setState({ "filter": Util.searchByNameGen(value, searchType) });
     }
 
     reset = () => {
-        this.setState({ "filter": Util.resetGen() });
+        // this.setState({ "filter": Util.resetGen() });
+    }
+
+    setSalary = (value) => {
+        this.setState({ salary: value });
+    }
+
+    setDay = (value) => {
+        this.setState({ days: value });
     }
 
     render() {
+        const { filter, salary, days } = this.state;
         return (
             <Layout >
                 <Header style={{ textAlign: "center", height: "15%" }}>
@@ -89,66 +107,80 @@ class JobList extends React.Component {
                         />
                         <Button className="button1" style={{ marginLeft: "1%", width: "6%", height: "40px", }} onClick={this.reset.bind(this)}><Icon type="undo" /> Reset</Button>
                     </InputGroup>
-                    <InputGroup compact>
-                        <Select
-                            showSearch
-                            optionFilterProp="children"
-                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                            style={{ width: "30%" }}
-                            size="large"
-                            placeholder="Filter By Job Category">
-                            <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
-                            <Option value="Business, consulting and management">Business, consulting and management</Option>
-                            <Option value="Charity and voluntary work">Charity and voluntary work</Option>
-                            <Option value="Creative arts and design">Creative arts and design</Option>
-                            <Option value="Energy and utilities">Energy and utilities</Option>
-                            <Option value="Engineering and manufacturing">Engineering and manufacturing</Option>
-                            <Option value="Environment and agriculture">Environment and agriculture</Option>
-                            <Option value="Healthcare">Healthcare</Option>
-                            <Option value="Information technology">Information technology</Option>
-                            <Option value="Law">Law</Option>
-                            <Option value="Marketing, advertising and PR">Marketing, advertising and PR</Option>
-                            <Option value="Media and internet">Media and internet</Option>
-                            <Option value="Property and construction">Property and construction</Option>
-                            <Option value="Public services and administration">Public services and administration</Option>
-                            <Option value="Recruitment and HR">Recruitment and HR</Option>
-                            <Option value="Retail">Retail</Option>
-                            <Option value="Sales">Sales</Option>
-                            <Option value="Science and pharmaceuticals">Science and pharmaceuticals</Option>
-                            <Option value="Social care">Social care</Option>
-                            <Option value="Teacher training and education">Teacher training and education</Option>
-                            <Option value="Transport and logistics">Transport and logistics</Option>
-                        </Select>
-                        <Select
-                            onChange={value => this.filterType(value)}
-                            style={{ marginLeft: "1%", width: "19%" }} size="large"
-                            placeholder="Filter By Job Type">
-                            <Option value="Full Time">{I18n.get('Full Time')}</Option>
-                            <Option value="Part Time">{I18n.get('Part Time')}</Option>
-                            <Option value="Internship">{I18n.get('Internship')}</Option>
-                            <Option value="Temporary">{I18n.get('Temporary')}</Option>
-                            <Option value="All">{I18n.get('All')}</Option>
-                        </Select>
-                        <Select
-                            style={{ marginLeft: "1%", width: "19%" }}
-                            size="large"
-                            placeholder="Filter By Education Requirement">
-                            <Option value="No Requirement">No Requirement</Option>
-                            <Option value="Associate">Associate</Option>
-                            <Option value="Bachelor">Bachelor</Option>
-                            <Option value="Master">Master</Option>
-                            <Option value="Doctoral">Doctoral</Option>
-                        </Select>
+                    <InputGroup compact >
+                        <div style={{ textAlign: "left", width: "30%" }}>
+                            <h4>Filter By Job Category</h4>
+                            <Select
+                                showSearch
+                                optionFilterProp="children"
+                                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                size="large"
+                                style={{ width: "100%" }}
+                                defaultValue="All" >
+                                <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
+                                <Option value="Business, consulting and management">Business, consulting and management</Option>
+                                <Option value="Charity and voluntary work">Charity and voluntary work</Option>
+                                <Option value="Creative arts and design">Creative arts and design</Option>
+                                <Option value="Energy and utilities">Energy and utilities</Option>
+                                <Option value="Engineering and manufacturing">Engineering and manufacturing</Option>
+                                <Option value="Environment and agriculture">Environment and agriculture</Option>
+                                <Option value="Healthcare">Healthcare</Option>
+                                <Option value="Information technology">Information technology</Option>
+                                <Option value="Law">Law</Option>
+                                <Option value="Marketing, advertising and PR">Marketing, advertising and PR</Option>
+                                <Option value="Media and internet">Media and internet</Option>
+                                <Option value="Property and construction">Property and construction</Option>
+                                <Option value="Public services and administration">Public services and administration</Option>
+                                <Option value="Recruitment and HR">Recruitment and HR</Option>
+                                <Option value="Retail">Retail</Option>
+                                <Option value="Sales">Sales</Option>
+                                <Option value="Science and pharmaceuticals">Science and pharmaceuticals</Option>
+                                <Option value="Social care">Social care</Option>
+                                <Option value="Teacher training and education">Teacher training and education</Option>
+                                <Option value="Transport and logistics">Transport and logistics</Option>
+                                <Option value="All">All</Option>
+                            </Select>
+                        </div>
+                        <div style={{ textAlign: "left", width: "20%" }}>
+                            <h4>Filter By Job Type</h4>
+                            <Select
+                                onChange={value => this.filterType(value)}
+                                style={{ marginLeft: "2%", width: "98%" }} size="large"
+                                defaultValue="All" >
+                                <Option value="Full Time">{I18n.get('Full Time')}</Option>
+                                <Option value="Part Time">{I18n.get('Part Time')}</Option>
+                                <Option value="Internship">{I18n.get('Internship')}</Option>
+                                <Option value="Temporary">{I18n.get('Temporary')}</Option>
+                                <Option value="All">{I18n.get('All')}</Option>
+                            </Select>
+                        </div>
+                        <div style={{ textAlign: "left", width: "20%" }}>
+                            <h4>Filter By Education Requirement</h4>  
+                            <Select
+                                style={{ marginLeft: "2%", width: "98%" }}
+                                size="large"
+                                defaultValue="All" >
+                                <Option value="No Requirement">No Requirement</Option>
+                                <Option value="Associate">Associate</Option>
+                                <Option value="Bachelor">Bachelor</Option>
+                                <Option value="Master">Master</Option>
+                                <Option value="Doctoral">Doctoral</Option>
+                                <Option value="All">All</Option>
+                            </Select>
+                        </div>
+
                     </InputGroup>
                     <InputGroup compact>
-                        <div style={{ textAlign: "left", width: "35%" }}>
+                        <div style={{ textAlign: "left", width: "25%" }}>
                             <h4>Minimum Wage</h4>
                             <Row>
                                 <Col span={10}>
                                     <Slider
                                         min={7}
                                         max={100}
-                                        onChange={this.setSalary}
+                                        onChange={this.setSalary} 
+                                        value={typeof salary === 'number' ? salary : 7}
+                                        step={0.5}
                                     />
                                 </Col>
                                 <Col span={1}>
@@ -156,30 +188,36 @@ class JobList extends React.Component {
                                         min={7}
                                         max={100}
                                         style={{ marginLeft: 16 }}
+                                        value={salary}
                                         onChange={this.setSalary}
                                     />
                                 </Col>
                             </Row>
                         </div>
-                        <div style={{ textAlign: "left", width: "35%" }}>
+                        <div style={{ textAlign: "left", width: "25%" }}>
                             <h4>Job Post Date Within</h4>
                             <Row>
                                 <Col span={10}>
                                     <Slider
-                                        min={0}
+                                        min={1}
                                         max={365}
-                                        onChange={this.setSalary}
+                                        onChange={this.setDay}
+                                        value={typeof days === 'number' ? days : 365}
                                     />
                                 </Col>
                                 <Col span={1}>
                                     <InputNumber
-                                        min={0}
+                                        min={1}
                                         max={365}
                                         style={{ marginLeft: 16 }}
+                                        value={days}
                                         onChange={this.setDay}
                                     />
                                 </Col>
                             </Row>
+                        </div>
+                        <div style={{ textAlign: "center", width: "20%" }}>
+                            <Button className="button1" style={{ marginTop: "5%", width: "40%", height: "40px" }} onClick={this.reset.bind(this)}>Apply Filter</Button>
                         </div>
                     </InputGroup>
                 </Header>

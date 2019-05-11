@@ -3,7 +3,7 @@ export function filterTypeGen (value) {
     if(value == "All"){
 
     }else{
-        newSearch = {"filter":{"jobType":{"contains":value}}};
+        newSearch = {"contains":value};
     }
     return newSearch;
 };
