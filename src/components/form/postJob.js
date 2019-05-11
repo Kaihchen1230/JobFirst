@@ -118,6 +118,14 @@ class PostJob extends React.Component {
                                     <Icon type="info-circle" />
                                 </Tooltip>}
                         />
+                        <Input placeholder={I18n.get('City')}
+                            name="city"
+                            onBlur={value => this.addressUpdate('city')}
+                            suffix={
+                                <Tooltip title={I18n.get('Enter the city of the job location')}>
+                                    <Icon type="info-circle" />
+                                </Tooltip>}
+                        />
                         <Input placeholder={I18n.get('State')} 
                             name="state"
                             onBlur={value => this.addressUpdate('state')}
