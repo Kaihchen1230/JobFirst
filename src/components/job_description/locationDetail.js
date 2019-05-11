@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Geocode from "react-geocode";
 import axios from 'axios'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
@@ -8,7 +7,6 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'reac
 
 const location = (props) => {
 
-    const [selectedMark, setSelectedMark] = useState(null);
     let locationValues = Object.values({...props.locationInfo});
 
     // remove address id from the array
@@ -45,7 +43,6 @@ const location = (props) => {
         console.log('there is an error: ', err);
     });
 
-    console.log('this is selectedMark: ', selectedMark);
     function Map(){
         return( 
             <GoogleMap 
@@ -54,22 +51,7 @@ const location = (props) => {
                 defaultCenter={{ lat: 40.7127837, lng:-74.0059413 }}>
                     <Marker 
                         position={geometry}
-                        onClick = {() => {
-                            setSelectedMark(jobAddress);
-                        }}
                     />
-                    {selectedMark && (
-                        <InfoWindow
-                            position={geometry}
-                            onCloseClick = {() => {
-                                setSelectedMark(jobAddress)
-                            }}
-                        >
-                            <div>
-                                {jobAddress}
-                            </div>
-                        </InfoWindow>
-                    )}
         </GoogleMap>
         )};
     
@@ -80,13 +62,13 @@ const location = (props) => {
             <h1>
             {jobAddress}
             </h1>
-            <div style={{width: "75vw", height:"100vh"}}>
+            <div style={{width: "100vw", height:"100vh"}}>
             <WrappedMap
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.API_KEY}`}
-                loadingElement={<div style={{height: "75%"}} />}
-                loadingElement={<div style={{height: "75%"}}/>}
-                containerElement={<div style={{height: "75%"}} />}
-                mapElement={<div style={{height: "75%"}}/>}
+                loadingElement={<div style={{height: "100%"}} />}
+                loadingElement={<div style={{height: "100%"}}/>}
+                containerElement={<div style={{height: "100%"}} />}
+                mapElement={<div style={{height: "100%"}}/>}
             >
             </WrappedMap>
             </div>

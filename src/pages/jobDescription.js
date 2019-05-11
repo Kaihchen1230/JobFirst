@@ -5,7 +5,7 @@ import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
 import PopOutWindow from '../components/job_description/popOutWindow';
-import { Auth, API, graphqlOperation } from 'aws-amplify';
+import { Auth, API, graphqlOperation, I18n } from 'aws-amplify';
 import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
@@ -263,39 +263,13 @@ class JobDescription extends React.Component{
           <Skeleton active />
         }
 
-        console.log('it comes to render first');
-        console.log('this is the loading: ', this.state.loading);
-        let viewCompanyInfo;
-        if(this.state.companyInfo != null){
-          let content = this.state.companyInfo.description;
-          viewCompanyInfo = (<Popover content={content}>
-                  <div>
-                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
-                  </div>
-            </Popover>)
-        }else{
-          console.log('it is null');
-          viewCompanyInfo = (
-            <div>
-              The company is not provided...
-            </div>
-          )
-        }
-
-        // if(this.state.display && !this.state.count == 0){
-        //   this.setState({
-        //     display : false,
-        //     count : 1
-        //   })
-        // }
-        console.log('this is location: ', this.state.locationInfo); 
-
         return(
-            
           <div>
             <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
                 <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
-                {viewCompanyInfo}
+                <div>
+                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
+                </div>
                 <Popover content={"We will use your default information to apply to the job"} >
                 
                 {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
@@ -312,25 +286,25 @@ class JobDescription extends React.Component{
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
               <Tabs defaultActiveKey="1" > 
-                  <TabPane tab="Job" key="1" style={{display: "flex", width: "100%"}}>
+                  <TabPane tab={I18n.get('Job Info')} key="1" >
                       <div>
                           <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                       </div>
           
                   </TabPane>
-                  <TabPane tab="Company" key="2">
+                  <TabPane tab={I18n.get('Company Info')} key="2">
                       <div>
                       <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
                       </div>
                   </TabPane>
 
-                  <TabPane tab="Location" key="3">
+                  <TabPane tab={I18n.get('Location Info')} key="3">
                         <div><Location locationInfo = {this.state.locationInfo}></Location></div>
                       
                   </TabPane>
 
                   {this.state.isEmployer && this.state.isCorrectEmployer ?
-                  <TabPane tab="Applicant List" key="4">
+                  <TabPane tab={I18n.get('Applicants List')} key="4">
                       <div>
                             <ApplicantList applicants={this.state.applicants}
                             ></ApplicantList>
