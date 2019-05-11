@@ -24,11 +24,12 @@
     background-position: 0% 50%;
 }
 .colOne{
-    margin: 5% 0 0 5%;
+    margin: 10% 0 0 5%;
     text-Align:left
 }
 
 .slogon{
+   
     padding-top: 5%;
     font-weight: bold;
     font-size: 2.2em;
@@ -40,23 +41,28 @@
     font-size: 1.5em;
     line-height: 130%;
 }
+.buttonGroup{
+    margin-top: 10%
+}
 
 .button1{
     background:#1BB28B;
     color:white;
     border:1px solid #1BB28B;
-    width:30%;
+    padding:2%;
     font-size:1.3em;
     height:2.5em;
-    border-radius: 250px;
+    border-radius: 5px;
 }
 
 .button2{
     margin:5%;
+    padding:2%;
     background:white;
     color:#1BB28B;
     border:1px solid #1BB28B;
     width:32%;
     font-size:1.3em;
-    height:2.5em
+    height:2.5em;
+    border-radius: 5px;
 }
