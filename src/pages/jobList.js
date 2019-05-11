@@ -60,11 +60,11 @@ class JobList extends React.Component {
                             <div className="slogon2">Millisons of small businesses and new immigrants use JobFirst
                                 to turn their ideas into reality
                             </div>
-                            <div>                           
-                                <Button className="button1">
+                            <div className="buttonGroup">                                                        
+                                <span className="button1">
                                     I want to Hire
-                                </Button >                              
-                                <Button className="button2">I want to Work</Button>                                      
+                                </span >                              
+                                <span className="button2">I want to Work</span>                                      
                             </div>
                         </Col>
                         <Col style ={{margin:"-5% 0 -5% 3%"}} span={12}>
