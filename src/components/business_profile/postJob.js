@@ -25,7 +25,7 @@ const JobItem = (props) => {
                     <Meta
                         avatar={<Avatar src={props.companyLogo} />}
                         title={item.jobTitle}
-                        description={item.description}
+                        description={item.description && item.description.substring(0,100)}
                     />
                     <p></p>
                     <div align="center">

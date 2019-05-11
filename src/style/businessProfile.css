@@ -49,5 +49,12 @@ body{
     color:black
 }
 
+.ant-tabs-nav{
+    color:black
+}
+
+.ant-tabs-nav .ant-tabs-tab-active{
+    color:black
+}
 
 
