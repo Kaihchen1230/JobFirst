@@ -177,6 +177,7 @@ class PostJobForm extends React.Component {
         const jobTypeError = isFieldTouched('jobType') && getFieldError('jobType');
         const descriptionError = isFieldTouched('description') && getFieldError('description');
         const jobCategoryError = isFieldTouched('jobCategory') && getFieldError('jobCategory');
+        const educationTypeError = isFieldTouched('education') && getFieldError('education');
 
         return (
             <div align="center">
@@ -374,6 +375,24 @@ class PostJobForm extends React.Component {
                                 autosize={{ minRows: 2, maxRows: 6 }}
                                 name="description"
                             />
+                        )}
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Require Education"
+                        required={true}
+                        validateStatus={educationTypeError ? 'error' : ''}
+                        help={educationTypeError || ''}>
+                        {getFieldDecorator('education', {
+                            rules: [{ required: true, message: 'Please select the job type!' }]
+                        })(
+                            <Select placeholder="education" name="education" >
+                                <Option value="No Requirement">No Requirement</Option> 
+                                <Option value="Associate">Associate</Option>
+                                <Option value="Bachelor">Bachelor</Option>
+                                <Option value="Master">Master</Option>
+                                <Option value="Doctoral">Doctoral</Option>
+                            </Select>
                         )}
                     </Form.Item>
 
