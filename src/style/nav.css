@@ -3,12 +3,12 @@
     border-radius:8px;
 }
 .ant-menu-dark.ant-menu-horizontal{
-    height:3.6em;
-    font-size: 1.2em;
+    margin-top:-5px;
+    height:3.4em;
+    font-size: 1.3em;
     font-weight: 500
 }
-.logo{
-    width:15%;
-    position:absoule;
-    left:-10%;
+
+.home{
+    margin-left:3%
 }
