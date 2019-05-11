@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, Button,Icon } from 'antd';
+import { Card, Row, Col, Button, Icon } from 'antd';
 import { Link } from "gatsby";
 import * as mutations from "../../graphql/mutations";
 import { async } from 'q';
