@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const VIEWPORT = { width: 1300, height: 1000 };
-jest.setTimeout(140000);
+jest.setTimeout(70000);
 
 
 // describe('Employer posts job and Employee able to apply job', () => {
@@ -42,8 +42,11 @@ jest.setTimeout(140000);
         await page.click('input[placeholder*="Deadline"]');
         await page.click('td[title*="May 30, 2019"]');
         await page.click('div[class*="ant-select-selection__placeholder"]');
-        let randomNum = Math.floor(Math.random() * 4) + 1;
-        await page.click(`ul[class*="ant-select-dropdown-menu  ant-select-dropdown-menu-root ant-select-dropdown-menu-vertical"] > li:nth-child(${randomNum})`);
+        let randomNum = Math.floor(Math.random() * 3) + 1;
+        await page.waitFor(2000);
+        await page.click(`ul[role*="listbox"] > li:nth-child(${randomNum})`);
+        await page.waitFor(2000);
+
         await page.click('textarea[name*="description"]');
         const description = 'Ipsum ad ullamco elit qui non aliquip excepteur voluptate excepteur esse deserunt mollit. Culpa deserunt.';
         await page.type('textarea[name*="description"]', description);
@@ -53,7 +56,7 @@ jest.setTimeout(140000);
         await page.click('button[class*="ant-btn ant-btn-primary"]');
         await page.waitFor(5000);
         await page.click('li:nth-child(4)');
-        await page.waitFor(5000);
+        await page.waitFor(7000);
         await page.click('#search');
         await page.waitFor(2000);
         await page.type('#search', 'Backend');

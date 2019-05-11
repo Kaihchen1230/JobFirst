@@ -1,6 +1,6 @@
 /** Class representing a point. */
 import React from "react"
-import { Button, Tabs } from 'antd';
+import { Button, Tabs,Spin } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
@@ -12,6 +12,7 @@ import CompanyVideo from "../components/business_profile/video";
 import PhotoUpload from "../components/user_profile/photoUploader";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n, Storage } from "aws-amplify";
+import nodataImg from '../../static/nodata.png';
 import '../style/businessProfile.css';
 
 const TabPane = Tabs.TabPane;
@@ -31,35 +32,38 @@ let bodyStyle = {
  *  Business Profile to show or edit the company information
  */
 class businessProfile extends React.Component {
-    /**
-   * @param {object} props - props no need to pass any arguments
-   */
+  /**
+ * @param {object} props - props no need to pass any arguments
+ */
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
       jobList: [],
-      companyName: "Alibaba",
-      companyWebsite: "alibaba.com",
-      companyType: "Intenet",
-      headquarter: "New York. NY",
-      videoURL:"https://www.youtube.com/embed/9Kx8Jlz4oAY",
+      companyName: null,
+      companyWebsite: null,
+      companyPhone:null,
+      companyEmail:null,
+      companyType: null,
+      headquarter: null,
+      videoURL: null,
       companyAddress: {
         addressLine1: "2968 Avenue S",
         addressLine2: "",
         city: "New York",
         state: "NY",
         postalCode: "12345"
+        
       },
-      ceoPic: "https://res.cloudinary.com/allamerican/image/fetch/t_face_s270/https://speakerdata2.s3.amazonaws.com/photo/image/10173/100911_mayun_20da3.jpg",
-      ceo: "Ma Yun",
-      size: "2000",
-      revenue: "500M",
+      ceoPic: null,
+      ceo: null,
+      size: null,
+      revenue: null,
       timeline: [],
       jobAmount: 0,
-      description: "Alibaba Group Holding Limited (Chinese: 阿里巴巴集团控股有限公司; pinyin: Ālǐbābā Jítuán Kònggǔ Yǒuxiàn Gōngsī) is a Chinese multinational conglomerate specializing in e-commerce, retail, Internet and technology. Founded 4 April 1999, the company provides consumer-to-consumer (C2C), business-to-consumer (B2C), and business-to-business (B2B) sales services via web portals, as well as electronic payment services, shopping search engines and cloud computing services. It owns and operates a diverse array of businesses around the world in numerous sectors, and is named as one of the world's most admired companies by Fortune.[3][4]",
-      companyLogo: "https://i2.wp.com/nigerianfinder.com/wp-content/uploads/2015/02/Alibaba-logo.png?resize=225%2C225",
-      companyPic:"no",
+      description: null,
+      companyLogo: null,
+      companyPic: "no",
       value: 0,
       allowEdit: false
     }
@@ -81,60 +85,71 @@ class businessProfile extends React.Component {
       this.setState({ allowEdit: false });
 
     //set up companyID
-    let employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: companyID }));
-    this.setState({ companyID: companyID });
-    console.log("employer", employerData);
-    //set up other employer info
-    employerData = employerData.data.getEmployer;
-    for (let item in employerData) {
-      if (employerData[item] && item != "timeline" && item != "companyAddress" && item != "job" && item != "id") {
-        this.setState({ [item]: employerData[item] });
+    let employerData;
+    try {
+      employerData = await API.graphql(graphqlOperation(queries.getEmployer, { id: companyID }));
+      this.setState({ companyID: companyID });
+      //set up other employer info
+      employerData = employerData.data.getEmployer;
+      for (let item in employerData) {
+        if (employerData[item] && item != "timeline" && item != "companyAddress" && item != "job" && item != "id") {
+          this.setState({ [item]: employerData[item] });
+        }
       }
-    }
 
-    /**
-     * set up other employer info within nested object
-     *  */
-    if(employerData.timeline.items.length >= 1)
-      this.setState({ timeline: employerData.timeline.items });
-    if(employerData.job.items.length >= 1){
-      this.setState({ jobList: employerData.job.items });
-      this.setState({ jobAmount: employerData.job.items.length })
-    }
+       /**
+       * set up other employer info within nested object
+       *  */
+      console.log("employer", employerData);
+      if (employerData.timeline.items.length >= 1)
+        this.setState({ timeline: employerData.timeline.items });
 
-
-    //set up the address data
-    if (employerData.companyAddress) {
-      let addressLine1 = employerData.companyAddress.line1;
-      let addressLine2 = employerData.companyAddress.line2;
-      let city = employerData.companyAddress.city;
-      let postalCode = employerData.companyAddress.postalCode;
-      let state = employerData.companyAddress.state;
-      let id = employerData.companyAddress.id;
-      let companyAddress = {
-        id,
-        addressLine1,
-        addressLine2,
-        city,
-        postalCode,
-        state
+      if (employerData.job.items.length >= 1) {
+        this.setState({ jobList: employerData.job.items });
+        this.setState({ jobAmount: employerData.job.items.length })
       }
-      this.setState({ companyAddress });
-    }
 
-    // fetch photo
-    if (this.state.companyPic === 'yes') {
-      Storage.get('profilePic', {
+      //set up the address data
+      if (employerData.companyAddress) {
+        let addressLine1 = employerData.companyAddress.line1;
+        let addressLine2 = employerData.companyAddress.line2;
+        let city = employerData.companyAddress.city;
+        let postalCode = employerData.companyAddress.postalCode;
+        let state = employerData.companyAddress.state;
+        let id = employerData.companyAddress.id;
+        let companyAddress = {
+          id,
+          addressLine1,
+          addressLine2,
+          city,
+          postalCode,
+          state
+        }
+        this.setState({ companyAddress });
+      }
+
+      //fetch company logo pic
+      if (this.state.companyPic === 'yes') {
+        Storage.get('profilePic', {
           level: 'protected',
           identityId: this.state.userID// the identityId of that user
-      })
+        })
           .then(result => {
-              console.log("pic is",result);
-              this.setState({companyLogo:result});   
+            
+            this.setState({ companyLogo: result,memory:true });
+            console.log("set up",this.state);
           })
           .catch(err => console.log(err));
+      }
+      else
+        this.setState({memory:true})
+      
+    } catch (err) {
+      console.log("couldn't get employer data: ", err);
     }
+    
   }
+
   /**
    * set show modal to true
    */
@@ -143,6 +158,7 @@ class businessProfile extends React.Component {
       visible: true,
     });
   }
+
   /**
    * set visible to false for the modal component, when click ok
    */
@@ -151,6 +167,7 @@ class businessProfile extends React.Component {
       visible: false,
     });
   }
+
   /**
    * set visible to false for the modal component,when click cancel
    */
@@ -162,8 +179,13 @@ class businessProfile extends React.Component {
   }
 
   render() {
+    if(!this.state.memory){
+      // Just wait for the memory to be available
+      return <Spin style={{position:"absolute",left:"45%",top:"30%"}} tip="Please wait for a moment"/> ;
+    }
     return (
       <div >
+        
         <div className="banner">
         </div>
         <div style={bodyStyle}>
@@ -171,15 +193,17 @@ class businessProfile extends React.Component {
             <BusinessPicture companyLogo={this.state.companyLogo} />
             <div className="companyHeader">
               <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
-              <h2 className="companyLocation">{this.state.companyAddress.city}</h2>
+              <h2 className="companyLocation">{this.state.companyAddress.city + 
+                  " " + this.state.companyAddress.state}</h2>
             </div>
             {this.state.allowEdit ?
-              <span>              
-                <Button className="editButton" type="primary" onClick={this.showModal}>
+              <div style ={{ position:"relative", 
+                            marginTop:"1%", left:"53%"}}>
+                <Button style={{marginLeft:"37%", marginBottom:"10%"}} type="primary" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
-                </Button> 
-                <PhotoUpload isBusiness = {true}/>
-              </span>
+                </Button>
+                <PhotoUpload isBusiness={true} />
+              </div>
               : null
             }
           </div>
@@ -218,14 +242,14 @@ class businessProfile extends React.Component {
                         ceo={this.state.ceo}
                         ceoPic={this.state.ceoPic}
                       />
-                      <CompanyVideo videoURL ={this.state.videoURL} videoPic = {this.state.videoPic}/>
+                      <CompanyVideo videoURL={this.state.videoURL} videoPic={this.state.videoPic} />
                     </div>
                   </div>
                 </div>
 
               </TabPane>
               <TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
-                <div>
+                <div > 
                   <PostJob
                     jobList={this.state.jobList}
                     companyLogo={this.state.companyLogo} />

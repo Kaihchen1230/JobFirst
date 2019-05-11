@@ -1,0 +1,14 @@
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
+    background-color: #1BB28B;
+    border-radius:8px;
+}
+.ant-menu-dark.ant-menu-horizontal{
+    height:3.6em;
+    font-size: 1.2em;
+    font-weight: 500
+}
+.logo{
+    width:15%;
+    position:absoule;
+    left:-10%;
+}

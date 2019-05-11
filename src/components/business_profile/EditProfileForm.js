@@ -19,7 +19,10 @@ class ModalForm extends React.Component {
     super(props);
 
     let data = this.props.data;
-    this.state = { ...data };
+    let {visible,jobList,companyAddress,companyPic,value,allowEdit,jobAmount,...newData} 
+        = this.props.data;
+
+    this.state = { ...newData };
      /**
      * a string that represents the first part of the street address
      * @name ModalForm#type
@@ -84,7 +87,11 @@ class ModalForm extends React.Component {
    */
   componentWillReceiveProps = (nextProps) => {
     let data = nextProps.data;
-    this.setState({ ...data });
+    let {visible,jobList,companyAddress,companyPic,value,allowEdit,jobAmount,...newData} 
+        = this.props.data;
+    console.log("new data", newData);
+    
+    this.setState({ ...newData });
     this.setState({ addressLine1: data.companyAddress.addressLine1 });
     this.setState({ addressLine2: data.companyAddress.addressLine2 });
     this.setState({ city: data.companyAddress.city});
@@ -100,12 +107,14 @@ class ModalForm extends React.Component {
    * @param {object} event - change the state if any input change
    */
   handleUpdate = (event) => {
-    let name = event.target.value;
+    let name = event.target.name;
+    let value = event.target.value;
+    value = value === "" ? null : value;
     if(name === "addressLine1" || name === "addressLine2" || name === "city" ||
       name === "postalCode" || name=== "state")
       this.setState({isAddressChange:true})
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: value
     })
   }
 
@@ -124,7 +133,6 @@ class ModalForm extends React.Component {
       timelineData.timelineCompanyId = this.state.companyID;
       let timeline = await API.graphql(graphqlOperation(mutations.updateTimeline,
         {input: timelineData}));
-      console.log("update timeline", timeline);
     }
     
     //create new event
@@ -134,7 +142,6 @@ class ModalForm extends React.Component {
         timelineData.timelineCompanyId = this.state.companyID;
         let timeline = await API.graphql(graphqlOperation(mutations.createTimeline,
           {input: timelineData}));
-        console.log("create timeline", timeline);
       }
     }
     //delete extra event
@@ -144,7 +151,6 @@ class ModalForm extends React.Component {
         timelineData.id = this.state.originalTimeline[index].id;
         let timeline = await API.graphql(graphqlOperation(mutations.deleteTimeline,
           {input: timelineData}));
-        console.log("delele timeline", timeline); 
       }
     }
   }
@@ -199,6 +205,7 @@ class ModalForm extends React.Component {
     }
     catch(err){
         this.props.onOk();
+        console.log(err.errors[0].message);
         message.error(`Profile Update Fail`);
     }
   }
@@ -209,8 +216,8 @@ class ModalForm extends React.Component {
   handleAddTimeline = () => {
     let timelines = this.state.timeline;
     let newTimeline = {
-      info: "",
-      title: "",
+      info: null,
+      title: null,
       date: moment(new Date(), "YYYY-MM-DD")
     }
     timelines = [...timelines, newTimeline];
@@ -229,14 +236,14 @@ class ModalForm extends React.Component {
 
   /**
    *
-   * delet one timeline event on this.state based on index
+   * update the state when event title change
    */
   handleTitleUpdate = (e, index) => {
     let timelines = [...this.state.timeline];
     let changeTimeline = timelines[index];
-    changeTimeline.title = e.target.value;
+    changeTimeline.title = e.target.value === ""? null : e.target.value;
     this.setState({ timeline: timelines });
-    this.setState({ timeline: timelines,isTimelineChange:true });
+    this.setState({ timeline: timelines, isTimelineChange:true });
   }
 
   /**
@@ -245,7 +252,7 @@ class ModalForm extends React.Component {
   handleDateUpdate = (dateString, index) => {
     let timelines = [...this.state.timeline];
     let changeTimeline = timelines[index];
-    changeTimeline.date = dateString;
+    changeTimeline.date = dateString === "" ? null : dateString;
     this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
@@ -255,7 +262,7 @@ class ModalForm extends React.Component {
   handleInfoUpdate = (e,index) => {
     let timelines = [...this.state.timeline];
     let changeTimeline = timelines[index];
-    changeTimeline.info = e.target.value;
+    changeTimeline.info = e.target.value === "" ? null : e.target.value;
     this.setState({ timeline: timelines,isTimelineChange:true });
   }
 
@@ -295,7 +302,7 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="companyName"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -306,7 +313,7 @@ class ModalForm extends React.Component {
               name="companyWebsite"
               style={{ width: "60%" }}
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -317,8 +324,33 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="companyType"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
           </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="Company Email"
+          >
+            <Input
+              value={this.state.companyEmail}
+              style={{ width: "60%" }}
+              name="companyEmail"
+              onChange={(event) => { this.handleUpdate(event) }}
+              />
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="Company Phone"
+          >
+            <Input
+              value={this.state.companyPhone}
+              style={{ width: "60%" }}
+              name="companyPhone"
+              onChange={(event) => { this.handleUpdate(event) }}
+              />
+          </FormItem>
+
           <Form.Item
             {...formItemLayout}
             label="Description"
@@ -341,7 +373,7 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="headquarter"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -349,21 +381,23 @@ class ModalForm extends React.Component {
           >
             <Input
               value={this.state.size}
+              type = "number"
               style={{ width: "60%" }}
               name="size"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="revenue"
+            label="Revenue"
           >
             <Input
               value={this.state.revenue}
               style={{ width: "60%" }}
+              type = "number"
               name="revenue"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+               />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -374,7 +408,7 @@ class ModalForm extends React.Component {
               name="ceo"
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }}
-              required />
+              />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -385,7 +419,7 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="ceoPic"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -396,7 +430,13 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="videoURL"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              suffix={
+                <Tooltip title="Must be a Youtube Embled Link">
+                  <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                </Tooltip>
+              }
+              
+              />
           </FormItem>
 
           <h2 style={{ marginLeft: "20%" }}>Address:</h2>
@@ -409,7 +449,7 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="addressLine1"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+               />
           </FormItem>
           <FormItem
             {...formItemLayout}
@@ -431,16 +471,7 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="postalCode"
-          >
-            <Input
-              value={this.state.postalCode}
-              name="postalCode"
-              onChange={(event) => { this.handleUpdate(event) }}
-              style={{ width: "60%" }} />
-          </FormItem>
+
           <FormItem
             {...formItemLayout}
             label="State"
@@ -450,7 +481,17 @@ class ModalForm extends React.Component {
               style={{ width: "60%" }}
               name="state"
               onChange={(event) => { this.handleUpdate(event) }}
-              required />
+              />
+          </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="Postal Code"
+          >
+            <Input
+              value={this.state.postalCode}
+              name="postalCode"
+              onChange={(event) => { this.handleUpdate(event) }}
+              style={{ width: "60%" }} />
           </FormItem>
           <h2 style={{ marginLeft: "20%" }}>Timeline:</h2>
 
@@ -466,13 +507,12 @@ class ModalForm extends React.Component {
                 >
                   {/* title input */}
                   <Input value={element.title}
-                    required
                     id={index + "title"}
                     placeholder="Title"
                     key={index + "title"}
                     onChange={(event) => { this.handleTitleUpdate(event, index) }}
                     style={{ width: "60%" }}
-                    required >
+                   >
                   </Input>
                   <Tooltip title="Delete">
                     <Button
@@ -483,7 +523,6 @@ class ModalForm extends React.Component {
 
                   {/* textArea*/}
                   <Input.TextArea
-                    required
                     value={element.info}
                     style={{ width: "60%" }}
                     rows={3}
@@ -494,7 +533,6 @@ class ModalForm extends React.Component {
 
                   {/* datepicker */}
                   <DatePicker
-                    required
                     onChange={(date,dateString) => { this.handleDateUpdate(dateString, index) }}
                     defaultValue={moment(element.date, 'YYYY-MM-DD')}
                     placeholder={I18n.get('Event Date')}

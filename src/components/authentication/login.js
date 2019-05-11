@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 import { isLoggedIn, setUser, getUser, isBrowser } from "../../services/auth"
 import { I18n, Auth } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import dict from "../dictionary/dictionary"
 import 'antd/dist/antd.css';
 import './login.css';
@@ -46,6 +46,7 @@ class Login extends React.Component {
       } catch (err) {
         this.setState({ error: err })
         console.log('error....: ', err)
+        message.error(`Error: ${err.message}`);
       }
       try {
         const userInfo = getUser();
@@ -128,7 +129,7 @@ class Login extends React.Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button style={{backgroundColor:"#1BB28B"}} type="primary" htmlType="submit" className="login-form-button">
               {I18n.get('Log in')}
             </Button>
             <br />
