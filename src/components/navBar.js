@@ -28,7 +28,7 @@ const navBar = (props) => {
           shape="square" 
           size={38} 
           src ="https://gifimage.net/wp-content/uploads/2018/11/user-gif-4.gif" />
-        <span>{"   " + getUser().username}</span>
+        <span style={{position:"relative", top:"0.4vw"}}>{"   " + getUser().username}</span>
       </span>
   }
   I18n.putVocabularies(dict);

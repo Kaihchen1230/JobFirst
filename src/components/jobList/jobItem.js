@@ -47,7 +47,7 @@ const jobItem = (props) => {
         </Col>
     );
     return (
-        <div style={{ background: '#ECECEC', padding: '30px 0', height: '1000px', width:"100%" }}>
+        <div style={{ background: '#ECECEC', padding: '30px 20px', height: '1000px', width:"100%" }}>
             <h1 align="center">Welcome to Our Job Pool</h1>
             <Row gutter={16}>
                 {jobItem}
