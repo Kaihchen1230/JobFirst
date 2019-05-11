@@ -16,17 +16,28 @@ export function filterCateGen(value, old) {
     return old;
 }
 
-export function filterDateGen(value) {
-    var moment = require('moment');
-    let newSearch = {};
-    if (value != "All") {
-        let diff = value * 24 * 60 * 60 * 1000; //convert to milliseconds
-        let current = new Date();
-        let setTime = current - diff;
-        let setDate = moment(setTime).format('YYYY-MM-DD');
-        newSearch = { "filter": { "datePosted": { "ge": setDate } } };
+export function filterEduGen(value, old) {
+    if (value == "All") {
+        delete old["education"];
+    } else {
+        old["education"] = { "contains": value };
     }
-    return newSearch;
+    return old;
+}
+
+export function filterDateGen(value, old) {
+    var moment = require('moment');
+    let diff = value * 24 * 60 * 60 * 1000; //convert to milliseconds
+    let current = new Date();
+    let setTime = current - diff;
+    let setDate = moment(setTime).format('YYYY-MM-DD');
+    old["datePosted"] = { "ge": setDate };
+    return old;
+}
+
+export function filterSalaryGen(value, old) {
+    old["salary"] = { "ge": value };
+    return old;
 }
 
 export function searchByNameGen(value, searchType, old) {

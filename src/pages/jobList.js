@@ -40,8 +40,21 @@ class JobList extends React.Component {
         this.setState({ "filter": Util.filterCateGen(value, oldFilter) });
     }
 
-    filterDate = (value) => {
-        // this.setState({ "filter": Util.filterDateGen(value) });
+    filterEducation = (value) => {
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.filterEduGen(value, oldFilter) });
+    }
+
+    filterDate = () => {
+        let oldFilter = { ...this.state.filter };
+        let days = this.state.days;
+        this.setState({ "filter": Util.filterDateGen(days, oldFilter) });
+    }
+
+    filterSalary = () => {
+        let oldFilter = { ...this.state.filter };
+        let salary = this.state.salary;
+        this.setState({ "filter": Util.filterSalaryGen(salary, oldFilter) });
     }
 
     selectSearch = (value) => {
@@ -98,10 +111,15 @@ class JobList extends React.Component {
                             placeholder={I18n.get('Search')}
                             enterButton="Search"
                             size="large"
-                            onSearch={value => this.searchByName(value)}
+                            onSearch={this.searchByName}
                             id="search"
                         />
-                        <Button className="button1" style={{ marginLeft: "1%", width: "6%", height: "40px", }} onClick={this.reset.bind(this)}><Icon type="undo" /> Reset</Button>
+                        <Button 
+                            className="button3" 
+                            style={{marginLeft: "1%", width: "6%"}} 
+                            onClick={this.reset.bind(this)}>
+                            <Icon type="undo" /> Reset
+                        </Button>
                     </InputGroup>
                     <InputGroup compact >
                         <div style={{ textAlign: "left", width: "30%" }}>
@@ -157,6 +175,7 @@ class JobList extends React.Component {
                             <Select
                                 style={{ marginLeft: "2%", width: "98%" }}
                                 size="large"
+                                onChange={this.filterEducation}
                                 defaultValue="All" >
                                 <Option value="No Requirement">No Requirement</Option>
                                 <Option value="Associate">Associate</Option>
@@ -169,7 +188,7 @@ class JobList extends React.Component {
 
                     </InputGroup>
                     <InputGroup compact>
-                        <div style={{ textAlign: "left", width: "25%" }}>
+                        <div style={{ textAlign: "left", width: "20%" }}>
                             <h4>Minimum Wage</h4>
                             <Row>
                                 <Col span={10}>
@@ -192,8 +211,16 @@ class JobList extends React.Component {
                                 </Col>
                             </Row>
                         </div>
-                        <div style={{ textAlign: "left", width: "25%" }}>
-                            <h4>Job Post Date Within</h4>
+                        <div style={{ textAlign: "center", width: "15%" }}>
+                            <Button 
+                                className="button1" 
+                                style={{ marginTop: "5%", width: "40%", }} 
+                                onClick={this.filterSalary}>
+                                Apply
+                            </Button>
+                        </div>
+                        <div style={{ textAlign: "left", width: "20%" }}>
+                            <h4>Job Posted Within</h4>
                             <Row>
                                 <Col span={10}>
                                     <Slider
@@ -210,12 +237,18 @@ class JobList extends React.Component {
                                         style={{ marginLeft: 16 }}
                                         value={days}
                                         onChange={this.setDay}
+                                        step={10}
                                     />
                                 </Col>
                             </Row>
                         </div>
-                        <div style={{ textAlign: "center", width: "20%" }}>
-                            <Button className="button1" style={{ marginTop: "5%", width: "40%", height: "40px" }} onClick={this.reset.bind(this)}>Apply Filter</Button>
+                        <div style={{ textAlign: "center", width: "15%" }}>
+                            <Button 
+                                className="button1" 
+                                style={{ marginTop: "5%", width: "40%", }} 
+                                onClick={this.filterDate}>
+                                Apply
+                            </Button>
                         </div>
                     </InputGroup>
                 </Header>

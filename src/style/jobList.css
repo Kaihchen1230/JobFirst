@@ -69,3 +69,13 @@
     height:2.5em;
     border-radius: 5px;
 }
+
+.button3{
+    background:#1BB28B;
+    color:white;
+    border:1px solid #1BB28B;
+    padding:0.3%;
+    font-size:1.3em;
+    border-radius: 5px;
+    height:2.2em;
+}
