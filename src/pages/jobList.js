@@ -35,6 +35,11 @@ class JobList extends React.Component {
         this.setState({ "filter": Util.filterTypeGen(value, oldFilter) });
     }
 
+    filterCategory = (value) => {
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.filterCateGen(value, oldFilter) });
+    }
+
     filterDate = (value) => {
         // this.setState({ "filter": Util.filterDateGen(value) });
     }
