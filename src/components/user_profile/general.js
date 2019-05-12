@@ -7,6 +7,8 @@ import dict from "../dictionary/dictionary"
 const General = (props) => {
 
     let address = props.address.data.getAddress;
+    let addressLine = address != null ? `${address.line1}` + " " + `${address.line2}` + ", " + `${address.city}` + ", " 
+    + `${address.state}` + ", " + `${address.postalCode}` : "(No Address Provided)"
 
     let total = 8;
     let count = 0;
@@ -38,8 +40,7 @@ const General = (props) => {
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Spoken Language')}: </b>{props.user.language}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Email')}: </b>{props.user.email}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Phone')}: </b>{props.user.phone}</p>
-                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Address')}: </b>{address.line1 + " " + address.line2 + ", " + address.city + ", " 
-                + address.state + ", " + address.postalCode}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Address')}: </b>{addressLine}</p>
             </Card>
         </div>
     )
