@@ -17,6 +17,8 @@ const General = (props) => {
     if (props.user.phone) { ++count }
     let per = Math.ceil(count / total * 100);
 
+    console.log("user address: ", props.address);
+
     return (
         <div align="center">
             <h1>{I18n.get('Profile Completion')}:</h1>
