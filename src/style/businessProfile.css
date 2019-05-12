@@ -44,11 +44,6 @@ body{
     color:white
 }
 
-.busEditButton:hover{
-    background-color:#F0BF5F;
-    color:black
-}
-
 .ant-tabs-nav{
     color:black
 }
@@ -57,4 +52,32 @@ body{
     color:black
 }
 
+/*
+Edit button edit effect
+ */
 
+.busEditButton:hover{
+    background-color:#F0BF5F;
+    color:black
+}
+
+/*
+For Edit and upload button 
+ */
+.busButtonGroup{
+    position:relative;
+    margin-top:1%;
+    left:50vw
+}
+
+@media only screen and (max-width: 1400px) {
+    .busButtonGroup{
+        left:40vw
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .busButtonGroup{
+        left:30vw
+    }
+}
