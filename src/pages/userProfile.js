@@ -16,6 +16,7 @@ import AddEduForm from "../components/form/addEducation";
 import AddExpForm from "../components/form/addExperience";
 import UpdateAddressForm from "../components/form/updateAddress";
 import CreateAddressForm from "../components/form/createAddress";
+import { async } from 'q';
 
 // Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
@@ -31,7 +32,8 @@ class Profile extends React.Component {
             loading: true,                                  // true when fetching data
             collapsed: false,                               // hide the sidebar
             education: [],                                  // education of the user
-            experiences: [],                                // experince of the user
+            experiences: [],
+            address: [],                                // experince of the user
             allowEdit: this.props.userID === getUser().sub  // check if the user is viewing his own profile
         }
     }
@@ -50,6 +52,17 @@ class Profile extends React.Component {
             console.log(user.data.getEmployee);
         } catch (err) {
             console.log("From userProfile.js - error in getting the user's information", err);
+        }
+    }
+
+    fetchAddress = async () => {
+        try {
+            const userAdd = await API.graphql(graphqlOperation(queries.getAddress, { id: this.state.userID }));
+            this.setState({
+                address: userAdd
+            });
+        } catch (err) {
+            console.log("From userProfile.js - error in getting the user's address", err);
         }
     }
 
@@ -78,7 +91,7 @@ class Profile extends React.Component {
         }
     }
 
-    fetchEducation = async() => {
+    fetchEducation = async () => {
         try {
             const educationResults = await API.graphql(graphqlOperation(customQueries.getEducationEmployee, { id: this.state.userID }));
             const temp = educationResults.data.getEmployee.education.items;
@@ -88,7 +101,7 @@ class Profile extends React.Component {
         }
     }
 
-    fetchExperience = async() => {
+    fetchExperience = async () => {
         try {
             const experienceResults = await API.graphql(graphqlOperation(customQueries.getExperienceEmployee, { id: this.state.userID }));
             const temp = experienceResults.data.getEmployee.experience.items;
@@ -98,7 +111,7 @@ class Profile extends React.Component {
         }
     }
 
-    fetchPhoto = async() => {
+    fetchPhoto = async () => {
         if (this.state.user.pic === 'yes') {
             Storage.get('profilePic', {
                 level: 'protected',
@@ -118,6 +131,9 @@ class Profile extends React.Component {
     componentDidMount = async () => {
         // fetch the user info
         await this.fetchUserInfo();
+
+        // fetch user's address
+        await this.fetchAddress();
 
         // fetch the employee's applied jobs
         await this.fetchAppliedJob();
@@ -259,6 +275,7 @@ class Profile extends React.Component {
                 <Content>
                     <Information
                         user={this.state.user}
+                        address={this.state.address}
                         jobs={this.state.jobs}
                         education={this.state.education}
                         experiences={this.state.experiences}

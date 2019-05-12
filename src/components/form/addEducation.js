@@ -148,6 +148,7 @@ class AddEduForm extends React.Component {
             }
             form.resetFields();
             this.setState({ visible: false });
+            window.location.reload();
         });
     }
 
