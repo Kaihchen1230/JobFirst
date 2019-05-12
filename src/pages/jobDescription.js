@@ -11,6 +11,7 @@ import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as customQueries from '../customGraphql/queries';
 import * as Util from '../test/jobDescriptionUnitTest/jobDescriptionUtil';
+import "../style/JobDescription.css"
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -62,6 +63,7 @@ class JobDescription extends React.Component{
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
         incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
+        incomingJobInfo.salary = currentJobInfo.data.getPostedJob.salary;
         console.log('this is the currentJobInfo: ', currentJobInfo);
         this.setState({
           userId: currentUserId,
@@ -269,8 +271,13 @@ class JobDescription extends React.Component{
         if(this.state.companyInfo != null){
           let content = this.state.companyInfo.description;
           viewCompanyInfo = (<Popover content={content}>
-                  <div>
-                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
+                  <div >
+                    <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
+                    <span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}</span>
+                    <div style={{fontSize:"2em", fontWeight:"500",color:"#1BB28B"}}>
+                      {"$"+Math.round(this.state.jobInfo.salary/1000)+"K - $" + Math.round((this.state.jobInfo.salary*1.2)/1000)+"K" }
+                      <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
+                    </div>
                   </div>
             </Popover>)
         }else{
@@ -292,9 +299,9 @@ class JobDescription extends React.Component{
 
         return(
             
-          <div>
-            <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
-                <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
+          <div >
+            <Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
+                <h2 className="jobTitle">{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
                 <Popover content={"We will use your default information to apply to the job"} >
                 
@@ -311,7 +318,7 @@ class JobDescription extends React.Component{
                 link = "/app/user-profile/"
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
-              <Tabs defaultActiveKey="1" > 
+              <Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
                   <TabPane tab="Job" key="1" >
                       <div>
                           <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>

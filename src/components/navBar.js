@@ -63,9 +63,9 @@ const navBar = (props) => {
         <Menu
           mode="horizontal"
           theme="dark"
-          style={{}}
+          style={{textAlign: "right"}}
         >
-          <Menu.Item key="home" className = 'home'>
+          <Menu.Item key="home" >
             {I18n.get('Home')}
             <Link to="/"></Link>
           </Menu.Item>
