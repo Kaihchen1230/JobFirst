@@ -30,6 +30,11 @@ class JobList extends React.Component {
         days: 365,
     }
 
+      
+    componentDidUpdate () {
+        window.scrollTo(0, 100)    
+      }
+
     filterType = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterTypeGen(value, oldFilter) });

@@ -17,7 +17,7 @@ let mainStyle = {
 
 let infoStyle = {
     padding:"2%",
-    border:"1px solid black",
+    border:"1px solid #a0a6af",
     borderRadius: "10px",
 }
 
