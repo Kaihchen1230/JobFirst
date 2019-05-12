@@ -4,7 +4,7 @@ exports[`Job Description screenshot test Job Description page should render corr
 <div>
   <Spin
     size="default"
-    spinning={false}
+    spinning={true}
     tip="Please wait for a moment"
     wrapperClassName=""
   >
@@ -42,7 +42,7 @@ exports[`Job Description screenshot test Job Description page should render corr
         block={false}
         ghost={false}
         htmlType="button"
-        loading={false}
+        loading={true}
         onClick={[Function]}
         type="primary"
       >
@@ -54,6 +54,7 @@ exports[`Job Description screenshot test Job Description page should render corr
       content="Thanks for applying to this job, you will be heard back from the employer shortly."
       isLoading={[Function]}
       isVisible={[Function]}
+      link="/app/user-profile/"
       okText="Go to profile page"
       show={false}
       userId=""

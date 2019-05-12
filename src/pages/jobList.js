@@ -6,7 +6,7 @@ import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
-import * as Util from '../jobListUnitTest/jobListUtil';
+import * as Util from '../test/jobListUnitTest/jobListUtil';
 import { Link, navigate } from "gatsby";
 import "../style/jobList.css"
 import HomeImg from "../../static/home.png"
@@ -29,11 +29,6 @@ class JobList extends React.Component {
         salary: 7,
         days: 365,
     }
-
-      
-    componentDidUpdate () {
-        window.scrollTo(0, 100)    
-      }
 
     filterType = (value) => {
         let oldFilter = { ...this.state.filter };

@@ -10,7 +10,7 @@ import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as customQueries from '../customGraphql/queries';
-import * as Util from '../jobDescriptionUnitTest/jobDescriptionUtil';
+import * as Util from '../test/jobDescriptionUnitTest/jobDescriptionUtil';
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{

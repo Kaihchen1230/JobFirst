@@ -1,0 +1,809 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditBusinessProfile snapshot test EditBusinessProfile render should match snapshot 1`] = `
+<Modal
+  cancelButtonDisabled={false}
+  confirmLoading={false}
+  maskTransitionName="fade"
+  okButtonDisabled={false}
+  okText="Save"
+  okType="primary"
+  onOk={[Function]}
+  title="Edit Company Information"
+  transitionName="zoom"
+  visible={false}
+  width={800}
+>
+  <Form
+    className="login-form"
+    colon={true}
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+  >
+    <br />
+    <h2
+      style={
+        Object {
+          "marginLeft": "7%",
+        }
+      }
+    >
+      Base Information:
+    </h2>
+    <FormItem
+      hasFeedback={false}
+      label="Company Name"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="companyName"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Website"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="companyWebsite"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Company Tpye"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="companyType"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Company Email"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="companyEmail"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Company Phone"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="companyPhone"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Description"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <TextArea
+        name="description"
+        onChange={[Function]}
+        placeholder="description"
+        rows={6}
+        style={
+          Object {
+            "width": "70%",
+          }
+        }
+      />
+    </FormItem>
+    <h2
+      style={
+        Object {
+          "marginLeft": "20%",
+        }
+      }
+    >
+      Details:
+    </h2>
+    <FormItem
+      hasFeedback={false}
+      label="Headquarter"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="headquarter"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Size"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="size"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="number"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Revenue"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="revenue"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="number"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="CEO name"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="ceo"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="CEO Picture"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="ceoPic"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Youtube Video"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="videoURL"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        suffix={
+          <Tooltip
+            arrowPointAtCenter={false}
+            autoAdjustOverflow={true}
+            mouseEnterDelay={0.1}
+            mouseLeaveDelay={0.1}
+            placement="top"
+            title="Must be a Youtube Embled Link"
+            transitionName="zoom-big-fast"
+          >
+            <Icon
+              style={
+                Object {
+                  "color": "rgba(0,0,0,.45)",
+                }
+              }
+              type="info-circle"
+            />
+          </Tooltip>
+        }
+        type="text"
+      />
+    </FormItem>
+    <h2
+      style={
+        Object {
+          "marginLeft": "20%",
+        }
+      }
+    >
+      Address:
+    </h2>
+    <FormItem
+      hasFeedback={false}
+      label="Address Line 1"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="addressLine1"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+        value="NY"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Address Line 2"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="addressLine2"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+        value="NY"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="City"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="city"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+        value="Brooklyn"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="State"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="state"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+        value="NY"
+      />
+    </FormItem>
+    <FormItem
+      hasFeedback={false}
+      label="Postal Code"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        name="postalCode"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+      />
+    </FormItem>
+    <h2
+      style={
+        Object {
+          "marginLeft": "20%",
+        }
+      }
+    >
+      Timeline:
+    </h2>
+    <FormItem
+      hasFeedback={false}
+      label="Event 1"
+      labelCol={
+        Object {
+          "sm": Object {
+            "span": 8,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+      wrapperCol={
+        Object {
+          "sm": Object {
+            "span": 16,
+          },
+          "xs": Object {
+            "span": 24,
+          },
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        id="0title"
+        onChange={[Function]}
+        placeholder="Title"
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+        type="text"
+        value="create"
+      />
+      <Tooltip
+        arrowPointAtCenter={false}
+        autoAdjustOverflow={true}
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
+        placement="top"
+        title="Delete"
+        transitionName="zoom-big-fast"
+      >
+        <Button
+          block={false}
+          ghost={false}
+          htmlType="button"
+          loading={false}
+          onClick={[Function]}
+        >
+          <Icon
+            style={
+              Object {
+                "fontSize": "15px",
+                "marginLeft": "1%",
+              }
+            }
+            type="delete"
+          />
+        </Button>
+      </Tooltip>
+      <TextArea
+        name="description"
+        onChange={[Function]}
+        placeholder="Description"
+        rows={3}
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+      />
+      <br />
+      <PickerWrapper
+        defaultValue={null}
+        locale={Object {}}
+        name="postDate"
+        onChange={[Function]}
+        onOk={[Function]}
+        onOpenChange={[Function]}
+        placeholder="Event Date"
+        popupStyle={Object {}}
+        transitionName="slide-up"
+      />
+    </FormItem>
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <Button
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+      >
+        <Icon
+          type="plus"
+        />
+        Add More Events
+      </Button>
+    </div>
+  </Form>
+</Modal>
+`;
+
+exports[`Video snapshot test Video render should match snapshot 1`] = `null`;

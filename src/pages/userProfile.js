@@ -10,7 +10,6 @@ import dict from "../components/dictionary/dictionary"
 import { Layout, Skeleton, Menu, Icon, message } from 'antd';
 import PhotoUploader from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
-import UserProfileUtil from '../userProfileUnitTest/userProfileUtil';
 import { Link, navigate } from "gatsby";
 import BasicInfoForm from "../components/user_profile/basicInfoForm";
 import AddEduForm from "../components/form/addEducation";
