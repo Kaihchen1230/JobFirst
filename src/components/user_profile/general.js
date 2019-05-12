@@ -6,7 +6,9 @@ import dict from "../dictionary/dictionary"
 
 const General = (props) => {
 
-    let total = 7;
+    let address = props.address.data.getAddress;
+
+    let total = 8;
     let count = 0;
     if (props.user.firstName) { ++count }
     if (props.user.lastName) { ++count }
@@ -15,9 +17,8 @@ const General = (props) => {
     if (props.user.language) { ++count }
     if (props.user.email) { ++count }
     if (props.user.phone) { ++count }
+    if (address) { ++count }
     let per = Math.ceil(count / total * 100);
-
-    console.log("user address: ", props.address);
 
     return (
         <div align="center">
@@ -37,6 +38,8 @@ const General = (props) => {
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Spoken Language')}: </b>{props.user.language}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Email')}: </b>{props.user.email}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Phone')}: </b>{props.user.phone}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Address')}: </b>{address.line1 + " " + address.line2 + ", " + address.city + ", " 
+                + address.state + ", " + address.postalCode}</p>
             </Card>
         </div>
     )
