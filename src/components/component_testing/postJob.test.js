@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
-import PostJob from "../postJob"
+import PostJob from "../business_profile/postJob"
 //import "../../style/postJob.css";
 
 describe("postJob snapshot test", () => {
