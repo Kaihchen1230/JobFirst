@@ -22,7 +22,7 @@ class Contact extends React.Component {
                             <Card
                                 size="default"
                                 title={<Icon type="phone" style={{fontSize: 25}}/>}
-                                style={{ border: "solid", height: 210, backgroundColor: "rgb(244, 244, 244)", borderRadius: 15 }}
+                                style={{ border: "2px solid black", height: 210, backgroundColor: "#fcfcfc", borderRadius: 15 }}
                             >
                                 <br />
                                 <p className="description">+1800JOBFIRST</p>
@@ -32,7 +32,7 @@ class Contact extends React.Component {
                             <Card
                                 size="default"
                                 title={<Icon type="home" style={{fontSize: 25}}/>}
-                                style={{ border: "solid", height: 210, width: 250, backgroundColor: "rgb(244, 244, 244)", borderRadius: 20 }}
+                                style={{ border: "2px solid black", height: 210, width: 250, backgroundColor: "#fcfcfc", borderRadius: 20 }}
                             >
                                 <p className="description">160 Convent Av,<br /> New York, NY<br /> 10031</p>
                             </Card>

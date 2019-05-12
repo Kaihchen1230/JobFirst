@@ -11,7 +11,7 @@ let mainStyle = {
     fontSize:"1.2em",
     letterSpacing: "1px",
     lineHeight:"1.8em",
-    border:"1px solid black",
+    border:"1px solid #a0a6af",
     width:"30%",
     borderRadius: "10px",
 };
