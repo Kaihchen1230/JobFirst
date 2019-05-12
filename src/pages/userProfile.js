@@ -132,6 +132,7 @@ class Profile extends React.Component {
         // fetch the user info
         await this.fetchUserInfo();
 
+        // fetch user's address
         await this.fetchAddress();
 
         // fetch the employee's applied jobs
