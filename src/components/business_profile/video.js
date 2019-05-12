@@ -1,11 +1,5 @@
 import React from 'react';
-let mainStyle = {
-    position:"relative",
-    left:"7%",
-    marginTop:"0%",
-    marginBottom:"10%",
-};
-
+import "./video.css"
 
 export default props => {
     //check if a valid youtube URL, if the URL is invalid, it wont show the video 
@@ -19,7 +13,7 @@ export default props => {
     if(!matchYoutubeUrl(props.videoURL))
         return null;
     return (
-        <div style={mainStyle} >
+        <div class="video-container" >
             <iframe 
                 data-testid="comVideo"
                 width="580"

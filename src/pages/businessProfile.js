@@ -197,8 +197,7 @@ class businessProfile extends React.Component {
                   " " + this.state.companyAddress.state}</h2>
             </div>
             {this.state.allowEdit ?
-              <div style ={{ position:"relative", 
-                            marginTop:"1%", left:"53%"}}>
+              <div className= "busButtonGroup">
                 <Button className ="busEditButton"  onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button>
