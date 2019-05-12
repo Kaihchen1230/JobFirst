@@ -129,7 +129,8 @@ class UpdateAddressForm extends React.Component {
                 message.error("Error in Updating Address");
             }
             form.resetFields();
-            this.setState({ visible: false })
+            this.setState({ visible: false });
+            window.location.reload();
         })
     }
 
