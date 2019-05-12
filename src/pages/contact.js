@@ -39,11 +39,9 @@ class Contact extends React.Component {
                         </Column>
                     </Row>
                 </Column>
-
             </div>
         );
     }
-
 }
 
 export default Contact;

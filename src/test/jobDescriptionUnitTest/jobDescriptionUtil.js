@@ -1,6 +1,6 @@
 // import * as mutations from '../graphql/mutations';
 const {API, graphqlOperation} = require('aws-amplify');
-const { updateAppliedJob } = require('../graphql/mutations');
+const { updateAppliedJob } = require('../../graphql/mutations');
 
 exports.loadingStatus = (status) => {
     return status;

@@ -100,7 +100,7 @@ class ModalForm extends React.Component {
     this.setState({ addressID: data.companyAddress.id });
     this.setState({ lan: window.localStorage.getItem('lan') });
     this.setState({timelineNum : data.timeline.length});
-    this.setState({originalTimeline : data.timeline});
+    // this.setState({originalTimeline : data.timeline});
   }
 
     /**

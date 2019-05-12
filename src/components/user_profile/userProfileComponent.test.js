@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-testing-library'
-import Sidebar from './Sidebar'
+// import Sidebar from './Sidebar'
 import ResumeUploader from './resumeUploader'
 import UploadPage from './photoUploader'
 import General from './general'
