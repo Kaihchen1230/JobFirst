@@ -8,6 +8,9 @@ import 'rc-banner-anim/assets/index.css';
 import './home.css';
 import dict from "../dictionary/dictionary"
 import { I18n } from 'aws-amplify';
+import { Button } from 'antd';
+import "../../style/home.css";
+import { Link, navigate } from "gatsby";
 
 
 const { Element, Arrow, Thumb } = BannerAnim;
@@ -128,10 +131,14 @@ class Home extends React.Component {
                         {I18n.get('JobFirst')}
                     </TweenOne>
                     <TweenOne
-                        className="banner-user-text"
+                        className="banner-user-text custom-description"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
                         {I18n.get('Where immigrants with degrees find their jobs.')}
+                        <div>
+                        <Button className="custom-button" ghost onClick={() => navigate('/app/job-list')}>Click to view jobs</Button>
+                        </div>
+                        
                     </TweenOne>
                 </Element>
                 <Element 
@@ -151,10 +158,13 @@ class Home extends React.Component {
                         {I18n.get('JobFirst')}
                     </TweenOne>
                     <TweenOne
-                        className="banner-user-text"
+                        className="banner-user-text custom-description"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
                         {I18n.get('Where companies find talents.')}
+                        <div>
+                        <Button className="custom-button" ghost onClick={() => navigate('/app/talent-list')}>Click to see them</Button>
+                        </div>
                     </TweenOne>
                 </Element>
                 <Element 
@@ -174,10 +184,13 @@ class Home extends React.Component {
                         {I18n.get('JobFirst')}
                     </TweenOne>
                     <TweenOne
-                        className="banner-user-text"
+                        className="banner-user-text custom-description"
                         animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
                     >
                         {I18n.get('Get Started Today.')}
+                        <div>
+                        <Button className="custom-button" ghost onClick={() => navigate('/app/signup')}>Register Now</Button>
+                        </div>
                     </TweenOne>
                 </Element>
                 <Arrow arrowType="prev" key="prev" prefixCls="user-arrow prev" component={TweenOne}
