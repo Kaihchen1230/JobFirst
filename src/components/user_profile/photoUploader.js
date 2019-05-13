@@ -202,7 +202,7 @@ class PhotoUploader extends React.Component {
                 {this.props.isBusiness ?
                     <Button className = "userButton" onClick={this.showModal}>{I18n.get('Upload A New Logo')}</Button>:
                     <Button className='modify-info-button' ghost type='ghost' onClick={this.showModal}>
-                        <Icon type="upload" />{I18n.get('Upload A New Profile Picture')}
+                        <Icon type="upload"/>{I18n.get('Upload A New Profile Picture')}
                     </Button>
                 }
                 

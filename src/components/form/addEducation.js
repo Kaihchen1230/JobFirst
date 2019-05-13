@@ -162,7 +162,8 @@ class AddEduForm extends React.Component {
         I18n.setLanguage(this.state.lan);
         return (
             <div>
-                <Button className='modify-info-button' ghost onClick={this.showModal}>{I18n.get('Add Education or Award')}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="trophy" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get('Add Education or Award')}</Button>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}

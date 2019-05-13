@@ -223,7 +223,8 @@ class BasicInfoForm extends React.Component {
     render() {
         return (
             <div>
-                <Button className='modify-info-button' ghost onClick={this.showModal}>{I18n.get("Modify Basic Info")}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="file-text" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get("Modify Basic Info")}</Button>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}

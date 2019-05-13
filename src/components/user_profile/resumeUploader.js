@@ -12,7 +12,7 @@ const ResumeUploader = (props) => {
     return (
         <Upload {...props}>
             <Button className='modify-info-button' ghost>
-                <Icon type="upload" /> {I18n.get('Upload A Resume')}
+            <Icon type="file-add" theme="twoTone" twoToneColor="#52c41a"/> {I18n.get('Upload A Resume')}
             </Button>
         </Upload>
     );

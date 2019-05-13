@@ -143,7 +143,8 @@ class CreateAddressForm extends React.Component {
         I18n.setLanguage(this.state.lan);
         return (
             <div>
-                <Button className='modify-info-button' ghost onClick={this.showModal}>{I18n.get('Add Your Address')}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="home" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get('Add Your Address')}</Button>
                 <CollectionCreateForm 
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
