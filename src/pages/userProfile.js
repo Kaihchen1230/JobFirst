@@ -255,17 +255,18 @@ class Profile extends React.Component {
                                     {/* {I18n.get('Modify Basic Info')} */}
                                 </Menu.Item>
 
-                                <Menu.Item key="4">
-                                    <CreateAddressForm />
-                                </Menu.Item>
-
+                                {this.state.address.data.getAddress ? 
                                 <Menu.Item key="5">
                                     <UpdateAddressForm />
-                                </Menu.Item>
+                                </Menu.Item>:
+                                <Menu.Item key="4">
+                                    <CreateAddressForm />
+                                </Menu.Item>}
 
+                                {this.state.address.data.getAddress ?
                                 <Menu.Item key="6">
                                     <Button ghost onClick={this.deleteAddress}>Delete Address</Button>
-                                </Menu.Item>
+                                </Menu.Item>:null}
 
                                 <Menu.Item key="7">
                                     <AddEduForm />

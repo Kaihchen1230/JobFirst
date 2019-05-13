@@ -6,6 +6,8 @@ import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getLanguage } from "../../services/auth";
+import "../../style/userProfile.css";
+
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class extends React.Component {
@@ -141,7 +143,7 @@ class CreateAddressForm extends React.Component {
         I18n.setLanguage(this.state.lan);
         return (
             <div>
-                <Button ghost onClick={this.showModal}>{I18n.get('Add Your Address')}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>{I18n.get('Add Your Address')}</Button>
                 <CollectionCreateForm 
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
