@@ -7,7 +7,7 @@ import * as customQueries from '../customGraphql/queries';
 import * as mutations from '../graphql/mutations';
 import { getUser, isLoggedIn, getLanguage } from '../services/auth';
 import dict from "../components/dictionary/dictionary"
-import { Layout, Skeleton, Menu, Icon, message } from 'antd';
+import { Layout, Skeleton, Menu, Icon, message, Button } from 'antd';
 import PhotoUploader from '../components/user_profile/photoUploader';
 import ResumeUploader from '../components/user_profile/resumeUploader';
 import { Link, navigate } from "gatsby";
@@ -127,6 +127,7 @@ class Profile extends React.Component {
                 .catch(err => console.log(err));
         }
     }
+
     // where all the data fetching happen
     componentDidMount = async () => {
         // fetch the user info
@@ -163,7 +164,6 @@ class Profile extends React.Component {
         }
     }
 
-    // delete education
     deleteEducation = async (key, e) => {
         // call API to delete education
         try {
@@ -172,7 +172,7 @@ class Profile extends React.Component {
             message.success(`Education deleted`);
         } catch (err) {
             console.log("error - ", err);
-            message.error(`Fail to delete education`);
+            message.error(`Couldn't delete education`);
         }
         let edu = [...this.state.education];
         let deleteIndex = edu.findIndex((item) => item.id === key);
@@ -193,10 +193,10 @@ class Profile extends React.Component {
         try {
             const delExp = await API.graphql(graphqlOperation(mutations.deleteExperience, { input: { id: key } }));
             console.log("this item was deleted: ", delExp);
-            message.success(`Experince deleted`);
+            message.success(`Experience deleted`);
         } catch (err) {
             console.log("error - ", err);
-            message.error(`Fail to delete experience`);
+            message.error(`Couldn't delete experience`);
         }
         // remove it from the page
         let exp = [...this.state.experiences];
@@ -210,6 +210,18 @@ class Profile extends React.Component {
         if (willDelete) {
             exp.splice(deleteIndex, 1);
             this.setState({ experiences: exp });
+        }
+    }
+
+    deleteAddress = async () => {
+        try {
+            const delAdd = await API.graphql(graphqlOperation(mutations.deleteAddress, { input: { id: this.state.userID} }));
+            console.log("User address was deleted.");
+            message.success(`Address deleted`);
+            window.location.reload();
+        } catch (err) {
+            console.log("From userProfile.js - could not delete address", err);
+            message.error(`Couldn't delete address`);
         }
     }
 
@@ -252,10 +264,14 @@ class Profile extends React.Component {
                                 </Menu.Item>
 
                                 <Menu.Item key="6">
-                                    <AddEduForm />
+                                    <Button ghost onClick={this.deleteAddress}>Delete Address</Button>
                                 </Menu.Item>
 
                                 <Menu.Item key="7">
+                                    <AddEduForm />
+                                </Menu.Item>
+
+                                <Menu.Item key="8">
                                     <AddExpForm />
                                 </Menu.Item>
                             </SubMenu>
