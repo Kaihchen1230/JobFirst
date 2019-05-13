@@ -1,4 +1,32 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/userProfile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/userProfile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import Person from '../components/user_profile/person';
 import Information from '../components/user_profile/information';
 import Amplify, { Auth, API, graphqlOperation, I18n, Storage } from "aws-amplify";
@@ -274,69 +302,69 @@ class Profile extends React.Component {
          */
         if (this.state.loading) {
             return (
-                <Skeleton active />
+                &lt;Skeleton active />
             );
         }
         return (
-            <Layout style={{ minHeight: '100vh' }}>
-                <Sider
+            &lt;Layout style={{ minHeight: '100vh' }}>
+                &lt;Sider
                     collapsible
                     collapsed={this.state.collapsed}
                     onCollapse={this.onCollapse}
                     width={300}
                 >
-                    <Person user={this.state.user} />
+                    &lt;Person user={this.state.user} />
                     {/**
                     * render those edit button when user is viewing his own profile page
                     */}
                     {(getUser().sub === this.state.userID) ? (
-                        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                            <SubMenu
+                        &lt;Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                            &lt;SubMenu
                                 key="sub1"
-                                title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
+                                title={&lt;span>&lt;Icon type="form" />&lt;span>{I18n.get('Edit Profile')}&lt;/span>&lt;/span>}
                             >
-                                <Menu.Item key="3">
-                                    <BasicInfoForm userInfo={this.state.user} />
+                                &lt;Menu.Item key="3">
+                                    &lt;BasicInfoForm userInfo={this.state.user} />
                                     {/* {I18n.get('Modify Basic Info')} */}
-                                </Menu.Item>
+                                &lt;/Menu.Item>
 
                                 {this.state.address.data.getAddress ? 
-                                <Menu.Item key="5">
-                                    <UpdateAddressForm />
-                                </Menu.Item>:
-                                <Menu.Item key="4">
-                                    <CreateAddressForm />
-                                </Menu.Item>}
+                                &lt;Menu.Item key="5">
+                                    &lt;UpdateAddressForm />
+                                &lt;/Menu.Item>:
+                                &lt;Menu.Item key="4">
+                                    &lt;CreateAddressForm />
+                                &lt;/Menu.Item>}
 
                                 {this.state.address.data.getAddress ?
-                                <Menu.Item key="6">
-                                    <Button className="modify-info-button" ghost onClick={this.deleteAddress}>
-                                    <Icon type="delete" theme="twoTone" twoToneColor="#52c41a"/>Delete Address</Button>
-                                </Menu.Item>:null}
+                                &lt;Menu.Item key="6">
+                                    &lt;Button className="modify-info-button" ghost onClick={this.deleteAddress}>
+                                    &lt;Icon type="delete" theme="twoTone" twoToneColor="#52c41a"/>Delete Address&lt;/Button>
+                                &lt;/Menu.Item>:null}
 
-                                <Menu.Item key="7">
-                                    <AddEduForm />
-                                </Menu.Item>
+                                &lt;Menu.Item key="7">
+                                    &lt;AddEduForm />
+                                &lt;/Menu.Item>
 
-                                <Menu.Item key="8">
-                                    <AddExpForm />
-                                </Menu.Item>
-                            </SubMenu>
+                                &lt;Menu.Item key="8">
+                                    &lt;AddExpForm />
+                                &lt;/Menu.Item>
+                            &lt;/SubMenu>
 
-                            <Menu.Item key="2">
-                                <PhotoUploader />
+                            &lt;Menu.Item key="2">
+                                &lt;PhotoUploader />
 
-                                {/* <span>{I18n.get('Change Profile Picture')}</span> */}
-                            </Menu.Item>
+                                {/* &lt;span>{I18n.get('Change Profile Picture')}&lt;/span> */}
+                            &lt;/Menu.Item>
 
-                            <Menu.Item key="9">
-                                <ResumeUploader onChange={this.onChange} />
-                            </Menu.Item>
-                        </Menu>) : null
+                            &lt;Menu.Item key="9">
+                                &lt;ResumeUploader onChange={this.onChange} />
+                            &lt;/Menu.Item>
+                        &lt;/Menu>) : null
                     }
-                </Sider>
-                <Content>
-                    <Information
+                &lt;/Sider>
+                &lt;Content>
+                    &lt;Information
                         user={this.state.user}
                         address={this.state.address}
                         jobs={this.state.jobs}
@@ -346,11 +374,33 @@ class Profile extends React.Component {
                         deleteEdu={this.deleteEducation}
                         deleteExp={this.deleteExperience}
                     />
-                </Content>
-            </Layout>
+                &lt;/Content>
+            &lt;/Layout>
 
         );
     }
 }
 
-export default Profile;
+export default Profile;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon May 13 2019 17:57:47 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
