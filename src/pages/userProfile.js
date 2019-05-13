@@ -17,6 +17,8 @@ import AddExpForm from "../components/form/addExperience";
 import UpdateAddressForm from "../components/form/updateAddress";
 import CreateAddressForm from "../components/form/createAddress";
 import { async } from 'q';
+import "../style/userProfile.css";
+
 
 // Some components from the ant-design
 const { Header, Footer, Sider, Content } = Layout;
@@ -255,17 +257,19 @@ class Profile extends React.Component {
                                     {/* {I18n.get('Modify Basic Info')} */}
                                 </Menu.Item>
 
-                                <Menu.Item key="4">
-                                    <CreateAddressForm />
-                                </Menu.Item>
-
+                                {this.state.address.data.getAddress ? 
                                 <Menu.Item key="5">
                                     <UpdateAddressForm />
-                                </Menu.Item>
+                                </Menu.Item>:
+                                <Menu.Item key="4">
+                                    <CreateAddressForm />
+                                </Menu.Item>}
 
+                                {this.state.address.data.getAddress ?
                                 <Menu.Item key="6">
-                                    <Button ghost onClick={this.deleteAddress}>Delete Address</Button>
-                                </Menu.Item>
+                                    <Button className="modify-info-button" ghost onClick={this.deleteAddress}>
+                                    <Icon type="delete" theme="twoTone" twoToneColor="#52c41a"/>Delete Address</Button>
+                                </Menu.Item>:null}
 
                                 <Menu.Item key="7">
                                     <AddEduForm />

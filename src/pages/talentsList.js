@@ -62,6 +62,7 @@ class TalentList extends React.Component {
                     <div> sidebar </div>
                 </Sider>
                 <Content>
+                    <h1>UNDER CONSTRUCTION</h1>
                     <PersonList persons={this.state.personList} />
                 </Content>
             </Layout>
