@@ -12,6 +12,15 @@ __Alan Lau__ _(developer)_
 JobFirst is a web app which utilizes _Gatsby_ to serve the frontend and _AWS Amplify_ to serve the backend. And blah blah blah....
 ## [Refer here for our weekly meeting status](https://github.com/Kaihchen1230/csc47300Project/wiki/Weekly-Status-Meeting-PPT)
 ___
+
+## How to get started:
+1. clone the repo ```git clone https://github.com/Kaihchen1230/csc47300Project.git```
+1. install all the dependencies ```npm install```
+1. setup backend ```amplify init```
+1. push the backend to the cloud ```ampify push```
+1. run the app ```gatsby develop```
+
+___
 ## For the developers:
 - __READ FIRST__
 ### Fresh start: (RECOMMENDED)
@@ -62,3 +71,113 @@ ___
 ### Document:
 ```npm run doc``` All docs are inside the docs folder
 [Refer here for how to write jsdoc](https://www.akshatsharma.com/posts/how%20to%20jsdoc/index.html#simian-toc-8)
+
+### File Structure
+```
+.
+├── amplify
+│   ├── #current-cloud-backend
+│   │   ├── api
+│   │   │   └── csc47300project
+│   │   │       ├── build
+│   │   │       │   ├── resolvers
+│   │   │       │   └── stacks
+│   │   │       └── stacks
+│   │   ├── auth
+│   │   │   └── cognitoed11de21
+│   │   └── storage
+│   │       └── csc473storage
+│   └── backend
+│       ├── api
+│       │   └── csc47300project
+│       │       ├── build
+│       │       │   ├── resolvers
+│       │       │   └── stacks
+│       │       └── stacks
+│       ├── auth
+│       │   └── cognitoed11de21
+│       ├── awscloudformation
+│       └── storage
+│           └── csc473storage
+├── docs
+│   ├── fonts
+│   ├── scripts
+│   │   └── prettify
+│   └── styles
+├── mocks
+├── node_modules [1620 entries exceeds filelimit, not opening dir]
+├── public
+│   ├── businessImages
+│   └── static
+│       └── d [21 entries exceeds filelimit, not opening dir]
+├── src
+│   ├── components
+│   │   ├── Home
+│   │   ├── authentication
+│   │   ├── business_profile
+│   │   │   └── test
+│   │   │       └── __snapshots__
+│   │   ├── dictionary
+│   │   ├── form
+│   │   ├── jobList
+│   │   ├── job_description
+│   │   ├── talent_list
+│   │   └── user_profile
+│   ├── customGraphql
+│   ├── graphql
+│   ├── pages
+│   ├── services
+│   ├── style
+│   └── test
+│       ├── integrationTest
+│       │   └── __snapshots__
+│       ├── jobDescriptionUnitTest
+│       ├── jobListUnitTest
+│       ├── systemTest
+│       └── userProfileUnitTest
+└── static
+    └── businessImages
+
+62 directories
+```
+#### Above is all the directories in our __root__ folder:
+- __*amplify*__ is where all of our backend files located
+- __*docs*__ is where all the generated html documents located
+- __*src*__ is where mainly our code located
+- __*static*__ is where all the static files like images located
+
+```
+src
+├── components
+│   ├── Home
+│   ├── authentication
+│   ├── business_profile
+│   │   └── test
+│   │       └── __snapshots__
+│   ├── dictionary
+│   ├── form
+│   ├── jobList
+│   ├── job_description
+│   ├── talent_list
+│   └── user_profile
+├── customGraphql
+├── graphql
+├── pages
+├── services
+├── style
+└── test
+    ├── integrationTest
+    │   └── __snapshots__
+    ├── jobDescriptionUnitTest
+    ├── jobListUnitTest
+    ├── systemTest
+    └── userProfileUnitTest
+
+24 directories
+```
+#### Above is all the directories in our __src__ folder:
+- __*components*__ is where all the components located, categorized by the page where they belong
+- __*customGraphql*__ is where all the custom Graphql query located
+- __*graphql*__ is where all the generated query located
+- __*pages*__ contain all the codes for all the pages of our application
+- __*services*__ contain some functions for authentication and translation feaature
