@@ -264,7 +264,6 @@ class JobDescription extends React.Component{
         if(this.state.loading){
           <Skeleton active />
         }
-          
         console.log('it comes to render first');
         console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
