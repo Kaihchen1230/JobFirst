@@ -64,6 +64,7 @@ class ModalForm extends React.Component {
      * @name ModalForm#type
      * @type String
      */
+    this.state.originalTimeline = data.timeline;
     this.state.timelineNum = data.timeline.length;
         /**
      * a string that indicates if the timeline change, it has false as default value
@@ -100,7 +101,7 @@ class ModalForm extends React.Component {
     this.setState({ addressID: data.companyAddress.id });
     this.setState({ lan: window.localStorage.getItem('lan') });
     this.setState({timelineNum : data.timeline.length});
-    // this.setState({originalTimeline : data.timeline});
+    this.setState({originalTimeline : data.timeline});
   }
 
     /**
