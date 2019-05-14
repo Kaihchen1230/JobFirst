@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Modal, Divider} from 'antd';
 import { Link } from 'gatsby';
 import { I18n } from 'aws-amplify';
-import * as Util from '../../jobDescriptionUnitTest/jobDescriptionUtil';
+import * as Util from '../../test/jobDescriptionUnitTest/jobDescriptionUtil';
 const { Column } = Table;
 
 

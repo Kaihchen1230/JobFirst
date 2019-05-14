@@ -6,7 +6,7 @@ packages/*/package-lock.json
 .env.development
 .env.staging
 .env.production
-
+.env.staging
 # Logs
 logs
 *.log

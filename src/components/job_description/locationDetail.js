@@ -28,7 +28,7 @@ const location = (props) => {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
         params:{
             address: jobAddress,
-            key: process.env.API_KEY
+            key: 'AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E'
         }
     })
     .then((response) => {
@@ -53,7 +53,7 @@ const location = (props) => {
                 
             />
         </GoogleMap>
-        )};
+        };
     
     const WrappedMap = withScriptjs(withGoogleMap(Map));    
 
@@ -64,7 +64,7 @@ const location = (props) => {
             </h2>
             <div style={{width: "80vw", height:"80vh"}}>
             <WrappedMap
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.API_KEY}`}
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E`}
                 loadingElement={<div style={{height: "100%"}} />}
                 loadingElement={<div style={{height: "100%"}}/>}
                 containerElement={<div style={{height: "100%"}} />}
