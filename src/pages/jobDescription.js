@@ -125,11 +125,21 @@ class JobDescription extends React.Component{
             currentEnglishLevel = tempEnglishLevel
           }
 
-          let tempName = getApplicants[i].Employee.firstName;
+          let tempFirstName = getApplicants[i].Employee.firstName;
           console.log('this is getApplicants[i].Employee.name: ', getApplicants[i].Employee.firstName);
+          tempFirstName  === null? tempFirstName = ' ': tempFirstName = tempFirstName;
+          
+          console.log('this is getApplicants[i].Employee.last name: ', getApplicants[i].Employee.lastName);
+          let tempLastName = getApplicants[i].Employee.lastName;
+          tempLastName === null? tempLastName = ' ' : tempLastName = tempLastName;
+          console.log('this is tempLastName: ', tempLastName);
 
+          let tempName = tempFirstName + ' ' + tempLastName;
+          console.log('this is tempName: ', tempName);
           let currentName;
-          tempName === null? currentName = 'N/A' : currentName = tempName;
+          tempName? currentName = tempName : currentName = 'N/A';
+
+          console.log('this is currentName: ', currentName);
 
           let tempAddress = getApplicants[i].Employee.address;
           console.log('this is getApplicants[i].Employee.address: ', getApplicants[i].Employee.address);
