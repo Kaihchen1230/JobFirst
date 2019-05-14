@@ -264,21 +264,12 @@ class JobDescription extends React.Component{
         if(this.state.loading){
           <Skeleton active />
         }
-
-<<<<<<< HEAD
-        return(
-          <div>
-            <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
-                <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
-                <div>
-                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
-                </div>
-=======
+          
         console.log('it comes to render first');
         console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
-          let content = this.state.companyInfo.description;
+          
           viewCompanyInfo = (<Popover content={content}>
                   <div >
                     <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
@@ -312,7 +303,6 @@ class JobDescription extends React.Component{
             <Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
                 <h2 className="jobTitle">{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
->>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
                 <Popover content={"We will use your default information to apply to the job"} >
                 
                 {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
