@@ -51,10 +51,8 @@ const location = (props) => {
         // this default location is NYC
         defaultCenter={{ lat: 40.7127837, lng:-74.0059413 }}>
             <Marker 
-                position={geometry}
-                onClick ={() => {
-                    setSelectedMark(jobAddress);
-                }}
+                position={{lat: parseFloat(geometry.lat), lng: parseFloat(geometry.lng)}}
+                
             />
 
         </GoogleMap>
