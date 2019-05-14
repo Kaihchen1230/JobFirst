@@ -53,7 +53,7 @@ const location = (props) => {
                 
             />
         </GoogleMap>
-        )};
+        };
     
     const WrappedMap = withScriptjs(withGoogleMap(Map));    
 
