@@ -44,14 +44,14 @@ const location = (props) => {
     });
 
     function Map(){
-        return( 
-            <GoogleMap 
-                defaultZoom={10} 
-                // this default location is NYC
-                defaultCenter={{ lat: 40.7127837, lng:-74.0059413 }}>
-                    <Marker 
-                        position={geometry}
-                    />
+        return <GoogleMap 
+        defaultZoom={10} 
+        // this default location is NYC
+        defaultCenter={{ lat: 40.7127837, lng:-74.0059413 }}>
+            <Marker 
+                position={{lat: parseFloat(geometry.lat), lng: parseFloat(geometry.lng)}}
+                
+            />
         </GoogleMap>
         )};
     

@@ -12,7 +12,6 @@ import CompanyVideo from "../components/business_profile/video";
 import PhotoUpload from "../components/user_profile/photoUploader";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n, Storage } from "aws-amplify";
-import nodataImg from '../../static/nodata.png';
 import '../style/businessProfile.css';
 
 const TabPane = Tabs.TabPane;
