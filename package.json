@@ -54,6 +54,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jest-puppeteer": "^4.1.1",
+    "jsdoc": "^3.6.2",
     "puppeteer": "^1.14.0",
     "react-test-renderer": "^16.8.6"
   },
