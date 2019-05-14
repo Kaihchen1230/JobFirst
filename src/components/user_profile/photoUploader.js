@@ -6,6 +6,8 @@ import './photo.css';
 import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
 import { getUser } from '../../services/auth';
+import "./photo.css";
+import "../../style/userProfile.css";
 
 const UploadForm = Form.create({ name: 'upload_photo' })(
     // eslint-disable-next-line
@@ -28,8 +30,8 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                 <Modal
                     visible={visible}
                     title={I18n.get("Upload A New Profile Picture")}
-                    okText="Done"
-                    cancelText="Cancel"
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
@@ -68,7 +70,7 @@ const UploadForm = Form.create({ name: 'upload_photo' })(
                         >
                             {formFileList.length >= 1 ? null : uploadButton}
                         </Upload>
-                        <Button type="primary" onClick={onReset}>Reset To Default</Button>
+                        <Button type="primary" onClick={onReset}>{I18n.get("Reset to Default")}</Button>
                         <Modal visible={formPreviewVisible} footer={null} onCancel={onFormCancel}>
                             <img alt="example" style={{ width: '100%' }} src={formPreviewImage} />
                         </Modal>
@@ -192,18 +194,16 @@ class PhotoUploader extends React.Component {
 
     render() {
         let buttonStyle ={
-            backgroundColor:"#1890ff",
+            backgroundColor:"#1BB28b",
             color:"white",
-            position: "absolute",
-            left:"83.8%",
-            top:"6%"
         }
-        console.log("is business",this.props.isBusiness)
         return (
             <div>
                 {this.props.isBusiness ?
-                    <Button style ={buttonStyle} onClick={this.showModal}>{I18n.get('Upload A New Logo')}</Button>:
-                    <Button ghost type='ghost' onClick={this.showModal}>{I18n.get('Upload A New Profile Picture')}</Button>
+                    <Button className = "userButton" onClick={this.showModal}>{I18n.get('Upload A New Logo')}</Button>:
+                    <Button className='modify-info-button' ghost type='ghost' onClick={this.showModal}>
+                        <Icon type="upload"/>{I18n.get('Upload A New Profile Picture')}
+                    </Button>
                 }
                 
                 <UploadForm

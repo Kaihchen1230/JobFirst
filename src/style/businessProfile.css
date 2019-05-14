@@ -2,19 +2,15 @@ body{
     background-color: #fcfcfc
 }
 
-.banner{
+.bannerOne{
     margin-top: 1%;
     background-color: rgba(219, 216, 216, 0.719);
     height:35vh;
-    display: -webkit-flex; /* Safari */
-    display: flex;
-    background-image: url("https://media.licdn.com/dms/image/C561BAQETzs7aDRZb1Q/company-background_10000/0?e=1556996400&v=beta&t=GE3NBOeyDDj0fVG9FadNzOGo_ebtiuR6KT3nWbF60VA");
+    background-image: url("../../static/banner.jpg");
     background-repeat: no-repeat;
-    background-position: center 40%;
     background-size: cover;
     background-position: center;
 }
-
 
 .secBanner{
     display: flex;
@@ -33,21 +29,55 @@ body{
     width:20%;
 }
 
-.editButton{
-    position: absolute;
-    left:88%;
-    top:2%;
-}
-
-.uploadButton{
-    position: absolute;
-    left:188%;
-    top:2%;
-}
-
 .row1,.row2{
     display: -webkit-flex; /* Safari */
     display: flex;   
 }
 
+.ant-layout-content{
+    background-color: white;
+}
+.busEditButton, .busEditButton:focus{
+    margin-left:37%;
+    margin-bottom:10%;
+    background-color:#1BB28b;
+    color:white
+}
 
+.ant-tabs-nav{
+    color:black
+}
+
+.ant-tabs-nav .ant-tabs-tab-active{
+    color:black
+}
+
+/*
+Edit button edit effect
+ */
+
+.busEditButton:hover{
+    background-color:#F0BF5F;
+    color:black
+}
+
+/*
+For Edit and upload button 
+ */
+.busButtonGroup{
+    position:relative;
+    margin-top:1%;
+    left:50vw
+}
+
+@media only screen and (max-width: 1400px) {
+    .busButtonGroup{
+        left:40vw
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .busButtonGroup{
+        left:30vw
+    }
+}

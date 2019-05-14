@@ -6,6 +6,8 @@ import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getLanguage } from "../../services/auth";
+import "../../style/userProfile.css";
+
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     class extends React.Component {
@@ -17,62 +19,63 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Add Your Address"
-                    okText="Add"
+                    title={I18n.get("Add Your Address")}
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Line 1">
+                        <Form.Item label={I18n.get("Line 1")}>
                             {getFieldDecorator('line1')(
-                                <Input placeholder={I18n.get('Street Address Line 1')}
+                                <Input placeholder={I18n.get('Enter the first line of the street address')}
                                     name="line1"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the first line of the street address.')}>
+                                        <Tooltip title={I18n.get('Enter the first line of the street address')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="Line 2">
+                        <Form.Item label={I18n.get("Line 2")}>
                             {getFieldDecorator('line2')(
-                                <Input placeholder={I18n.get('Street Address Line 2')}
+                                <Input placeholder={I18n.get('Enter the second line of the street address')}
                                     name="line2"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the second line of the street address.')}>
+                                        <Tooltip title={I18n.get('Enter the second line of the street address')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="City">
+                        <Form.Item label={I18n.get("City")}>
                             {getFieldDecorator('city')(
-                                <Input placeholder={I18n.get('City')}
+                                <Input placeholder={I18n.get('Enter the name of the city')}
                                     name="city"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the name of the city.')}>
+                                        <Tooltip title={I18n.get('Enter the name of the city')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="Postal Code">
+                        <Form.Item label={I18n.get("Postal Code")}>
                             {getFieldDecorator('postalCode')(
-                                <Input placeholder={I18n.get('Postal Code')}
+                                <Input placeholder={I18n.get('Enter the postal code')}
                                     name="postalCode"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the postal code.')}>
+                                        <Tooltip title={I18n.get('Enter the postal code')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
                             )}
                         </Form.Item>
-                        <Form.Item label="State">
+                        <Form.Item label={I18n.get("State")}>
                             {getFieldDecorator('state')(
-                                <Input placeholder={I18n.get('State')}
+                                <Input placeholder={I18n.get('Enter the name of the state')}
                                     name="state"
                                     suffix={
-                                        <Tooltip title={I18n.get('Enter the name of the state.')}>
+                                        <Tooltip title={I18n.get('Enter the name of the state')}>
                                             <Icon type="info-circle" />
                                         </Tooltip>}
                                 />
@@ -128,6 +131,7 @@ class CreateAddressForm extends React.Component {
             }
             form.resetFields();
             this.setState({ visible: false });
+            window.location.reload();
         })
     }
     saveFormRef= (formRef) => {
@@ -139,7 +143,8 @@ class CreateAddressForm extends React.Component {
         I18n.setLanguage(this.state.lan);
         return (
             <div>
-                <Button ghost onClick={this.showModal}>{I18n.get('Add Your Address')}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="home" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get('Add Your Address')}</Button>
                 <CollectionCreateForm 
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}

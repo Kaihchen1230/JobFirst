@@ -1,0 +1,16 @@
+.jobItemButton:hover{
+    background-color:#F0BF5F;
+    color:black;
+    border-color:#F0BF5F
+}
+
+.jobItemButton{
+    background-color:#1BB28B;
+    color:white
+}
+
+.jobItemLink{
+    transition-delay: 10000s;
+    color:white
+}
+  

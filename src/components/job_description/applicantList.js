@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Modal, Divider} from 'antd';
 import { Link } from 'gatsby';
-import * as Util from '../../jobDescriptionUnitTest/jobDescriptionUtil';
+import * as Util from '../../test/jobDescriptionUnitTest/jobDescriptionUtil';
 const { Column } = Table;
 
 

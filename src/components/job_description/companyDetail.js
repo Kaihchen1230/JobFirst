@@ -6,9 +6,9 @@ const companyDetail = (props) => {
     let companyInfo = {...props.companyInfo};
     console.log(companyInfo);
     let companyInfoPiece = (
-        <div>
-            <h2>Overview: </h2>
-            <Button>
+        <div style={{fontSize:"1.2em"}}>
+            <h3>Overview: </h3>
+            <Button style ={{color:"white", backgroundColor:"#1BB28B"}}>
                 <Link to={"/app/business-profile/"+companyInfo.id}>
                     Learn more
                 </Link>
@@ -51,7 +51,7 @@ const companyDetail = (props) => {
             </Col>
             </Row>
 
-            <h2>Contact:</h2>
+            <h3>Contact:</h3>
             <Row gutter={12}>
             <Col span={2}>
                     <div>Telephone</div>

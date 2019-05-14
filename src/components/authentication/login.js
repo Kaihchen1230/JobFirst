@@ -129,12 +129,9 @@ class Login extends React.Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button style={{backgroundColor:"#1BB28B"}} type="primary" htmlType="submit" className="login-form-button">
               {I18n.get('Log in')}
             </Button>
-            <br />
-            <br />
-            <a className="login-form-forgot" href="">{I18n.get('Forgot Password?')}</a>
             <br />
             <a href="/app/signup">{I18n.get('Register Now')}</a>
           </Form.Item>

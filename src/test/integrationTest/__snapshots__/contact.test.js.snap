@@ -4,21 +4,26 @@ exports[`Contact page screenshot test Contact page should render correctly 1`] =
 <div
   align="center"
   className="mainDiv"
+  style={
+    Object {
+      "backgroundImage": "url('https://images.pexels.com/photos/990818/pexels-photo-990818.jpeg?cs=srgb&dl=agenda-analysis-business-plan-990818.jpg&fm=jpg')",
+      "backgroundSize": "cover",
+    }
+  }
 >
   <br />
   <h1
     align="center"
     className="title"
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "3em",
+      }
+    }
   >
     Contact Us
   </h1>
-  <br />
-  <p
-    align="center"
-    className="description"
-  >
-    You can get in touch with us at any time for 24/7 support and troubleshooting.
-  </p>
   <br />
   <br />
   <Column
@@ -35,8 +40,8 @@ exports[`Contact page screenshot test Contact page should render correctly 1`] =
           size="default"
           style={
             Object {
-              "backgroundColor": "#C2C5C4",
-              "border": "solid",
+              "backgroundColor": "#fcfcfc",
+              "border": "2px solid black",
               "borderRadius": 15,
               "height": 210,
             }
@@ -68,8 +73,8 @@ exports[`Contact page screenshot test Contact page should render correctly 1`] =
           size="default"
           style={
             Object {
-              "backgroundColor": "#C2C5C4",
-              "border": "solid",
+              "backgroundColor": "#fcfcfc",
+              "border": "2px solid black",
               "borderRadius": 20,
               "height": 210,
               "width": 250,

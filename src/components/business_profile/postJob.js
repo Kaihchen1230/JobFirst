@@ -6,7 +6,7 @@ import image1 from '../../../static/3.jpg';
 import image2 from '../../../static/4.jpg';
 import image3 from '../../../static/businessImages/business0.jpg';
 import image4 from '../../../static/businessImages/business1.jpg';
-
+import nodataImg from '../../../static/nodata.png';
 
 const { Meta } = Card;
 
@@ -25,11 +25,11 @@ const JobItem = (props) => {
                     <Meta
                         avatar={<Avatar src={props.companyLogo} />}
                         title={item.jobTitle}
-                        description={item.description}
+                        description={item.description && item.description.substring(0,100)}
                     />
                     <p></p>
                     <div align="center">
-                        <Button type="primary" ghost>
+                        <Button  style={{color:"#1BB28b", border:"1px solid #1BB28b"} }ghost>
                             <Link 
                                 to={jobLink}
                                 state={{ id: item.id}}>
@@ -43,7 +43,7 @@ const JobItem = (props) => {
 
     );
     return (
-        <div style={{ background: '#ECECEC', padding: '30px' }}>
+        <div style={{ background: '#ECECEC', padding: '30px', marginBottom:"5%" }}>
             <Row gutter={16}>
                 {jobItem}
             </Row>
@@ -56,10 +56,12 @@ const postJob = (props) => {
     return (
         <Layout>
             <Content>
+                {props.jobList.length >=1 ?                 
                 <JobItem
                     jobs={props.jobList}
                     companyLogo={props.companyLogo}
-                />
+                />:
+                <img style={{marginLeft:"38%", width:"20%"}} src={nodataImg}/>}
             </Content>
         </Layout>
     )

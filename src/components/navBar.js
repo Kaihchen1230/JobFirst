@@ -8,6 +8,8 @@ import { withAuthenticator } from 'aws-amplify-react'
 import NewLogin from './authentication/new_login';
 import dict from "./dictionary/dictionary";
 import { setLanguage, getLanguage } from "../services/auth";
+import "../style/nav.css"
+import Logo from '../../static/logo.png';
 
 const { Header, Content, Footer } = Layout;
 const navBar = (props) => {
@@ -22,11 +24,11 @@ const navBar = (props) => {
     state.login =
       <span>
         <Avatar 
-          style={{ marginBottom:"5px" }}
+          style={{ margin:"5px 0" }}
           shape="square" 
           size={38} 
           src ="https://gifimage.net/wp-content/uploads/2018/11/user-gif-4.gif" />
-        <span>{"   " + getUser().username}</span>
+        <span style={{position:"relative", top:"0.4vw"}}>{"   " + getUser().username}</span>
       </span>
   }
   I18n.putVocabularies(dict);
@@ -39,12 +41,11 @@ const navBar = (props) => {
   const language_menu = (
     <Menu>
       <Menu.Item>
-        <Button id="english-button" type="primary" onClick={()=> {setLanguage('es')}}>ENGLISH - 英语</Button>
+        <Button id="english-button" style={{color:"#1BB28B", border:"1px solid #1BB28B"}} onClick={()=> {setLanguage('es')}}>ENGLISH - 英语</Button>
       </Menu.Item>
 
-      
       <Menu.Item>
-        <Button id="chinese-button" type="primary" onClick={()=> {setLanguage('ch')}}>CHINESE - 中文</Button>
+        <Button id="chinese-button" style={{background:"#1BB28B",color:"white", border:"1px solid #1BB28B"}} onClick={()=> {setLanguage('ch')}}>CHINESE - 中文</Button>
       </Menu.Item>
       {/* <Menu.Item>
         <Button id="chinese-button" type="primary" onClick={() => {
@@ -58,26 +59,26 @@ const navBar = (props) => {
   return (
     <Layout align="center">
       <Header style={{ position: 'fixed', width: '100%', height: '30px', zIndex: 1, padding: "5px 0" }}>
+        <img src = {Logo} style={{width:"13%", position:"absolute", left:"0%"}}></img>
         <Menu
           mode="horizontal"
           theme="dark"
-          style={{}}
+          style={{textAlign: "right"}}
         >
           <Menu.Item key="home" >
-            <Icon type="home" theme="outlined" style={{ style }} />
             {I18n.get('Home')}
             <Link to="/"></Link>
           </Menu.Item>
 
           <Menu.Item key="about">
-            <Icon type="solution" theme="outlined" />{I18n.get('View Job')}
+            {I18n.get('View Job')}
             <Link to="/app/job-list"></Link>
           </Menu.Item>
 
           {isLoggedIn() ? 
             getUser()["custom:isEmployer"] === "yes" ?
               <Menu.Item>
-                <Icon type="file-add" theme="outlined" />{I18n.get('Post a New Job')}
+                {I18n.get('Post a New Job')}
                 <Link to="/app/postJob"></Link>
               </Menu.Item>: null : null
           }
@@ -88,7 +89,7 @@ const navBar = (props) => {
           </Menu.Item> */}
 
           <Menu.Item key="contact">
-            <Icon type="mail" theme="outlined" />{I18n.get('Contact Us')}
+            {I18n.get('Contact Us')}
             <Link to="/app/contact"></Link>
           </Menu.Item>
 
@@ -96,7 +97,7 @@ const navBar = (props) => {
           {!isLoggedIn() ? (
             <Menu.Item>
               <Link to="/app/signup">
-                <Button type="primary">{I18n.get('Register')}</Button>
+                <Button style={{backgroundColor:"#1BB28B"}} type="primary">{I18n.get('Register')}</Button>
               </Link>
             </Menu.Item>
           ) : null
@@ -128,13 +129,14 @@ const navBar = (props) => {
                   .then(logout(() => navigate(`/`)))
                   .catch(err => console.log('error: ', err))
               }}>
-              <Icon type="logout" theme="outlined" />{I18n.get('Logout')}
+              {I18n.get('Logout')}
         </Menu.Item>
           ) : null}
 
           <Menu.Item>
             <Dropdown overlay={language_menu}>
-              <Button id="lanButton">{I18n.get('Language')}</Button>
+              <Button id="lanButton" style={{color:"#1BB28B", border:"1px solid #1BB28B"}}>
+                      {I18n.get('Language')}</Button>
             </Dropdown>
           </Menu.Item>
         </Menu>

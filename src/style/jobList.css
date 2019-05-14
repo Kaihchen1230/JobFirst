@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.ant-layout-header{
+    background-color: white;
+}
+
+.ant-input-group-addon .ant-btn-primary{
+    background-color:#1BB28b;
+    color:white
+
+}
+
+.ant-btn-primary:hover{
+    background-color:#F0BF5F;
+    color:black
+}
+
+.banner{
+    margin-top: 1%;
+    height:45vw;
+    width:57vw;
+    background-image: url("../../static/home.png");
+    background-repeat: no-repeat;
+    background-position: 0% 45%;
+    margin-top: 1%;
+    background-color: rgba(219, 216, 216, 0.719);
+    background-size: cover;
+}
+
+.colOne{
+    margin: 10% 0 0 5%;
+    text-Align:left
+}
+
+.slogon{
+   
+    padding-top: 5%;
+    font-weight: bold;
+    font-size: 2.2em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.slogon2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    line-height: 130%;
+}
+
+.buttonGroup{
+    margin-top: 10%
+}
+
+/* slogon button "I want to hire"  */
+.slogonButton{
+    background:#1BB28B;
+    color:white;
+    border:1px solid #1BB28B;
+    padding:2%;
+    font-size:1.3em;
+    height:2.5em;
+    border-radius: 5px;
+}
+
+/* slogon button "I want to work" */
+.slogonButton2{
+    margin:5%;
+    padding:2%;
+    background:white;
+    color:#1BB28B;
+    border:1px solid #1BB28B;
+    width:32%;
+    font-size:1.3em;
+    height:2.5em;
+    border-radius: 5px;
+}
+
+/* apply button */
+.applyButton{
+    background:#1BB28B;
+    color:white;
+    border:1px solid #1BB28B;
+    padding:2%;
+    font-size:1.3em;
+    height:2.5em;
+    border-radius: 5px;
+}
+
+/* apply button */
+.applyButton:hover{
+    background-color:#F0BF5F;
+    color: black
+}
+
+/*  reset button */
+.resetButton{
+    background:#1BB28B;
+    color:white;
+    border:1px solid #1BB28B;
+    padding:0.3%;
+    font-size:1.3em;
+    border-radius: 5px;
+    height:2.2em;
+}
+
+/*  reset button */
+.resetButton:hover{
+    background-color:#F0BF5F;
+    color: black
+}

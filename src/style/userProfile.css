@@ -1,0 +1,11 @@
+
+/* the button to modify personal infomation in the sidebar */
+.modify-info-button {
+    border: none;
+    font-size: 17px;
+}
+
+/* use for the label in the general info */
+.basic-info-label {
+    font-size: 16px;
+}

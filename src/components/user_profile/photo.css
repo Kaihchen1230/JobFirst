@@ -7,3 +7,17 @@
   margin-top: 8px;
   color: #666;
 }
+
+
+.userButton, .userButton:focus{
+  background-color:#1BB28b;
+  color: white
+  
+}
+
+.userButton:hover{
+  background-color:#F0BF5F;
+  color: black
+}
+
+

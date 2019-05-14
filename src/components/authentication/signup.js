@@ -2,7 +2,7 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import { Auth, I18n } from 'aws-amplify';
 import Error from './Error'
-import { isLoggedIn } from '../../services/auth';
+import { isLoggedIn, getUser } from '../../services/auth';
 import { Radio, Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 
 const RadioGroup = Radio.Group;
@@ -67,7 +67,7 @@ class Signup extends React.Component {
     
     render() {
         if (isLoggedIn()) {
-            navigate(`/app/user-profile`)
+            navigate(`/app/user-profile/${getUser().sub}`)
         }
         return (
             <div align="center">
@@ -130,8 +130,8 @@ class Signup extends React.Component {
                                         <Radio value={'no'}>{I18n.get('I Want to Work')}</Radio>
                                     </RadioGroup>
                                 </Form.Item>
-                                <Button onClick={this.signUp} type="primary">
-                                    <span id="sign-up">{I18n.get('Register')}</span>
+                                <Button style={{backgroundColor:"#1BB28B"}} onClick={this.signUp} type="primary">
+                                    <span id="sign-up" >{I18n.get('Register')}</span>
                                 </Button>
                             </Form>
                         </div>
@@ -147,9 +147,10 @@ class Signup extends React.Component {
                                 name='authCode'
                                 value={this.state.authCode}
                             />
-                            <div onClick={this.confirmSignUp}>
+                            <br/>
+                            <Button style={{backgroundColor:"#1BB28B", color:"white", marginTop:"1%"}} onClick={this.confirmSignUp}>
                                 <span>Confirm Sign Up</span>
-                            </div>
+                            </Button>
                         </div>
                     )
                 }

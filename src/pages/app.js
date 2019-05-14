@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import PrivateRoute from "../components/authentication/privateRoute"
 import Login from "../components/authentication/login"
 import businessProfile from "./businessProfile"
-import PostJob from "../components/form/postJob";
+import PostJob from "../components/form/newPostJob";
 import Home from '../components/Home/home';
 import Profile from "./userProfile";
 import JobList from './jobList';
@@ -15,6 +15,7 @@ import SignUp from '../components/authentication/signup';
 import TalentList from '../pages/talentsList';
 import Photo from './photo.js';
 import "antd/dist/antd.css";
+import "../style/app.css"
 
 
 const App = () => (

@@ -1,32 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Business profile screenshot test Business profile should render correctly 1`] = `
-<div
+<Spin
+  size="default"
+  spinning={true}
   style={
     Object {
-      "alignItems": "center",
-      "justifyContent": "center",
-      "margin": "auto",
-      "width": "60%",
+      "left": "45%",
+      "position": "absolute",
+      "top": "30%",
     }
   }
->
-  <h1>
-    Company: aplipap;
-  </h1>
-  <profileCard />
-  <h2>
-    Location:NY USA
-  </h2>
-  <h1>
-    About us
-  </h1>
-  <div>
-    At AWS, we believe nothing should stand in a builder’s way, and dreams never have to turn off. We’re a company of builders, innovators and creators. Our employees experience unparalleled ownership and impact on our products, and are empowered to innovate and deliver. If you want to build the future with AWS, we’d love to hear from you.
-  </div>
-  <h2>
-    TimeLine
-  </h2>
-  <timeLine />
-</div>
+  tip="Please wait for a moment"
+  wrapperClassName=""
+/>
 `;

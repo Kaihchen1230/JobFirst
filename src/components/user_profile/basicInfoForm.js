@@ -4,6 +4,7 @@ import {
 } from 'antd';
 import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
+import "../../style/userProfile.css";
 
 let id = 0;
 
@@ -36,12 +37,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             const formItems = keys.map((k, index) => (
                 <Form.Item
                     {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={index === 0 ? 'Languages' : ''}
+                    label={index === 0 ? I18n.get('Languages') : ''}
                     required={false}
                     key={k}
                 >
                     {getFieldDecorator(`languages[${k}]`)(
-                        <Input placeholder="Language" style={{ width: '60%', marginRight: 8 }} />
+                        <Input placeholder={I18n.get("Language")} style={{ width: '60%', marginRight: 8 }} />
                     )}
                     {keys.length > 1 ? (
                         <Icon
@@ -56,55 +57,56 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="Modify Basic Info"
-                    okText="Done"
+                    title={I18n.get("Modify Basic Info")}
+                    okText={I18n.get("Update")}
+                    cancelText={I18n.get("Cancel")}
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
                     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
-                        <Form.Item label="First Name">
+                        <Form.Item label={I18n.get("First Name")}>
                             {getFieldDecorator('firstName', { initialValue: userInfo.firstName })(
                                 <Input placeholder={userInfo.firstName}/>
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Middle Name">
+                        <Form.Item label={I18n.get("Middle Name")}>
                             {getFieldDecorator('middleName', { initialValue: userInfo.middleName })(
                                 <Input placeholder={userInfo.middleName}/>
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Last Name">
+                        <Form.Item label={I18n.get("Last Name")}>
                             {getFieldDecorator('lastName',{ initialValue: userInfo.lastName })(
                                 <Input placeholder={userInfo.lastName}/>
                             )}
                         </Form.Item>
 
-                        <Form.Item label="Age">
+                        <Form.Item label={I18n.get("Age")}>
                             {getFieldDecorator('age', { initialValue: userInfo.age })(
                                 <InputNumber min={15} max={100} />
                             )}
                         </Form.Item>
 
-                        <Form.Item label="English Level">
+                        <Form.Item label={I18n.get("English Level")}>
                             {getFieldDecorator('englishLevel', { initialValue: userInfo.englishLevel })(
                                 <Select
                                     placeholder="Select what best describe your english level">
-                                    <Option value="Beginner">Beginner</Option>
-                                    <Option value="Elementary">Elementary</Option>
-                                    <Option value="Pre-intermediate">Pre-intermediate</Option>
-                                    <Option value="Intermediate">Intermediate</Option>
-                                    <Option value="Upper-intermediate">Upper-intermediate</Option>
-                                    <Option value="Advanced">Advanced</Option>
+                                    <Option value="Beginner">{I18n.get("Beginner")}</Option>
+                                    <Option value="Elementary">{I18n.get("Elementary")}</Option>
+                                    <Option value="Pre-intermediate">{I18n.get("Pre-intermediate")}</Option>
+                                    <Option value="Intermediate">{I18n.get("Intermediate")}</Option>
+                                    <Option value="Upper-intermediate">{I18n.get("Upper-intermediate")}</Option>
+                                    <Option value="Advanced">{I18n.get("Advanced")}</Option>
                                 </Select>
                             )}
                         </Form.Item>
 
                         {/* spoken langauge */}
                         {formItems}
-                        <Form.Item label="Language">
+                        <Form.Item label={I18n.get("Language")}>
                             <Button type="dashed" onClick={add} style={{ width: '60%' }}>
-                                <Icon type="plus" /> Add language
+                                <Icon type="plus" /> {I18n.get("Add Language")}
                             </Button>
                         </Form.Item>
                         
@@ -119,7 +121,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                             )}
                         </Form.Item> */}
 
-                        <Form.Item label="Phone">
+                        <Form.Item label={I18n.get("Phone")}>
                             {getFieldDecorator('phone', { initialValue: userInfo.phone })(
                                 <Input placeholder={userInfo.phone}/>
                             )}
@@ -221,7 +223,8 @@ class BasicInfoForm extends React.Component {
     render() {
         return (
             <div>
-                <Button ghost onClick={this.showModal}>Modify Basic Info</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="file-text" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get("Modify Basic Info")}</Button>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}

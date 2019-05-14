@@ -6,6 +6,7 @@ import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getLanguage } from "../../services/auth";
+import "../../style/userProfile.css";
 
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
@@ -149,6 +150,7 @@ class AddExpForm extends React.Component {
             }
             form.resetFields();
             this.setState({ visible: false });
+            window.location.reload();
         });
     }
 
@@ -161,7 +163,8 @@ class AddExpForm extends React.Component {
         I18n.setLanguage(this.state.lan);
         return (
             <div>
-                <Button ghost onClick={this.showModal}>{I18n.get('Add Experience or Skill')}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="thunderbolt" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get('Add Experience or Skill')}</Button>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
