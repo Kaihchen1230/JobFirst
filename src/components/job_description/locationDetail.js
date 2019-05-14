@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Geocode from "react-geocode";
 import axios from 'axios'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
@@ -8,7 +7,6 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'reac
 
 const location = (props) => {
 
-    const [selectedMark, setSelectedMark] = useState(null);
     let locationValues = Object.values({...props.locationInfo});
 
     // remove address id from the array
@@ -54,9 +52,8 @@ const location = (props) => {
                 position={{lat: parseFloat(geometry.lat), lng: parseFloat(geometry.lng)}}
                 
             />
-
         </GoogleMap>
-    };
+        )};
     
     const WrappedMap = withScriptjs(withGoogleMap(Map));    
 
