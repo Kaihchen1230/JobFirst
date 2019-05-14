@@ -270,7 +270,7 @@ class JobDescription extends React.Component{
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
           
-          viewCompanyInfo = (<Popover content={content}>
+          viewCompanyInfo = (
                   <div >
                     <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
                     <span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}</span>
@@ -279,7 +279,7 @@ class JobDescription extends React.Component{
                       <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
                     </div>
                   </div>
-            </Popover>)
+            )
         }else{
           console.log('it is null');
           viewCompanyInfo = (
@@ -318,13 +318,8 @@ class JobDescription extends React.Component{
                 link = "/app/user-profile/"
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
-<<<<<<< HEAD
-              <Tabs defaultActiveKey="1" > 
-                  <TabPane tab={I18n.get('Job Info')} key="1" >
-=======
               <Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
                   <TabPane tab="Job" key="1" >
->>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
                       <div>
                           <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                       </div>
