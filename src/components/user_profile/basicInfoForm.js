@@ -37,12 +37,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             const formItems = keys.map((k, index) => (
                 <Form.Item
                     {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={index === 0 ? 'Languages' : ''}
+                    label={index === 0 ? I18n.get('Languages') : ''}
                     required={false}
                     key={k}
                 >
                     {getFieldDecorator(`languages[${k}]`)(
-                        <Input placeholder="Language" style={{ width: '60%', marginRight: 8 }} />
+                        <Input placeholder={I18n.get("Language")} style={{ width: '60%', marginRight: 8 }} />
                     )}
                     {keys.length > 1 ? (
                         <Icon

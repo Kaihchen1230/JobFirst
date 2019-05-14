@@ -8,7 +8,7 @@ const General = (props) => {
 
     let address = props.address.data.getAddress;
     let addressLine = address != null ? `${address.line1}` + " " + `${address.line2}` + ", " + `${address.city}` + ", " 
-    + `${address.state}` + ", " + `${address.postalCode}` : "(No Address Provided)"
+    + `${address.state}` + ", " + `${address.postalCode}` : "(" + I18n.get("No Address Provided") + ")"
 
     let total = 8;
     let count = 0;

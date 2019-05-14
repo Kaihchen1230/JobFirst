@@ -136,7 +136,7 @@ class Home extends React.Component {
                     >
                         {I18n.get('Where immigrants with degrees find their jobs.')}
                         <div>
-                        <Button className="custom-button" ghost onClick={() => navigate('/app/job-list')}>Click to view jobs</Button>
+                        <Button className="custom-button" ghost onClick={() => navigate('/app/job-list')}>{I18n.get('Click to view jobs')}</Button>
                         </div>
                         
                     </TweenOne>
@@ -163,7 +163,7 @@ class Home extends React.Component {
                     >
                         {I18n.get('Where companies find talents.')}
                         <div>
-                        <Button className="custom-button" ghost onClick={() => navigate('/app/talent-list')}>Click to see them</Button>
+                        <Button className="custom-button" ghost onClick={() => navigate('/app/talent-list')}>{I18n.get('Click to see them')}</Button>
                         </div>
                     </TweenOne>
                 </Element>
@@ -189,7 +189,7 @@ class Home extends React.Component {
                     >
                         {I18n.get('Get Started Today.')}
                         <div>
-                        <Button className="custom-button" ghost onClick={() => navigate('/app/signup')}>Register Now</Button>
+                        <Button className="custom-button" ghost onClick={() => navigate('/app/signup')}>{I18n.get('Register now')}</Button>
                         </div>
                     </TweenOne>
                 </Element>

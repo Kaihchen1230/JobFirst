@@ -63,6 +63,7 @@ let dict = {
         "I Want to Hire": "我想雇用",
         "I Want to Work": "我想要工作",
         "Language": "语言",
+        "Languages": "语言",
         "Logout": "登出",
         "General Info": "基本信息",
         "Education and Awards": "教育和奖励",
@@ -154,7 +155,12 @@ let dict = {
         "Upper-intermediate": "上部中间",
         "Advanced": "高级",
         "Add Language": "添加语言",
-        "Reset to Default": "重置为默认"
+        "Reset to Default": "重置为默认",
+        "Address": "地址",
+        "No Address Provided": "没有提供地址",
+        "Click to view jobs": "点击查看工作",
+        "Click to see them": "点击查看它们",
+        "Register now": "现在注册"
     },
     'es': {
         'Sign In': "Sign In",
@@ -220,6 +226,7 @@ let dict = {
         "I Want to Hire": "I Want to Hire",
         "I Want to Work": "I Want to Work",
         "Language": "Language",
+        "Languages": "Languages",
         "Logout": "Logout",
         "General Info": "General Info",
         "Education and Awards": "Education and Awards",
@@ -311,7 +318,12 @@ let dict = {
         "Upper-intermediate": "Upper-intermediate",
         "Advanced": "Advanced",
         "Add Language": "Add Language",
-        "Reset to Default": "Reset to Default"
+        "Reset to Default": "Reset to Default",
+        "Address": "Address",
+        "No Address Provided": "No Address Provided",
+        "Click to view jobs": "Click to view jobs",
+        "Click to see them": "Click to see them",
+        "Register now": "Register now"
     }
 };
 export default dict;
