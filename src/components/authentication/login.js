@@ -106,8 +106,8 @@ class Login extends React.Component {
   }
 
   render() {
-    I18n.putVocabularies(dict);
-    I18n.setLanguage(this.state.language);
+    // I18n.putVocabularies(dict);
+    // I18n.setLanguage(this.state.language);
     const { getFieldDecorator } = this.props.form;
     return (
       <div align='center'>
