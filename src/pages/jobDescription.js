@@ -268,7 +268,7 @@ class JobDescription extends React.Component{
         console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
-          
+          let content = this.state.companyInfo.description;
           viewCompanyInfo = (
                   <div >
                     <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
@@ -278,7 +278,7 @@ class JobDescription extends React.Component{
                       <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
                     </div>
                   </div>
-            )
+           )
         }else{
           console.log('it is null');
           viewCompanyInfo = (
