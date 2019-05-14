@@ -5,7 +5,7 @@ import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
 import PopOutWindow from '../components/job_description/popOutWindow';
-import { Auth, API, graphqlOperation } from 'aws-amplify';
+import { Auth, API, graphqlOperation, I18n } from 'aws-amplify';
 import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
@@ -265,6 +265,15 @@ class JobDescription extends React.Component{
           <Skeleton active />
         }
 
+<<<<<<< HEAD
+        return(
+          <div>
+            <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
+                <h2 style = {{margin: '10px 0'}}>{this.state.jobInfo.title}</h2>
+                <div>
+                  {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
+                </div>
+=======
         console.log('it comes to render first');
         console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
@@ -303,6 +312,7 @@ class JobDescription extends React.Component{
             <Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
                 <h2 className="jobTitle">{this.state.jobInfo.title}</h2>
                 {viewCompanyInfo}
+>>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
                 <Popover content={"We will use your default information to apply to the job"} >
                 
                 {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
@@ -318,26 +328,31 @@ class JobDescription extends React.Component{
                 link = "/app/user-profile/"
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
+<<<<<<< HEAD
+              <Tabs defaultActiveKey="1" > 
+                  <TabPane tab={I18n.get('Job Info')} key="1" >
+=======
               <Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
                   <TabPane tab="Job" key="1" >
+>>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
                       <div>
                           <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                       </div>
           
                   </TabPane>
-                  <TabPane tab="Company" key="2">
+                  <TabPane tab={I18n.get('Company Info')} key="2">
                       <div>
                       <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
                       </div>
                   </TabPane>
 
-                  <TabPane tab="Location" key="3">
+                  <TabPane tab={I18n.get('Location Info')} key="3">
                         <div><Location locationInfo = {this.state.locationInfo}></Location></div>
                       
                   </TabPane>
 
                   {this.state.isEmployer && this.state.isCorrectEmployer ?
-                  <TabPane tab="Applicant List" key="4">
+                  <TabPane tab={I18n.get('Applicants List')} key="4">
                       <div>
                             <ApplicantList applicants={this.state.applicants}
                             ></ApplicantList>

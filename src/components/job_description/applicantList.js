@@ -1,7 +1,12 @@
 import React from 'react';
 import { Table, Modal, Divider} from 'antd';
 import { Link } from 'gatsby';
+<<<<<<< HEAD
+import { I18n } from 'aws-amplify';
+import * as Util from '../../jobDescriptionUnitTest/jobDescriptionUtil';
+=======
 import * as Util from '../../test/jobDescriptionUnitTest/jobDescriptionUtil';
+>>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
 const { Column } = Table;
 
 
@@ -75,7 +80,7 @@ class ApplicantList extends React.Component{
       <div>
         <Table dataSource={this.state.applicants}>
             <Column
-              title="Name"
+              title={I18n.get('Name')}
               key="name"
               render = {(text, record) => (
                 <Link to={"/app/user-profile/"+record.key}> 
@@ -84,25 +89,25 @@ class ApplicantList extends React.Component{
               )}
             />
           <Column
-            title="English Level"
+            title={I18n.get("English Level")}
             dataIndex="englishLevel"
             key="englishLevel"
           />
           <Column
-            title="Address"
+            title={I18n.get("Address")}
             dataIndex="address"
             key="address"
           />
 
           <Column
             style = {{marginTop: "15px"}}
-            title="Status"
+            title={I18n.get("Status")}
             key={"status" + Math.random()} 
             dataIndex = "status"
           />
           <Column
             style = {{marginTop: "15px"}}
-            title ="Actions"
+            title ={I18n.get("Decision")}
             render = {(text, record) => (
               <span>
                 <a onClick = {(e) => this.handleAccept(record.appliedJobId, record.name, e)

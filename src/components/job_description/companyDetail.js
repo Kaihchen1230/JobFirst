@@ -4,7 +4,7 @@ import { Row, Col, Button } from 'antd';
 
 const companyDetail = (props) => {
     let companyInfo = {...props.companyInfo};
-    console.log(companyInfo);
+    
     let companyInfoPiece = (
         <div style={{fontSize:"1.2em"}}>
             <h3>Overview: </h3>
@@ -19,7 +19,7 @@ const companyDetail = (props) => {
             </Col>
             <Col span={4}>
                 <div className="gutter-box">
-                    {companyInfo.headquarter}
+                    {companyInfo.headquarter? companyInfo.headquarter: "N/A"}
                 </div>
             </Col>
             <Col  span={1}>
@@ -27,7 +27,7 @@ const companyDetail = (props) => {
             </Col>
             <Col span={6}>
                 <div className="gutter-box">
-                    {companyInfo.size}
+                    {companyInfo.size ? companyInfo.size : "N/A"}
                 </div>
             </Col>
 
@@ -38,7 +38,7 @@ const companyDetail = (props) => {
             </Col>
             <Col span={4}>
                 <div className="gutter-box">
-                    {companyInfo.revenue}
+                    {companyInfo.revenue ? companyInfo.revenue : "N/A"}
                 </div>
             </Col>
             <Col span={1}>
@@ -46,7 +46,7 @@ const companyDetail = (props) => {
             </Col>
             <Col span={6}>
                 <div className="gutter-box">
-                    {companyInfo.companyType}
+                    {companyInfo.companyType ? companyInfo.companyType : "N/A"}
                 </div>
             </Col>
             </Row>
@@ -58,7 +58,7 @@ const companyDetail = (props) => {
                 </Col>
                 <Col span={4}>
                     <div>
-                        {companyInfo.companyPhone}
+                        {companyInfo.companyPhone ? companyInfo.companyPhone : "N/A"}
                     </div>
                 </Col>
                 <Col span={1}>
@@ -66,7 +66,7 @@ const companyDetail = (props) => {
                 </Col>
                 <Col span={4}>
                     <div>
-                        {companyInfo.companyEmail}
+                        {companyInfo.companyEmail ? (<a href={`mailto:${companyInfo.companyEmail}`}>{companyInfo.companyEmail}</a>) : "N/A"}
                     </div>
                 </Col>
 
