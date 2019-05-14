@@ -43,14 +43,18 @@
     "simple-flexbox": "^1.3.0"
   },
   "devDependencies": {
+    "babel-jest": "^24.8.0",
+    "babel-preset-gatsby": "^0.1.11",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "flow-bin": "^0.96.0",
-    "jest": "^24.7.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
     "jest-puppeteer": "^4.1.1",
+    "jsdoc": "^3.6.2",
     "puppeteer": "^1.14.0",
     "react-test-renderer": "^16.8.6"
   },

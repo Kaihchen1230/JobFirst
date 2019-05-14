@@ -186,7 +186,7 @@ class businessProfile extends React.Component {
     return (
       <div >
         
-        <div className="banner">
+        <div className="bannerOne">
         </div>
         <div style={bodyStyle}>
           <div className="secBanner">
@@ -197,9 +197,8 @@ class businessProfile extends React.Component {
                   " " + this.state.companyAddress.state}</h2>
             </div>
             {this.state.allowEdit ?
-              <div style ={{ position:"relative", 
-                            marginTop:"1%", left:"53%"}}>
-                <Button style={{marginLeft:"37%", marginBottom:"10%"}} type="primary" onClick={this.showModal}>
+              <div className= "busButtonGroup">
+                <Button className ="busEditButton"  onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button>
                 <PhotoUpload isBusiness={true} />

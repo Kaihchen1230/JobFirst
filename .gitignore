@@ -4,6 +4,7 @@ packages/*/package-lock.json
 
 #system variable
 .env.development
+.env.production
 
 # Logs
 logs

@@ -24,11 +24,11 @@ const navBar = (props) => {
     state.login =
       <span>
         <Avatar 
-          style={{ marginBottom:"5px" }}
+          style={{ margin:"5px 0" }}
           shape="square" 
           size={38} 
           src ="https://gifimage.net/wp-content/uploads/2018/11/user-gif-4.gif" />
-        <span>{"   " + getUser().username}</span>
+        <span style={{position:"relative", top:"0.4vw"}}>{"   " + getUser().username}</span>
       </span>
   }
   I18n.putVocabularies(dict);
@@ -63,9 +63,9 @@ const navBar = (props) => {
         <Menu
           mode="horizontal"
           theme="dark"
-          style={{}}
+          style={{textAlign: "right"}}
         >
-          <Menu.Item key="home" className = 'home'>
+          <Menu.Item key="home" >
             {I18n.get('Home')}
             <Link to="/"></Link>
           </Menu.Item>

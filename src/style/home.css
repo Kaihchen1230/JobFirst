@@ -1,0 +1,17 @@
+
+/* for the title in the home page */
+.custom-title {
+    color: #1BB28b;
+    font-size: 24px;
+}
+
+/* for the description in the home page */
+.custom-description {
+    color: #1BB28b;
+    font-size: 18px;
+}
+
+/* for the buttons */
+.custom-button {
+    font-size: 18px;
+}

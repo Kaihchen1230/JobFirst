@@ -8,14 +8,14 @@ const jobDetails = (props) => {
         <li>{item}</li>
     )
     let jobInfoPiece = (      
-    <div>
+    <div style = {{width:"90%"}}>
             <h2>{jobInfo.title}</h2>
             <h3>Description: </h3>
-            <p>
+            <p style={{fontSize:"1.2em"}}>
                 {jobInfo.description}
             </p>
             <h3>Responsibilities: </h3>
-            <ul>
+            <ul style={{fontSize:"1.2em"}}>
                 {jobDuty}
             </ul>
         </div>

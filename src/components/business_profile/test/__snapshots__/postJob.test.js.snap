@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`postJob snapshot test postJob render should match snapshot 1`] = `
+<Adapter>
+  <Adapter>
+    <JobItem
+      jobs={
+        Array [
+          Object {
+            "title": null,
+          },
+        ]
+      }
+    />
+  </Adapter>
+</Adapter>
+`;

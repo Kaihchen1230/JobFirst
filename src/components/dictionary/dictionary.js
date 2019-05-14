@@ -48,7 +48,8 @@ let dict = {
         'Line 1 of job address': "工作地址的第1行",
         'Line 2 of job address': "工作地址第2行",
         'Enter the postal code of the job location': "输入工作地点的邮政编码",
-        'Enter the state of the job location': "输入作业位置的状态",
+        'Enter the city of the job location': "输入工作地点的城市",
+        'Enter the state of the job location': "输入工作地点的州",
         "Brief Info":"简介",
         "Profile":"详情",
         "Jobs":"工作",
@@ -160,7 +161,11 @@ let dict = {
         "Applicants List": "申请者名单",
         "Name": "姓名",
         "Address": "地址",
-        "Decision": "决定"
+        "Decision": "决定",
+        "No Address Provided": "没有提供地址",
+        "Click to view jobs": "点击查看工作",
+        "Click to see them": "点击查看它们",
+        "Register now": "现在注册"
     },
     'es': {
         'Sign In': "Sign In",
@@ -211,6 +216,7 @@ let dict = {
         'Line 1 of job address': "Line 1 of job address",
         'Line 2 of job address': "Line 2 of job address",
         'Enter the postal code of the job location': "Enter the postal code of the job location",
+        'Enter the city of the job location': "Enter the city of the job location",
         'Enter the state of the job location': "Enter the state of the job location",
         "Brief Info":"Brief Info",
         "Profile":"Profile",
@@ -225,6 +231,7 @@ let dict = {
         "I Want to Hire": "I Want to Hire",
         "I Want to Work": "I Want to Work",
         "Language": "Language",
+        "Languages": "Languages",
         "Logout": "Logout",
         "General Info": "General Info",
         "Education and Awards": "Education and Awards",
@@ -323,7 +330,11 @@ let dict = {
         "Applicants List": "Applicants List",
         "Name": "Name",
         "Address": "Address",
-        "Decision": "Decision"
+        "Decision": "Decision",
+        "No Address Provided": "No Address Provided",
+        "Click to view jobs": "Click to view jobs",
+        "Click to see them": "Click to see them",
+        "Register now": "Register now"
     }
 };
 export default dict;

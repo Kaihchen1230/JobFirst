@@ -4,6 +4,7 @@ import {
 } from 'antd';
 import Amplify, { Auth, Storage, API, graphqlOperation, I18n } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
+import "../../style/userProfile.css";
 
 let id = 0;
 
@@ -36,12 +37,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             const formItems = keys.map((k, index) => (
                 <Form.Item
                     {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                    label={index === 0 ? 'Languages' : ''}
+                    label={index === 0 ? I18n.get('Languages') : ''}
                     required={false}
                     key={k}
                 >
                     {getFieldDecorator(`languages[${k}]`)(
-                        <Input placeholder="Language" style={{ width: '60%', marginRight: 8 }} />
+                        <Input placeholder={I18n.get("Language")} style={{ width: '60%', marginRight: 8 }} />
                     )}
                     {keys.length > 1 ? (
                         <Icon
@@ -222,7 +223,8 @@ class BasicInfoForm extends React.Component {
     render() {
         return (
             <div>
-                <Button ghost onClick={this.showModal}>{I18n.get("Modify Basic Info")}</Button>
+                <Button className='modify-info-button' ghost onClick={this.showModal}>
+                <Icon type="file-text" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get("Modify Basic Info")}</Button>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}

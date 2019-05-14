@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, Button,Icon } from 'antd';
+import { Card, Row, Col, Button, Icon } from 'antd';
 import { Link } from "gatsby";
 import * as mutations from "../../graphql/mutations";
 import { async } from 'q';
@@ -35,8 +35,9 @@ const jobItem = (props) => {
                     Deadline: {item.deadline}
                 </p>
                 <div align="center" >
-                    <Button type="primary" size ="large" style={{ backgroundColor:'#1BB28B'}} >
+                    <Button size ="large" className ="jobItemButton" >
                         <Link 
+                            className = "jobItemLink"
                             to={'/app/job-detail/'+item.id}
                             state={{ id: item.id}}
                         >  Learn More </Link>
@@ -46,7 +47,7 @@ const jobItem = (props) => {
         </Col>
     );
     return (
-        <div style={{ background: '#ECECEC', padding: '30px', height: '1000px' }}>
+        <div style={{ background: '#ECECEC', padding: '30px 20px', height: '1000px', width:"100%" }}>
             <h1 align="center">Welcome to Our Job Pool</h1>
             <Row gutter={16}>
                 {jobItem}

@@ -2,7 +2,7 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import { Auth, I18n } from 'aws-amplify';
 import Error from './Error'
-import { isLoggedIn } from '../../services/auth';
+import { isLoggedIn, getUser } from '../../services/auth';
 import { Radio, Form, Icon, Input, Button, Tooltip, DatePicker, Select } from 'antd';
 
 const RadioGroup = Radio.Group;
@@ -67,7 +67,7 @@ class Signup extends React.Component {
     
     render() {
         if (isLoggedIn()) {
-            navigate(`/app/user-profile`)
+            navigate(`/app/user-profile/${getUser().sub}`)
         }
         return (
             <div align="center">

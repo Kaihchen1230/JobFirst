@@ -10,7 +10,8 @@ import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as customQueries from '../customGraphql/queries';
-import * as Util from '../jobDescriptionUnitTest/jobDescriptionUtil';
+import * as Util from '../test/jobDescriptionUnitTest/jobDescriptionUtil';
+import "../style/JobDescription.css"
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -62,6 +63,7 @@ class JobDescription extends React.Component{
         incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
         incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
         incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
+        incomingJobInfo.salary = currentJobInfo.data.getPostedJob.salary;
         console.log('this is the currentJobInfo: ', currentJobInfo);
         this.setState({
           userId: currentUserId,
@@ -263,6 +265,7 @@ class JobDescription extends React.Component{
           <Skeleton active />
         }
 
+<<<<<<< HEAD
         return(
           <div>
             <Spin spinning={this.state.loading} tip="Please wait for a moment"> 
@@ -270,6 +273,46 @@ class JobDescription extends React.Component{
                 <div>
                   {this.state.companyInfo.companyName} - {this.state.companyInfo.headquarter}
                 </div>
+=======
+        console.log('it comes to render first');
+        console.log('this is the loading: ', this.state.loading);
+        let viewCompanyInfo;
+        if(this.state.companyInfo != null){
+          let content = this.state.companyInfo.description;
+          viewCompanyInfo = (<Popover content={content}>
+                  <div >
+                    <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
+                    <span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}</span>
+                    <div style={{fontSize:"2em", fontWeight:"500",color:"#1BB28B"}}>
+                      {"$"+Math.round(this.state.jobInfo.salary/1000)+"K - $" + Math.round((this.state.jobInfo.salary*1.2)/1000)+"K" }
+                      <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
+                    </div>
+                  </div>
+            </Popover>)
+        }else{
+          console.log('it is null');
+          viewCompanyInfo = (
+            <div>
+              The company is not provided...
+            </div>
+          )
+        }
+
+        // if(this.state.display && !this.state.count == 0){
+        //   this.setState({
+        //     display : false,
+        //     count : 1
+        //   })
+        // }
+        console.log('this is location: ', this.state.locationInfo); 
+
+        return(
+            
+          <div >
+            <Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
+                <h2 className="jobTitle">{this.state.jobInfo.title}</h2>
+                {viewCompanyInfo}
+>>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
                 <Popover content={"We will use your default information to apply to the job"} >
                 
                 {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
@@ -285,8 +328,13 @@ class JobDescription extends React.Component{
                 link = "/app/user-profile/"
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
+<<<<<<< HEAD
               <Tabs defaultActiveKey="1" > 
                   <TabPane tab={I18n.get('Job Info')} key="1" >
+=======
+              <Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
+                  <TabPane tab="Job" key="1" >
+>>>>>>> d8ed79b8ad75474b931111dd16833cc21324c2ec
                       <div>
                           <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
                       </div>
