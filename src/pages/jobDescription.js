@@ -5,13 +5,13 @@ import Location from '../components/job_description/locationDetail';
 import CompanyDetail from '../components/job_description/companyDetail';
 import ApplicantList from '../components/job_description/applicantList';
 import PopOutWindow from '../components/job_description/popOutWindow';
-import { Auth, API, graphqlOperation } from 'aws-amplify';
+import { Auth, API, graphqlOperation, I18n } from 'aws-amplify';
 import { getUser } from "../services/auth";
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as customQueries from '../customGraphql/queries';
 import * as Util from '../test/jobDescriptionUnitTest/jobDescriptionUtil';
-import "../style/JobDescription.css"
+import "../style/jobDescription.css"
 const TabPane = Tabs.TabPane;
 
 class JobDescription extends React.Component{
@@ -264,13 +264,12 @@ class JobDescription extends React.Component{
         if(this.state.loading){
           <Skeleton active />
         }
-
         console.log('it comes to render first');
         console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
-          let content = this.state.companyInfo.description;
-          viewCompanyInfo = (<Popover content={content}>
+          
+          viewCompanyInfo = (
                   <div >
                     <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
                     <span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}</span>
@@ -279,7 +278,7 @@ class JobDescription extends React.Component{
                       <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
                     </div>
                   </div>
-            </Popover>)
+            )
         }else{
           console.log('it is null');
           viewCompanyInfo = (
@@ -325,19 +324,19 @@ class JobDescription extends React.Component{
                       </div>
           
                   </TabPane>
-                  <TabPane tab="Company" key="2">
+                  <TabPane tab={I18n.get('Company Info')} key="2">
                       <div>
                       <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
                       </div>
                   </TabPane>
 
-                  <TabPane tab="Location" key="3">
+                  <TabPane tab={I18n.get('Location Info')} key="3">
                         <div><Location locationInfo = {this.state.locationInfo}></Location></div>
                       
                   </TabPane>
 
                   {this.state.isEmployer && this.state.isCorrectEmployer ?
-                  <TabPane tab="Applicant List" key="4">
+                  <TabPane tab={I18n.get('Applicants List')} key="4">
                       <div>
                             <ApplicantList applicants={this.state.applicants}
                             ></ApplicantList>
