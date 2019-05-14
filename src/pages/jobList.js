@@ -89,11 +89,11 @@ class JobList extends React.Component {
                             <div className="slogon2">Millisons of small businesses and new immigrants use JobFirst
                                 to turn their ideas into reality
                             </div>
-                            <div className="buttonGroup">                                                        
+                            <div className="buttonGroup">
                                 <span className="slogonButton">
                                     I want to Hire
-                                </span >                              
-                                <span className="slogonButton2">I want to Work</span>                                      
+                                </span >
+                                <span className="slogonButton2">I want to Work</span>
                             </div>
                         </Col>
                         <Col style={{ margin: "-5% 0 -5% 3%" }} span={12}>
@@ -114,9 +114,9 @@ class JobList extends React.Component {
                             onSearch={this.searchByName}
                             id="search"
                         />
-                        <Button 
-                            className="resetButton" 
-                            style={{marginLeft: "1%", width: "6%"}} 
+                        <Button
+                            className="resetButton"
+                            style={{ marginLeft: "1%", width: "6%" }}
                             onClick={this.reset.bind(this)}>
                             <Icon type="undo" /> Reset
                         </Button>
@@ -125,6 +125,7 @@ class JobList extends React.Component {
                         <div style={{ textAlign: "left", width: "30%" }}>
                             <h4>Filter By Job Category</h4>
                             <Select
+                                className="dropBox"
                                 showSearch
                                 optionFilterProp="children"
                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
@@ -212,9 +213,9 @@ class JobList extends React.Component {
                             </Row>
                         </div>
                         <div style={{ textAlign: "center", width: "15%" }}>
-                            <Button 
-                                className="applyButton" 
-                                style={{ marginTop: "5%", width: "40%", }} 
+                            <Button
+                                className="applyButton"
+                                style={{ marginTop: "5%", width: "40%", }}
                                 onClick={this.filterSalary}>
                                 Apply
                             </Button>
@@ -243,16 +244,16 @@ class JobList extends React.Component {
                             </Row>
                         </div>
                         <div style={{ textAlign: "center", width: "15%" }}>
-                            <Button 
-                                className="applyButton" 
-                                style={{ marginTop: "5%", width: "40%", }} 
+                            <Button
+                                className="applyButton"
+                                style={{ marginTop: "5%", width: "40%", }}
                                 onClick={this.filterDate}>
                                 Apply
                             </Button>
                         </div>
                     </InputGroup>
                 </Header>
-                <Content style={{ padding: '0 2%' }}>
+                <Content>
                     <Connect query={graphqlOperation(queries.listPostedJobs, { "filter": filter })}>
                         {({ data: { listPostedJobs }, loading, error }) => {
                             if (error) return (<h3>ERROR</h3>);
