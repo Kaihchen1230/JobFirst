@@ -16,26 +16,30 @@ const jobItem = (props) => {
                         {item.jobTitle}
                     </span>
                     <div>
-                        {item.company.companyType + "/" + item.company.companyName}
+                        <p style={{ fontSize: '14px' }} >{item.jobCategory}
+                        <br></br>
+                        {item.company.companyName}</p>
                     </div>
                 </div>}
                 bordered={true}
-                style={{ height: '400px' }}>
+                style={{ height: '450px' }} >
 
-                <p>{item.description && item.description.substring(0, 100)}</p>
+                <p><Icon style={{ fontSize: '18px', color: '#1BB28B', margin: "2%" }} type="home" />{item.location.line1}</p>
+                <p><Icon style={{ fontSize: '18px', color: '#1BB28B', margin: "2%" }} type="unordered-list" />{item.description && item.description.substring(0, 100)}</p>
 
-                <p>
-                    <Icon style={{ fontSize: '18px', color: '#1BB28B', margin: "2%" }} type="team" />
-                    {item.jobType}
-                    <br></br>
-                    <Icon style={{ fontSize: '18px', color: '#1BB28B', margin: "2%" }} type="home" />
-                    {item.location.line1}
-                    <br></br>
-                    <Icon style={{ fontSize: '18px', color: '#1BB28B', margin: "2%" }} type="eye" />
-                    {item.clickedCounts}
-                </p>
+                <Row gutter={16}>
+                    <Col span={8}>
+                        <p><Icon style={{ fontSize: '18px', color: '#1BB28B', marginRight: "8%" }} type="team" />{item.jobType}</p>
+                    </Col>
+                    <Col span={8}>
+                        <p><Icon style={{ fontSize: '18px', color: '#1BB28B', marginRight: "8%" }} type="dollar" />{item.salary} Per hour</p>
+                    </Col>
+                    <Col span={8}>
+                        <p><Icon style={{ fontSize: '18px', color: '#1BB28B', marginRight: "8%" }} type="eye" />{item.clickedCounts}</p>                       
+                    </Col>
+                </Row>
                 <div align="center" >
-                    <Button size="large" className="jobItemButton" style={{ margin: "5px" }} >
+                    <Button size="large" className="jobItemButton" style={{ margin: "1%" }} >
                         <Link
                             className="jobItemLink"
                             to={'/app/job-detail/' + item.id}
@@ -43,18 +47,18 @@ const jobItem = (props) => {
                         >  Learn More </Link>
                     </Button>
                 </div>
-                <p align="right" style={{ marginTop: "10%" }}><Icon style={{ fontSize: '18px', color: '#1BB28B', marginRight: "5px" }} type="clock-circle" />
+                <p align="right" verticalAlign="bottom" style={{ marginTop: "5%" }}><Icon style={{ fontSize: '18px', color: '#1BB28B', marginRight: "2%" }} type="clock-circle" />
                     Deadline: {item.deadline}
                 </p>
             </Card>
         </Col>
     );
     return (
-        <div style={{ background: '#F9F9F9', padding: '2.5% 15%', height: '1000px', width: "100%" }}>
+        <div style={{ background: '#F9F9F9', padding: '2.5% 15%', height: 'auto', width: "100%" }}>
             <h1 align="center">Welcome to Our Job Pool</h1>
-                <Row gutter={16}>
-                    {jobItem}
-                </Row>
+            <Row gutter={16}>
+                {jobItem}
+            </Row>
         </div>
     );
 }
