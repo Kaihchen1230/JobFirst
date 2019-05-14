@@ -8,23 +8,24 @@ const Education = (props) => {
 
     let educationList = [...props.education];
     let display = educationList.map(item =>
-        <div align="center">
-            <Card
-                size="default"
-                title={item.schoolName}
-                extra={props.allowEdit ? <Button type="danger" onClick={props.deleteEdu.bind(null, item.id)}>{I18n.get('Delete')}</Button> : null}
-                style={{ width: "80%" }}
-                key={item.id}
-            >
-                <p className="description" align="left" style={{fontSize: 18}}><Icon type="book" /><b> {I18n.get('Degree')}: </b> {item.degree}</p>
-                <p className="description" align="left" style={{fontSize: 18}}><Icon type="home" /><b> {I18n.get('Location')}: </b>{item.city + ", " + item.country}</p>
-                <p className="description" align="left" style={{fontSize: 18}}><Icon type="clock-circle" /><b> {I18n.get('Years')}: </b>{item.startYear} to {item.endYear}</p>
-            </Card>
-            <br />
-        </div>
+            <li key={item.id}>
+                <Card
+                    size="default"
+                    title={item.schoolName}
+                    extra={props.allowEdit ? <Button type="danger" onClick={props.deleteEdu.bind(null, item.id)}>{I18n.get('Delete')}</Button> : null}
+                    style={{ width: "80%" }}
+                >
+                    <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Degree')}: </b> {item.degree}</p>
+                    <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Location')}: </b>{item.city + ", " + item.country}</p>
+                    <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="clock-circle" /><b> {I18n.get('Years')}: </b>{item.startYear} to {item.endYear}</p>
+                </Card>
+                <br />
+            </li>
     )
 
-    return display;
+    let show = <div align="center">{display}</div>
+
+    return show;
 }
 
 export default Education;
