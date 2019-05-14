@@ -278,7 +278,7 @@ class JobDescription extends React.Component{
                       <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
                     </div>
                   </div>
-           )
+            )
         }else{
           console.log('it is null');
           viewCompanyInfo = (
