@@ -5,6 +5,10 @@ import officeImage from "../../static/office.jpg";
 import "../style/contact.css";
 import { Column, Row } from 'simple-flexbox';
 
+/**
+ * The class Contact will display the website's contact page, where
+ * anyone can learn how to contact the site managers for support
+ */
 class Contact extends React.Component {
 
     render() {

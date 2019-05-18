@@ -4,6 +4,9 @@ import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary"
 
+/**
+ * The component Education will display the user's education history
+ */
 const Education = (props) => {
 
     let educationList = [...props.education];

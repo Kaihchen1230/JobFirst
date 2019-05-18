@@ -4,8 +4,11 @@ import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary"
 
+/**
+ * The component General will display the user's general information
+ */
 const General = (props) => {
-
+    
     let address = props.address.data.getAddress;
     let addressLine = address != null ? `${address.line1}` + " " + `${address.line2}` + ", " + `${address.city}` + ", " 
     + `${address.state}` + ", " + `${address.postalCode}` : "(" + I18n.get("No Address Provided") + ")"
