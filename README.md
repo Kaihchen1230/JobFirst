@@ -8,8 +8,14 @@ __Siddharth Rajan__ _(developer)_
 __Alan Lau__ _(developer)_
 </br>
 </br>
-## About:
-JobFirst is a web application which utilizes _Gatsby_ to serve the frontend and _AWS Amplify_ to serve the backend. JobFirst makes a connection between employer and skilled worker who are trying to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
+## Background:
+ JobFirst makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
+
+## Tools Used:
+1. _Gatsby_
+2. _AWS cognito_
+3. _AWS appsync_
+4. _AWS S3_
 
 ## [Refer here for our website](https://master.d311enjx0cy8vf.amplifyapp.com/)
 
@@ -65,7 +71,7 @@ ___
 ### Testing:
 ```npm test``` or ```npm test -- -- watch```
 
-### Document:
+### Developer Document:
 ```npm run doc``` All docs are inside the docs folder
 [Refer here for how to write jsdoc](https://www.akshatsharma.com/posts/how%20to%20jsdoc/index.html#simian-toc-8)
 
