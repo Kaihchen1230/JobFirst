@@ -17,7 +17,7 @@ __Alan Lau__ _(developer)_
 3. _AWS appsync_
 4. _AWS S3_
 
-## [Refer here for our website](https://master.d311enjx0cy8vf.amplifyapp.com/)
+## Refer here for our website
 https://master.d311enjx0cy8vf.amplifyapp.com/
 ___
 
