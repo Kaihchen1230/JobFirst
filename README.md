@@ -9,7 +9,7 @@ __Alan Lau__ _(developer)_
 </br>
 </br>
 ## Background:
- JobFirst makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
+ JobFirst is employment-related search website that makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
 
 ## Tools Used:
 1. _Gatsby_
@@ -18,7 +18,7 @@ __Alan Lau__ _(developer)_
 4. _AWS S3_
 
 ## [Refer here for our website](https://master.d311enjx0cy8vf.amplifyapp.com/)
-
+https://master.d311enjx0cy8vf.amplifyapp.com/
 ___
 
 ## How to get started:
