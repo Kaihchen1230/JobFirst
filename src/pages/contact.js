@@ -48,7 +48,7 @@ class Contact extends React.Component {
                     </Column>
                 </div>
                 <Footer style={{ textAlign: 'center' }}>
-                        JobFirst ©2019 Created by JobFirst Group
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
                 </Footer>
             </Layout>
         );

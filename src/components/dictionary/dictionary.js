@@ -19,6 +19,7 @@ let dict = {
         'Edit Profile':"修改资料",
         'save':"保存",
         'JobFirst': "工作第一",
+        "Created by JobFirst Group": "由工作第一组创建",
         'Where immigrants with degrees find their jobs.': "有学位的移民找到工作的地方。",
         'Where companies find talents.': "公司找人才的地方。",
         'Get Started Today.': "立即开始。",
@@ -339,7 +340,8 @@ let dict = {
         "German": "German",
         "Russian": "Russian",
         "Hindi": "Hindi",
-        "New York, NY": "New York, NY"
+        "New York, NY": "New York, NY",
+        "Created by JobFirst Group": "Created by JobFirst Group"
     }
 };
 export default dict;

@@ -262,7 +262,7 @@ class JobList extends React.Component {
                     </Connect>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    JobFirst ©2019 Created by JobFirst Group
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
                 </Footer>
             </Layout>
         );
