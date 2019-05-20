@@ -13,7 +13,7 @@
     position:relative
 }
 
-.ant-avatar > img {
+span > .ant-avatar > img {
     background-size: cover;
     background-position: 100px;
     width:190%;

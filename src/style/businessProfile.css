@@ -38,7 +38,6 @@ body{
     background-color: white;
 }
 .busEditButton, .busEditButton:focus{
-    margin-left:37%;
     margin-bottom:10%;
     background-color:#1BB28b;
     color:white
@@ -65,6 +64,7 @@ Edit button edit effect
 For Edit and upload button 
  */
 .busButtonGroup{
+    text-align: right;
     position:relative;
     margin-top:1%;
     left:50vw
