@@ -283,8 +283,9 @@ class ModalForm extends React.Component {
        
     return (
       <Modal
-        title="Edit Company Information"
-        okText={"Save"}
+        title={I18n.get("Edit Company Information")}
+        okText={I18n.get("Save")}
+        cancelText={I18n.get("Cancel")}
         visible={this.props.visible}
         onOk={this.handleSubmit}
         onCancel={this.props.onCancel}
@@ -293,10 +294,10 @@ class ModalForm extends React.Component {
         <Form 
           className="login-form">
           <br />
-          <h2 style={{ marginLeft: "7%" }}>Base Information:</h2>
+          <h2 style={{ marginLeft: "15%" }}>{I18n.get('Base Information')}:</h2>
           <FormItem
             {...formItemLayout}
-            label="Company Name"
+            label={I18n.get("Company Name")}
           >
             <Input
               value={this.state.companyName}
@@ -307,7 +308,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Website"
+            label={I18n.get("Website")}
           >
             <Input
               value={this.state.companyWebsite}
@@ -318,7 +319,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Company Tpye"
+            label={I18n.get("Company Type")}
           >
             <Input
               value={this.state.companyType}
@@ -330,7 +331,7 @@ class ModalForm extends React.Component {
 
           <FormItem
             {...formItemLayout}
-            label="Company Email"
+            label={I18n.get("Company Email")}
           >
             <Input
               value={this.state.companyEmail}
@@ -342,7 +343,7 @@ class ModalForm extends React.Component {
 
           <FormItem
             {...formItemLayout}
-            label="Company Phone"
+            label={I18n.get("Company Phone")}
           >
             <Input
               value={this.state.companyPhone}
@@ -354,7 +355,7 @@ class ModalForm extends React.Component {
 
           <Form.Item
             {...formItemLayout}
-            label="Description"
+            label={I18n.get("Description")}
           >
             <Input.TextArea
               value={this.state.description}
@@ -364,10 +365,10 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               placeholder="description" />
           </Form.Item>
-          <h2 style={{ marginLeft: "20%" }}>Details:</h2>
+          <h2 style={{ marginLeft: "15%" }}>{I18n.get("Details")}:</h2>
           <FormItem
             {...formItemLayout}
-            label="Headquarter"
+            label={I18n.get("Headquarters")}
           >
             <Input
               value={this.state.headquarter}
@@ -378,7 +379,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Size"
+            label={I18n.get("Size")}
           >
             <Input
               value={this.state.size}
@@ -390,7 +391,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Revenue"
+            label={I18n.get("Revenue")}
           >
             <Input
               value={this.state.revenue}
@@ -402,7 +403,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="CEO name"
+            label={I18n.get("CEO name")}
           >
             <Input
               value={this.state.ceo}
@@ -413,7 +414,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="CEO Picture"
+            label={I18n.get("CEO Picture")}
           >
             <Input
               value={this.state.ceoPic}
@@ -424,7 +425,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Youtube Video"
+            label={I18n.get("YouTube Video")}
           >
             <Input
               value={this.state.videoURL}
@@ -440,10 +441,10 @@ class ModalForm extends React.Component {
               />
           </FormItem>
 
-          <h2 style={{ marginLeft: "20%" }}>Address:</h2>
+          <h2 style={{ marginLeft: "15%" }}>{I18n.get('Address')}:</h2>
           <FormItem
             {...formItemLayout}
-            label="Address Line 1"
+            label={I18n.get("Address Line 1")}
           >
             <Input
               value={this.state.addressLine1}
@@ -454,7 +455,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Address Line 2"
+            label={I18n.get("Address Line 2")}
           >
             <Input
               value={this.state.addressLine2}
@@ -464,7 +465,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="City"
+            label={I18n.get("City")}
           >
             <Input
               value={this.state.city}
@@ -475,7 +476,7 @@ class ModalForm extends React.Component {
 
           <FormItem
             {...formItemLayout}
-            label="State"
+            label={I18n.get("State")}
           >
             <Input
               value={this.state.state}
@@ -486,7 +487,7 @@ class ModalForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Postal Code"
+            label={I18n.get("Postal Code")}
           >
             <Input
               value={this.state.postalCode}
@@ -494,7 +495,7 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
           </FormItem>
-          <h2 style={{ marginLeft: "20%" }}>Timeline:</h2>
+          <h2 style={{ marginLeft: "15%" }}>{I18n.get('Timeline')}:</h2>
 
           {/* timelines component */}
           {this.state.timeline.map(
@@ -544,7 +545,7 @@ class ModalForm extends React.Component {
             <Button
               onClick ={this.handleAddTimeline}>
               <Icon type="plus" />
-              Add More Events
+              {I18n.get('Add More Events')}
             </Button>
           </div>
         </Form>
