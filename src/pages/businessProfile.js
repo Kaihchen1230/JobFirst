@@ -1,6 +1,6 @@
 /** Class representing a point. */
 import React from "react"
-import { Button, Tabs,Spin } from 'antd';
+import { Layout, Button, Tabs, Spin } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
@@ -14,6 +14,7 @@ import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n, Storage } from "aws-amplify";
 import '../style/businessProfile.css';
 
+const { Footer } = Layout;
 const TabPane = Tabs.TabPane;
 
 let bodyStyle = {
@@ -41,8 +42,8 @@ class businessProfile extends React.Component {
       jobList: [],
       companyName: null,
       companyWebsite: null,
-      companyPhone:null,
-      companyEmail:null,
+      companyPhone: null,
+      companyEmail: null,
       companyType: null,
       headquarter: null,
       videoURL: null,
@@ -52,7 +53,7 @@ class businessProfile extends React.Component {
         city: "New York",
         state: "NY",
         postalCode: "12345"
-        
+
       },
       ceoPic: null,
       ceo: null,
@@ -96,9 +97,9 @@ class businessProfile extends React.Component {
         }
       }
 
-       /**
-       * set up other employer info within nested object
-       *  */
+      /**
+      * set up other employer info within nested object
+      *  */
       console.log("employer", employerData);
       if (employerData.timeline.items.length >= 1)
         this.setState({ timeline: employerData.timeline.items });
@@ -134,19 +135,19 @@ class businessProfile extends React.Component {
           identityId: this.state.userID// the identityId of that user
         })
           .then(result => {
-            
-            this.setState({ companyLogo: result,memory:true });
-            console.log("set up",this.state);
+
+            this.setState({ companyLogo: result, memory: true });
+            console.log("set up", this.state);
           })
           .catch(err => console.log(err));
       }
       else
-        this.setState({memory:true})
-      
+        this.setState({ memory: true })
+
     } catch (err) {
       console.log("couldn't get employer data: ", err);
     }
-    
+
   }
 
   /**
@@ -178,13 +179,13 @@ class businessProfile extends React.Component {
   }
 
   render() {
-    if(!this.state.memory){
+    if (!this.state.memory) {
       // Just wait for the memory to be available
-      return <Spin style={{position:"absolute",left:"45%",top:"30%"}} tip="Please wait for a moment"/> ;
+      return <Spin style={{ position: "absolute", left: "45%", top: "30%" }} tip="Please wait for a moment" />;
     }
     return (
       <div >
-        
+
         <div className="bannerOne">
         </div>
         <div style={bodyStyle}>
@@ -192,12 +193,12 @@ class businessProfile extends React.Component {
             <BusinessPicture companyLogo={this.state.companyLogo} />
             <div className="companyHeader">
               <h1 style={{ fontSize: "4em" }}>{this.state.companyName}</h1>
-              <h2 className="companyLocation">{this.state.companyAddress.city + 
-                  " " + this.state.companyAddress.state}</h2>
+              <h2 className="companyLocation">{this.state.companyAddress.city +
+                " " + this.state.companyAddress.state}</h2>
             </div>
             {this.state.allowEdit ?
-              <div className= "busButtonGroup">
-                <Button className ="busEditButton"  onClick={this.showModal}>
+              <div className="busButtonGroup">
+                <Button className="busEditButton" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 </Button>
                 <PhotoUpload isBusiness={true} />
@@ -247,7 +248,7 @@ class businessProfile extends React.Component {
 
               </TabPane>
               <TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
-                <div > 
+                <div >
                   <PostJob
                     jobList={this.state.jobList}
                     companyLogo={this.state.companyLogo} />
@@ -257,6 +258,9 @@ class businessProfile extends React.Component {
           </div>
 
         </div>
+        <Footer style={{ textAlign: 'center' }}>
+          {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
+        </Footer>
       </div>
     );
   }
