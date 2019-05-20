@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
+import { Layout, Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
 import moment from 'moment';
 import { Auth, I18n } from 'aws-amplify';
 import { getUser } from '../../services/auth';
@@ -7,6 +7,7 @@ import dict from "../dictionary/dictionary";
 import * as mutations from "../../graphql/mutations";
 import { API, graphqlOperation } from 'aws-amplify';
 
+const { Footer } = Layout;
 const Option = Select.Option;
 const { TextArea } = Input;
 let id = 0;
@@ -421,6 +422,9 @@ class PostJobForm extends React.Component {
                     </Form.Item>
                     <br />
                 </Form>
+                <Footer style={{ textAlign: 'center' }}>
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
+                </Footer>
             </div >
         );
     }
