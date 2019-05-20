@@ -160,7 +160,15 @@ let dict = {
         "No Address Provided": "没有提供地址",
         "Click to view jobs": "点击查看工作",
         "Click to see them": "点击查看它们",
-        "Register now": "现在注册"
+        "Register now": "现在注册",
+        "English": "英语",
+        "Chinese": "中文",
+        "Spanish": "西班牙语",
+        "French": "法国",
+        "German": "德语",
+        "Russian": "俄语",
+        "Hindi": "印地语",
+        "New York, NY": "纽约州纽约市"
     },
     'es': {
         'Sign In': "Sign In",
@@ -323,7 +331,15 @@ let dict = {
         "No Address Provided": "No Address Provided",
         "Click to view jobs": "Click to view jobs",
         "Click to see them": "Click to see them",
-        "Register now": "Register now"
+        "Register now": "Register now",
+        "English": "English",
+        "Chinese": "Chinese",
+        "Spanish": "Spanish",
+        "French": "French",
+        "German": "German",
+        "Russian": "Russian",
+        "Hindi": "Hindi",
+        "New York, NY": "New York, NY"
     }
 };
 export default dict;
