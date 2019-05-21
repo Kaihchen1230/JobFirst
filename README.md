@@ -121,11 +121,6 @@ ___
 │   │   ├── form
 │   │   ├── jobList
 │   │   ├── job_description
-|   |   |     ├── ApplicantList
-|   |   |     ├── CompanyDetail
-|   |   |     ├── jobDetail
-|   |   |     ├── locationDetail
-|   |   |     └── popOutWindow
 │   │   ├── talent_list
 │   │   └── user_profile
 │   ├── customGraphql
