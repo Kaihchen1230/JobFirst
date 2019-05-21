@@ -184,7 +184,7 @@ class PostJobForm extends React.Component {
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item
-                        label="Job Title"
+                        label={I18n.get('Job Title')}
                         required={true}
                         validateStatus={jobTitleError ? 'error' : ''}
                         help={jobTitleError || ''}>
@@ -202,7 +202,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="line 1"
+                        label={I18n.get('Address Line 1')}
                         required={true}
                         validateStatus={line1Error ? 'error' : ''}
                         help={line1Error || ''}>
@@ -220,7 +220,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="line 2"
+                        label={I18n.get('Address Line 2')}
                         required={false}>
                         {getFieldDecorator('line2', {
                             rules: [{ required: false, message: 'Please enter the address line 2!' }]
@@ -236,14 +236,14 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="City"
+                        label={I18n.get('City')}
                         required={true}
                         validateStatus={cityError ? 'error' : ''}
                         help={cityError || ''}>
                         {getFieldDecorator('city', {
                             rules: [{ required: true, message: 'Please enter the city!' }]
                         })(
-                            <Input placeholder={I18n.get('Postal Code')}
+                            <Input placeholder={I18n.get('City')}
                                 name="city"
                                 suffix={
                                     <Tooltip title={I18n.get('Enter the city of the job location')}>
@@ -254,7 +254,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="Postal Code"
+                        label={I18n.get('Postal Code')}
                         required={true}
                         validateStatus={postalCodeError ? 'error' : ''}
                         help={postalCodeError || ''}>
@@ -272,7 +272,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="State"
+                        label={I18n.get('State')}
                         required={true}
                         validateStatus={stateError ? 'error' : ''}
                         help={stateError || ''}>
@@ -290,7 +290,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="Deadline"
+                        label={I18n.get('Deadline')}
                         required={true}
                         validateStatus={deadlineError ? 'error' : ''}
                         help={deadlineError || ''}>
@@ -306,7 +306,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="Job Type"
+                        label={I18n.get('Job Type')}
                         required={true}
                         validateStatus={jobTypeError ? 'error' : ''}
                         help={jobTypeError || ''}>
@@ -323,7 +323,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="Job Category"
+                        label={I18n.get('Job Category')}
                         required={true}
                         validateStatus={jobCategoryError ? 'error' : ''}
                         help={jobCategoryError || ''}>
@@ -334,7 +334,7 @@ class PostJobForm extends React.Component {
                                 showSearch
                                 optionFilterProp="children"
                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                placeholder="Job Category" 
+                                placeholder={I18n.get('Job Category')}
                                 name="jobCategory" >
                                 <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
                                 <Option value="Business, consulting and management">Business, consulting and management</Option>
@@ -362,7 +362,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="Job Description"
+                        label={I18n.get('Enter Job Description')}
                         required={true}
                         validateStatus={descriptionError ? 'error' : ''}
                         help={descriptionError || ''}>
@@ -378,14 +378,14 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label="Require Education"
+                        label={I18n.get('Education')}
                         required={true}
                         validateStatus={educationTypeError ? 'error' : ''}
                         help={educationTypeError || ''}>
                         {getFieldDecorator('education', {
                             rules: [{ required: true, message: 'Please select the job type!' }]
                         })(
-                            <Select placeholder="education" name="education" >
+                            <Select placeholder={I18n.get('Education')} name="education" >
                                 <Option value="No Requirement">No Requirement</Option> 
                                 <Option value="Associate">Associate</Option>
                                 <Option value="Bachelor">Bachelor</Option>
@@ -398,11 +398,11 @@ class PostJobForm extends React.Component {
                     {formItems}
                     <Form.Item {...formItemLayoutWithOutLabel}>
                         <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
-                            <Icon type="plus" /> Add requirement
+                            <Icon type="plus" /> {I18n.get('Enter Job Requirements')}
                         </Button>
                     </Form.Item>
 
-                    <Form.Item label="salary">
+                    <Form.Item label={I18n.get('Salary')}>
                         {getFieldDecorator('salary', {
                             rules: [{ type: "number", required: false, message: 'Must be in whole number' }]
                         })(
