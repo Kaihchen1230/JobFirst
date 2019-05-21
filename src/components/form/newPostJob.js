@@ -336,27 +336,27 @@ class PostJobForm extends React.Component {
                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                                 placeholder={I18n.get('Job Category')}
                                 name="jobCategory" >
-                                <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
-                                <Option value="Business, consulting and management">Business, consulting and management</Option>
-                                <Option value="Charity and voluntary work">Charity and voluntary work</Option>
-                                <Option value="Creative arts and design">Creative arts and design</Option>
-                                <Option value="Energy and utilities">Energy and utilities</Option>
-                                <Option value="Engineering and manufacturing">Engineering and manufacturing</Option>
-                                <Option value="Environment and agriculture">Environment and agriculture</Option>
-                                <Option value="Healthcare">Healthcare</Option>
-                                <Option value="Information technology">Information technology</Option>
-                                <Option value="Law">Law</Option>
-                                <Option value="Marketing, advertising and PR">Marketing, advertising and PR</Option>
-                                <Option value="Media and internet">Media and internet</Option>
-                                <Option value="Property and construction">Property and construction</Option>
-                                <Option value="Public services and administration">Public services and administration</Option>
-                                <Option value="Recruitment and HR">Recruitment and HR</Option>
-                                <Option value="Retail">Retail</Option>
-                                <Option value="Sales">Sales</Option>
-                                <Option value="Science and pharmaceuticals">Science and pharmaceuticals</Option>
-                                <Option value="Social care">Social care</Option>
-                                <Option value="Teacher training and education">Teacher training and education</Option>
-                                <Option value="Transport and logistics">Transport and logistics</Option>
+                                <Option value="Accountancy, banking and finance">{I18n.get('Accountancy, banking and finance')}</Option>
+                                <Option value="Business, consulting and management">{I18n.get('Business, consulting and management')}</Option>
+                                <Option value="Charity and voluntary work">{I18n.get('Charity and voluntary work')}</Option>
+                                <Option value="Creative arts and design">{I18n.get('Creative arts and design')}</Option>
+                                <Option value="Energy and utilities">{I18n.get('Energy and utilities')}</Option>
+                                <Option value="Engineering and manufacturing">{I18n.get('Engineering and manufacturing')}</Option>
+                                <Option value="Environment and agriculture">{I18n.get('Environment and agriculture')}</Option>
+                                <Option value="Healthcare">{I18n.get('Healthcare')}</Option>
+                                <Option value="Information technology">{I18n.get('Information technology')}</Option>
+                                <Option value="Law">{I18n.get('Law')}</Option>
+                                <Option value="Marketing, advertising and PR">{I18n.get('Marketing, advertising and PR')}</Option>
+                                <Option value="Media and internet">{I18n.get('Media and internet')}</Option>
+                                <Option value="Property and construction">{I18n.get('Property and construction')}</Option>
+                                <Option value="Public services and administration">{I18n.get('Public services and administration')}</Option>
+                                <Option value="Recruitment and HR">{I18n.get('Recruitment and HR')}</Option>
+                                <Option value="Retail">{I18n.get('Retail')}</Option>
+                                <Option value="Sales">{I18n.get('Sales')}</Option>
+                                <Option value="Science and pharmaceuticals">{I18n.get('Science and pharmaceuticals')}</Option>
+                                <Option value="Social care">{I18n.get('Social care')}</Option>
+                                <Option value="Teacher training and education">{I18n.get('Teacher training and education')}</Option>
+                                <Option value="Transport and logistics">{I18n.get('Transport and logistics')}</Option>
                             </Select>
                         )}
                     </Form.Item>
