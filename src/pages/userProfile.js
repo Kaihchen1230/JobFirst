@@ -252,7 +252,7 @@ class Profile extends React.Component {
      */
     deleteAddress = async () => {
         try {
-            const delAdd = await API.graphql(graphqlOperation(mutations.deleteAddress, { input: { id: this.state.userID} }));
+            const delAdd = await API.graphql(graphqlOperation(mutations.deleteAddress, { input: { id: this.state.userID } }));
             console.log("User address was deleted.");
             message.success(`Address deleted`);
             window.location.reload();
@@ -278,77 +278,81 @@ class Profile extends React.Component {
             );
         }
         return (
-            <Layout style={{ minHeight: '100vh' }}>
-                <Sider
-                    collapsible
-                    collapsed={this.state.collapsed}
-                    onCollapse={this.onCollapse}
-                    width={300}
-                >
-                    <Person user={this.state.user} />
-                    {/**
+            <div>
+                <Layout style={{ minHeight: '100vh' }}>
+                    <Sider
+                        collapsible
+                        collapsed={this.state.collapsed}
+                        onCollapse={this.onCollapse}
+                        width={300}
+                    >
+                        <Person user={this.state.user} />
+                        {/**
                     * render those edit button when user is viewing his own profile page
                     */}
-                    {(getUser().sub === this.state.userID) ? (
-                        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                            <SubMenu
-                                key="sub1"
-                                title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
-                            >
-                                <Menu.Item key="3">
-                                    <BasicInfoForm userInfo={this.state.user} />
-                                    {/* {I18n.get('Modify Basic Info')} */}
+                        {(getUser().sub === this.state.userID) ? (
+                            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                                <SubMenu
+                                    key="sub1"
+                                    title={<span><Icon type="form" /><span>{I18n.get('Edit Profile')}</span></span>}
+                                >
+                                    <Menu.Item key="3">
+                                        <BasicInfoForm userInfo={this.state.user} />
+                                        {/* {I18n.get('Modify Basic Info')} */}
+                                    </Menu.Item>
+
+                                    {this.state.address.data.getAddress ?
+                                        <Menu.Item key="5">
+                                            <UpdateAddressForm />
+                                        </Menu.Item> :
+                                        <Menu.Item key="4">
+                                            <CreateAddressForm />
+                                        </Menu.Item>}
+
+                                    {this.state.address.data.getAddress ?
+                                        <Menu.Item key="6">
+                                            <Button className="modify-info-button" ghost onClick={this.deleteAddress}>
+                                                <Icon type="delete" theme="twoTone" twoToneColor="#52c41a" />Delete Address</Button>
+                                        </Menu.Item> : null}
+
+                                    <Menu.Item key="7">
+                                        <AddEduForm />
+                                    </Menu.Item>
+
+                                    <Menu.Item key="8">
+                                        <AddExpForm />
+                                    </Menu.Item>
+                                </SubMenu>
+
+                                <Menu.Item key="2">
+                                    <PhotoUploader />
+
+                                    {/* <span>{I18n.get('Change Profile Picture')}</span> */}
                                 </Menu.Item>
 
-                                {this.state.address.data.getAddress ? 
-                                <Menu.Item key="5">
-                                    <UpdateAddressForm />
-                                </Menu.Item>:
-                                <Menu.Item key="4">
-                                    <CreateAddressForm />
-                                </Menu.Item>}
-
-                                {this.state.address.data.getAddress ?
-                                <Menu.Item key="6">
-                                    <Button className="modify-info-button" ghost onClick={this.deleteAddress}>
-                                    <Icon type="delete" theme="twoTone" twoToneColor="#52c41a"/>Delete Address</Button>
-                                </Menu.Item>:null}
-
-                                <Menu.Item key="7">
-                                    <AddEduForm />
+                                <Menu.Item key="9">
+                                    <ResumeUploader onChange={this.onChange} />
                                 </Menu.Item>
-
-                                <Menu.Item key="8">
-                                    <AddExpForm />
-                                </Menu.Item>
-                            </SubMenu>
-
-                            <Menu.Item key="2">
-                                <PhotoUploader />
-
-                                {/* <span>{I18n.get('Change Profile Picture')}</span> */}
-                            </Menu.Item>
-
-                            <Menu.Item key="9">
-                                <ResumeUploader onChange={this.onChange} />
-                            </Menu.Item>
-                        </Menu>) : null
-                    }
-                </Sider>
-                <Content>
-                    <Information
-                        user={this.state.user}
-                        address={this.state.address}
-                        jobs={this.state.jobs}
-                        education={this.state.education}
-                        experiences={this.state.experiences}
-                        allowEdit={this.state.allowEdit}
-                        deleteEdu={this.deleteEducation}
-                        deleteExp={this.deleteExperience}
-                    />
-                </Content>
-            </Layout>
-
+                            </Menu>) : null
+                        }
+                    </Sider>
+                    <Content>
+                        <Information
+                            user={this.state.user}
+                            address={this.state.address}
+                            jobs={this.state.jobs}
+                            education={this.state.education}
+                            experiences={this.state.experiences}
+                            allowEdit={this.state.allowEdit}
+                            deleteEdu={this.deleteEducation}
+                            deleteExp={this.deleteExperience}
+                        />
+                    </Content>
+                </Layout>
+                <Footer style={{ textAlign: 'center' }}>
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
+                </Footer>
+            </div>
         );
     }
 }

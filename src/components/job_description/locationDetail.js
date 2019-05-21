@@ -44,7 +44,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
         axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
         params:{
             address: this.state.address,
-            key: 'AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E'
+            key: process.env.API_KEY
         }
         })
         .then((response) => {
@@ -71,7 +71,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap(props =>
             </h2>
             <div style={{width: "80vw", height:"80vh"}}>
             <MapWithAMarker
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDwwatP0n-x2nZF2wW48D8UvRMQpJaDA4E"
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.API_KEY}`}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
