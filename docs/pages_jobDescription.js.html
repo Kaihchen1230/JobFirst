@@ -1,4 +1,32 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/jobDescription.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/jobDescription.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import { Tabs, Button, Popover, Spin, Skeleton } from 'antd';
 import JobDetails from '../components/job_description/jobDetails';
 import Location from '../components/job_description/locationDetail';
@@ -137,7 +165,7 @@ class JobDescription extends React.Component{
         console.log('this is getApplicants: ', getApplicants, ' and this is the length: ', getApplicants.length);
         
         
-        for(let i = 0; i < getApplicants.length; i++){
+        for(let i = 0; i &lt; getApplicants.length; i++){
 
           let tempEnglishLevel = getApplicants[i].Employee.englishLevel;
           console.log('this is getApplicants[i].Employee.englishLevel: ', getApplicants[i].Employee.englishLevel);
@@ -234,7 +262,7 @@ class JobDescription extends React.Component{
         this.setState({
           loading: true
         })
-        for(let i = 0; i < applied.items.length; i++){
+        for(let i = 0; i &lt; applied.items.length; i++){
           let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
           console.log('this is the getAppliedJob: ', getAppliedJob);
           let appliedEmployeeId = getAppliedJob.data.getAppliedJob.Employee.id;
@@ -318,7 +346,7 @@ class JobDescription extends React.Component{
     render(){
 
         if(this.state.loading){
-          <Skeleton active />
+          &lt;Skeleton active />
         }
         console.log('it comes to render first');
         console.log('this is the jobInfo: ', this.state.jobInfo);
@@ -326,25 +354,25 @@ class JobDescription extends React.Component{
         if(this.state.companyInfo != null){
           let content = this.state.companyInfo.description;
           viewCompanyInfo = (
-                  <div >
-                    <span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}</span> - 
-                    <span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}</span>
-                    <div style={{fontSize:"2em", fontWeight:"500",color:"#1BB28B"}}>
+                  &lt;div >
+                    &lt;span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}&lt;/span> - 
+                    &lt;span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}&lt;/span>
+                    &lt;div style={{fontSize:"2em", fontWeight:"500",color:"#1BB28B"}}>
                       {"$"+Math.round(this.state.jobInfo.salary/1000)+"K - $" + Math.round((this.state.jobInfo.salary*1.2)/1000)+"K" }
-                      <span style={{fontSize:"0.8em"}}>(JobFirst est.)</span>
-                    </div>
-                  </div>
+                      &lt;span style={{fontSize:"0.8em"}}>(JobFirst est.)&lt;/span>
+                    &lt;/div>
+                  &lt;/div>
            )
         }else{
           console.log('it is null');
           viewCompanyInfo = (
-            <div>
+            &lt;div>
               The company is not provided...
-            </div>
+            &lt;/div>
           )
         }
 
-        // if(this.state.display && !this.state.count == 0){
+        // if(this.state.display &amp;&amp; !this.state.count == 0){
         //   this.setState({
         //     display : false,
         //     count : 1
@@ -354,16 +382,16 @@ class JobDescription extends React.Component{
 
         return(
             
-          <div >
-            <Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
-                <h2 className="jobTitle">{this.state.jobInfo.title}</h2>
+          &lt;div >
+            &lt;Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
+                &lt;h2 className="jobTitle">{this.state.jobInfo.title}&lt;/h2>
                 {viewCompanyInfo}
-                <Popover content={"We will use your default information to apply to the job"} >
+                &lt;Popover content={"We will use your default information to apply to the job"} >
                 
-                {!this.state.isEmployer? <Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now</Button>: null}
+                {!this.state.isEmployer? &lt;Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now&lt;/Button>: null}
                 
-              </Popover>
-              <PopOutWindow
+              &lt;/Popover>
+              &lt;PopOutWindow
                 userId = {this.state.userId}
                 show = {this.state.isVisible}
                 isVisible = {this.visibleStatus}
@@ -373,36 +401,59 @@ class JobDescription extends React.Component{
                 link = "/app/user-profile/"
                 content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
               />
-              <Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
-                  <TabPane tab="Job" key="1" >
-                      <div>
-                          <JobDetails jobInfo = {this.state.jobInfo}></JobDetails>
-                      </div>
+              &lt;Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
+                  &lt;TabPane tab="Job" key="1" >
+                      &lt;div>
+                          &lt;JobDetails jobInfo = {this.state.jobInfo}>&lt;/JobDetails>
+                      &lt;/div>
           
-                  </TabPane>
-                  <TabPane tab={I18n.get('Company Info')} key="2">
-                      <div>
-                      <CompanyDetail companyInfo = {this.state.companyInfo}></CompanyDetail>
-                      </div>
-                  </TabPane>
+                  &lt;/TabPane>
+                  &lt;TabPane tab={I18n.get('Company Info')} key="2">
+                      &lt;div>
+                      &lt;CompanyDetail companyInfo = {this.state.companyInfo}>&lt;/CompanyDetail>
+                      &lt;/div>
+                  &lt;/TabPane>
 
-                  <TabPane tab={I18n.get('Location Info')} key="3">
-                        <div><Location locationInfo = {this.state.locationInfo}></Location></div>
+                  &lt;TabPane tab={I18n.get('Location Info')} key="3">
+                        &lt;div>&lt;Location locationInfo = {this.state.locationInfo}>&lt;/Location>&lt;/div>
                       
-                  </TabPane>
+                  &lt;/TabPane>
 
-                  {this.state.isEmployer && this.state.isCorrectEmployer ?
-                  <TabPane tab={I18n.get('Applicants List')} key="4">
-                      <div>
-                            <ApplicantList applicants={this.state.applicants}
-                            ></ApplicantList>
-                      </div>
-                  </TabPane>: null}
-              </Tabs>
-            </Spin>
-          </div>
+                  {this.state.isEmployer &amp;&amp; this.state.isCorrectEmployer ?
+                  &lt;TabPane tab={I18n.get('Applicants List')} key="4">
+                      &lt;div>
+                            &lt;ApplicantList applicants={this.state.applicants}
+                            >&lt;/ApplicantList>
+                      &lt;/div>
+                  &lt;/TabPane>: null}
+              &lt;/Tabs>
+            &lt;/Spin>
+          &lt;/div>
         )
     }
 }
 
 export default JobDescription;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 01:26:30 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
