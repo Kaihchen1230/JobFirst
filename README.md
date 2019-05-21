@@ -18,6 +18,9 @@ __Alan Lau__ _(developer)_
 
 ## Refer here for our website
 https://master.d311enjx0cy8vf.amplifyapp.com/
+
+## Refer here for our developer documentation
+https://kaihchen1230.github.io/csc47300Project/
 ___
 
 ## How to get started:
