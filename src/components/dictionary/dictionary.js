@@ -78,6 +78,12 @@ let dict = {
         'Teacher training and education': "教师培训与教育",
         'Transport and logistics': "运输与物流",
 
+        'No Requirement': "无要求",
+        'Associate': "大专",
+        'Bachelor': "学士",
+        'Master': "硕士",
+        'Doctoral': "博士",
+
         "Brief Info":"简介",
         "Profile":"详情",
         "Jobs":"工作",
@@ -297,6 +303,12 @@ let dict = {
         'Social care': "Social care",
         'Teacher training and education': "Teacher training and education",
         'Transport and logistics': "Transport and logistics",
+
+        'No Requirement': "No Requirement",
+        'Associate': "Associate",
+        'Bachelor': "Bachelor",
+        'Master': "Master",
+        'Doctoral': "Doctoral",
 
         "Brief Info":"Brief Info",
         "Profile":"Profile",

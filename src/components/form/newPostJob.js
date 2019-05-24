@@ -402,11 +402,11 @@ class PostJobForm extends React.Component {
                             rules: [{ required: true, message: 'Please select the job type!' }]
                         })(
                             <Select placeholder={I18n.get('Education')} name="education" >
-                                <Option value="No Requirement">No Requirement</Option> 
-                                <Option value="Associate">Associate</Option>
-                                <Option value="Bachelor">Bachelor</Option>
-                                <Option value="Master">Master</Option>
-                                <Option value="Doctoral">Doctoral</Option>
+                                <Option value="No Requirement">{I18n.get('No Requirement')}</Option> 
+                                <Option value="Associate">{I18n.get('Associate')}</Option>
+                                <Option value="Bachelor">{I18n.get('Bachelor')}</Option>
+                                <Option value="Master">{I18n.get('Master')}</Option>
+                                <Option value="Doctoral">{I18n.get('Doctoral')}</Option>
                             </Select>
                         )}
                     </Form.Item>
