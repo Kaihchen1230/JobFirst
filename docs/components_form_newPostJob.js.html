@@ -27,14 +27,14 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import { Layout, Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
 import moment from 'moment';
 import { Auth, I18n } from 'aws-amplify';
 import { getUser } from '../../services/auth';
 import * as mutations from "../../graphql/mutations";
 import { API, graphqlOperation } from 'aws-amplify';
+import * as Util from '../../test/jobPostUnitTest/jobPostUtil';
 
-const { Footer } = Layout;
 const Option = Select.Option;
 const { TextArea } = Input;
 let id = 0;
@@ -51,22 +51,6 @@ function hasErrors(fieldsError) {
 function disabledDate(current) {
     // Can not select days before today and today
     return current &amp;&amp; current &lt; moment().endOf('day');
-}
-
-/**
- * Return the current date in the format YYYY-MM-DD
- * @return {string} - current date in YYYY-MM-DD
- */
-function formatDate() {
-    var d = new Date(),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length &lt; 2) month = '0' + month;
-    if (day.length &lt; 2) day = '0' + day;
-
-    return [year, month, day].join('-');
 }
 
 /**
@@ -132,7 +116,7 @@ class PostJobForm extends React.Component {
      * To make the input values to graphql mutation query and send to AWS database
      */
     handleSubmit = (e) => {
-        let date = formatDate();
+        let date = Util.formatDate();
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
@@ -243,7 +227,7 @@ class PostJobForm extends React.Component {
                 &lt;h1>{I18n.get('Post a New Job')}&lt;/h1>
                 &lt;Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     &lt;Form.Item
-                        label={I18n.get('Job Title')}
+                        label="Job Title"
                         required={true}
                         validateStatus={jobTitleError ? 'error' : ''}
                         help={jobTitleError || ''}>
@@ -261,7 +245,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Address Line 1')}
+                        label="line 1"
                         required={true}
                         validateStatus={line1Error ? 'error' : ''}
                         help={line1Error || ''}>
@@ -279,7 +263,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Address Line 2')}
+                        label="line 2"
                         required={false}>
                         {getFieldDecorator('line2', {
                             rules: [{ required: false, message: 'Please enter the address line 2!' }]
@@ -295,14 +279,14 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('City')}
+                        label="City"
                         required={true}
                         validateStatus={cityError ? 'error' : ''}
                         help={cityError || ''}>
                         {getFieldDecorator('city', {
                             rules: [{ required: true, message: 'Please enter the city!' }]
                         })(
-                            &lt;Input placeholder={I18n.get('City')}
+                            &lt;Input placeholder={I18n.get('Postal Code')}
                                 name="city"
                                 suffix={
                                     &lt;Tooltip title={I18n.get('Enter the city of the job location')}>
@@ -313,7 +297,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Postal Code')}
+                        label="Postal Code"
                         required={true}
                         validateStatus={postalCodeError ? 'error' : ''}
                         help={postalCodeError || ''}>
@@ -331,7 +315,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('State')}
+                        label="State"
                         required={true}
                         validateStatus={stateError ? 'error' : ''}
                         help={stateError || ''}>
@@ -349,7 +333,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Deadline')}
+                        label="Deadline"
                         required={true}
                         validateStatus={deadlineError ? 'error' : ''}
                         help={deadlineError || ''}>
@@ -365,7 +349,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Job Type')}
+                        label="Job Type"
                         required={true}
                         validateStatus={jobTypeError ? 'error' : ''}
                         help={jobTypeError || ''}>
@@ -382,7 +366,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Job Category')}
+                        label="Job Category"
                         required={true}
                         validateStatus={jobCategoryError ? 'error' : ''}
                         help={jobCategoryError || ''}>
@@ -393,35 +377,35 @@ class PostJobForm extends React.Component {
                                 showSearch
                                 optionFilterProp="children"
                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                placeholder={I18n.get('Job Category')}
+                                placeholder="Job Category" 
                                 name="jobCategory" >
-                                &lt;Option value="Accountancy, banking and finance">{I18n.get('Accountancy, banking and finance')}&lt;/Option>
-                                &lt;Option value="Business, consulting and management">{I18n.get('Business, consulting and management')}&lt;/Option>
-                                &lt;Option value="Charity and voluntary work">{I18n.get('Charity and voluntary work')}&lt;/Option>
-                                &lt;Option value="Creative arts and design">{I18n.get('Creative arts and design')}&lt;/Option>
-                                &lt;Option value="Energy and utilities">{I18n.get('Energy and utilities')}&lt;/Option>
-                                &lt;Option value="Engineering and manufacturing">{I18n.get('Engineering and manufacturing')}&lt;/Option>
-                                &lt;Option value="Environment and agriculture">{I18n.get('Environment and agriculture')}&lt;/Option>
-                                &lt;Option value="Healthcare">{I18n.get('Healthcare')}&lt;/Option>
-                                &lt;Option value="Information technology">{I18n.get('Information technology')}&lt;/Option>
-                                &lt;Option value="Law">{I18n.get('Law')}&lt;/Option>
-                                &lt;Option value="Marketing, advertising and PR">{I18n.get('Marketing, advertising and PR')}&lt;/Option>
-                                &lt;Option value="Media and internet">{I18n.get('Media and internet')}&lt;/Option>
-                                &lt;Option value="Property and construction">{I18n.get('Property and construction')}&lt;/Option>
-                                &lt;Option value="Public services and administration">{I18n.get('Public services and administration')}&lt;/Option>
-                                &lt;Option value="Recruitment and HR">{I18n.get('Recruitment and HR')}&lt;/Option>
-                                &lt;Option value="Retail">{I18n.get('Retail')}&lt;/Option>
-                                &lt;Option value="Sales">{I18n.get('Sales')}&lt;/Option>
-                                &lt;Option value="Science and pharmaceuticals">{I18n.get('Science and pharmaceuticals')}&lt;/Option>
-                                &lt;Option value="Social care">{I18n.get('Social care')}&lt;/Option>
-                                &lt;Option value="Teacher training and education">{I18n.get('Teacher training and education')}&lt;/Option>
-                                &lt;Option value="Transport and logistics">{I18n.get('Transport and logistics')}&lt;/Option>
+                                &lt;Option value="Accountancy, banking and finance">Accountancy, banking and finance&lt;/Option>
+                                &lt;Option value="Business, consulting and management">Business, consulting and management&lt;/Option>
+                                &lt;Option value="Charity and voluntary work">Charity and voluntary work&lt;/Option>
+                                &lt;Option value="Creative arts and design">Creative arts and design&lt;/Option>
+                                &lt;Option value="Energy and utilities">Energy and utilities&lt;/Option>
+                                &lt;Option value="Engineering and manufacturing">Engineering and manufacturing&lt;/Option>
+                                &lt;Option value="Environment and agriculture">Environment and agriculture&lt;/Option>
+                                &lt;Option value="Healthcare">Healthcare&lt;/Option>
+                                &lt;Option value="Information technology">Information technology&lt;/Option>
+                                &lt;Option value="Law">Law&lt;/Option>
+                                &lt;Option value="Marketing, advertising and PR">Marketing, advertising and PR&lt;/Option>
+                                &lt;Option value="Media and internet">Media and internet&lt;/Option>
+                                &lt;Option value="Property and construction">Property and construction&lt;/Option>
+                                &lt;Option value="Public services and administration">Public services and administration&lt;/Option>
+                                &lt;Option value="Recruitment and HR">Recruitment and HR&lt;/Option>
+                                &lt;Option value="Retail">Retail&lt;/Option>
+                                &lt;Option value="Sales">Sales&lt;/Option>
+                                &lt;Option value="Science and pharmaceuticals">Science and pharmaceuticals&lt;/Option>
+                                &lt;Option value="Social care">Social care&lt;/Option>
+                                &lt;Option value="Teacher training and education">Teacher training and education&lt;/Option>
+                                &lt;Option value="Transport and logistics">Transport and logistics&lt;/Option>
                             &lt;/Select>
                         )}
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Enter Job Description')}
+                        label="Job Description"
                         required={true}
                         validateStatus={descriptionError ? 'error' : ''}
                         help={descriptionError || ''}>
@@ -437,7 +421,7 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
 
                     &lt;Form.Item
-                        label={I18n.get('Education')}
+                        label="Require Education"
                         required={true}
                         validateStatus={educationTypeError ? 'error' : ''}
                         help={educationTypeError || ''}>
@@ -445,11 +429,11 @@ class PostJobForm extends React.Component {
                             rules: [{ required: true, message: 'Please select the job type!' }]
                         })(
                             &lt;Select placeholder={I18n.get('Education')} name="education" >
-                                &lt;Option value="No Requirement">No Requirement&lt;/Option> 
-                                &lt;Option value="Associate">Associate&lt;/Option>
-                                &lt;Option value="Bachelor">Bachelor&lt;/Option>
-                                &lt;Option value="Master">Master&lt;/Option>
-                                &lt;Option value="Doctoral">Doctoral&lt;/Option>
+                                &lt;Option value="No Requirement">{I18n.get('No Requirement')}&lt;/Option> 
+                                &lt;Option value="Associate">{I18n.get('Associate')}&lt;/Option>
+                                &lt;Option value="Bachelor">{I18n.get('Bachelor')}&lt;/Option>
+                                &lt;Option value="Master">{I18n.get('Master')}&lt;/Option>
+                                &lt;Option value="Doctoral">{I18n.get('Doctoral')}&lt;/Option>
                             &lt;/Select>
                         )}
                     &lt;/Form.Item>
@@ -457,11 +441,11 @@ class PostJobForm extends React.Component {
                     {formItems}
                     &lt;Form.Item {...formItemLayoutWithOutLabel}>
                         &lt;Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
-                            &lt;Icon type="plus" /> {I18n.get('Enter Job Requirements')}
+                            &lt;Icon type="plus" /> Add requirement
                         &lt;/Button>
                     &lt;/Form.Item>
 
-                    &lt;Form.Item label={I18n.get('Salary')}>
+                    &lt;Form.Item label="salary">
                         {getFieldDecorator('salary', {
                             rules: [{ type: "number", required: false, message: 'Must be in whole number' }]
                         })(
@@ -480,9 +464,6 @@ class PostJobForm extends React.Component {
                     &lt;/Form.Item>
                     &lt;br />
                 &lt;/Form>
-                &lt;Footer style={{ textAlign: 'center' }}>
-                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
-                &lt;/Footer>
             &lt;/div >
         );
     }
@@ -499,13 +480,13 @@ export default PostJob;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#disabledDate">disabledDate</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#General">General</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li></ul><h3>Global</h3><ul><li><a href="global.html#disabledDate">disabledDate</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 10:55:13 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 18:40:04 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
