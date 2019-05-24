@@ -1,15 +1,15 @@
 import React from 'react';
 import { Col, Row, Select, Input, Layout, Slider, InputNumber, Icon, Breadcrumb } from 'antd';
 import JobItem from '../components/jobList/jobItem';
-import dict from "../components/dictionary/dictionary";
 import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
 import * as Util from '../test/jobListUnitTest/jobListUtil';
-import { Link, navigate } from "gatsby";
 import "../style/jobList.css"
-import HomeImg from "../../static/home.png"
+
+
+// The job list page for all the job that are posted by employers
 
 const {
     Header, Footer, Sider, Content,
@@ -18,62 +18,107 @@ const Search = Input.Search;
 const Option = Select.Option;
 const InputGroup = Input.Group;
 let searchType = "Name";
-// let lan = window.localStorage.getItem('lan');
-// I18n.putVocabularies(dict);
-// I18n.setLanguage(lan);
+
+/**
+ * The class jobList will render the page of job list for all the posted job by employer
+ * It will render the job pool containing all the job cards (data from AWS dynamoDB)
+ * It will render the a search and filter section that allows you do search and filter (AWS API)
+ * It will render the a learn more button the job cards so user can direct to jobDescription page
+ */
 
 class JobList extends React.Component {
 
+    /**
+     * the state object to store the query statement for filter and search
+     * @type {Object} state
+     */
     state = {
         "filter": { clickedCounts: { ge: 0 } },
         salary: 7,
         days: 365,
     }
 
+    /**
+     * Update the filter object in state with a filter query by job type
+     * @param {string} value - the job type you want to filter
+     */
     filterType = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterTypeGen(value, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by job category
+     * @param {string} value - the job category you want to filter
+     */
     filterCategory = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterCateGen(value, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by required education
+     * @param {string} value - the required education you want to filter
+     */
     filterEducation = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterEduGen(value, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by post date
+     */
     filterDate = () => {
         let oldFilter = { ...this.state.filter };
         let days = this.state.days;
         this.setState({ "filter": Util.filterDateGen(days, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by job salary
+     */
     filterSalary = () => {
         let oldFilter = { ...this.state.filter };
         let salary = this.state.salary;
         this.setState({ "filter": Util.filterSalaryGen(salary, oldFilter) });
     }
 
+    /**
+     * Update the variable searchType with the input value
+     * @param {string} value - the input value either Name or Location
+     */
     selectSearch = (value) => {
         searchType = value;
     }
 
+    /**
+     * Update the filter object in state with a filter query by input name or location
+     * @param {string} value - the input name or location you want to filter
+     */
     searchByName = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.searchByNameGen(value, searchType, oldFilter) });
     }
 
+    /**
+     * Reset the filter object in state back to original value
+     */
     reset = () => {
         this.setState({ "filter": Util.resetGen() });
     }
 
+    /**
+     * Update the salary object in state with an input salary
+     * @param {string} value - the input salary
+     */
     setSalary = (value) => {
         this.setState({ salary: value });
     }
 
+    /**
+     * Update the days object in state with an input day
+     * @param {string} value - the input day
+     */
     setDay = (value) => {
         this.setState({ days: value });
     }
@@ -264,7 +309,7 @@ class JobList extends React.Component {
                     </Connect>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    JobFirst ©2019 Created by JobFirst Group
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
                 </Footer>
             </Layout>
         );
