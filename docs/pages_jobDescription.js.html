@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/jobDescription.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/jobDescription.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Tabs, Button, Popover, Spin, Skeleton } from 'antd';
+import JobDetails from '../components/job_description/jobDetails';
+import Location from '../components/job_description/locationDetail';
+import CompanyDetail from '../components/job_description/companyDetail';
+import ApplicantList from '../components/job_description/applicantList';
+import PopOutWindow from '../components/job_description/popOutWindow';
+import { Auth, API, graphqlOperation, I18n } from 'aws-amplify';
+import { getUser } from "../services/auth";
+import * as queries from '../graphql/queries';
+import * as mutations from '../graphql/mutations';
+import * as customQueries from '../customGraphql/queries';
+import * as Util from '../test/jobDescriptionUnitTest/jobDescriptionUtil';
+import "../style/jobDescription.css"
+const TabPane = Tabs.TabPane;
+
+// The job description page for the job that user clicks learn more
+
+/**
+ * The class JobDescription will render the page of the job that user is interested
+ * It will render the job information tab (data from AWS dynamoDB)
+ * It will render the company information tab (data from AWS dynamoDB)
+ * It will render the location tab (data from AWS dynamoDB with google map API)
+ * It will render the applicant list only for the employer who posted the job
+ */
+
+class JobDescription extends React.Component{
+
+    /**
+     * the state object to store all data to display on the page
+     * @type {Object} state
+     */
+    state = {
+        userId: "",
+        jobId: "",
+        employerId: "",
+        isEmployer: false,
+        isCorrectEmployer: false,
+        postJobInfo: {},
+        jobInfo: {
+          title: "",
+          type: "",
+          description: "",
+          requirements: [],
+          clickedCount: 0
+        },
+        companyInfo: {},
+        locationInfo: {},
+        isVisible: false,
+        applied: false,
+        loading: true,
+        display: false,
+        count: 0,
+        applicants: []
+
+    }
+
+    /**
+     * Fetch all job information data from AWS by using job id
+     * Update the job inforamtion by using job id
+     * Check if the user is employer or employee: 
+     * if user is the company that posted the job: 
+     * yes: display the applicant list tab(with applicants' info) and hide the apply now button
+     * no: just hide the apply now button
+     * if user is employee: only display the aaply now button
+     */
+    componentDidMount = async () => {
+
+
+      console.log('it comes to componentDidMount first');
+      // current job id
+      let currentId = window.history.state.id;
+      let user = await Auth.currentAuthenticatedUser();
+      console.log("this is the user: ", user);
+      const { attributes } = user;
+      console.log("this is attribute: ", {attributes});
+      let currentUserId = attributes.sub;
+      
+      // get the current job info
+      try{
+        const currentJobInfo = await API.graphql(graphqlOperation (queries.getPostedJob, {id: currentId}));
+       
+        let incomingJobInfo = {...this.state.jobInfo};
+        incomingJobInfo.title = currentJobInfo.data.getPostedJob.jobTitle;
+        incomingJobInfo.type = currentJobInfo.data.getPostedJob.jobType;
+        incomingJobInfo.description = currentJobInfo.data.getPostedJob.description;
+        incomingJobInfo.requirements = currentJobInfo.data.getPostedJob.requirements;
+        incomingJobInfo.clickedCount = currentJobInfo.data.getPostedJob.clickedCounts;
+        incomingJobInfo.salary = currentJobInfo.data.getPostedJob.salary;
+        console.log('this is the currentJobInfo: ', currentJobInfo);
+        this.setState({
+          userId: currentUserId,
+          jobId: currentId,
+          postJobInfo: currentJobInfo,
+          jobInfo: incomingJobInfo,
+          companyInfo: currentJobInfo.data.getPostedJob.company,
+          locationInfo: currentJobInfo.data.getPostedJob.location
+        });
+
+      }catch(err){
+        console.log('there is an error fetching data...', err);
+      }
+
+      // update posted job click count
+      try{
+        let currentJobClickedCounts = this.state.jobInfo.clickedCount;
+        const updatePostedJobInput = {
+          id: currentId,
+          clickedCounts: currentJobClickedCounts + 1
+        };
+        await API.graphql(graphqlOperation(mutations.updatePostedJob, {input: updatePostedJobInput}));
+
+      }catch(err){
+        console.log('there is an error updating click count: ', err);
+      }
+
+      // checking if the current user is an Er or Ee
+      getUser()["custom:isEmployer"] === "yes" ? this.setState({isEmployer: true, display: true}) : this.setState({isEmployer: false});
+
+      // check if the current user is the company who posted the job
+
+      if(this.state.userId === this.state.companyInfo.id){
+        console.log('this is the current userid: ', this.state.userId, ' and this is the companyId: ', this.state.companyInfo.id);
+        this.setState({
+          isCorrectEmployer: true
+        })
+      }
+
+      // get applicants for the current job post
+      try{
+        const getEmployeeAppliedCurrentJob = await API.graphql(graphqlOperation (customQueries.getEmployeeAppliedSameJob, {id: currentId}));
+        // console.log('this is the testing: ', getEmployeeAppliedCurrentJob);
+        let getApplicants = getEmployeeAppliedCurrentJob.data.getPostedJob.applied.items;
+        // console.log('this is the employeeAppliedCurrentJob: ', employeeAppliedCurrentJob, " and its tpye: is array ", Array.isArray(employeeAppliedCurrentJob));
+
+        let applicantsInfo = [];
+        console.log('this is getApplicants: ', getApplicants, ' and this is the length: ', getApplicants.length);
+        
+        
+        for(let i = 0; i &lt; getApplicants.length; i++){
+
+          let tempEnglishLevel = getApplicants[i].Employee.englishLevel;
+          console.log('this is getApplicants[i].Employee.englishLevel: ', getApplicants[i].Employee.englishLevel);
+          let currentEnglishLevel = '';
+          if(tempEnglishLevel === null){
+            currentEnglishLevel = 'N/A'
+          }else{
+            currentEnglishLevel = tempEnglishLevel
+          }
+
+          let tempFirstName = getApplicants[i].Employee.firstName;
+          console.log('this is getApplicants[i].Employee.name: ', getApplicants[i].Employee.firstName);
+          tempFirstName  === null? tempFirstName = ' ': tempFirstName = tempFirstName;
+          
+          console.log('this is getApplicants[i].Employee.last name: ', getApplicants[i].Employee.lastName);
+          let tempLastName = getApplicants[i].Employee.lastName;
+          tempLastName === null? tempLastName = ' ' : tempLastName = tempLastName;
+          console.log('this is tempLastName: ', tempLastName);
+
+          let tempName = tempFirstName + ' ' + tempLastName;
+          console.log('this is tempName: ', tempName);
+          let currentName;
+          tempName? currentName = tempName : currentName = 'N/A';
+
+          console.log('this is currentName: ', currentName);
+
+          let tempAddress = getApplicants[i].Employee.address;
+          console.log('this is getApplicants[i].Employee.address: ', getApplicants[i].Employee.address);
+          
+          let currentAddress = '';
+          if(tempAddress === null){
+            currentAddress = 'N/A'
+          }else{
+            currentAddress = tempAddress.line1 + ' ' + tempAddress.line2 + ', ' + tempAddress.city + ' ' + tempAddress.state + ', '
+            + tempAddress.postalCode
+          }
+
+          let tempAppliedJobId = getApplicants[i].id;
+          let currentAppliedJobId = '';
+          tempAppliedJobId === null? currentAppliedJobId = 'N/A' : currentAppliedJobId = tempAppliedJobId;
+
+          let tempStatus = getApplicants[i].status;
+          let currentStatus = '';
+          tempStatus === null ? currentStatus = 'N/A' : currentStatus = tempStatus;
+
+
+          console.log('this is currentEnglishLevel: ', currentEnglishLevel);
+          applicantsInfo.push({
+            key: getApplicants[i].Employee.id,
+            name: currentName,
+            englishLevel: currentEnglishLevel,
+            address: currentAddress,
+            appliedJobId: currentAppliedJobId,
+            status: currentStatus
+          })
+        }
+        // console.log('this is applicantInfo: ', applicantsInfo);
+        this.setState({
+          applicants: applicantsInfo
+        });
+
+      }catch(err){
+        console.log('there is an error fetching the data for employees who applied the job ', err);
+      }
+
+      this.setState({
+        loading: false
+      })
+    }
+
+    /**
+     * Update employee's applied job data
+     * Condtion that check if the user applied to the job alreadu:
+     * yes: don't update the applied job data
+     * no: update the applied job data
+     * Both conditions allow user to choose either stay at the page or go to profile page
+     */
+    applyJob = async () => {
+      // event.preventDefault();
+      // console.log('this is word: ', word);
+
+      // make sure the employee hasn't applied to the job yet
+      /**
+       * Make sure user hadn't apply to the job yet
+       */
+      try{
+        const currentJobInfo = await API.graphql(graphqlOperation(queries.getPostedJob,{id: this.state.jobId}));
+        // console.log('this is the currentJobInfo: ', currentJobInfo);
+        const {applied} = currentJobInfo.data.getPostedJob;
+        // console.log('this is applied: ',{applied});
+        // console.log('this is the item: ', applied.items);
+        // console.log('this is the type of applied.items: ', typeof(applied.items));
+        // console.log('this is the size: ', applied.items.length);
+        this.setState({
+          loading: true
+        })
+        for(let i = 0; i &lt; applied.items.length; i++){
+          let getAppliedJob = await API.graphql(graphqlOperation(queries.getAppliedJob,{id: applied.items[i].id}));
+          console.log('this is the getAppliedJob: ', getAppliedJob);
+          let appliedEmployeeId = getAppliedJob.data.getAppliedJob.Employee.id;
+          if(appliedEmployeeId === this.state.userId){
+              this.setState({
+                applied: true
+              })
+              break;
+          }
+        }
+        // user hasn't applied to the job yet
+        if(!this.state.applied){
+          const newDate = new Date()
+          const date = newDate.getDate();
+          const month = newDate.getMonth() + 1;
+          const year = newDate.getFullYear();
+          const currentDate = month + '/' + date + '/' + year;
+          const userId = this.state.userId;
+          const jobId = this.state.jobId;
+
+          /**
+           * Make user's initial job application status as pending
+           */
+          try{
+            const createAppliedJobInput = {
+              dateApplied : currentDate,
+              status: "Pending",
+              appliedJobEmployeeId: userId,
+              appliedJobJobId: jobId
+            }
+            await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+            // console.log(' this is the newAppliedJob: ', newAppliedJob);
+            /**
+             * Display loading status to prevent user to click around
+             */
+            this.setState({
+              isVisible: true
+            });
+
+          }catch(err){
+            console.log('there is an eeror updating the applied job table: ', err);
+          }
+        }else{
+          
+          this.setState({isVisible: true});
+          console.log('this is isVisible in the else: ', this.state.isVisible);
+        }
+
+        
+
+      }catch(err){
+        console.log('there is an error to fetch the data for applied job: ', err);
+      }
+    }  
+    
+    /**
+     * @param {boolean} status - status for the loading, 
+     * if true: showing loading status
+     * if false: don't show loading status
+     */
+    loadingStatus = (status) => {
+      this.setState({
+        loading: Util.loadingStatus(status)
+      })
+    }
+
+    /**
+     * @param {boolean} status - status for the modal window,
+     * if true: show the modal window that asking user if want to stay at the job description page
+     * if false: don't show the modal window
+     */
+    visibleStatus = (status) => {
+      this.setState({
+        isVisible: Util.visibleStatus(status)
+      })
+    }
+
+    /**
+     * Begin to render and populated the page
+     */
+    render(){
+
+        if(this.state.loading){
+          &lt;Skeleton active />
+        }
+        console.log('it comes to render first');
+        console.log('this is the jobInfo: ', this.state.jobInfo);
+        let viewCompanyInfo;
+        if(this.state.companyInfo != null){
+          let content = this.state.companyInfo.description;
+          viewCompanyInfo = (
+                  &lt;div >
+                    &lt;span style={{fontSize:"1.5em", fontWeight:"500", color:"rgb(0, 0, 0, 0.85)"}}>{this.state.companyInfo.companyName}&lt;/span> - 
+                    &lt;span style={{fontSize:"1.2em"}}>{this.state.companyInfo.headquarter}&lt;/span>
+                    &lt;div style={{fontSize:"2em", fontWeight:"500",color:"#1BB28B"}}>
+                      {"$"+Math.round(this.state.jobInfo.salary/1000)+"K - $" + Math.round((this.state.jobInfo.salary*1.2)/1000)+"K" }
+                      &lt;span style={{fontSize:"0.8em"}}>(JobFirst est.)&lt;/span>
+                    &lt;/div>
+                  &lt;/div>
+           )
+        }else{
+          console.log('it is null');
+          viewCompanyInfo = (
+            &lt;div>
+              The company is not provided...
+            &lt;/div>
+          )
+        }
+
+        // if(this.state.display &amp;&amp; !this.state.count == 0){
+        //   this.setState({
+        //     display : false,
+        //     count : 1
+        //   })
+        // }
+        console.log('this is location: ', this.state.locationInfo); 
+
+        return(
+            
+          &lt;div >
+            &lt;Spin className="main" spinning={this.state.loading} tip="Please wait for a moment"> 
+                &lt;h2 className="jobTitle">{this.state.jobInfo.title}&lt;/h2>
+                {viewCompanyInfo}
+                &lt;Popover content={"We will use your default information to apply to the job"} >
+                
+                {!this.state.isEmployer? &lt;Button type="primary" onClick={this.applyJob} loading={this.state.loading}>Apply Now&lt;/Button>: null}
+                
+              &lt;/Popover>
+              &lt;PopOutWindow
+                userId = {this.state.userId}
+                show = {this.state.isVisible}
+                isVisible = {this.visibleStatus}
+                isLoading = {this.loadingStatus}
+                okText = "Go to profile page"
+                cancelText = "Stay here"
+                link = "/app/user-profile/"
+                content = {this.state.applied? "You already applied to this job, you can view it in your profile page." :"Thanks for applying to this job, you will be heard back from the employer shortly."}
+              />
+              &lt;Tabs defaultActiveKey="1" style ={{fontSize:"1em"}}> 
+                  &lt;TabPane tab="Job" key="1" >
+                      &lt;div>
+                          &lt;JobDetails jobInfo = {this.state.jobInfo}>&lt;/JobDetails>
+                      &lt;/div>
+          
+                  &lt;/TabPane>
+                  &lt;TabPane tab={I18n.get('Company Info')} key="2">
+                      &lt;div>
+                      &lt;CompanyDetail companyInfo = {this.state.companyInfo}>&lt;/CompanyDetail>
+                      &lt;/div>
+                  &lt;/TabPane>
+
+                  &lt;TabPane tab={I18n.get('Location Info')} key="3">
+                        &lt;div>&lt;Location locationInfo = {this.state.locationInfo}>&lt;/Location>&lt;/div>
+                      
+                  &lt;/TabPane>
+
+                  {this.state.isEmployer &amp;&amp; this.state.isCorrectEmployer ?
+                  &lt;TabPane tab={I18n.get('Applicants List')} key="4">
+                      &lt;div>
+                            &lt;ApplicantList applicants={this.state.applicants}
+                            >&lt;/ApplicantList>
+                      &lt;/div>
+                  &lt;/TabPane>: null}
+              &lt;/Tabs>
+            &lt;/Spin>
+          &lt;/div>
+        )
+    }
+}
+
+export default JobDescription;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#disabledDate">disabledDate</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 18:56:53 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

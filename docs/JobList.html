@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Profile</title>
+    <title>JSDoc: Class: JobList</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Profile</h1>
+    <h1 class="page-title">Class: JobList</h1>
 
     
 
@@ -28,11 +28,12 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Profile<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>JobList<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>The class Profile will render the page of the user profile.
-It will render the edit profile buttons if the user is viewing his own profile
-It will not render the edit profile buttons if the user is viewing others profile</p></div>
+            <div class="class-description"><p>The class jobList will render the page of job list for all the posted job by employer
+It will render the job pool containing all the job cards (data from AWS dynamoDB)
+It will render the a search and filter section that allows you do search and filter (AWS API)
+It will render the a learn more button the job cards so user can direct to jobDescription page</p></div>
         
     
 </header>
@@ -47,72 +48,19 @@ It will not render the edit profile buttons if the user is viewing others profil
     
 
     
-    <h4 class="name" id="Profile"><span class="type-signature"></span>new Profile<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="JobList"><span class="type-signature"></span>new JobList<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
-<div class="description">
-    <p>the constructor will initilize the state of user profile</p>
-</div>
 
 
 
 
 
 
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>props</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -148,7 +96,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line39">line 39</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -198,13 +146,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="componentDidMount"><span class="type-signature"></span>componentDidMount<span class="type-signature"></span></h4>
+<h4 class="name" id="filterCategory"><span class="type-signature"></span>filterCategory<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>where all the data fetching happen</p>
+    <p>Update the filter object in state with a filter query by job category</p>
 </div>
 
 
@@ -242,7 +190,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line162">line 162</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -260,13 +208,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="deleteAddress"><span class="type-signature"></span>deleteAddress<span class="type-signature"></span></h4>
+<h4 class="name" id="filterDate"><span class="type-signature"></span>filterDate<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>delete the user's address</p>
+    <p>Update the filter object in state with a filter query by post date</p>
 </div>
 
 
@@ -304,7 +252,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line253">line 253</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -322,13 +270,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="deleteEducation"><span class="type-signature"></span>deleteEducation<span class="type-signature"></span></h4>
+<h4 class="name" id="filterEducation"><span class="type-signature"></span>filterEducation<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>delete the education information of the user</p>
+    <p>Update the filter object in state with a filter query by required education</p>
 </div>
 
 
@@ -366,7 +314,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line200">line 200</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -384,13 +332,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="deleteExperience"><span class="type-signature"></span>deleteExperience<span class="type-signature"></span></h4>
+<h4 class="name" id="filterSalary"><span class="type-signature"></span>filterSalary<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>delete the user's experience information</p>
+    <p>Update the filter object in state with a filter query by job salary</p>
 </div>
 
 
@@ -428,7 +376,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line226">line 226</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -446,13 +394,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="fetchAddress"><span class="type-signature"></span>fetchAddress<span class="type-signature"></span></h4>
+<h4 class="name" id="filterType"><span class="type-signature"></span>filterType<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>fetch user's address</p>
+    <p>Update the filter object in state with a filter query by job type</p>
 </div>
 
 
@@ -490,7 +438,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line77">line 77</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -508,13 +456,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="fetchAppliedJob"><span class="type-signature"></span>fetchAppliedJob<span class="type-signature"></span></h4>
+<h4 class="name" id="reset"><span class="type-signature"></span>reset<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>using custom query to fetch user's applied jobs</p>
+    <p>Reset the filter object in state back to original value</p>
 </div>
 
 
@@ -552,7 +500,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line90">line 90</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -570,13 +518,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="fetchEducation"><span class="type-signature"></span>fetchEducation<span class="type-signature"></span></h4>
+<h4 class="name" id="searchByName"><span class="type-signature"></span>searchByName<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>fetch user's education information</p>
+    <p>Update the filter object in state with a filter query by input name or location</p>
 </div>
 
 
@@ -614,7 +562,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line117">line 117</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line98">line 98</a>
     </li></ul></dd>
     
 
@@ -632,13 +580,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="fetchExperience"><span class="type-signature"></span>fetchExperience<span class="type-signature"></span></h4>
+<h4 class="name" id="selectSearch"><span class="type-signature"></span>selectSearch<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>fetch user's experiences</p>
+    <p>Update the variable searchType with the input value</p>
 </div>
 
 
@@ -676,7 +624,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line129">line 129</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -694,13 +642,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="fetchPhoto"><span class="type-signature"></span>fetchPhoto<span class="type-signature"></span></h4>
+<h4 class="name" id="setDay"><span class="type-signature"></span>setDay<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>fetch user photo from AWS Storage</p>
+    <p>Update the days object in state with an input day</p>
 </div>
 
 
@@ -738,7 +686,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line141">line 141</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -756,13 +704,13 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="fetchUserInfo"><span class="type-signature"></span>fetchUserInfo<span class="type-signature"></span></h4>
+<h4 class="name" id="setSalary"><span class="type-signature"></span>setSalary<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>fetch user information from dynamodb</p>
+    <p>Update the salary object in state with an input salary</p>
 </div>
 
 
@@ -800,7 +748,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line63">line 63</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -818,96 +766,26 @@ It will not render the edit profile buttons if the user is viewing others profil
 
         
             
-<h4 class="name" id="onCollapse"><span class="type-signature"></span>onCollapse<span class="type-signature"></span></h4>
+<h4 class="name" id="state"><span class="type-signature"></span>state<span class="type-signature"> :Object</span></h4>
 
 
 
 
 <div class="description">
-    <p>hide the sidebar</p>
+    <p>the state object to store the query statement for filter and search</p>
 </div>
 
 
 
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line56">line 56</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-
-    
-
-    
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
+<span class="param-type">Object</span>
 
 
-
-<div class="description">
-    <p>begin to render</p>
-</div>
-
-
-
-
-
-
-
-
+        </li>
+    </ul>
 
 
 
@@ -942,7 +820,7 @@ It will not render the edit profile buttons if the user is viewing others profil
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_userProfile.js.html">pages/userProfile.js</a>, <a href="pages_userProfile.js.html#line267">line 267</a>
+        <a href="pages_jobList.js.html">pages/jobList.js</a>, <a href="pages_jobList.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -958,21 +836,9 @@ It will not render the edit profile buttons if the user is viewing others profil
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
+    
+
     
 
     

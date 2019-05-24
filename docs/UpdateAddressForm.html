@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: PostJobForm</title>
+    <title>JSDoc: Class: UpdateAddressForm</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: PostJobForm</h1>
+    <h1 class="page-title">Class: UpdateAddressForm</h1>
 
     
 
@@ -28,11 +28,11 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>PostJobForm<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>UpdateAddressForm<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>The class PostJobForm will render the page allow employer to input a new job
-It will render the inputs fields allow user to input values
-It will render the button to submit the job</p></div>
+            <div class="class-description"><p>The class UpdateAddressForm will render the Update Address form.
+It will give the user the ability to update the current address
+on their profile, if they have one.</p></div>
         
     
 </header>
@@ -47,16 +47,12 @@ It will render the button to submit the job</p></div>
     
 
     
-    <h4 class="name" id="PostJobForm"><span class="type-signature"></span>new PostJobForm<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="UpdateAddressForm"><span class="type-signature"></span>new UpdateAddressForm<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    <p>the state object to store data</p>
-</div>
 
 
 
@@ -99,7 +95,7 @@ It will render the button to submit the job</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line40">line 40</a>
+        <a href="components_form_updateAddress.js.html">components/form/updateAddress.js</a>, <a href="components_form_updateAddress.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -149,13 +145,13 @@ It will render the button to submit the job</p></div>
 
         
             
-<h4 class="name" id="add"><span class="type-signature"></span>add<span class="type-signature"></span></h4>
+<h4 class="name" id="handleCancel"><span class="type-signature"></span>handleCancel<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>To add field value</p>
+    <p>handle a click of the cancel button on the form</p>
 </div>
 
 
@@ -193,7 +189,7 @@ It will render the button to submit the job</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line68">line 68</a>
+        <a href="components_form_updateAddress.js.html">components/form/updateAddress.js</a>, <a href="components_form_updateAddress.js.html#line108">line 108</a>
     </li></ul></dd>
     
 
@@ -211,13 +207,13 @@ It will render the button to submit the job</p></div>
 
         
             
-<h4 class="name" id="handleSubmit"><span class="type-signature"></span>handleSubmit<span class="type-signature"></span></h4>
+<h4 class="name" id="handleUpdate"><span class="type-signature"></span>handleUpdate<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>To make the input values to graphql mutation query and send to AWS database</p>
+    <p>use the API to update the address</p>
 </div>
 
 
@@ -255,7 +251,7 @@ It will render the button to submit the job</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line91">line 91</a>
+        <a href="components_form_updateAddress.js.html">components/form/updateAddress.js</a>, <a href="components_form_updateAddress.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -273,13 +269,13 @@ It will render the button to submit the job</p></div>
 
         
             
-<h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="type-signature"></span></h4>
+<h4 class="name" id="saveFormRef"><span class="type-signature"></span>saveFormRef<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>To remove field value</p>
+    <p>save the values entered in the form</p>
 </div>
 
 
@@ -317,7 +313,69 @@ It will render the button to submit the job</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line50">line 50</a>
+        <a href="components_form_updateAddress.js.html">components/form/updateAddress.js</a>, <a href="components_form_updateAddress.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="showModal"><span class="type-signature"></span>showModal<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>hide or show the form</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_form_updateAddress.js.html">components/form/updateAddress.js</a>, <a href="components_form_updateAddress.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -345,7 +403,7 @@ It will render the button to submit the job</p></div>
     
 
     
-    <h4 class="name" id="componentDidMount"><span class="type-signature"></span>componentDidMount<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -353,7 +411,7 @@ It will render the button to submit the job</p></div>
 
 
 <div class="description">
-    <p>To disabled submit button at the beginning.</p>
+    <p>render the form on the sidebar</p>
 </div>
 
 
@@ -397,7 +455,7 @@ It will render the button to submit the job</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line83">line 83</a>
+        <a href="components_form_updateAddress.js.html">components/form/updateAddress.js</a>, <a href="components_form_updateAddress.js.html#line156">line 156</a>
     </li></ul></dd>
     
 
