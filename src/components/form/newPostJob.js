@@ -16,11 +16,20 @@ function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
+/**
+ * Return the date that is not before current day
+ * @param {string} - date in YYYY-MM-DD
+ * @return {string} - date in YYYY-MM-DD
+ */
 function disabledDate(current) {
     // Can not select days before today and today
     return current && current < moment().endOf('day');
 }
 
+/**
+ * Return the current date in the format YYYY-MM-DD
+ * @return {string} - current date in YYYY-MM-DD
+ */
 function formatDate() {
     var d = new Date(),
         month = '' + (d.getMonth() + 1),
@@ -33,7 +42,17 @@ function formatDate() {
     return [year, month, day].join('-');
 }
 
+/**
+ * The class PostJobForm will render the page allow employer to input a new job
+ * It will render the inputs fields allow user to input values
+ * It will render the button to submit the job
+ */
 class PostJobForm extends React.Component {
+
+    /**
+     * the state object to store data
+     * @type {Object} state
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -56,6 +75,9 @@ class PostJobForm extends React.Component {
         });
     }
 
+    /**
+     * 
+     */
     add = () => {
         const { form } = this.props;
         // can use data-binding to get
