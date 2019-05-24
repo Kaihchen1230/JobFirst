@@ -27,15 +27,15 @@ const briefInfo = (props) => {
                     <h2>{I18n.get('Brief Info')}</h2> 
                     <span>{props.companyType}</span>
                     <br/>
-                    <Icon type="home" style={{ fontSize: '20px', color: '#1BB28B'}}  /> {I18n.get('Headquarters')}:<span>{props.headquarter}</span>
+                    <Icon type="home" style={{ fontSize: '20px', color: '#1BB28B'}}  /> Headquarter:<span>{props.headquarter}</span>
                     <br/>    
-                    <Icon type="pie-chart" style={{ fontSize: '20px', color: '#1BB28B' }}  /> {I18n.get('Size')}:{props.size}
+                    <Icon type="pie-chart" style={{ fontSize: '20px', color: '#1BB28B' }}  /> Size:{props.size}
                     <br/>   
-                    <Icon type="fund"  style={{ fontSize: '20px', color: '#1BB28B' }} /> {I18n.get('Revenue')}:{props.revenue}
+                    <Icon type="fund"  style={{ fontSize: '20px', color: '#1BB28B' }} /> Revenue:{props.revenue}
                     <br/>
-                    <Icon type="cloud"   style={{ fontSize: '20px', color: '#1BB28B' }} /> {I18n.get('Website')}:{props.companyWebsite}
+                    <Icon type="cloud"   style={{ fontSize: '20px', color: '#1BB28B' }} /> Website:{props.companyWebsite}
                     <br/>    
-                    <Icon type="plus-circle"  style={{ fontSize: '20px', color: '#1BB28B' }}/> {I18n.get('Open Jobs')}:{props.jobAmount}
+                    <Icon type="plus-circle"  style={{ fontSize: '20px', color: '#1BB28B' }}/> Open Jobs:{props.jobAmount}
                 </div>
             </div>
     )

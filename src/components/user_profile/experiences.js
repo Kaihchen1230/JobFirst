@@ -4,9 +4,6 @@ import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary"
 
-/**
- * The component Experiences will display the user's experience history
- */
 const Experiences = (props) => {
 
     let experiencesList = [...props.experiences];
