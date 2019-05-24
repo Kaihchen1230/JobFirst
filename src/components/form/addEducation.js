@@ -104,33 +104,23 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         }
     }
 );
-/**
- * The class AddEduForm will render the Add Education form.
- * It will give the user the ability to add a new education to 
- * their profile.
- */
+
 class AddEduForm extends React.Component {
     state = {
         visible: false,
         lan: getLanguage()
 
     };
-    /**
-     * hide or show the form
-     */
+
     showModal = () => {
         console.log("clicked")
         this.setState({ visible: true });
     }
-    /**
-     * handle a click of the cancel button on the form
-     */
+
     handleCancel = () => {
         this.setState({ visible: false });
     }
-    /**
-     * use the API to create a new education
-     */
+
     handleCreate = async () => {
         const form = this.formRef.props.form;
         form.validateFields(async(err, values) => {
@@ -162,15 +152,11 @@ class AddEduForm extends React.Component {
             window.location.reload();
         });
     }
-    /**
-     * save the values entered in the form
-     */
+
     saveFormRef = (formRef) => {
         this.formRef = formRef;
     }
-    /**
-     * render the form on the sidebar
-     */
+
     render() {
         I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);

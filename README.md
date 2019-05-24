@@ -8,17 +8,9 @@ __Siddharth Rajan__ _(developer)_
 __Alan Lau__ _(developer)_
 </br>
 </br>
-## Background:
- JobFirst is employment-related search website that makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
-
-## Tools Used:
-1. _Gatsby_
-2. _AWS cognito_
-3. _AWS appsync_
-4. _AWS S3_
-
-## Refer here for our website
-https://master.d311enjx0cy8vf.amplifyapp.com/
+## About:
+JobFirst is a web app which utilizes _Gatsby_ to serve the frontend and _AWS Amplify_ to serve the backend. And blah blah blah....
+## [Refer here for our weekly meeting status](https://github.com/Kaihchen1230/csc47300Project/wiki/Weekly-Status-Meeting-PPT)
 ___
 
 ## How to get started:
@@ -45,7 +37,10 @@ ___
 1. __(optional)__ ```amplify configure``` create a IAM role for this project __SAVE THE ACCESS ID AND ACCESS KEY__
 1. ```amplify init``` initialize the amplify backend
 </br>__USE A DIFFERENT ENV__
+</br>__USE A DIFFERENT ENV__
+</br>__USE A DIFFERENT ENV__
 </br> You can name it as _younameenv_ ex: _alanenv_
+</br>__USE YOUR OWN PROFILE__
 </br>__USE YOUR OWN PROFILE__
 </br>You can find [more information here](https://aws-amplify.github.io/docs/cli/init?sdk=js) about amplify command. If you have created too many profiles you can also find the file where your profiles are being recorded and then delete 'em.
 1. ```amplify push``` so your backend will be in the cloud
@@ -56,6 +51,8 @@ ___
 1. ```git pull upstream whateverbranchweuse``` Get the latest update from upstream. We probably use the _newFrontend_ branch. So all of our pull requeast will go to _newFrontend_.
 1. ```npm install``` run this after every pull from the upstream
 1. ```amplify init``` to sync with the backend from upstream because someone else might add something to the backend already.
+</br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
+</br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
 </br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
 </br>So it should be _yournameenv_
 1. ```amplify push``` now your backend should be the same front upstream and when you run ```gatsby develop``` it should be working
@@ -71,7 +68,7 @@ ___
 ### Testing:
 ```npm test``` or ```npm test -- -- watch```
 
-### Developer Document:
+### Document:
 ```npm run doc``` All docs are inside the docs folder
 [Refer here for how to write jsdoc](https://www.akshatsharma.com/posts/how%20to%20jsdoc/index.html#simian-toc-8)
 

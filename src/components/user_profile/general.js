@@ -4,11 +4,8 @@ import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 import dict from "../dictionary/dictionary"
 
-/**
- * The component General will display the user's general information
- */
 const General = (props) => {
-    
+
     let address = props.address.data.getAddress;
     let addressLine = address != null ? `${address.line1}` + " " + `${address.line2}` + ", " + `${address.city}` + ", " 
     + `${address.state}` + ", " + `${address.postalCode}` : "(" + I18n.get("No Address Provided") + ")"
@@ -39,8 +36,8 @@ const General = (props) => {
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Middle Name')}: </b> {props.user.middleName}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="book" /><b> {I18n.get('Last Name')}: </b> {props.user.lastName}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Age')}: </b>{props.user.age}</p>
-                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('English Level')}: </b>{I18n.get(props.user.englishLevel)}</p>
-                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Spoken Language')}: </b>{I18n.get(props.user.language)}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('English Level')}: </b>{props.user.englishLevel}</p>
+                <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Spoken Language')}: </b>{props.user.language}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Email')}: </b>{props.user.email}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Phone')}: </b>{props.user.phone}</p>
                 <p className="description" align="left" style={{ fontSize: 18 }}><Icon type="home" /><b> {I18n.get('Address')}: </b>{addressLine}</p>

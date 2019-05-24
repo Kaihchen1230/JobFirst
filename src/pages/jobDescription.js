@@ -275,7 +275,7 @@ class JobDescription extends React.Component{
           <Skeleton active />
         }
         console.log('it comes to render first');
-        console.log('this is the jobInfo: ', this.state.jobInfo);
+        console.log('this is the loading: ', this.state.loading);
         let viewCompanyInfo;
         if(this.state.companyInfo != null){
           let content = this.state.companyInfo.description;
