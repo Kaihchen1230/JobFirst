@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/form/createAddress.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/form/createAddress.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { Form, Icon, Input, Button, Tooltip, message, Modal } from 'antd';
+import { Auth, I18n } from 'aws-amplify';
+import dict from "../dictionary/dictionary";
+import * as mutations from "../../graphql/mutations";
+import * as queries from "../../graphql/queries";
+import { API, graphqlOperation } from 'aws-amplify';
+import { getLanguage } from "../../services/auth";
+import "../../style/userProfile.css";
+
+
+const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
+    class extends React.Component {
+        render() {
+            const {
+                visible, onCreate, onCancel, form
+            } = this.props;
+            const { getFieldDecorator } = form;
+            return (
+                &lt;Modal
+                    visible={visible}
+                    title={I18n.get("Add Your Address")}
+                    okText={I18n.get("Add")}
+                    cancelText={I18n.get("Cancel")}
+                    onCancel={onCancel}
+                    onOk={onCreate}
+                >
+                    &lt;Form layout="vertical">
+                        &lt;Form.Item label={I18n.get("Line 1")}>
+                            {getFieldDecorator('line1')(
+                                &lt;Input placeholder={I18n.get('Enter the first line of the street address')}
+                                    name="line1"
+                                    suffix={
+                                        &lt;Tooltip title={I18n.get('Enter the first line of the street address')}>
+                                            &lt;Icon type="info-circle" />
+                                        &lt;/Tooltip>}
+                                />
+                            )}
+                        &lt;/Form.Item>
+                        &lt;Form.Item label={I18n.get("Line 2")}>
+                            {getFieldDecorator('line2')(
+                                &lt;Input placeholder={I18n.get('Enter the second line of the street address')}
+                                    name="line2"
+                                    suffix={
+                                        &lt;Tooltip title={I18n.get('Enter the second line of the street address')}>
+                                            &lt;Icon type="info-circle" />
+                                        &lt;/Tooltip>}
+                                />
+                            )}
+                        &lt;/Form.Item>
+                        &lt;Form.Item label={I18n.get("City")}>
+                            {getFieldDecorator('city')(
+                                &lt;Input placeholder={I18n.get('Enter the name of the city')}
+                                    name="city"
+                                    suffix={
+                                        &lt;Tooltip title={I18n.get('Enter the name of the city')}>
+                                            &lt;Icon type="info-circle" />
+                                        &lt;/Tooltip>}
+                                />
+                            )}
+                        &lt;/Form.Item>
+                        &lt;Form.Item label={I18n.get("Postal Code")}>
+                            {getFieldDecorator('postalCode')(
+                                &lt;Input placeholder={I18n.get('Enter the postal code')}
+                                    name="postalCode"
+                                    suffix={
+                                        &lt;Tooltip title={I18n.get('Enter the postal code')}>
+                                            &lt;Icon type="info-circle" />
+                                        &lt;/Tooltip>}
+                                />
+                            )}
+                        &lt;/Form.Item>
+                        &lt;Form.Item label={I18n.get("State")}>
+                            {getFieldDecorator('state')(
+                                &lt;Input placeholder={I18n.get('Enter the name of the state')}
+                                    name="state"
+                                    suffix={
+                                        &lt;Tooltip title={I18n.get('Enter the name of the state')}>
+                                            &lt;Icon type="info-circle" />
+                                        &lt;/Tooltip>}
+                                />
+                            )}
+                        &lt;/Form.Item>
+                    &lt;/Form>
+                &lt;/Modal>
+            )
+        }
+    }
+)
+/**
+ * The class CreateAddressForm will render the Create Address form.
+ * It will give the user the ability to add a new address to their profile.
+ */
+class CreateAddressForm extends React.Component {
+    state = {
+        visible: false,
+        lan: getLanguage()
+    }
+    /**
+     * hide or show the form
+     */
+    showModal = () => {
+        this.setState({ visible: true })
+    }
+    /**
+     * handle a click of the cancel button on the form
+     */
+    handleCancel = () => {
+        this.setState({ visible: false })
+    }
+    /**
+     * use the API to create a new address
+     */
+    // api call to create address function
+    handleCreate = async () => {
+        const form = this.formRef.props.form;
+        form.validateFields(async (err, values) => {
+            if (err) {
+                return;
+            }
+            let user = await Auth.currentAuthenticatedUser();
+            const { attributes } = user;
+            console.log("These values were entered: ", values);
+            const createAddInput = {
+                id: attributes.sub,
+                line1: values["line1"],
+                line2: values["line2"],
+                city: values["city"],
+                postalCode: values["postalCode"],
+                state: values["state"]
+            }
+            try {
+                const createAddress = await API.graphql(graphqlOperation(mutations.createAddress, { input: createAddInput }));
+                console.log('success creating address', createAddress);
+                message.success('Success in Adding Address!');
+            }
+            catch (err) {
+                console.log("error in creating address");
+                message.error('Error in Adding Address');
+            }
+            form.resetFields();
+            this.setState({ visible: false });
+            window.location.reload();
+        })
+    }
+    /**
+     * save the values entered in the form
+     */
+    saveFormRef= (formRef) => {
+        this.formRef = formRef;
+    }
+    /**
+     * render the form on the sidebar
+     */
+    render() {
+        I18n.putVocabularies(dict);
+        I18n.setLanguage(this.state.lan);
+        return (
+            &lt;div>
+                &lt;Button className='modify-info-button' ghost onClick={this.showModal}>
+                &lt;Icon type="home" theme="twoTone" twoToneColor="#52c41a"/>{I18n.get('Add Your Address')}&lt;/Button>
+                &lt;CollectionCreateForm 
+                    wrappedComponentRef={this.saveFormRef}
+                    visible={this.state.visible}
+                    onCancel={this.handleCancel}
+                    onCreate={this.handleCreate}
+                />
+            &lt;/div>
+        )
+    }
+}
+
+export default CreateAddressForm;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 01:26:30 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
