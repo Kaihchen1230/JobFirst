@@ -8,19 +8,9 @@ __Siddharth Rajan__ _(developer)_
 __Alan Lau__ _(developer)_
 </br>
 </br>
-## Background:
- JobFirst is employment-related search website that makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
-
-## Tools Used:
-1. _Gatsby_
-2. _AWS cognito_
-3. _AWS appsync_
-
-## Refer here for our website
-https://master.d311enjx0cy8vf.amplifyapp.com/
-
-## Refer here for our developer documentation
-https://kaihchen1230.github.io/csc47300Project/
+## About:
+JobFirst is a web app which utilizes _Gatsby_ to serve the frontend and _AWS Amplify_ to serve the backend. And blah blah blah....
+## [Refer here for our weekly meeting status](https://github.com/Kaihchen1230/csc47300Project/wiki/Weekly-Status-Meeting-PPT)
 ___
 
 ## How to get started:
@@ -37,14 +27,20 @@ ___
 1. Delete your local
 1. Delete your repo
 1. Fork from [Kai](https://github.com/Kaihchen1230/csc47300Project.git)
-1. On the github repo, set _dev_ as the default branch
+1. __(optional)__ On the github repo, delete the unnessascery branch such as:
+    1. _frontend-branch_
+    1. _local-branch_ (I believe this is where Kai write his code)
+1. On the github repo, set _newFrontend_ as the default branch
 1. ```git clone [your own repo link]```
-1. ```git branch``` you should be in _dev_ branch
+1. ```git branch``` you should be in _newFrontend_ branch
 1. ```npm install``` install the dependencies
 1. __(optional)__ ```amplify configure``` create a IAM role for this project __SAVE THE ACCESS ID AND ACCESS KEY__
 1. ```amplify init``` initialize the amplify backend
 </br>__USE A DIFFERENT ENV__
+</br>__USE A DIFFERENT ENV__
+</br>__USE A DIFFERENT ENV__
 </br> You can name it as _younameenv_ ex: _alanenv_
+</br>__USE YOUR OWN PROFILE__
 </br>__USE YOUR OWN PROFILE__
 </br>You can find [more information here](https://aws-amplify.github.io/docs/cli/init?sdk=js) about amplify command. If you have created too many profiles you can also find the file where your profiles are being recorded and then delete 'em.
 1. ```amplify push``` so your backend will be in the cloud
@@ -56,6 +52,8 @@ ___
 1. ```npm install``` run this after every pull from the upstream
 1. ```amplify init``` to sync with the backend from upstream because someone else might add something to the backend already.
 </br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
+</br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
+</br>__USE THE EXISTING ENV FROM PREV SECTION STEP 10__
 </br>So it should be _yournameenv_
 1. ```amplify push``` now your backend should be the same front upstream and when you run ```gatsby develop``` it should be working
 1. ```amplify add api``` to add the service that you want to add. In this case, it's api
@@ -66,12 +64,11 @@ ___
 1. __test it out to see if your backend is working__
 1. ```git push``` Push it to your repo to make pull request.
 1. Create the pull request.
-1. If encounter ```Stack already on the cloud``` issue, please follow this link to resolve it: https://github.com/aws-amplify/amplify-cli/issues/906
 
 ### Testing:
 ```npm test``` or ```npm test -- -- watch```
 
-### Developer Document:
+### Document:
 ```npm run doc``` All docs are inside the docs folder
 [Refer here for how to write jsdoc](https://www.akshatsharma.com/posts/how%20to%20jsdoc/index.html#simian-toc-8)
 

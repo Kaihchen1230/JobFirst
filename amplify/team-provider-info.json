@@ -84,23 +84,6 @@
             }
         }
     },
-    "kaiproduct": {
-        "awscloudformation": {
-            "AuthRoleName": "csc47300project-20190503003411-authRole",
-            "UnauthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190503003411-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::877372251133:role/csc47300project-20190503003411-authRole",
-            "Region": "us-east-2",
-            "DeploymentBucketName": "csc47300project-20190503003411-deployment",
-            "UnauthRoleName": "csc47300project-20190503003411-unauthRole",
-            "StackName": "csc47300project-20190503003411",
-            "StackId": "arn:aws:cloudformation:us-east-2:877372251133:stack/csc47300project-20190503003411/b3342a70-6d5c-11e9-98c4-0a2103992610"
-        },
-        "categories": {
-            "auth": {
-                "cognitoed11de21": {}
-            }
-        }
-    },
     "kailocal": {
         "awscloudformation": {
             "AuthRoleName": "csc47300project-20190503214408-authRole",

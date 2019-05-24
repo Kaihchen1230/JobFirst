@@ -3,6 +3,7 @@ import { Tabs, Table, Button, Progress } from 'antd';
 import { getUser } from '../../services/auth';
 import { I18n } from 'aws-amplify';
 
+
 const columns = [{
     title: I18n.get('Job'),
     dataIndex: 'jobTitle',
@@ -17,9 +18,6 @@ const columns = [{
     key: 'status'
 }];
 
-/**
- * The component AppliedJob will display a table of the user's history of applied jobs
- */
 const AppliedJob = (props) => {
     const jobs = props.jobs.map(item => {
         const {jobTitle, dateApplied, status } = item;

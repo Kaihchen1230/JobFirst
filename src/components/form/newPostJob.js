@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
+import { Form, Icon, Input, Button, Tooltip, DatePicker, Select, InputNumber, message } from 'antd';
 import moment from 'moment';
 import { Auth, I18n } from 'aws-amplify';
 import { getUser } from '../../services/auth';
@@ -7,7 +7,6 @@ import * as mutations from "../../graphql/mutations";
 import { API, graphqlOperation } from 'aws-amplify';
 import * as Util from '../../test/jobPostUnitTest/jobPostUtil';
 
-const { Footer } = Layout;
 const Option = Select.Option;
 const { TextArea } = Input;
 let id = 0;
@@ -200,7 +199,7 @@ class PostJobForm extends React.Component {
                 <h1>{I18n.get('Post a New Job')}</h1>
                 <Form onSubmit={this.handleSubmit} className="main-form" style={{ "width": "50%" }} name="jobPost">
                     <Form.Item
-                        label={I18n.get('Job Title')}
+                        label="Job Title"
                         required={true}
                         validateStatus={jobTitleError ? 'error' : ''}
                         help={jobTitleError || ''}>
@@ -218,7 +217,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Address Line 1')}
+                        label="line 1"
                         required={true}
                         validateStatus={line1Error ? 'error' : ''}
                         help={line1Error || ''}>
@@ -236,7 +235,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Address Line 2')}
+                        label="line 2"
                         required={false}>
                         {getFieldDecorator('line2', {
                             rules: [{ required: false, message: 'Please enter the address line 2!' }]
@@ -252,14 +251,14 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('City')}
+                        label="City"
                         required={true}
                         validateStatus={cityError ? 'error' : ''}
                         help={cityError || ''}>
                         {getFieldDecorator('city', {
                             rules: [{ required: true, message: 'Please enter the city!' }]
                         })(
-                            <Input placeholder={I18n.get('City')}
+                            <Input placeholder={I18n.get('Postal Code')}
                                 name="city"
                                 suffix={
                                     <Tooltip title={I18n.get('Enter the city of the job location')}>
@@ -270,7 +269,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Postal Code')}
+                        label="Postal Code"
                         required={true}
                         validateStatus={postalCodeError ? 'error' : ''}
                         help={postalCodeError || ''}>
@@ -288,7 +287,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('State')}
+                        label="State"
                         required={true}
                         validateStatus={stateError ? 'error' : ''}
                         help={stateError || ''}>
@@ -306,7 +305,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Deadline')}
+                        label="Deadline"
                         required={true}
                         validateStatus={deadlineError ? 'error' : ''}
                         help={deadlineError || ''}>
@@ -322,7 +321,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Job Type')}
+                        label="Job Type"
                         required={true}
                         validateStatus={jobTypeError ? 'error' : ''}
                         help={jobTypeError || ''}>
@@ -339,7 +338,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Job Category')}
+                        label="Job Category"
                         required={true}
                         validateStatus={jobCategoryError ? 'error' : ''}
                         help={jobCategoryError || ''}>
@@ -350,35 +349,35 @@ class PostJobForm extends React.Component {
                                 showSearch
                                 optionFilterProp="children"
                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                placeholder={I18n.get('Job Category')}
+                                placeholder="Job Category" 
                                 name="jobCategory" >
-                                <Option value="Accountancy, banking and finance">{I18n.get('Accountancy, banking and finance')}</Option>
-                                <Option value="Business, consulting and management">{I18n.get('Business, consulting and management')}</Option>
-                                <Option value="Charity and voluntary work">{I18n.get('Charity and voluntary work')}</Option>
-                                <Option value="Creative arts and design">{I18n.get('Creative arts and design')}</Option>
-                                <Option value="Energy and utilities">{I18n.get('Energy and utilities')}</Option>
-                                <Option value="Engineering and manufacturing">{I18n.get('Engineering and manufacturing')}</Option>
-                                <Option value="Environment and agriculture">{I18n.get('Environment and agriculture')}</Option>
-                                <Option value="Healthcare">{I18n.get('Healthcare')}</Option>
-                                <Option value="Information technology">{I18n.get('Information technology')}</Option>
-                                <Option value="Law">{I18n.get('Law')}</Option>
-                                <Option value="Marketing, advertising and PR">{I18n.get('Marketing, advertising and PR')}</Option>
-                                <Option value="Media and internet">{I18n.get('Media and internet')}</Option>
-                                <Option value="Property and construction">{I18n.get('Property and construction')}</Option>
-                                <Option value="Public services and administration">{I18n.get('Public services and administration')}</Option>
-                                <Option value="Recruitment and HR">{I18n.get('Recruitment and HR')}</Option>
-                                <Option value="Retail">{I18n.get('Retail')}</Option>
-                                <Option value="Sales">{I18n.get('Sales')}</Option>
-                                <Option value="Science and pharmaceuticals">{I18n.get('Science and pharmaceuticals')}</Option>
-                                <Option value="Social care">{I18n.get('Social care')}</Option>
-                                <Option value="Teacher training and education">{I18n.get('Teacher training and education')}</Option>
-                                <Option value="Transport and logistics">{I18n.get('Transport and logistics')}</Option>
+                                <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
+                                <Option value="Business, consulting and management">Business, consulting and management</Option>
+                                <Option value="Charity and voluntary work">Charity and voluntary work</Option>
+                                <Option value="Creative arts and design">Creative arts and design</Option>
+                                <Option value="Energy and utilities">Energy and utilities</Option>
+                                <Option value="Engineering and manufacturing">Engineering and manufacturing</Option>
+                                <Option value="Environment and agriculture">Environment and agriculture</Option>
+                                <Option value="Healthcare">Healthcare</Option>
+                                <Option value="Information technology">Information technology</Option>
+                                <Option value="Law">Law</Option>
+                                <Option value="Marketing, advertising and PR">Marketing, advertising and PR</Option>
+                                <Option value="Media and internet">Media and internet</Option>
+                                <Option value="Property and construction">Property and construction</Option>
+                                <Option value="Public services and administration">Public services and administration</Option>
+                                <Option value="Recruitment and HR">Recruitment and HR</Option>
+                                <Option value="Retail">Retail</Option>
+                                <Option value="Sales">Sales</Option>
+                                <Option value="Science and pharmaceuticals">Science and pharmaceuticals</Option>
+                                <Option value="Social care">Social care</Option>
+                                <Option value="Teacher training and education">Teacher training and education</Option>
+                                <Option value="Transport and logistics">Transport and logistics</Option>
                             </Select>
                         )}
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Enter Job Description')}
+                        label="Job Description"
                         required={true}
                         validateStatus={descriptionError ? 'error' : ''}
                         help={descriptionError || ''}>
@@ -394,7 +393,7 @@ class PostJobForm extends React.Component {
                     </Form.Item>
 
                     <Form.Item
-                        label={I18n.get('Education')}
+                        label="Require Education"
                         required={true}
                         validateStatus={educationTypeError ? 'error' : ''}
                         help={educationTypeError || ''}>
@@ -414,11 +413,11 @@ class PostJobForm extends React.Component {
                     {formItems}
                     <Form.Item {...formItemLayoutWithOutLabel}>
                         <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
-                            <Icon type="plus" /> {I18n.get('Enter Job Requirements')}
+                            <Icon type="plus" /> Add requirement
                         </Button>
                     </Form.Item>
 
-                    <Form.Item label={I18n.get('Salary')}>
+                    <Form.Item label="salary">
                         {getFieldDecorator('salary', {
                             rules: [{ type: "number", required: false, message: 'Must be in whole number' }]
                         })(
@@ -437,9 +436,6 @@ class PostJobForm extends React.Component {
                     </Form.Item>
                     <br />
                 </Form>
-                <Footer style={{ textAlign: 'center' }}>
-                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
-                </Footer>
             </div >
         );
     }

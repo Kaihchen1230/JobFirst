@@ -87,30 +87,21 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         }
     }
 )
-/**
- * The class CreateAddressForm will render the Create Address form.
- * It will give the user the ability to add a new address to their profile.
- */
+
 class CreateAddressForm extends React.Component {
     state = {
         visible: false,
         lan: getLanguage()
     }
-    /**
-     * hide or show the form
-     */
+
     showModal = () => {
         this.setState({ visible: true })
     }
-    /**
-     * handle a click of the cancel button on the form
-     */
+
     handleCancel = () => {
         this.setState({ visible: false })
     }
-    /**
-     * use the API to create a new address
-     */
+
     // api call to create address function
     handleCreate = async () => {
         const form = this.formRef.props.form;
@@ -143,15 +134,10 @@ class CreateAddressForm extends React.Component {
             window.location.reload();
         })
     }
-    /**
-     * save the values entered in the form
-     */
     saveFormRef= (formRef) => {
         this.formRef = formRef;
     }
-    /**
-     * render the form on the sidebar
-     */
+
     render() {
         I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);
