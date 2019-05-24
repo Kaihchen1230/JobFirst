@@ -14,22 +14,9 @@ import * as Util from '../test/jobDescriptionUnitTest/jobDescriptionUtil';
 import "../style/jobDescription.css"
 const TabPane = Tabs.TabPane;
 
-// The job description page for the job that user clicks learn more
-
-/**
- * The class JobDescription will render the page of the job that user is interested
- * It will render the job information tab (data from AWS dynamoDB)
- * It will render the company information tab (data from AWS dynamoDB)
- * It will render the location tab (data from AWS dynamoDB with google map API)
- * It will render the applicant list only for the employer who posted the job
- */
-
 class JobDescription extends React.Component{
 
-    /**
-     * the state object to store all data to display on the page
-     * @type {Object} state
-     */
+
     state = {
         userId: "",
         jobId: "",
@@ -54,16 +41,6 @@ class JobDescription extends React.Component{
         applicants: []
 
     }
-
-    /**
-     * Fetch all job information data from AWS by using job id
-     * Update the job inforamtion by using job id
-     * Check if the user is employer or employee: 
-     * if user is the company that posted the job: 
-     * yes: display the applicant list tab(with applicants' info) and hide the apply now button
-     * no: just hide the apply now button
-     * if user is employee: only display the aaply now button
-     */
     componentDidMount = async () => {
 
 
@@ -208,21 +185,11 @@ class JobDescription extends React.Component{
       })
     }
 
-    /**
-     * Update employee's applied job data
-     * Condtion that check if the user applied to the job alreadu:
-     * yes: don't update the applied job data
-     * no: update the applied job data
-     * Both conditions allow user to choose either stay at the page or go to profile page
-     */
     applyJob = async () => {
       // event.preventDefault();
       // console.log('this is word: ', word);
 
       // make sure the employee hasn't applied to the job yet
-      /**
-       * Make sure user hadn't apply to the job yet
-       */
       try{
         const currentJobInfo = await API.graphql(graphqlOperation(queries.getPostedJob,{id: this.state.jobId}));
         // console.log('this is the currentJobInfo: ', currentJobInfo);
@@ -254,10 +221,9 @@ class JobDescription extends React.Component{
           const currentDate = month + '/' + date + '/' + year;
           const userId = this.state.userId;
           const jobId = this.state.jobId;
-
-          /**
-           * Make user's initial job application status as pending
-           */
+          // console.log('this is the date: ', this.state.userId);
+          // console.log('this is the userId: ', userId);
+          // console.log('this is jobId: ', jobId);
           try{
             const createAppliedJobInput = {
               dateApplied : currentDate,
@@ -265,14 +231,13 @@ class JobDescription extends React.Component{
               appliedJobEmployeeId: userId,
               appliedJobJobId: jobId
             }
-            await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
-            // console.log(' this is the newAppliedJob: ', newAppliedJob);
-            /**
-             * Display loading status to prevent user to click around
-             */
+            const newAppliedJob = await API.graphql(graphqlOperation(mutations.createAppliedJob, {input: createAppliedJobInput}));
+            console.log(' this is the newAppliedJob: ', newAppliedJob);
             this.setState({
               isVisible: true
+              
             });
+            console.log('this is isVisible in the if: ', this.state.isVisible);
 
           }catch(err){
             console.log('there is an eeror updating the applied job table: ', err);
@@ -290,31 +255,20 @@ class JobDescription extends React.Component{
       }
     }  
     
-    /**
-     * @param {boolean} status - status for the loading, 
-     * if true: showing loading status
-     * if false: don't show loading status
-     */
     loadingStatus = (status) => {
       this.setState({
         loading: Util.loadingStatus(status)
       })
     }
 
-    /**
-     * @param {boolean} status - status for the modal window,
-     * if true: show the modal window that asking user if want to stay at the job description page
-     * if false: don't show the modal window
-     */
     visibleStatus = (status) => {
       this.setState({
         isVisible: Util.visibleStatus(status)
       })
     }
 
-    /**
-     * Begin to render and populated the page
-     */
+  
+    
     render(){
 
         if(this.state.loading){
