@@ -5,14 +5,29 @@ test('should give object for filter by job type', () => {
     expect(obj["jobType"]).toEqual({ "contains": 'full time' });
 });
 
-test('sshould give an object contain the search field by category', () => {
+test('should remove jobType in the oject if All is select for the job type filter', () => {
+    const obj = filterTypeGen('All', { clickedCounts: { ge: 0 }, jobType: { "contains": 'full time' } });
+    expect(obj).toEqual({ clickedCounts: { ge: 0 } });
+})
+
+test('should give an object contain the search field by category', () => {
     const obj = filterCateGen('Healthcare', { clickedCounts: { ge: 0 } });
     expect(obj["jobCategory"]).toEqual({ "contains": 'Healthcare' });
 })
 
-test('sshould give an object contain the search field by education', () => {
+test('should remove jobCategory in the oject if All is select for the job category filter', () => {
+    const obj = filterCateGen('All', { clickedCounts: { ge: 0 }, jobCategory: { "contains": 'Healthcare' } });
+    expect(obj).toEqual({ clickedCounts: { ge: 0 } });
+})
+
+test('should give an object contain the search field by education', () => {
     const obj = filterEduGen('Bachelor', { clickedCounts: { ge: 0 } });
     expect(obj["education"]).toEqual({ "contains": 'Bachelor' });
+})
+
+test('should remove education in the oject if All is select for the job education filter', () => {
+    const obj = filterEduGen('All', { clickedCounts: { ge: 0 }, education: { "contains": 'Bachelor' } });
+    expect(obj).toEqual({ clickedCounts: { ge: 0 } });
 })
 
 test('should give the correct value of date', () => {
@@ -50,9 +65,19 @@ test('should give an object contain the search field by name', () => {
     expect(obj["searchFieldName"]).toEqual({ "contains": 'computer' });
 })
 
+test('should remove searchFieldName in the oject if empty string is input for the name search', () => {
+    const obj = searchByNameGen("", 'Name', { clickedCounts: { ge: 0 }, searchFieldName: { "contains": 'computer' } });
+    expect(obj).toEqual({ clickedCounts: { ge: 0 } });
+})
+
 test('should give an object contain the search field by location', () => {
     const obj = searchByNameGen('180', 'Location', { clickedCounts: { ge: 0 } });
     expect(obj["searchFieldLocation"]).toEqual({ "contains": '180' });
+})
+
+test('should remove searchFieldLocation in the oject if empty string is input for the location search', () => {
+    const obj = searchByNameGen("", 'Location', { clickedCounts: { ge: 0 }, searchFieldLocation: { "contains": '180' } });
+    expect(obj).toEqual({ clickedCounts: { ge: 0 } });
 })
 
 test('should return an object contian click count filter field equal to 0', () => {
