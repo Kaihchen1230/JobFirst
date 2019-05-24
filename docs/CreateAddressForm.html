@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: businessProfile</title>
+    <title>JSDoc: Class: CreateAddressForm</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: businessProfile</h1>
+    <h1 class="page-title">Class: CreateAddressForm</h1>
 
     
 
@@ -28,9 +28,10 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>businessProfile<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>CreateAddressForm<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Business Profile to show or edit the company information</p></div>
+            <div class="class-description"><p>The class CreateAddressForm will render the Create Address form.
+It will give the user the ability to add a new address to their profile.</p></div>
         
     
 </header>
@@ -45,7 +46,7 @@
     
 
     
-    <h4 class="name" id="businessProfile"><span class="type-signature"></span>new businessProfile<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="CreateAddressForm"><span class="type-signature"></span>new CreateAddressForm<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -58,55 +59,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>props</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>props no need to pass any arguments</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -142,7 +94,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_businessProfile.js.html">pages/businessProfile.js</a>, <a href="pages_businessProfile.js.html#line38">line 38</a>
+        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -192,76 +144,13 @@
 
         
             
-<h4 class="name" id="componentWillMount"><span class="type-signature"></span>componentWillMount<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>fetch all data from AWS by companyID, if the companyID is matching
-the login userid, it will render edit buttons</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_businessProfile.js.html">pages/businessProfile.js</a>, <a href="pages_businessProfile.js.html#line76">line 76</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
 <h4 class="name" id="handleCancel"><span class="type-signature"></span>handleCancel<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>set visible to false for the modal component,when click cancel</p>
+    <p>handle a click of the cancel button on the form</p>
 </div>
 
 
@@ -299,7 +188,7 @@ the login userid, it will render edit buttons</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_businessProfile.js.html">pages/businessProfile.js</a>, <a href="pages_businessProfile.js.html#line174">line 174</a>
+        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line108">line 108</a>
     </li></ul></dd>
     
 
@@ -317,13 +206,13 @@ the login userid, it will render edit buttons</p>
 
         
             
-<h4 class="name" id="handleOk"><span class="type-signature"></span>handleOk<span class="type-signature"></span></h4>
+<h4 class="name" id="handleCreate"><span class="type-signature"></span>handleCreate<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>set visible to false for the modal component, when click ok</p>
+    <p>use the API to create a new address</p>
 </div>
 
 
@@ -361,7 +250,69 @@ the login userid, it will render edit buttons</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_businessProfile.js.html">pages/businessProfile.js</a>, <a href="pages_businessProfile.js.html#line165">line 165</a>
+        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="saveFormRef"><span class="type-signature"></span>saveFormRef<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>save the values entered in the form</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -385,7 +336,7 @@ the login userid, it will render edit buttons</p>
 
 
 <div class="description">
-    <p>set show modal to true</p>
+    <p>hide or show the form</p>
 </div>
 
 
@@ -423,7 +374,7 @@ the login userid, it will render edit buttons</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_businessProfile.js.html">pages/businessProfile.js</a>, <a href="pages_businessProfile.js.html#line156">line 156</a>
+        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -442,6 +393,98 @@ the login userid, it will render edit buttons</p>
         
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>render the form on the sidebar</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
