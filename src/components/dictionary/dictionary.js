@@ -56,6 +56,12 @@ let dict = {
         'Enter the state of the job location': "输入工作地点的州",
         'Salary': "薪水",
 
+        'Filter By Job Category': "筛选工作性质",
+        'Filter By Job Type': "筛选工作類型",
+        'Filter By Education Requirement': "筛选教育要求",
+        'Minimum Wage': "最低工资",
+        'Job Posted Within': "上传日期",
+
         'Accountancy, banking and finance': "会计、银行和金融",
         'Business, consulting and management': "商业、咨询和管理",
         'Charity and voluntary work': "慈善和志愿工作",
@@ -281,6 +287,12 @@ let dict = {
         'Enter the city of the job location': "Enter the city of the job location",
         'Enter the state of the job location': "Enter the state of the job location",
         'Salary': "Salary",
+
+        'Filter By Job Category': "Filter By Job Category",
+        'Filter By Job Type': "Filter By Job Type",
+        'Filter By Education Requirement': "Filter By Education Requirement",
+        'Minimum Wage': "Minimum Wage",
+        'Job Posted Within': "Job Posted Within",
 
         'Accountancy, banking and finance': "Accountancy, banking and finance",
         'Business, consulting and management': "Business, consulting and management",
