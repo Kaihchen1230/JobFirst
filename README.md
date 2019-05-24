@@ -15,12 +15,10 @@ __Alan Lau__ _(developer)_
 1. _Gatsby_
 2. _AWS cognito_
 3. _AWS appsync_
+4. _AWS S3_
 
 ## Refer here for our website
 https://master.d311enjx0cy8vf.amplifyapp.com/
-
-## Refer here for our developer documentation
-https://kaihchen1230.github.io/csc47300Project/
 ___
 
 ## How to get started:
@@ -37,9 +35,12 @@ ___
 1. Delete your local
 1. Delete your repo
 1. Fork from [Kai](https://github.com/Kaihchen1230/csc47300Project.git)
-1. On the github repo, set _dev_ as the default branch
+1. __(optional)__ On the github repo, delete the unnessascery branch such as:
+    1. _frontend-branch_
+    1. _local-branch_ (I believe this is where Kai write his code)
+1. On the github repo, set _newFrontend_ as the default branch
 1. ```git clone [your own repo link]```
-1. ```git branch``` you should be in _dev_ branch
+1. ```git branch``` you should be in _newFrontend_ branch
 1. ```npm install``` install the dependencies
 1. __(optional)__ ```amplify configure``` create a IAM role for this project __SAVE THE ACCESS ID AND ACCESS KEY__
 1. ```amplify init``` initialize the amplify backend
@@ -66,7 +67,6 @@ ___
 1. __test it out to see if your backend is working__
 1. ```git push``` Push it to your repo to make pull request.
 1. Create the pull request.
-1. If encounter ```Stack already on the cloud``` issue, please follow this link to resolve it: https://github.com/aws-amplify/amplify-cli/issues/906
 
 ### Testing:
 ```npm test``` or ```npm test -- -- watch```

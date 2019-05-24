@@ -92,7 +92,6 @@ class ModalForm extends React.Component {
      * @name ModalForm#type
      * @type String
      */
-    this.state.originalTimeline = data.timeline;
     this.state.timelineNum = data.timeline.length;
         /**
      * a string that indicates if the timeline change, it has false as default value
@@ -129,7 +128,7 @@ class ModalForm extends React.Component {
     this.setState({ addressID: data.companyAddress.id });
     this.setState({ lan: window.localStorage.getItem('lan') });
     this.setState({timelineNum : data.timeline.length});
-    this.setState({originalTimeline : data.timeline});
+    // this.setState({originalTimeline : data.timeline});
   }
 
     /**
@@ -311,9 +310,8 @@ class ModalForm extends React.Component {
        
     return (
       &lt;Modal
-        title={I18n.get("Edit Company Information")}
-        okText={I18n.get("Save")}
-        cancelText={I18n.get("Cancel")}
+        title="Edit Company Information"
+        okText={"Save"}
         visible={this.props.visible}
         onOk={this.handleSubmit}
         onCancel={this.props.onCancel}
@@ -322,10 +320,10 @@ class ModalForm extends React.Component {
         &lt;Form 
           className="login-form">
           &lt;br />
-          &lt;h2 style={{ marginLeft: "15%" }}>{I18n.get('Base Information')}:&lt;/h2>
+          &lt;h2 style={{ marginLeft: "7%" }}>Base Information:&lt;/h2>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Company Name")}
+            label="Company Name"
           >
             &lt;Input
               value={this.state.companyName}
@@ -336,7 +334,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Website")}
+            label="Website"
           >
             &lt;Input
               value={this.state.companyWebsite}
@@ -347,7 +345,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Company Type")}
+            label="Company Tpye"
           >
             &lt;Input
               value={this.state.companyType}
@@ -359,7 +357,7 @@ class ModalForm extends React.Component {
 
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Company Email")}
+            label="Company Email"
           >
             &lt;Input
               value={this.state.companyEmail}
@@ -371,7 +369,7 @@ class ModalForm extends React.Component {
 
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Company Phone")}
+            label="Company Phone"
           >
             &lt;Input
               value={this.state.companyPhone}
@@ -383,7 +381,7 @@ class ModalForm extends React.Component {
 
           &lt;Form.Item
             {...formItemLayout}
-            label={I18n.get("Description")}
+            label="Description"
           >
             &lt;Input.TextArea
               value={this.state.description}
@@ -393,10 +391,10 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               placeholder="description" />
           &lt;/Form.Item>
-          &lt;h2 style={{ marginLeft: "15%" }}>{I18n.get("Details")}:&lt;/h2>
+          &lt;h2 style={{ marginLeft: "20%" }}>Details:&lt;/h2>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Headquarters")}
+            label="Headquarter"
           >
             &lt;Input
               value={this.state.headquarter}
@@ -407,7 +405,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Size")}
+            label="Size"
           >
             &lt;Input
               value={this.state.size}
@@ -419,7 +417,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Revenue")}
+            label="Revenue"
           >
             &lt;Input
               value={this.state.revenue}
@@ -431,7 +429,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("CEO name")}
+            label="CEO name"
           >
             &lt;Input
               value={this.state.ceo}
@@ -442,7 +440,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("CEO Picture")}
+            label="CEO Picture"
           >
             &lt;Input
               value={this.state.ceoPic}
@@ -453,7 +451,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("YouTube Video")}
+            label="Youtube Video"
           >
             &lt;Input
               value={this.state.videoURL}
@@ -469,10 +467,10 @@ class ModalForm extends React.Component {
               />
           &lt;/FormItem>
 
-          &lt;h2 style={{ marginLeft: "15%" }}>{I18n.get('Address')}:&lt;/h2>
+          &lt;h2 style={{ marginLeft: "20%" }}>Address:&lt;/h2>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Address Line 1")}
+            label="Address Line 1"
           >
             &lt;Input
               value={this.state.addressLine1}
@@ -483,7 +481,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Address Line 2")}
+            label="Address Line 2"
           >
             &lt;Input
               value={this.state.addressLine2}
@@ -493,7 +491,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("City")}
+            label="City"
           >
             &lt;Input
               value={this.state.city}
@@ -504,7 +502,7 @@ class ModalForm extends React.Component {
 
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("State")}
+            label="State"
           >
             &lt;Input
               value={this.state.state}
@@ -515,7 +513,7 @@ class ModalForm extends React.Component {
           &lt;/FormItem>
           &lt;FormItem
             {...formItemLayout}
-            label={I18n.get("Postal Code")}
+            label="Postal Code"
           >
             &lt;Input
               value={this.state.postalCode}
@@ -523,7 +521,7 @@ class ModalForm extends React.Component {
               onChange={(event) => { this.handleUpdate(event) }}
               style={{ width: "60%" }} />
           &lt;/FormItem>
-          &lt;h2 style={{ marginLeft: "15%" }}>{I18n.get('Timeline')}:&lt;/h2>
+          &lt;h2 style={{ marginLeft: "20%" }}>Timeline:&lt;/h2>
 
           {/* timelines component */}
           {this.state.timeline.map(
@@ -573,7 +571,7 @@ class ModalForm extends React.Component {
             &lt;Button
               onClick ={this.handleAddTimeline}>
               &lt;Icon type="plus" />
-              {I18n.get('Add More Events')}
+              Add More Events
             &lt;/Button>
           &lt;/div>
         &lt;/Form>
@@ -594,13 +592,13 @@ export default ModalForm;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 01:26:30 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon May 13 2019 17:57:47 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
