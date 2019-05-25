@@ -176,8 +176,8 @@ class JobList extends React.Component {
                     &lt;div>
                         &lt;InputGroup compact>
                             &lt;Select onChange={this.selectSearch} size="large" defaultValue="Name" style={{ width: "10%" }}>
-                                &lt;Option value="Name">Name&lt;/Option>
-                                &lt;Option value="Location">Location&lt;/Option>
+                                &lt;Option value="Name">{I18n.get('Name')}&lt;/Option>
+                                &lt;Option value="Location">{I18n.get('Location')}&lt;/Option>
                             &lt;/Select>
                             &lt;Search
                                 style={{ width: '53%', color: "black" }}
@@ -196,7 +196,7 @@ class JobList extends React.Component {
                         &lt;/InputGroup>
                         &lt;InputGroup compact >
                             &lt;div style={{ textAlign: "left", width: "30%" }}>
-                                &lt;h4>Filter By Job Category&lt;/h4>
+                                &lt;h4>{I18n.get('Filter By Job Category')}&lt;/h4>
                                 &lt;Select
                                     className="dropBox"
                                     showSearch
@@ -206,32 +206,32 @@ class JobList extends React.Component {
                                     size="large"
                                     style={{ width: "100%" }}
                                     defaultValue="All" >
-                                    &lt;Option value="Accountancy, banking and finance">Accountancy, banking and finance&lt;/Option>
-                                    &lt;Option value="Business, consulting and management">Business, consulting and management&lt;/Option>
-                                    &lt;Option value="Charity and voluntary work">Charity and voluntary work&lt;/Option>
-                                    &lt;Option value="Creative arts and design">Creative arts and design&lt;/Option>
-                                    &lt;Option value="Energy and utilities">Energy and utilities&lt;/Option>
-                                    &lt;Option value="Engineering and manufacturing">Engineering and manufacturing&lt;/Option>
-                                    &lt;Option value="Environment and agriculture">Environment and agriculture&lt;/Option>
-                                    &lt;Option value="Healthcare">Healthcare&lt;/Option>
-                                    &lt;Option value="Information technology">Information technology&lt;/Option>
-                                    &lt;Option value="Law">Law&lt;/Option>
-                                    &lt;Option value="Marketing, advertising and PR">Marketing, advertising and PR&lt;/Option>
-                                    &lt;Option value="Media and internet">Media and internet&lt;/Option>
-                                    &lt;Option value="Property and construction">Property and construction&lt;/Option>
-                                    &lt;Option value="Public services and administration">Public services and administration&lt;/Option>
-                                    &lt;Option value="Recruitment and HR">Recruitment and HR&lt;/Option>
-                                    &lt;Option value="Retail">Retail&lt;/Option>
-                                    &lt;Option value="Sales">Sales&lt;/Option>
-                                    &lt;Option value="Science and pharmaceuticals">Science and pharmaceuticals&lt;/Option>
-                                    &lt;Option value="Social care">Social care&lt;/Option>
-                                    &lt;Option value="Teacher training and education">Teacher training and education&lt;/Option>
-                                    &lt;Option value="Transport and logistics">Transport and logistics&lt;/Option>
-                                    &lt;Option value="All">All&lt;/Option>
+                                    &lt;Option value="Accountancy, banking and finance">{I18n.get('Accountancy, banking and finance')}&lt;/Option>
+                                    &lt;Option value="Business, consulting and management">{I18n.get('Business, consulting and management')}&lt;/Option>
+                                    &lt;Option value="Charity and voluntary work">{I18n.get('Charity and voluntary work')}&lt;/Option>
+                                    &lt;Option value="Creative arts and design">{I18n.get('Creative arts and design')}&lt;/Option>
+                                    &lt;Option value="Energy and utilities">{I18n.get('Energy and utilities')}&lt;/Option>
+                                    &lt;Option value="Engineering and manufacturing">{I18n.get('Engineering and manufacturing')}&lt;/Option>
+                                    &lt;Option value="Environment and agriculture">{I18n.get('Environment and agriculture')}&lt;/Option>
+                                    &lt;Option value="Healthcare">{I18n.get('Healthcare')}&lt;/Option>
+                                    &lt;Option value="Information technology">{I18n.get('Information technology')}&lt;/Option>
+                                    &lt;Option value="Law">{I18n.get('Law')}&lt;/Option>
+                                    &lt;Option value="Marketing, advertising and PR">{I18n.get('Marketing, advertising and PR')}&lt;/Option>
+                                    &lt;Option value="Media and internet">{I18n.get('Media and internet')}&lt;/Option>
+                                    &lt;Option value="Property and construction">{I18n.get('Property and construction')}&lt;/Option>
+                                    &lt;Option value="Public services and administration">{I18n.get('Public services and administration')}&lt;/Option>
+                                    &lt;Option value="Recruitment and HR">{I18n.get('Recruitment and HR')}&lt;/Option>
+                                    &lt;Option value="Retail">{I18n.get('Retail')}&lt;/Option>
+                                    &lt;Option value="Sales">{I18n.get('Sales')}&lt;/Option>
+                                    &lt;Option value="Science and pharmaceuticals">{I18n.get('Science and pharmaceuticals')}&lt;/Option>
+                                    &lt;Option value="Social care">{I18n.get('Social care')}&lt;/Option>
+                                    &lt;Option value="Teacher training and education">{I18n.get('Teacher training and education')}&lt;/Option>
+                                    &lt;Option value="Transport and logistics">{I18n.get('Transport and logistics')}&lt;/Option>
+                                    &lt;Option value="All">{I18n.get('All')}&lt;/Option>
                                 &lt;/Select>
                             &lt;/div>
                             &lt;div style={{ textAlign: "left", width: "20%" }}>
-                                &lt;h4>Filter By Job Type&lt;/h4>
+                                &lt;h4>{I18n.get('Filter By Job Type')}&lt;/h4>
                                 &lt;Select
                                     onChange={this.filterType}
                                     style={{ marginLeft: "2%", width: "98%" }}
@@ -245,25 +245,25 @@ class JobList extends React.Component {
                                 &lt;/Select>
                             &lt;/div>
                             &lt;div style={{ textAlign: "left", width: "20%" }}>
-                                &lt;h4>Filter By Education Requirement&lt;/h4>
+                                &lt;h4>{I18n.get('Filter By Education Requirement')}&lt;/h4>
                                 &lt;Select
                                     style={{ marginLeft: "2%", width: "98%" }}
                                     size="large"
                                     onChange={this.filterEducation}
                                     defaultValue="All" >
-                                    &lt;Option value="No Requirement">No Requirement&lt;/Option>
-                                    &lt;Option value="Associate">Associate&lt;/Option>
-                                    &lt;Option value="Bachelor">Bachelor&lt;/Option>
-                                    &lt;Option value="Master">Master&lt;/Option>
-                                    &lt;Option value="Doctoral">Doctoral&lt;/Option>
-                                    &lt;Option value="All">All&lt;/Option>
+                                    &lt;Option value="No Requirement">{I18n.get('No Requirement')}&lt;/Option>
+                                    &lt;Option value="Associate">{I18n.get('Associate')}&lt;/Option>
+                                    &lt;Option value="Bachelor">{I18n.get('Bachelor')}&lt;/Option>
+                                    &lt;Option value="Master">{I18n.get('Master')}&lt;/Option>
+                                    &lt;Option value="Doctoral">{I18n.get('Doctoral')}&lt;/Option>
+                                    &lt;Option value="All">{I18n.get('All')}&lt;/Option>
                                 &lt;/Select>
                             &lt;/div>
 
                         &lt;/InputGroup>
                         &lt;InputGroup compact>
                             &lt;div style={{ textAlign: "left", width: "20%" }}>
-                                &lt;h4>Minimum Wage&lt;/h4>
+                                &lt;h4>{I18n.get('Minimum Wage')}&lt;/h4>
                                 &lt;Row>
                                     &lt;Col span={10}>
                                         &lt;Slider
@@ -294,7 +294,7 @@ class JobList extends React.Component {
                             &lt;/Button>
                             &lt;/div>
                             &lt;div style={{ textAlign: "left", width: "20%" }}>
-                                &lt;h4>Job Posted Within&lt;/h4>
+                                &lt;h4>{I18n.get('Job Posted Within')}&lt;/h4>
                                 &lt;Row>
                                     &lt;Col span={10}>
                                         &lt;Slider
@@ -355,13 +355,13 @@ export default JobList;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#disabledDate">disabledDate</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Thu May 23 2019 21:05:27 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 18:56:53 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

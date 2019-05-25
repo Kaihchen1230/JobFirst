@@ -1,0 +1,586 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job List screenshot test Job List page should render correctly 1`] = `
+<Adapter>
+  <Adapter
+    style={
+      Object {
+        "height": "15%",
+        "textAlign": "center",
+      }
+    }
+  >
+    <Row
+      gutter={0}
+    >
+      <Col
+        className="colOne"
+        span={8}
+      >
+        <span
+          className="slogon"
+        >
+          Hire expert for any job, online
+        </span>
+        <div
+          className="slogon2"
+        >
+          Millisons of small businesses and new immigrants use JobFirst to turn their ideas into reality
+        </div>
+        <div
+          className="buttonGroup"
+        >
+          <span
+            className="slogonButton"
+          >
+            I want to Hire
+          </span>
+          <span
+            className="slogonButton2"
+          >
+            I want to Work
+          </span>
+        </div>
+      </Col>
+      <Col
+        span={12}
+        style={
+          Object {
+            "margin": "-5% 0 -5% 3%",
+          }
+        }
+      >
+        <div
+          className="banner"
+        />
+      </Col>
+    </Row>
+    <div>
+      <Group
+        compact={true}
+      >
+        <Select
+          choiceTransitionName="zoom"
+          defaultValue="Name"
+          onChange={[Function]}
+          showSearch={false}
+          size="large"
+          style={
+            Object {
+              "width": "10%",
+            }
+          }
+          transitionName="slide-up"
+        >
+          <Option
+            value="Name"
+          >
+            Name
+          </Option>
+          <Option
+            value="Location"
+          >
+            Location
+          </Option>
+        </Select>
+        <Search
+          enterButton="Search"
+          id="search"
+          onSearch={[Function]}
+          placeholder="Search"
+          size="large"
+          style={
+            Object {
+              "color": "black",
+              "width": "53%",
+            }
+          }
+        />
+        <RadioButton
+          className="resetButton"
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "1%",
+              "width": "6%",
+            }
+          }
+        >
+          <Icon
+            type="undo"
+          />
+           Reset
+        </RadioButton>
+      </Group>
+      <Group
+        compact={true}
+      >
+        <div
+          style={
+            Object {
+              "textAlign": "left",
+              "width": "30%",
+            }
+          }
+        >
+          <h4>
+            Filter By Job Category
+          </h4>
+          <Select
+            choiceTransitionName="zoom"
+            className="dropBox"
+            defaultValue="All"
+            filterOption={[Function]}
+            onChange={[Function]}
+            optionFilterProp="children"
+            showSearch={true}
+            size="large"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+            transitionName="slide-up"
+          >
+            <Option
+              value="Accountancy, banking and finance"
+            >
+              Accountancy, banking and finance
+            </Option>
+            <Option
+              value="Business, consulting and management"
+            >
+              Business, consulting and management
+            </Option>
+            <Option
+              value="Charity and voluntary work"
+            >
+              Charity and voluntary work
+            </Option>
+            <Option
+              value="Creative arts and design"
+            >
+              Creative arts and design
+            </Option>
+            <Option
+              value="Energy and utilities"
+            >
+              Energy and utilities
+            </Option>
+            <Option
+              value="Engineering and manufacturing"
+            >
+              Engineering and manufacturing
+            </Option>
+            <Option
+              value="Environment and agriculture"
+            >
+              Environment and agriculture
+            </Option>
+            <Option
+              value="Healthcare"
+            >
+              Healthcare
+            </Option>
+            <Option
+              value="Information technology"
+            >
+              Information technology
+            </Option>
+            <Option
+              value="Law"
+            >
+              Law
+            </Option>
+            <Option
+              value="Marketing, advertising and PR"
+            >
+              Marketing, advertising and PR
+            </Option>
+            <Option
+              value="Media and internet"
+            >
+              Media and internet
+            </Option>
+            <Option
+              value="Property and construction"
+            >
+              Property and construction
+            </Option>
+            <Option
+              value="Public services and administration"
+            >
+              Public services and administration
+            </Option>
+            <Option
+              value="Recruitment and HR"
+            >
+              Recruitment and HR
+            </Option>
+            <Option
+              value="Retail"
+            >
+              Retail
+            </Option>
+            <Option
+              value="Sales"
+            >
+              Sales
+            </Option>
+            <Option
+              value="Science and pharmaceuticals"
+            >
+              Science and pharmaceuticals
+            </Option>
+            <Option
+              value="Social care"
+            >
+              Social care
+            </Option>
+            <Option
+              value="Teacher training and education"
+            >
+              Teacher training and education
+            </Option>
+            <Option
+              value="Transport and logistics"
+            >
+              Transport and logistics
+            </Option>
+            <Option
+              value="All"
+            >
+              All
+            </Option>
+          </Select>
+        </div>
+        <div
+          style={
+            Object {
+              "textAlign": "left",
+              "width": "20%",
+            }
+          }
+        >
+          <h4>
+            Filter By Job Type
+          </h4>
+          <Select
+            choiceTransitionName="zoom"
+            defaultValue="All"
+            onChange={[Function]}
+            showSearch={false}
+            size="large"
+            style={
+              Object {
+                "marginLeft": "2%",
+                "width": "98%",
+              }
+            }
+            transitionName="slide-up"
+          >
+            <Option
+              value="Full Time"
+            >
+              Full Time
+            </Option>
+            <Option
+              value="Part Time"
+            >
+              Part Time
+            </Option>
+            <Option
+              value="Internship"
+            >
+              Internship
+            </Option>
+            <Option
+              value="Temporary"
+            >
+              Temporary
+            </Option>
+            <Option
+              value="All"
+            >
+              All
+            </Option>
+          </Select>
+        </div>
+        <div
+          style={
+            Object {
+              "textAlign": "left",
+              "width": "20%",
+            }
+          }
+        >
+          <h4>
+            Filter By Education Requirement
+          </h4>
+          <Select
+            choiceTransitionName="zoom"
+            defaultValue="All"
+            onChange={[Function]}
+            showSearch={false}
+            size="large"
+            style={
+              Object {
+                "marginLeft": "2%",
+                "width": "98%",
+              }
+            }
+            transitionName="slide-up"
+          >
+            <Option
+              value="No Requirement"
+            >
+              No Requirement
+            </Option>
+            <Option
+              value="Associate"
+            >
+              Associate
+            </Option>
+            <Option
+              value="Bachelor"
+            >
+              Bachelor
+            </Option>
+            <Option
+              value="Master"
+            >
+              Master
+            </Option>
+            <Option
+              value="Doctoral"
+            >
+              Doctoral
+            </Option>
+            <Option
+              value="All"
+            >
+              All
+            </Option>
+          </Select>
+        </div>
+      </Group>
+      <Group
+        compact={true}
+      >
+        <div
+          style={
+            Object {
+              "textAlign": "left",
+              "width": "20%",
+            }
+          }
+        >
+          <h4>
+            Minimum Wage
+          </h4>
+          <Row
+            gutter={0}
+          >
+            <Col
+              span={10}
+            >
+              <Slider
+                max={100}
+                min={7}
+                onChange={[Function]}
+                step={0.5}
+                tipFormatter={[Function]}
+                value={7}
+              />
+            </Col>
+            <Col
+              span={1}
+            >
+              <InputNumber
+                max={100}
+                min={7}
+                onChange={[Function]}
+                step={1}
+                style={
+                  Object {
+                    "marginLeft": 16,
+                  }
+                }
+                value={7}
+              />
+            </Col>
+          </Row>
+        </div>
+        <div
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "15%",
+            }
+          }
+        >
+          <RadioButton
+            className="applyButton"
+            onClick={[Function]}
+            style={
+              Object {
+                "marginTop": "5%",
+                "width": "40%",
+              }
+            }
+          >
+            Apply
+          </RadioButton>
+        </div>
+        <div
+          style={
+            Object {
+              "textAlign": "left",
+              "width": "20%",
+            }
+          }
+        >
+          <h4>
+            Job Posted Within
+          </h4>
+          <Row
+            gutter={0}
+          >
+            <Col
+              span={10}
+            >
+              <Slider
+                max={365}
+                min={1}
+                onChange={[Function]}
+                tipFormatter={[Function]}
+                value={365}
+              />
+            </Col>
+            <Col
+              span={1}
+            >
+              <InputNumber
+                max={365}
+                min={1}
+                onChange={[Function]}
+                step={10}
+                style={
+                  Object {
+                    "marginLeft": 16,
+                  }
+                }
+                value={365}
+              />
+            </Col>
+          </Row>
+        </div>
+        <div
+          style={
+            Object {
+              "textAlign": "center",
+              "width": "15%",
+            }
+          }
+        >
+          <RadioButton
+            className="applyButton"
+            onClick={[Function]}
+            style={
+              Object {
+                "marginTop": "5%",
+                "width": "40%",
+              }
+            }
+          >
+            Apply
+          </RadioButton>
+        </div>
+      </Group>
+    </div>
+  </Adapter>
+  <Adapter>
+    <Connect
+      query={
+        Object {
+          "query": "query ListPostedJobs(
+  $filter: ModelPostedJobFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPostedJobs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      company {
+        id
+        companyName
+        companyEmail
+        companyPhone
+        companyWebsite
+        companyType
+        videoURL
+        videoPic
+        bannerPic
+        headquarter
+        ceo
+        ceoPic
+        size
+        revenue
+        companyPic
+        description
+        identityID
+      }
+      jobCategory
+      jobTitle
+      jobType
+      description
+      education
+      requirements
+      salary
+      datePosted
+      deadline
+      location {
+        id
+        line1
+        line2
+        city
+        postalCode
+        state
+      }
+      applied {
+        nextToken
+      }
+      searchFieldName
+      searchFieldLocation
+      clickedCounts
+    }
+    nextToken
+  }
+}
+",
+          "variables": Object {
+            "filter": Object {
+              "clickedCounts": Object {
+                "ge": 0,
+              },
+            },
+          },
+        }
+      }
+    >
+      [Function]
+    </Connect>
+  </Adapter>
+  <Adapter
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    JobFirst
+     ©2019 
+    Created by JobFirst Group
+  </Adapter>
+</Adapter>
+`;

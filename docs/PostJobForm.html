@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: CreateAddressForm</title>
+    <title>JSDoc: Class: PostJobForm</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: CreateAddressForm</h1>
+    <h1 class="page-title">Class: PostJobForm</h1>
 
     
 
@@ -28,10 +28,11 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CreateAddressForm<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>PostJobForm<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>The class CreateAddressForm will render the Create Address form.
-It will give the user the ability to add a new address to their profile.</p></div>
+            <div class="class-description"><p>The class PostJobForm will render the page allow employer to input a new job
+It will render the inputs fields allow user to input values
+It will render the button to submit the job</p></div>
         
     
 </header>
@@ -46,12 +47,16 @@ It will give the user the ability to add a new address to their profile.</p></di
     
 
     
-    <h4 class="name" id="CreateAddressForm"><span class="type-signature"></span>new CreateAddressForm<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="PostJobForm"><span class="type-signature"></span>new PostJobForm<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
+
+<div class="description">
+    <p>the state object to store data</p>
+</div>
 
 
 
@@ -94,7 +99,7 @@ It will give the user the ability to add a new address to their profile.</p></di
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line94">line 94</a>
+        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -144,13 +149,13 @@ It will give the user the ability to add a new address to their profile.</p></di
 
         
             
-<h4 class="name" id="handleCancel"><span class="type-signature"></span>handleCancel<span class="type-signature"></span></h4>
+<h4 class="name" id="add"><span class="type-signature"></span>add<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>handle a click of the cancel button on the form</p>
+    <p>To add field value</p>
 </div>
 
 
@@ -188,7 +193,7 @@ It will give the user the ability to add a new address to their profile.</p></di
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line108">line 108</a>
+        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -206,13 +211,13 @@ It will give the user the ability to add a new address to their profile.</p></di
 
         
             
-<h4 class="name" id="handleCreate"><span class="type-signature"></span>handleCreate<span class="type-signature"></span></h4>
+<h4 class="name" id="handleSubmit"><span class="type-signature"></span>handleSubmit<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>use the API to create a new address</p>
+    <p>To make the input values to graphql mutation query and send to AWS database</p>
 </div>
 
 
@@ -250,7 +255,7 @@ It will give the user the ability to add a new address to their profile.</p></di
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line115">line 115</a>
+        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -268,13 +273,13 @@ It will give the user the ability to add a new address to their profile.</p></di
 
         
             
-<h4 class="name" id="saveFormRef"><span class="type-signature"></span>saveFormRef<span class="type-signature"></span></h4>
+<h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>save the values entered in the form</p>
+    <p>To remove field value</p>
 </div>
 
 
@@ -312,69 +317,7 @@ It will give the user the ability to add a new address to their profile.</p></di
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line149">line 149</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="showModal"><span class="type-signature"></span>showModal<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>hide or show the form</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line102">line 102</a>
+        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -402,7 +345,7 @@ It will give the user the ability to add a new address to their profile.</p></di
     
 
     
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="componentDidMount"><span class="type-signature"></span>componentDidMount<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -410,7 +353,7 @@ It will give the user the ability to add a new address to their profile.</p></di
 
 
 <div class="description">
-    <p>render the form on the sidebar</p>
+    <p>To disabled submit button at the beginning.</p>
 </div>
 
 
@@ -454,7 +397,7 @@ It will give the user the ability to add a new address to their profile.</p></di
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_form_createAddress.js.html">components/form/createAddress.js</a>, <a href="components_form_createAddress.js.html#line155">line 155</a>
+        <a href="components_form_newPostJob.js.html">components/form/newPostJob.js</a>, <a href="components_form_newPostJob.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
