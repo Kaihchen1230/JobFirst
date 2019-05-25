@@ -8,10 +8,24 @@ __Siddharth Rajan__ _(developer)_
 __Alan Lau__ _(developer)_
 </br>
 </br>
-## About:
-JobFirst is a web app which utilizes _Gatsby_ to serve the frontend and _AWS Amplify_ to serve the backend. And blah blah blah....
-## [Refer here for our weekly meeting status](https://github.com/Kaihchen1230/csc47300Project/wiki/Weekly-Status-Meeting-PPT)
-___
+
+## Background:
+ JobFirst is employment-related search website that makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
+
+## Tools Used:
+1. _Gatsby_
+2. _AWS cognito_
+3. _AWS appsync_
+
+## Refer here for our website
+https://master.d1lcnidp5acn3o.amplifyapp.com/
+1. employer account: 
+    - username: employer pw: employer
+2. employee account:
+    - username: employee pw: employee
+
+## Refer here for our developer documentation
+https://kaihchen1230.github.io/jobFirstDoc/index.html
 
 ## How to get started:
 1. clone the repo ```git clone https://github.com/Kaihchen1230/csc47300Project.git```
