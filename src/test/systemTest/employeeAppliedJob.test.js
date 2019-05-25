@@ -8,17 +8,17 @@ test('should able to login as an Employee and search backend engineer job and ap
     });
     const page = await browser.newPage();
     await page.goto(
-        'https://master.d311enjx0cy8vf.amplifyapp.com/'
+        'https://master.d1lcnidp5acn3o.amplifyapp.com/'
     );
     await page.setViewport(VIEWPORT);
     await page.waitFor(1000);
     await page.click('li:nth-child(10)');
     await page.waitFor(1000);
     await page.click('#form_in_modal_userName');
-    await page.type('#form_in_modal_userName', 'kappa');
+    await page.type('#form_in_modal_userName', 'employee');
     await page.waitFor(1000);
     await page.click('#form_in_modal_password');
-    await page.type('#form_in_modal_password', '214890303Khc');
+    await page.type('#form_in_modal_password', 'employee');
     await page.waitFor(1000);
     await page.click('.ant-modal-footer > div > button:nth-child(2)');
     await page.waitFor(2000);
