@@ -17,10 +17,14 @@ __Alan Lau__ _(developer)_
 3. _AWS appsync_
 
 ## Refer here for our website
-https://master.d311enjx0cy8vf.amplifyapp.com/
+https://master.d1lcnidp5acn3o.amplifyapp.com/
+1. employer account: 
+    - username: employer pw: employer
+2. employee account:
+    - username: employee pw: employee
 
 ## Refer here for our developer documentation
-https://kaihchen1230.github.io/csc47300Project/
+https://kaihchen1230.github.io/jobFirstDoc/index.html
 ___
 
 ## How to get started:
