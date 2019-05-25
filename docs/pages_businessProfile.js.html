@@ -28,7 +28,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>/** Class representing a point. */
 import React from "react"
-import { Button, Tabs,Spin } from 'antd';
+import { Layout, Button, Tabs, Spin } from 'antd';
 import BusinessPicture from '../components/business_profile/businessPicture';
 import Timeline from '../components/business_profile/Timeline';
 import EditProfileForm from '../components/business_profile/EditProfileForm';
@@ -40,9 +40,9 @@ import CompanyVideo from "../components/business_profile/video";
 import PhotoUpload from "../components/user_profile/photoUploader";
 import * as queries from '../graphql/queries';
 import { API, graphqlOperation, Auth, I18n, Storage } from "aws-amplify";
-import nodataImg from '../../static/nodata.png';
 import '../style/businessProfile.css';
 
+const { Footer } = Layout;
 const TabPane = Tabs.TabPane;
 
 let bodyStyle = {
@@ -70,8 +70,8 @@ class businessProfile extends React.Component {
       jobList: [],
       companyName: null,
       companyWebsite: null,
-      companyPhone:null,
-      companyEmail:null,
+      companyPhone: null,
+      companyEmail: null,
       companyType: null,
       headquarter: null,
       videoURL: null,
@@ -81,7 +81,7 @@ class businessProfile extends React.Component {
         city: "New York",
         state: "NY",
         postalCode: "12345"
-        
+
       },
       ceoPic: null,
       ceo: null,
@@ -125,9 +125,9 @@ class businessProfile extends React.Component {
         }
       }
 
-       /**
-       * set up other employer info within nested object
-       *  */
+      /**
+      * set up other employer info within nested object
+      *  */
       console.log("employer", employerData);
       if (employerData.timeline.items.length >= 1)
         this.setState({ timeline: employerData.timeline.items });
@@ -163,19 +163,19 @@ class businessProfile extends React.Component {
           identityId: this.state.userID// the identityId of that user
         })
           .then(result => {
-            
-            this.setState({ companyLogo: result,memory:true });
-            console.log("set up",this.state);
+
+            this.setState({ companyLogo: result, memory: true });
+            console.log("set up", this.state);
           })
           .catch(err => console.log(err));
       }
       else
-        this.setState({memory:true})
-      
+        this.setState({ memory: true })
+
     } catch (err) {
       console.log("couldn't get employer data: ", err);
     }
-    
+
   }
 
   /**
@@ -207,13 +207,13 @@ class businessProfile extends React.Component {
   }
 
   render() {
-    if(!this.state.memory){
+    if (!this.state.memory) {
       // Just wait for the memory to be available
-      return &lt;Spin style={{position:"absolute",left:"45%",top:"30%"}} tip="Please wait for a moment"/> ;
+      return &lt;Spin style={{ position: "absolute", left: "45%", top: "30%" }} tip="Please wait for a moment" />;
     }
     return (
       &lt;div >
-        
+
         &lt;div className="bannerOne">
         &lt;/div>
         &lt;div style={bodyStyle}>
@@ -221,12 +221,12 @@ class businessProfile extends React.Component {
             &lt;BusinessPicture companyLogo={this.state.companyLogo} />
             &lt;div className="companyHeader">
               &lt;h1 style={{ fontSize: "4em" }}>{this.state.companyName}&lt;/h1>
-              &lt;h2 className="companyLocation">{this.state.companyAddress.city + 
-                  " " + this.state.companyAddress.state}&lt;/h2>
+              &lt;h2 className="companyLocation">{this.state.companyAddress.city +
+                " " + this.state.companyAddress.state}&lt;/h2>
             &lt;/div>
             {this.state.allowEdit ?
-              &lt;div className= "busButtonGroup">
-                &lt;Button className ="busEditButton"  onClick={this.showModal}>
+              &lt;div className="busButtonGroup">
+                &lt;Button className="busEditButton" onClick={this.showModal}>
                   {I18n.get('Edit Profile')}
                 &lt;/Button>
                 &lt;PhotoUpload isBusiness={true} />
@@ -276,7 +276,7 @@ class businessProfile extends React.Component {
 
               &lt;/TabPane>
               &lt;TabPane tab={I18n.get('Jobs') + "(" + this.state.jobAmount + ")"} key="2">
-                &lt;div > 
+                &lt;div >
                   &lt;PostJob
                     jobList={this.state.jobList}
                     companyLogo={this.state.companyLogo} />
@@ -286,6 +286,9 @@ class businessProfile extends React.Component {
           &lt;/div>
 
         &lt;/div>
+        &lt;Footer style={{ textAlign: 'center' }}>
+          {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
+        &lt;/Footer>
       &lt;/div>
     );
   }
@@ -303,13 +306,13 @@ export default businessProfile;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#disabledDate">disabledDate</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon May 13 2019 17:57:47 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 18:56:53 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

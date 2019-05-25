@@ -280,7 +280,7 @@ class Profile extends React.Component {
      */
     deleteAddress = async () => {
         try {
-            const delAdd = await API.graphql(graphqlOperation(mutations.deleteAddress, { input: { id: this.state.userID} }));
+            const delAdd = await API.graphql(graphqlOperation(mutations.deleteAddress, { input: { id: this.state.userID } }));
             console.log("User address was deleted.");
             message.success(`Address deleted`);
             window.location.reload();
@@ -306,77 +306,81 @@ class Profile extends React.Component {
             );
         }
         return (
-            &lt;Layout style={{ minHeight: '100vh' }}>
-                &lt;Sider
-                    collapsible
-                    collapsed={this.state.collapsed}
-                    onCollapse={this.onCollapse}
-                    width={300}
-                >
-                    &lt;Person user={this.state.user} />
-                    {/**
+            &lt;div>
+                &lt;Layout style={{ minHeight: '100vh' }}>
+                    &lt;Sider
+                        collapsible
+                        collapsed={this.state.collapsed}
+                        onCollapse={this.onCollapse}
+                        width={300}
+                    >
+                        &lt;Person user={this.state.user} />
+                        {/**
                     * render those edit button when user is viewing his own profile page
                     */}
-                    {(getUser().sub === this.state.userID) ? (
-                        &lt;Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                            &lt;SubMenu
-                                key="sub1"
-                                title={&lt;span>&lt;Icon type="form" />&lt;span>{I18n.get('Edit Profile')}&lt;/span>&lt;/span>}
-                            >
-                                &lt;Menu.Item key="3">
-                                    &lt;BasicInfoForm userInfo={this.state.user} />
-                                    {/* {I18n.get('Modify Basic Info')} */}
+                        {(getUser().sub === this.state.userID) ? (
+                            &lt;Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                                &lt;SubMenu
+                                    key="sub1"
+                                    title={&lt;span>&lt;Icon type="form" />&lt;span>{I18n.get('Edit Profile')}&lt;/span>&lt;/span>}
+                                >
+                                    &lt;Menu.Item key="3">
+                                        &lt;BasicInfoForm userInfo={this.state.user} />
+                                        {/* {I18n.get('Modify Basic Info')} */}
+                                    &lt;/Menu.Item>
+
+                                    {this.state.address.data.getAddress ?
+                                        &lt;Menu.Item key="5">
+                                            &lt;UpdateAddressForm />
+                                        &lt;/Menu.Item> :
+                                        &lt;Menu.Item key="4">
+                                            &lt;CreateAddressForm />
+                                        &lt;/Menu.Item>}
+
+                                    {this.state.address.data.getAddress ?
+                                        &lt;Menu.Item key="6">
+                                            &lt;Button className="modify-info-button" ghost onClick={this.deleteAddress}>
+                                                &lt;Icon type="delete" theme="twoTone" twoToneColor="#52c41a" />Delete Address&lt;/Button>
+                                        &lt;/Menu.Item> : null}
+
+                                    &lt;Menu.Item key="7">
+                                        &lt;AddEduForm />
+                                    &lt;/Menu.Item>
+
+                                    &lt;Menu.Item key="8">
+                                        &lt;AddExpForm />
+                                    &lt;/Menu.Item>
+                                &lt;/SubMenu>
+
+                                &lt;Menu.Item key="2">
+                                    &lt;PhotoUploader />
+
+                                    {/* &lt;span>{I18n.get('Change Profile Picture')}&lt;/span> */}
                                 &lt;/Menu.Item>
 
-                                {this.state.address.data.getAddress ? 
-                                &lt;Menu.Item key="5">
-                                    &lt;UpdateAddressForm />
-                                &lt;/Menu.Item>:
-                                &lt;Menu.Item key="4">
-                                    &lt;CreateAddressForm />
-                                &lt;/Menu.Item>}
-
-                                {this.state.address.data.getAddress ?
-                                &lt;Menu.Item key="6">
-                                    &lt;Button className="modify-info-button" ghost onClick={this.deleteAddress}>
-                                    &lt;Icon type="delete" theme="twoTone" twoToneColor="#52c41a"/>Delete Address&lt;/Button>
-                                &lt;/Menu.Item>:null}
-
-                                &lt;Menu.Item key="7">
-                                    &lt;AddEduForm />
+                                &lt;Menu.Item key="9">
+                                    &lt;ResumeUploader onChange={this.onChange} />
                                 &lt;/Menu.Item>
-
-                                &lt;Menu.Item key="8">
-                                    &lt;AddExpForm />
-                                &lt;/Menu.Item>
-                            &lt;/SubMenu>
-
-                            &lt;Menu.Item key="2">
-                                &lt;PhotoUploader />
-
-                                {/* &lt;span>{I18n.get('Change Profile Picture')}&lt;/span> */}
-                            &lt;/Menu.Item>
-
-                            &lt;Menu.Item key="9">
-                                &lt;ResumeUploader onChange={this.onChange} />
-                            &lt;/Menu.Item>
-                        &lt;/Menu>) : null
-                    }
-                &lt;/Sider>
-                &lt;Content>
-                    &lt;Information
-                        user={this.state.user}
-                        address={this.state.address}
-                        jobs={this.state.jobs}
-                        education={this.state.education}
-                        experiences={this.state.experiences}
-                        allowEdit={this.state.allowEdit}
-                        deleteEdu={this.deleteEducation}
-                        deleteExp={this.deleteExperience}
-                    />
-                &lt;/Content>
-            &lt;/Layout>
-
+                            &lt;/Menu>) : null
+                        }
+                    &lt;/Sider>
+                    &lt;Content>
+                        &lt;Information
+                            user={this.state.user}
+                            address={this.state.address}
+                            jobs={this.state.jobs}
+                            education={this.state.education}
+                            experiences={this.state.experiences}
+                            allowEdit={this.state.allowEdit}
+                            deleteEdu={this.deleteEducation}
+                            deleteExp={this.deleteExperience}
+                        />
+                    &lt;/Content>
+                &lt;/Layout>
+                &lt;Footer style={{ textAlign: 'center' }}>
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
+                &lt;/Footer>
+            &lt;/div>
         );
     }
 }
@@ -391,13 +395,13 @@ export default Profile;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="businessProfile.html">businessProfile</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="Profile.html">Profile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#disabledDate">disabledDate</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon May 13 2019 17:57:47 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 18:56:53 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

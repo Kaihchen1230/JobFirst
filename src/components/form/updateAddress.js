@@ -86,23 +86,33 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         }
     }
 )
-
-
+/**
+ * The class UpdateAddressForm will render the Update Address form.
+ * It will give the user the ability to update the current address
+ * on their profile, if they have one.
+ */
 class UpdateAddressForm extends React.Component {
     state = {
         visible: false,
         lan: getLanguage()
     }
-
+    /**
+     * hide or show the form
+     */
     showModal = () => {
         this.setState({ visible: true })
     }
-
+    /**
+     * handle a click of the cancel button on the form
+     */
     handleCancel = () => {
         this.setState({ visible: false })
     }
 
     // api call to update address function
+    /**
+     * use the API to update the address
+     */
     handleUpdate = async () => {
         const form = this.formRef.props.form;
         form.validateFields(async (err, values) => {
@@ -134,11 +144,15 @@ class UpdateAddressForm extends React.Component {
             window.location.reload();
         })
     }
-
+    /**
+     * save the values entered in the form
+     */
     saveFormRef = (formRef) => {
         this.formRef = formRef;
     }
-
+    /**
+     * render the form on the sidebar
+     */
     render() {
         I18n.putVocabularies(dict);
         I18n.setLanguage(this.state.lan);

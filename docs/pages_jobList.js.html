@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/jobList.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/jobList.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Col, Row, Select, Input, Layout, Slider, InputNumber, Icon, Breadcrumb } from 'antd';
+import JobItem from '../components/jobList/jobItem';
+import { I18n, graphqlOperation } from 'aws-amplify';
+import * as queries from '../graphql/queries';
+import { Connect } from "aws-amplify-react";
+import { Button } from 'antd/lib/radio';
+import * as Util from '../test/jobListUnitTest/jobListUtil';
+import "../style/jobList.css"
+
+
+// The job list page for all the job that are posted by employers
+
+const {
+    Header, Footer, Sider, Content,
+} = Layout;
+const Search = Input.Search;
+const Option = Select.Option;
+const InputGroup = Input.Group;
+let searchType = "Name";
+
+/**
+ * The class jobList will render the page of job list for all the posted job by employer
+ * It will render the job pool containing all the job cards (data from AWS dynamoDB)
+ * It will render the a search and filter section that allows you do search and filter (AWS API)
+ * It will render the a learn more button the job cards so user can direct to jobDescription page
+ */
+
+class JobList extends React.Component {
+
+    /**
+     * the state object to store the query statement for filter and search
+     * @type {Object} state
+     */
+    state = {
+        "filter": { clickedCounts: { ge: 0 } },
+        salary: 7,
+        days: 365,
+    }
+
+    /**
+     * Update the filter object in state with a filter query by job type
+     * @param {string} value - the job type you want to filter
+     */
+    filterType = (value) => {
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.filterTypeGen(value, oldFilter) });
+    }
+
+    /**
+     * Update the filter object in state with a filter query by job category
+     * @param {string} value - the job category you want to filter
+     */
+    filterCategory = (value) => {
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.filterCateGen(value, oldFilter) });
+    }
+
+    /**
+     * Update the filter object in state with a filter query by required education
+     * @param {string} value - the required education you want to filter
+     */
+    filterEducation = (value) => {
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.filterEduGen(value, oldFilter) });
+    }
+
+    /**
+     * Update the filter object in state with a filter query by post date
+     */
+    filterDate = () => {
+        let oldFilter = { ...this.state.filter };
+        let days = this.state.days;
+        this.setState({ "filter": Util.filterDateGen(days, oldFilter) });
+    }
+
+    /**
+     * Update the filter object in state with a filter query by job salary
+     */
+    filterSalary = () => {
+        let oldFilter = { ...this.state.filter };
+        let salary = this.state.salary;
+        this.setState({ "filter": Util.filterSalaryGen(salary, oldFilter) });
+    }
+
+    /**
+     * Update the variable searchType with the input value
+     * @param {string} value - the input value either Name or Location
+     */
+    selectSearch = (value) => {
+        searchType = value;
+    }
+
+    /**
+     * Update the filter object in state with a filter query by input name or location
+     * @param {string} value - the input name or location you want to filter
+     */
+    searchByName = (value) => {
+        let oldFilter = { ...this.state.filter };
+        this.setState({ "filter": Util.searchByNameGen(value, searchType, oldFilter) });
+    }
+
+    /**
+     * Reset the filter object in state back to original value
+     */
+    reset = () => {
+        this.setState({ "filter": Util.resetGen() });
+    }
+
+    /**
+     * Update the salary object in state with an input salary
+     * @param {string} value - the input salary
+     */
+    setSalary = (value) => {
+        this.setState({ salary: value });
+    }
+
+    /**
+     * Update the days object in state with an input day
+     * @param {string} value - the input day
+     */
+    setDay = (value) => {
+        this.setState({ days: value });
+    }
+
+    render() {
+        let { filter, salary, days } = this.state;
+        return (
+            &lt;Layout >
+                &lt;Header style={{ textAlign: "center", height: "15%" }}>
+                    &lt;Row>
+                        &lt;Col span={8} className="colOne">
+                            &lt;span className="slogon">Hire expert for any job, online&lt;/span>
+                            &lt;div className="slogon2">Millisons of small businesses and new immigrants use JobFirst
+                                to turn their ideas into reality
+                            &lt;/div>
+                            &lt;div className="buttonGroup">
+                                &lt;span className="slogonButton">
+                                    I want to Hire
+                                &lt;/span >
+                                &lt;span className="slogonButton2">I want to Work&lt;/span>
+                            &lt;/div>
+                        &lt;/Col>
+                        &lt;Col style={{ margin: "-5% 0 -5% 3%" }} span={12}>
+                            &lt;div className="banner" />
+                        &lt;/Col>
+                    &lt;/Row>
+                    &lt;div>
+                        &lt;InputGroup compact>
+                            &lt;Select onChange={this.selectSearch} size="large" defaultValue="Name" style={{ width: "10%" }}>
+                                &lt;Option value="Name">{I18n.get('Name')}&lt;/Option>
+                                &lt;Option value="Location">{I18n.get('Location')}&lt;/Option>
+                            &lt;/Select>
+                            &lt;Search
+                                style={{ width: '53%', color: "black" }}
+                                placeholder={I18n.get('Search')}
+                                enterButton="Search"
+                                size="large"
+                                onSearch={this.searchByName}
+                                id="search"
+                            />
+                            &lt;Button
+                                className="resetButton"
+                                style={{ marginLeft: "1%", width: "6%" }}
+                                onClick={this.reset.bind(this)}>
+                                &lt;Icon type="undo" /> Reset
+                        &lt;/Button>
+                        &lt;/InputGroup>
+                        &lt;InputGroup compact >
+                            &lt;div style={{ textAlign: "left", width: "30%" }}>
+                                &lt;h4>{I18n.get('Filter By Job Category')}&lt;/h4>
+                                &lt;Select
+                                    className="dropBox"
+                                    showSearch
+                                    optionFilterProp="children"
+                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                    onChange={this.filterCategory}
+                                    size="large"
+                                    style={{ width: "100%" }}
+                                    defaultValue="All" >
+                                    &lt;Option value="Accountancy, banking and finance">{I18n.get('Accountancy, banking and finance')}&lt;/Option>
+                                    &lt;Option value="Business, consulting and management">{I18n.get('Business, consulting and management')}&lt;/Option>
+                                    &lt;Option value="Charity and voluntary work">{I18n.get('Charity and voluntary work')}&lt;/Option>
+                                    &lt;Option value="Creative arts and design">{I18n.get('Creative arts and design')}&lt;/Option>
+                                    &lt;Option value="Energy and utilities">{I18n.get('Energy and utilities')}&lt;/Option>
+                                    &lt;Option value="Engineering and manufacturing">{I18n.get('Engineering and manufacturing')}&lt;/Option>
+                                    &lt;Option value="Environment and agriculture">{I18n.get('Environment and agriculture')}&lt;/Option>
+                                    &lt;Option value="Healthcare">{I18n.get('Healthcare')}&lt;/Option>
+                                    &lt;Option value="Information technology">{I18n.get('Information technology')}&lt;/Option>
+                                    &lt;Option value="Law">{I18n.get('Law')}&lt;/Option>
+                                    &lt;Option value="Marketing, advertising and PR">{I18n.get('Marketing, advertising and PR')}&lt;/Option>
+                                    &lt;Option value="Media and internet">{I18n.get('Media and internet')}&lt;/Option>
+                                    &lt;Option value="Property and construction">{I18n.get('Property and construction')}&lt;/Option>
+                                    &lt;Option value="Public services and administration">{I18n.get('Public services and administration')}&lt;/Option>
+                                    &lt;Option value="Recruitment and HR">{I18n.get('Recruitment and HR')}&lt;/Option>
+                                    &lt;Option value="Retail">{I18n.get('Retail')}&lt;/Option>
+                                    &lt;Option value="Sales">{I18n.get('Sales')}&lt;/Option>
+                                    &lt;Option value="Science and pharmaceuticals">{I18n.get('Science and pharmaceuticals')}&lt;/Option>
+                                    &lt;Option value="Social care">{I18n.get('Social care')}&lt;/Option>
+                                    &lt;Option value="Teacher training and education">{I18n.get('Teacher training and education')}&lt;/Option>
+                                    &lt;Option value="Transport and logistics">{I18n.get('Transport and logistics')}&lt;/Option>
+                                    &lt;Option value="All">{I18n.get('All')}&lt;/Option>
+                                &lt;/Select>
+                            &lt;/div>
+                            &lt;div style={{ textAlign: "left", width: "20%" }}>
+                                &lt;h4>{I18n.get('Filter By Job Type')}&lt;/h4>
+                                &lt;Select
+                                    onChange={this.filterType}
+                                    style={{ marginLeft: "2%", width: "98%" }}
+                                    size="large"
+                                    defaultValue="All" >
+                                    &lt;Option value="Full Time">{I18n.get('Full Time')}&lt;/Option>
+                                    &lt;Option value="Part Time">{I18n.get('Part Time')}&lt;/Option>
+                                    &lt;Option value="Internship">{I18n.get('Internship')}&lt;/Option>
+                                    &lt;Option value="Temporary">{I18n.get('Temporary')}&lt;/Option>
+                                    &lt;Option value="All">{I18n.get('All')}&lt;/Option>
+                                &lt;/Select>
+                            &lt;/div>
+                            &lt;div style={{ textAlign: "left", width: "20%" }}>
+                                &lt;h4>{I18n.get('Filter By Education Requirement')}&lt;/h4>
+                                &lt;Select
+                                    style={{ marginLeft: "2%", width: "98%" }}
+                                    size="large"
+                                    onChange={this.filterEducation}
+                                    defaultValue="All" >
+                                    &lt;Option value="No Requirement">{I18n.get('No Requirement')}&lt;/Option>
+                                    &lt;Option value="Associate">{I18n.get('Associate')}&lt;/Option>
+                                    &lt;Option value="Bachelor">{I18n.get('Bachelor')}&lt;/Option>
+                                    &lt;Option value="Master">{I18n.get('Master')}&lt;/Option>
+                                    &lt;Option value="Doctoral">{I18n.get('Doctoral')}&lt;/Option>
+                                    &lt;Option value="All">{I18n.get('All')}&lt;/Option>
+                                &lt;/Select>
+                            &lt;/div>
+
+                        &lt;/InputGroup>
+                        &lt;InputGroup compact>
+                            &lt;div style={{ textAlign: "left", width: "20%" }}>
+                                &lt;h4>{I18n.get('Minimum Wage')}&lt;/h4>
+                                &lt;Row>
+                                    &lt;Col span={10}>
+                                        &lt;Slider
+                                            min={7}
+                                            max={100}
+                                            onChange={this.setSalary}
+                                            value={typeof salary === 'number' ? salary : 7}
+                                            step={0.5}
+                                        />
+                                    &lt;/Col>
+                                    &lt;Col span={1}>
+                                        &lt;InputNumber
+                                            min={7}
+                                            max={100}
+                                            style={{ marginLeft: 16 }}
+                                            value={salary}
+                                            onChange={this.setSalary}
+                                        />
+                                    &lt;/Col>
+                                &lt;/Row>
+                            &lt;/div>
+                            &lt;div style={{ textAlign: "center", width: "15%" }}>
+                                &lt;Button
+                                    className="applyButton"
+                                    style={{ marginTop: "5%", width: "40%", }}
+                                    onClick={this.filterSalary}>
+                                    Apply
+                            &lt;/Button>
+                            &lt;/div>
+                            &lt;div style={{ textAlign: "left", width: "20%" }}>
+                                &lt;h4>{I18n.get('Job Posted Within')}&lt;/h4>
+                                &lt;Row>
+                                    &lt;Col span={10}>
+                                        &lt;Slider
+                                            min={1}
+                                            max={365}
+                                            onChange={this.setDay}
+                                            value={typeof days === 'number' ? days : 365}
+                                        />
+                                    &lt;/Col>
+                                    &lt;Col span={1}>
+                                        &lt;InputNumber
+                                            min={1}
+                                            max={365}
+                                            style={{ marginLeft: 16 }}
+                                            value={days}
+                                            onChange={this.setDay}
+                                            step={10}
+                                        />
+                                    &lt;/Col>
+                                &lt;/Row>
+                            &lt;/div>
+                            &lt;div style={{ textAlign: "center", width: "15%" }}>
+                                &lt;Button
+                                    className="applyButton"
+                                    style={{ marginTop: "5%", width: "40%", }}
+                                    onClick={this.filterDate}>
+                                    Apply
+                            &lt;/Button>
+                            &lt;/div>
+                        &lt;/InputGroup>
+                    &lt;/div>
+                &lt;/Header>
+                &lt;Content>
+                    &lt;Connect query={graphqlOperation(queries.listPostedJobs, { "filter": filter })}>
+                        {({ data: { listPostedJobs }, loading, error }) => {
+                            if (error) return (&lt;h3>ERROR&lt;/h3>);
+                            if (loading || !listPostedJobs) return (&lt;h3>Loading...&lt;/h3>);
+                            return (&lt;JobItem jobs={listPostedJobs.items} />);
+                        }}
+                    &lt;/Connect>
+                &lt;/Content>
+                &lt;Footer style={{ textAlign: 'center' }}>
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
+                &lt;/Footer>
+            &lt;/Layout>
+        );
+    }
+}
+
+export default JobList;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddEduForm.html">AddEduForm</a></li><li><a href="AddExpForm.html">AddExpForm</a></li><li><a href="businessProfile.html">businessProfile</a></li><li><a href="Contact.html">Contact</a></li><li><a href="CreateAddressForm.html">CreateAddressForm</a></li><li><a href="JobDescription.html">JobDescription</a></li><li><a href="JobList.html">JobList</a></li><li><a href="ModalForm.html">ModalForm</a></li><li><a href="PostJobForm.html">PostJobForm</a></li><li><a href="Profile.html">Profile</a></li><li><a href="UpdateAddressForm.html">UpdateAddressForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AppliedJob">AppliedJob</a></li><li><a href="global.html#disabledDate">disabledDate</a></li><li><a href="global.html#Education">Education</a></li><li><a href="global.html#Experiences">Experiences</a></li><li><a href="global.html#General">General</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 18:56:53 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Col, Row, Select, Input, Layout, Slider, InputNumber, Icon, Breadcrumb } from 'antd';
 import JobItem from '../components/jobList/jobItem';
-import dict from "../components/dictionary/dictionary";
 import { I18n, graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import { Connect } from "aws-amplify-react";
 import { Button } from 'antd/lib/radio';
 import * as Util from '../test/jobListUnitTest/jobListUtil';
-import { Link, navigate } from "gatsby";
 import "../style/jobList.css"
-import HomeImg from "../../static/home.png"
+
+
+// The job list page for all the job that are posted by employers
 
 const {
     Header, Footer, Sider, Content,
@@ -18,62 +18,107 @@ const Search = Input.Search;
 const Option = Select.Option;
 const InputGroup = Input.Group;
 let searchType = "Name";
-// let lan = window.localStorage.getItem('lan');
-// I18n.putVocabularies(dict);
-// I18n.setLanguage(lan);
+
+/**
+ * The class jobList will render the page of job list for all the posted job by employer
+ * It will render the job pool containing all the job cards (data from AWS dynamoDB)
+ * It will render the a search and filter section that allows you do search and filter (AWS API)
+ * It will render the a learn more button the job cards so user can direct to jobDescription page
+ */
 
 class JobList extends React.Component {
 
+    /**
+     * the state object to store the query statement for filter and search
+     * @type {Object} state
+     */
     state = {
         "filter": { clickedCounts: { ge: 0 } },
         salary: 7,
         days: 365,
     }
 
+    /**
+     * Update the filter object in state with a filter query by job type
+     * @param {string} value - the job type you want to filter
+     */
     filterType = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterTypeGen(value, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by job category
+     * @param {string} value - the job category you want to filter
+     */
     filterCategory = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterCateGen(value, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by required education
+     * @param {string} value - the required education you want to filter
+     */
     filterEducation = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.filterEduGen(value, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by post date
+     */
     filterDate = () => {
         let oldFilter = { ...this.state.filter };
         let days = this.state.days;
         this.setState({ "filter": Util.filterDateGen(days, oldFilter) });
     }
 
+    /**
+     * Update the filter object in state with a filter query by job salary
+     */
     filterSalary = () => {
         let oldFilter = { ...this.state.filter };
         let salary = this.state.salary;
         this.setState({ "filter": Util.filterSalaryGen(salary, oldFilter) });
     }
 
+    /**
+     * Update the variable searchType with the input value
+     * @param {string} value - the input value either Name or Location
+     */
     selectSearch = (value) => {
         searchType = value;
     }
 
+    /**
+     * Update the filter object in state with a filter query by input name or location
+     * @param {string} value - the input name or location you want to filter
+     */
     searchByName = (value) => {
         let oldFilter = { ...this.state.filter };
         this.setState({ "filter": Util.searchByNameGen(value, searchType, oldFilter) });
     }
 
+    /**
+     * Reset the filter object in state back to original value
+     */
     reset = () => {
         this.setState({ "filter": Util.resetGen() });
     }
 
+    /**
+     * Update the salary object in state with an input salary
+     * @param {string} value - the input salary
+     */
     setSalary = (value) => {
         this.setState({ salary: value });
     }
 
+    /**
+     * Update the days object in state with an input day
+     * @param {string} value - the input day
+     */
     setDay = (value) => {
         this.setState({ days: value });
     }
@@ -103,8 +148,8 @@ class JobList extends React.Component {
                     <div>
                         <InputGroup compact>
                             <Select onChange={this.selectSearch} size="large" defaultValue="Name" style={{ width: "10%" }}>
-                                <Option value="Name">Name</Option>
-                                <Option value="Location">Location</Option>
+                                <Option value="Name">{I18n.get('Name')}</Option>
+                                <Option value="Location">{I18n.get('Location')}</Option>
                             </Select>
                             <Search
                                 style={{ width: '53%', color: "black" }}
@@ -123,7 +168,7 @@ class JobList extends React.Component {
                         </InputGroup>
                         <InputGroup compact >
                             <div style={{ textAlign: "left", width: "30%" }}>
-                                <h4>Filter By Job Category</h4>
+                                <h4>{I18n.get('Filter By Job Category')}</h4>
                                 <Select
                                     className="dropBox"
                                     showSearch
@@ -133,32 +178,32 @@ class JobList extends React.Component {
                                     size="large"
                                     style={{ width: "100%" }}
                                     defaultValue="All" >
-                                    <Option value="Accountancy, banking and finance">Accountancy, banking and finance</Option>
-                                    <Option value="Business, consulting and management">Business, consulting and management</Option>
-                                    <Option value="Charity and voluntary work">Charity and voluntary work</Option>
-                                    <Option value="Creative arts and design">Creative arts and design</Option>
-                                    <Option value="Energy and utilities">Energy and utilities</Option>
-                                    <Option value="Engineering and manufacturing">Engineering and manufacturing</Option>
-                                    <Option value="Environment and agriculture">Environment and agriculture</Option>
-                                    <Option value="Healthcare">Healthcare</Option>
-                                    <Option value="Information technology">Information technology</Option>
-                                    <Option value="Law">Law</Option>
-                                    <Option value="Marketing, advertising and PR">Marketing, advertising and PR</Option>
-                                    <Option value="Media and internet">Media and internet</Option>
-                                    <Option value="Property and construction">Property and construction</Option>
-                                    <Option value="Public services and administration">Public services and administration</Option>
-                                    <Option value="Recruitment and HR">Recruitment and HR</Option>
-                                    <Option value="Retail">Retail</Option>
-                                    <Option value="Sales">Sales</Option>
-                                    <Option value="Science and pharmaceuticals">Science and pharmaceuticals</Option>
-                                    <Option value="Social care">Social care</Option>
-                                    <Option value="Teacher training and education">Teacher training and education</Option>
-                                    <Option value="Transport and logistics">Transport and logistics</Option>
-                                    <Option value="All">All</Option>
+                                    <Option value="Accountancy, banking and finance">{I18n.get('Accountancy, banking and finance')}</Option>
+                                    <Option value="Business, consulting and management">{I18n.get('Business, consulting and management')}</Option>
+                                    <Option value="Charity and voluntary work">{I18n.get('Charity and voluntary work')}</Option>
+                                    <Option value="Creative arts and design">{I18n.get('Creative arts and design')}</Option>
+                                    <Option value="Energy and utilities">{I18n.get('Energy and utilities')}</Option>
+                                    <Option value="Engineering and manufacturing">{I18n.get('Engineering and manufacturing')}</Option>
+                                    <Option value="Environment and agriculture">{I18n.get('Environment and agriculture')}</Option>
+                                    <Option value="Healthcare">{I18n.get('Healthcare')}</Option>
+                                    <Option value="Information technology">{I18n.get('Information technology')}</Option>
+                                    <Option value="Law">{I18n.get('Law')}</Option>
+                                    <Option value="Marketing, advertising and PR">{I18n.get('Marketing, advertising and PR')}</Option>
+                                    <Option value="Media and internet">{I18n.get('Media and internet')}</Option>
+                                    <Option value="Property and construction">{I18n.get('Property and construction')}</Option>
+                                    <Option value="Public services and administration">{I18n.get('Public services and administration')}</Option>
+                                    <Option value="Recruitment and HR">{I18n.get('Recruitment and HR')}</Option>
+                                    <Option value="Retail">{I18n.get('Retail')}</Option>
+                                    <Option value="Sales">{I18n.get('Sales')}</Option>
+                                    <Option value="Science and pharmaceuticals">{I18n.get('Science and pharmaceuticals')}</Option>
+                                    <Option value="Social care">{I18n.get('Social care')}</Option>
+                                    <Option value="Teacher training and education">{I18n.get('Teacher training and education')}</Option>
+                                    <Option value="Transport and logistics">{I18n.get('Transport and logistics')}</Option>
+                                    <Option value="All">{I18n.get('All')}</Option>
                                 </Select>
                             </div>
                             <div style={{ textAlign: "left", width: "20%" }}>
-                                <h4>Filter By Job Type</h4>
+                                <h4>{I18n.get('Filter By Job Type')}</h4>
                                 <Select
                                     onChange={this.filterType}
                                     style={{ marginLeft: "2%", width: "98%" }}
@@ -172,25 +217,25 @@ class JobList extends React.Component {
                                 </Select>
                             </div>
                             <div style={{ textAlign: "left", width: "20%" }}>
-                                <h4>Filter By Education Requirement</h4>
+                                <h4>{I18n.get('Filter By Education Requirement')}</h4>
                                 <Select
                                     style={{ marginLeft: "2%", width: "98%" }}
                                     size="large"
                                     onChange={this.filterEducation}
                                     defaultValue="All" >
-                                    <Option value="No Requirement">No Requirement</Option>
-                                    <Option value="Associate">Associate</Option>
-                                    <Option value="Bachelor">Bachelor</Option>
-                                    <Option value="Master">Master</Option>
-                                    <Option value="Doctoral">Doctoral</Option>
-                                    <Option value="All">All</Option>
+                                    <Option value="No Requirement">{I18n.get('No Requirement')}</Option>
+                                    <Option value="Associate">{I18n.get('Associate')}</Option>
+                                    <Option value="Bachelor">{I18n.get('Bachelor')}</Option>
+                                    <Option value="Master">{I18n.get('Master')}</Option>
+                                    <Option value="Doctoral">{I18n.get('Doctoral')}</Option>
+                                    <Option value="All">{I18n.get('All')}</Option>
                                 </Select>
                             </div>
 
                         </InputGroup>
                         <InputGroup compact>
                             <div style={{ textAlign: "left", width: "20%" }}>
-                                <h4>Minimum Wage</h4>
+                                <h4>{I18n.get('Minimum Wage')}</h4>
                                 <Row>
                                     <Col span={10}>
                                         <Slider
@@ -221,7 +266,7 @@ class JobList extends React.Component {
                             </Button>
                             </div>
                             <div style={{ textAlign: "left", width: "20%" }}>
-                                <h4>Job Posted Within</h4>
+                                <h4>{I18n.get('Job Posted Within')}</h4>
                                 <Row>
                                     <Col span={10}>
                                         <Slider
@@ -264,7 +309,7 @@ class JobList extends React.Component {
                     </Connect>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    JobFirst ©2019 Created by JobFirst Group
+                    {I18n.get('JobFirst')} ©2019 {I18n.get('Created by JobFirst Group')}
                 </Footer>
             </Layout>
         );
