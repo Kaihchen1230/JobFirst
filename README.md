@@ -17,6 +17,9 @@ __Alan Lau__ _(developer)_
 2. _AWS cognito_
 3. _AWS appsync_
 
+## Demo
+![Employer View]("./gif_demo/employer_view.gif")
+
 ## Refer here for our website
 https://master.d1lcnidp5acn3o.amplifyapp.com/
 1. employer account: 
