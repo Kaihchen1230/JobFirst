@@ -8,14 +8,19 @@ __Siddharth Rajan__ _(developer)_
 __Alan Lau__ _(developer)_
 </br>
 </br>
+Special thanks to:
+__Tendo Choi__, __Peter__ and __Shirley__ _(contributions to the overall design)_
 
 ## Background:
  JobFirst is employment-related search website that makes a connection between employer and skilled new immigrants who can speak Chinese and tries to find a job but couldn't do so due to language and cultural barriers. The interface will be in bilingual(English & Mandarin), allowing the user easier to use. On the website, a credential converter can be provided that helps customers understand what their degree means in the new country.
 
 ## Tools Used:
 1. _Gatsby_
-2. _AWS cognito_
-3. _AWS appsync_
+1. _Graphql_
+1. _React.js_
+1. _AWS cognito_
+1. _AWS appsync_
+1. _AWS Amplify_
 
 ## Demo
 <img src='./gif_demo/employer_view.gif' alt='Employer View' />
