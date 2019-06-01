@@ -18,7 +18,8 @@ __Alan Lau__ _(developer)_
 3. _AWS appsync_
 
 ## Demo
-![Employer View]("./gif_demo/employer_view.gif")
+<img src='./gif_demo/employer_view.gif' alt='Employer View' />
+<img src='./gif_demo/employee_view.gif' alt='Employee View' />
 
 ## Refer here for our website
 https://master.d1lcnidp5acn3o.amplifyapp.com/
